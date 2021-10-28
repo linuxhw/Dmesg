@@ -1,0 +1,1143 @@
+[   75.084581]  ? ww_mutex_lock+0x17/0x70
+[   75.084590]  drm_fb_helper_hotplug_event.part.36+0x8e/0xb0 [drm_kms_helper]
+[   75.084598]  drm_fb_helper_hotplug_event+0x1f/0x30 [drm_kms_helper]
+[   75.084637]  intel_fbdev_output_poll_changed+0x34/0x70 [i915]
+[   75.084645]  drm_kms_helper_hotplug_event+0x2a/0x30 [drm_kms_helper]
+[   75.084653]  output_poll_execute+0xa3/0x1b0 [drm_kms_helper]
+[   75.084657]  process_one_work+0x1fd/0x3f0
+[   75.084660]  worker_thread+0x255/0x410
+[   75.084663]  kthread+0x121/0x140
+[   75.084665]  ? process_one_work+0x3f0/0x3f0
+[   75.084668]  ? kthread_create_worker_on_cpu+0x70/0x70
+[   75.084670]  ret_from_fork+0x35/0x40
+[   75.084673] ---[ end trace 0f1eabcf6f8ae2f9 ]---
+[   85.216100] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[   95.460104] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  105.696098] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  105.800063] ------------[ cut here ]------------
+[  105.800065] vblank wait timed out on crtc 1
+[  105.800180] WARNING: CPU: 0 PID: 295 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  105.800182] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  105.800250] CPU: 0 PID: 295 Comm: plymouthd Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  105.800251] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  105.800268] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  105.800269] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  105.800316] RSP: 0018:ffffa3d78084f910 EFLAGS: 00010286
+[  105.800319] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  105.800321] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[  105.800323] RBP: ffffa3d78084f968 R08: 00000000000003c3 R09: 0000000000000004
+[  105.800324] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  105.800326] R13: 0000000000000000 R14: 0000000003000003 R15: ffff91f0f416f578
+[  105.800328] FS:  00007f0ea693a740(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[  105.800330] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  105.800332] CR2: 00007ff80154f520 CR3: 0000000072f22000 CR4: 00000000000006f0
+[  105.800333] Call Trace:
+[  105.800342]  ? wait_woken+0x80/0x80
+[  105.800428]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  105.800468]  intel_tv_detect+0x140/0x4e0 [i915]
+[  105.800485]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  105.800524]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  105.800532]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  105.800541]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  105.800559]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  105.800577]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  105.800592]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  105.800606]  drm_ioctl+0x37b/0x440 [drm]
+[  105.800623]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  105.800636]  do_vfs_ioctl+0xa8/0x630
+[  105.800640]  ? handle_mm_fault+0xe3/0x220
+[  105.800643]  ksys_ioctl+0x75/0x80
+[  105.800646]  __x64_sys_ioctl+0x1a/0x20
+[  105.800650]  do_syscall_64+0x5a/0x120
+[  105.800654]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  105.800656] RIP: 0033:0x7f0ea60245d7
+[  105.800657] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  105.800705] RSP: 002b:00007ffff32ffcc8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  105.800707] RAX: ffffffffffffffda RBX: 000055f27abbbc20 RCX: 00007f0ea60245d7
+[  105.800709] RDX: 00007ffff32ffd00 RSI: 00000000c05064a7 RDI: 0000000000000009
+[  105.800710] RBP: 00007ffff32ffd00 R08: 000055f27abbbb90 R09: 00007f0ea607c940
+[  105.800712] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  105.800714] R13: 0000000000000009 R14: 0000000000000009 R15: 00007ffff32ffd00
+[  105.800716] ---[ end trace 0f1eabcf6f8ae2fa ]---
+[  115.940117] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  126.180110] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  139.198716] IPv6: ADDRCONF(NETDEV_UP): enp9s0: link is not ready
+[  139.201534] sky2 0000:09:00.0 enp9s0: enabling interface
+[  139.202001] IPv6: ADDRCONF(NETDEV_UP): enp9s0: link is not ready
+[  158.688090] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  158.792066] ------------[ cut here ]------------
+[  158.792070] vblank wait timed out on crtc 1
+[  158.792215] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  158.792217] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  158.792289] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  158.792291] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  158.792310] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  158.792312] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  158.792359] RSP: 0000:ffffa3d780b5f910 EFLAGS: 00010286
+[  158.792362] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  158.792364] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[  158.792366] RBP: ffffa3d780b5f968 R08: 00000000000003f6 R09: 0000000000000004
+[  158.792367] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  158.792369] R13: 0000000000000000 R14: 0000000005000004 R15: ffff91f0f416f578
+[  158.792371] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[  158.792373] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  158.792375] CR2: 00007ff57f18d2f3 CR3: 0000000077740000 CR4: 00000000000006e0
+[  158.792377] Call Trace:
+[  158.792389]  ? wait_woken+0x80/0x80
+[  158.792497]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  158.792538]  intel_tv_detect+0x140/0x4e0 [i915]
+[  158.792564]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  158.792604]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  158.792613]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  158.792622]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  158.792627]  ? ext4_dirty_inode+0x5c/0x70
+[  158.792649]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  158.792653]  ? radix_tree_lookup+0xd/0x10
+[  158.792671]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  158.792686]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  158.792701]  drm_ioctl+0x37b/0x440 [drm]
+[  158.792718]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  158.792723]  do_vfs_ioctl+0xa8/0x630
+[  158.792728]  ? handle_mm_fault+0xe3/0x220
+[  158.792731]  ksys_ioctl+0x75/0x80
+[  158.792734]  __x64_sys_ioctl+0x1a/0x20
+[  158.792738]  do_syscall_64+0x5a/0x120
+[  158.792742]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  158.792744] RIP: 0033:0x7fca889225d7
+[  158.792745] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  158.792793] RSP: 002b:00007ffdbf231678 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  158.792796] RAX: ffffffffffffffda RBX: 0000556173643fe0 RCX: 00007fca889225d7
+[  158.792797] RDX: 00007ffdbf2316b0 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  158.792799] RBP: 00007ffdbf2316b0 R08: 0000000000000000 R09: 0000000000000000
+[  158.792800] R10: 00005561739dfbc0 R11: 0000000000000246 R12: 00000000c05064a7
+[  158.792802] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf2316b0
+[  158.792805] ---[ end trace 0f1eabcf6f8ae2fb ]---
+[  168.928143] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  179.168081] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  189.408084] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  189.512072] ------------[ cut here ]------------
+[  189.512075] vblank wait timed out on crtc 1
+[  189.512174] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  189.512176] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  189.512244] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  189.512246] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  189.512262] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  189.512263] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  189.512311] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  189.512313] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  189.512315] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[  189.512317] RBP: ffffa3d780b5f968 R08: 000000000000042d R09: 0000000000000004
+[  189.512318] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  189.512320] R13: 0000000000000000 R14: 0000000007000005 R15: ffff91f0f416f578
+[  189.512322] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[  189.512324] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  189.512326] CR2: 00007ff80162de10 CR3: 0000000077740000 CR4: 00000000000006f0
+[  189.512327] Call Trace:
+[  189.512336]  ? wait_woken+0x80/0x80
+[  189.512412]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  189.512451]  intel_tv_detect+0x140/0x4e0 [i915]
+[  189.512471]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  189.512510]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  189.512518]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  189.512527]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  189.512532]  ? ext4_dirty_inode+0x5c/0x70
+[  189.512550]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  189.512568]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  189.512583]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  189.512598]  drm_ioctl+0x37b/0x440 [drm]
+[  189.512615]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  189.512620]  ? new_sync_write+0xfe/0x150
+[  189.512624]  do_vfs_ioctl+0xa8/0x630
+[  189.512627]  ? vfs_write+0x132/0x1a0
+[  189.512629]  ksys_ioctl+0x75/0x80
+[  189.512632]  __x64_sys_ioctl+0x1a/0x20
+[  189.512636]  do_syscall_64+0x5a/0x120
+[  189.512640]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  189.512643] RIP: 0033:0x7fca889225d7
+[  189.512644] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  189.512691] RSP: 002b:00007ffdbf231428 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  189.512694] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  189.512696] RDX: 00007ffdbf231460 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  189.512697] RBP: 00007ffdbf231460 R08: 0000000000000000 R09: 0000000000000001
+[  189.512699] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  189.512700] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231460
+[  189.512703] ---[ end trace 0f1eabcf6f8ae2fc ]---
+[  199.648090] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  209.888090] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  231.904146] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  232.008119] ------------[ cut here ]------------
+[  232.008125] vblank wait timed out on crtc 1
+[  232.008273] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  232.008275] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  232.008347] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  232.008349] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  232.008366] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  232.008367] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  232.008415] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  232.008418] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  232.008419] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[  232.008421] RBP: ffffa3d780b5f968 R08: 0000000000000483 R09: 0000000000000004
+[  232.008422] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  232.008424] R13: 0000000000000000 R14: 0000000009000006 R15: ffff91f0f416f578
+[  232.008426] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[  232.008428] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  232.008430] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006e0
+[  232.008432] Call Trace:
+[  232.008444]  ? wait_woken+0x80/0x80
+[  232.008560]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  232.008600]  intel_tv_detect+0x140/0x4e0 [i915]
+[  232.008629]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  232.008668]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  232.008677]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  232.008686]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  232.008713]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  232.008718]  ? radix_tree_lookup+0xd/0x10
+[  232.008736]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  232.008750]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  232.008765]  drm_ioctl+0x37b/0x440 [drm]
+[  232.008783]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  232.008788]  ? __fpu__restore_sig+0x78/0x480
+[  232.008793]  do_vfs_ioctl+0xa8/0x630
+[  232.008798]  ? recalc_sigpending+0x1b/0x50
+[  232.008803]  ? _copy_from_user+0x3e/0x60
+[  232.008805]  ksys_ioctl+0x75/0x80
+[  232.008808]  __x64_sys_ioctl+0x1a/0x20
+[  232.008812]  do_syscall_64+0x5a/0x120
+[  232.008816]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  232.008819] RIP: 0033:0x7fca889225d7
+[  232.008820] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  232.008869] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  232.008872] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  232.008874] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  232.008875] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[  232.008877] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  232.008878] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[  232.008882] ---[ end trace 0f1eabcf6f8ae2fd ]---
+[  242.144122] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  246.257737] perf: interrupt took too long (2532 > 2500), lowering kernel.perf_event_max_sample_rate to 78750
+[  252.384302] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  262.624088] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  262.728173] ------------[ cut here ]------------
+[  262.728182] vblank wait timed out on crtc 1
+[  262.728410] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  262.728413] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  262.728484] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  262.728486] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  262.728504] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  262.728505] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  262.728552] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  262.728555] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  262.728557] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[  262.728559] RBP: ffffa3d780b5f968 R08: 00000000000004e9 R09: 0000000000000004
+[  262.728560] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  262.728562] R13: 0000000000000000 R14: 000000000b000007 R15: ffff91f0f416f578
+[  262.728565] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[  262.728566] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  262.728568] CR2: 0000563fb8ff9cf0 CR3: 0000000077740000 CR4: 00000000000006e0
+[  262.728570] Call Trace:
+[  262.728589]  ? wait_woken+0x80/0x80
+[  262.728768]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  262.728808]  intel_tv_detect+0x140/0x4e0 [i915]
+[  262.728845]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  262.728884]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  262.728892]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  262.728901]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  262.728923]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  262.728929]  ? radix_tree_lookup+0xd/0x10
+[  262.728947]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  262.728962]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  262.728977]  drm_ioctl+0x37b/0x440 [drm]
+[  262.728994]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  262.728999]  ? __fpu__restore_sig+0x78/0x480
+[  262.729006]  do_vfs_ioctl+0xa8/0x630
+[  262.729010]  ? recalc_sigpending+0x1b/0x50
+[  262.729016]  ? _copy_from_user+0x3e/0x60
+[  262.729019]  ksys_ioctl+0x75/0x80
+[  262.729021]  __x64_sys_ioctl+0x1a/0x20
+[  262.729025]  do_syscall_64+0x5a/0x120
+[  262.729029]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  262.729033] RIP: 0033:0x7fca889225d7
+[  262.729034] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  262.729081] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  262.729084] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  262.729086] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  262.729087] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[  262.729089] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  262.729091] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[  262.729094] ---[ end trace 0f1eabcf6f8ae2fe ]---
+[  272.864108] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  278.866736] perf: interrupt took too long (3169 > 3165), lowering kernel.perf_event_max_sample_rate to 63000
+[  283.104104] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  304.821453] rfkill: input handler disabled
+[  318.176133] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  318.278882] ------------[ cut here ]------------
+[  318.278887] vblank wait timed out on crtc 1
+[  318.279039] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  318.279042] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  318.279112] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  318.279113] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  318.279130] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  318.279131] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  318.279179] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  318.279181] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  318.279183] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[  318.279185] RBP: ffffa3d780b5f968 R08: 0000000000000571 R09: 0000000000000004
+[  318.279186] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  318.279188] R13: 0000000000000000 R14: 000000000d000008 R15: ffff91f0f416f578
+[  318.279190] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[  318.279192] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  318.279194] CR2: 00007f0c9e2bd300 CR3: 0000000077740000 CR4: 00000000000006e0
+[  318.279195] Call Trace:
+[  318.279207]  ? wait_woken+0x80/0x80
+[  318.279324]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  318.279364]  intel_tv_detect+0x140/0x4e0 [i915]
+[  318.279393]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  318.279433]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  318.279444]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  318.279453]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  318.279478]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  318.279483]  ? radix_tree_lookup+0xd/0x10
+[  318.279500]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  318.279515]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  318.279530]  drm_ioctl+0x37b/0x440 [drm]
+[  318.279547]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  318.279552]  ? __fpu__restore_sig+0x78/0x480
+[  318.279557]  do_vfs_ioctl+0xa8/0x630
+[  318.279560]  ? recalc_sigpending+0x1b/0x50
+[  318.279566]  ? _copy_from_user+0x3e/0x60
+[  318.279569]  ksys_ioctl+0x75/0x80
+[  318.279571]  __x64_sys_ioctl+0x1a/0x20
+[  318.279575]  do_syscall_64+0x5a/0x120
+[  318.279579]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  318.279581] RIP: 0033:0x7fca889225d7
+[  318.279583] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  318.279631] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  318.279634] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  318.279635] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  318.279637] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[  318.279638] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  318.279640] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[  318.279643] ---[ end trace 0f1eabcf6f8ae2ff ]---
+[  328.067631] perf: interrupt took too long (4013 > 3961), lowering kernel.perf_event_max_sample_rate to 49750
+[  328.416245] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  338.656121] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  348.896103] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  349.000063] ------------[ cut here ]------------
+[  349.000065] vblank wait timed out on crtc 1
+[  349.000168] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  349.000170] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  349.000239] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  349.000240] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  349.000257] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  349.000258] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  349.000305] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  349.000308] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  349.000310] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[  349.000311] RBP: ffffa3d780b5f968 R08: 00000000000005b6 R09: 0000000000000004
+[  349.000313] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  349.000314] R13: 0000000000000000 R14: 000000000f000009 R15: ffff91f0f416f578
+[  349.000317] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[  349.000319] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  349.000321] CR2: 00005595833b06d4 CR3: 0000000077740000 CR4: 00000000000006f0
+[  349.000322] Call Trace:
+[  349.000332]  ? wait_woken+0x80/0x80
+[  349.000417]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  349.000456]  intel_tv_detect+0x140/0x4e0 [i915]
+[  349.000477]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  349.000515]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  349.000524]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  349.000532]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  349.000551]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  349.000555]  ? radix_tree_lookup+0xd/0x10
+[  349.000573]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  349.000588]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  349.000603]  drm_ioctl+0x37b/0x440 [drm]
+[  349.000619]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  349.000624]  ? __fpu__restore_sig+0x78/0x480
+[  349.000629]  do_vfs_ioctl+0xa8/0x630
+[  349.000633]  ? recalc_sigpending+0x1b/0x50
+[  349.000637]  ? _copy_from_user+0x3e/0x60
+[  349.000639]  ksys_ioctl+0x75/0x80
+[  349.000642]  __x64_sys_ioctl+0x1a/0x20
+[  349.000646]  do_syscall_64+0x5a/0x120
+[  349.000649]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  349.000652] RIP: 0033:0x7fca889225d7
+[  349.000653] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  349.000700] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  349.000703] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  349.000704] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  349.000706] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[  349.000707] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  349.000709] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[  349.000712] ---[ end trace 0f1eabcf6f8ae300 ]---
+[  359.136157] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  369.376133] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  455.648110] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  455.752089] ------------[ cut here ]------------
+[  455.752094] vblank wait timed out on crtc 1
+[  455.752241] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  455.752243] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  455.752392] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  455.752395] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  455.752438] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  455.752440] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  455.752550] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  455.752556] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  455.752560] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[  455.752564] RBP: ffffa3d780b5f968 R08: 00000000000005e9 R09: 0000000000000004
+[  455.752567] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  455.752571] R13: 0000000000000000 R14: 000000001100000a R15: ffff91f0f416f578
+[  455.752577] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[  455.752581] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  455.752585] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006f0
+[  455.752588] Call Trace:
+[  455.752602]  ? wait_woken+0x80/0x80
+[  455.752720]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  455.752813]  intel_tv_detect+0x140/0x4e0 [i915]
+[  455.752841]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  455.752932]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  455.752951]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  455.752971]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  455.753014]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  455.753022]  ? radix_tree_lookup+0xd/0x10
+[  455.753063]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  455.753097]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  455.753132]  drm_ioctl+0x37b/0x440 [drm]
+[  455.753171]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  455.753181]  ? __fpu__restore_sig+0x78/0x480
+[  455.753189]  do_vfs_ioctl+0xa8/0x630
+[  455.753196]  ? recalc_sigpending+0x1b/0x50
+[  455.753204]  ? _copy_from_user+0x3e/0x60
+[  455.753209]  ksys_ioctl+0x75/0x80
+[  455.753215]  __x64_sys_ioctl+0x1a/0x20
+[  455.753229]  do_syscall_64+0x5a/0x120
+[  455.753235]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  455.753241] RIP: 0033:0x7fca889225d7
+[  455.753243] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  455.753351] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  455.753358] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  455.753361] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  455.753365] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[  455.753369] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  455.753372] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[  455.753378] ---[ end trace 0f1eabcf6f8ae301 ]---
+[  465.888553] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  476.128143] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  625.508967] perf: interrupt took too long (5026 > 5016), lowering kernel.perf_event_max_sample_rate to 39750
+[  674.532121] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  674.632873] ------------[ cut here ]------------
+[  674.632878] vblank wait timed out on crtc 1
+[  674.633023] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  674.633026] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  674.633180] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  674.633184] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  674.633222] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  674.633225] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  674.633334] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  674.633340] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  674.633344] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[  674.633348] RBP: ffffa3d780b5f968 R08: 000000000000061d R09: 0000000000000004
+[  674.633351] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  674.633355] R13: 0000000000000000 R14: 000000001300000b R15: ffff91f0f416f578
+[  674.633361] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[  674.633365] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  674.633369] CR2: 0000558c1339d510 CR3: 0000000077740000 CR4: 00000000000006e0
+[  674.633372] Call Trace:
+[  674.633387]  ? wait_woken+0x80/0x80
+[  674.633507]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  674.633600]  intel_tv_detect+0x140/0x4e0 [i915]
+[  674.633636]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  674.633726]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  674.633745]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  674.633765]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  674.633808]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  674.633818]  ? radix_tree_lookup+0xd/0x10
+[  674.633860]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  674.633894]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  674.633928]  drm_ioctl+0x37b/0x440 [drm]
+[  674.633968]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  674.633977]  ? __fpu__restore_sig+0x78/0x480
+[  674.633985]  do_vfs_ioctl+0xa8/0x630
+[  674.633999]  ? recalc_sigpending+0x1b/0x50
+[  674.634006]  ? _copy_from_user+0x3e/0x60
+[  674.634012]  ksys_ioctl+0x75/0x80
+[  674.634018]  __x64_sys_ioctl+0x1a/0x20
+[  674.634025]  do_syscall_64+0x5a/0x120
+[  674.634032]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  674.634037] RIP: 0033:0x7fca889225d7
+[  674.634039] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  674.634148] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  674.634154] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  674.634158] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  674.634161] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[  674.634165] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  674.634169] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[  674.634176] ---[ end trace 0f1eabcf6f8ae302 ]---
+[  684.772169] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  695.008161] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  705.248172] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  705.352097] ------------[ cut here ]------------
+[  705.352101] vblank wait timed out on crtc 1
+[  705.352220] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  705.352222] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  705.352335] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  705.352338] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  705.352367] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  705.352369] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  705.352452] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  705.352457] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  705.352460] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[  705.352462] RBP: ffffa3d780b5f968 R08: 0000000000000650 R09: 0000000000000004
+[  705.352465] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  705.352468] R13: 0000000000000000 R14: 000000001500000c R15: ffff91f0f416f578
+[  705.352472] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[  705.352475] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  705.352478] CR2: 000055cc6bcd5e80 CR3: 0000000077740000 CR4: 00000000000006e0
+[  705.352481] Call Trace:
+[  705.352493]  ? wait_woken+0x80/0x80
+[  705.352592]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  705.352662]  intel_tv_detect+0x140/0x4e0 [i915]
+[  705.352686]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  705.352753]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  705.352768]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  705.352783]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  705.352815]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  705.352823]  ? radix_tree_lookup+0xd/0x10
+[  705.352854]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  705.352880]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  705.352906]  drm_ioctl+0x37b/0x440 [drm]
+[  705.352935]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  705.352942]  ? __fpu__restore_sig+0x78/0x480
+[  705.352949]  do_vfs_ioctl+0xa8/0x630
+[  705.352954]  ? recalc_sigpending+0x1b/0x50
+[  705.352960]  ? _copy_from_user+0x3e/0x60
+[  705.352964]  ksys_ioctl+0x75/0x80
+[  705.352969]  __x64_sys_ioctl+0x1a/0x20
+[  705.352974]  do_syscall_64+0x5a/0x120
+[  705.352979]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  705.352983] RIP: 0033:0x7fca889225d7
+[  705.352985] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  705.353067] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  705.353071] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  705.353074] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  705.353077] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[  705.353080] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  705.353082] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[  705.353087] ---[ end trace 0f1eabcf6f8ae303 ]---
+[  715.492192] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  725.732176] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  807.392118] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  807.495825] ------------[ cut here ]------------
+[  807.495831] vblank wait timed out on crtc 1
+[  807.495970] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  807.495973] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  807.496128] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  807.496131] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  807.496169] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  807.496172] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  807.496282] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  807.496288] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  807.496292] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[  807.496295] RBP: ffffa3d780b5f968 R08: 0000000000000683 R09: 0000000000000004
+[  807.496299] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  807.496302] R13: 0000000000000000 R14: 000000001700000d R15: ffff91f0f416f578
+[  807.496308] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[  807.496312] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  807.496316] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006f0
+[  807.496320] Call Trace:
+[  807.496334]  ? wait_woken+0x80/0x80
+[  807.496454]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  807.496550]  intel_tv_detect+0x140/0x4e0 [i915]
+[  807.496578]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  807.496669]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  807.496688]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  807.496708]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  807.496752]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  807.496760]  ? radix_tree_lookup+0xd/0x10
+[  807.496802]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  807.496836]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  807.496870]  drm_ioctl+0x37b/0x440 [drm]
+[  807.496910]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  807.496923]  ? __fpu__restore_sig+0x78/0x480
+[  807.496931]  do_vfs_ioctl+0xa8/0x630
+[  807.496939]  ? recalc_sigpending+0x1b/0x50
+[  807.496946]  ? _copy_from_user+0x3e/0x60
+[  807.496952]  ksys_ioctl+0x75/0x80
+[  807.496958]  __x64_sys_ioctl+0x1a/0x20
+[  807.496965]  do_syscall_64+0x5a/0x120
+[  807.496972]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  807.496977] RIP: 0033:0x7fca889225d7
+[  807.496979] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  807.497087] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  807.497094] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  807.497097] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  807.497101] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[  807.497105] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  807.497108] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[  807.497114] ---[ end trace 0f1eabcf6f8ae304 ]---
+[  817.632154] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  827.876173] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[  838.368140] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  838.474130] ------------[ cut here ]------------
+[  838.474136] vblank wait timed out on crtc 1
+[  838.474283] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[  838.474286] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[  838.474441] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[  838.474444] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[  838.474482] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[  838.474485] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[  838.474595] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[  838.474601] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[  838.474604] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[  838.474609] RBP: ffffa3d780b5f968 R08: 00000000000006b6 R09: 0000000000000004
+[  838.474613] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[  838.474617] R13: 0000000000000000 R14: 000000001900000e R15: ffff91f0f416f578
+[  838.474622] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[  838.474627] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  838.474631] CR2: 00007fa7d2fdc014 CR3: 0000000077740000 CR4: 00000000000006e0
+[  838.474634] Call Trace:
+[  838.474649]  ? wait_woken+0x80/0x80
+[  838.474767]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[  838.474860]  intel_tv_detect+0x140/0x4e0 [i915]
+[  838.474895]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  838.474985]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[  838.475005]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[  838.475025]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[  838.475067]  drm_mode_getconnector+0x17e/0x430 [drm]
+[  838.475076]  ? radix_tree_lookup+0xd/0x10
+[  838.475117]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  838.475151]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[  838.475186]  drm_ioctl+0x37b/0x440 [drm]
+[  838.475225]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[  838.475235]  ? __fpu__restore_sig+0x78/0x480
+[  838.475250]  do_vfs_ioctl+0xa8/0x630
+[  838.475257]  ? recalc_sigpending+0x1b/0x50
+[  838.475265]  ? _copy_from_user+0x3e/0x60
+[  838.475270]  ksys_ioctl+0x75/0x80
+[  838.475276]  __x64_sys_ioctl+0x1a/0x20
+[  838.475283]  do_syscall_64+0x5a/0x120
+[  838.475290]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  838.475295] RIP: 0033:0x7fca889225d7
+[  838.475297] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[  838.475406] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  838.475412] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[  838.475416] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[  838.475419] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[  838.475423] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[  838.475427] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[  838.475433] ---[ end trace 0f1eabcf6f8ae305 ]---
+[  848.608161] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[  858.848158] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 1042.788646] sky2 0000:09:00.0 enp9s0: Link is up at 100 Mbps, full duplex, flow control both
+[ 1042.789757] IPv6: ADDRCONF(NETDEV_CHANGE): enp9s0: link becomes ready
+[ 1303.947423] perf: interrupt took too long (6295 > 6282), lowering kernel.perf_event_max_sample_rate to 31750
+[ 1684.448155] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 1684.550028] ------------[ cut here ]------------
+[ 1684.550031] vblank wait timed out on crtc 1
+[ 1684.550136] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 1684.550137] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 1684.550207] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 1684.550209] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 1684.550226] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 1684.550227] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 1684.550274] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 1684.550276] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 1684.550278] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[ 1684.550280] RBP: ffffa3d780b5f968 R08: 0000000000000714 R09: 0000000000000004
+[ 1684.550281] R10: 0000000000000057 R11: 0000000000000001 R12: 0000000000000001
+[ 1684.550283] R13: 0000000000000000 R14: 000000001b00000f R15: ffff91f0f416f578
+[ 1684.550286] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[ 1684.550288] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1684.550290] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006f0
+[ 1684.550291] Call Trace:
+[ 1684.550300]  ? wait_woken+0x80/0x80
+[ 1684.550383]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 1684.550423]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 1684.550442]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 1684.550480]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 1684.550488]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 1684.550497]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 1684.550515]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 1684.550520]  ? radix_tree_lookup+0xd/0x10
+[ 1684.550538]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 1684.550552]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 1684.550567]  drm_ioctl+0x37b/0x440 [drm]
+[ 1684.550584]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 1684.550588]  ? __fpu__restore_sig+0x78/0x480
+[ 1684.550593]  do_vfs_ioctl+0xa8/0x630
+[ 1684.550596]  ? recalc_sigpending+0x1b/0x50
+[ 1684.550600]  ? _copy_from_user+0x3e/0x60
+[ 1684.550603]  ksys_ioctl+0x75/0x80
+[ 1684.550605]  __x64_sys_ioctl+0x1a/0x20
+[ 1684.550609]  do_syscall_64+0x5a/0x120
+[ 1684.550612]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 1684.550615] RIP: 0033:0x7fca889225d7
+[ 1684.550615] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 1684.550662] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 1684.550665] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 1684.550667] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 1684.550668] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[ 1684.550670] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 1684.550671] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[ 1684.550674] ---[ end trace 0f1eabcf6f8ae306 ]---
+[ 1694.688115] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 1704.928127] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 1715.168160] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 1715.276084] ------------[ cut here ]------------
+[ 1715.276090] vblank wait timed out on crtc 1
+[ 1715.276248] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 1715.276251] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 1715.276413] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 1715.276417] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 1715.276458] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 1715.276460] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 1715.276570] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 1715.276576] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 1715.276580] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[ 1715.276584] RBP: ffffa3d780b5f968 R08: 0000000000000747 R09: 0000000000000004
+[ 1715.276587] R10: 00000000000002ec R11: 0000000000000001 R12: 0000000000000001
+[ 1715.276591] R13: 0000000000000000 R14: 000000001d000010 R15: ffff91f0f416f578
+[ 1715.276597] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[ 1715.276601] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1715.276605] CR2: 00003b488d7b863f CR3: 0000000077740000 CR4: 00000000000006f0
+[ 1715.276608] Call Trace:
+[ 1715.276623]  ? wait_woken+0x80/0x80
+[ 1715.276739]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 1715.276831]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 1715.276868]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 1715.276958]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 1715.276977]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 1715.276997]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 1715.277040]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 1715.277051]  ? radix_tree_lookup+0xd/0x10
+[ 1715.277093]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 1715.277126]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 1715.277161]  drm_ioctl+0x37b/0x440 [drm]
+[ 1715.277200]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 1715.277209]  ? __fpu__restore_sig+0x78/0x480
+[ 1715.277218]  do_vfs_ioctl+0xa8/0x630
+[ 1715.277231]  ? recalc_sigpending+0x1b/0x50
+[ 1715.277239]  ? _copy_from_user+0x3e/0x60
+[ 1715.277245]  ksys_ioctl+0x75/0x80
+[ 1715.277250]  __x64_sys_ioctl+0x1a/0x20
+[ 1715.277257]  do_syscall_64+0x5a/0x120
+[ 1715.277264]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 1715.277269] RIP: 0033:0x7fca889225d7
+[ 1715.277271] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 1715.277380] RSP: 002b:00007ffdbf2314f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 1715.277387] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 1715.277390] RDX: 00007ffdbf231530 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 1715.277394] RBP: 00007ffdbf231530 R08: 0000000000000000 R09: 0000000000000000
+[ 1715.277397] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 1715.277401] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf231530
+[ 1715.277413] ---[ end trace 0f1eabcf6f8ae307 ]---
+[ 1725.408170] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 1735.652195] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 2191.584072] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2191.684166] ------------[ cut here ]------------
+[ 2191.684170] vblank wait timed out on crtc 1
+[ 2191.684300] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2191.684302] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 2191.684370] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 2191.684372] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 2191.684388] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2191.684389] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 2191.684437] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 2191.684439] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 2191.684441] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[ 2191.684443] RBP: ffffa3d780b5f968 R08: 00000000000008fa R09: 0000000000000004
+[ 2191.684444] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[ 2191.684446] R13: 0000000000000000 R14: 000000001f000011 R15: ffff91f0f416f578
+[ 2191.684448] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[ 2191.684450] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2191.684452] CR2: 000000c4200227a0 CR3: 0000000077740000 CR4: 00000000000006f0
+[ 2191.684453] Call Trace:
+[ 2191.684463]  ? wait_woken+0x80/0x80
+[ 2191.684565]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 2191.684605]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 2191.684628]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2191.684666]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 2191.684674]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2191.684683]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 2191.684701]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 2191.684719]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2191.684734]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 2191.684749]  drm_ioctl+0x37b/0x440 [drm]
+[ 2191.684766]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2191.684771]  ? __switch_to_asm+0x34/0x70
+[ 2191.684774]  ? __switch_to_asm+0x40/0x70
+[ 2191.684776]  ? __switch_to_asm+0x34/0x70
+[ 2191.684778]  ? __switch_to_asm+0x40/0x70
+[ 2191.684780]  ? __switch_to_asm+0x34/0x70
+[ 2191.684782]  ? __switch_to_asm+0x40/0x70
+[ 2191.684786]  do_vfs_ioctl+0xa8/0x630
+[ 2191.684790]  ? __schedule+0x2bf/0x880
+[ 2191.684793]  ksys_ioctl+0x75/0x80
+[ 2191.684795]  __x64_sys_ioctl+0x1a/0x20
+[ 2191.684799]  do_syscall_64+0x5a/0x120
+[ 2191.684802]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 2191.684804] RIP: 0033:0x7fca889225d7
+[ 2191.684805] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 2191.684852] RSP: 002b:00007ffdbf230b58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 2191.684855] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 2191.684856] RDX: 00007ffdbf230b90 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 2191.684858] RBP: 00007ffdbf230b90 R08: 0000556173f11390 R09: 0000556173f48810
+[ 2191.684859] R10: 0000000000000001 R11: 0000000000000246 R12: 00000000c05064a7
+[ 2191.684861] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf230b90
+[ 2191.684864] ---[ end trace 0f1eabcf6f8ae308 ]---
+[ 2201.824172] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2212.068175] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 2222.308169] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2222.412112] ------------[ cut here ]------------
+[ 2222.412116] vblank wait timed out on crtc 1
+[ 2222.412262] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2222.412264] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 2222.412418] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 2222.412422] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 2222.412460] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2222.412463] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 2222.412573] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 2222.412579] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 2222.412584] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[ 2222.412588] RBP: ffffa3d780b5f968 R08: 0000000000000933 R09: 0000000000000004
+[ 2222.412591] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[ 2222.412595] R13: 0000000000000000 R14: 0000000021000012 R15: ffff91f0f416f578
+[ 2222.412601] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[ 2222.412605] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2222.412609] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006e0
+[ 2222.412612] Call Trace:
+[ 2222.412627]  ? wait_woken+0x80/0x80
+[ 2222.412747]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 2222.412840]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 2222.412876]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2222.412966]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 2222.412985]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2222.413006]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 2222.413050]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 2222.413058]  ? radix_tree_lookup+0xd/0x10
+[ 2222.413101]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2222.413135]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 2222.413170]  drm_ioctl+0x37b/0x440 [drm]
+[ 2222.413209]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2222.413226]  ? new_sync_write+0xfe/0x150
+[ 2222.413234]  do_vfs_ioctl+0xa8/0x630
+[ 2222.413241]  ? vfs_write+0x132/0x1a0
+[ 2222.413246]  ksys_ioctl+0x75/0x80
+[ 2222.413252]  __x64_sys_ioctl+0x1a/0x20
+[ 2222.413260]  do_syscall_64+0x5a/0x120
+[ 2222.413267]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 2222.413272] RIP: 0033:0x7fca889225d7
+[ 2222.413274] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 2222.413384] RSP: 002b:00007ffdbf230958 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 2222.413390] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 2222.413394] RDX: 00007ffdbf230990 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 2222.413398] RBP: 00007ffdbf230990 R08: 0000000000000000 R09: 0000000000000000
+[ 2222.413404] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 2222.413407] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf230990
+[ 2222.413414] ---[ end trace 0f1eabcf6f8ae309 ]---
+[ 2232.548176] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2242.788173] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 2253.028171] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2253.132125] ------------[ cut here ]------------
+[ 2253.132130] vblank wait timed out on crtc 1
+[ 2253.132278] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2253.132281] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 2253.132435] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 2253.132443] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 2253.132482] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2253.132484] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 2253.132594] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 2253.132600] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 2253.132604] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[ 2253.132608] RBP: ffffa3d780b5f968 R08: 0000000000000965 R09: 0000000000000004
+[ 2253.132611] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[ 2253.132615] R13: 0000000000000000 R14: 0000000023000013 R15: ffff91f0f416f578
+[ 2253.132621] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[ 2253.132625] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2253.132629] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006e0
+[ 2253.132633] Call Trace:
+[ 2253.132648]  ? wait_woken+0x80/0x80
+[ 2253.132784]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 2253.132879]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 2253.132920]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2253.132988]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 2253.133002]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2253.133017]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 2253.133051]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 2253.133083]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2253.133108]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 2253.133134]  drm_ioctl+0x37b/0x440 [drm]
+[ 2253.133164]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2253.133178]  ? _crng_backtrack_protect+0x60/0x80
+[ 2253.133184]  do_vfs_ioctl+0xa8/0x630
+[ 2253.133190]  ? __sys_recvmsg+0x8f/0xa0
+[ 2253.133195]  ksys_ioctl+0x75/0x80
+[ 2253.133199]  __x64_sys_ioctl+0x1a/0x20
+[ 2253.133205]  do_syscall_64+0x5a/0x120
+[ 2253.133211]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 2253.133215] RIP: 0033:0x7fca889225d7
+[ 2253.133217] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 2253.133299] RSP: 002b:00007ffdbf230b58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 2253.133304] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 2253.133306] RDX: 00007ffdbf230b90 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 2253.133309] RBP: 00007ffdbf230b90 R08: 0000556173f11390 R09: 0000556173f48810
+[ 2253.133312] R10: 0000000000000001 R11: 0000000000000246 R12: 00000000c05064a7
+[ 2253.133315] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf230b90
+[ 2253.133320] ---[ end trace 0f1eabcf6f8ae30a ]---
+[ 2263.264152] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2273.504120] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 2283.744152] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2283.848077] ------------[ cut here ]------------
+[ 2283.848083] vblank wait timed out on crtc 1
+[ 2283.848204] WARNING: CPU: 1 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2283.848206] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 2283.848275] CPU: 1 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 2283.848277] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 2283.848293] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2283.848294] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 2283.848342] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 2283.848344] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 2283.848346] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f5164b0
+[ 2283.848348] RBP: ffffa3d780b5f968 R08: 0000000000000996 R09: 0000000000000004
+[ 2283.848349] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[ 2283.848351] R13: 0000000000000000 R14: 0000000025000014 R15: ffff91f0f416f578
+[ 2283.848353] FS:  00007fca8b745a80(0000) GS:ffff91f13f500000(0000) knlGS:0000000000000000
+[ 2283.848355] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2283.848357] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006e0
+[ 2283.848358] Call Trace:
+[ 2283.848368]  ? wait_woken+0x80/0x80
+[ 2283.848456]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 2283.848496]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 2283.848515]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2283.848553]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 2283.848561]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2283.848570]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 2283.848588]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 2283.848593]  ? radix_tree_lookup+0xd/0x10
+[ 2283.848611]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2283.848625]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 2283.848640]  drm_ioctl+0x37b/0x440 [drm]
+[ 2283.848657]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2283.848662]  ? new_sync_write+0xfe/0x150
+[ 2283.848666]  do_vfs_ioctl+0xa8/0x630
+[ 2283.848669]  ? vfs_write+0x132/0x1a0
+[ 2283.848672]  ksys_ioctl+0x75/0x80
+[ 2283.848674]  __x64_sys_ioctl+0x1a/0x20
+[ 2283.848678]  do_syscall_64+0x5a/0x120
+[ 2283.848681]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 2283.848684] RIP: 0033:0x7fca889225d7
+[ 2283.848685] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 2283.848732] RSP: 002b:00007ffdbf230958 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 2283.848735] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 2283.848736] RDX: 00007ffdbf230990 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 2283.848738] RBP: 00007ffdbf230990 R08: 0000000000000000 R09: 0000000000000000
+[ 2283.848739] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 2283.848741] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf230990
+[ 2283.848746] ---[ end trace 0f1eabcf6f8ae30b ]---
+[ 2293.984127] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2304.224136] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 2794.208107] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2794.312036] ------------[ cut here ]------------
+[ 2794.312040] vblank wait timed out on crtc 1
+[ 2794.312161] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2794.312163] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 2794.312232] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 2794.312234] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 2794.312251] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2794.312252] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 2794.312299] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 2794.312302] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 2794.312303] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[ 2794.312305] RBP: ffffa3d780b5f968 R08: 00000000000009e4 R09: 0000000000000004
+[ 2794.312306] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[ 2794.312308] R13: 0000000000000000 R14: 0000000027000015 R15: ffff91f0f416f578
+[ 2794.312311] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[ 2794.312313] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2794.312314] CR2: 00007fdfeac14000 CR3: 0000000077740000 CR4: 00000000000006f0
+[ 2794.312316] Call Trace:
+[ 2794.312325]  ? wait_woken+0x80/0x80
+[ 2794.312414]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 2794.312454]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 2794.312473]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2794.312512]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 2794.312520]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2794.312529]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 2794.312534]  ? __schedule+0x2bf/0x880
+[ 2794.312552]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 2794.312570]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2794.312585]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 2794.312600]  drm_ioctl+0x37b/0x440 [drm]
+[ 2794.312617]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2794.312621]  ? _crng_backtrack_protect+0x60/0x80
+[ 2794.312626]  do_vfs_ioctl+0xa8/0x630
+[ 2794.312630]  ? __sys_recvmsg+0x8f/0xa0
+[ 2794.312633]  ksys_ioctl+0x75/0x80
+[ 2794.312635]  __x64_sys_ioctl+0x1a/0x20
+[ 2794.312639]  do_syscall_64+0x5a/0x120
+[ 2794.312642]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 2794.312644] RIP: 0033:0x7fca889225d7
+[ 2794.312645] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 2794.312692] RSP: 002b:00007ffdbf230b58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 2794.312695] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 2794.312697] RDX: 00007ffdbf230b90 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 2794.312698] RBP: 00007ffdbf230b90 R08: 0000556173f11390 R09: 0000556173f48810
+[ 2794.312701] R10: 0000000000000001 R11: 0000000000000246 R12: 00000000c05064a7
+[ 2794.312702] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf230b90
+[ 2794.312706] ---[ end trace 0f1eabcf6f8ae30c ]---
+[ 2804.448107] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2814.688084] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 2824.928139] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2825.032050] ------------[ cut here ]------------
+[ 2825.032064] vblank wait timed out on crtc 1
+[ 2825.032191] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2825.032193] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 2825.032309] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 2825.032311] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 2825.032340] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2825.032342] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 2825.032424] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 2825.032429] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 2825.032432] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[ 2825.032435] RBP: ffffa3d780b5f968 R08: 0000000000000a16 R09: 0000000000000004
+[ 2825.032438] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[ 2825.032440] R13: 0000000000000000 R14: 0000000029000016 R15: ffff91f0f416f578
+[ 2825.032445] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[ 2825.032448] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2825.032451] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006f0
+[ 2825.032458] Call Trace:
+[ 2825.032471]  ? wait_woken+0x80/0x80
+[ 2825.032570]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 2825.032640]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 2825.032665]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2825.032733]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 2825.032747]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2825.032762]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 2825.032794]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 2825.032801]  ? radix_tree_lookup+0xd/0x10
+[ 2825.032832]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2825.032857]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 2825.032883]  drm_ioctl+0x37b/0x440 [drm]
+[ 2825.032913]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2825.032921]  ? new_sync_write+0xfe/0x150
+[ 2825.032927]  do_vfs_ioctl+0xa8/0x630
+[ 2825.032932]  ? vfs_write+0x132/0x1a0
+[ 2825.032936]  ksys_ioctl+0x75/0x80
+[ 2825.032940]  __x64_sys_ioctl+0x1a/0x20
+[ 2825.032946]  do_syscall_64+0x5a/0x120
+[ 2825.032952]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 2825.032956] RIP: 0033:0x7fca889225d7
+[ 2825.032957] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 2825.033039] RSP: 002b:00007ffdbf230958 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 2825.033044] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 2825.033047] RDX: 00007ffdbf230990 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 2825.033049] RBP: 00007ffdbf230990 R08: 0000000000000000 R09: 0000000000000000
+[ 2825.033052] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 2825.033055] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf230990
+[ 2825.033059] ---[ end trace 0f1eabcf6f8ae30d ]---
+[ 2835.168130] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2845.408091] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 2855.648095] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2855.756064] ------------[ cut here ]------------
+[ 2855.756069] vblank wait timed out on crtc 1
+[ 2855.756210] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2855.756212] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 2855.756327] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 2855.756330] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 2855.756359] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2855.756361] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 2855.756443] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 2855.756448] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 2855.756451] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[ 2855.756454] RBP: ffffa3d780b5f968 R08: 0000000000000a48 R09: 0000000000000004
+[ 2855.756456] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[ 2855.756459] R13: 0000000000000000 R14: 000000002b000017 R15: ffff91f0f416f578
+[ 2855.756463] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[ 2855.756467] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2855.756472] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006f0
+[ 2855.756475] Call Trace:
+[ 2855.756487]  ? wait_woken+0x80/0x80
+[ 2855.756591]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 2855.756661]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 2855.756685]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2855.756753]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 2855.756767]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2855.756783]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 2855.756815]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 2855.756847]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2855.756872]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 2855.756898]  drm_ioctl+0x37b/0x440 [drm]
+[ 2855.756928]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2855.756936]  ? _crng_backtrack_protect+0x60/0x80
+[ 2855.756943]  do_vfs_ioctl+0xa8/0x630
+[ 2855.756949]  ? __sys_recvmsg+0x8f/0xa0
+[ 2855.756953]  ksys_ioctl+0x75/0x80
+[ 2855.756958]  __x64_sys_ioctl+0x1a/0x20
+[ 2855.756963]  do_syscall_64+0x5a/0x120
+[ 2855.756969]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 2855.756974] RIP: 0033:0x7fca889225d7
+[ 2855.756975] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 2855.757057] RSP: 002b:00007ffdbf230b58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 2855.757062] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 2855.757065] RDX: 00007ffdbf230b90 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 2855.757068] RBP: 00007ffdbf230b90 R08: 0000556173f11390 R09: 0000556173f48810
+[ 2855.757070] R10: 0000000000000001 R11: 0000000000000246 R12: 00000000c05064a7
+[ 2855.757073] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf230b90
+[ 2855.757078] ---[ end trace 0f1eabcf6f8ae30e ]---
+[ 2865.888177] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2876.132164] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
+[ 2886.368090] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2886.472074] ------------[ cut here ]------------
+[ 2886.472078] vblank wait timed out on crtc 1
+[ 2886.472196] WARNING: CPU: 0 PID: 730 at /build/linux-hwe-9KJ07q/linux-hwe-4.18.0/drivers/gpu/drm/drm_vblank.c:1084 drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2886.472198] Modules linked in: snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi r852 sm_common snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm nand nand_ecc dell_laptop nand_bch coretemp bch gpio_ich snd_seq_midi snd_seq_midi_event mtd dell_smm_hwmon r592 memstick dell_wmi snd_rawmidi dell_smbios dcdbas sparse_keymap snd_seq joydev input_leds serio_raw b43 wmi_bmof bcma dell_wmi_descriptor mac80211 snd_seq_device cfg80211 snd_timer lpc_ich snd soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 i915 sdhci_pci i2c_algo_bit drm_kms_helper syscopyarea cqhci sysfillrect sysimgblt sdhci fb_sys_fops ssb ahci psmouse firewire_ohci sky2 libahci firewire_core pata_acpi crc_itu_t drm wmi video
+[ 2886.472293] CPU: 0 PID: 730 Comm: Xorg Tainted: G        W         4.18.0-15-generic #16~18.04.1-Ubuntu
+[ 2886.472295] Hardware name: Dell Inc. Inspiron 1525                   /0Y332G, BIOS A13 06/27/2008
+[ 2886.472319] RIP: 0010:drm_wait_one_vblank+0x17c/0x190 [drm]
+[ 2886.472320] Code: ff e8 98 ad 29 f2 48 8d 75 a8 4c 89 ff e8 cc 6c 2e f2 45 85 ed 0f 85 04 ff ff ff 44 89 e6 48 c7 c7 d8 52 21 c0 e8 d4 aa 29 f2 <0f> 0b e9 ee fe ff ff 0f 1f 00 66 2e 0f 1f 84 00 00 00 00 00 66 66 
+[ 2886.472386] RSP: 0018:ffffa3d780b5f910 EFLAGS: 00010286
+[ 2886.472390] RAX: 0000000000000000 RBX: ffff91f0f3838000 RCX: 0000000000000006
+[ 2886.472392] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff91f13f4164b0
+[ 2886.472394] RBP: ffffa3d780b5f968 R08: 0000000000000a79 R09: 0000000000000004
+[ 2886.472396] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000001
+[ 2886.472399] R13: 0000000000000000 R14: 000000002d000018 R15: ffff91f0f416f578
+[ 2886.472403] FS:  00007fca8b745a80(0000) GS:ffff91f13f400000(0000) knlGS:0000000000000000
+[ 2886.472406] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2886.472408] CR2: 00007ff801800008 CR3: 0000000077740000 CR4: 00000000000006f0
+[ 2886.472410] Call Trace:
+[ 2886.472421]  ? wait_woken+0x80/0x80
+[ 2886.472516]  intel_get_load_detect_pipe+0x40b/0x420 [i915]
+[ 2886.472571]  intel_tv_detect+0x140/0x4e0 [i915]
+[ 2886.472602]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2886.472655]  ? intel_tv_get_modes+0x1e0/0x1e0 [i915]
+[ 2886.472667]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 2886.472680]  drm_helper_probe_single_connector_modes+0xdb/0x6f0 [drm_kms_helper]
+[ 2886.472705]  drm_mode_getconnector+0x17e/0x430 [drm]
+[ 2886.472710]  ? radix_tree_lookup+0xd/0x10
+[ 2886.472736]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2886.472756]  drm_ioctl_kernel+0xa4/0xf0 [drm]
+[ 2886.472777]  drm_ioctl+0x37b/0x440 [drm]
+[ 2886.472801]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 2886.472807]  ? __switch_to_asm+0x34/0x70
+[ 2886.472810]  ? __switch_to_asm+0x40/0x70
+[ 2886.472812]  ? __switch_to_asm+0x34/0x70
+[ 2886.472815]  ? __switch_to_asm+0x40/0x70
+[ 2886.472818]  ? __switch_to_asm+0x34/0x70
+[ 2886.472821]  ? __switch_to_asm+0x40/0x70
+[ 2886.472826]  do_vfs_ioctl+0xa8/0x630
+[ 2886.472831]  ? __schedule+0x2bf/0x880
+[ 2886.472835]  ? vfs_write+0x132/0x1a0
+[ 2886.472839]  ksys_ioctl+0x75/0x80
+[ 2886.472842]  __x64_sys_ioctl+0x1a/0x20
+[ 2886.472847]  do_syscall_64+0x5a/0x120
+[ 2886.472851]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 2886.472860] RIP: 0033:0x7fca889225d7
+[ 2886.472861] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48 
+[ 2886.472926] RSP: 002b:00007ffdbf230958 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 2886.472930] RAX: ffffffffffffffda RBX: 00005561739e0a90 RCX: 00007fca889225d7
+[ 2886.472933] RDX: 00007ffdbf230990 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 2886.472935] RBP: 00007ffdbf230990 R08: 0000000000000000 R09: 0000000000000000
+[ 2886.472937] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 2886.472939] R13: 000000000000000c R14: 000000000000000c R15: 00007ffdbf230990
+[ 2886.472943] ---[ end trace 0f1eabcf6f8ae30f ]---
+[ 2896.612123] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 2906.848132] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CONNECTOR:56:SVIDEO-1] flip_done timed out
