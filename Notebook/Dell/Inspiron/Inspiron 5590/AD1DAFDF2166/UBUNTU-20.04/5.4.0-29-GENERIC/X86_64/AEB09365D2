@@ -1,0 +1,924 @@
+[   41.469661]  serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[   41.469678] CPU: 1 PID: 259 Comm: kworker/1:2 Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[   41.469679] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[   41.469681] Workqueue: pm pm_runtime_work
+[   41.469702] RIP: 0010:gf100_vmm_invalidate+0x1c2/0x1d0 [nouveau]
+[   41.469703] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 90 21 ba ee 4c 89 e2 48 c7 c7 f4 f1 e6 c0 48 89 c6 e8 89 91 54 ee <0f> 0b e9 58 ff ff ff e8 52 8e 54 ee 66 90 0f 1f 44 00 00 8b 87 cc
+[   41.469704] RSP: 0018:ffffb65780337750 EFLAGS: 00010282
+[   41.469704] RAX: 0000000000000000 RBX: ffff992d13155c00 RCX: 0000000000000006
+[   41.469705] RDX: 0000000000000007 RSI: 0000000000000096 RDI: ffff992d1c4578c0
+[   41.469705] RBP: ffffb657803377b0 R08: 0000000000000805 R09: 0000000000000004
+[   41.469706] R10: 0000000000000000 R11: 0000000000000001 R12: ffff992d19bebc30
+[   41.469706] R13: ffff992d1410cc00 R14: ffff992d10ebb420 R15: ffff992d1875db80
+[   41.469707] FS:  0000000000000000(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[   41.469707] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   41.469708] CR2: 00007f800c001698 CR3: 000000031e20a002 CR4: 00000000003606e0
+[   41.469708] Call Trace:
+[   41.469728]  ? nv50_instobj_release+0x8b/0xa0 [nouveau]
+[   41.469747]  gp100_vmm_flush+0x1f/0x30 [nouveau]
+[   41.469764]  nvkm_vmm_iter.constprop.0+0x325/0x7e0 [nouveau]
+[   41.469782]  ? gp100_vmm_pgt_pfn+0x180/0x180 [nouveau]
+[   41.469800]  ? nvkm_vmm_sparse_unref_ptes+0x80/0x80 [nouveau]
+[   41.469801]  ? prep_new_page+0x128/0x160
+[   41.469819]  nvkm_vmm_ptes_get_map+0x33/0x80 [nouveau]
+[   41.469835]  ? nvkm_vmm_sparse_unref_ptes+0x80/0x80 [nouveau]
+[   41.469852]  ? gp100_vmm_pgt_pfn+0x180/0x180 [nouveau]
+[   41.469869]  nvkm_vmm_map+0x1e8/0x380 [nouveau]
+[   41.469885]  ? nvkm_vma_tail+0x50/0x150 [nouveau]
+[   41.469901]  nvkm_vram_map+0x58/0x80 [nouveau]
+[   41.469917]  nv50_instobj_map+0x19/0x20 [nouveau]
+[   41.469933]  nv50_instobj_kmap+0x16a/0x260 [nouveau]
+[   41.469949]  nv50_instobj_acquire+0x134/0x140 [nouveau]
+[   41.469971]  gk104_fifo_runlist_update+0x8b/0x1e0 [nouveau]
+[   41.469993]  gk104_fifo_gpfifo_fini+0x84/0xa0 [nouveau]
+[   41.470014]  nvkm_fifo_chan_fini+0x1d/0x30 [nouveau]
+[   41.470026]  nvkm_object_fini+0xbf/0x150 [nouveau]
+[   41.470038]  nvkm_object_fini+0x76/0x150 [nouveau]
+[   41.470051]  nvkm_object_fini+0x76/0x150 [nouveau]
+[   41.470063]  nvkm_object_fini+0x76/0x150 [nouveau]
+[   41.470085]  nvkm_client_suspend+0x13/0x20 [nouveau]
+[   41.470096]  nvif_client_suspend+0x1d/0x20 [nouveau]
+[   41.470118]  nouveau_do_suspend+0x10c/0x180 [nouveau]
+[   41.470140]  nouveau_pmops_runtime_suspend+0x44/0xa0 [nouveau]
+[   41.470142]  pci_pm_runtime_suspend+0x61/0x160
+[   41.470143]  ? __switch_to_asm+0x34/0x70
+[   41.470144]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   41.470145]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   41.470146]  __rpm_callback+0x8c/0x150
+[   41.470147]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   41.470148]  rpm_callback+0x24/0x80
+[   41.470149]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   41.470150]  rpm_suspend+0x111/0x5c0
+[   41.470151]  ? __switch_to_asm+0x34/0x70
+[   41.470152]  pm_runtime_work+0x95/0xa0
+[   41.470153]  process_one_work+0x1eb/0x3b0
+[   41.470154]  worker_thread+0x4d/0x400
+[   41.470156]  kthread+0x104/0x140
+[   41.470156]  ? process_one_work+0x3b0/0x3b0
+[   41.470157]  ? kthread_park+0x90/0x90
+[   41.470158]  ret_from_fork+0x1f/0x40
+[   41.470159] ---[ end trace 49b4b982562e3689 ]---
+[   43.472333] ------------[ cut here ]------------
+[   43.472334] nouveau 0000:01:00.0: timeout
+[   43.472406] WARNING: CPU: 1 PID: 259 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmgf100.c:221 gf100_vmm_invalidate+0x1c2/0x1d0 [nouveau]
+[   43.472407] Modules linked in: ccm cmac algif_hash algif_skcipher af_alg bnep snd_soc_skl_hda_dsp snd_hda_codec_hdmi snd_soc_hdac_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic mei_hdcp snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc intel_rapl_msr snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi x86_pkg_temp_thermal intel_powerclamp coretemp snd_soc_core kvm_intel kvm snd_compress ac97_bus snd_pcm_dmaengine nls_iso8859_1 snd_hda_intel snd_intel_dspcfg snd_hda_codec snd_hda_core snd_hwdep joydev dell_laptop crct10dif_pclmul snd_pcm ledtrig_audio iwlmvm snd_seq_midi snd_seq_midi_event ghash_clmulni_intel dell_smm_hwmon snd_rawmidi mac80211 snd_seq aesni_intel btusb libarc4 crypto_simd btrtl uvcvideo cryptd btbcm glue_helper btintel videobuf2_vmalloc intel_cstate snd_seq_device videobuf2_memops intel_rapl_perf nouveau snd_timer iwlwifi i915 input_leds bluetooth dell_wmi videobuf2_v4l2
+[   43.472421]  serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[   43.472438] CPU: 1 PID: 259 Comm: kworker/1:2 Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[   43.472438] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[   43.472442] Workqueue: pm pm_runtime_work
+[   43.472463] RIP: 0010:gf100_vmm_invalidate+0x1c2/0x1d0 [nouveau]
+[   43.472465] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 90 21 ba ee 4c 89 e2 48 c7 c7 f4 f1 e6 c0 48 89 c6 e8 89 91 54 ee <0f> 0b e9 58 ff ff ff e8 52 8e 54 ee 66 90 0f 1f 44 00 00 8b 87 cc
+[   43.472465] RSP: 0018:ffffb65780337788 EFLAGS: 00010282
+[   43.472466] RAX: 0000000000000000 RBX: ffff992d13155c00 RCX: 0000000000000006
+[   43.472466] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff992d1c4578c0
+[   43.472467] RBP: ffffb657803377e8 R08: 0000000000000845 R09: 0000000000000004
+[   43.472467] R10: 0000000000000000 R11: 0000000000000001 R12: ffff992d19bebc30
+[   43.472467] R13: ffff992d18a06a00 R14: ffff992d10ebb420 R15: ffff992d10ee6400
+[   43.472468] FS:  0000000000000000(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[   43.472469] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   43.472469] CR2: 00007f800c001698 CR3: 000000031e20a002 CR4: 00000000003606e0
+[   43.472469] Call Trace:
+[   43.472489]  ? nv50_instobj_release+0x8b/0xa0 [nouveau]
+[   43.472508]  gp100_vmm_flush+0x1f/0x30 [nouveau]
+[   43.472527]  nvkm_vmm_iter.constprop.0+0x325/0x7e0 [nouveau]
+[   43.472545]  ? gp100_vmm_pgt_pfn+0x180/0x180 [nouveau]
+[   43.472562]  ? nvkm_vmm_sparse_unref_ptes+0x80/0x80 [nouveau]
+[   43.472580]  nvkm_vmm_ptes_get_map+0x33/0x80 [nouveau]
+[   43.472596]  ? nvkm_vmm_sparse_unref_ptes+0x80/0x80 [nouveau]
+[   43.472614]  ? gp100_vmm_pgt_pfn+0x180/0x180 [nouveau]
+[   43.472631]  nvkm_vmm_map+0x1e8/0x380 [nouveau]
+[   43.472647]  nvkm_vram_map+0x58/0x80 [nouveau]
+[   43.472664]  nv50_instobj_map+0x19/0x20 [nouveau]
+[   43.472677]  nvkm_gpuobj_heap_map+0x19/0x20 [nouveau]
+[   43.472697]  gm200_secboot_run_blob+0xa4/0x1b0 [nouveau]
+[   43.472716]  gp102_secboot_run_blob+0x1bd/0x240 [nouveau]
+[   43.472718]  ? _cond_resched+0x19/0x30
+[   43.472737]  acr_r352_shutdown+0x47/0xb0 [nouveau]
+[   43.472755]  acr_r352_fini+0xe/0x10 [nouveau]
+[   43.472773]  gm200_secboot_fini+0x28/0x30 [nouveau]
+[   43.472792]  nvkm_secboot_fini+0x23/0x30 [nouveau]
+[   43.472805]  nvkm_subdev_fini+0x5f/0xb0 [nouveau]
+[   43.472825]  nvkm_device_fini+0x87/0x120 [nouveau]
+[   43.472845]  nvkm_udevice_fini+0x53/0x70 [nouveau]
+[   43.472859]  nvkm_object_fini+0xbf/0x150 [nouveau]
+[   43.472872]  nvkm_object_fini+0x76/0x150 [nouveau]
+[   43.472895]  nvkm_client_suspend+0x13/0x20 [nouveau]
+[   43.472907]  nvif_client_suspend+0x1d/0x20 [nouveau]
+[   43.472929]  nouveau_do_suspend+0x10c/0x180 [nouveau]
+[   43.472951]  nouveau_pmops_runtime_suspend+0x44/0xa0 [nouveau]
+[   43.472953]  pci_pm_runtime_suspend+0x61/0x160
+[   43.472955]  ? __switch_to_asm+0x34/0x70
+[   43.472956]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.472956]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.472958]  __rpm_callback+0x8c/0x150
+[   43.472958]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.472959]  rpm_callback+0x24/0x80
+[   43.472960]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.472961]  rpm_suspend+0x111/0x5c0
+[   43.472962]  ? __switch_to_asm+0x34/0x70
+[   43.472963]  pm_runtime_work+0x95/0xa0
+[   43.472965]  process_one_work+0x1eb/0x3b0
+[   43.472966]  worker_thread+0x4d/0x400
+[   43.472967]  kthread+0x104/0x140
+[   43.472968]  ? process_one_work+0x3b0/0x3b0
+[   43.472969]  ? kthread_park+0x90/0x90
+[   43.472970]  ret_from_fork+0x1f/0x40
+[   43.472971] ---[ end trace 49b4b982562e368a ]---
+[   43.483628] ------------[ cut here ]------------
+[   43.483629] nouveau 0000:01:00.0: timeout
+[   43.483657] WARNING: CPU: 1 PID: 259 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:326 falcon_v1_wait_idle.isra.0+0xb6/0xc0 [nouveau]
+[   43.483657] Modules linked in: ccm cmac algif_hash algif_skcipher af_alg bnep snd_soc_skl_hda_dsp snd_hda_codec_hdmi snd_soc_hdac_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic mei_hdcp snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc intel_rapl_msr snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi x86_pkg_temp_thermal intel_powerclamp coretemp snd_soc_core kvm_intel kvm snd_compress ac97_bus snd_pcm_dmaengine nls_iso8859_1 snd_hda_intel snd_intel_dspcfg snd_hda_codec snd_hda_core snd_hwdep joydev dell_laptop crct10dif_pclmul snd_pcm ledtrig_audio iwlmvm snd_seq_midi snd_seq_midi_event ghash_clmulni_intel dell_smm_hwmon snd_rawmidi mac80211 snd_seq aesni_intel btusb libarc4 crypto_simd btrtl uvcvideo cryptd btbcm glue_helper btintel videobuf2_vmalloc intel_cstate snd_seq_device videobuf2_memops intel_rapl_perf nouveau snd_timer iwlwifi i915 input_leds bluetooth dell_wmi videobuf2_v4l2
+[   43.483666]  serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[   43.483676] CPU: 1 PID: 259 Comm: kworker/1:2 Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[   43.483676] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[   43.483677] Workqueue: pm pm_runtime_work
+[   43.483691] RIP: 0010:falcon_v1_wait_idle.isra.0+0xb6/0xc0 [nouveau]
+[   43.483692] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 3c 30 bf ee 4c 89 e2 48 c7 c7 52 d6 e6 c0 48 89 c6 e8 35 a0 59 ee <0f> 0b eb a9 e8 01 9d 59 ee 90 0f 1f 44 00 00 55 48 89 e5 53 48 8b
+[   43.483692] RSP: 0018:ffffb657803379c8 EFLAGS: 00010282
+[   43.483693] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000006
+[   43.483693] RDX: 0000000000000007 RSI: 0000000000000086 RDI: ffff992d1c4578c0
+[   43.483694] RBP: ffffb65780337a10 R08: 0000000000000887 R09: 0000000000000004
+[   43.483694] R10: 0000000000000000 R11: 0000000000000001 R12: ffff992d19bebc30
+[   43.483694] R13: ffff992d13155c00 R14: 0000000000000012 R15: ffff992d13065a90
+[   43.483695] FS:  0000000000000000(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[   43.483695] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   43.483696] CR2: 00007f800c001698 CR3: 000000031e20a002 CR4: 00000000003606e0
+[   43.483696] Call Trace:
+[   43.483710]  nvkm_falcon_v1_disable+0x36/0x40 [nouveau]
+[   43.483722]  nvkm_falcon_disable+0x3d/0x50 [nouveau]
+[   43.483735]  nvkm_falcon_reset+0x13/0x20 [nouveau]
+[   43.483754]  gm200_secboot_run_blob+0xe8/0x1b0 [nouveau]
+[   43.483774]  gp102_secboot_run_blob+0x1bd/0x240 [nouveau]
+[   43.483775]  ? _cond_resched+0x19/0x30
+[   43.483794]  acr_r352_shutdown+0x47/0xb0 [nouveau]
+[   43.483812]  acr_r352_fini+0xe/0x10 [nouveau]
+[   43.483830]  gm200_secboot_fini+0x28/0x30 [nouveau]
+[   43.483848]  nvkm_secboot_fini+0x23/0x30 [nouveau]
+[   43.483861]  nvkm_subdev_fini+0x5f/0xb0 [nouveau]
+[   43.483880]  nvkm_device_fini+0x87/0x120 [nouveau]
+[   43.483901]  nvkm_udevice_fini+0x53/0x70 [nouveau]
+[   43.483915]  nvkm_object_fini+0xbf/0x150 [nouveau]
+[   43.483928]  nvkm_object_fini+0x76/0x150 [nouveau]
+[   43.483950]  nvkm_client_suspend+0x13/0x20 [nouveau]
+[   43.483962]  nvif_client_suspend+0x1d/0x20 [nouveau]
+[   43.483983]  nouveau_do_suspend+0x10c/0x180 [nouveau]
+[   43.484005]  nouveau_pmops_runtime_suspend+0x44/0xa0 [nouveau]
+[   43.484006]  pci_pm_runtime_suspend+0x61/0x160
+[   43.484007]  ? __switch_to_asm+0x34/0x70
+[   43.484008]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.484009]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.484010]  __rpm_callback+0x8c/0x150
+[   43.484011]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.484012]  rpm_callback+0x24/0x80
+[   43.484013]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.484014]  rpm_suspend+0x111/0x5c0
+[   43.484014]  ? __switch_to_asm+0x34/0x70
+[   43.484016]  pm_runtime_work+0x95/0xa0
+[   43.484017]  process_one_work+0x1eb/0x3b0
+[   43.484017]  worker_thread+0x4d/0x400
+[   43.484018]  kthread+0x104/0x140
+[   43.484019]  ? process_one_work+0x3b0/0x3b0
+[   43.484020]  ? kthread_park+0x90/0x90
+[   43.484021]  ret_from_fork+0x1f/0x40
+[   43.484021] ---[ end trace 49b4b982562e368b ]---
+[   43.494678] ------------[ cut here ]------------
+[   43.494678] nouveau 0000:01:00.0: timeout
+[   43.494702] WARNING: CPU: 1 PID: 259 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:326 falcon_v1_wait_idle.isra.0+0xb6/0xc0 [nouveau]
+[   43.494702] Modules linked in: ccm cmac algif_hash algif_skcipher af_alg bnep snd_soc_skl_hda_dsp snd_hda_codec_hdmi snd_soc_hdac_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic mei_hdcp snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc intel_rapl_msr snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi x86_pkg_temp_thermal intel_powerclamp coretemp snd_soc_core kvm_intel kvm snd_compress ac97_bus snd_pcm_dmaengine nls_iso8859_1 snd_hda_intel snd_intel_dspcfg snd_hda_codec snd_hda_core snd_hwdep joydev dell_laptop crct10dif_pclmul snd_pcm ledtrig_audio iwlmvm snd_seq_midi snd_seq_midi_event ghash_clmulni_intel dell_smm_hwmon snd_rawmidi mac80211 snd_seq aesni_intel btusb libarc4 crypto_simd btrtl uvcvideo cryptd btbcm glue_helper btintel videobuf2_vmalloc intel_cstate snd_seq_device videobuf2_memops intel_rapl_perf nouveau snd_timer iwlwifi i915 input_leds bluetooth dell_wmi videobuf2_v4l2
+[   43.494710]  serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[   43.494718] CPU: 1 PID: 259 Comm: kworker/1:2 Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[   43.494719] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[   43.494720] Workqueue: pm pm_runtime_work
+[   43.494734] RIP: 0010:falcon_v1_wait_idle.isra.0+0xb6/0xc0 [nouveau]
+[   43.494735] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 3c 30 bf ee 4c 89 e2 48 c7 c7 52 d6 e6 c0 48 89 c6 e8 35 a0 59 ee <0f> 0b eb a9 e8 01 9d 59 ee 90 0f 1f 44 00 00 55 48 89 e5 53 48 8b
+[   43.494735] RSP: 0018:ffffb65780337980 EFLAGS: 00010282
+[   43.494736] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000006
+[   43.494736] RDX: 0000000000000007 RSI: 0000000000000092 RDI: ffff992d1c4578c0
+[   43.494736] RBP: ffffb657803379c8 R08: 00000000000008c0 R09: 0000000000000004
+[   43.494737] R10: 0000000000000000 R11: 0000000000000001 R12: ffff992d19bebc30
+[   43.494737] R13: ffff992d13155c00 R14: 0000000000000012 R15: ffff992d13065a90
+[   43.494738] FS:  0000000000000000(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[   43.494738] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   43.494738] CR2: 00007f800c001698 CR3: 000000031e20a002 CR4: 00000000003606e0
+[   43.494739] Call Trace:
+[   43.494752]  nvkm_falcon_v1_enable+0x84/0x120 [nouveau]
+[   43.494764]  nvkm_falcon_enable+0x3d/0x70 [nouveau]
+[   43.494776]  ? nvkm_falcon_disable+0x48/0x50 [nouveau]
+[   43.494789]  nvkm_falcon_reset+0x1b/0x20 [nouveau]
+[   43.494809]  gm200_secboot_run_blob+0xe8/0x1b0 [nouveau]
+[   43.494828]  gp102_secboot_run_blob+0x1bd/0x240 [nouveau]
+[   43.494829]  ? _cond_resched+0x19/0x30
+[   43.494848]  acr_r352_shutdown+0x47/0xb0 [nouveau]
+[   43.494866]  acr_r352_fini+0xe/0x10 [nouveau]
+[   43.494884]  gm200_secboot_fini+0x28/0x30 [nouveau]
+[   43.494902]  nvkm_secboot_fini+0x23/0x30 [nouveau]
+[   43.494915]  nvkm_subdev_fini+0x5f/0xb0 [nouveau]
+[   43.494935]  nvkm_device_fini+0x87/0x120 [nouveau]
+[   43.494955]  nvkm_udevice_fini+0x53/0x70 [nouveau]
+[   43.494967]  nvkm_object_fini+0xbf/0x150 [nouveau]
+[   43.494980]  nvkm_object_fini+0x76/0x150 [nouveau]
+[   43.495002]  nvkm_client_suspend+0x13/0x20 [nouveau]
+[   43.495014]  nvif_client_suspend+0x1d/0x20 [nouveau]
+[   43.495035]  nouveau_do_suspend+0x10c/0x180 [nouveau]
+[   43.495057]  nouveau_pmops_runtime_suspend+0x44/0xa0 [nouveau]
+[   43.495058]  pci_pm_runtime_suspend+0x61/0x160
+[   43.495059]  ? __switch_to_asm+0x34/0x70
+[   43.495060]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.495061]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.495062]  __rpm_callback+0x8c/0x150
+[   43.495063]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.495064]  rpm_callback+0x24/0x80
+[   43.495065]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   43.495066]  rpm_suspend+0x111/0x5c0
+[   43.495066]  ? __switch_to_asm+0x34/0x70
+[   43.495068]  pm_runtime_work+0x95/0xa0
+[   43.495069]  process_one_work+0x1eb/0x3b0
+[   43.495069]  worker_thread+0x4d/0x400
+[   43.495070]  kthread+0x104/0x140
+[   43.495071]  ? process_one_work+0x3b0/0x3b0
+[   43.495072]  ? kthread_park+0x90/0x90
+[   43.495073]  ret_from_fork+0x1f/0x40
+[   43.495073] ---[ end trace 49b4b982562e368c ]---
+[   45.496538] ------------[ cut here ]------------
+[   45.496540] nouveau 0000:01:00.0: timeout
+[   45.496595] WARNING: CPU: 1 PID: 259 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmgf100.c:221 gf100_vmm_invalidate+0x1c2/0x1d0 [nouveau]
+[   45.496595] Modules linked in: ccm cmac algif_hash algif_skcipher af_alg bnep snd_soc_skl_hda_dsp snd_hda_codec_hdmi snd_soc_hdac_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic mei_hdcp snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc intel_rapl_msr snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi x86_pkg_temp_thermal intel_powerclamp coretemp snd_soc_core kvm_intel kvm snd_compress ac97_bus snd_pcm_dmaengine nls_iso8859_1 snd_hda_intel snd_intel_dspcfg snd_hda_codec snd_hda_core snd_hwdep joydev dell_laptop crct10dif_pclmul snd_pcm ledtrig_audio iwlmvm snd_seq_midi snd_seq_midi_event ghash_clmulni_intel dell_smm_hwmon snd_rawmidi mac80211 snd_seq aesni_intel btusb libarc4 crypto_simd btrtl uvcvideo cryptd btbcm glue_helper btintel videobuf2_vmalloc intel_cstate snd_seq_device videobuf2_memops intel_rapl_perf nouveau snd_timer iwlwifi i915 input_leds bluetooth dell_wmi videobuf2_v4l2
+[   45.496609]  serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[   45.496625] CPU: 1 PID: 259 Comm: kworker/1:2 Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[   45.496625] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[   45.496629] Workqueue: pm pm_runtime_work
+[   45.496651] RIP: 0010:gf100_vmm_invalidate+0x1c2/0x1d0 [nouveau]
+[   45.496651] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 90 21 ba ee 4c 89 e2 48 c7 c7 f4 f1 e6 c0 48 89 c6 e8 89 91 54 ee <0f> 0b e9 58 ff ff ff e8 52 8e 54 ee 66 90 0f 1f 44 00 00 8b 87 cc
+[   45.496652] RSP: 0018:ffffb65780337698 EFLAGS: 00010282
+[   45.496653] RAX: 0000000000000000 RBX: ffff992d13155c00 RCX: 0000000000000006
+[   45.496653] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff992d1c4578c0
+[   45.496653] RBP: ffffb657803376f8 R08: 00000000000008fa R09: 0000000000000004
+[   45.496654] R10: 0000000000000000 R11: 0000000000000001 R12: ffff992d19bebc30
+[   45.496654] R13: ffff992d18a06a00 R14: ffff992d10ebb420 R15: ffff992d10ee6400
+[   45.496655] FS:  0000000000000000(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[   45.496655] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   45.496656] CR2: 00007f800c001698 CR3: 000000031e20a002 CR4: 00000000003606e0
+[   45.496656] Call Trace:
+[   45.496677]  gp100_vmm_flush+0x1f/0x30 [nouveau]
+[   45.496696]  nvkm_vmm_unref_pdes+0xf1/0x210 [nouveau]
+[   45.496713]  nvkm_vmm_unref_pdes+0x194/0x210 [nouveau]
+[   45.496727]  ? falcon_v1_wait_idle.isra.0+0xb6/0xc0 [nouveau]
+[   45.496744]  nvkm_vmm_unref_pdes+0x194/0x210 [nouveau]
+[   45.496762]  nvkm_vmm_unref_pdes+0x194/0x210 [nouveau]
+[   45.496775]  ? falcon_v1_wait_idle.isra.0+0xb6/0xc0 [nouveau]
+[   45.496792]  nvkm_vmm_unref_ptes+0x220/0x260 [nouveau]
+[   45.496809]  nvkm_vmm_iter.constprop.0+0x252/0x7e0 [nouveau]
+[   45.496823]  ? falcon_v1_wait_idle.isra.0+0xb6/0xc0 [nouveau]
+[   45.496840]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   45.496857]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[   45.496874]  nvkm_vmm_ptes_unmap_put+0x30/0x50 [nouveau]
+[   45.496890]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[   45.496907]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   45.496924]  nvkm_vmm_put_locked+0x1d9/0x220 [nouveau]
+[   45.496940]  nvkm_vmm_put+0x35/0x50 [nouveau]
+[   45.496959]  gm200_secboot_run_blob+0xcd/0x1b0 [nouveau]
+[   45.496979]  gp102_secboot_run_blob+0x1bd/0x240 [nouveau]
+[   45.496980]  ? _cond_resched+0x19/0x30
+[   45.496999]  acr_r352_shutdown+0x47/0xb0 [nouveau]
+[   45.497017]  acr_r352_fini+0xe/0x10 [nouveau]
+[   45.497035]  gm200_secboot_fini+0x28/0x30 [nouveau]
+[   45.497053]  nvkm_secboot_fini+0x23/0x30 [nouveau]
+[   45.497067]  nvkm_subdev_fini+0x5f/0xb0 [nouveau]
+[   45.497087]  nvkm_device_fini+0x87/0x120 [nouveau]
+[   45.497107]  nvkm_udevice_fini+0x53/0x70 [nouveau]
+[   45.497120]  nvkm_object_fini+0xbf/0x150 [nouveau]
+[   45.497134]  nvkm_object_fini+0x76/0x150 [nouveau]
+[   45.497156]  nvkm_client_suspend+0x13/0x20 [nouveau]
+[   45.497169]  nvif_client_suspend+0x1d/0x20 [nouveau]
+[   45.497190]  nouveau_do_suspend+0x10c/0x180 [nouveau]
+[   45.497212]  nouveau_pmops_runtime_suspend+0x44/0xa0 [nouveau]
+[   45.497214]  pci_pm_runtime_suspend+0x61/0x160
+[   45.497215]  ? __switch_to_asm+0x34/0x70
+[   45.497216]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   45.497217]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   45.497218]  __rpm_callback+0x8c/0x150
+[   45.497219]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   45.497220]  rpm_callback+0x24/0x80
+[   45.497221]  ? pci_pm_thaw_noirq+0xa0/0xa0
+[   45.497222]  rpm_suspend+0x111/0x5c0
+[   45.497223]  ? __switch_to_asm+0x34/0x70
+[   45.497224]  pm_runtime_work+0x95/0xa0
+[   45.497226]  process_one_work+0x1eb/0x3b0
+[   45.497227]  worker_thread+0x4d/0x400
+[   45.497228]  kthread+0x104/0x140
+[   45.497229]  ? process_one_work+0x3b0/0x3b0
+[   45.497229]  ? kthread_park+0x90/0x90
+[   45.497230]  ret_from_fork+0x1f/0x40
+[   45.497231] ---[ end trace 49b4b982562e368d ]---
+[   45.497241] nouveau 0000:01:00.0: secboot: suspend failed, -110
+[   45.497254] nouveau: DRM-master:00000000:00000080: suspend failed with -110
+[   45.517990] nouveau 0000:01:00.0: can't suspend (nouveau_pmops_runtime_suspend [nouveau] returned -110)
+[  143.280912] rfkill: input handler enabled
+[  143.309495] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[  143.409068] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[  143.641173] Bluetooth: RFCOMM TTY layer initialized
+[  143.641177] Bluetooth: RFCOMM socket layer initialized
+[  143.641179] Bluetooth: RFCOMM ver 1.11
+[  144.800071] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
+[  145.533484] rfkill: input handler disabled
+[  146.370088] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[  146.372139] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[  146.384084] wlp0s20f3: authenticated
+[  146.387924] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[  146.389093] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[  146.389929] wlp0s20f3: associated
+[  146.393218] IPv6: ADDRCONF(NETDEV_CHANGE): wlp0s20f3: link becomes ready
+[  146.441415] wlp0s20f3: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[  148.192589] ------------[ cut here ]------------
+[  148.192636] WARNING: CPU: 1 PID: 1067 at drivers/gpu/drm/nouveau/nouveau_gem.c:157 nouveau_gem_object_close+0x1f7/0x210 [nouveau]
+[  148.192637] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep snd_soc_skl_hda_dsp snd_hda_codec_hdmi snd_soc_hdac_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic mei_hdcp snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc intel_rapl_msr snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi x86_pkg_temp_thermal intel_powerclamp coretemp snd_soc_core kvm_intel kvm snd_compress ac97_bus snd_pcm_dmaengine nls_iso8859_1 snd_hda_intel snd_intel_dspcfg snd_hda_codec snd_hda_core snd_hwdep joydev dell_laptop crct10dif_pclmul snd_pcm ledtrig_audio iwlmvm snd_seq_midi snd_seq_midi_event ghash_clmulni_intel dell_smm_hwmon snd_rawmidi mac80211 snd_seq aesni_intel btusb libarc4 crypto_simd btrtl uvcvideo cryptd btbcm glue_helper btintel videobuf2_vmalloc intel_cstate snd_seq_device videobuf2_memops intel_rapl_perf nouveau snd_timer iwlwifi i915 input_leds bluetooth dell_wmi
+[  148.192658]  videobuf2_v4l2 serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[  148.192681] CPU: 1 PID: 1067 Comm: gnome-shell Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[  148.192681] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[  148.192714] RIP: 0010:nouveau_gem_object_close+0x1f7/0x210 [nouveau]
+[  148.192715] Code: 00 00 4c 89 f7 e8 29 97 ba ee 48 85 c0 7f 02 0f 0b 49 8d 7c 24 30 4c 89 65 d0 e8 e4 0e 03 00 48 8d 7d d0 e8 4b 1e 00 00 eb ac <0f> 0b e9 c7 fe ff ff e8 3d 44 4e ee 66 66 2e 0f 1f 84 00 00 00 00
+[  148.192716] RSP: 0018:ffffb657816dfc98 EFLAGS: 00010283
+[  148.192717] RAX: 00000000ffffffea RBX: ffff992d116a3400 RCX: ffffffffc08d3fa8
+[  148.192718] RDX: 0000000000000001 RSI: 0000000000000206 RDI: 0000000000000206
+[  148.192719] RBP: ffffb657816dfcc8 R08: ffff992cebd77d98 R09: 0000000000000000
+[  148.192719] R10: 0000000000000040 R11: 0000000000000000 R12: ffff992ceb70ed80
+[  148.192720] R13: ffff992d194980b0 R14: 0000000000000001 R15: ffff992cebd77dc0
+[  148.192721] FS:  00007f4ea2debcc0(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[  148.192722] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  148.192723] CR2: 00007fd4d800e048 CR3: 000000031e20a003 CR4: 00000000003606e0
+[  148.192724] Call Trace:
+[  148.192727]  ? __slab_free+0x211/0x330
+[  148.192741]  drm_gem_object_release_handle+0x35/0xa0 [drm]
+[  148.192748]  ? drm_gem_object_handle_put_unlocked+0xb0/0xb0 [drm]
+[  148.192750]  idr_for_each+0x60/0xd0
+[  148.192757]  drm_gem_release+0x21/0x30 [drm]
+[  148.192762]  drm_file_free.part.0+0x222/0x270 [drm]
+[  148.192768]  drm_release+0xa5/0xe0 [drm]
+[  148.192770]  __fput+0xcc/0x260
+[  148.192771]  ____fput+0xe/0x10
+[  148.192773]  task_work_run+0x8f/0xb0
+[  148.192775]  do_exit+0x351/0xac0
+[  148.192776]  ? wake_up_state+0x10/0x20
+[  148.192777]  ? signal_wake_up_state+0x1a/0x30
+[  148.192778]  do_group_exit+0x47/0xb0
+[  148.192779]  __x64_sys_exit_group+0x18/0x20
+[  148.192781]  do_syscall_64+0x57/0x190
+[  148.192783]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  148.192784] RIP: 0033:0x7f4ea8208136
+[  148.192786] Code: Bad RIP value.
+[  148.192787] RSP: 002b:00007ffd3f20faa8 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[  148.192788] RAX: ffffffffffffffda RBX: 00007f4ea830f610 RCX: 00007f4ea8208136
+[  148.192788] RDX: 0000000000000001 RSI: 000000000000003c RDI: 0000000000000001
+[  148.192789] RBP: 0000000000000001 R08: 00000000000000e7 R09: ffffffffffffff80
+[  148.192789] R10: 00007f4ea6362fc2 R11: 0000000000000246 R12: 00007f4ea830f610
+[  148.192790] R13: 00000000000007da R14: 00007f4ea8312fc8 R15: 0000000000000000
+[  148.192791] ---[ end trace 49b4b982562e368e ]---
+[  148.192822] ------------[ cut here ]------------
+[  148.192852] WARNING: CPU: 1 PID: 1067 at drivers/gpu/drm/nouveau/nouveau_gem.c:48 nouveau_gem_object_del+0x77/0x80 [nouveau]
+[  148.192853] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep snd_soc_skl_hda_dsp snd_hda_codec_hdmi snd_soc_hdac_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic mei_hdcp snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc intel_rapl_msr snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi x86_pkg_temp_thermal intel_powerclamp coretemp snd_soc_core kvm_intel kvm snd_compress ac97_bus snd_pcm_dmaengine nls_iso8859_1 snd_hda_intel snd_intel_dspcfg snd_hda_codec snd_hda_core snd_hwdep joydev dell_laptop crct10dif_pclmul snd_pcm ledtrig_audio iwlmvm snd_seq_midi snd_seq_midi_event ghash_clmulni_intel dell_smm_hwmon snd_rawmidi mac80211 snd_seq aesni_intel btusb libarc4 crypto_simd btrtl uvcvideo cryptd btbcm glue_helper btintel videobuf2_vmalloc intel_cstate snd_seq_device videobuf2_memops intel_rapl_perf nouveau snd_timer iwlwifi i915 input_leds bluetooth dell_wmi
+[  148.192865]  videobuf2_v4l2 serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[  148.192878] CPU: 1 PID: 1067 Comm: gnome-shell Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[  148.192878] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[  148.192915] RIP: 0010:nouveau_gem_object_del+0x77/0x80 [nouveau]
+[  148.192916] Code: a4 6d ff 4c 89 e7 e8 c8 8b b0 ff e8 53 d4 57 ee 4c 89 ef be 0d 00 00 00 49 89 85 c0 01 00 00 e8 0f 16 b5 ee 41 5c 41 5d 5d c3 <0f> 0b 41 5c 41 5d 5d c3 90 0f 1f 44 00 00 55 48 89 e5 41 56 41 55
+[  148.192917] RSP: 0018:ffffb657816dfc58 EFLAGS: 00010283
+[  148.192918] RAX: 00000000ffffffea RBX: ffff992d19e72000 RCX: 0000000000000000
+[  148.192918] RDX: 0000000000000001 RSI: 0000000000000206 RDI: 0000000000000206
+[  148.192919] RBP: ffffb657816dfc68 R08: 0000000000000000 R09: ffffffffc0498300
+[  148.192920] R10: ffff992ceb70e740 R11: 0000000000000001 R12: ffff992d116a3400
+[  148.192920] R13: ffff992d194980b0 R14: ffff992d19f4cb28 R15: ffff992cebd77dc0
+[  148.192921] FS:  00007f4ea2debcc0(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[  148.192922] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  148.192923] CR2: 00007f4ea820810c CR3: 000000042e96a003 CR4: 00000000003606e0
+[  148.192924] Call Trace:
+[  148.192936]  drm_gem_object_free+0x44/0x80 [drm]
+[  148.192946]  drm_gem_object_put_unlocked+0x4d/0x70 [drm]
+[  148.192953]  drm_gem_object_handle_put_unlocked+0x70/0xb0 [drm]
+[  148.192960]  drm_gem_object_release_handle+0x76/0xa0 [drm]
+[  148.192970]  ? drm_gem_object_handle_put_unlocked+0xb0/0xb0 [drm]
+[  148.192972]  idr_for_each+0x60/0xd0
+[  148.192980]  drm_gem_release+0x21/0x30 [drm]
+[  148.192986]  drm_file_free.part.0+0x222/0x270 [drm]
+[  148.192992]  drm_release+0xa5/0xe0 [drm]
+[  148.192994]  __fput+0xcc/0x260
+[  148.192995]  ____fput+0xe/0x10
+[  148.192996]  task_work_run+0x8f/0xb0
+[  148.192997]  do_exit+0x351/0xac0
+[  148.192999]  ? wake_up_state+0x10/0x20
+[  148.193000]  ? signal_wake_up_state+0x1a/0x30
+[  148.193001]  do_group_exit+0x47/0xb0
+[  148.193002]  __x64_sys_exit_group+0x18/0x20
+[  148.193003]  do_syscall_64+0x57/0x190
+[  148.193004]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  148.193005] RIP: 0033:0x7f4ea8208136
+[  148.193007] Code: Bad RIP value.
+[  148.193007] RSP: 002b:00007ffd3f20faa8 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[  148.193008] RAX: ffffffffffffffda RBX: 00007f4ea830f610 RCX: 00007f4ea8208136
+[  148.193009] RDX: 0000000000000001 RSI: 000000000000003c RDI: 0000000000000001
+[  148.193009] RBP: 0000000000000001 R08: 00000000000000e7 R09: ffffffffffffff80
+[  148.193010] R10: 00007f4ea6362fc2 R11: 0000000000000246 R12: 00007f4ea830f610
+[  148.193010] R13: 00000000000007da R14: 00007f4ea8312fc8 R15: 0000000000000000
+[  148.193011] ---[ end trace 49b4b982562e368f ]---
+[  148.228615] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[  148.228631] ------------[ cut here ]------------
+[  148.228632] nouveau 0000:01:00.0: timeout
+[  148.229378] WARNING: CPU: 1 PID: 1067 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xd6/0xe0 [nouveau]
+[  148.229381] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep snd_soc_skl_hda_dsp snd_hda_codec_hdmi snd_soc_hdac_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic mei_hdcp snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc intel_rapl_msr snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi x86_pkg_temp_thermal intel_powerclamp coretemp snd_soc_core kvm_intel kvm snd_compress ac97_bus snd_pcm_dmaengine nls_iso8859_1 snd_hda_intel snd_intel_dspcfg snd_hda_codec snd_hda_core snd_hwdep joydev dell_laptop crct10dif_pclmul snd_pcm ledtrig_audio iwlmvm snd_seq_midi snd_seq_midi_event ghash_clmulni_intel dell_smm_hwmon snd_rawmidi mac80211 snd_seq aesni_intel btusb libarc4 crypto_simd btrtl uvcvideo cryptd btbcm glue_helper btintel videobuf2_vmalloc intel_cstate snd_seq_device videobuf2_memops intel_rapl_perf nouveau snd_timer iwlwifi i915 input_leds bluetooth dell_wmi
+[  148.229406]  videobuf2_v4l2 serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[  148.229429] CPU: 1 PID: 1067 Comm: gnome-shell Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[  148.229429] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[  148.229461] RIP: 0010:g84_bar_flush+0xd6/0xe0 [nouveau]
+[  148.229462] Code: 8b 40 10 48 8b 78 10 4c 8b 77 50 4d 85 f6 75 03 4c 8b 37 e8 3c 0c bf ee 4c 89 f2 48 c7 c7 14 d8 e6 c0 48 89 c6 e8 35 7c 59 ee <0f> 0b eb a6 e8 01 79 59 ee 90 0f 1f 44 00 00 55 49 89 d0 b9 00 02
+[  148.229462] RSP: 0018:ffffb657816df748 EFLAGS: 00010086
+[  148.229463] RAX: 0000000000000000 RBX: ffff992d13155c00 RCX: 0000000000000006
+[  148.229464] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff992d1c4578c0
+[  148.229464] RBP: ffffb657816df798 R08: 00000000000009b1 R09: 0000000000000004
+[  148.229464] R10: 0000000000000000 R11: 0000000000000001 R12: ffff992d13065048
+[  148.229465] R13: 0000000000000246 R14: ffff992d19bebc30 R15: 0000000000000008
+[  148.229466] FS:  00007f4ea2debcc0(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[  148.229466] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  148.229467] CR2: 00007f4ea820810c CR3: 000000042e96a003 CR4: 00000000003606e0
+[  148.229467] Call Trace:
+[  148.229491]  nvkm_bar_flush+0x1f/0x30 [nouveau]
+[  148.229517]  nv50_instobj_release+0x2e/0xa0 [nouveau]
+[  148.229548]  gf100_vmm_pgt_unmap+0x62/0xb0 [nouveau]
+[  148.229579]  nvkm_vmm_unref_pdes+0x1ad/0x210 [nouveau]
+[  148.229609]  nvkm_vmm_unref_pdes+0x194/0x210 [nouveau]
+[  148.229638]  nvkm_vmm_unref_pdes+0x194/0x210 [nouveau]
+[  148.229665]  nvkm_vmm_unref_pdes+0x194/0x210 [nouveau]
+[  148.229693]  nvkm_vmm_unref_ptes+0x220/0x260 [nouveau]
+[  148.229721]  nvkm_vmm_iter.constprop.0+0x252/0x7e0 [nouveau]
+[  148.229725]  ? wake_up_klogd+0x34/0x40
+[  148.229754]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[  148.229784]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[  148.229786]  ? __printk_safe_enter+0x10/0x20
+[  148.229817]  nvkm_vmm_ptes_unmap_put+0x30/0x50 [nouveau]
+[  148.229847]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[  148.229876]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[  148.229906]  nvkm_vmm_put_locked+0x1d9/0x220 [nouveau]
+[  148.229937]  nvkm_vmm_put+0x35/0x50 [nouveau]
+[  148.229966]  nvkm_vmm_del+0x44/0x180 [nouveau]
+[  148.229988]  nvkm_vmm_unref+0x35/0x40 [nouveau]
+[  148.230010]  nvkm_uvmm_dtor+0x17/0x20 [nouveau]
+[  148.230028]  nvkm_object_dtor+0xb8/0x110 [nouveau]
+[  148.230045]  nvkm_object_del+0x25/0x90 [nouveau]
+[  148.230064]  nvkm_ioctl_del+0x3c/0x60 [nouveau]
+[  148.230087]  nvkm_ioctl+0xf0/0x190 [nouveau]
+[  148.230123]  nvkm_client_ioctl+0x12/0x20 [nouveau]
+[  148.230148]  nvif_object_ioctl+0x4e/0x60 [nouveau]
+[  148.230176]  nvif_object_fini+0x5a/0x80 [nouveau]
+[  148.230201]  nvif_vmm_fini+0x1f/0x30 [nouveau]
+[  148.230271]  nouveau_vmm_fini+0x16/0x20 [nouveau]
+[  148.230298]  nouveau_cli_fini+0x4c/0x90 [nouveau]
+[  148.230326]  nouveau_drm_postclose+0xaf/0xe0 [nouveau]
+[  148.230337]  drm_file_free.part.0+0x1d2/0x270 [drm]
+[  148.230343]  drm_release+0xa5/0xe0 [drm]
+[  148.230345]  __fput+0xcc/0x260
+[  148.230347]  ____fput+0xe/0x10
+[  148.230348]  task_work_run+0x8f/0xb0
+[  148.230350]  do_exit+0x351/0xac0
+[  148.230352]  ? wake_up_state+0x10/0x20
+[  148.230353]  ? signal_wake_up_state+0x1a/0x30
+[  148.230354]  do_group_exit+0x47/0xb0
+[  148.230355]  __x64_sys_exit_group+0x18/0x20
+[  148.230357]  do_syscall_64+0x57/0x190
+[  148.230359]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  148.230360] RIP: 0033:0x7f4ea8208136
+[  148.230363] Code: Bad RIP value.
+[  148.230364] RSP: 002b:00007ffd3f20faa8 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[  148.230365] RAX: ffffffffffffffda RBX: 00007f4ea830f610 RCX: 00007f4ea8208136
+[  148.230365] RDX: 0000000000000001 RSI: 000000000000003c RDI: 0000000000000001
+[  148.230366] RBP: 0000000000000001 R08: 00000000000000e7 R09: ffffffffffffff80
+[  148.230366] R10: 00007f4ea6362fc2 R11: 0000000000000246 R12: 00007f4ea830f610
+[  148.230367] R13: 00000000000007da R14: 00007f4ea8312fc8 R15: 0000000000000000
+[  148.230368] ---[ end trace 49b4b982562e3690 ]---
+[  148.257125] [drm:intel_pipe_update_end [i915]] *ERROR* Atomic update failure on pipe A (start=9341 end=9342) time 11013 us, min 1073, max 1079, scanline start 601, end 146
+[  148.267503] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[  148.267507] ------------[ cut here ]------------
+[  148.267508] nouveau 0000:01:00.0: timeout
+[  148.267615] WARNING: CPU: 1 PID: 1067 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xd6/0xe0 [nouveau]
+[  148.267616] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep snd_soc_skl_hda_dsp snd_hda_codec_hdmi snd_soc_hdac_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic mei_hdcp snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc intel_rapl_msr snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi x86_pkg_temp_thermal intel_powerclamp coretemp snd_soc_core kvm_intel kvm snd_compress ac97_bus snd_pcm_dmaengine nls_iso8859_1 snd_hda_intel snd_intel_dspcfg snd_hda_codec snd_hda_core snd_hwdep joydev dell_laptop crct10dif_pclmul snd_pcm ledtrig_audio iwlmvm snd_seq_midi snd_seq_midi_event ghash_clmulni_intel dell_smm_hwmon snd_rawmidi mac80211 snd_seq aesni_intel btusb libarc4 crypto_simd btrtl uvcvideo cryptd btbcm glue_helper btintel videobuf2_vmalloc intel_cstate snd_seq_device videobuf2_memops intel_rapl_perf nouveau snd_timer iwlwifi i915 input_leds bluetooth dell_wmi
+[  148.267635]  videobuf2_v4l2 serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[  148.267656] CPU: 1 PID: 1067 Comm: gnome-shell Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[  148.267656] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[  148.267678] RIP: 0010:g84_bar_flush+0xd6/0xe0 [nouveau]
+[  148.267679] Code: 8b 40 10 48 8b 78 10 4c 8b 77 50 4d 85 f6 75 03 4c 8b 37 e8 3c 0c bf ee 4c 89 f2 48 c7 c7 14 d8 e6 c0 48 89 c6 e8 35 7c 59 ee <0f> 0b eb a6 e8 01 79 59 ee 90 0f 1f 44 00 00 55 49 89 d0 b9 00 02
+[  148.267680] RSP: 0018:ffffb657816df5c0 EFLAGS: 00010082
+[  148.267681] RAX: 0000000000000000 RBX: ffff992d13155c00 RCX: 0000000000000006
+[  148.267682] RDX: 0000000000000007 RSI: 0000000000000096 RDI: ffff992d1c4578c0
+[  148.267682] RBP: ffffb657816df610 R08: 00000000000009fb R09: 0000000000000004
+[  148.267683] R10: 0000000000000000 R11: 0000000000000001 R12: ffff992d13065048
+[  148.267683] R13: 0000000000000246 R14: ffff992d19bebc30 R15: 0000000000000008
+[  148.267684] FS:  00007f4ea2debcc0(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[  148.267685] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  148.267685] CR2: 000055a04338bcb8 CR3: 000000031e20a005 CR4: 00000000003606e0
+[  148.267686] Call Trace:
+[  148.267711]  nvkm_bar_flush+0x1f/0x30 [nouveau]
+[  148.267739]  nv50_instobj_release+0x2e/0xa0 [nouveau]
+[  148.267768]  gf100_vmm_pgt_unmap+0x62/0xb0 [nouveau]
+[  148.267796]  nvkm_vmm_iter.constprop.0+0x734/0x7e0 [nouveau]
+[  148.267800]  ? __switch_to_asm+0x40/0x70
+[  148.267827]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[  148.267853]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[  148.267883]  nvkm_vmm_ptes_unmap_put+0x30/0x50 [nouveau]
+[  148.267913]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[  148.267948]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[  148.267982]  nvkm_vmm_put_locked+0x1d9/0x220 [nouveau]
+[  148.268016]  nvkm_vmm_put+0x35/0x50 [nouveau]
+[  148.268050]  nv50_instobj_dtor+0xa5/0xe0 [nouveau]
+[  148.268079]  nvkm_memory_del+0x26/0x40 [nouveau]
+[  148.268109]  nvkm_memory_unref+0x35/0x40 [nouveau]
+[  148.268144]  nvkm_mmu_ptc_put+0x113/0x170 [nouveau]
+[  148.268179]  nvkm_vmm_unref_pdes+0x111/0x210 [nouveau]
+[  148.268214]  nvkm_vmm_unref_ptes+0x220/0x260 [nouveau]
+[  148.268241]  nvkm_vmm_iter.constprop.0+0x252/0x7e0 [nouveau]
+[  148.268244]  ? wake_up_klogd+0x34/0x40
+[  148.268271]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[  148.268296]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[  148.268298]  ? __printk_safe_enter+0x10/0x20
+[  148.268324]  nvkm_vmm_ptes_unmap_put+0x30/0x50 [nouveau]
+[  148.268349]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[  148.268376]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[  148.268401]  nvkm_vmm_put_locked+0x1d9/0x220 [nouveau]
+[  148.268427]  nvkm_vmm_put+0x35/0x50 [nouveau]
+[  148.268466]  nvkm_vmm_del+0x44/0x180 [nouveau]
+[  148.268523]  nvkm_vmm_unref+0x35/0x40 [nouveau]
+[  148.268574]  nvkm_uvmm_dtor+0x17/0x20 [nouveau]
+[  148.268644]  nvkm_object_dtor+0xb8/0x110 [nouveau]
+[  148.268703]  nvkm_object_del+0x25/0x90 [nouveau]
+[  148.268745]  nvkm_ioctl_del+0x3c/0x60 [nouveau]
+[  148.268784]  nvkm_ioctl+0xf0/0x190 [nouveau]
+[  148.268836]  nvkm_client_ioctl+0x12/0x20 [nouveau]
+[  148.268874]  nvif_object_ioctl+0x4e/0x60 [nouveau]
+[  148.268935]  nvif_object_fini+0x5a/0x80 [nouveau]
+[  148.268983]  nvif_vmm_fini+0x1f/0x30 [nouveau]
+[  148.269058]  nouveau_vmm_fini+0x16/0x20 [nouveau]
+[  148.269144]  nouveau_cli_fini+0x4c/0x90 [nouveau]
+[  148.269230]  nouveau_drm_postclose+0xaf/0xe0 [nouveau]
+[  148.269453]  drm_file_free.part.0+0x1d2/0x270 [drm]
+[  148.269486]  drm_release+0xa5/0xe0 [drm]
+[  148.269501]  __fput+0xcc/0x260
+[  148.269503]  ____fput+0xe/0x10
+[  148.269524]  task_work_run+0x8f/0xb0
+[  148.269532]  do_exit+0x351/0xac0
+[  148.269551]  ? wake_up_state+0x10/0x20
+[  148.269563]  ? signal_wake_up_state+0x1a/0x30
+[  148.269567]  do_group_exit+0x47/0xb0
+[  148.269569]  __x64_sys_exit_group+0x18/0x20
+[  148.269579]  do_syscall_64+0x57/0x190
+[  148.269595]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  148.269598] RIP: 0033:0x7f4ea8208136
+[  148.269617] Code: Bad RIP value.
+[  148.269618] RSP: 002b:00007ffd3f20faa8 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[  148.269623] RAX: ffffffffffffffda RBX: 00007f4ea830f610 RCX: 00007f4ea8208136
+[  148.269623] RDX: 0000000000000001 RSI: 000000000000003c RDI: 0000000000000001
+[  148.269625] RBP: 0000000000000001 R08: 00000000000000e7 R09: ffffffffffffff80
+[  148.269625] R10: 00007f4ea6362fc2 R11: 0000000000000246 R12: 00007f4ea830f610
+[  148.269626] R13: 00000000000007da R14: 00007f4ea8312fc8 R15: 0000000000000000
+[  148.269631] ---[ end trace 49b4b982562e3691 ]---
+[  148.306947] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[  148.306950] ------------[ cut here ]------------
+[  148.306950] nouveau 0000:01:00.0: timeout
+[  148.307009] WARNING: CPU: 1 PID: 1067 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xd6/0xe0 [nouveau]
+[  148.307010] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep snd_soc_skl_hda_dsp snd_hda_codec_hdmi snd_soc_hdac_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic mei_hdcp snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc intel_rapl_msr snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi x86_pkg_temp_thermal intel_powerclamp coretemp snd_soc_core kvm_intel kvm snd_compress ac97_bus snd_pcm_dmaengine nls_iso8859_1 snd_hda_intel snd_intel_dspcfg snd_hda_codec snd_hda_core snd_hwdep joydev dell_laptop crct10dif_pclmul snd_pcm ledtrig_audio iwlmvm snd_seq_midi snd_seq_midi_event ghash_clmulni_intel dell_smm_hwmon snd_rawmidi mac80211 snd_seq aesni_intel btusb libarc4 crypto_simd btrtl uvcvideo cryptd btbcm glue_helper btintel videobuf2_vmalloc intel_cstate snd_seq_device videobuf2_memops intel_rapl_perf nouveau snd_timer iwlwifi i915 input_leds bluetooth dell_wmi
+[  148.307028]  videobuf2_v4l2 serio_raw mxm_wmi dell_smbios videobuf2_common ttm drm_kms_helper dcdbas snd ucsi_acpi mei_me typec_ucsi i2c_algo_bit videodev fb_sys_fops processor_thermal_device syscopyarea intel_rapl_common ecdh_generic dell_wmi_descriptor cros_ec_ishtp intel_wmi_thunderbolt wmi_bmof mc sysfillrect cfg80211 soundcore hid_multitouch ecc mei sysimgblt cros_ec mac_hid typec intel_soc_dts_iosf soc_button_array int3403_thermal int340x_thermal_zone intel_hid acpi_tad sparse_keymap int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 uas usb_storage hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic nvme crc32_pclmul psmouse i2c_i801 intel_lpss_pci intel_lpss ahci intel_ish_ipc nvme_core idma64 i2c_hid intel_ishtp libahci virt_dma hid wmi pinctrl_cannonlake video pinctrl_intel
+[  148.307049] CPU: 1 PID: 1067 Comm: gnome-shell Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[  148.307050] Hardware name: Dell Inc. Inspiron 5590/0XRXN9, BIOS 1.7.0 04/14/2020
+[  148.307074] RIP: 0010:g84_bar_flush+0xd6/0xe0 [nouveau]
+[  148.307076] Code: 8b 40 10 48 8b 78 10 4c 8b 77 50 4d 85 f6 75 03 4c 8b 37 e8 3c 0c bf ee 4c 89 f2 48 c7 c7 14 d8 e6 c0 48 89 c6 e8 35 7c 59 ee <0f> 0b eb a6 e8 01 79 59 ee 90 0f 1f 44 00 00 55 49 89 d0 b9 00 02
+[  148.307076] RSP: 0018:ffffb657816df830 EFLAGS: 00010086
+[  148.307077] RAX: 0000000000000000 RBX: ffff992d13155c00 RCX: 0000000000000006
+[  148.307078] RDX: 0000000000000007 RSI: 0000000000000096 RDI: ffff992d1c4578c0
+[  148.307078] RBP: ffffb657816df880 R08: 0000000000000a4e R09: 0000000000000004
+[  148.307079] R10: 0000000000000000 R11: 0000000000000001 R12: ffff992d13065048
+[  148.307079] R13: 0000000000000246 R14: ffff992d19bebc30 R15: 0000000000000008
+[  148.307080] FS:  00007f4ea2debcc0(0000) GS:ffff992d1c440000(0000) knlGS:0000000000000000
+[  148.307081] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  148.307081] CR2: 00007f4ea820810c CR3: 000000031e20a005 CR4: 00000000003606e0
+[  148.307082] Call Trace:
+[  148.307107]  nvkm_bar_flush+0x1f/0x30 [nouveau]
+[  148.307134]  nv50_instobj_release+0x2e/0xa0 [nouveau]
+[  148.307162]  gf100_vmm_pgt_unmap+0x62/0xb0 [nouveau]
+[  148.307190]  nvkm_vmm_iter.constprop.0+0x734/0x7e0 [nouveau]
+[  148.307217]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[  148.307243]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[  148.307269]  nvkm_vmm_ptes_unmap_put+0x30/0x50 [nouveau]
+[  148.307294]  ? nvkm_vmm_map_choose+0x90/0x90 [nouveau]
+[  148.307320]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[  148.307345]  nvkm_vmm_put_locked+0x1d9/0x220 [nouveau]
+[  148.307370]  nvkm_vmm_put+0x35/0x50 [nouveau]
+[  148.307395]  nv50_instobj_dtor+0xa5/0xe0 [nouveau]
+[  148.307416]  nvkm_memory_del+0x26/0x40 [nouveau]
+[  148.307437]  nvkm_memory_unref+0x35/0x40 [nouveau]
+[  148.307463]  nvkm_mmu_ptc_put+0x113/0x170 [nouveau]
+[  148.307488]  nvkm_vmm_del+0x128/0x180 [nouveau]
+[  148.307514]  nvkm_vmm_unref+0x35/0x40 [nouveau]
+[  148.307540]  nvkm_uvmm_dtor+0x17/0x20 [nouveau]
+[  148.307561]  nvkm_object_dtor+0xb8/0x110 [nouveau]
+[  148.307582]  nvkm_object_del+0x25/0x90 [nouveau]
+[  148.307603]  nvkm_ioctl_del+0x3c/0x60 [nouveau]
+[  148.307624]  nvkm_ioctl+0xf0/0x190 [nouveau]
+[  148.307655]  nvkm_client_ioctl+0x12/0x20 [nouveau]
+[  148.307675]  nvif_object_ioctl+0x4e/0x60 [nouveau]
+[  148.307696]  nvif_object_fini+0x5a/0x80 [nouveau]
+[  148.307716]  nvif_vmm_fini+0x1f/0x30 [nouveau]
+[  148.307746]  nouveau_vmm_fini+0x16/0x20 [nouveau]
+[  148.307776]  nouveau_cli_fini+0x4c/0x90 [nouveau]
+[  148.307805]  nouveau_drm_postclose+0xaf/0xe0 [nouveau]
+[  148.307819]  drm_file_free.part.0+0x1d2/0x270 [drm]
+[  148.307827]  drm_release+0xa5/0xe0 [drm]
+[  148.307830]  __fput+0xcc/0x260
+[  148.307832]  ____fput+0xe/0x10
+[  148.307834]  task_work_run+0x8f/0xb0
+[  148.307835]  do_exit+0x351/0xac0
+[  148.307837]  ? wake_up_state+0x10/0x20
+[  148.307838]  ? signal_wake_up_state+0x1a/0x30
+[  148.307840]  do_group_exit+0x47/0xb0
+[  148.307841]  __x64_sys_exit_group+0x18/0x20
+[  148.307842]  do_syscall_64+0x57/0x190
+[  148.307845]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  148.307846] RIP: 0033:0x7f4ea8208136
+[  148.307848] Code: Bad RIP value.
+[  148.307849] RSP: 002b:00007ffd3f20faa8 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[  148.307850] RAX: ffffffffffffffda RBX: 00007f4ea830f610 RCX: 00007f4ea8208136
+[  148.307850] RDX: 0000000000000001 RSI: 000000000000003c RDI: 0000000000000001
+[  148.307851] RBP: 0000000000000001 R08: 00000000000000e7 R09: ffffffffffffff80
+[  148.307852] R10: 00007f4ea6362fc2 R11: 0000000000000246 R12: 00007f4ea830f610
+[  148.307852] R13: 00000000000007da R14: 00007f4ea8312fc8 R15: 0000000000000000
+[  148.307854] ---[ end trace 49b4b982562e3692 ]---
+[  152.254554] Lockdown: fwupd: /dev/mem,kmem,port is restricted; see man kernel_lockdown.7
+[ 1683.117633] SGI XFS with ACLs, security attributes, realtime, no debug enabled
+[ 1683.125090] JFS: nTxBlock = 8192, nTxLock = 65536
+[ 1683.132799] ntfs: driver 2.1.32 [Flags: R/O MODULE].
+[ 1683.142822] QNX4 filesystem 0.2.3 registered.
+[ 1683.193811] raid6: avx2x4   gen() 34223 MB/s
+[ 1683.241900] raid6: avx2x4   xor() 23271 MB/s
+[ 1683.289997] raid6: avx2x2   gen() 33305 MB/s
+[ 1683.338089] raid6: avx2x2   xor() 20727 MB/s
+[ 1683.386178] raid6: avx2x1   gen() 27010 MB/s
+[ 1683.434279] raid6: avx2x1   xor() 19173 MB/s
+[ 1683.482371] raid6: sse2x4   gen() 14491 MB/s
+[ 1683.530451] raid6: sse2x4   xor()  9894 MB/s
+[ 1683.578553] raid6: sse2x2   gen() 13235 MB/s
+[ 1683.626643] raid6: sse2x2   xor()  9451 MB/s
+[ 1683.674736] raid6: sse2x1   gen() 12218 MB/s
+[ 1683.722829] raid6: sse2x1   xor()  6931 MB/s
+[ 1683.722829] raid6: using algorithm avx2x4 gen() 34223 MB/s
+[ 1683.722830] raid6: .... xor() 23271 MB/s, rmw enabled
+[ 1683.722830] raid6: using avx2x2 recovery algorithm
+[ 1683.726091] xor: automatically using best checksumming function   avx       
+[ 1683.739312] Btrfs loaded, crc32c=crc32c-intel
+[ 2864.577759] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[ 2864.697543] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[ 2869.023772] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
+[ 2877.222092] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[ 2877.321895] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[ 3143.596695] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[ 3143.693696] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[ 4206.787295] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[ 4210.385925] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[ 4210.391839] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4210.404105] wlp0s20f3: authenticated
+[ 4210.404598] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4210.405860] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[ 4210.406933] wlp0s20f3: associated
+[ 4211.006611] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[ 4211.006689] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[ 4213.538630] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[ 4213.540651] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4213.594615] wlp0s20f3: authenticated
+[ 4213.596932] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4213.598411] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[ 4213.600028] wlp0s20f3: associated
+[ 4214.155363] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[ 4214.155436] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[ 4215.653893] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[ 4215.656871] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4215.673294] wlp0s20f3: authenticated
+[ 4215.677243] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4215.678501] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[ 4215.680557] wlp0s20f3: associated
+[ 4216.271578] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[ 4216.271656] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[ 4217.418025] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[ 4217.422191] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4217.438812] wlp0s20f3: authenticated
+[ 4217.441268] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4217.442713] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[ 4217.444395] wlp0s20f3: associated
+[ 4218.036824] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[ 4218.036894] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[ 4219.191184] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[ 4219.196428] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4219.212768] wlp0s20f3: authenticated
+[ 4219.217544] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4219.219033] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[ 4219.220994] wlp0s20f3: associated
+[ 4219.811016] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[ 4219.811085] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[ 4221.283892] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[ 4221.285796] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4221.340442] wlp0s20f3: authenticated
+[ 4221.341587] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4221.343051] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[ 4221.345105] wlp0s20f3: associated
+[ 4221.900551] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[ 4221.900632] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[ 4224.323185] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[ 4224.326747] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4224.341057] wlp0s20f3: authenticated
+[ 4224.341884] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4224.343203] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[ 4224.344673] wlp0s20f3: associated
+[ 4224.941301] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[ 4224.941376] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[ 4232.308339] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[ 4232.312688] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4232.328567] wlp0s20f3: authenticated
+[ 4232.334613] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4232.336010] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[ 4232.337821] wlp0s20f3: associated
+[ 4232.926879] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[ 4232.926917] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[ 4234.067422] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[ 4234.070492] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4234.085242] wlp0s20f3: authenticated
+[ 4234.086633] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 4234.087869] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[ 4234.089404] wlp0s20f3: associated
+[ 4234.319011] wlp0s20f3: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[10895.467494] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10896.673215] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10896.676224] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10896.688698] wlp0s20f3: authenticated
+[10896.689915] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10896.691087] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10896.692125] wlp0s20f3: associated
+[10897.291021] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[10897.291097] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10899.832833] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10899.834644] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10899.846112] wlp0s20f3: authenticated
+[10899.850033] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10899.851290] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10899.853005] wlp0s20f3: associated
+[10900.449322] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[10900.449399] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10902.277237] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10902.279390] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10902.291144] wlp0s20f3: authenticated
+[10902.294094] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10902.295336] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10902.296779] wlp0s20f3: associated
+[10902.894147] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[10902.894218] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10904.401869] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10904.411580] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10904.426397] wlp0s20f3: authenticated
+[10904.434421] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10904.435942] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10904.437793] wlp0s20f3: associated
+[10905.026154] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[10905.026226] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10906.439383] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10906.441262] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10906.453271] wlp0s20f3: authenticated
+[10906.454157] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10906.455317] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10906.456163] wlp0s20f3: associated
+[10906.615066] wlp0s20f3: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[10908.983978] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10910.316689] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10910.318692] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10910.373426] wlp0s20f3: authenticated
+[10910.374289] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10910.375701] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10910.377504] wlp0s20f3: associated
+[10910.933471] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[10910.933507] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10913.383678] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10913.385992] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10913.440333] wlp0s20f3: authenticated
+[10913.442460] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10913.443973] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10913.445810] wlp0s20f3: associated
+[10914.000643] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[10914.000721] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10915.380358] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10915.383481] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10915.400136] wlp0s20f3: authenticated
+[10915.402546] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10915.403971] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10915.407451] wlp0s20f3: associated
+[10917.176095] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10918.361617] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10918.364301] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10918.380422] wlp0s20f3: authenticated
+[10918.382618] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10918.383909] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10918.385293] wlp0s20f3: associated
+[10918.979154] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[10918.979230] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10920.111719] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10920.114378] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10920.126885] wlp0s20f3: authenticated
+[10920.134547] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10920.135748] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10920.137442] wlp0s20f3: associated
+[10920.729146] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[10920.729185] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10922.475198] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10922.478261] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10922.494162] wlp0s20f3: authenticated
+[10922.498592] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10922.500047] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10922.501776] wlp0s20f3: associated
+[10923.093061] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[10923.093147] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[10925.543182] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[10925.548952] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[10925.564781] wlp0s20f3: authenticated
+[10925.566730] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[10925.568173] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[10925.569918] wlp0s20f3: associated
+[10925.661519] wlp0s20f3: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[17625.622635] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[17635.473857] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[17635.476856] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[17635.489553] wlp0s20f3: authenticated
+[17635.493065] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[17635.494499] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[17635.496538] wlp0s20f3: associated
+[17636.091711] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[17636.091791] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[17637.477873] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[17637.480184] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[17637.492185] wlp0s20f3: authenticated
+[17637.492946] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[17637.494311] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[17637.495461] wlp0s20f3: associated
+[17638.094709] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[17638.094785] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[17640.541663] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[17640.543890] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[17640.557669] wlp0s20f3: authenticated
+[17640.561080] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[17640.562588] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[17640.564352] wlp0s20f3: associated
+[17641.158656] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[17641.158733] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[17642.769713] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[17642.774324] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[17642.789750] wlp0s20f3: authenticated
+[17642.793034] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[17642.794352] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[17642.795369] wlp0s20f3: associated
+[17643.388764] iwlwifi 0000:00:14.3: No beacon heard and the time event is over already...
+[17643.388842] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[17644.791623] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[17644.795680] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[17644.808093] wlp0s20f3: authenticated
+[17644.813195] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[17644.814719] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[17644.816509] wlp0s20f3: associated
+[17645.371805] wlp0s20f3: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[17650.301012] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[17651.613523] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[17651.617823] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[17651.632348] wlp0s20f3: authenticated
+[17651.632911] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[17651.634319] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[17651.636235] wlp0s20f3: associated
+[17651.822697] wlp0s20f3: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[24291.413345] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24291.517892] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24301.128893] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24301.232067] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24331.815770] wlp0s20f3: Connection to AP XX:XX:XX:XX:XX:XX lost
+[24373.525820] wlp0s20f3: authenticate with XX:XX:XX:XX:XX:XX
+[24373.527781] wlp0s20f3: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[24373.539645] wlp0s20f3: authenticated
+[24373.544915] wlp0s20f3: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[24373.546217] wlp0s20f3: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=3)
+[24373.547744] wlp0s20f3: associated
+[24373.550436] IPv6: ADDRCONF(NETDEV_CHANGE): wlp0s20f3: link becomes ready
+[24373.581258] wlp0s20f3: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[24496.461661] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
+[24558.798176] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24558.916802] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24637.043788] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24637.164659] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24704.485323] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24704.587213] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24764.587594] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24764.689467] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24772.895814] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24773.016704] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24815.174403] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24815.275607] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24835.138334] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24835.257908] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24882.909027] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24883.029336] sof-audio-pci 0000:00:1f.3: firmware boot complete
+[24906.828456] sof-audio-pci 0000:00:1f.3: error: no reply expected, received 0x0
+[24906.947562] sof-audio-pci 0000:00:1f.3: firmware boot complete
