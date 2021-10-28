@@ -1,0 +1,826 @@
+[  124.774006] nouveau 0000:03:00.0: therm: temperature (95 C) hit the 'downclock' threshold
+[  430.271720] nouveau 0000:04:00.0: therm: temperature (90 C) hit the 'fanboost' threshold
+[ 3970.262696] nouveau 0000:03:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.262697] ------------[ cut here ]------------
+[ 3970.262698] nouveau 0000:03:00.0: timeout
+[ 3970.262758] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.262758] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.262782]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.262789] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G           OE     5.8.6-arch1-1 #1
+[ 3970.262789] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.262807] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.262809] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.262809] RSP: 0018:ffffb700c7687440 EFLAGS: 00010086
+[ 3970.262810] RAX: 0000000000000000 RBX: ffff9019a8cb7c00 RCX: 0000000000000000
+[ 3970.262811] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.262811] RBP: ffff9019aa697ac8 R08: 000000000000051f R09: 0000000000000001
+[ 3970.262812] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.262812] R13: ffff9019ac1bc5b0 R14: 0000000000000000 R15: ffff9019a33eb800
+[ 3970.262814] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.262814] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.262815] CR2: 00005602062a34a8 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.262815] Call Trace:
+[ 3970.262841]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.262872]  nvkm_vmm_iter.constprop.0+0x2be/0x860 [nouveau]
+[ 3970.262902]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 3970.262924]  ? gf100_vmm_pgt_dma+0x2f0/0x2f0 [nouveau]
+[ 3970.262947]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 3970.262970]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 3970.262995]  ? gf100_vmm_pgt_dma+0x2f0/0x2f0 [nouveau]
+[ 3970.263016]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 3970.263035]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 3970.263061]  nv50_instobj_kmap+0x177/0x260 [nouveau]
+[ 3970.263082]  nv50_instobj_acquire+0x16d/0x180 [nouveau]
+[ 3970.263102]  nvkm_instobj_new+0xcc/0x180 [nouveau]
+[ 3970.263117]  nvkm_memory_new+0x46/0x80 [nouveau]
+[ 3970.263137]  nvkm_mmu_ptc_get.part.0+0x1bc/0x250 [nouveau]
+[ 3970.263158]  nvkm_vmm_ctor+0x276/0x380 [nouveau]
+[ 3970.263179]  nv04_vmm_new_+0x19/0x30 [nouveau]
+[ 3970.263200]  gk104_vmm_new+0x38/0x40 [nouveau]
+[ 3970.263222]  nvkm_uvmm_new+0x15f/0x1a0 [nouveau]
+[ 3970.263237]  nvkm_ioctl_new+0x15b/0x1f0 [nouveau]
+[ 3970.263258]  ? nvkm_uvmm_search+0x20/0x20 [nouveau]
+[ 3970.263273]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.263286]  ? nvif_object_init+0xbf/0x1a0 [nouveau]
+[ 3970.263299]  nvif_object_init+0xe5/0x1a0 [nouveau]
+[ 3970.263304]  ? __kmalloc+0x19b/0x260
+[ 3970.263317]  nvif_vmm_init+0xb8/0x230 [nouveau]
+[ 3970.263342]  nouveau_vmm_init+0x2d/0x40 [nouveau]
+[ 3970.263368]  nouveau_cli_init+0x343/0x470 [nouveau]
+[ 3970.263393]  nouveau_drm_open+0x11f/0x1c0 [nouveau]
+[ 3970.263415]  drm_file_alloc+0x194/0x250 [drm]
+[ 3970.263422]  drm_open+0xcc/0x230 [drm]
+[ 3970.263429]  drm_stub_open+0xab/0x130 [drm]
+[ 3970.263432]  chrdev_open+0xca/0x240
+[ 3970.263433]  ? cdev_device_add+0x90/0x90
+[ 3970.263435]  do_dentry_open+0x159/0x3d0
+[ 3970.263437]  path_openat+0xc5e/0x10f0
+[ 3970.263440]  ? vsnprintf+0x3aa/0x4f0
+[ 3970.263441]  do_filp_open+0x9c/0x140
+[ 3970.263444]  do_sys_openat2+0xbb/0x170
+[ 3970.263446]  __x64_sys_openat+0x54/0x90
+[ 3970.263450]  do_syscall_64+0x44/0x70
+[ 3970.263452]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.263465] RIP: 0033:0x7fa373a98c94
+[ 3970.263467] Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 16 4c f9 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 68 4c f9 ff 8b 44
+[ 3970.263468] RSP: 002b:00007ffdf3278370 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+[ 3970.263468] RAX: ffffffffffffffda RBX: 000056020629f0a0 RCX: 00007fa373a98c94
+[ 3970.263469] RDX: 0000000000080002 RSI: 00005602062a2650 RDI: 00000000ffffff9c
+[ 3970.263470] RBP: 00005602062a2650 R08: 0000000000000000 R09: 00005602062a18e7
+[ 3970.263470] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000080002
+[ 3970.263471] R13: 00007fa362a75880 R14: 0000560206164560 R15: 00007fa362a56fc0
+[ 3970.263472] ---[ end trace ba0e880fa4acab53 ]---
+[ 3970.263555] nouveau 0000:03:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.263556] ------------[ cut here ]------------
+[ 3970.263556] nouveau 0000:03:00.0: timeout
+[ 3970.263586] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.263586] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.263606]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.263610] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.263610] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.263626] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.263628] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.263628] RSP: 0018:ffffb700c7687700 EFLAGS: 00010086
+[ 3970.263629] RAX: 0000000000000000 RBX: ffff9019a8cb7c00 RCX: 0000000000000000
+[ 3970.263629] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.263630] RBP: ffff9019aa697ac8 R08: 0000000000000565 R09: 0000000000000001
+[ 3970.263630] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.263631] R13: ffff9019ac1bc5b0 R14: 0000000000000001 R15: 0000000000000001
+[ 3970.263631] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.263632] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.263632] CR2: 00005602062a34a8 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.263633] Call Trace:
+[ 3970.263655]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.263676]  nvkm_instobj_new+0xef/0x180 [nouveau]
+[ 3970.263690]  nvkm_memory_new+0x46/0x80 [nouveau]
+[ 3970.263711]  nvkm_mmu_ptc_get.part.0+0x1bc/0x250 [nouveau]
+[ 3970.263733]  nvkm_vmm_ctor+0x276/0x380 [nouveau]
+[ 3970.263754]  nv04_vmm_new_+0x19/0x30 [nouveau]
+[ 3970.263775]  gk104_vmm_new+0x38/0x40 [nouveau]
+[ 3970.263797]  nvkm_uvmm_new+0x15f/0x1a0 [nouveau]
+[ 3970.263811]  nvkm_ioctl_new+0x15b/0x1f0 [nouveau]
+[ 3970.263833]  ? nvkm_uvmm_search+0x20/0x20 [nouveau]
+[ 3970.263847]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.263867]  ? nvif_object_init+0xbf/0x1a0 [nouveau]
+[ 3970.263890]  nvif_object_init+0xe5/0x1a0 [nouveau]
+[ 3970.263893]  ? __kmalloc+0x19b/0x260
+[ 3970.263909]  nvif_vmm_init+0xb8/0x230 [nouveau]
+[ 3970.263941]  nouveau_vmm_init+0x2d/0x40 [nouveau]
+[ 3970.263978]  nouveau_cli_init+0x343/0x470 [nouveau]
+[ 3970.264005]  nouveau_drm_open+0x11f/0x1c0 [nouveau]
+[ 3970.264024]  drm_file_alloc+0x194/0x250 [drm]
+[ 3970.264033]  drm_open+0xcc/0x230 [drm]
+[ 3970.264042]  drm_stub_open+0xab/0x130 [drm]
+[ 3970.264044]  chrdev_open+0xca/0x240
+[ 3970.264045]  ? cdev_device_add+0x90/0x90
+[ 3970.264047]  do_dentry_open+0x159/0x3d0
+[ 3970.264048]  path_openat+0xc5e/0x10f0
+[ 3970.264051]  ? vsnprintf+0x3aa/0x4f0
+[ 3970.264053]  do_filp_open+0x9c/0x140
+[ 3970.264055]  do_sys_openat2+0xbb/0x170
+[ 3970.264057]  __x64_sys_openat+0x54/0x90
+[ 3970.264059]  do_syscall_64+0x44/0x70
+[ 3970.264061]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.264067] RIP: 0033:0x7fa373a98c94
+[ 3970.264068] Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 16 4c f9 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 68 4c f9 ff 8b 44
+[ 3970.264069] RSP: 002b:00007ffdf3278370 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+[ 3970.264070] RAX: ffffffffffffffda RBX: 000056020629f0a0 RCX: 00007fa373a98c94
+[ 3970.264070] RDX: 0000000000080002 RSI: 00005602062a2650 RDI: 00000000ffffff9c
+[ 3970.264071] RBP: 00005602062a2650 R08: 0000000000000000 R09: 00005602062a18e7
+[ 3970.264071] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000080002
+[ 3970.264072] R13: 00007fa362a75880 R14: 0000560206164560 R15: 00007fa362a56fc0
+[ 3970.264074] ---[ end trace ba0e880fa4acab54 ]---
+[ 3970.278225] nouveau 0000:03:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.278227] ------------[ cut here ]------------
+[ 3970.278227] nouveau 0000:03:00.0: timeout
+[ 3970.278270] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.278271] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.278292]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.278298] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.278298] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.278315] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.278317] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.278317] RSP: 0018:ffffb700c7687a60 EFLAGS: 00010086
+[ 3970.278318] RAX: 0000000000000000 RBX: ffff9019a8cb7c00 RCX: 0000000000000000
+[ 3970.278318] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.278319] RBP: ffff9019aa697ac8 R08: 00000000000005a1 R09: 0000000000000001
+[ 3970.278319] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.278320] R13: ffff9019ac1bc5b0 R14: ffff9019ab064780 R15: ffff9019a33eb800
+[ 3970.278321] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.278321] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.278322] CR2: 00007fa36a80a000 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.278322] Call Trace:
+[ 3970.278347]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.278370]  nvkm_vmm_iter.constprop.0+0x7a1/0x860 [nouveau]
+[ 3970.278385]  ? ext4_search_dir+0x1cd/0x220 [ext4]
+[ 3970.278406]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 3970.278427]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 3970.278449]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[ 3970.278470]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 3970.278490]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 3970.278511]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[ 3970.278531]  nv50_instobj_dtor+0xa8/0xf0 [nouveau]
+[ 3970.278545]  nvkm_memory_unref+0x46/0x70 [nouveau]
+[ 3970.278565]  nvkm_mmu_ptc_put+0x104/0x170 [nouveau]
+[ 3970.278586]  nvkm_vmm_unref+0x166/0x1b0 [nouveau]
+[ 3970.278610]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[ 3970.278644]  nvkm_object_dtor+0xb8/0x110 [nouveau]
+[ 3970.278665]  nvkm_object_del+0x20/0x80 [nouveau]
+[ 3970.278679]  nvkm_ioctl_del+0x37/0x50 [nouveau]
+[ 3970.278694]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.278707]  nvif_object_fini+0x59/0x80 [nouveau]
+[ 3970.278732]  nouveau_vmm_fini+0x1b/0x30 [nouveau]
+[ 3970.278757]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[ 3970.278782]  nouveau_drm_postclose+0xa4/0xd0 [nouveau]
+[ 3970.278800]  drm_file_free.part.0+0x1e4/0x260 [drm]
+[ 3970.278807]  drm_release+0x65/0x110 [drm]
+[ 3970.278810]  __fput+0xca/0x230
+[ 3970.278812]  task_work_run+0x5c/0x90
+[ 3970.278815]  __prepare_exit_to_usermode+0x198/0x1c0
+[ 3970.278818]  do_syscall_64+0x50/0x70
+[ 3970.278820]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.278830] RIP: 0033:0x7fa373a9972b
+[ 3970.278832] Code: 03 00 00 00 0f 05 48 3d 00 f0 ff ff 77 41 c3 48 83 ec 18 89 7c 24 0c e8 73 41 f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 d1 41 f9 ff 8b 44
+[ 3970.278832] RSP: 002b:00007ffdf32783d0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[ 3970.278833] RAX: 0000000000000000 RBX: 000056020629f0a0 RCX: 00007fa373a9972b
+[ 3970.278834] RDX: 0000000000000002 RSI: 00005602062a1a20 RDI: 000000000000000a
+[ 3970.278834] RBP: 000056020629f140 R08: 0000000000000000 R09: 00007ffdf3277fa0
+[ 3970.278835] R10: 0000000000000001 R11: 0000000000000293 R12: 00005602062a2650
+[ 3970.278835] R13: 00007fa362a75880 R14: 0000560206164560 R15: 00007fa362a56fc0
+[ 3970.278836] ---[ end trace ba0e880fa4acab55 ]---
+[ 3970.279033] nouveau 0000:04:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.279034] ------------[ cut here ]------------
+[ 3970.279034] nouveau 0000:04:00.0: timeout
+[ 3970.279058] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.279059] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.279073]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.279076] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.279077] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.279093] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.279094] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.279095] RSP: 0018:ffffb700c7687440 EFLAGS: 00010086
+[ 3970.279095] RAX: 0000000000000000 RBX: ffff9019ab17dc00 RCX: 0000000000000000
+[ 3970.279096] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.279096] RBP: ffff9019a4f34c48 R08: 00000000000005db R09: 0000000000000001
+[ 3970.279097] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.279097] R13: ffff9019ac1bc8e0 R14: 0000000000000000 R15: ffff9019a0e18000
+[ 3970.279098] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.279099] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.279099] CR2: 00007fa36a80a000 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.279099] Call Trace:
+[ 3970.279123]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.279145]  nvkm_vmm_iter.constprop.0+0x2be/0x860 [nouveau]
+[ 3970.279148]  ? __sprint_symbol+0x106/0x110
+[ 3970.279181]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 3970.279209]  ? gf100_vmm_pgt_dma+0x2f0/0x2f0 [nouveau]
+[ 3970.279211]  ? symbol_string+0xb6/0xf0
+[ 3970.279234]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 3970.279256]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 3970.279276]  ? gf100_vmm_pgt_dma+0x2f0/0x2f0 [nouveau]
+[ 3970.279297]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 3970.279317]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 3970.279337]  nv50_instobj_kmap+0x177/0x260 [nouveau]
+[ 3970.279358]  nv50_instobj_acquire+0x16d/0x180 [nouveau]
+[ 3970.279378]  nvkm_instobj_new+0xcc/0x180 [nouveau]
+[ 3970.279392]  nvkm_memory_new+0x46/0x80 [nouveau]
+[ 3970.279413]  nvkm_mmu_ptc_get.part.0+0x1bc/0x250 [nouveau]
+[ 3970.279433]  nvkm_vmm_ctor+0x276/0x380 [nouveau]
+[ 3970.279454]  nv04_vmm_new_+0x19/0x30 [nouveau]
+[ 3970.279475]  gk104_vmm_new+0x38/0x40 [nouveau]
+[ 3970.279497]  nvkm_uvmm_new+0x15f/0x1a0 [nouveau]
+[ 3970.279511]  nvkm_ioctl_new+0x15b/0x1f0 [nouveau]
+[ 3970.279532]  ? nvkm_uvmm_search+0x20/0x20 [nouveau]
+[ 3970.279547]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.279560]  ? nvif_object_init+0xbf/0x1a0 [nouveau]
+[ 3970.279573]  nvif_object_init+0xe5/0x1a0 [nouveau]
+[ 3970.279577]  ? __kmalloc+0x19b/0x260
+[ 3970.279590]  nvif_vmm_init+0xb8/0x230 [nouveau]
+[ 3970.279615]  nouveau_vmm_init+0x2d/0x40 [nouveau]
+[ 3970.279640]  nouveau_cli_init+0x343/0x470 [nouveau]
+[ 3970.279664]  nouveau_drm_open+0x11f/0x1c0 [nouveau]
+[ 3970.279676]  drm_file_alloc+0x194/0x250 [drm]
+[ 3970.279683]  drm_open+0xcc/0x230 [drm]
+[ 3970.279690]  drm_stub_open+0xab/0x130 [drm]
+[ 3970.279692]  chrdev_open+0xca/0x240
+[ 3970.279694]  ? cdev_device_add+0x90/0x90
+[ 3970.279695]  do_dentry_open+0x159/0x3d0
+[ 3970.279697]  path_openat+0xc5e/0x10f0
+[ 3970.279699]  ? vsnprintf+0x3aa/0x4f0
+[ 3970.279701]  do_filp_open+0x9c/0x140
+[ 3970.279703]  do_sys_openat2+0xbb/0x170
+[ 3970.279705]  __x64_sys_openat+0x54/0x90
+[ 3970.279708]  do_syscall_64+0x44/0x70
+[ 3970.279710]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.279716] RIP: 0033:0x7fa373a98c94
+[ 3970.279718] Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 16 4c f9 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 68 4c f9 ff 8b 44
+[ 3970.279719] RSP: 002b:00007ffdf3278370 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+[ 3970.279719] RAX: ffffffffffffffda RBX: 000056020629f0a0 RCX: 00007fa373a98c94
+[ 3970.279720] RDX: 0000000000080002 RSI: 00005602062a15e0 RDI: 00000000ffffff9c
+[ 3970.279721] RBP: 00005602062a15e0 R08: 0000000000000000 R09: 00005602062a1ca1
+[ 3970.279721] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000080002
+[ 3970.279722] R13: 00007fa362a75880 R14: 0000560206164560 R15: 00007fa362a56fc0
+[ 3970.279723] ---[ end trace ba0e880fa4acab56 ]---
+[ 3970.279832] nouveau 0000:04:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.279832] ------------[ cut here ]------------
+[ 3970.279833] nouveau 0000:04:00.0: timeout
+[ 3970.279856] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.279857] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.279870]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.279873] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.279874] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.279890] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.279891] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.279891] RSP: 0018:ffffb700c7687700 EFLAGS: 00010086
+[ 3970.279892] RAX: 0000000000000000 RBX: ffff9019ab17dc00 RCX: 0000000000000000
+[ 3970.279892] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.279893] RBP: ffff9019a4f34c48 R08: 0000000000000623 R09: 0000000000000001
+[ 3970.279893] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.279893] R13: ffff9019ac1bc8e0 R14: 0000000000000001 R15: 0000000000000001
+[ 3970.279894] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.279895] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.279895] CR2: 00007fa36a80a000 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.279896] Call Trace:
+[ 3970.279917]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.279937]  nvkm_instobj_new+0xef/0x180 [nouveau]
+[ 3970.279952]  nvkm_memory_new+0x46/0x80 [nouveau]
+[ 3970.279972]  nvkm_mmu_ptc_get.part.0+0x1bc/0x250 [nouveau]
+[ 3970.279993]  nvkm_vmm_ctor+0x276/0x380 [nouveau]
+[ 3970.280014]  nv04_vmm_new_+0x19/0x30 [nouveau]
+[ 3970.280034]  gk104_vmm_new+0x38/0x40 [nouveau]
+[ 3970.280055]  nvkm_uvmm_new+0x15f/0x1a0 [nouveau]
+[ 3970.280069]  nvkm_ioctl_new+0x15b/0x1f0 [nouveau]
+[ 3970.280090]  ? nvkm_uvmm_search+0x20/0x20 [nouveau]
+[ 3970.280104]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.280117]  ? nvif_object_init+0xbf/0x1a0 [nouveau]
+[ 3970.280130]  nvif_object_init+0xe5/0x1a0 [nouveau]
+[ 3970.280132]  ? __kmalloc+0x19b/0x260
+[ 3970.280145]  nvif_vmm_init+0xb8/0x230 [nouveau]
+[ 3970.280169]  nouveau_vmm_init+0x2d/0x40 [nouveau]
+[ 3970.280203]  nouveau_cli_init+0x343/0x470 [nouveau]
+[ 3970.280229]  nouveau_drm_open+0x11f/0x1c0 [nouveau]
+[ 3970.280239]  drm_file_alloc+0x194/0x250 [drm]
+[ 3970.280256]  drm_open+0xcc/0x230 [drm]
+[ 3970.280274]  drm_stub_open+0xab/0x130 [drm]
+[ 3970.280275]  chrdev_open+0xca/0x240
+[ 3970.280277]  ? cdev_device_add+0x90/0x90
+[ 3970.280278]  do_dentry_open+0x159/0x3d0
+[ 3970.280279]  path_openat+0xc5e/0x10f0
+[ 3970.280281]  ? vsnprintf+0x3aa/0x4f0
+[ 3970.280282]  do_filp_open+0x9c/0x140
+[ 3970.280285]  do_sys_openat2+0xbb/0x170
+[ 3970.280286]  __x64_sys_openat+0x54/0x90
+[ 3970.280288]  do_syscall_64+0x44/0x70
+[ 3970.280289]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.280292] RIP: 0033:0x7fa373a98c94
+[ 3970.280293] Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 16 4c f9 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 68 4c f9 ff 8b 44
+[ 3970.280293] RSP: 002b:00007ffdf3278370 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+[ 3970.280294] RAX: ffffffffffffffda RBX: 000056020629f0a0 RCX: 00007fa373a98c94
+[ 3970.280295] RDX: 0000000000080002 RSI: 00005602062a15e0 RDI: 00000000ffffff9c
+[ 3970.280295] RBP: 00005602062a15e0 R08: 0000000000000000 R09: 00005602062a1ca1
+[ 3970.280296] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000080002
+[ 3970.280296] R13: 00007fa362a75880 R14: 0000560206164560 R15: 00007fa362a56fc0
+[ 3970.280298] ---[ end trace ba0e880fa4acab57 ]---
+[ 3970.280531] nouveau 0000:04:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.280531] ------------[ cut here ]------------
+[ 3970.280532] nouveau 0000:04:00.0: timeout
+[ 3970.280556] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.280556] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.280571]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.280574] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.280575] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.280591] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.280592] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.280592] RSP: 0018:ffffb700c7687a60 EFLAGS: 00010086
+[ 3970.280593] RAX: 0000000000000000 RBX: ffff9019ab17dc00 RCX: 0000000000000000
+[ 3970.280593] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.280594] RBP: ffff9019a4f34c48 R08: 000000000000065f R09: 0000000000000001
+[ 3970.280594] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.280595] R13: ffff9019ac1bc8e0 R14: ffff9019a3ca0720 R15: ffff9019a0e18000
+[ 3970.280595] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.280596] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.280596] CR2: 00007fa36a80a000 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.280597] Call Trace:
+[ 3970.280620]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.280642]  nvkm_vmm_iter.constprop.0+0x7a1/0x860 [nouveau]
+[ 3970.280663]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 3970.280685]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 3970.280687]  ? recalibrate_cpu_khz+0x10/0x10
+[ 3970.280709]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[ 3970.280730]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 3970.280751]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 3970.280772]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[ 3970.280792]  nv50_instobj_dtor+0xa8/0xf0 [nouveau]
+[ 3970.280806]  nvkm_memory_unref+0x46/0x70 [nouveau]
+[ 3970.280826]  nvkm_mmu_ptc_put+0x104/0x170 [nouveau]
+[ 3970.280848]  nvkm_vmm_unref+0x166/0x1b0 [nouveau]
+[ 3970.280869]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[ 3970.280884]  nvkm_object_dtor+0xb8/0x110 [nouveau]
+[ 3970.280899]  nvkm_object_del+0x20/0x80 [nouveau]
+[ 3970.280913]  nvkm_ioctl_del+0x37/0x50 [nouveau]
+[ 3970.280927]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.280940]  nvif_object_fini+0x59/0x80 [nouveau]
+[ 3970.280964]  nouveau_vmm_fini+0x1b/0x30 [nouveau]
+[ 3970.280989]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[ 3970.281014]  nouveau_drm_postclose+0xa4/0xd0 [nouveau]
+[ 3970.281022]  drm_file_free.part.0+0x1e4/0x260 [drm]
+[ 3970.281028]  drm_release+0x65/0x110 [drm]
+[ 3970.281030]  __fput+0xca/0x230
+[ 3970.281032]  task_work_run+0x5c/0x90
+[ 3970.281034]  __prepare_exit_to_usermode+0x198/0x1c0
+[ 3970.281036]  do_syscall_64+0x50/0x70
+[ 3970.281037]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.281041] RIP: 0033:0x7fa373a9972b
+[ 3970.281042] Code: 03 00 00 00 0f 05 48 3d 00 f0 ff ff 77 41 c3 48 83 ec 18 89 7c 24 0c e8 73 41 f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 d1 41 f9 ff 8b 44
+[ 3970.281042] RSP: 002b:00007ffdf32783d0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[ 3970.281043] RAX: 0000000000000000 RBX: 000056020629f0a0 RCX: 00007fa373a9972b
+[ 3970.281044] RDX: 0000000000000002 RSI: 0000000000000000 RDI: 000000000000000a
+[ 3970.281044] RBP: 000056020629f140 R08: 0000000000000000 R09: 00007ffdf3277fa0
+[ 3970.281045] R10: 0000000000000001 R11: 0000000000000293 R12: 00005602062a15e0
+[ 3970.281045] R13: 00007fa362a75880 R14: 0000560206164560 R15: 00007fa362a56fc0
+[ 3970.281046] ---[ end trace ba0e880fa4acab58 ]---
+[ 3970.282666] nouveau 0000:03:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.282667] ------------[ cut here ]------------
+[ 3970.282667] nouveau 0000:03:00.0: timeout
+[ 3970.282715] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.282716] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.282738]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.282742] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.282743] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.282759] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.282761] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.282761] RSP: 0018:ffffb700c7687440 EFLAGS: 00010086
+[ 3970.282762] RAX: 0000000000000000 RBX: ffff9019a8cb7c00 RCX: 0000000000000000
+[ 3970.282763] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.282763] RBP: ffff9019aa697ac8 R08: 0000000000000699 R09: 0000000000000001
+[ 3970.282763] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.282764] R13: ffff9019ac1bc5b0 R14: 0000000000000000 R15: ffff9019a33eb800
+[ 3970.282765] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.282765] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.282766] CR2: 00005602062a6f68 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.282766] Call Trace:
+[ 3970.282791]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.282813]  nvkm_vmm_iter.constprop.0+0x2be/0x860 [nouveau]
+[ 3970.282816]  ? __sprint_symbol+0x106/0x110
+[ 3970.282838]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 3970.282859]  ? gf100_vmm_pgt_dma+0x2f0/0x2f0 [nouveau]
+[ 3970.282860]  ? preempt_count_add+0x68/0xa0
+[ 3970.282893]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 3970.282914]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 3970.282935]  ? gf100_vmm_pgt_dma+0x2f0/0x2f0 [nouveau]
+[ 3970.282956]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 3970.282975]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 3970.282996]  nv50_instobj_kmap+0x177/0x260 [nouveau]
+[ 3970.283016]  nv50_instobj_acquire+0x16d/0x180 [nouveau]
+[ 3970.283036]  nvkm_instobj_new+0xcc/0x180 [nouveau]
+[ 3970.283058]  nvkm_memory_new+0x46/0x80 [nouveau]
+[ 3970.283100]  nvkm_mmu_ptc_get.part.0+0x1bc/0x250 [nouveau]
+[ 3970.283120]  nvkm_vmm_ctor+0x276/0x380 [nouveau]
+[ 3970.283140]  nv04_vmm_new_+0x19/0x30 [nouveau]
+[ 3970.283161]  gk104_vmm_new+0x38/0x40 [nouveau]
+[ 3970.283181]  nvkm_uvmm_new+0x15f/0x1a0 [nouveau]
+[ 3970.283196]  nvkm_ioctl_new+0x15b/0x1f0 [nouveau]
+[ 3970.283216]  ? nvkm_uvmm_search+0x20/0x20 [nouveau]
+[ 3970.283230]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.283243]  ? nvif_object_init+0xbf/0x1a0 [nouveau]
+[ 3970.283255]  nvif_object_init+0xe5/0x1a0 [nouveau]
+[ 3970.283259]  ? __kmalloc+0x19b/0x260
+[ 3970.283272]  nvif_vmm_init+0xb8/0x230 [nouveau]
+[ 3970.283295]  nouveau_vmm_init+0x2d/0x40 [nouveau]
+[ 3970.283319]  nouveau_cli_init+0x343/0x470 [nouveau]
+[ 3970.283343]  nouveau_drm_open+0x11f/0x1c0 [nouveau]
+[ 3970.283360]  drm_file_alloc+0x194/0x250 [drm]
+[ 3970.283367]  drm_open+0xcc/0x230 [drm]
+[ 3970.283374]  drm_stub_open+0xab/0x130 [drm]
+[ 3970.283376]  chrdev_open+0xca/0x240
+[ 3970.283378]  ? cdev_device_add+0x90/0x90
+[ 3970.283379]  do_dentry_open+0x159/0x3d0
+[ 3970.283381]  path_openat+0xc5e/0x10f0
+[ 3970.283384]  ? vsnprintf+0x3aa/0x4f0
+[ 3970.283385]  do_filp_open+0x9c/0x140
+[ 3970.283388]  do_sys_openat2+0xbb/0x170
+[ 3970.283390]  __x64_sys_openat+0x54/0x90
+[ 3970.283392]  do_syscall_64+0x44/0x70
+[ 3970.283394]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.283404] RIP: 0033:0x7fa373a98c94
+[ 3970.283406] Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 16 4c f9 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 68 4c f9 ff 8b 44
+[ 3970.283406] RSP: 002b:00007ffdf3278370 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+[ 3970.283407] RAX: ffffffffffffffda RBX: 000056020629f1b0 RCX: 00007fa373a98c94
+[ 3970.283408] RDX: 0000000000080002 RSI: 00005602062a4910 RDI: 00000000ffffff9c
+[ 3970.283408] RBP: 00005602062a4910 R08: 0000000000000000 R09: 00005602062a4b48
+[ 3970.283409] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000080002
+[ 3970.283409] R13: 00007fa362a75880 R14: 00005602062a1400 R15: 00007fa362a56fc0
+[ 3970.283410] ---[ end trace ba0e880fa4acab59 ]---
+[ 3970.283477] nouveau 0000:03:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.283477] ------------[ cut here ]------------
+[ 3970.283477] nouveau 0000:03:00.0: timeout
+[ 3970.283500] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.283500] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.283512]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.283515] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.283515] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.283541] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.283542] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.283542] RSP: 0018:ffffb700c7687700 EFLAGS: 00010086
+[ 3970.283543] RAX: 0000000000000000 RBX: ffff9019a8cb7c00 RCX: 0000000000000000
+[ 3970.283543] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.283544] RBP: ffff9019aa697ac8 R08: 00000000000006e1 R09: 0000000000000001
+[ 3970.283544] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.283545] R13: ffff9019ac1bc5b0 R14: 0000000000000001 R15: 0000000000000001
+[ 3970.283545] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.283546] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.283546] CR2: 00005602062a6f68 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.283547] Call Trace:
+[ 3970.283586]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.283617]  nvkm_instobj_new+0xef/0x180 [nouveau]
+[ 3970.283632]  nvkm_memory_new+0x46/0x80 [nouveau]
+[ 3970.283662]  nvkm_mmu_ptc_get.part.0+0x1bc/0x250 [nouveau]
+[ 3970.283682]  nvkm_vmm_ctor+0x276/0x380 [nouveau]
+[ 3970.283702]  nv04_vmm_new_+0x19/0x30 [nouveau]
+[ 3970.283722]  gk104_vmm_new+0x38/0x40 [nouveau]
+[ 3970.283742]  nvkm_uvmm_new+0x15f/0x1a0 [nouveau]
+[ 3970.283756]  nvkm_ioctl_new+0x15b/0x1f0 [nouveau]
+[ 3970.283776]  ? nvkm_uvmm_search+0x20/0x20 [nouveau]
+[ 3970.283790]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.283802]  ? nvif_object_init+0xbf/0x1a0 [nouveau]
+[ 3970.283815]  nvif_object_init+0xe5/0x1a0 [nouveau]
+[ 3970.283817]  ? __kmalloc+0x19b/0x260
+[ 3970.283830]  nvif_vmm_init+0xb8/0x230 [nouveau]
+[ 3970.283853]  nouveau_vmm_init+0x2d/0x40 [nouveau]
+[ 3970.283876]  nouveau_cli_init+0x343/0x470 [nouveau]
+[ 3970.283900]  nouveau_drm_open+0x11f/0x1c0 [nouveau]
+[ 3970.283907]  drm_file_alloc+0x194/0x250 [drm]
+[ 3970.283913]  drm_open+0xcc/0x230 [drm]
+[ 3970.283920]  drm_stub_open+0xab/0x130 [drm]
+[ 3970.283921]  chrdev_open+0xca/0x240
+[ 3970.283923]  ? cdev_device_add+0x90/0x90
+[ 3970.283924]  do_dentry_open+0x159/0x3d0
+[ 3970.283925]  path_openat+0xc5e/0x10f0
+[ 3970.283927]  ? vsnprintf+0x3aa/0x4f0
+[ 3970.283928]  do_filp_open+0x9c/0x140
+[ 3970.283930]  do_sys_openat2+0xbb/0x170
+[ 3970.283931]  __x64_sys_openat+0x54/0x90
+[ 3970.283933]  do_syscall_64+0x44/0x70
+[ 3970.283934]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.283936] RIP: 0033:0x7fa373a98c94
+[ 3970.283937] Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 16 4c f9 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 68 4c f9 ff 8b 44
+[ 3970.283938] RSP: 002b:00007ffdf3278370 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+[ 3970.283938] RAX: ffffffffffffffda RBX: 000056020629f1b0 RCX: 00007fa373a98c94
+[ 3970.283939] RDX: 0000000000080002 RSI: 00005602062a4910 RDI: 00000000ffffff9c
+[ 3970.283939] RBP: 00005602062a4910 R08: 0000000000000000 R09: 00005602062a4b48
+[ 3970.283940] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000080002
+[ 3970.283940] R13: 00007fa362a75880 R14: 00005602062a1400 R15: 00007fa362a56fc0
+[ 3970.283941] ---[ end trace ba0e880fa4acab5a ]---
+[ 3970.284115] nouveau 0000:03:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.284115] ------------[ cut here ]------------
+[ 3970.284116] nouveau 0000:03:00.0: timeout
+[ 3970.284136] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.284136] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.284148]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.284151] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.284152] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.284178] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.284179] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.284179] RSP: 0018:ffffb700c7687a60 EFLAGS: 00010086
+[ 3970.284180] RAX: 0000000000000000 RBX: ffff9019a8cb7c00 RCX: 0000000000000000
+[ 3970.284180] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.284181] RBP: ffff9019aa697ac8 R08: 000000000000071d R09: 0000000000000001
+[ 3970.284181] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.284181] R13: ffff9019ac1bc5b0 R14: ffff9019ab064780 R15: ffff9019a33eb800
+[ 3970.284182] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.284183] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.284183] CR2: 00005602062a7158 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.284184] Call Trace:
+[ 3970.284216]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.284247]  nvkm_vmm_iter.constprop.0+0x7a1/0x860 [nouveau]
+[ 3970.284248]  ? plist_requeue+0x80/0x80
+[ 3970.284250]  ? allocate_slab+0x20c/0x410
+[ 3970.284270]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 3970.284301]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 3970.284322]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[ 3970.284341]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 3970.284371]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 3970.284404]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[ 3970.284433]  nv50_instobj_dtor+0xa8/0xf0 [nouveau]
+[ 3970.284452]  nvkm_memory_unref+0x46/0x70 [nouveau]
+[ 3970.284471]  nvkm_mmu_ptc_put+0x104/0x170 [nouveau]
+[ 3970.284502]  nvkm_vmm_unref+0x166/0x1b0 [nouveau]
+[ 3970.284533]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[ 3970.284547]  nvkm_object_dtor+0xb8/0x110 [nouveau]
+[ 3970.284561]  nvkm_object_del+0x20/0x80 [nouveau]
+[ 3970.284575]  nvkm_ioctl_del+0x37/0x50 [nouveau]
+[ 3970.284588]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.284601]  nvif_object_fini+0x59/0x80 [nouveau]
+[ 3970.284624]  nouveau_vmm_fini+0x1b/0x30 [nouveau]
+[ 3970.284648]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[ 3970.284674]  nouveau_drm_postclose+0xa4/0xd0 [nouveau]
+[ 3970.284681]  drm_file_free.part.0+0x1e4/0x260 [drm]
+[ 3970.284689]  drm_release+0x65/0x110 [drm]
+[ 3970.284691]  __fput+0xca/0x230
+[ 3970.284692]  task_work_run+0x5c/0x90
+[ 3970.284695]  __prepare_exit_to_usermode+0x198/0x1c0
+[ 3970.284696]  do_syscall_64+0x50/0x70
+[ 3970.284698]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.284700] RIP: 0033:0x7fa373a9972b
+[ 3970.284701] Code: 03 00 00 00 0f 05 48 3d 00 f0 ff ff 77 41 c3 48 83 ec 18 89 7c 24 0c e8 73 41 f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 d1 41 f9 ff 8b 44
+[ 3970.284702] RSP: 002b:00007ffdf32783d0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[ 3970.284703] RAX: 0000000000000000 RBX: 000056020629f1b0 RCX: 00007fa373a9972b
+[ 3970.284703] RDX: 0000000000000002 RSI: 0000000000000000 RDI: 000000000000000a
+[ 3970.284704] RBP: 000056020629f250 R08: 0000000000000000 R09: 00007ffdf3277fa0
+[ 3970.284704] R10: 0000000000000001 R11: 0000000000000293 R12: 00005602062a4910
+[ 3970.284705] R13: 00007fa362a75880 R14: 00005602062a1400 R15: 00007fa362a56fc0
+[ 3970.284706] ---[ end trace ba0e880fa4acab5b ]---
+[ 3970.284863] nouveau 0000:04:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.284863] ------------[ cut here ]------------
+[ 3970.284864] nouveau 0000:04:00.0: timeout
+[ 3970.284886] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.284887] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.284898]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.284901] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.284902] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.284920] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.284921] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.284921] RSP: 0018:ffffb700c7687440 EFLAGS: 00010086
+[ 3970.284922] RAX: 0000000000000000 RBX: ffff9019ab17dc00 RCX: 0000000000000000
+[ 3970.284923] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.284923] RBP: ffff9019a4f34c48 R08: 0000000000000758 R09: 0000000000000001
+[ 3970.284924] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.284924] R13: ffff9019ac1bc8e0 R14: 0000000000000000 R15: ffff9019a0e18000
+[ 3970.284925] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.284925] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.284926] CR2: 00005602062a7158 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.284926] Call Trace:
+[ 3970.284950]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.284973]  nvkm_vmm_iter.constprop.0+0x2be/0x860 [nouveau]
+[ 3970.284975]  ? __sprint_symbol+0x106/0x110
+[ 3970.284997]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 3970.285021]  ? gf100_vmm_pgt_dma+0x2f0/0x2f0 [nouveau]
+[ 3970.285022]  ? symbol_string+0xb6/0xf0
+[ 3970.285056]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 3970.285079]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 3970.285121]  ? gf100_vmm_pgt_dma+0x2f0/0x2f0 [nouveau]
+[ 3970.285142]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 3970.285172]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 3970.285202]  nv50_instobj_kmap+0x177/0x260 [nouveau]
+[ 3970.285241]  nv50_instobj_acquire+0x16d/0x180 [nouveau]
+[ 3970.285266]  nvkm_instobj_new+0xcc/0x180 [nouveau]
+[ 3970.285290]  nvkm_memory_new+0x46/0x80 [nouveau]
+[ 3970.285311]  nvkm_mmu_ptc_get.part.0+0x1bc/0x250 [nouveau]
+[ 3970.285342]  nvkm_vmm_ctor+0x276/0x380 [nouveau]
+[ 3970.285362]  nv04_vmm_new_+0x19/0x30 [nouveau]
+[ 3970.285381]  gk104_vmm_new+0x38/0x40 [nouveau]
+[ 3970.285402]  nvkm_uvmm_new+0x15f/0x1a0 [nouveau]
+[ 3970.285416]  nvkm_ioctl_new+0x15b/0x1f0 [nouveau]
+[ 3970.285436]  ? nvkm_uvmm_search+0x20/0x20 [nouveau]
+[ 3970.285449]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.285462]  ? nvif_object_init+0xbf/0x1a0 [nouveau]
+[ 3970.285475]  nvif_object_init+0xe5/0x1a0 [nouveau]
+[ 3970.285476]  ? __kmalloc+0x19b/0x260
+[ 3970.285489]  nvif_vmm_init+0xb8/0x230 [nouveau]
+[ 3970.285513]  nouveau_vmm_init+0x2d/0x40 [nouveau]
+[ 3970.285536]  nouveau_cli_init+0x343/0x470 [nouveau]
+[ 3970.285560]  nouveau_drm_open+0x11f/0x1c0 [nouveau]
+[ 3970.285567]  drm_file_alloc+0x194/0x250 [drm]
+[ 3970.285573]  drm_open+0xcc/0x230 [drm]
+[ 3970.285580]  drm_stub_open+0xab/0x130 [drm]
+[ 3970.285581]  chrdev_open+0xca/0x240
+[ 3970.285583]  ? cdev_device_add+0x90/0x90
+[ 3970.285584]  do_dentry_open+0x159/0x3d0
+[ 3970.285585]  path_openat+0xc5e/0x10f0
+[ 3970.285587]  ? vsnprintf+0x3aa/0x4f0
+[ 3970.285588]  do_filp_open+0x9c/0x140
+[ 3970.285590]  do_sys_openat2+0xbb/0x170
+[ 3970.285591]  __x64_sys_openat+0x54/0x90
+[ 3970.285593]  do_syscall_64+0x44/0x70
+[ 3970.285594]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.285597] RIP: 0033:0x7fa373a98c94
+[ 3970.285598] Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 16 4c f9 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 68 4c f9 ff 8b 44
+[ 3970.285598] RSP: 002b:00007ffdf3278370 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+[ 3970.285599] RAX: ffffffffffffffda RBX: 000056020629f1b0 RCX: 00007fa373a98c94
+[ 3970.285600] RDX: 0000000000080002 RSI: 00005602062a48d0 RDI: 00000000ffffff9c
+[ 3970.285600] RBP: 00005602062a48d0 R08: 0000000000000000 R09: 00005602062a4f57
+[ 3970.285601] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000080002
+[ 3970.285601] R13: 00007fa362a75880 R14: 00005602062a1400 R15: 00007fa362a56fc0
+[ 3970.285603] ---[ end trace ba0e880fa4acab5c ]---
+[ 3970.285656] nouveau 0000:04:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.285656] ------------[ cut here ]------------
+[ 3970.285656] nouveau 0000:04:00.0: timeout
+[ 3970.285676] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.285676] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.285687]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.285690] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.285690] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.285706] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.285707] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.285707] RSP: 0018:ffffb700c7687700 EFLAGS: 00010086
+[ 3970.285708] RAX: 0000000000000000 RBX: ffff9019ab17dc00 RCX: 0000000000000000
+[ 3970.285708] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.285709] RBP: ffff9019a4f34c48 R08: 00000000000007a0 R09: 0000000000000001
+[ 3970.285709] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.285710] R13: ffff9019ac1bc8e0 R14: 0000000000000001 R15: 0000000000000001
+[ 3970.285710] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.285711] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.285711] CR2: 00005602062a7158 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.285712] Call Trace:
+[ 3970.285732]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.285752]  nvkm_instobj_new+0xef/0x180 [nouveau]
+[ 3970.285766]  nvkm_memory_new+0x46/0x80 [nouveau]
+[ 3970.285785]  nvkm_mmu_ptc_get.part.0+0x1bc/0x250 [nouveau]
+[ 3970.285805]  nvkm_vmm_ctor+0x276/0x380 [nouveau]
+[ 3970.285836]  nv04_vmm_new_+0x19/0x30 [nouveau]
+[ 3970.285867]  gk104_vmm_new+0x38/0x40 [nouveau]
+[ 3970.285887]  nvkm_uvmm_new+0x15f/0x1a0 [nouveau]
+[ 3970.285901]  nvkm_ioctl_new+0x15b/0x1f0 [nouveau]
+[ 3970.285921]  ? nvkm_uvmm_search+0x20/0x20 [nouveau]
+[ 3970.285935]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.285947]  ? nvif_object_init+0xbf/0x1a0 [nouveau]
+[ 3970.285960]  nvif_object_init+0xe5/0x1a0 [nouveau]
+[ 3970.285962]  ? __kmalloc+0x19b/0x260
+[ 3970.285974]  nvif_vmm_init+0xb8/0x230 [nouveau]
+[ 3970.285997]  nouveau_vmm_init+0x2d/0x40 [nouveau]
+[ 3970.286021]  nouveau_cli_init+0x343/0x470 [nouveau]
+[ 3970.286045]  nouveau_drm_open+0x11f/0x1c0 [nouveau]
+[ 3970.286063]  drm_file_alloc+0x194/0x250 [drm]
+[ 3970.286070]  drm_open+0xcc/0x230 [drm]
+[ 3970.286079]  drm_stub_open+0xab/0x130 [drm]
+[ 3970.286080]  chrdev_open+0xca/0x240
+[ 3970.286082]  ? cdev_device_add+0x90/0x90
+[ 3970.286083]  do_dentry_open+0x159/0x3d0
+[ 3970.286084]  path_openat+0xc5e/0x10f0
+[ 3970.286086]  ? vsnprintf+0x3aa/0x4f0
+[ 3970.286087]  do_filp_open+0x9c/0x140
+[ 3970.286100]  do_sys_openat2+0xbb/0x170
+[ 3970.286101]  __x64_sys_openat+0x54/0x90
+[ 3970.286103]  do_syscall_64+0x44/0x70
+[ 3970.286104]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.286106] RIP: 0033:0x7fa373a98c94
+[ 3970.286107] Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 16 4c f9 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 68 4c f9 ff 8b 44
+[ 3970.286107] RSP: 002b:00007ffdf3278370 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+[ 3970.286108] RAX: ffffffffffffffda RBX: 000056020629f1b0 RCX: 00007fa373a98c94
+[ 3970.286109] RDX: 0000000000080002 RSI: 00005602062a48d0 RDI: 00000000ffffff9c
+[ 3970.286119] RBP: 00005602062a48d0 R08: 0000000000000000 R09: 00005602062a4f57
+[ 3970.286119] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000080002
+[ 3970.286120] R13: 00007fa362a75880 R14: 00005602062a1400 R15: 00007fa362a56fc0
+[ 3970.286121] ---[ end trace ba0e880fa4acab5d ]---
+[ 3970.286284] nouveau 0000:04:00.0: tmr: stalled at ffffffffffffffff
+[ 3970.286285] ------------[ cut here ]------------
+[ 3970.286286] nouveau 0000:04:00.0: timeout
+[ 3970.286317] WARNING: CPU: 2 PID: 6454 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.286317] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device fuse input_leds mousedev hid_generic usbhid hid adt7475 hwmon_vid adm1021 lm90 intel_rapl_msr intel_rapl_common nouveau x86_pkg_temp_thermal intel_powerclamp ath9k snd_hda_codec_realtek ath9k_common snd_hda_codec_generic ledtrig_audio ath9k_hw coretemp ath mac80211 snd_hda_codec_hdmi ofpart cmdlinepart intel_spi_platform intel_spi spi_nor snd_hda_intel snd_intel_dspcfg snd_hda_codec eeepc_wmi iTCO_wdt crct10dif_pclmul crc32_pclmul intel_pmc_bxt i2c_algo_bit ghash_clmulni_intel iTCO_vendor_support asus_wmi ttm mtd mei_hdcp snd_hda_core snd_hwdep aesni_intel crypto_simd snd_pcm cfg80211 at24 drm_kms_helper battery cryptd wmi_bmof mxm_wmi cec sparse_keymap glue_helper rapl snd_timer intel_cstate intel_uncore snd rc_core rfkill syscopyarea sysfillrect sysimgblt libarc4 soundcore fb_sys_fops mei_me mei e1000e lpc_ich i2c_i801 i2c_smbus evdev mac_hid pcspkr wmi i2c_dev sg crypto_user drm vfs_monitor(OE) agpgart
+[ 3970.286337]  ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas crc32c_intel sr_mod xhci_hcd cdrom ehci_pci ehci_hcd
+[ 3970.286342] CPU: 2 PID: 6454 Comm: gst-plugin-scan Tainted: G        W  OE     5.8.6-arch1-1 #1
+[ 3970.286343] Hardware name: ASUS All Series/Z87-PLUS, BIOS 1707 12/13/2013
+[ 3970.286367] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3970.286368] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 38 6a 62 d2 4c 89 ea 48 c7 c7 ac 3e c6 c0 48 89 c6 e8 4c 9b ff d1 <0f> 0b eb a8 e8 7d 5b 96 d2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3970.286369] RSP: 0018:ffffb700c7687a60 EFLAGS: 00010086
+[ 3970.286370] RAX: 0000000000000000 RBX: ffff9019ab17dc00 RCX: 0000000000000000
+[ 3970.286371] RDX: 0000000000000002 RSI: ffffffff93d6ad2f RDI: 00000000ffffffff
+[ 3970.286372] RBP: ffff9019a4f34c48 R08: 00000000000007dc R09: 0000000000000001
+[ 3970.286373] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[ 3970.286373] R13: ffff9019ac1bc8e0 R14: ffff9019a3ca0720 R15: ffff9019a0e18000
+[ 3970.286375] FS:  00007fa373615740(0000) GS:ffff9019aec80000(0000) knlGS:0000000000000000
+[ 3970.286375] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3970.286376] CR2: 00005602062a7158 CR3: 00000001c498a001 CR4: 00000000001606e0
+[ 3970.286377] Call Trace:
+[ 3970.286420]  nv50_instobj_release+0x27/0x90 [nouveau]
+[ 3970.286469]  nvkm_vmm_iter.constprop.0+0x7a1/0x860 [nouveau]
+[ 3970.286472]  ? __x64_sys_sched_get_priority_min+0x40/0x40
+[ 3970.286474]  ? _raw_spin_lock_irqsave+0x26/0x50
+[ 3970.286475]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[ 3970.286524]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 3970.286571]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 3970.286615]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[ 3970.286646]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 3970.286676]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 3970.286707]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[ 3970.286737]  nv50_instobj_dtor+0xa8/0xf0 [nouveau]
+[ 3970.286760]  nvkm_memory_unref+0x46/0x70 [nouveau]
+[ 3970.286792]  nvkm_mmu_ptc_put+0x104/0x170 [nouveau]
+[ 3970.286823]  nvkm_vmm_unref+0x166/0x1b0 [nouveau]
+[ 3970.286852]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[ 3970.286874]  nvkm_object_dtor+0xb8/0x110 [nouveau]
+[ 3970.286898]  nvkm_object_del+0x20/0x80 [nouveau]
+[ 3970.286920]  nvkm_ioctl_del+0x37/0x50 [nouveau]
+[ 3970.286944]  nvkm_ioctl+0xde/0x180 [nouveau]
+[ 3970.286965]  nvif_object_fini+0x59/0x80 [nouveau]
+[ 3970.287003]  nouveau_vmm_fini+0x1b/0x30 [nouveau]
+[ 3970.287041]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[ 3970.287077]  nouveau_drm_postclose+0xa4/0xd0 [nouveau]
+[ 3970.287092]  drm_file_free.part.0+0x1e4/0x260 [drm]
+[ 3970.287104]  drm_release+0x65/0x110 [drm]
+[ 3970.287106]  __fput+0xca/0x230
+[ 3970.287109]  task_work_run+0x5c/0x90
+[ 3970.287113]  __prepare_exit_to_usermode+0x198/0x1c0
+[ 3970.287116]  do_syscall_64+0x50/0x70
+[ 3970.287118]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 3970.287123] RIP: 0033:0x7fa373a9972b
+[ 3970.287125] Code: 03 00 00 00 0f 05 48 3d 00 f0 ff ff 77 41 c3 48 83 ec 18 89 7c 24 0c e8 73 41 f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 d1 41 f9 ff 8b 44
+[ 3970.287126] RSP: 002b:00007ffdf32783d0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[ 3970.287128] RAX: 0000000000000000 RBX: 000056020629f1b0 RCX: 00007fa373a9972b
+[ 3970.287128] RDX: 0000000000000002 RSI: 0000000000000000 RDI: 000000000000000a
+[ 3970.287129] RBP: 000056020629f250 R08: 0000000000000000 R09: 00007ffdf3277fa0
+[ 3970.287130] R10: 0000000000000001 R11: 0000000000000293 R12: 00005602062a48d0
+[ 3970.287131] R13: 00007fa362a75880 R14: 00005602062a1400 R15: 00007fa362a56fc0
+[ 3970.287133] ---[ end trace ba0e880fa4acab5e ]---
+[ 4187.257258] usb 2-1: new high-speed USB device number 5 using xhci_hcd
+[ 4187.402057] usb 2-1: New USB device found, idVendor=0718, idProduct=0619, bcdDevice= 1.00
+[ 4187.402059] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[ 4187.402060] usb 2-1: Product: Mini
+[ 4187.402061] usb 2-1: Manufacturer: Memorex
+[ 4187.402061] usb 2-1: SerialNumber: ...
+[ 4188.010941] usb-storage 2-1:1.0: USB Mass Storage device detected
+[ 4188.011118] scsi host8: usb-storage 2-1:1.0
+[ 4188.011198] usbcore: registered new interface driver usb-storage
+[ 4188.013488] usbcore: registered new interface driver uas
+[ 4189.101955] scsi 8:0:0:0: Direct-Access     Memorex  Mini             PMAP PQ: 0 ANSI: 6
+[ 4189.102712] sd 8:0:0:0: Attached scsi generic sg2 type 0
+[ 4190.066556] sd 8:0:0:0: [sdb] 30261248 512-byte logical blocks: (15.5 GB/14.4 GiB)
+[ 4190.068173] sd 8:0:0:0: [sdb] Write Protect is off
+[ 4190.068181] sd 8:0:0:0: [sdb] Mode Sense: 23 00 00 00
+[ 4190.069707] sd 8:0:0:0: [sdb] No Caching mode page found
+[ 4190.069711] sd 8:0:0:0: [sdb] Assuming drive cache: write through
+[ 4190.134193]  sdb:
+[ 4190.138446] sd 8:0:0:0: [sdb] Attached SCSI removable disk
+[ 4200.614188] raid6: avx2x4   gen() 34833 MB/s
+[ 4200.670871] raid6: avx2x4   xor() 12405 MB/s
+[ 4200.727526] raid6: avx2x2   gen() 34255 MB/s
+[ 4200.784205] raid6: avx2x2   xor() 20367 MB/s
+[ 4200.840880] raid6: avx2x1   gen() 31934 MB/s
+[ 4200.897570] raid6: avx2x1   xor() 18359 MB/s
+[ 4200.954198] raid6: sse2x4   gen() 20000 MB/s
+[ 4201.010900] raid6: sse2x4   xor() 10901 MB/s
+[ 4201.067534] raid6: sse2x2   gen() 20213 MB/s
+[ 4201.124201] raid6: sse2x2   xor() 12294 MB/s
+[ 4201.180869] raid6: sse2x1   gen() 15274 MB/s
+[ 4201.237537] raid6: sse2x1   xor() 10480 MB/s
+[ 4201.237538] raid6: using algorithm avx2x4 gen() 34833 MB/s
+[ 4201.237538] raid6: .... xor() 12405 MB/s, rmw enabled
+[ 4201.237539] raid6: using avx2x2 recovery algorithm
+[ 4201.249478] xor: automatically using best checksumming function   avx       
+[ 4201.326596] Btrfs loaded, crc32c=crc32c-intel
+[ 4201.392615] JFS: nTxBlock = 8192, nTxLock = 65536
+[ 4201.428900] NILFS version 2 loaded
+[ 4201.511968] SGI XFS with ACLs, security attributes, realtime, scrub, repair, quota, no debug enabled
+[ 4202.625219]  sdb:
+[ 4202.851860]  sdb:
+[11303.256143] perf: interrupt took too long (2510 > 2500), lowering kernel.perf_event_max_sample_rate to 79500
+[14183.905065] Bluetooth: Core ver 2.22
+[14183.905082] NET: Registered protocol family 31
+[14183.905082] Bluetooth: HCI device and connection manager initialized
+[14183.905085] Bluetooth: HCI socket layer initialized
+[14183.905086] Bluetooth: L2CAP socket layer initialized
+[14183.905088] Bluetooth: SCO socket layer initialized
+[14373.154437] usb 2-2: new full-speed USB device number 6 using xhci_hcd
+[14378.334468] xhci_hcd 0000:00:14.0: Timeout while waiting for setup device command
+[14383.667779] xhci_hcd 0000:00:14.0: Timeout while waiting for setup device command
+[14383.874407] usb 2-2: device not accepting address 6, error -62
+[14383.997765] usb 2-2: new full-speed USB device number 7 using xhci_hcd
+[14389.211101] xhci_hcd 0000:00:14.0: Timeout while waiting for setup device command
+[14394.544433] xhci_hcd 0000:00:14.0: Timeout while waiting for setup device command
+[14394.751062] usb 2-2: device not accepting address 7, error -62
+[14394.751124] usb usb2-port2: attempt power cycle
+[14395.397736] usb 2-2: new full-speed USB device number 8 using xhci_hcd
+[14395.416902] usb 2-2: New USB device found, idVendor=045e, idProduct=028f, bcdDevice= 1.06
+[14395.416905] usb 2-2: New USB device strings: Mfr=0, Product=0, SerialNumber=...
+[14406.404100] usb 2-2: USB disconnect, device number 8
+[16584.602229] dde-launcher[2141]: segfault at 8 ip 00007f46840ca59e sp 00007ffc80b3fad0 error 4 in libQt5Widgets.so.5.15.0[7f4684085000+3af000]
+[16584.602236] Code: 09 c3 88 5a 6c 5b 5d 41 5c 41 5d 41 5e c3 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 00 41 56 41 89 f6 41 55 41 54 55 48 89 fd 53 <4c> 8b 6f 08 4c 89 ef 67 e8 d5 55 ff ff 49 8b 45 58 48 89 ef 0f b6
