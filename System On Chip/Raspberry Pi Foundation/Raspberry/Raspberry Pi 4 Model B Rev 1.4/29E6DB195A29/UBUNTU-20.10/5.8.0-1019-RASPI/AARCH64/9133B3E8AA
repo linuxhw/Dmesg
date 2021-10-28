@@ -1,0 +1,55 @@
+[ 5611.630950] cma_alloc: 15 callbacks suppressed
+[ 5611.630954] cma: cma_alloc: alloc failed, req-size: 19200 pages, ret: -12
+[ 5611.630976] ------------[ cut here ]------------
+[ 5611.630991] WARNING: CPU: 2 PID: 12305 at mm/page_alloc.c:4822 __alloc_pages_nodemask+0x2f8/0x340
+[ 5611.630993] Modules linked in: rfcomm algif_hash aes_neon_bs aes_neon_blk crypto_simd cryptd algif_skcipher af_alg hci_uart btqca btrtl btbcm btintel bnep vc4 btsdio drm_kms_helper cec bluetooth input_leds ecdh_generic ecc brcmfmac snd_soc_core brcmutil cfg80211 snd_compress ac97_bus snd_pcm_dmaengine snd_seq_dummy snd_seq_oss snd_seq_midi snd_seq_midi_event snd_bcm2835(CE) bcm2835_isp(CE) bcm2835_v4l2(CE) bcm2835_codec(CE) snd_pcm_oss snd_rawmidi raspberrypi_hwmon bcm2835_mmal_vchiq(CE) v3d gpu_sched snd_mixer_oss crct10dif_ce videobuf2_vmalloc v4l2_mem2mem videobuf2_dma_contig videobuf2_memops snd_seq vc_sm_cma(CE) videobuf2_v4l2 videobuf2_common snd_pcm videodev snd_seq_device mc snd_timer snd rpivid_mem fb_sys_fops syscopyarea sysfillrect sysimgblt uio_pdrv_genirq uio sch_fq_codel ppdev lp parport drm ip_tables x_tables autofs4 btrfs blake2b_generic xor xor_neon hid_generic usbhid raid6_pq libcrc32c dm_mirror dm_region_hash dm_log uas usb_storage spidev xhci_pci xhci_pci_renesas
+[ 5611.631056]  phy_generic
+[ 5611.631062] CPU: 2 PID: 12305 Comm: v4l2src0:src Tainted: G        WC  E     5.8.0-1019-raspi #22-Ubuntu
+[ 5611.631064] Hardware name: Raspberry Pi 4 Model B Rev 1.4 (DT)
+[ 5611.631068] pstate: 20400005 (nzCv daif +PAN -UAO BTYPE=--)
+[ 5611.631071] pc : __alloc_pages_nodemask+0x2f8/0x340
+[ 5611.631075] lr : __dma_direct_alloc_pages+0x16c/0x25c
+[ 5611.631077] sp : ffff8000117638d0
+[ 5611.631078] x29: ffff8000117638d0 x28: 0000000000000002 
+[ 5611.631081] x27: ffff501270651330 x26: ffff800011763b98 
+[ 5611.631083] x25: 000000000000000f x24: ffffba383d31c1ac 
+[ 5611.631086] x23: 0000000004b00000 x22: ffff50126af63410 
+[ 5611.631088] x21: 0000000004afffff x20: 000000003fffffff 
+[ 5611.631090] x19: 0000000000000cc1 x18: 0000000000000000 
+[ 5611.631092] x17: 0000002e0b70b5e4 x16: ffffba383d31aa30 
+[ 5611.631094] x15: 0000000000000030 x14: ffffffffffffffff 
+[ 5611.631096] x13: ffff800091763617 x12: ffff80001176361f 
+[ 5611.631099] x11: ffffba383e7cc000 x10: ffffba383e906770 
+[ 5611.631101] x9 : ffffba383d31bcf0 x8 : 6170203030323931 
+[ 5611.631103] x7 : 203a657a69732d71 x6 : ffffba383e7a9000 
+[ 5611.631105] x5 : ffff501276fc2210 x4 : ffff501241888f00 
+[ 5611.631107] x3 : 0000000000000000 x2 : 0000000000000000 
+[ 5611.631109] x1 : 0000000000000000 x0 : 0000000000000cc1 
+[ 5611.631112] Call trace:
+[ 5611.631115]  __alloc_pages_nodemask+0x2f8/0x340
+[ 5611.631118]  __dma_direct_alloc_pages+0x16c/0x25c
+[ 5611.631120]  dma_direct_alloc_pages+0x154/0x280
+[ 5611.631122]  dma_direct_alloc+0x1c/0x30
+[ 5611.631124]  dma_alloc_attrs+0x88/0xf4
+[ 5611.631134]  vb2_dc_alloc+0x7c/0x150 [videobuf2_dma_contig]
+[ 5611.631143]  __vb2_buf_mem_alloc+0x5c/0x130 [videobuf2_common]
+[ 5611.631147]  __vb2_queue_alloc+0x134/0x33c [videobuf2_common]
+[ 5611.631151]  vb2_core_reqbufs+0x244/0x41c [videobuf2_common]
+[ 5611.631156]  vb2_ioctl_reqbufs+0x90/0xd0 [videobuf2_v4l2]
+[ 5611.631187]  v4l_reqbufs+0x58/0x70 [videodev]
+[ 5611.631200]  __video_do_ioctl+0x190/0x3f0 [videodev]
+[ 5611.631211]  video_usercopy+0x19c/0x570 [videodev]
+[ 5611.631223]  video_ioctl2+0x24/0x80 [videodev]
+[ 5611.631235]  v4l2_ioctl+0x4c/0x70 [videodev]
+[ 5611.631238]  ksys_ioctl+0xb4/0xf4
+[ 5611.631240]  __arm64_sys_ioctl+0x2c/0xbc
+[ 5611.631243]  el0_svc_common.constprop.0+0x84/0x200
+[ 5611.631245]  do_el0_svc+0x30/0xa0
+[ 5611.631248]  el0_svc+0x18/0x50
+[ 5611.631250]  el0_sync_handler+0x98/0x354
+[ 5611.631252]  el0_sync+0x17c/0x180
+[ 5611.631254] ---[ end trace f95a89a308e17440 ]---
+[ 5611.631262] bcm2835-isp bcm2835-isp: dma_alloc_coherent of size 78643200 failed
+[ 5611.789805] cma: cma_alloc: alloc failed, req-size: 19200 pages, ret: -12
+[ 5611.789836] bcm2835-isp bcm2835-isp: dma_alloc_coherent of size 78643200 failed
+[ 7536.226072] printk: hwinfo (25815): Attempt to access syslog with CAP_SYS_ADMIN but no CAP_SYSLOG (deprecated).

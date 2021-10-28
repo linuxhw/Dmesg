@@ -1,0 +1,56 @@
+[ 2693.279930] cma_alloc: 4 callbacks suppressed
+[ 2693.279937] cma: cma_alloc: alloc failed, req-size: 19200 pages, ret: -12
+[ 2693.279962] ------------[ cut here ]------------
+[ 2693.279978] WARNING: CPU: 0 PID: 7878 at mm/page_alloc.c:4818 __alloc_pages_nodemask+0x2f8/0x340
+[ 2693.279980] Modules linked in: rfcomm algif_hash aes_neon_bs aes_neon_blk crypto_simd cryptd algif_skcipher af_alg bnep hci_uart btqca btrtl btbcm btintel vc4 btsdio bluetooth drm_kms_helper cec snd_soc_core ecdh_generic snd_compress input_leds ecc ac97_bus snd_pcm_dmaengine snd_seq_dummy bcm2835_isp(CE) snd_seq_oss bcm2835_v4l2(CE) brcmfmac bcm2835_codec(CE) bcm2835_mmal_vchiq(CE) videobuf2_vmalloc snd_seq_midi snd_seq_midi_event v4l2_mem2mem videobuf2_dma_contig brcmutil videobuf2_memops videobuf2_v4l2 snd_rawmidi videobuf2_common cfg80211 snd_bcm2835(CE) v3d snd_pcm_oss snd_mixer_oss gpu_sched snd_seq videodev crct10dif_ce snd_pcm raspberrypi_hwmon snd_seq_device snd_timer mc vc_sm_cma(CE) snd rpivid_mem fb_sys_fops syscopyarea sysfillrect sysimgblt uio_pdrv_genirq uio sch_fq_codel ppdev drm lp parport ip_tables x_tables autofs4 btrfs blake2b_generic xor xor_neon raid6_pq libcrc32c dm_mirror dm_region_hash dm_log hid_logitech_hidpp hid_logitech_dj hid_generic usbhid uas usb_storage
+[ 2693.280060]  spidev xhci_pci xhci_pci_renesas phy_generic
+[ 2693.280072] CPU: 0 PID: 7878 Comm: v4l2src0:src Tainted: G         C  E     5.8.0-1006-raspi #9-Ubuntu
+[ 2693.280074] Hardware name: Raspberry Pi 4 Model B Rev 1.4 (DT)
+[ 2693.280078] pstate: 20400005 (nzCv daif +PAN -UAO BTYPE=--)
+[ 2693.280083] pc : __alloc_pages_nodemask+0x2f8/0x340
+[ 2693.280088] lr : __dma_direct_alloc_pages+0x114/0x22c
+[ 2693.280090] sp : ffff800011a7b8c0
+[ 2693.280092] x29: ffff800011a7b8c0 x28: 0000000000000002 
+[ 2693.280096] x27: ffff0001f1d4d3a0 x26: 00000000fffffffa 
+[ 2693.280100] x25: 000000000000000f x24: ffffa9369a29e000 
+[ 2693.280103] x23: 000000003fffffff x22: 0000000004afffff 
+[ 2693.280106] x21: 0000000004b00000 x20: ffff0001eada8010 
+[ 2693.280109] x19: 0000000000000cc1 x18: 0000000000000000 
+[ 2693.280112] x17: 0000002fff318b1e x16: ffffa9369931f050 
+[ 2693.280115] x15: 0000000000000030 x14: ffffffffffffffff 
+[ 2693.280118] x13: ffff800091a7b607 x12: ffff800011a7b60f 
+[ 2693.280121] x11: ffffa9369a7ee000 x10: ffffa9369a923ae8 
+[ 2693.280124] x9 : ffffa936993202a8 x8 : 2c73656761702030 
+[ 2693.280128] x7 : 30323931203a657a x6 : ffffa9369a7ca000 
+[ 2693.280131] x5 : ffff0001f6f82210 x4 : ffff0001ef893c00 
+[ 2693.280134] x3 : 0000000000000000 x2 : 0000000000000000 
+[ 2693.280137] x1 : 0000000000000000 x0 : 0000000000000cc1 
+[ 2693.280141] Call trace:
+[ 2693.280145]  __alloc_pages_nodemask+0x2f8/0x340
+[ 2693.280148]  __dma_direct_alloc_pages+0x114/0x22c
+[ 2693.280152]  dma_direct_alloc_pages+0x144/0x270
+[ 2693.280155]  dma_direct_alloc+0x1c/0x2c
+[ 2693.280158]  dma_alloc_attrs+0x88/0xf4
+[ 2693.280167]  vb2_dc_alloc+0x7c/0x150 [videobuf2_dma_contig]
+[ 2693.280177]  __vb2_buf_mem_alloc+0x5c/0x130 [videobuf2_common]
+[ 2693.280183]  __vb2_queue_alloc+0x134/0x33c [videobuf2_common]
+[ 2693.280189]  vb2_core_reqbufs+0x244/0x41c [videobuf2_common]
+[ 2693.280198]  vb2_ioctl_reqbufs+0x90/0xd0 [videobuf2_v4l2]
+[ 2693.280229]  v4l_reqbufs+0x58/0x70 [videodev]
+[ 2693.280248]  __video_do_ioctl+0x190/0x3f0 [videodev]
+[ 2693.280265]  video_usercopy+0x19c/0x570 [videodev]
+[ 2693.280282]  video_ioctl2+0x24/0x80 [videodev]
+[ 2693.280299]  v4l2_ioctl+0x4c/0x70 [videodev]
+[ 2693.280303]  ksys_ioctl+0xb4/0xf4
+[ 2693.280306]  __arm64_sys_ioctl+0x2c/0xbc
+[ 2693.280310]  el0_svc_common.constprop.0+0x84/0x200
+[ 2693.280313]  do_el0_svc+0x30/0xa0
+[ 2693.280317]  el0_svc+0x18/0x50
+[ 2693.280321]  el0_sync_handler+0x98/0x354
+[ 2693.280324]  el0_sync+0x17c/0x180
+[ 2693.280326] ---[ end trace d46c1eed0c0a9fcb ]---
+[ 2693.280337] bcm2835-isp bcm2835-isp: dma_alloc_coherent of size 78643200 failed
+[ 2693.448844] cma: cma_alloc: alloc failed, req-size: 19200 pages, ret: -12
+[ 2693.448882] bcm2835-isp bcm2835-isp: dma_alloc_coherent of size 78643200 failed
+[ 2699.996835] cma: cma_alloc: alloc failed, req-size: 19200 pages, ret: -12
+[ 2699.996870] bcm2835-isp bcm2835-isp: dma_alloc_coherent of size 78643200 failed
