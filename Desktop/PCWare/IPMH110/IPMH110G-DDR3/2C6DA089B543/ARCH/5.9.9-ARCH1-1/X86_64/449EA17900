@@ -1,0 +1,896 @@
+[19521.817301] page dumped because: nonzero mapcount
+[19521.817302] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[19521.817424]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[19521.817457] CPU: 0 PID: 77541 Comm: kworker/u8:0 Tainted: G    B             5.9.9-arch1-1 #1
+[19521.817459] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[19521.817479] Workqueue: mt7601u mt7601u_tx_stat [mt7601u]
+[19521.817481] Call Trace:
+[19521.817488]  <IRQ>
+[19521.817518]  dump_stack+0x6b/0x83
+[19521.817539]  bad_page.cold+0x63/0x94
+[19521.817550]  get_page_from_freelist+0xc3f/0x12d0
+[19521.817570]  ? kfree+0xd5/0x440
+[19521.817572]  __alloc_pages_nodemask+0x15b/0x320
+[19521.817578]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[19521.817592]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[19521.817611]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[19521.817622]  tasklet_action_common.constprop.0+0xaf/0xc0
+[19521.817634]  __do_softirq+0xff/0x344
+[19521.817656]  ? handle_fasteoi_irq+0x210/0x210
+[19521.817658]  asm_call_irq_on_stack+0x12/0x20
+[19521.817660]  </IRQ>
+[19521.817671]  do_softirq_own_stack+0x5d/0x80
+[19521.817675]  irq_exit_rcu+0xd8/0x120
+[19521.817687]  common_interrupt+0xcb/0x1e0
+[19521.817692]  asm_common_interrupt+0x1e/0x40
+[19521.817706] RIP: 0010:wq_worker_running+0xd/0x30
+[19521.817712] Code: ff 0f 0b e9 31 fd ff ff 41 8b 76 34 85 f6 0f 84 09 ff ff ff eb 95 0f 0b e9 77 fe ff ff 0f 1f 44 00 00 e8 66 59 00 00 8b 50 68 <85> d2 74 1b f7 40 60 c8 01 00 00 75 0b 48 8b 50 40 f0 ff 82 00 03
+[19521.817714] RSP: 0018:ffffb14b83fb3c28 EFLAGS: 00000202
+[19521.817717] RAX: ffff94394b691b40 RBX: ffff9438ee459f00 RCX: 0000000000000000
+[19521.817717] RDX: 0000000000000000 RSI: ffffffffa955986f RDI: ffff9438ee459f00
+[19521.817718] RBP: 000000010057fdd4 R08: 0000000000000000 R09: 0000000000000000
+[19521.817719] R10: 00000000000009c7 R11: 0000000000000000 R12: ffffb14b83fb3c30
+[19521.817719] R13: ffffb14b83fb3cd8 R14: 0000000000000007 R15: 00000000000000c0
+[19521.817725]  ? wq_worker_running+0xa/0x30
+[19521.817742]  schedule_timeout+0x99/0x170
+[19521.817782]  ? __next_timer_interrupt+0x100/0x100
+[19521.817784]  wait_for_completion_timeout+0x99/0x110
+[19521.817788]  usb_start_wait_urb+0xa8/0x190
+[19521.817791]  usb_control_msg+0xe7/0x150
+[19521.817803]  mt7601u_vendor_request+0xb9/0x170 [mt7601u]
+[19521.817809]  __mt7601u_rr+0x3e/0xf0 [mt7601u]
+[19521.817813]  mt7601u_rr+0x2a/0x40 [mt7601u]
+[19521.817817]  mt7601u_mac_fetch_tx_status+0x1b/0x80 [mt7601u]
+[19521.817823]  mt7601u_tx_stat+0x9c/0x1c0 [mt7601u]
+[19521.817826]  process_one_work+0x1da/0x3d0
+[19521.817828]  worker_thread+0x4d/0x3d0
+[19521.817829]  ? rescuer_thread+0x410/0x410
+[19521.817832]  kthread+0x142/0x160
+[19521.817835]  ? __kthread_bind_mask+0x60/0x60
+[19521.817850]  ret_from_fork+0x22/0x30
+[19703.232627] wlp0s20f0u5: deauthenticating from XXX by local choice (Reason: 3=DEAUTH_LEAVING)
+[19703.355385] PM: suspend entry (deep)
+[19703.367513] Filesystems sync: 0.012 seconds
+[19703.368853] Freezing user space processes ... (elapsed 0.002 seconds) done.
+[19703.371535] OOM killer disabled.
+[19703.371537] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[19703.373054] printk: Suspending console(s) (use no_console_suspend to debug)
+[19703.404884] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[19703.404976] sd 0:0:0:0: [sda] Stopping disk
+[19703.510928] ACPI: Preparing to enter system sleep state S3
+[19703.513664] PM: Saving platform NVS memory
+[19703.513772] Disabling non-boot CPUs ...
+[19703.515444] smpboot: CPU 1 is now offline
+[19703.517996] smpboot: CPU 2 is now offline
+[19703.520385] smpboot: CPU 3 is now offline
+[19703.523651] ACPI: Low-level resume complete
+[19703.523721] PM: Restoring platform NVS memory
+[19703.524440] Enabling non-boot CPUs ...
+[19703.524480] x86: Booting SMP configuration:
+[19703.524481] smpboot: Booting Node 0 Processor 1 APIC 0x2
+[19703.525007] CPU1 is up
+[19703.525030] smpboot: Booting Node 0 Processor 2 APIC 0x4
+[19703.525550] CPU2 is up
+[19703.525573] smpboot: Booting Node 0 Processor 3 APIC 0x6
+[19703.526101] CPU3 is up
+[19703.526911] smpboot: Scheduler frequency invariance went wobbly, disabling!
+[19703.526996] ACPI: Waking up from system sleep state S3
+[19703.567030] sd 0:0:0:0: [sda] Starting disk
+[19703.630385] mt7601u 1-5:1.0: Error: MCU response pre-completed!
+[19703.644772] mt7601u 1-5:1.0: EEPROM ver:0d fae:00
+[19703.645047] mt7601u 1-5:1.0: EEPROM country region 01 (channels 1-13)
+[19703.883108] acpi LNXPOWER:16: Turning OFF
+[19703.883382] acpi LNXPOWER:15: Turning OFF
+[19703.883642] acpi LNXPOWER:14: Turning OFF
+[19703.883903] acpi LNXPOWER:13: Turning OFF
+[19703.884164] acpi LNXPOWER:12: Turning OFF
+[19703.884424] acpi LNXPOWER:11: Turning OFF
+[19703.884682] acpi LNXPOWER:10: Turning OFF
+[19703.884941] acpi LNXPOWER:0f: Turning OFF
+[19703.885199] acpi LNXPOWER:0e: Turning OFF
+[19703.885456] acpi LNXPOWER:0d: Turning OFF
+[19703.885715] acpi LNXPOWER:0c: Turning OFF
+[19703.885972] acpi LNXPOWER:0b: Turning OFF
+[19703.886230] acpi LNXPOWER:0a: Turning OFF
+[19703.886528] acpi LNXPOWER:09: Turning OFF
+[19703.886791] acpi LNXPOWER:08: Turning OFF
+[19703.887052] acpi LNXPOWER:07: Turning OFF
+[19703.887311] acpi LNXPOWER:06: Turning OFF
+[19703.887570] acpi LNXPOWER:05: Turning OFF
+[19703.887830] acpi LNXPOWER:04: Turning OFF
+[19703.888087] acpi LNXPOWER:03: Turning OFF
+[19703.888277] OOM killer enabled.
+[19703.888279] Restarting tasks ... done.
+[19703.894900] video LNXVIDEO:00: Restoring backlight state
+[19703.894920] PM: suspend exit
+[19703.906849] ata2: SATA link down (SStatus 4 SControl 300)
+[19703.907436] ata4: SATA link down (SStatus 4 SControl 300)
+[19703.907464] ata3: SATA link down (SStatus 4 SControl 300)
+[19703.907718] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[19703.908004] ata1.00: configured for UDMA/133
+[19703.935039] mei_hdcp 0000:00:16.0-HASH_BC0-5B5B-1043-32E7-8ED7D3965D57: bound 0000:00:02.0 (ops i915_hdcp_component_ops [i915])
+[19708.236610] Generic FE-GE Realtek PHY r8169-100:00: attached PHY driver [Generic FE-GE Realtek PHY] (mii_bus:phy_addr=r8169-100:00, irq=IGNORE)
+[19708.416675] r8169 0000:01:00.0 enp1s0: Link is Down
+[19710.907656] wlp0s20f0u5: authenticate with XXX
+[19710.933477] wlp0s20f0u5: send auth to XXX (try 1/3)
+[19710.934982] wlp0s20f0u5: authenticated
+[19710.936373] wlp0s20f0u5: associate with XXX (try 1/3)
+[19710.939375] wlp0s20f0u5: RX AssocResp from XXX (capab=0x8421 status=0 aid=1)
+[19710.965421] wlp0s20f0u5: associated
+[19710.966274] IPv6: ADDRCONF(NETDEV_CHANGE): wlp0s20f0u5: link becomes ready
+[24469.581993] urxvt[117180]: segfault at 55d2fa7a6ca2 ip 00007fdc5e6254ed sp 00007fffcb7848a0 error 4 in libc-2.32.so[7fdc5e60c000+14d000]
+[24469.581999] Code: fe ff 49 83 c5 02 41 0f b7 6d fe 49 89 c6 4c 8d 78 fe 4d 85 e4 75 13 eb cc 0f 1f 40 00 4c 8b 63 08 48 83 c3 08 4d 85 e4 74 bb <66> 41 3b 2c 24 75 ec 49 8d 7c 24 02 4c 89 fa 4c 89 ee e8 9c 70 fe
+[30277.878734] BUG: Bad page state in process Media  pfn:63ac2
+[30277.878750] page:000000007162830a refcount:0 mapcount:-128 mapping:0000000000000000 index:0xffff9438c68b0880 pfn:0x63ac2
+[30277.878755] flags: 0x1ffff0000000000()
+[30277.878762] raw: 01ffff0000000000 ffff943a7effc6d8 ffffdf9a402f6608 0000000000000000
+[30277.878767] raw: ffff9438c68b0880 0000000000000001 00000000ffffff7f 0000000000000000
+[30277.878769] page dumped because: nonzero mapcount
+[30277.878773] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[30277.878914]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[30277.878946] CPU: 0 PID: 149773 Comm: Media Tainted: G    B             5.9.9-arch1-1 #1
+[30277.878949] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[30277.878951] Call Trace:
+[30277.878962]  <IRQ>
+[30277.878989]  dump_stack+0x6b/0x83
+[30277.879004]  bad_page.cold+0x63/0x94
+[30277.879012]  get_page_from_freelist+0xc3f/0x12d0
+[30277.879021]  __alloc_pages_nodemask+0x15b/0x320
+[30277.879038]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[30277.879044]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[30277.879052]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[30277.879061]  tasklet_action_common.constprop.0+0xaf/0xc0
+[30277.879067]  __do_softirq+0xff/0x344
+[30277.879075]  ? handle_fasteoi_irq+0x210/0x210
+[30277.879080]  asm_call_irq_on_stack+0x12/0x20
+[30277.879083]  </IRQ>
+[30277.879090]  do_softirq_own_stack+0x5d/0x80
+[30277.879095]  irq_exit_rcu+0xd8/0x120
+[30277.879101]  common_interrupt+0xcb/0x1e0
+[30277.879106]  ? asm_common_interrupt+0x8/0x40
+[30277.879110]  asm_common_interrupt+0x1e/0x40
+[30277.879115] RIP: 0033:0x56231c636ba0
+[30277.879120] Code: c2 48 29 ca 48 c1 ca 03 48 83 fa 13 77 11 48 8d 9d 20 ff ff ff e9 c4 f9 ff ff e8 5b a6 41 07 0f 0b cc cc cc cc cc cc cc cc cc <55> 48 89 e5 41 57 41 56 41 55 41 54 53 48 83 ec 48 49 89 f7 48 89
+[30277.879123] RSP: 002b:00007f1d06c6ccc8 EFLAGS: 00000202
+[30277.879127] RAX: 00000675a8b9cae0 RBX: 00007f1d06c6ccf8 RCX: 0000000000000014
+[30277.879129] RDX: 00007f1d06c6cfb8 RSI: 00007f1d06c6ccf8 RDI: 00007f1d06c6cd00
+[30277.879131] RBP: 00007f1d06c6cf90 R08: 00000675a7bbe840 R09: 0000000000000001
+[30277.879134] R10: 7ffffffffffff85d R11: 0000000000020d55 R12: 00000675a7d2ae00
+[30277.879137] R13: 00000675a7f50b00 R14: aaaaaaaaaaaaaaaa R15: 00007f1d06c6cfc0
+[33291.266576] BUG: Bad page state in process Chrome_IOThread  pfn:1a2b2
+[33291.266595] page:00000000b218639f refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x1a2b2
+[33291.266601] flags: 0x1ffff0000000000()
+[33291.266611] raw: 01ffff0000000000 ffff943a7effc6d8 ffffdf9a4091a588 0000000000000000
+[33291.266615] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[33291.266618] page dumped because: nonzero mapcount
+[33291.266620] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[33291.266778]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[33291.266816] CPU: 0 PID: 1240 Comm: Chrome_IOThread Tainted: G    B             5.9.9-arch1-1 #1
+[33291.266821] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[33291.266823] Call Trace:
+[33291.266839]  <IRQ>
+[33291.266884]  dump_stack+0x6b/0x83
+[33291.266907]  bad_page.cold+0x63/0x94
+[33291.266922]  get_page_from_freelist+0xc3f/0x12d0
+[33291.266932]  __alloc_pages_nodemask+0x15b/0x320
+[33291.266977]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[33291.266995]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[33291.267019]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[33291.267037]  tasklet_action_common.constprop.0+0xaf/0xc0
+[33291.267055]  __do_softirq+0xff/0x344
+[33291.267078]  ? handle_fasteoi_irq+0x210/0x210
+[33291.267083]  asm_call_irq_on_stack+0x12/0x20
+[33291.267088]  </IRQ>
+[33291.267105]  do_softirq_own_stack+0x5d/0x80
+[33291.267111]  irq_exit_rcu+0xd8/0x120
+[33291.267127]  common_interrupt+0xcb/0x1e0
+[33291.267132]  ? asm_common_interrupt+0x8/0x40
+[33291.267136]  asm_common_interrupt+0x1e/0x40
+[33291.267147] RIP: 0033:0x55898e377780
+[33291.267157] Code: 00 64 48 8b 04 25 28 00 00 00 48 3b 45 d0 75 14 89 d8 48 81 c4 98 00 00 00 5b 41 5c 41 5d 41 5e 41 5f 5d c3 e8 71 ba 21 05 cc <55> 48 89 e5 53 50 48 8b 47 18 8b 58 04 67 e8 dd 48 04 00 39 c3 0f
+[33291.267161] RSP: 002b:00007f65c9981b08 EFLAGS: 00000293
+[33291.267166] RAX: 000055899381a8d8 RBX: 0000296f25511f00 RCX: 0000000000000004
+[33291.267169] RDX: 0000000000002955 RSI: 0000000000000000 RDI: 0000296f1a55d900
+[33291.267171] RBP: 00007f65c9981b90 R08: 0000000000000000 R09: 00000000000013df
+[33291.267173] R10: 990bb1132425f040 R11: a6fef5f2a1a35152 R12: 0000000000000000
+[33291.267176] R13: 0000296f1e065b28 R14: 00007f65c9981ba0 R15: 0000296f1e1b9840
+[33516.691006] BUG: Bad page state in process ksoftirqd/0  pfn:24e0a
+[33516.691023] page:0000000067b3c7a0 refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x24e0a
+[33516.691026] flags: 0x1ffff0000000000()
+[33516.691035] raw: 01ffff0000000000 ffff943a7effc6d8 ffffdf9a40688708 0000000000000000
+[33516.691039] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[33516.691040] page dumped because: nonzero mapcount
+[33516.691042] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[33516.691190]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[33516.691228] CPU: 0 PID: 9 Comm: ksoftirqd/0 Tainted: G    B             5.9.9-arch1-1 #1
+[33516.691232] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[33516.691233] Call Trace:
+[33516.691289]  dump_stack+0x6b/0x83
+[33516.691301]  bad_page.cold+0x63/0x94
+[33516.691311]  get_page_from_freelist+0xc3f/0x12d0
+[33516.691326]  ? check_preempt_wakeup+0xf1/0x250
+[33516.691329]  __alloc_pages_nodemask+0x15b/0x320
+[33516.691369]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[33516.691384]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[33516.691397]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[33516.691411]  tasklet_action_common.constprop.0+0xaf/0xc0
+[33516.691421]  __do_softirq+0xff/0x344
+[33516.691441]  ? smpboot_register_percpu_thread+0xe0/0xe0
+[33516.691443]  run_ksoftirqd+0x32/0x40
+[33516.691446]  smpboot_thread_fn+0x19a/0x230
+[33516.691471]  kthread+0x142/0x160
+[33516.691475]  ? __kthread_bind_mask+0x60/0x60
+[33516.691492]  ret_from_fork+0x22/0x30
+[42568.850432] BUG: Bad page state in process chromium  pfn:15daf2
+[42568.850449] page:00000000bea9071f refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x15daf2
+[42568.850453] flags: 0x2ffff0000000000()
+[42568.850461] raw: 02ffff0000000000 ffff943a7effcc98 ffffdf9a4575da88 0000000000000000
+[42568.850465] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[42568.850468] page dumped because: nonzero mapcount
+[42568.850471] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[42568.850586]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[42568.850619] CPU: 0 PID: 1435 Comm: chromium Tainted: G    B             5.9.9-arch1-1 #1
+[42568.850624] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[42568.850626] Call Trace:
+[42568.850635]  <IRQ>
+[42568.850667]  dump_stack+0x6b/0x83
+[42568.850685]  bad_page.cold+0x63/0x94
+[42568.850698]  get_page_from_freelist+0xc3f/0x12d0
+[42568.850709]  __alloc_pages_nodemask+0x15b/0x320
+[42568.850740]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[42568.850760]  ? mt7601u_tx_status+0x8a/0xa0 [mt7601u]
+[42568.850775]  tasklet_action_common.constprop.0+0xaf/0xc0
+[42568.850790]  __do_softirq+0xff/0x344
+[42568.850819]  ? handle_fasteoi_irq+0x210/0x210
+[42568.850828]  asm_call_irq_on_stack+0x12/0x20
+[42568.850834]  </IRQ>
+[42568.850854]  do_softirq_own_stack+0x5d/0x80
+[42568.850861]  irq_exit_rcu+0xd8/0x120
+[42568.850876]  common_interrupt+0xcb/0x1e0
+[42568.850884]  ? asm_common_interrupt+0x8/0x40
+[42568.850891]  asm_common_interrupt+0x1e/0x40
+[42568.850904] RIP: 0033:0x56231e332712
+[42568.850914] Code: 01 48 8d 05 b0 7b ea 05 48 8b 00 48 85 c0 0f 85 d0 00 00 00 0f b7 43 04 25 fc ff 00 00 48 8d 0d 74 7b ea 05 48 8b 09 48 8b 09 <48> 8b 04 41 48 8b 40 08 48 85 c0 74 23 48 8d 0d fa 08 b6 fd 48 89
+[42568.850919] RSP: 002b:00007ffdc3c476c0 EFLAGS: 00000206
+[42568.850926] RAX: 00000000000008ac RBX: 000031447bfea768 RCX: 00001ef2f19a1000
+[42568.850928] RDX: 0000000000000000 RSI: 000031447bfea768 RDI: 00003eaa57a4c900
+[42568.850930] RBP: 00007ffdc3c476f0 R08: 00000675a6d17003 R09: 8000000000000001
+[42568.850933] R10: 00000000c3c7b001 R11: 00007ffdc3c7b090 R12: 000031447bfea770
+[42568.850935] R13: 00005623241da320 R14: 0000000000000018 R15: 00003eaa57a4c900
+[43328.534920] wlp0s20f0u5: deauthenticating from XXX by local choice (Reason: 3=DEAUTH_LEAVING)
+[43328.679899] PM: suspend entry (deep)
+[43328.687971] Filesystems sync: 0.008 seconds
+[43328.688890] Freezing user space processes ... (elapsed 0.001 seconds) done.
+[43328.690442] OOM killer disabled.
+[43328.690443] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[43328.691730] printk: Suspending console(s) (use no_console_suspend to debug)
+[43328.712494] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[43328.712537] sd 0:0:0:0: [sda] Stopping disk
+[43328.826635] ACPI: Preparing to enter system sleep state S3
+[43328.829393] PM: Saving platform NVS memory
+[43328.829504] Disabling non-boot CPUs ...
+[43328.831172] smpboot: CPU 1 is now offline
+[43328.833676] smpboot: CPU 2 is now offline
+[43328.835883] smpboot: CPU 3 is now offline
+[43328.839215] ACPI: Low-level resume complete
+[43328.839285] PM: Restoring platform NVS memory
+[43328.839953] Enabling non-boot CPUs ...
+[43328.839994] x86: Booting SMP configuration:
+[43328.839994] smpboot: Booting Node 0 Processor 1 APIC 0x2
+[43328.840513] CPU1 is up
+[43328.840537] smpboot: Booting Node 0 Processor 2 APIC 0x4
+[43328.841061] CPU2 is up
+[43328.841085] smpboot: Booting Node 0 Processor 3 APIC 0x6
+[43328.841616] CPU3 is up
+[43328.842491] ACPI: Waking up from system sleep state S3
+[43328.882013] sd 0:0:0:0: [sda] Starting disk
+[43328.949596] mt7601u 1-5:1.0: Error: MCU response pre-completed!
+[43328.962636] mt7601u 1-5:1.0: EEPROM ver:0d fae:00
+[43328.962857] mt7601u 1-5:1.0: EEPROM country region 01 (channels 1-13)
+[43329.204951] acpi LNXPOWER:16: Turning OFF
+[43329.205222] acpi LNXPOWER:15: Turning OFF
+[43329.205521] acpi LNXPOWER:14: Turning OFF
+[43329.205785] acpi LNXPOWER:13: Turning OFF
+[43329.206043] acpi LNXPOWER:12: Turning OFF
+[43329.206302] acpi LNXPOWER:11: Turning OFF
+[43329.206559] acpi LNXPOWER:10: Turning OFF
+[43329.206817] acpi LNXPOWER:0f: Turning OFF
+[43329.207076] acpi LNXPOWER:0e: Turning OFF
+[43329.207334] acpi LNXPOWER:0d: Turning OFF
+[43329.207592] acpi LNXPOWER:0c: Turning OFF
+[43329.207868] acpi LNXPOWER:0b: Turning OFF
+[43329.208126] acpi LNXPOWER:0a: Turning OFF
+[43329.208385] acpi LNXPOWER:09: Turning OFF
+[43329.208641] acpi LNXPOWER:08: Turning OFF
+[43329.208918] acpi LNXPOWER:07: Turning OFF
+[43329.209177] acpi LNXPOWER:06: Turning OFF
+[43329.209435] acpi LNXPOWER:05: Turning OFF
+[43329.209693] acpi LNXPOWER:04: Turning OFF
+[43329.209949] acpi LNXPOWER:03: Turning OFF
+[43329.210138] OOM killer enabled.
+[43329.210140] Restarting tasks ... 
+[43329.219089] ata4: SATA link down (SStatus 4 SControl 300)
+[43329.219123] ata2: SATA link down (SStatus 4 SControl 300)
+[43329.219429] done.
+[43329.220189] video LNXVIDEO:00: Restoring backlight state
+[43329.220207] PM: suspend exit
+[43329.220506] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[43329.220835] ata1.00: configured for UDMA/133
+[43329.223582] ata3: SATA link down (SStatus 4 SControl 300)
+[43329.250619] mei_hdcp 0000:00:16.0-HASH_BC0-5B5B-1043-32E7-8ED7D3965D57: bound 0000:00:02.0 (ops i915_hdcp_component_ops [i915])
+[43329.292105] Generic FE-GE Realtek PHY r8169-100:00: attached PHY driver [Generic FE-GE Realtek PHY] (mii_bus:phy_addr=r8169-100:00, irq=IGNORE)
+[43329.482329] r8169 0000:01:00.0 enp1s0: Link is Down
+[43331.863375] wlp0s20f0u5: authenticate with XXX
+[43331.887820] wlp0s20f0u5: send auth to XXX (try 1/3)
+[43331.889351] wlp0s20f0u5: authenticated
+[43331.892137] wlp0s20f0u5: associate with XXX (try 1/3)
+[43331.895157] wlp0s20f0u5: RX AssocResp from XXX (capab=0x8421 status=0 aid=3)
+[43331.925603] wlp0s20f0u5: associated
+[43331.926886] IPv6: ADDRCONF(NETDEV_CHANGE): wlp0s20f0u5: link becomes ready
+[44041.041801] BUG: Bad page state in process ThreadPoolForeg  pfn:2a922
+[44041.041810] page:00000000d45bff3c refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x2a922
+[44041.041814] flags: 0x1ffff0000000000()
+[44041.041819] raw: 01ffff0000000000 ffff943a7effc6d8 ffffdf9a40d8b788 0000000000000000
+[44041.041823] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[44041.041824] page dumped because: nonzero mapcount
+[44041.041826] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[44041.041890]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[44041.041909] CPU: 0 PID: 212890 Comm: ThreadPoolForeg Tainted: G    B             5.9.9-arch1-1 #1
+[44041.041911] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[44041.041913] Call Trace:
+[44041.041918]  <IRQ>
+[44041.041930]  dump_stack+0x6b/0x83
+[44041.041938]  bad_page.cold+0x63/0x94
+[44041.041943]  get_page_from_freelist+0xc3f/0x12d0
+[44041.041953]  ? kfree+0xd5/0x440
+[44041.041959]  __alloc_pages_nodemask+0x15b/0x320
+[44041.041975]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[44041.041981]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[44041.041988]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[44041.041996]  tasklet_action_common.constprop.0+0xaf/0xc0
+[44041.042002]  __do_softirq+0xff/0x344
+[44041.042010]  ? handle_fasteoi_irq+0x210/0x210
+[44041.042014]  asm_call_irq_on_stack+0x12/0x20
+[44041.042017]  </IRQ>
+[44041.042023]  do_softirq_own_stack+0x5d/0x80
+[44041.042028]  irq_exit_rcu+0xd8/0x120
+[44041.042034]  common_interrupt+0xcb/0x1e0
+[44041.042039]  asm_common_interrupt+0x1e/0x40
+[44041.042044] RIP: 0010:_raw_spin_unlock_irq+0x13/0x30
+[44041.042049] Code: 0f c1 45 00 a9 ff 01 00 00 75 02 5d c3 48 89 ef 5d e9 61 cc 6b ff 90 0f 1f 44 00 00 c6 07 00 0f 1f 40 00 fb 66 0f 1f 44 00 00 <bf> 01 00 00 00 e8 a3 a0 68 ff 65 8b 05 2c 7e 3e 57 85 c0 74 01 c3
+[44041.042052] RSP: 0018:ffffb14b83ea7bb0 EFLAGS: 00000246
+[44041.042056] RAX: 0000000000000000 RBX: ffff9438762f9f00 RCX: 0000000000000002
+[44041.042058] RDX: 0000000000000000 RSI: ffffffffa955986f RDI: ffff943a76c2c3c0
+[44041.042060] RBP: ffffb14b83ea7be8 R08: 0000000000000004 R09: 0000000000000000
+[44041.042062] R10: 0000000000000021 R11: 0000000000000000 R12: ffff943a76c2c3c0
+[44041.042064] R13: ffffffffa9a18840 R14: ffff943a72456600 R15: 0000000000000000
+[44041.042074]  finish_task_switch+0x80/0x270
+[44041.042081]  ? __switch_to_asm+0x36/0x70
+[44041.042087]  __schedule+0x29a/0x830
+[44041.042094]  schedule+0x46/0xf0
+[44041.042099]  futex_wait_queue_me+0xb4/0x110
+[44041.042104]  futex_wait+0xfb/0x230
+[44041.042114]  do_futex+0x168/0xcb0
+[44041.042122]  ? notify_change+0x3d7/0x4c0
+[44041.042129]  ? do_truncate+0x9b/0xe0
+[44041.042136]  ? _copy_from_user+0x2e/0x60
+[44041.042142]  __x64_sys_futex+0x158/0x1e0
+[44041.042147]  ? switch_fpu_return+0x4a/0xe0
+[44041.042154]  do_syscall_64+0x33/0x40
+[44041.042158]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[44041.042162] RIP: 0033:0x7fd5cca65db0
+[44041.042167] Code: 41 89 f0 83 f8 02 74 0b b8 02 00 00 00 87 07 85 c0 74 1f 90 44 89 c6 45 31 d2 ba 02 00 00 00 b8 ca 00 00 00 40 80 f6 80 0f 05 <eb> dc 66 0f 1f 44 00 00 c3 0f 1f 80 00 00 00 00 f3 0f 1e fa 41 56
+[44041.042169] RSP: 002b:00007fd5b9875368 EFLAGS: 00000282 ORIG_RAX: 00000000000000ca
+[44041.042173] RAX: ffffffffffffffda RBX: 00007fd5b98753f0 RCX: 00007fd5cca65db0
+[44041.042175] RDX: 0000000000000002 RSI: 0000000000000080 RDI: 00007fd5b9875568
+[44041.042177] RBP: 00007fd5b9875590 R08: 0000000000000000 R09: 00000000ffffffff
+[44041.042179] R10: 0000000000000000 R11: 0000000000000282 R12: 0000000000000000
+[44041.042181] R13: 00007fd5b9875568 R14: 00007fd5b9875470 R15: 00007fd5b98755b8
+[46081.992181] BUG: Bad page state in process swapper/0  pfn:246c2
+[46081.992225] page:0000000095f3d37d refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x246c2
+[46081.992236] flags: 0x1ffff0000000000()
+[46081.992244] raw: 01ffff0000000000 ffff943a7effc6d8 ffffdf9a40d8ab88 0000000000000000
+[46081.992247] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[46081.992249] page dumped because: nonzero mapcount
+[46081.992251] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[46081.992326]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[46081.992345] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G    B             5.9.9-arch1-1 #1
+[46081.992347] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[46081.992349] Call Trace:
+[46081.992356]  <IRQ>
+[46081.992373]  dump_stack+0x6b/0x83
+[46081.992381]  bad_page.cold+0x63/0x94
+[46081.992387]  get_page_from_freelist+0xc3f/0x12d0
+[46081.992399]  ? usb_hcd_submit_urb+0xbe/0xbf0
+[46081.992406]  __alloc_pages_nodemask+0x15b/0x320
+[46081.992425]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[46081.992432]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[46081.992438]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[46081.992447]  tasklet_action_common.constprop.0+0xaf/0xc0
+[46081.992453]  __do_softirq+0xff/0x344
+[46081.992462]  ? handle_fasteoi_irq+0x210/0x210
+[46081.992467]  asm_call_irq_on_stack+0x12/0x20
+[46081.992470]  </IRQ>
+[46081.992476]  do_softirq_own_stack+0x5d/0x80
+[46081.992481]  irq_exit_rcu+0xd8/0x120
+[46081.992488]  common_interrupt+0xcb/0x1e0
+[46081.992494]  asm_common_interrupt+0x1e/0x40
+[46081.992500] RIP: 0010:cpuidle_enter_state+0xcc/0x3c0
+[46081.992506] Code: ba 48 65 57 e8 75 83 90 ff 49 89 c7 0f 1f 44 00 00 31 ff e8 76 91 90 ff 80 7c 24 0f 00 0f 85 11 02 00 00 fb 66 0f 1f 44 00 00 <45> 85 e4 0f 88 53 01 00 00 49 63 d4 4c 2b 3c 24 48 8d 04 52 48 8d
+[46081.992509] RSP: 0018:ffffffffa9a03e48 EFLAGS: 00000246
+[46081.992513] RAX: ffff943a76c00000 RBX: ffff943a76c36800 RCX: 000000000000001f
+[46081.992515] RDX: 0000000000000000 RSI: ffffffffa955986f RDI: ffffffffa9563f41
+[46081.992517] RBP: ffffffffa9acef20 R08: 000029e94cc2d0e2 R09: 0000000000000018
+[46081.992520] R10: 0000000000000162 R11: 0000000000000628 R12: 0000000000000006
+[46081.992522] R13: ffffffffa9acf1a8 R14: 0000000000000006 R15: 000029e94cc2d0e2
+[46081.992533]  ? cpuidle_enter_state+0xba/0x3c0
+[46081.992538]  cpuidle_enter+0x29/0x40
+[46081.992544]  do_idle+0x1ed/0x280
+[46081.992549]  cpu_startup_entry+0x19/0x20
+[46081.992557]  start_kernel+0x867/0x88c
+[46081.992567]  secondary_startup_64+0xb6/0xc0
+[47037.118518] BUG: Bad page state in process swapper/0  pfn:1506b2
+[47037.118526] page:00000000e21b98f1 refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x1506b2
+[47037.118529] flags: 0x2ffff0000000000()
+[47037.118535] raw: 02ffff0000000000 ffff943a7effcc98 ffffdf9a44784b08 0000000000000000
+[47037.118539] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[47037.118541] page dumped because: nonzero mapcount
+[47037.118542] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[47037.118604]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[47037.118621] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G    B             5.9.9-arch1-1 #1
+[47037.118623] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[47037.118625] Call Trace:
+[47037.118630]  <IRQ>
+[47037.118642]  dump_stack+0x6b/0x83
+[47037.118650]  bad_page.cold+0x63/0x94
+[47037.118655]  get_page_from_freelist+0xc3f/0x12d0
+[47037.118664]  __alloc_pages_nodemask+0x15b/0x320
+[47037.118680]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[47037.118686]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[47037.118693]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[47037.118702]  tasklet_action_common.constprop.0+0xaf/0xc0
+[47037.118708]  __do_softirq+0xff/0x344
+[47037.118716]  ? handle_fasteoi_irq+0x210/0x210
+[47037.118720]  asm_call_irq_on_stack+0x12/0x20
+[47037.118723]  </IRQ>
+[47037.118729]  do_softirq_own_stack+0x5d/0x80
+[47037.118734]  irq_exit_rcu+0xd8/0x120
+[47037.118740]  common_interrupt+0xcb/0x1e0
+[47037.118745]  asm_common_interrupt+0x1e/0x40
+[47037.118751] RIP: 0010:cpuidle_enter_state+0xcc/0x3c0
+[47037.118757] Code: ba 48 65 57 e8 75 83 90 ff 49 89 c7 0f 1f 44 00 00 31 ff e8 76 91 90 ff 80 7c 24 0f 00 0f 85 11 02 00 00 fb 66 0f 1f 44 00 00 <45> 85 e4 0f 88 53 01 00 00 49 63 d4 4c 2b 3c 24 48 8d 04 52 48 8d
+[47037.118760] RSP: 0018:ffffffffa9a03e48 EFLAGS: 00000246
+[47037.118763] RAX: ffff943a76c00000 RBX: ffff943a76c36800 RCX: 000000000000001f
+[47037.118766] RDX: 0000000000000000 RSI: ffffffffa955986f RDI: ffffffffa9563f41
+[47037.118768] RBP: ffffffffa9acef20 R08: 00002ac7aebd133c R09: 0000000000000018
+[47037.118770] R10: 000000000000004e R11: 00000000000001f9 R12: 0000000000000004
+[47037.118772] R13: ffffffffa9acf0d8 R14: 0000000000000004 R15: 00002ac7aebd133c
+[47037.118782]  ? cpuidle_enter_state+0xba/0x3c0
+[47037.118786]  cpuidle_enter+0x29/0x40
+[47037.118791]  do_idle+0x1ed/0x280
+[47037.118797]  cpu_startup_entry+0x19/0x20
+[47037.118804]  start_kernel+0x867/0x88c
+[47037.118812]  secondary_startup_64+0xb6/0xc0
+[49554.924347] BUG: Bad page state in process ThreadPoolForeg  pfn:7c3f2
+[49554.924357] page:00000000bc9be5f9 refcount:0 mapcount:-128 mapping:0000000000000000 index:0xffff943a75520cc0 pfn:0x7c3f2
+[49554.924361] flags: 0x1ffff0000000000()
+[49554.924366] raw: 01ffff0000000000 ffff943a7effc6d8 ffffdf9a40aa7e08 0000000000000000
+[49554.924370] raw: ffff943a75520cc0 0000000000000001 00000000ffffff7f 0000000000000000
+[49554.924372] page dumped because: nonzero mapcount
+[49554.924374] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[49554.924456]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[49554.924477] CPU: 0 PID: 240764 Comm: ThreadPoolForeg Tainted: G    B             5.9.9-arch1-1 #1
+[49554.924480] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[49554.924481] Call Trace:
+[49554.924488]  <IRQ>
+[49554.924501]  dump_stack+0x6b/0x83
+[49554.924509]  bad_page.cold+0x63/0x94
+[49554.924515]  get_page_from_freelist+0xc3f/0x12d0
+[49554.924526]  ? netif_receive_skb_list_internal+0x1e7/0x300
+[49554.924532]  __alloc_pages_nodemask+0x15b/0x320
+[49554.924549]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[49554.924556]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[49554.924563]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[49554.924572]  tasklet_action_common.constprop.0+0xaf/0xc0
+[49554.924578]  __do_softirq+0xff/0x344
+[49554.924589]  ? handle_fasteoi_irq+0x210/0x210
+[49554.924593]  asm_call_irq_on_stack+0x12/0x20
+[49554.924596]  </IRQ>
+[49554.924604]  do_softirq_own_stack+0x5d/0x80
+[49554.924608]  irq_exit_rcu+0xd8/0x120
+[49554.924615]  common_interrupt+0xcb/0x1e0
+[49554.924620]  ? asm_common_interrupt+0x8/0x40
+[49554.924624]  asm_common_interrupt+0x1e/0x40
+[49554.924630] RIP: 0033:0x56231f67e378
+[49554.924635] Code: 01 00 00 00 f6 84 8f 08 13 00 00 08 0f 85 cc 00 00 00 49 8b 8e c8 01 00 00 49 8b 86 d0 01 00 00 48 85 c0 74 07 48 0f be 40 03 <eb> 02 31 c0 48 85 c9 74 07 4c 0f be 79 03 eb 03 45 31 ff 49 01 c7
+[49554.924638] RSP: 002b:00007f1d03d91160 EFLAGS: 00000202
+[49554.924642] RAX: 0000000000000000 RBX: 00000675a823b708 RCX: 00000675a823b6c4
+[49554.924644] RDX: 0000000000000000 RSI: 00000675a84dc340 RDI: 00000675a71722b0
+[49554.924647] RBP: 00007f1d03d91180 R08: 0000000000000001 R09: 0000000000000001
+[49554.924649] R10: 00000675a83a7a08 R11: 00000000000001f4 R12: 00000675a84d8f40
+[49554.924651] R13: 00000675a7172020 R14: 00000675a84dc340 R15: 0000000000000001
+[50599.976477] BUG: Bad page state in process chromium  pfn:3b69a
+[50599.976492] page:000000009b81ec5b refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x3b69a
+[50599.976498] flags: 0x1ffff0000000000()
+[50599.976506] raw: 01ffff0000000000 ffff943a7effc6d8 ffffdf9a40e75588 0000000000000000
+[50599.976512] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[50599.976514] page dumped because: nonzero mapcount
+[50599.976517] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[50599.976671]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[50599.976715] CPU: 0 PID: 1435 Comm: chromium Tainted: G    B             5.9.9-arch1-1 #1
+[50599.976718] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[50599.976721] Call Trace:
+[50599.976734]  <IRQ>
+[50599.976784]  dump_stack+0x6b/0x83
+[50599.976810]  bad_page.cold+0x63/0x94
+[50599.976821]  get_page_from_freelist+0xc3f/0x12d0
+[50599.976831]  __alloc_pages_nodemask+0x15b/0x320
+[50599.976871]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[50599.976886]  ? mt7601u_tx_status+0x8a/0xa0 [mt7601u]
+[50599.976901]  tasklet_action_common.constprop.0+0xaf/0xc0
+[50599.976915]  __do_softirq+0xff/0x344
+[50599.976935]  ? handle_fasteoi_irq+0x210/0x210
+[50599.976940]  asm_call_irq_on_stack+0x12/0x20
+[50599.976944]  </IRQ>
+[50599.976954]  do_softirq_own_stack+0x5d/0x80
+[50599.976960]  irq_exit_rcu+0xd8/0x120
+[50599.976976]  common_interrupt+0xcb/0x1e0
+[50599.976981]  ? asm_common_interrupt+0x8/0x40
+[50599.976985]  asm_common_interrupt+0x1e/0x40
+[50599.976994] RIP: 0033:0x56231e362800
+[50599.977002] Code: cc cc cc cc cc cc cc cc cc cc 55 48 89 e5 48 81 c7 a0 00 00 00 5d e9 cf 28 fe ff 90 cc cc cc cc cc cc cc cc cc cc cc cc cc cc <55> 48 89 e5 41 57 41 56 41 55 41 54 53 48 83 ec 68 49 89 f5 49 89
+[50599.977005] RSP: 002b:00007ffdc3c47b68 EFLAGS: 00000217
+[50599.977010] RAX: 0000562323f05a80 RBX: 00000675a6f9fd80 RCX: 0000000000000072
+[50599.977013] RDX: 000056231b5304d7 RSI: 00000675a7032af0 RDI: 00000675a6dd0400
+[50599.977015] RBP: 00007ffdc3c47b80 R08: 0000000000000000 R09: 0000000000000000
+[50599.977017] R10: 0000562321f49df0 R11: 00007ffdc3c7b090 R12: 00007ffdc3c47ca0
+[50599.977019] R13: 0000000000000000 R14: 00000675a7032af0 R15: 00000675a6ef4180
+[50602.291886] BUG: Bad page state in process VizCompositorTh  pfn:39d2a
+[50602.291900] page:00000000564f2cdd refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x39d2a
+[50602.291903] flags: 0x1ffff0000000000()
+[50602.291910] raw: 01ffff0000000000 ffff943a7effc6d8 ffffdf9a40eda688 0000000000000000
+[50602.291914] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[50602.291917] page dumped because: nonzero mapcount
+[50602.291919] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[50602.292004]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[50602.292032] CPU: 0 PID: 1286 Comm: VizCompositorTh Tainted: G    B             5.9.9-arch1-1 #1
+[50602.292035] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[50602.292036] Call Trace:
+[50602.292043]  <IRQ>
+[50602.292057]  dump_stack+0x6b/0x83
+[50602.292067]  bad_page.cold+0x63/0x94
+[50602.292075]  get_page_from_freelist+0xc3f/0x12d0
+[50602.292086]  ? kfree+0xd5/0x440
+[50602.292093]  __alloc_pages_nodemask+0x15b/0x320
+[50602.292116]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[50602.292127]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[50602.292135]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[50602.292145]  tasklet_action_common.constprop.0+0xaf/0xc0
+[50602.292193]  __do_softirq+0xff/0x344
+[50602.292212]  ? handle_fasteoi_irq+0x210/0x210
+[50602.292217]  asm_call_irq_on_stack+0x12/0x20
+[50602.292220]  </IRQ>
+[50602.292231]  do_softirq_own_stack+0x5d/0x80
+[50602.292236]  irq_exit_rcu+0xd8/0x120
+[50602.292244]  common_interrupt+0xcb/0x1e0
+[50602.292251]  asm_common_interrupt+0x1e/0x40
+[50602.292261] RIP: 0010:__mnt_want_write+0x23/0x90
+[50602.292267] Code: 1f 84 00 00 00 00 00 0f 1f 44 00 00 41 54 53 48 89 fb bf 01 00 00 00 e8 2b 08 dc ff 48 8b 43 28 65 ff 40 04 f0 83 44 24 fc 00 <8b> 43 10 f6 c4 02 74 0a f3 90 8b 43 10 f6 c4 02 75 f6 48 8b 43 08
+[50602.292270] RSP: 0018:ffffb14b83483d68 EFLAGS: 00000286
+[50602.292277] RAX: 000000000003464c RBX: ffff943a74da31a0 RCX: 0000000000000000
+[50602.292279] RDX: 0000000000000000 RSI: 0000000000000001 RDI: ffffffffa84fa255
+[50602.292283] RBP: ffffb14b83483da8 R08: 0000000000000002 R09: ffff943a07372db8
+[50602.292285] R10: 0000000000000001 R11: 0000000000000000 R12: ffff943a74da31a0
+[50602.292288] R13: 0000000000544fd4 R14: ffff943a0825a478 R15: ffff943a66796b40
+[50602.292295]  ? __mnt_want_write+0x15/0x90
+[50602.292301]  ? __mnt_want_write+0x15/0x90
+[50602.292308]  touch_atime+0x81/0x110
+[50602.292316]  pipe_read+0x3d7/0x530
+[50602.292327]  new_sync_read+0x1c4/0x1e0
+[50602.292336]  vfs_read+0xf8/0x180
+[50602.292343]  ksys_read+0xaf/0xe0
+[50602.292350]  do_syscall_64+0x33/0x40
+[50602.292355]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[50602.292360] RIP: 0033:0x7fd8426ab00c
+[50602.292365] Code: ec 28 48 89 54 24 18 48 89 74 24 10 89 7c 24 08 e8 19 fc ff ff 48 8b 54 24 18 48 8b 74 24 10 41 89 c0 8b 7c 24 08 31 c0 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 48 89 44 24 08 e8 6f fc ff ff 48
+[50602.292367] RSP: 002b:00007fd82b34b390 EFLAGS: 00000246 ORIG_RAX: 0000000000000000
+[50602.292371] RAX: ffffffffffffffda RBX: 00000216415e37c0 RCX: 00007fd8426ab00c
+[50602.292374] RDX: 0000000000000002 RSI: 00007fd82b34b3c0 RDI: 0000000000000029
+[50602.292376] RBP: 00007fd82b34b3f0 R08: 0000000000000000 R09: 00007fd82b34b310
+[50602.292378] R10: 00007ffdf096c080 R11: 0000000000000246 R12: 00007fd8426ae010
+[50602.292380] R13: 00007fd82b34b440 R14: 00007fd82b34b3c0 R15: 00007fd8426aafc0
+[50604.722645] BUG: Bad page state in process swapper/0  pfn:15a602
+[50604.722654] page:00000000d5f110f6 refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x15a602
+[50604.722657] flags: 0x2ffff0000000000()
+[50604.722663] raw: 02ffff0000000000 ffff943a7effcc98 ffffdf9a4688e408 0000000000000000
+[50604.722666] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[50604.722668] page dumped because: nonzero mapcount
+[50604.722670] Modules linked in: xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus fb_sys_fops mei
+[50604.722732]  wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[50604.722750] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G    B             5.9.9-arch1-1 #1
+[50604.722753] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[50604.722754] Call Trace:
+[50604.722759]  <IRQ>
+[50604.722771]  dump_stack+0x6b/0x83
+[50604.722779]  bad_page.cold+0x63/0x94
+[50604.722785]  get_page_from_freelist+0xc3f/0x12d0
+[50604.722794]  ? kfree+0xd5/0x440
+[50604.722801]  ? netif_receive_skb_list_internal+0x1e7/0x300
+[50604.722807]  __alloc_pages_nodemask+0x15b/0x320
+[50604.722823]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[50604.722829]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[50604.722836]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[50604.722844]  tasklet_action_common.constprop.0+0xaf/0xc0
+[50604.722850]  __do_softirq+0xff/0x344
+[50604.722858]  ? handle_fasteoi_irq+0x210/0x210
+[50604.722863]  asm_call_irq_on_stack+0x12/0x20
+[50604.722865]  </IRQ>
+[50604.722871]  do_softirq_own_stack+0x5d/0x80
+[50604.722876]  irq_exit_rcu+0xd8/0x120
+[50604.722882]  common_interrupt+0xcb/0x1e0
+[50604.722887]  asm_common_interrupt+0x1e/0x40
+[50604.722894] RIP: 0010:cpuidle_enter_state+0xcc/0x3c0
+[50604.722899] Code: ba 48 65 57 e8 75 83 90 ff 49 89 c7 0f 1f 44 00 00 31 ff e8 76 91 90 ff 80 7c 24 0f 00 0f 85 11 02 00 00 fb 66 0f 1f 44 00 00 <45> 85 e4 0f 88 53 01 00 00 49 63 d4 4c 2b 3c 24 48 8d 04 52 48 8d
+[50604.722902] RSP: 0018:ffffffffa9a03e48 EFLAGS: 00000246
+[50604.722905] RAX: ffff943a76c00000 RBX: ffff943a76c36800 RCX: 000000000000001f
+[50604.722908] RDX: 0000000000000000 RSI: ffffffffa955986f RDI: ffffffffa9563f41
+[50604.722910] RBP: ffffffffa9acef20 R08: 00002e0654840c7a R09: 0000000000000018
+[50604.722912] R10: 000000000000027a R11: 0000000000000247 R12: 0000000000000004
+[50604.722914] R13: ffffffffa9acf0d8 R14: 0000000000000004 R15: 00002e0654840c7a
+[50604.722924]  ? cpuidle_enter_state+0xba/0x3c0
+[50604.722928]  cpuidle_enter+0x29/0x40
+[50604.722933]  do_idle+0x1ed/0x280
+[50604.722939]  cpu_startup_entry+0x19/0x20
+[50604.722945]  start_kernel+0x867/0x88c
+[50604.722954]  secondary_startup_64+0xb6/0xc0
+[50741.713776] fuse: init (API version 7.31)
+[50763.813947] urxvt[243121]: segfault at 1a0 ip 00007fd0077674ed sp 00007ffe3bebd860 error 4 in libc-2.32.so[7fd00774e000+14d000]
+[50763.813955] Code: fe ff 49 83 c5 02 41 0f b7 6d fe 49 89 c6 4c 8d 78 fe 4d 85 e4 75 13 eb cc 0f 1f 40 00 4c 8b 63 08 48 83 c3 08 4d 85 e4 74 bb <66> 41 3b 2c 24 75 ec 49 8d 7c 24 02 4c 89 fa 4c 89 ee e8 9c 70 fe
+[51821.005812] BUG: Bad page state in process ksoftirqd/0  pfn:1a22b2
+[51821.005821] page:0000000011bc8d8c refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x1a22b2
+[51821.005824] flags: 0x2ffff0000000000()
+[51821.005830] raw: 02ffff0000000000 ffff943a7effcc98 ffffdf9a44249088 0000000000000000
+[51821.005833] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[51821.005835] page dumped because: nonzero mapcount
+[51821.005837] Modules linked in: fuse xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus
+[51821.005897]  fb_sys_fops mei wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[51821.005917] CPU: 0 PID: 9 Comm: ksoftirqd/0 Tainted: G    B             5.9.9-arch1-1 #1
+[51821.005919] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[51821.005921] Call Trace:
+[51821.005936]  dump_stack+0x6b/0x83
+[51821.005945]  bad_page.cold+0x63/0x94
+[51821.005951]  get_page_from_freelist+0xc3f/0x12d0
+[51821.005960]  __alloc_pages_nodemask+0x15b/0x320
+[51821.005976]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[51821.005989]  ? mt7601u_tx_status+0x8a/0xa0 [mt7601u]
+[51821.005997]  tasklet_action_common.constprop.0+0xaf/0xc0
+[51821.006004]  __do_softirq+0xff/0x344
+[51821.006013]  ? smpboot_register_percpu_thread+0xe0/0xe0
+[51821.006017]  run_ksoftirqd+0x32/0x40
+[51821.006023]  smpboot_thread_fn+0x19a/0x230
+[51821.006030]  kthread+0x142/0x160
+[51821.006036]  ? __kthread_bind_mask+0x60/0x60
+[51821.006043]  ret_from_fork+0x22/0x30
+[52953.864935] BUG: Bad page state in process Chrome_ChildIOT  pfn:9b2f2
+[52953.864946] page:00000000104819b2 refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x9b2f2
+[52953.864949] flags: 0x1ffff0000000000()
+[52953.864955] raw: 01ffff0000000000 ffff943a7effc6d8 ffffdf9a427f2188 0000000000000000
+[52953.864959] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[52953.864961] page dumped because: nonzero mapcount
+[52953.864963] Modules linked in: fuse xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus
+[52953.865031]  fb_sys_fops mei wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[52953.865052] CPU: 0 PID: 253180 Comm: Chrome_ChildIOT Tainted: G    B             5.9.9-arch1-1 #1
+[52953.865054] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[52953.865056] Call Trace:
+[52953.865061]  <IRQ>
+[52953.865073]  dump_stack+0x6b/0x83
+[52953.865081]  bad_page.cold+0x63/0x94
+[52953.865088]  get_page_from_freelist+0xc3f/0x12d0
+[52953.865099]  ? kfree+0xd5/0x440
+[52953.865105]  __alloc_pages_nodemask+0x15b/0x320
+[52953.865122]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[52953.865129]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[52953.865137]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[52953.865145]  tasklet_action_common.constprop.0+0xaf/0xc0
+[52953.865151]  __do_softirq+0xff/0x344
+[52953.865159]  ? handle_fasteoi_irq+0x210/0x210
+[52953.865164]  asm_call_irq_on_stack+0x12/0x20
+[52953.865166]  </IRQ>
+[52953.865173]  do_softirq_own_stack+0x5d/0x80
+[52953.865178]  irq_exit_rcu+0xd8/0x120
+[52953.865184]  common_interrupt+0xcb/0x1e0
+[52953.865190]  asm_common_interrupt+0x1e/0x40
+[52953.865198] RIP: 0010:wake_q_add_safe+0x22/0x60
+[52953.865203] Code: 3d 00 66 0f 1f 44 00 00 0f 1f 44 00 00 48 89 fa 31 c0 48 89 f7 b9 01 00 00 00 48 8d b6 d0 07 00 00 f0 48 0f b1 8f d0 07 00 00 <48> 85 c0 75 0c 48 8b 42 08 48 89 30 48 89 72 08 c3 4c 8d 47 20 b8
+[52953.865205] RSP: 0018:ffffb14b80557d50 EFLAGS: 00000246
+[52953.865209] RAX: 0000000000000000 RBX: ffff943a75067d30 RCX: 0000000000000001
+[52953.865211] RDX: ffffb14b80557d58 RSI: ffff9438ce46c5d0 RDI: ffff9438ce46be00
+[52953.865214] RBP: 00000000ffffffff R08: 00007f1d0b0da570 R09: 0000000000000000
+[52953.865216] R10: 00007f1d0b0da570 R11: 0000000000000000 R12: 000000007fffffff
+[52953.865218] R13: ffff943a75067d44 R14: ffff943a75067d48 R15: 0000000000000001
+[52953.865229]  futex_wake+0x135/0x180
+[52953.865235]  do_futex+0x89e/0xcb0
+[52953.865240]  ? ___sys_recvmsg+0x96/0xd0
+[52953.865249]  ? __seccomp_filter+0xb3/0x740
+[52953.865256]  __x64_sys_futex+0x158/0x1e0
+[52953.865263]  do_syscall_64+0x33/0x40
+[52953.865268]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[52953.865272] RIP: 0033:0x7f1d18e3b418
+[52953.865276] Code: 83 e1 fc f0 41 0f b1 09 75 f2 80 f3 81 83 e2 03 89 de 83 fa 02 0f 84 9f 00 00 00 45 31 d2 ba ff ff ff 7f b8 ca 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 4d 48 83 c4 38 31 c0 5b 5d 41 5c 41 5d 41 5e
+[52953.865278] RSP: 002b:00007f1d0d0dd770 EFLAGS: 00000246 ORIG_RAX: 00000000000000ca
+[52953.865282] RAX: ffffffffffffffda RBX: 0000000000000081 RCX: 00007f1d18e3b418
+[52953.865284] RDX: 000000007fffffff RSI: 0000000000000081 RDI: 00007f1d0b0da598
+[52953.865286] RBP: 0000000000000000 R08: 00007f1d0b0da570 R09: 00007f1d0b0da590
+[52953.865288] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
+[52953.865290] R13: 00000000000000ca R14: 0000000000000001 R15: 00007f1d0b0da570
+[55867.650139] BUG: Bad page state in process ksoftirqd/0  pfn:10a652
+[55867.650153] page:00000000d932e916 refcount:0 mapcount:-128 mapping:0000000000000000 index:0x0 pfn:0x10a652
+[55867.650157] flags: 0x2ffff0000000000()
+[55867.650162] raw: 02ffff0000000000 ffff943a7effcc98 ffffdf9a44323d88 0000000000000000
+[55867.650164] raw: 0000000000000000 0000000000000001 00000000ffffff7f 0000000000000000
+[55867.650165] page dumped because: nonzero mapcount
+[55867.650167] Modules linked in: fuse xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc overlay snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm i915 irqbypass crct10dif_pclmul crc32_pclmul mt7601u snd_hda_intel snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec input_leds joydev mac80211 mousedev iTCO_wdt aesni_intel i2c_algo_bit mei_hdcp intel_pmc_bxt crypto_simd iTCO_vendor_support cryptd intel_wmi_thunderbolt at24 r8169 glue_helper snd_hda_core snd_hwdep drm_kms_helper cdc_acm rapl hid_generic snd_pcm realtek intel_cstate mdio_devres snd_timer cfg80211 of_mdio cec intel_uncore snd pcspkr rc_core intel_gtt syscopyarea sysfillrect i2c_i801 rfkill fixed_phy sysimgblt mei_me soundcore libarc4 libphy i2c_smbus
+[55867.650282]  fb_sys_fops mei wmi evdev mac_hid usbhid hid drm agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xhci_pci xhci_pci_renesas xhci_hcd crc32c_intel
+[55867.650318] CPU: 0 PID: 9 Comm: ksoftirqd/0 Tainted: G    B             5.9.9-arch1-1 #1
+[55867.650321] Hardware name: PCWARE IPMH110G-DDR3/IPMH110G-DDR3, BIOS F20 DB 02/02/2018
+[55867.650322] Call Trace:
+[55867.650358]  dump_stack+0x6b/0x83
+[55867.650374]  bad_page.cold+0x63/0x94
+[55867.650379]  get_page_from_freelist+0xc3f/0x12d0
+[55867.650382]  __alloc_pages_nodemask+0x15b/0x320
+[55867.650421]  mt7601u_rx_tasklet+0x4e5/0x580 [mt7601u]
+[55867.650431]  ? _raw_spin_unlock_irqrestore+0x20/0x40
+[55867.650445]  ? __usb_hcd_giveback_urb+0xa4/0x110
+[55867.650456]  tasklet_action_common.constprop.0+0xaf/0xc0
+[55867.650463]  __do_softirq+0xff/0x344
+[55867.650482]  ? smpboot_register_percpu_thread+0xe0/0xe0
+[55867.650483]  run_ksoftirqd+0x32/0x40
+[55867.650485]  smpboot_thread_fn+0x19a/0x230
+[55867.650501]  kthread+0x142/0x160
+[55867.650504]  ? __kthread_bind_mask+0x60/0x60
+[55867.650521]  ret_from_fork+0x22/0x30
+[57701.236428] wlp0s20f0u5: deauthenticating from XXX by local choice (Reason: 3=DEAUTH_LEAVING)
+[57701.361670] PM: suspend entry (deep)
+[57701.369652] Filesystems sync: 0.007 seconds
+[57701.369889] Freezing user space processes ... (elapsed 0.013 seconds) done.
+[57701.383404] OOM killer disabled.
+[57701.383405] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[57701.384776] printk: Suspending console(s) (use no_console_suspend to debug)
+[57701.416594] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[57701.417023] sd 0:0:0:0: [sda] Stopping disk
+[57701.537212] ACPI: Preparing to enter system sleep state S3
+[57701.539965] PM: Saving platform NVS memory
+[57701.540074] Disabling non-boot CPUs ...
+[57701.541748] smpboot: CPU 1 is now offline
+[57701.544231] smpboot: CPU 2 is now offline
+[57701.546673] smpboot: CPU 3 is now offline
+[57701.549798] ACPI: Low-level resume complete
+[57701.549867] PM: Restoring platform NVS memory
+[57701.550536] Enabling non-boot CPUs ...
+[57701.550577] x86: Booting SMP configuration:
+[57701.550578] smpboot: Booting Node 0 Processor 1 APIC 0x2
+[57701.551103] CPU1 is up
+[57701.551127] smpboot: Booting Node 0 Processor 2 APIC 0x4
+[57701.551657] CPU2 is up
+[57701.551682] smpboot: Booting Node 0 Processor 3 APIC 0x6
+[57701.552220] CPU3 is up
+[57701.553097] ACPI: Waking up from system sleep state S3
+[57701.592143] sd 0:0:0:0: [sda] Starting disk
+[57701.657698] mt7601u 1-5:1.0: Error: MCU response pre-completed!
+[57701.670829] mt7601u 1-5:1.0: EEPROM ver:0d fae:00
+[57701.671029] mt7601u 1-5:1.0: EEPROM country region 01 (channels 1-13)
+[57701.904718] acpi LNXPOWER:16: Turning OFF
+[57701.904988] acpi LNXPOWER:15: Turning OFF
+[57701.905250] acpi LNXPOWER:14: Turning OFF
+[57701.905510] acpi LNXPOWER:13: Turning OFF
+[57701.905769] acpi LNXPOWER:12: Turning OFF
+[57701.906063] acpi LNXPOWER:11: Turning OFF
+[57701.906324] acpi LNXPOWER:10: Turning OFF
+[57701.906585] acpi LNXPOWER:0f: Turning OFF
+[57701.906842] acpi LNXPOWER:0e: Turning OFF
+[57701.907100] acpi LNXPOWER:0d: Turning OFF
+[57701.907358] acpi LNXPOWER:0c: Turning OFF
+[57701.907615] acpi LNXPOWER:0b: Turning OFF
+[57701.907872] acpi LNXPOWER:0a: Turning OFF
+[57701.908130] acpi LNXPOWER:09: Turning OFF
+[57701.908386] acpi LNXPOWER:08: Turning OFF
+[57701.908645] acpi LNXPOWER:07: Turning OFF
+[57701.908904] acpi LNXPOWER:06: Turning OFF
+[57701.909162] acpi LNXPOWER:05: Turning OFF
+[57701.909437] acpi LNXPOWER:04: Turning OFF
+[57701.909695] acpi LNXPOWER:03: Turning OFF
+[57701.909888] OOM killer enabled.
+[57701.909890] Restarting tasks ... done.
+[57701.917818] video LNXVIDEO:00: Restoring backlight state
+[57701.917837] PM: suspend exit
+[57701.930752] ata2: SATA link down (SStatus 4 SControl 300)
+[57701.931232] ata4: SATA link down (SStatus 4 SControl 300)
+[57701.933830] ata3: SATA link down (SStatus 4 SControl 300)
+[57701.933867] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[57701.934199] ata1.00: configured for UDMA/133
+[57701.960780] mei_hdcp 0000:00:16.0-HASH_BC0-5B5B-1043-32E7-8ED7D3965D57: bound 0000:00:02.0 (ops i915_hdcp_component_ops [i915])
+[57706.265986] Generic FE-GE Realtek PHY r8169-100:00: attached PHY driver [Generic FE-GE Realtek PHY] (mii_bus:phy_addr=r8169-100:00, irq=IGNORE)
+[57706.452724] r8169 0000:01:00.0 enp1s0: Link is Down
+[57708.836391] wlp0s20f0u5: authenticate with XXX
+[57708.858049] wlp0s20f0u5: send auth to XXX (try 1/3)
+[57708.859551] wlp0s20f0u5: authenticated
+[57708.862655] wlp0s20f0u5: associate with XXX (try 1/3)
+[57708.865643] wlp0s20f0u5: RX AssocResp from XXX (capab=0x8421 status=0 aid=3)
+[57708.889939] wlp0s20f0u5: associated
+[57708.890097] IPv6: ADDRCONF(NETDEV_CHANGE): wlp0s20f0u5: link becomes ready
+[57776.524917] urxvt[280871]: segfault at 1a0 ip 00007f0a7c4a74ed sp 00007ffe5297afb0 error 4 in libc-2.32.so[7f0a7c48e000+14d000]
+[57776.524922] Code: fe ff 49 83 c5 02 41 0f b7 6d fe 49 89 c6 4c 8d 78 fe 4d 85 e4 75 13 eb cc 0f 1f 40 00 4c 8b 63 08 48 83 c3 08 4d 85 e4 74 bb <66> 41 3b 2c 24 75 ec 49 8d 7c 24 02 4c 89 fa 4c 89 ee e8 9c 70 fe
+[58270.046784] wlp0s20f0u5: deauthenticating from XXX by local choice (Reason: 3=DEAUTH_LEAVING)
+[58270.183145] PM: suspend entry (deep)
+[58270.191822] Filesystems sync: 0.008 seconds
+[58270.192115] Freezing user space processes ... (elapsed 0.001 seconds) done.
+[58270.193673] OOM killer disabled.
+[58270.193673] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[58270.194847] printk: Suspending console(s) (use no_console_suspend to debug)
+[58270.213205] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[58270.214629] sd 0:0:0:0: [sda] Stopping disk
+[58270.333377] ACPI: Preparing to enter system sleep state S3
+[58270.336106] PM: Saving platform NVS memory
+[58270.336216] Disabling non-boot CPUs ...
+[58270.337906] smpboot: CPU 1 is now offline
+[58270.340333] smpboot: CPU 2 is now offline
+[58270.342757] smpboot: CPU 3 is now offline
+[58270.345678] ACPI: Low-level resume complete
+[58270.345749] PM: Restoring platform NVS memory
+[58270.346418] Enabling non-boot CPUs ...
+[58270.346460] x86: Booting SMP configuration:
+[58270.346461] smpboot: Booting Node 0 Processor 1 APIC 0x2
+[58270.346982] CPU1 is up
+[58270.347006] smpboot: Booting Node 0 Processor 2 APIC 0x4
+[58270.347532] CPU2 is up
+[58270.347555] smpboot: Booting Node 0 Processor 3 APIC 0x6
+[58270.348089] CPU3 is up
+[58270.348991] ACPI: Waking up from system sleep state S3
+[58270.389244] sd 0:0:0:0: [sda] Starting disk
+[58270.459840] mt7601u 1-5:1.0: Error: MCU response pre-completed!
+[58270.473828] mt7601u 1-5:1.0: EEPROM ver:0d fae:00
+[58270.474028] mt7601u 1-5:1.0: EEPROM country region 01 (channels 1-13)
+[58270.707005] acpi LNXPOWER:16: Turning OFF
+[58270.707070] acpi LNXPOWER:15: Turning OFF
+[58270.707133] acpi LNXPOWER:14: Turning OFF
+[58270.707196] acpi LNXPOWER:13: Turning OFF
+[58270.707258] acpi LNXPOWER:12: Turning OFF
+[58270.707320] acpi LNXPOWER:11: Turning OFF
+[58270.707382] acpi LNXPOWER:10: Turning OFF
+[58270.707444] acpi LNXPOWER:0f: Turning OFF
+[58270.707506] acpi LNXPOWER:0e: Turning OFF
+[58270.707568] acpi LNXPOWER:0d: Turning OFF
+[58270.707630] acpi LNXPOWER:0c: Turning OFF
+[58270.707706] acpi LNXPOWER:0b: Turning OFF
+[58270.707773] acpi LNXPOWER:0a: Turning OFF
+[58270.707840] acpi LNXPOWER:09: Turning OFF
+[58270.707907] acpi LNXPOWER:08: Turning OFF
+[58270.707975] acpi LNXPOWER:07: Turning OFF
+[58270.708042] acpi LNXPOWER:06: Turning OFF
+[58270.708110] acpi LNXPOWER:05: Turning OFF
+[58270.708177] acpi LNXPOWER:04: Turning OFF
+[58270.708244] acpi LNXPOWER:03: Turning OFF
+[58270.708295] OOM killer enabled.
+[58270.708295] Restarting tasks ... done.
+[58270.714922] video LNXVIDEO:00: Restoring backlight state
+[58270.714929] PM: suspend exit
+[58270.727259] ata2: SATA link down (SStatus 4 SControl 300)
+[58270.729267] ata4: SATA link down (SStatus 4 SControl 300)
+[58270.729836] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[58270.729854] ata3: SATA link down (SStatus 4 SControl 300)
+[58270.730026] ata1.00: configured for UDMA/133
+[58270.756658] mei_hdcp 0000:00:16.0-HASH_BC0-5B5B-1043-32E7-8ED7D3965D57: bound 0000:00:02.0 (ops i915_hdcp_component_ops [i915])
+[58275.068820] Generic FE-GE Realtek PHY r8169-100:00: attached PHY driver [Generic FE-GE Realtek PHY] (mii_bus:phy_addr=r8169-100:00, irq=IGNORE)
+[58275.258942] r8169 0000:01:00.0 enp1s0: Link is Down
+[58277.652630] wlp0s20f0u5: authenticate with XXX
+[58277.678463] wlp0s20f0u5: send auth to XXX (try 1/3)
+[58277.680373] wlp0s20f0u5: authenticated
+[58277.682241] wlp0s20f0u5: associate with XXX (try 1/3)
+[58277.685228] wlp0s20f0u5: RX AssocResp from XXX (capab=0x8421 status=0 aid=3)
+[58277.712031] wlp0s20f0u5: associated
+[58277.712351] IPv6: ADDRCONF(NETDEV_CHANGE): wlp0s20f0u5: link becomes ready
+[59926.729915] eeprom 4-0050: eeprom driver is deprecated, please use at24 instead
+[60328.454352] Non-volatile memory driver v1.3
+[60328.625041] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[60328.637284] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[60328.977921] r8169 0000:01:00.0: invalid short VPD tag 00 at offset 1
