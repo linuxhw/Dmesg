@@ -1,0 +1,2326 @@
+[1074627.170720] ------------[ cut here ]------------
+[1074627.170724] invalid packet lengths (hdrlen=24, len=16, crypt_len=0)
+[1074627.170815] WARNING: CPU: 1 PID: 460 at drivers/net/wireless/intel/iwlwifi/mvm/rxmq.c:208 iwl_mvm_rx_mpdu_mq+0x1106/0x11a0 [iwlmvm]
+[1074627.170817] Modules linked in: btrfs xor zstd_compress raid6_pq ufs qnx4 hfsplus hfs minix ntfs msdos jfs xfs libcrc32c cpuid uas usb_storage st rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm snd_hda_codec_hdmi joydev mei_hdcp snd_sof_pci snd_sof_intel_hda_common intel_rapl_msr snd_soc_hdac_hda nls_iso8859_1 snd_sof_intel_hda snd_hda_codec_realtek snd_sof_intel_byt snd_sof_intel_ipc snd_hda_codec_generic snd_sof snd_sof_xtensa_dsp crct10dif_pclmul snd_hda_ext_core ghash_clmulni_intel snd_soc_acpi_intel_match snd_soc_acpi snd_soc_core iwlmvm snd_compress ac97_bus snd_pcm_dmaengine mac80211 aesni_intel crypto_simd libarc4 snd_hda_intel cryptd snd_intel_dspcfg snd_seq_midi glue_helper intel_cstate snd_seq_midi_event intel_rapl_perf snd_hda_codec snd_hda_core snd_rawmidi btusb snd_hwdep btrtl uvcvideo btbcm btintel snd_pcm videobuf2_vmalloc videobuf2_memops bluetooth snd_seq iwlwifi cdc_mbim videobuf2_v4l2 cdc_wdm
+[1074627.170871]  videobuf2_common input_leds cdc_ncm videodev usbnet wmi_bmof intel_wmi_thunderbolt i915 cdc_acm serio_raw snd_seq_device thinkpad_acpi mii mc nvram mei_me rtsx_pci_ms cfg80211 ecdh_generic elan_i2c ledtrig_audio memstick snd_timer ecc mei drm_kms_helper ucsi_acpi i2c_algo_bit typec_ucsi fb_sys_fops snd processor_thermal_device syscopyarea typec sysfillrect intel_pch_thermal intel_rapl_common sysimgblt intel_soc_dts_iosf soundcore int3403_thermal int340x_thermal_zone int3400_thermal acpi_thermal_rel acpi_pad mac_hid sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 rtsx_pci_sdmmc crc32_pclmul psmouse nvme e1000e intel_lpss_pci intel_lpss i2c_i801 nvme_core rtsx_pci idma64 virt_dma wmi pinctrl_cannonlake video pinctrl_intel
+[1074627.170925] CPU: 1 PID: 460 Comm: irq/140-iwlwifi Not tainted 5.4.0-29-generic #33-Ubuntu
+[1074627.170927] Hardware name: LENOVO 20Q5002GPG/20Q5002GPG, BIOS R0ZET40W (1.18 ) 03/24/2020
+[1074627.170948] RIP: 0010:iwl_mvm_rx_mpdu_mq+0x1106/0x11a0 [iwlmvm]
+[1074627.170952] Code: ff ff 44 89 d1 44 89 c2 44 89 ce 48 c7 c7 b8 df fb c0 44 89 55 98 44 89 45 a0 44 89 4d a8 c6 05 c1 a7 03 00 01 e8 75 7d 91 c4 <0f> 0b 44 8b 4d a8 44 8b 45 a0 44 8b 55 98 e9 6b fc ff ff c7 83 60
+[1074627.170954] RSP: 0018:ffffb3d6c14e3c80 EFLAGS: 00010282
+[1074627.170957] RAX: 0000000000000000 RBX: ffffa0bb13b89e48 RCX: 0000000000000006
+[1074627.170959] RDX: 0000000000000007 RSI: 0000000000000092 RDI: ffffa0bb202578c0
+[1074627.170961] RBP: ffffb3d6c14e3d48 R08: 00000000000024e6 R09: 0000000000000004
+[1074627.170963] R10: 0000000000000000 R11: 0000000000000001 R12: ffffa0b8b1aeea00
+[1074627.170965] R13: ffffb3d6c14e3da0 R14: ffffa0b8da3f6038 R15: 0000000000000010
+[1074627.170968] FS:  0000000000000000(0000) GS:ffffa0bb20240000(0000) knlGS:0000000000000000
+[1074627.170970] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[1074627.170972] CR2: 0000176e0991d000 CR3: 0000000407e0a003 CR4: 00000000003606e0
+[1074627.170975] Call Trace:
+[1074627.170999]  iwl_mvm_rx_mq+0x4f/0xb0 [iwlmvm]
+[1074627.171019]  iwl_pcie_rx_handle_rb.constprop.0+0x285/0x580 [iwlwifi]
+[1074627.171036]  iwl_pcie_rx_handle+0x1ac/0x4b0 [iwlwifi]
+[1074627.171046]  ? irq_finalize_oneshot.part.0+0xf0/0xf0
+[1074627.171061]  iwl_pcie_irq_rx_msix_handler+0x58/0x100 [iwlwifi]
+[1074627.171067]  irq_thread_fn+0x28/0x60
+[1074627.171070]  irq_thread+0xda/0x170
+[1074627.171076]  ? irq_forced_thread_fn+0x80/0x80
+[1074627.171080]  kthread+0x104/0x140
+[1074627.171086]  ? irq_thread_check_affinity+0xf0/0xf0
+[1074627.171089]  ? kthread_park+0x90/0x90
+[1074627.171095]  ret_from_fork+0x1f/0x40
+[1074627.171100] ---[ end trace 2bad948781307333 ]---
+[1086735.388051] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 23995)
+[1086735.388052] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 23995)
+[1086735.388054] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50043)
+[1086735.388054] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50043)
+[1086735.388084] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50043)
+[1086735.388085] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50043)
+[1086735.388109] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50043)
+[1086735.388110] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50043)
+[1086735.388111] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50042)
+[1086735.388112] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50042)
+[1086735.395084] mce: CPU7: Core temperature/speed normal
+[1086735.395085] mce: CPU1: Package temperature/speed normal
+[1086735.395085] mce: CPU3: Core temperature/speed normal
+[1086735.395086] mce: CPU5: Package temperature/speed normal
+[1086735.395087] mce: CPU3: Package temperature/speed normal
+[1086735.395088] mce: CPU7: Package temperature/speed normal
+[1086735.395111] mce: CPU4: Package temperature/speed normal
+[1086735.395112] mce: CPU0: Package temperature/speed normal
+[1086735.395130] mce: CPU2: Package temperature/speed normal
+[1086735.395131] mce: CPU6: Package temperature/speed normal
+[1101687.725073] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15544)
+[1101687.725074] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15544)
+[1101687.725075] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50045)
+[1101687.725076] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50045)
+[1101687.725120] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50046)
+[1101687.725121] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50046)
+[1101687.725122] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50046)
+[1101687.725123] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50046)
+[1101687.725124] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50046)
+[1101687.725125] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50046)
+[1101687.726044] mce: CPU6: Core temperature/speed normal
+[1101687.726045] mce: CPU2: Core temperature/speed normal
+[1101687.726045] mce: CPU6: Package temperature/speed normal
+[1101687.726047] mce: CPU2: Package temperature/speed normal
+[1101687.726090] mce: CPU1: Package temperature/speed normal
+[1101687.726090] mce: CPU5: Package temperature/speed normal
+[1101687.726091] mce: CPU4: Package temperature/speed normal
+[1101687.726092] mce: CPU0: Package temperature/speed normal
+[1101687.726093] mce: CPU3: Package temperature/speed normal
+[1101687.726093] mce: CPU7: Package temperature/speed normal
+[1102712.487281] wlp5s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[1102712.628081] wlp5s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[1102715.065100] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1102715.075633] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1102715.228842] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[1102715.362924] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[1102715.494988] wlp5s0: authentication with XX:XX:XX:XX:XX:XX timed out
+[1102721.959281] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1102721.968915] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1102722.012414] wlp5s0: authenticated
+[1102722.016644] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1102722.028766] wlp5s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1102722.031752] wlp5s0: associated
+[1102722.098304] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1107742.657465] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 23998)
+[1107742.657465] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 23998)
+[1107742.657467] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50053)
+[1107742.657467] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50053)
+[1107742.657511] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50053)
+[1107742.657512] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50053)
+[1107742.657513] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50053)
+[1107742.657514] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50053)
+[1107742.657515] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50052)
+[1107742.657516] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50052)
+[1107742.658458] mce: CPU3: Core temperature/speed normal
+[1107742.658459] mce: CPU7: Core temperature/speed normal
+[1107742.658460] mce: CPU1: Package temperature/speed normal
+[1107742.658460] mce: CPU5: Package temperature/speed normal
+[1107742.658461] mce: CPU3: Package temperature/speed normal
+[1107742.658462] mce: CPU7: Package temperature/speed normal
+[1107742.658501] mce: CPU4: Package temperature/speed normal
+[1107742.658502] mce: CPU0: Package temperature/speed normal
+[1107742.658503] mce: CPU2: Package temperature/speed normal
+[1107742.658503] mce: CPU6: Package temperature/speed normal
+[1108885.394808] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15551)
+[1108885.394809] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15551)
+[1108885.394810] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50062)
+[1108885.394811] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50062)
+[1108885.394852] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50063)
+[1108885.394852] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50063)
+[1108885.394854] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50063)
+[1108885.394854] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50063)
+[1108885.394856] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50063)
+[1108885.394856] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50063)
+[1108885.440757] mce: CPU2: Core temperature/speed normal
+[1108885.440757] mce: CPU6: Core temperature/speed normal
+[1108885.440758] mce: CPU2: Package temperature/speed normal
+[1108885.440759] mce: CPU6: Package temperature/speed normal
+[1108885.440806] mce: CPU1: Package temperature/speed normal
+[1108885.440807] mce: CPU4: Package temperature/speed normal
+[1108885.440808] mce: CPU7: Package temperature/speed normal
+[1108885.440808] mce: CPU5: Package temperature/speed normal
+[1108885.440809] mce: CPU0: Package temperature/speed normal
+[1108885.440809] mce: CPU3: Package temperature/speed normal
+[1109535.316045] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42134)
+[1109535.316045] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42134)
+[1109535.316047] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50088)
+[1109535.316047] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50088)
+[1109535.316089] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50088)
+[1109535.316090] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50087)
+[1109535.316091] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50088)
+[1109535.316092] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50087)
+[1109535.316093] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50088)
+[1109535.316094] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50088)
+[1109535.316992] mce: CPU4: Core temperature/speed normal
+[1109535.316993] mce: CPU0: Core temperature/speed normal
+[1109535.316994] mce: CPU1: Package temperature/speed normal
+[1109535.316994] mce: CPU5: Package temperature/speed normal
+[1109535.316995] mce: CPU0: Package temperature/speed normal
+[1109535.316995] mce: CPU4: Package temperature/speed normal
+[1109535.317035] mce: CPU2: Package temperature/speed normal
+[1109535.317035] mce: CPU6: Package temperature/speed normal
+[1109535.317036] mce: CPU3: Package temperature/speed normal
+[1109535.317037] mce: CPU7: Package temperature/speed normal
+[1123286.430786] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15555)
+[1123286.430787] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15555)
+[1123286.430788] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50098)
+[1123286.430788] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50098)
+[1123286.430830] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50099)
+[1123286.430831] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50099)
+[1123286.430832] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50099)
+[1123286.430833] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50099)
+[1123286.430834] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50099)
+[1123286.430835] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50099)
+[1123286.433784] mce: CPU2: Core temperature/speed normal
+[1123286.433785] mce: CPU2: Package temperature/speed normal
+[1123286.433785] mce: CPU6: Core temperature/speed normal
+[1123286.433786] mce: CPU6: Package temperature/speed normal
+[1123286.433831] mce: CPU1: Package temperature/speed normal
+[1123286.433832] mce: CPU0: Package temperature/speed normal
+[1123286.433833] mce: CPU4: Package temperature/speed normal
+[1123286.433833] mce: CPU5: Package temperature/speed normal
+[1123286.433834] mce: CPU7: Package temperature/speed normal
+[1123286.433835] mce: CPU3: Package temperature/speed normal
+[1123545.162952] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1123545.174187] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1123545.185956] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1123545.228628] wlp5s0: authenticated
+[1123545.231760] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1123545.234053] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=5)
+[1123545.237320] wlp5s0: associated
+[1123545.308339] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1123557.933744] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1123557.944863] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1123557.956340] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1123557.998143] wlp5s0: authenticated
+[1123558.004026] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1123558.018146] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=1)
+[1123558.021445] wlp5s0: associated
+[1123558.081688] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1123561.493076] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1123561.494730] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1123562.512093] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1123649.379465] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1123649.393084] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1123649.401430] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1123649.444655] wlp5s0: authenticated
+[1123649.448812] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1123649.452580] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=5)
+[1123649.456498] wlp5s0: associated
+[1123649.552514] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1123655.473191] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1123655.484282] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1123655.496111] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1123655.539233] wlp5s0: authenticated
+[1123655.541001] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1123655.554921] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=1)
+[1123655.557850] wlp5s0: associated
+[1123655.566703] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1123657.125663] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1126790.299383] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1126790.310946] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1126790.319966] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1126790.362041] wlp5s0: authenticated
+[1126790.362490] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1126790.364807] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=3)
+[1126790.368028] wlp5s0: associated
+[1126790.394388] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1126800.302548] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1126800.313608] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1126800.323525] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1126800.369583] wlp5s0: authenticated
+[1126800.370703] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1126800.379229] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=1)
+[1126800.382332] wlp5s0: associated
+[1126800.481864] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1127080.240670] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1127080.240685] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1127080.244573] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1127081.162367] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1134212.020887] wlp5s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[1134212.175831] wlp5s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[1134213.064100] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1134213.073737] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1134213.225380] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[1134213.343358] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[1134213.447447] wlp5s0: authentication with XX:XX:XX:XX:XX:XX timed out
+[1134221.488568] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1134221.499094] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1134221.542048] wlp5s0: authenticated
+[1134221.546306] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1134221.558370] wlp5s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1134221.561228] wlp5s0: associated
+[1134221.631740] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1152086.820894] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15563)
+[1152086.820895] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15563)
+[1152086.820896] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50106)
+[1152086.820897] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50106)
+[1152086.820938] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50107)
+[1152086.820940] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50107)
+[1152086.820940] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50107)
+[1152086.820941] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50107)
+[1152086.820943] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50107)
+[1152086.820944] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50107)
+[1152086.821920] mce: CPU2: Core temperature/speed normal
+[1152086.821921] mce: CPU6: Core temperature/speed normal
+[1152086.821921] mce: CPU2: Package temperature/speed normal
+[1152086.821922] mce: CPU6: Package temperature/speed normal
+[1152086.821968] mce: CPU7: Package temperature/speed normal
+[1152086.821969] mce: CPU1: Package temperature/speed normal
+[1152086.821970] mce: CPU0: Package temperature/speed normal
+[1152086.821970] mce: CPU4: Package temperature/speed normal
+[1152086.821971] mce: CPU3: Package temperature/speed normal
+[1152086.821972] mce: CPU5: Package temperature/speed normal
+[1176045.492700] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15570)
+[1176045.492701] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15570)
+[1176045.492702] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50114)
+[1176045.492702] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50114)
+[1176045.492744] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50115)
+[1176045.492744] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50115)
+[1176045.492746] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50115)
+[1176045.492746] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50115)
+[1176045.492748] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50115)
+[1176045.492748] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50115)
+[1176045.493613] mce: CPU2: Core temperature/speed normal
+[1176045.493613] mce: CPU6: Core temperature/speed normal
+[1176045.493614] mce: CPU2: Package temperature/speed normal
+[1176045.493615] mce: CPU6: Package temperature/speed normal
+[1176045.493661] mce: CPU5: Package temperature/speed normal
+[1176045.493662] mce: CPU4: Package temperature/speed normal
+[1176045.493662] mce: CPU1: Package temperature/speed normal
+[1176045.493663] mce: CPU0: Package temperature/speed normal
+[1176045.493664] mce: CPU3: Package temperature/speed normal
+[1176045.493664] mce: CPU7: Package temperature/speed normal
+[1177824.265853] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 24009)
+[1177824.265854] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 24009)
+[1177824.265856] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50122)
+[1177824.265856] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50122)
+[1177824.265897] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50122)
+[1177824.265898] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50122)
+[1177824.265899] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50122)
+[1177824.265899] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50122)
+[1177824.265901] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50121)
+[1177824.265901] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50121)
+[1177824.266778] mce: CPU7: Core temperature/speed normal
+[1177824.266779] mce: CPU3: Core temperature/speed normal
+[1177824.266779] mce: CPU7: Package temperature/speed normal
+[1177824.266780] mce: CPU3: Package temperature/speed normal
+[1177824.266826] mce: CPU1: Package temperature/speed normal
+[1177824.266827] mce: CPU4: Package temperature/speed normal
+[1177824.266827] mce: CPU5: Package temperature/speed normal
+[1177824.266828] mce: CPU0: Package temperature/speed normal
+[1177824.266829] mce: CPU6: Package temperature/speed normal
+[1177824.266830] mce: CPU2: Package temperature/speed normal
+[1180888.144144] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42145)
+[1180888.144145] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42145)
+[1180888.144146] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50123)
+[1180888.144146] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50123)
+[1180888.144188] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50122)
+[1180888.144189] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50123)
+[1180888.144190] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50123)
+[1180888.144191] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50122)
+[1180888.144192] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50123)
+[1180888.144193] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50123)
+[1180888.145100] mce: CPU4: Core temperature/speed normal
+[1180888.145101] mce: CPU0: Core temperature/speed normal
+[1180888.145101] mce: CPU4: Package temperature/speed normal
+[1180888.145102] mce: CPU0: Package temperature/speed normal
+[1180888.145146] mce: CPU1: Package temperature/speed normal
+[1180888.145146] mce: CPU5: Package temperature/speed normal
+[1180888.145147] mce: CPU2: Package temperature/speed normal
+[1180888.145148] mce: CPU6: Package temperature/speed normal
+[1180888.145149] mce: CPU7: Package temperature/speed normal
+[1180888.145149] mce: CPU3: Package temperature/speed normal
+[1188083.561251] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 24010)
+[1188083.561251] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 24010)
+[1188083.561253] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50127)
+[1188083.561253] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50127)
+[1188083.561291] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50127)
+[1188083.561292] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50127)
+[1188083.561293] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50127)
+[1188083.561294] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50127)
+[1188083.561295] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50126)
+[1188083.561296] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50126)
+[1188083.562199] mce: CPU3: Core temperature/speed normal
+[1188083.562200] mce: CPU7: Core temperature/speed normal
+[1188083.562200] mce: CPU3: Package temperature/speed normal
+[1188083.562201] mce: CPU7: Package temperature/speed normal
+[1188083.562247] mce: CPU0: Package temperature/speed normal
+[1188083.562247] mce: CPU4: Package temperature/speed normal
+[1188083.562248] mce: CPU1: Package temperature/speed normal
+[1188083.562249] mce: CPU5: Package temperature/speed normal
+[1188083.562250] mce: CPU2: Package temperature/speed normal
+[1188083.562250] mce: CPU6: Package temperature/speed normal
+[1192169.289320] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 24014)
+[1192169.289321] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 24014)
+[1192169.289322] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50171)
+[1192169.289322] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50171)
+[1192169.289364] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50171)
+[1192169.289365] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50171)
+[1192169.289367] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50171)
+[1192169.289368] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50170)
+[1192169.289369] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50170)
+[1192169.289370] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50171)
+[1192169.290318] mce: CPU3: Core temperature/speed normal
+[1192169.290319] mce: CPU7: Core temperature/speed normal
+[1192169.290319] mce: CPU3: Package temperature/speed normal
+[1192169.290320] mce: CPU7: Package temperature/speed normal
+[1192169.290365] mce: CPU5: Package temperature/speed normal
+[1192169.290365] mce: CPU1: Package temperature/speed normal
+[1192169.290366] mce: CPU4: Package temperature/speed normal
+[1192169.290367] mce: CPU0: Package temperature/speed normal
+[1192169.290368] mce: CPU6: Package temperature/speed normal
+[1192169.290368] mce: CPU2: Package temperature/speed normal
+[1192758.445366] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1192758.457066] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1192758.465690] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1192758.507746] wlp5s0: authenticated
+[1192758.510133] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1192758.512526] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=5)
+[1192758.515443] wlp5s0: associated
+[1192758.517353] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1192767.927072] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1192767.938783] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1192767.948169] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1192767.990290] wlp5s0: authenticated
+[1192767.994108] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1192768.006257] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1192768.009817] wlp5s0: associated
+[1192768.040572] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1192775.868516] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1195288.273077] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42149)
+[1195288.273078] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42149)
+[1195288.273079] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50182)
+[1195288.273080] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50182)
+[1195288.273121] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50181)
+[1195288.273122] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50182)
+[1195288.273123] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50181)
+[1195288.273124] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50182)
+[1195288.273125] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50182)
+[1195288.273126] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50182)
+[1195288.274015] mce: CPU4: Core temperature/speed normal
+[1195288.274016] mce: CPU0: Core temperature/speed normal
+[1195288.274016] mce: CPU4: Package temperature/speed normal
+[1195288.274017] mce: CPU0: Package temperature/speed normal
+[1195288.274053] mce: CPU5: Package temperature/speed normal
+[1195288.274054] mce: CPU6: Package temperature/speed normal
+[1195288.274054] mce: CPU2: Package temperature/speed normal
+[1195288.274055] mce: CPU1: Package temperature/speed normal
+[1195288.274067] mce: CPU3: Package temperature/speed normal
+[1195288.274068] mce: CPU7: Package temperature/speed normal
+[1197627.232265] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15614)
+[1197627.232266] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15614)
+[1197627.232267] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50198)
+[1197627.232267] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50198)
+[1197627.232309] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50199)
+[1197627.232310] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50199)
+[1197627.232311] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50199)
+[1197627.232312] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50199)
+[1197627.232313] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50199)
+[1197627.232314] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50199)
+[1197627.233189] mce: CPU2: Core temperature/speed normal
+[1197627.233190] mce: CPU6: Core temperature/speed normal
+[1197627.233190] mce: CPU2: Package temperature/speed normal
+[1197627.233191] mce: CPU6: Package temperature/speed normal
+[1197627.233237] mce: CPU5: Package temperature/speed normal
+[1197627.233237] mce: CPU1: Package temperature/speed normal
+[1197627.233238] mce: CPU0: Package temperature/speed normal
+[1197627.233239] mce: CPU4: Package temperature/speed normal
+[1197627.233240] mce: CPU3: Package temperature/speed normal
+[1197627.233240] mce: CPU7: Package temperature/speed normal
+[1201184.760481] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15630)
+[1201184.760482] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15630)
+[1201184.760483] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50214)
+[1201184.760483] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50214)
+[1201184.760513] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50215)
+[1201184.760514] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50215)
+[1201184.760543] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50215)
+[1201184.760543] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50215)
+[1201184.760545] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50215)
+[1201184.760545] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50215)
+[1201184.761575] mce: CPU6: Core temperature/speed normal
+[1201184.761576] mce: CPU3: Package temperature/speed normal
+[1201184.761577] mce: CPU2: Core temperature/speed normal
+[1201184.761577] mce: CPU6: Package temperature/speed normal
+[1201184.761577] mce: CPU7: Package temperature/speed normal
+[1201184.761578] mce: CPU2: Package temperature/speed normal
+[1201184.761627] mce: CPU5: Package temperature/speed normal
+[1201184.761628] mce: CPU1: Package temperature/speed normal
+[1201184.761629] mce: CPU0: Package temperature/speed normal
+[1201184.761630] mce: CPU4: Package temperature/speed normal
+[1201216.236823] usb 1-2: new high-speed USB device number 10 using xhci_hcd
+[1201216.262664] usb 1-2: New USB device found, idVendor=2a70, idProduct=f003, bcdDevice= 4.04
+[1201216.262670] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[1201216.262673] usb 1-2: Product: OnePlus
+[1201216.262676] usb 1-2: Manufacturer: OnePlus
+[1201216.262678] usb 1-2: SerialNumber: ...
+[1201216.476809] usb-storage 1-2:1.1: USB Mass Storage device detected
+[1201216.477551] scsi host0: usb-storage 1-2:1.1
+[1201217.493810] scsi 0:0:0:0: CD-ROM            OnePlus  Device Driver    0404 PQ: 0 ANSI: 2
+[1201217.495071] sr 0:0:0:0: Power-on or device reset occurred
+[1201217.499161] sr 0:0:0:0: [sr0] scsi-1 drive
+[1201217.524813] sr 0:0:0:0: Attached scsi CD-ROM sr0
+[1201217.525007] sr 0:0:0:0: Attached scsi generic sg0 type 5
+[1202487.302147] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42166)
+[1202487.302148] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42166)
+[1202487.302149] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50217)
+[1202487.302149] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50217)
+[1202487.302191] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50216)
+[1202487.302192] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50216)
+[1202487.302193] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50217)
+[1202487.302194] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50217)
+[1202487.302195] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50217)
+[1202487.302196] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50217)
+[1202487.303139] mce: CPU4: Core temperature/speed normal
+[1202487.303140] mce: CPU0: Core temperature/speed normal
+[1202487.303140] mce: CPU4: Package temperature/speed normal
+[1202487.303141] mce: CPU0: Package temperature/speed normal
+[1202487.303187] mce: CPU6: Package temperature/speed normal
+[1202487.303188] mce: CPU1: Package temperature/speed normal
+[1202487.303189] mce: CPU5: Package temperature/speed normal
+[1202487.303189] mce: CPU2: Package temperature/speed normal
+[1202487.303190] mce: CPU3: Package temperature/speed normal
+[1202487.303191] mce: CPU7: Package temperature/speed normal
+[1206518.789194] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42187)
+[1206518.789195] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42187)
+[1206518.789196] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50238)
+[1206518.789197] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50238)
+[1206518.789238] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50237)
+[1206518.789239] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50238)
+[1206518.789240] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50238)
+[1206518.789240] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50237)
+[1206518.789242] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50238)
+[1206518.789242] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50238)
+[1206518.790245] mce: CPU4: Core temperature/speed normal
+[1206518.790246] mce: CPU0: Core temperature/speed normal
+[1206518.790246] mce: CPU4: Package temperature/speed normal
+[1206518.790247] mce: CPU0: Package temperature/speed normal
+[1206518.790293] mce: CPU1: Package temperature/speed normal
+[1206518.790294] mce: CPU5: Package temperature/speed normal
+[1206518.790295] mce: CPU2: Package temperature/speed normal
+[1206518.790295] mce: CPU6: Package temperature/speed normal
+[1206518.790296] mce: CPU3: Package temperature/speed normal
+[1206518.790297] mce: CPU7: Package temperature/speed normal
+[1206906.214081] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1206906.226144] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1206906.235404] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1206906.278476] wlp5s0: authenticated
+[1206906.280552] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1206906.283199] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=4)
+[1206906.287414] wlp5s0: associated
+[1206906.331183] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1206932.883853] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1206932.895781] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1206932.904644] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1206932.952191] wlp5s0: authenticated
+[1206932.958026] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1206932.970407] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1206932.974246] wlp5s0: associated
+[1206933.060823] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1207224.294847] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1207225.209385] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1209683.666247] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 24025)
+[1209683.666248] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 24025)
+[1209683.666249] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50239)
+[1209683.666249] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50239)
+[1209683.666293] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50239)
+[1209683.666294] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50239)
+[1209683.666295] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50239)
+[1209683.666296] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50239)
+[1209683.666297] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50238)
+[1209683.666298] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50238)
+[1209683.667195] mce: CPU7: Core temperature/speed normal
+[1209683.667195] mce: CPU3: Core temperature/speed normal
+[1209683.667196] mce: CPU7: Package temperature/speed normal
+[1209683.667196] mce: CPU3: Package temperature/speed normal
+[1209683.667241] mce: CPU4: Package temperature/speed normal
+[1209683.667242] mce: CPU0: Package temperature/speed normal
+[1209683.667242] mce: CPU1: Package temperature/speed normal
+[1209683.667243] mce: CPU5: Package temperature/speed normal
+[1209683.667244] mce: CPU2: Package temperature/speed normal
+[1209683.667245] mce: CPU6: Package temperature/speed normal
+[1210118.058320] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42188)
+[1210118.058320] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42188)
+[1210118.058322] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50242)
+[1210118.058322] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50242)
+[1210118.058382] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50241)
+[1210118.058383] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50242)
+[1210118.058384] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50242)
+[1210118.058385] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50242)
+[1210118.058386] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50242)
+[1210118.058387] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50241)
+[1210118.059226] mce: CPU0: Core temperature/speed normal
+[1210118.059227] mce: CPU4: Core temperature/speed normal
+[1210118.059227] mce: CPU0: Package temperature/speed normal
+[1210118.059228] mce: CPU4: Package temperature/speed normal
+[1210118.059272] mce: CPU1: Package temperature/speed normal
+[1210118.059273] mce: CPU7: Package temperature/speed normal
+[1210118.059274] mce: CPU6: Package temperature/speed normal
+[1210118.059274] mce: CPU2: Package temperature/speed normal
+[1210118.059275] mce: CPU5: Package temperature/speed normal
+[1210118.059275] mce: CPU3: Package temperature/speed normal
+[1212130.607121] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1212130.618232] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1212130.627332] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1212130.670241] wlp5s0: authenticated
+[1212130.672527] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1212130.675222] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=4)
+[1212130.678971] wlp5s0: associated
+[1212130.723514] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1212134.234187] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1212134.245524] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1212134.253257] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1212134.294477] wlp5s0: authenticated
+[1212134.300510] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1212134.312613] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1212134.316277] wlp5s0: associated
+[1212134.379194] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1212135.525437] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212275.485619] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212459.070870] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1212459.082223] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1212459.092998] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1212459.136953] wlp5s0: authenticated
+[1212459.140258] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1212459.142612] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=4)
+[1212459.146237] wlp5s0: associated
+[1212459.225724] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1212464.108957] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1212464.120806] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1212464.130506] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1212464.173925] wlp5s0: authenticated
+[1212464.176297] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1212464.184305] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1212464.187427] wlp5s0: associated
+[1212464.206402] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1212475.482746] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212515.481213] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212535.485036] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212575.481845] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212575.481866] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212575.482052] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212575.482502] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212575.482659] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212575.482992] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212575.483232] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212623.440456] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212655.478619] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212695.480625] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1212735.476423] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1213732.498220] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42191)
+[1213732.498221] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42191)
+[1213732.498222] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50245)
+[1213732.498222] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50245)
+[1213732.498266] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50245)
+[1213732.498267] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50244)
+[1213732.498268] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50244)
+[1213732.498269] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50245)
+[1213732.498270] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50245)
+[1213732.498271] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50245)
+[1213732.499191] mce: CPU4: Core temperature/speed normal
+[1213732.499192] mce: CPU4: Package temperature/speed normal
+[1213732.499193] mce: CPU0: Core temperature/speed normal
+[1213732.499193] mce: CPU0: Package temperature/speed normal
+[1213732.499240] mce: CPU5: Package temperature/speed normal
+[1213732.499240] mce: CPU1: Package temperature/speed normal
+[1213732.499241] mce: CPU7: Package temperature/speed normal
+[1213732.499242] mce: CPU3: Package temperature/speed normal
+[1213732.499243] mce: CPU2: Package temperature/speed normal
+[1213732.499243] mce: CPU6: Package temperature/speed normal
+[1214294.449353] usb 1-2: USB disconnect, device number 10
+[1214409.214231] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214409.225119] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214409.234326] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214409.276458] wlp5s0: authenticated
+[1214409.278855] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214409.281245] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1214409.284586] wlp5s0: associated
+[1214409.348343] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214412.858937] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214412.872458] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214412.884368] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214412.924526] wlp5s0: authenticated
+[1214412.926979] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214412.942322] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1214412.945761] wlp5s0: associated
+[1214412.984294] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214460.102231] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1214462.137290] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1214535.442242] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1214546.734683] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214546.746471] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214546.756284] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214546.798684] wlp5s0: authenticated
+[1214546.799260] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214546.802081] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1214546.804922] wlp5s0: associated
+[1214546.873017] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214550.383214] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214550.394821] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214550.406215] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214550.448488] wlp5s0: authenticated
+[1214550.451290] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214550.464935] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1214550.468193] wlp5s0: associated
+[1214550.507623] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214555.442435] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1214575.441351] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1214675.439785] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1214713.206707] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214713.221496] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214713.234717] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214713.276307] wlp5s0: authenticated
+[1214713.279768] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214713.282803] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1214713.286529] wlp5s0: associated
+[1214713.378737] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214714.733932] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214714.742174] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214714.744803] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214714.786317] wlp5s0: authenticated
+[1214714.791651] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214714.805568] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1214714.808690] wlp5s0: associated
+[1214714.860013] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214715.529849] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1214835.615555] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1214878.918826] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1214907.802297] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214907.815650] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214907.828008] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214907.869029] wlp5s0: authenticated
+[1214907.871989] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214907.875243] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1214907.879236] wlp5s0: associated
+[1214907.938659] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214913.391564] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214913.404105] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214913.417418] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214913.458087] wlp5s0: authenticated
+[1214913.463996] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214913.476598] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1214913.479713] wlp5s0: associated
+[1214913.516425] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214957.322209] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214957.334412] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214957.342685] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214957.384297] wlp5s0: authenticated
+[1214957.388178] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214957.391389] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1214957.395881] wlp5s0: associated
+[1214957.398546] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214964.596519] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1214964.608282] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1214964.618669] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1214964.661525] wlp5s0: authenticated
+[1214964.664208] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1214964.680212] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1214964.683626] wlp5s0: associated
+[1214964.716574] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1214975.434000] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1215055.433535] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1215155.430174] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1215195.432315] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1215214.388696] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1215214.402127] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1215214.413557] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1215214.456046] wlp5s0: authenticated
+[1215214.456292] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1215214.459359] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1215214.462896] wlp5s0: associated
+[1215214.527076] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1215227.449571] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1215227.464520] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1215227.473622] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1215227.515231] wlp5s0: authenticated
+[1215227.516331] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1215227.526915] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1215227.530146] wlp5s0: associated
+[1215227.577957] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1215558.397503] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 24029)
+[1215558.397504] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 24029)
+[1215558.397505] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50253)
+[1215558.397506] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50253)
+[1215558.397547] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50253)
+[1215558.397548] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50253)
+[1215558.397549] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50253)
+[1215558.397550] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50253)
+[1215558.397551] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50252)
+[1215558.397552] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50252)
+[1215558.398440] mce: CPU3: Core temperature/speed normal
+[1215558.398441] mce: CPU7: Core temperature/speed normal
+[1215558.398441] mce: CPU3: Package temperature/speed normal
+[1215558.398442] mce: CPU7: Package temperature/speed normal
+[1215558.398486] mce: CPU0: Package temperature/speed normal
+[1215558.398487] mce: CPU5: Package temperature/speed normal
+[1215558.398487] mce: CPU4: Package temperature/speed normal
+[1215558.398488] mce: CPU1: Package temperature/speed normal
+[1215558.398489] mce: CPU2: Package temperature/speed normal
+[1215558.398489] mce: CPU6: Package temperature/speed normal
+[1215636.185155] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1215636.197224] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1215636.206857] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1215636.248697] wlp5s0: authenticated
+[1215636.254705] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1215636.257282] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1215636.260832] wlp5s0: associated
+[1215636.316329] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1215658.055647] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1215658.067440] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1215658.079352] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1215658.121795] wlp5s0: authenticated
+[1215658.126707] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1215658.138653] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1215658.141792] wlp5s0: associated
+[1215658.171186] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1215756.929130] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1215756.929285] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1215883.076459] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1215883.096973] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1215883.106551] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1215883.149078] wlp5s0: authenticated
+[1215883.151533] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1215883.154374] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1215883.157843] wlp5s0: associated
+[1215883.204867] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1215888.765492] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1215888.778914] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1215888.788544] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1215888.830231] wlp5s0: authenticated
+[1215888.835695] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1215888.843370] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1215888.847025] wlp5s0: associated
+[1215888.878500] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1215895.416638] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1216167.510447] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1216491.636808] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1216491.650651] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1216491.663242] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1216491.706399] wlp5s0: authenticated
+[1216491.706820] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1216491.709451] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1216491.712945] wlp5s0: associated
+[1216491.773922] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1216509.268204] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1216509.282817] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1216509.296105] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1216509.336666] wlp5s0: authenticated
+[1216509.338889] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1216509.349624] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1216509.353045] wlp5s0: associated
+[1216509.424151] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1216534.325932] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1216534.338964] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1216534.347785] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1216534.389979] wlp5s0: authenticated
+[1216534.390636] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1216534.393749] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1216534.397999] wlp5s0: associated
+[1216534.475127] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1216541.454415] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1216541.468724] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1216541.480953] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1216541.530096] wlp5s0: authenticated
+[1216541.530570] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1216541.540346] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1216541.543963] wlp5s0: associated
+[1216541.577515] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1216642.321764] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1216642.334833] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1216642.343833] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1216642.384564] wlp5s0: authenticated
+[1216642.390145] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1216642.393143] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1216642.397023] wlp5s0: associated
+[1216642.405738] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1216648.475300] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1216648.487734] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1216648.498562] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1216648.541779] wlp5s0: authenticated
+[1216648.546436] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1216648.550347] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1216648.554220] wlp5s0: associated
+[1216648.585944] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1216655.402253] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1216835.398360] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1216866.717074] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1216866.729362] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1216866.738746] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1216866.779093] wlp5s0: authenticated
+[1216866.781266] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1216866.784571] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1216866.789293] wlp5s0: associated
+[1216866.868539] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1216883.235292] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1216883.247872] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1216883.257880] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1216883.298593] wlp5s0: authenticated
+[1216883.301258] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1216883.312331] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1216883.315687] wlp5s0: associated
+[1216883.389683] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1218138.425213] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1218138.438652] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1218138.449403] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1218138.490840] wlp5s0: authenticated
+[1218138.496893] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1218138.499215] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1218138.503180] wlp5s0: associated
+[1218138.688037] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1218154.237632] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1218154.251805] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1218154.262494] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1218154.304437] wlp5s0: authenticated
+[1218154.304870] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1218154.318992] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1218154.322825] wlp5s0: associated
+[1218154.380911] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1218155.375078] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218195.375404] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218218.404609] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1218218.417743] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1218218.426897] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1218218.468109] wlp5s0: authenticated
+[1218218.468878] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1218218.472062] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1218218.476115] wlp5s0: associated
+[1218218.560638] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1218221.874299] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1218221.884204] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1218221.891790] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1218221.932576] wlp5s0: authenticated
+[1218221.937247] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1218221.949756] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1218221.952588] wlp5s0: associated
+[1218221.965495] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1218223.913077] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218223.913093] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218224.935841] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218225.858344] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218227.907137] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218227.907150] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218228.844435] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218229.852297] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218231.901605] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218231.901624] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218232.922895] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218255.374101] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218275.371127] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218315.370758] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218395.370884] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218435.369069] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218455.368164] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1218475.366859] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1219206.775562] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1219206.788112] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1219206.797725] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1219206.838452] wlp5s0: authenticated
+[1219206.840198] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1219206.842877] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1219206.847425] wlp5s0: associated
+[1219207.037031] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1219227.639839] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1219227.653067] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1219227.664851] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1219227.705883] wlp5s0: authenticated
+[1219227.708149] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1219227.720117] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1219227.723826] wlp5s0: associated
+[1219227.740142] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1221123.098156] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1221123.112321] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1221123.124165] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1221123.167814] wlp5s0: authenticated
+[1221123.170579] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1221123.173394] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1221123.177786] wlp5s0: associated
+[1221123.368981] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1221125.796429] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1221125.807481] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1221125.815703] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1221125.859014] wlp5s0: authenticated
+[1221125.862397] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1221125.874585] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1221125.878574] wlp5s0: associated
+[1221125.935520] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1221135.317543] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1221235.913524] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1221235.913537] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1221355.316548] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1224674.224728] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1224674.237170] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1224674.247314] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1224674.289670] wlp5s0: authenticated
+[1224674.291530] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1224674.294005] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1224674.297691] wlp5s0: associated
+[1224674.326285] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1224681.383783] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1224681.398374] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1224681.407136] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1224681.451953] wlp5s0: authenticated
+[1224681.455764] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1224681.466276] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1224681.469514] wlp5s0: associated
+[1224681.474282] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1224703.696334] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1224976.817090] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1224976.830861] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1224976.840411] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1224976.882729] wlp5s0: authenticated
+[1224976.883033] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1224976.885832] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1224976.889275] wlp5s0: associated
+[1224976.921059] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1224982.474920] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1224982.486082] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1224982.494707] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1224982.537876] wlp5s0: authenticated
+[1224982.539088] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1224982.550331] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1224982.554306] wlp5s0: associated
+[1224982.736200] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1225035.243030] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1225075.242918] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1225095.241789] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1225120.274980] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1225120.287420] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1225120.297037] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1225120.340913] wlp5s0: authenticated
+[1225120.344924] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1225120.348085] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1225120.351525] wlp5s0: associated
+[1225120.385006] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1225144.967069] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1225144.979929] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1225144.989089] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1225145.031516] wlp5s0: authenticated
+[1225145.032718] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1225145.045732] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1225145.048803] wlp5s0: associated
+[1225145.142691] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1225322.621819] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1225322.634369] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1225322.646252] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1225322.688151] wlp5s0: authenticated
+[1225322.690545] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1225322.693246] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1225322.696306] wlp5s0: associated
+[1225322.729038] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1225331.771170] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1225331.782498] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1225331.791962] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1225331.834860] wlp5s0: authenticated
+[1225331.838635] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1225331.852480] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1225331.855813] wlp5s0: associated
+[1225331.920253] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1225335.242050] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1225349.417034] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1225349.430873] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1225349.441383] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1225349.483696] wlp5s0: authenticated
+[1225349.486760] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1225349.489568] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1225349.493439] wlp5s0: associated
+[1225349.558142] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1225350.916858] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1225350.923002] iwlwifi 0000:05:00.0: expected hw-decrypted unicast frame for station
+[1225350.932489] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1225350.939023] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1225350.981415] wlp5s0: authenticated
+[1225350.986757] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1225351.000628] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1225351.003697] wlp5s0: associated
+[1225351.069702] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1225355.236332] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1225567.357341] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1225567.369716] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1225567.379187] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1225567.422788] wlp5s0: authenticated
+[1225567.428535] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1225567.431540] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1225567.435967] wlp5s0: associated
+[1225567.467308] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1225578.352476] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1225578.364209] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1225578.374174] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1225578.416834] wlp5s0: authenticated
+[1225578.420968] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1225578.431437] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1225578.434834] wlp5s0: associated
+[1225578.500638] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1225664.531673] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1226091.341512] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226091.353199] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226091.363564] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226091.406199] wlp5s0: authenticated
+[1226091.408064] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226091.410458] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1226091.413965] wlp5s0: associated
+[1226091.452937] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226112.223714] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226112.238181] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226112.247595] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226112.290025] wlp5s0: authenticated
+[1226112.296270] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226112.308803] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1226112.312891] wlp5s0: associated
+[1226112.312920] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226238.084001] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226238.097760] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226238.108638] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226238.153556] wlp5s0: authenticated
+[1226238.156304] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226238.159535] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1226238.163539] wlp5s0: associated
+[1226238.193499] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226253.379375] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226253.391718] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226253.404280] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226253.447578] wlp5s0: authenticated
+[1226253.448230] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226253.466414] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1226253.469727] wlp5s0: associated
+[1226253.522589] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226255.220139] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1226260.769455] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226260.783357] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226260.797472] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226260.837751] wlp5s0: authenticated
+[1226260.840317] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226260.843609] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1226260.847843] wlp5s0: associated
+[1226260.926650] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226278.465437] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226278.480393] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226278.490452] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226278.534534] wlp5s0: authenticated
+[1226278.536401] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226278.547642] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1226278.551062] wlp5s0: associated
+[1226278.610421] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226495.298164] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1226631.917488] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226631.932071] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226631.942988] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226631.992980] wlp5s0: authenticated
+[1226631.993360] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226631.995841] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1226631.999630] wlp5s0: associated
+[1226632.027517] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226637.585511] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226637.598025] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226637.608808] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226637.651904] wlp5s0: authenticated
+[1226637.653522] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226637.667748] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1226637.671442] wlp5s0: associated
+[1226637.728442] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226840.303549] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226840.316313] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226840.324876] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226840.365368] wlp5s0: authenticated
+[1226840.370246] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226840.373053] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1226840.374574] wlp5s0: associated
+[1226840.413124] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226858.419714] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226858.434103] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226858.445817] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226858.488626] wlp5s0: authenticated
+[1226858.490478] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226858.503270] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1226858.506242] wlp5s0: associated
+[1226858.605752] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226895.879917] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1226939.119144] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226939.134101] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226939.144277] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226939.188913] wlp5s0: authenticated
+[1226939.190795] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226939.194629] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1226939.198776] wlp5s0: associated
+[1226939.230301] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1226956.256718] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1226956.270650] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1226956.279416] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1226956.322692] wlp5s0: authenticated
+[1226956.331118] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1226956.341666] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1226956.345174] wlp5s0: associated
+[1226956.399491] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1227634.765861] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1227634.778029] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1227634.787152] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1227634.828763] wlp5s0: authenticated
+[1227634.830075] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1227634.832410] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1227634.836790] wlp5s0: associated
+[1227634.839957] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1227646.544596] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1227646.557641] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1227646.568292] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1227646.617147] wlp5s0: authenticated
+[1227646.622253] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1227646.627151] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1227646.630651] wlp5s0: associated
+[1227646.677846] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1227768.150152] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1227768.162972] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1227768.171073] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1227768.213383] wlp5s0: authenticated
+[1227768.214901] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1227768.218312] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1227768.222851] wlp5s0: associated
+[1227768.268408] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1227769.832927] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1227769.841284] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1227769.844338] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1227769.885310] wlp5s0: authenticated
+[1227769.890911] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1227769.905447] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1227769.909248] wlp5s0: associated
+[1227769.967342] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1227775.191097] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1227795.190998] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1227975.187254] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1229298.021779] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1229298.034695] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1229298.045111] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1229298.088998] wlp5s0: authenticated
+[1229298.091085] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1229298.093791] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1229298.096604] wlp5s0: associated
+[1229298.138296] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1229304.272442] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1229304.284608] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1229304.293323] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1229304.335445] wlp5s0: authenticated
+[1229304.339018] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1229304.349307] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1229304.352151] wlp5s0: associated
+[1229304.537528] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1229524.096192] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1229628.310147] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1229628.321279] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1229628.329300] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1229628.371657] wlp5s0: authenticated
+[1229628.373538] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1229628.376488] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1229628.378240] wlp5s0: associated
+[1229628.381382] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1229646.939314] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1229646.952959] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1229646.964767] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1229647.010156] wlp5s0: authenticated
+[1229647.013702] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1229647.022099] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1229647.025453] wlp5s0: associated
+[1229647.066824] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1229742.007560] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1229742.021421] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1229742.032479] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1229742.074540] wlp5s0: authenticated
+[1229742.077268] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1229742.080248] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1229742.084430] wlp5s0: associated
+[1229742.149092] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1229748.411714] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1229748.426705] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1229748.435977] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1229748.478262] wlp5s0: authenticated
+[1229748.481237] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1229748.498067] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1229748.501189] wlp5s0: associated
+[1229748.544892] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1229755.155988] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1229795.152005] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1229815.155249] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1229856.782216] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1229856.794024] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1229856.805422] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1229856.847045] wlp5s0: authenticated
+[1229856.849048] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1229856.852054] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1229856.856776] wlp5s0: associated
+[1229856.942275] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1229876.380134] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1229876.393910] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1229876.401675] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1229876.442661] wlp5s0: authenticated
+[1229876.445022] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1229876.457818] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1229876.460758] wlp5s0: associated
+[1229876.545358] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1230460.969118] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1230460.980633] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1230460.989995] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1230461.032220] wlp5s0: authenticated
+[1230461.032619] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1230461.038609] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1230461.040299] wlp5s0: associated
+[1230461.105836] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1230478.235518] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1230478.248635] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1230478.259578] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1230478.304733] wlp5s0: authenticated
+[1230478.308743] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1230478.317258] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1230478.320621] wlp5s0: associated
+[1230478.351315] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1230714.103098] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1230714.117558] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1230714.128171] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1230714.170141] wlp5s0: authenticated
+[1230714.172710] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1230714.175575] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1230714.179227] wlp5s0: associated
+[1230714.241269] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1230716.784186] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1230716.795659] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1230716.803127] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1230716.844595] wlp5s0: authenticated
+[1230716.848731] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1230716.860416] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1230716.863108] wlp5s0: associated
+[1230716.945799] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1230804.526323] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1230804.537047] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1230804.547771] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1230804.590613] wlp5s0: authenticated
+[1230804.593409] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1230804.596619] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1230804.600628] wlp5s0: associated
+[1230804.661305] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1230809.257050] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1230809.268741] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1230809.278698] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1230809.320836] wlp5s0: authenticated
+[1230809.325226] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1230809.341659] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1230809.344913] wlp5s0: associated
+[1230809.411056] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1230815.134948] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1231015.129182] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1231319.248142] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1231319.262111] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1231319.272437] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1231319.315456] wlp5s0: authenticated
+[1231319.319121] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1231319.321487] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1231319.324030] wlp5s0: associated
+[1231319.328261] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1231324.179302] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1231324.190732] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1231324.198308] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1231324.239926] wlp5s0: authenticated
+[1231324.243046] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1231324.257035] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1231324.260705] wlp5s0: associated
+[1231324.279643] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1231546.083336] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1231812.303749] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1231812.316583] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1231812.326013] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1231812.369684] wlp5s0: authenticated
+[1231812.373299] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1231812.376418] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1231812.378528] wlp5s0: associated
+[1231812.388782] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1231816.214627] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1231816.226985] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1231816.237135] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1231816.281481] wlp5s0: authenticated
+[1231816.285265] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1231816.297809] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1231816.301336] wlp5s0: associated
+[1231816.312751] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1231877.971666] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1231996.975290] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1231996.989151] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1231996.999446] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1231997.042424] wlp5s0: authenticated
+[1231997.045690] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1231997.049257] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1231997.050891] wlp5s0: associated
+[1231997.120075] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232009.128705] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232009.140488] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232009.151314] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232009.192254] wlp5s0: authenticated
+[1232009.193485] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232009.205366] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1232009.208703] wlp5s0: associated
+[1232009.234784] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232090.977749] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232090.991354] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232091.001782] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232091.044114] wlp5s0: authenticated
+[1232091.048457] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232091.051670] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1232091.055924] wlp5s0: associated
+[1232091.124416] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232102.323925] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232102.336031] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232102.345566] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232102.388433] wlp5s0: authenticated
+[1232102.392044] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232102.403739] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1232102.407118] wlp5s0: associated
+[1232102.418971] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232175.877319] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232175.890698] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232175.899599] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232175.940455] wlp5s0: authenticated
+[1232175.947094] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232175.949883] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1232175.954344] wlp5s0: associated
+[1232176.014820] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232177.895974] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232177.906766] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232177.909776] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232177.944389] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232177.952286] wlp5s0: authenticated
+[1232177.958827] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232177.971099] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1232177.974320] wlp5s0: associated
+[1232177.990352] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232281.939628] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232295.105731] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232315.107899] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232355.104328] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232375.191232] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232395.105629] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232415.103207] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232435.108631] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232475.102323] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232482.302453] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232482.313755] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232482.327171] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232482.369756] wlp5s0: authenticated
+[1232482.370370] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232482.373148] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1232482.376835] wlp5s0: associated
+[1232482.398438] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232486.523457] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232486.537481] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232486.549450] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232486.593731] wlp5s0: authenticated
+[1232486.594361] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232486.610530] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1232486.613939] wlp5s0: associated
+[1232486.624720] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232495.105539] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232515.101149] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232535.102696] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232555.104299] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232595.104836] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232766.293745] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232766.306454] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232766.316961] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232766.358816] wlp5s0: authenticated
+[1232766.362892] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232766.365704] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1232766.367759] wlp5s0: associated
+[1232766.458371] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232775.200483] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232775.213593] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232775.224442] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232775.266297] wlp5s0: authenticated
+[1232775.266906] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232775.279030] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1232775.282431] wlp5s0: associated
+[1232775.290939] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232854.345424] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232854.345442] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232875.875005] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232875.887146] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232875.896810] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232875.937864] wlp5s0: authenticated
+[1232875.941889] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232875.945001] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1232875.948066] wlp5s0: associated
+[1232876.027319] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232890.086117] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232890.100129] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232890.112043] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232890.156148] wlp5s0: authenticated
+[1232890.157946] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232890.170478] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1232890.173747] wlp5s0: associated
+[1232890.183937] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232895.094896] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1232946.222236] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232946.235508] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232946.245615] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232946.287457] wlp5s0: authenticated
+[1232946.291064] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232946.294041] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1232946.298328] wlp5s0: associated
+[1232946.377118] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1232964.232750] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1232964.245072] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1232964.256325] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1232964.299052] wlp5s0: authenticated
+[1232964.303639] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1232964.315403] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1232964.318813] wlp5s0: associated
+[1232964.321682] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233062.729302] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1233079.199045] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233079.211798] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233079.220419] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233079.263785] wlp5s0: authenticated
+[1233079.269256] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233079.272518] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1233079.275905] wlp5s0: associated
+[1233079.293529] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233082.395885] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233082.400118] iwlwifi 0000:05:00.0: expected hw-decrypted unicast frame for station
+[1233082.400678] iwlwifi 0000:05:00.0: expected hw-decrypted unicast frame for station
+[1233082.401067] iwlwifi 0000:05:00.0: expected hw-decrypted unicast frame for station
+[1233082.401309] iwlwifi 0000:05:00.0: expected hw-decrypted unicast frame for station
+[1233082.411568] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233082.422505] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233082.467226] wlp5s0: authenticated
+[1233082.469289] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233082.476972] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1233082.480304] wlp5s0: associated
+[1233082.491586] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233131.159899] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233131.174601] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233131.187206] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233131.230038] wlp5s0: authenticated
+[1233131.233785] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233131.236939] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1233131.239604] wlp5s0: associated
+[1233131.313212] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233133.744643] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233133.756184] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233133.767390] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233133.810376] wlp5s0: authenticated
+[1233133.813916] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233133.827208] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1233133.830642] wlp5s0: associated
+[1233133.896466] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233135.091043] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1233382.692819] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233382.705290] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233382.714327] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233382.756326] wlp5s0: authenticated
+[1233382.759814] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233382.762701] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1233382.764951] wlp5s0: associated
+[1233382.809589] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233384.785877] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233384.795390] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233384.801971] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233384.844000] wlp5s0: authenticated
+[1233384.847915] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233384.862090] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1233384.866049] wlp5s0: associated
+[1233384.879496] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233388.465762] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1233388.466516] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1233389.489622] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1233390.513006] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1233395.088174] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1233548.947305] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233548.962012] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233548.974909] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233549.017494] wlp5s0: authenticated
+[1233549.022780] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233549.025511] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1233549.028424] wlp5s0: associated
+[1233549.108750] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233566.036561] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233566.050005] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233566.058680] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233566.102258] wlp5s0: authenticated
+[1233566.104488] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233566.121244] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1233566.124975] wlp5s0: associated
+[1233566.127973] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233806.705075] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233806.717044] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233806.725660] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233806.770101] wlp5s0: authenticated
+[1233806.772391] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233806.775389] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1233806.778194] wlp5s0: associated
+[1233806.852003] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1233821.171482] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1233821.185948] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1233821.196086] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1233821.238623] wlp5s0: authenticated
+[1233821.240448] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1233821.250916] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1233821.254437] wlp5s0: associated
+[1233821.309168] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1234081.613505] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1234081.613524] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1234083.660237] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1234105.500648] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1234105.514782] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1234105.524301] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1234105.567451] wlp5s0: authenticated
+[1234105.571757] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1234105.574765] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1234105.576959] wlp5s0: associated
+[1234105.657935] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1234111.176956] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1234111.187764] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1234111.197312] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1234111.240405] wlp5s0: authenticated
+[1234111.243804] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1234111.255874] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1234111.259159] wlp5s0: associated
+[1234111.306686] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1234115.073403] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1234508.438340] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1234508.451954] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1234508.462197] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1234508.505158] wlp5s0: authenticated
+[1234508.506036] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1234508.508462] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1234508.512046] wlp5s0: associated
+[1234508.605912] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1234518.269257] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1234518.281699] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1234518.291870] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1234518.334640] wlp5s0: authenticated
+[1234518.338172] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1234518.353333] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1234518.357033] wlp5s0: associated
+[1234518.450191] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1234533.179999] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1234533.193797] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1234533.204120] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1234533.247483] wlp5s0: authenticated
+[1234533.250102] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1234533.253729] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1234533.257769] wlp5s0: associated
+[1234533.284585] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1234543.152933] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1234543.166564] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1234543.177656] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1234543.218721] wlp5s0: authenticated
+[1234543.222065] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1234543.236527] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1234543.239198] wlp5s0: associated
+[1234543.333599] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1234598.448265] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1234598.462681] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1234598.475901] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1234598.518012] wlp5s0: authenticated
+[1234598.521615] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1234598.524332] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1234598.528054] wlp5s0: associated
+[1234598.618117] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1234623.316541] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1234623.331791] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1234623.341321] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1234623.384575] wlp5s0: authenticated
+[1234623.385515] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1234623.392215] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1234623.396286] wlp5s0: associated
+[1234623.409990] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1234838.351741] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1234838.351768] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1234840.399588] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1234987.465424] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1234987.479735] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1234987.491174] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1234987.534368] wlp5s0: authenticated
+[1234987.536241] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1234987.538666] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1234987.540680] wlp5s0: associated
+[1234987.637337] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235013.780500] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1235013.793857] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1235013.805158] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1235013.846148] wlp5s0: authenticated
+[1235013.849517] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1235013.859933] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1235013.864058] wlp5s0: associated
+[1235013.864098] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235042.210794] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1235042.223837] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1235042.233547] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1235042.275299] wlp5s0: authenticated
+[1235042.278402] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1235042.281612] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1235042.285986] wlp5s0: associated
+[1235042.319679] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235057.403389] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1235057.415510] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1235057.426983] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1235057.468823] wlp5s0: authenticated
+[1235057.470943] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1235057.479104] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1235057.482995] wlp5s0: associated
+[1235057.484792] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235139.183261] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1235139.197160] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1235139.207094] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1235139.249138] wlp5s0: authenticated
+[1235139.249389] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1235139.252598] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1235139.257323] wlp5s0: associated
+[1235139.293394] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235145.467926] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1235145.481250] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1235145.490417] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1235145.532529] wlp5s0: authenticated
+[1235145.537921] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1235145.549147] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1235145.552275] wlp5s0: associated
+[1235145.651753] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235155.051258] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235214.274725] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235216.308239] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235355.046593] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235395.046384] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235425.939394] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1235425.953232] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1235425.965341] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1235426.005969] wlp5s0: authenticated
+[1235426.008007] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1235426.011532] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1235426.014936] wlp5s0: associated
+[1235426.015954] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235430.574049] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1235430.585884] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1235430.594843] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1235430.635541] wlp5s0: authenticated
+[1235430.635935] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1235430.649203] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1235430.652820] wlp5s0: associated
+[1235430.836162] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235435.051891] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235555.049516] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235619.458814] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235619.459037] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235620.380721] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235715.866292] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1235715.879753] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1235715.889389] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1235715.931365] wlp5s0: authenticated
+[1235715.931692] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1235715.934421] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1235715.936030] wlp5s0: associated
+[1235716.015194] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235726.388709] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1235726.403198] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1235726.416860] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1235726.459675] wlp5s0: authenticated
+[1235726.463878] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1235726.476931] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1235726.480037] wlp5s0: associated
+[1235726.568067] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1235735.043587] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235775.039517] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235795.044016] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1235981.238478] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236218.313632] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1236218.327299] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1236218.337393] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1236218.380127] wlp5s0: authenticated
+[1236218.383184] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1236218.385679] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1236218.388604] wlp5s0: associated
+[1236218.394259] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1236225.490699] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1236225.506376] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1236225.519930] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1236225.564095] wlp5s0: authenticated
+[1236225.567255] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1236225.577620] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1236225.580887] wlp5s0: associated
+[1236225.667026] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1236235.031002] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236250.227069] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1236250.240655] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1236250.250619] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1236250.294055] wlp5s0: authenticated
+[1236250.295194] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1236250.298209] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1236250.302366] wlp5s0: associated
+[1236250.343711] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1236262.135002] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1236262.147166] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1236262.157092] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1236262.198949] wlp5s0: authenticated
+[1236262.199236] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1236262.213394] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1236262.216485] wlp5s0: associated
+[1236262.223499] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1236436.830919] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236438.866833] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236438.866855] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236438.866861] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236438.866866] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236438.866871] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236438.866876] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236438.866882] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236438.866887] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1236438.867054] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1237004.849666] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1237004.861896] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1237004.870938] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1237004.914333] wlp5s0: authenticated
+[1237004.916920] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1237004.919729] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1237004.923695] wlp5s0: associated
+[1237004.936261] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1237008.446604] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1237008.457939] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1237008.468296] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1237008.512069] wlp5s0: authenticated
+[1237008.512986] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1237008.523571] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1237008.526980] wlp5s0: associated
+[1237008.619096] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1237015.266096] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1237015.277056] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1237015.286783] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1237015.326742] wlp5s0: authenticated
+[1237015.329305] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1237015.332468] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1237015.336966] wlp5s0: associated
+[1237015.381164] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1237037.219609] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1237037.234410] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1237037.244848] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1237037.285599] wlp5s0: authenticated
+[1237037.289847] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1237037.302472] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1237037.305139] wlp5s0: associated
+[1237037.393430] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1237734.444899] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15632)
+[1237734.444899] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15632)
+[1237734.444900] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50253)
+[1237734.444901] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50253)
+[1237734.444941] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50254)
+[1237734.444942] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50254)
+[1237734.444943] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50254)
+[1237734.444944] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50254)
+[1237734.444945] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50254)
+[1237734.444946] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50254)
+[1237734.445985] mce: CPU6: Core temperature/speed normal
+[1237734.445986] mce: CPU2: Core temperature/speed normal
+[1237734.445987] mce: CPU6: Package temperature/speed normal
+[1237734.445987] mce: CPU2: Package temperature/speed normal
+[1237734.446031] mce: CPU1: Package temperature/speed normal
+[1237734.446031] mce: CPU5: Package temperature/speed normal
+[1237734.446032] mce: CPU4: Package temperature/speed normal
+[1237734.446033] mce: CPU0: Package temperature/speed normal
+[1237734.446034] mce: CPU3: Package temperature/speed normal
+[1237734.446034] mce: CPU7: Package temperature/speed normal
+[1238105.253290] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1238105.266547] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1238105.279810] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1238105.330907] wlp5s0: authenticated
+[1238105.332670] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1238105.336324] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1238105.340092] wlp5s0: associated
+[1238105.340132] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1238128.097689] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1238128.109674] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1238128.119953] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1238128.161519] wlp5s0: authenticated
+[1238128.164822] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1238128.180878] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1238128.184137] wlp5s0: associated
+[1238128.263152] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1238325.130156] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1238325.141130] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1238325.150493] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1238325.191493] wlp5s0: authenticated
+[1238325.194538] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1238325.197421] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1238325.199524] wlp5s0: associated
+[1238325.293678] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1238332.044206] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1238332.054782] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1238332.064563] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1238332.105515] wlp5s0: authenticated
+[1238332.106475] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1238332.117491] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1238332.121204] wlp5s0: associated
+[1238332.141667] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1238335.000315] net_ratelimit: 6 callbacks suppressed
+[1238335.000324] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1238485.630278] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15707)
+[1238485.630279] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15707)
+[1238485.630280] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50520)
+[1238485.630280] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50520)
+[1238485.630321] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50521)
+[1238485.630322] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50521)
+[1238485.630323] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50521)
+[1238485.630324] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50521)
+[1238485.630326] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50521)
+[1238485.630327] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50521)
+[1238485.671322] mce: CPU6: Core temperature/speed normal
+[1238485.671322] mce: CPU2: Core temperature/speed normal
+[1238485.671324] mce: CPU6: Package temperature/speed normal
+[1238485.671324] mce: CPU2: Package temperature/speed normal
+[1238485.671373] mce: CPU5: Package temperature/speed normal
+[1238485.671374] mce: CPU4: Package temperature/speed normal
+[1238485.671375] mce: CPU0: Package temperature/speed normal
+[1238485.671375] mce: CPU1: Package temperature/speed normal
+[1238485.671376] mce: CPU7: Package temperature/speed normal
+[1238485.671377] mce: CPU3: Package temperature/speed normal
+[1238518.920793] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1238696.100235] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1238696.112946] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1238696.124308] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1238696.164972] wlp5s0: authenticated
+[1238696.169021] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1238696.171470] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1238696.173463] wlp5s0: associated
+[1238696.189899] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1238700.837823] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1238700.852422] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1238700.863541] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1238700.907518] wlp5s0: authenticated
+[1238700.909137] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1238700.923204] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1238700.926756] wlp5s0: associated
+[1238700.987551] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1238719.944169] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1238734.994183] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1238953.815459] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1238953.815476] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1238954.839197] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1239266.027482] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1239266.043062] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1239266.054876] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1239266.097543] wlp5s0: authenticated
+[1239266.099146] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1239266.106728] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=7)
+[1239266.110207] wlp5s0: associated
+[1239266.153890] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1239278.154200] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1239278.166319] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1239278.175969] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1239278.219410] wlp5s0: authenticated
+[1239278.227205] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1239278.240153] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=2)
+[1239278.243625] wlp5s0: associated
+[1239278.422244] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1244909.938720] wlp5s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[1244910.067051] wlp5s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[1244910.946778] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1244910.956290] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1244911.101414] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[1244911.231716] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[1244911.358706] wlp5s0: authentication with XX:XX:XX:XX:XX:XX timed out
+[1244925.385882] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1244925.396620] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1244925.437944] wlp5s0: authenticated
+[1244925.441530] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1244925.453367] wlp5s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=3)
+[1244925.456264] wlp5s0: associated
+[1244925.487943] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1244925.514354] IPv6: ADDRCONF(NETDEV_CHANGE): wlp5s0: link becomes ready
+[1246964.033135] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15713)
+[1246964.033136] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15713)
+[1246964.033137] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50526)
+[1246964.033137] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50526)
+[1246964.033179] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50527)
+[1246964.033180] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50527)
+[1246964.033181] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50527)
+[1246964.033182] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50527)
+[1246964.033183] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50527)
+[1246964.033184] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50527)
+[1246964.034115] mce: CPU2: Core temperature/speed normal
+[1246964.034116] mce: CPU6: Core temperature/speed normal
+[1246964.034116] mce: CPU2: Package temperature/speed normal
+[1246964.034117] mce: CPU6: Package temperature/speed normal
+[1246964.034161] mce: CPU4: Package temperature/speed normal
+[1246964.034161] mce: CPU0: Package temperature/speed normal
+[1246964.034162] mce: CPU5: Package temperature/speed normal
+[1246964.034163] mce: CPU1: Package temperature/speed normal
+[1246964.034164] mce: CPU7: Package temperature/speed normal
+[1246964.034164] mce: CPU3: Package temperature/speed normal
+[1249288.914912] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42199)
+[1249288.914913] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42199)
+[1249288.914914] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50534)
+[1249288.914914] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50534)
+[1249288.914955] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50534)
+[1249288.914956] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50534)
+[1249288.914957] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50534)
+[1249288.914958] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50534)
+[1249288.914959] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50533)
+[1249288.914960] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50533)
+[1249288.915925] mce: CPU0: Core temperature/speed normal
+[1249288.915926] mce: CPU4: Core temperature/speed normal
+[1249288.915927] mce: CPU0: Package temperature/speed normal
+[1249288.915927] mce: CPU4: Package temperature/speed normal
+[1249288.915973] mce: CPU5: Package temperature/speed normal
+[1249288.915974] mce: CPU1: Package temperature/speed normal
+[1249288.915974] mce: CPU6: Package temperature/speed normal
+[1249288.915975] mce: CPU2: Package temperature/speed normal
+[1249288.915976] mce: CPU7: Package temperature/speed normal
+[1249288.915977] mce: CPU3: Package temperature/speed normal
+[1254646.036662] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15720)
+[1254646.036663] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15720)
+[1254646.036664] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50534)
+[1254646.036664] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50534)
+[1254646.036706] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50535)
+[1254646.036707] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50535)
+[1254646.036707] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50535)
+[1254646.036708] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50535)
+[1254646.036709] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50535)
+[1254646.036710] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50535)
+[1254646.037600] mce: CPU6: Core temperature/speed normal
+[1254646.037601] mce: CPU2: Core temperature/speed normal
+[1254646.037601] mce: CPU6: Package temperature/speed normal
+[1254646.037602] mce: CPU2: Package temperature/speed normal
+[1254646.037648] mce: CPU0: Package temperature/speed normal
+[1254646.037649] mce: CPU1: Package temperature/speed normal
+[1254646.037649] mce: CPU5: Package temperature/speed normal
+[1254646.037650] mce: CPU4: Package temperature/speed normal
+[1254646.037651] mce: CPU7: Package temperature/speed normal
+[1254646.037651] mce: CPU3: Package temperature/speed normal
+[1256468.795610] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 24059)
+[1256468.795611] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 24059)
+[1256468.795612] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50536)
+[1256468.795613] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50536)
+[1256468.795654] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50536)
+[1256468.795655] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50535)
+[1256468.795656] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50536)
+[1256468.795657] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50536)
+[1256468.795658] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50536)
+[1256468.795659] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50535)
+[1256468.797533] mce: CPU7: Core temperature/speed normal
+[1256468.797534] mce: CPU3: Core temperature/speed normal
+[1256468.797534] mce: CPU7: Package temperature/speed normal
+[1256468.797535] mce: CPU3: Package temperature/speed normal
+[1256468.797579] mce: CPU0: Package temperature/speed normal
+[1256468.797580] mce: CPU5: Package temperature/speed normal
+[1256468.797580] mce: CPU4: Package temperature/speed normal
+[1256468.797581] mce: CPU1: Package temperature/speed normal
+[1256468.797582] mce: CPU6: Package temperature/speed normal
+[1256468.797582] mce: CPU2: Package temperature/speed normal
+[1258927.851926] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1258927.863058] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1258927.872961] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1258927.914006] wlp5s0: authenticated
+[1258927.919234] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1258927.921621] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=5)
+[1258927.924719] wlp5s0: associated
+[1258927.953127] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1258932.566461] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1258932.577672] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1258932.588836] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1258932.631446] wlp5s0: authenticated
+[1258932.634721] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1258932.638287] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=3)
+[1258932.642925] wlp5s0: associated
+[1258932.713811] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1258934.639930] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1259034.640452] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1259044.638775] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1259083.755271] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1259090.425675] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1259107.614680] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1259107.614697] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1260087.896058] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42200)
+[1260087.896059] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42200)
+[1260087.896060] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50537)
+[1260087.896060] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50537)
+[1260087.896102] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50537)
+[1260087.896103] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50537)
+[1260087.896104] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50536)
+[1260087.896105] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50536)
+[1260087.896106] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50537)
+[1260087.896108] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50537)
+[1260087.897245] mce: CPU4: Core temperature/speed normal
+[1260087.897246] mce: CPU0: Core temperature/speed normal
+[1260087.897246] mce: CPU0: Package temperature/speed normal
+[1260087.897247] mce: CPU4: Package temperature/speed normal
+[1260087.897285] mce: CPU3: Package temperature/speed normal
+[1260087.897286] mce: CPU6: Package temperature/speed normal
+[1260087.897287] mce: CPU2: Package temperature/speed normal
+[1260087.897287] mce: CPU7: Package temperature/speed normal
+[1260087.897301] mce: CPU1: Package temperature/speed normal
+[1260087.897302] mce: CPU5: Package temperature/speed normal
+[1274483.198838] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15721)
+[1274483.198839] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15721)
+[1274483.198840] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50539)
+[1274483.198840] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50539)
+[1274483.198882] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50540)
+[1274483.198883] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50540)
+[1274483.198884] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50540)
+[1274483.198885] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50540)
+[1274483.198886] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50540)
+[1274483.198887] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50540)
+[1274483.200823] mce: CPU6: Core temperature/speed normal
+[1274483.200824] mce: CPU2: Core temperature/speed normal
+[1274483.200825] mce: CPU6: Package temperature/speed normal
+[1274483.200825] mce: CPU2: Package temperature/speed normal
+[1274483.200872] mce: CPU0: Package temperature/speed normal
+[1274483.200873] mce: CPU4: Package temperature/speed normal
+[1274483.200874] mce: CPU1: Package temperature/speed normal
+[1274483.200874] mce: CPU5: Package temperature/speed normal
+[1274483.200875] mce: CPU7: Package temperature/speed normal
+[1274483.200876] mce: CPU3: Package temperature/speed normal
+[1276272.166344] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15742)
+[1276272.166344] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15742)
+[1276272.166346] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50560)
+[1276272.166346] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50560)
+[1276272.166388] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50561)
+[1276272.166389] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50561)
+[1276272.166390] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50561)
+[1276272.166391] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50561)
+[1276272.166392] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50561)
+[1276272.166393] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50561)
+[1276272.167364] mce: CPU6: Core temperature/speed normal
+[1276272.167365] mce: CPU2: Core temperature/speed normal
+[1276272.167365] mce: CPU6: Package temperature/speed normal
+[1276272.167366] mce: CPU2: Package temperature/speed normal
+[1276272.167410] mce: CPU4: Package temperature/speed normal
+[1276272.167410] mce: CPU0: Package temperature/speed normal
+[1276272.167411] mce: CPU1: Package temperature/speed normal
+[1276272.167412] mce: CPU5: Package temperature/speed normal
+[1276272.167413] mce: CPU3: Package temperature/speed normal
+[1276272.167413] mce: CPU7: Package temperature/speed normal
+[1278081.568497] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15747)
+[1278081.568498] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50566)
+[1278081.568499] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50566)
+[1278081.568500] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15747)
+[1278081.568501] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50565)
+[1278081.568501] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50565)
+[1278081.568538] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50566)
+[1278081.568539] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50566)
+[1278081.568541] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50566)
+[1278081.568542] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50566)
+[1278081.570498] mce: CPU6: Core temperature/speed normal
+[1278081.570498] mce: CPU4: Package temperature/speed normal
+[1278081.570499] mce: CPU2: Core temperature/speed normal
+[1278081.570500] mce: CPU0: Package temperature/speed normal
+[1278081.570501] mce: CPU6: Package temperature/speed normal
+[1278081.570501] mce: CPU2: Package temperature/speed normal
+[1278081.570540] mce: CPU5: Package temperature/speed normal
+[1278081.570541] mce: CPU1: Package temperature/speed normal
+[1278081.570542] mce: CPU3: Package temperature/speed normal
+[1278081.570542] mce: CPU7: Package temperature/speed normal
+[1281679.154490] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15756)
+[1281679.154490] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15756)
+[1281679.154491] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50574)
+[1281679.154492] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50574)
+[1281679.154536] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50575)
+[1281679.154537] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50575)
+[1281679.154538] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50575)
+[1281679.154539] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50575)
+[1281679.154540] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50575)
+[1281679.154541] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50575)
+[1281679.155533] mce: CPU2: Core temperature/speed normal
+[1281679.155533] mce: CPU6: Core temperature/speed normal
+[1281679.155534] mce: CPU2: Package temperature/speed normal
+[1281679.155535] mce: CPU6: Package temperature/speed normal
+[1281679.155600] mce: CPU0: Package temperature/speed normal
+[1281679.155601] mce: CPU4: Package temperature/speed normal
+[1281679.155602] mce: CPU5: Package temperature/speed normal
+[1281679.155602] mce: CPU1: Package temperature/speed normal
+[1281679.155603] mce: CPU3: Package temperature/speed normal
+[1281679.155604] mce: CPU7: Package temperature/speed normal
+[1283468.818717] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 24106)
+[1283468.818718] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 24106)
+[1283468.818719] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50629)
+[1283468.818720] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50629)
+[1283468.818762] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50629)
+[1283468.818763] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50629)
+[1283468.818764] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50629)
+[1283468.818765] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50629)
+[1283468.818766] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50628)
+[1283468.818767] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50628)
+[1283468.819760] mce: CPU7: Core temperature/speed normal
+[1283468.819761] mce: CPU3: Core temperature/speed normal
+[1283468.819761] mce: CPU7: Package temperature/speed normal
+[1283468.819762] mce: CPU3: Package temperature/speed normal
+[1283468.819808] mce: CPU0: Package temperature/speed normal
+[1283468.819809] mce: CPU5: Package temperature/speed normal
+[1283468.819810] mce: CPU1: Package temperature/speed normal
+[1283468.819810] mce: CPU4: Package temperature/speed normal
+[1283468.819811] mce: CPU2: Package temperature/speed normal
+[1283468.819812] mce: CPU6: Package temperature/speed normal
+[1284100.365536] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1284100.377942] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1284100.389670] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1284100.431939] wlp5s0: authenticated
+[1284100.432741] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1284100.435198] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=6)
+[1284100.438869] wlp5s0: associated
+[1284100.457137] wlp5s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1284104.999717] wlp5s0: disconnect from AP XX:XX:XX:XX:XX:XX for new auth to XX:XX:XX:XX:XX:XX
+[1284105.012280] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1284105.022521] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1284105.066754] wlp5s0: authenticated
+[1284105.068676] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1284105.078997] wlp5s0: RX ReassocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=3)
+[1284105.082581] wlp5s0: associated
+[1284105.151760] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1284114.189421] iwlwifi 0000:05:00.0: Unhandled alg: 0x71b
+[1285268.460599] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15764)
+[1285268.460599] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15764)
+[1285268.460601] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50636)
+[1285268.460601] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50636)
+[1285268.460642] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50637)
+[1285268.460643] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50637)
+[1285268.460644] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50637)
+[1285268.460645] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50637)
+[1285268.460646] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50637)
+[1285268.460647] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50637)
+[1285268.462529] mce: CPU2: Core temperature/speed normal
+[1285268.462530] mce: CPU6: Core temperature/speed normal
+[1285268.462530] mce: CPU2: Package temperature/speed normal
+[1285268.462531] mce: CPU6: Package temperature/speed normal
+[1285268.462575] mce: CPU4: Package temperature/speed normal
+[1285268.462576] mce: CPU1: Package temperature/speed normal
+[1285268.462576] mce: CPU5: Package temperature/speed normal
+[1285268.462577] mce: CPU0: Package temperature/speed normal
+[1285268.462578] mce: CPU3: Package temperature/speed normal
+[1285268.462578] mce: CPU7: Package temperature/speed normal
+[1288883.439924] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15781)
+[1288883.439925] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15781)
+[1288883.439926] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50653)
+[1288883.439927] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50653)
+[1288883.439970] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50654)
+[1288883.439971] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50654)
+[1288883.439972] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50654)
+[1288883.439973] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50654)
+[1288883.439974] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50654)
+[1288883.439975] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50654)
+[1288883.441943] mce: CPU6: Core temperature/speed normal
+[1288883.441943] mce: CPU2: Core temperature/speed normal
+[1288883.441944] mce: CPU6: Package temperature/speed normal
+[1288883.441945] mce: CPU2: Package temperature/speed normal
+[1288883.441988] mce: CPU0: Package temperature/speed normal
+[1288883.441988] mce: CPU4: Package temperature/speed normal
+[1288883.441989] mce: CPU5: Package temperature/speed normal
+[1288883.441990] mce: CPU1: Package temperature/speed normal
+[1288883.441991] mce: CPU7: Package temperature/speed normal
+[1288883.441992] mce: CPU3: Package temperature/speed normal
+[1289457.107128] usb 1-2: new high-speed USB device number 11 using xhci_hcd
+[1289457.129763] usb 1-2: New USB device found, idVendor=2a70, idProduct=f003, bcdDevice= 4.04
+[1289457.129769] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[1289457.129772] usb 1-2: Product: OnePlus
+[1289457.129775] usb 1-2: Manufacturer: OnePlus
+[1289457.129777] usb 1-2: SerialNumber: ...
+[1289457.342034] usb-storage 1-2:1.1: USB Mass Storage device detected
+[1289457.342800] scsi host0: usb-storage 1-2:1.1
+[1289458.374751] scsi 0:0:0:0: CD-ROM            OnePlus  Device Driver    0404 PQ: 0 ANSI: 2
+[1289458.377417] sr 0:0:0:0: Power-on or device reset occurred
+[1289458.379353] sr 0:0:0:0: [sr0] scsi-1 drive
+[1289458.399270] sr 0:0:0:0: Attached scsi CD-ROM sr0
+[1289458.399490] sr 0:0:0:0: Attached scsi generic sg0 type 5
+[1299688.024086] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 42204)
+[1299688.024086] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 42204)
+[1299688.024087] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50656)
+[1299688.024088] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50656)
+[1299688.024133] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50656)
+[1299688.024134] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50655)
+[1299688.024135] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50655)
+[1299688.024136] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50656)
+[1299688.024137] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50656)
+[1299688.024138] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50656)
+[1299688.025168] mce: CPU0: Core temperature/speed normal
+[1299688.025169] mce: CPU4: Core temperature/speed normal
+[1299688.025169] mce: CPU0: Package temperature/speed normal
+[1299688.025170] mce: CPU4: Package temperature/speed normal
+[1299688.025214] mce: CPU5: Package temperature/speed normal
+[1299688.025215] mce: CPU6: Package temperature/speed normal
+[1299688.025215] mce: CPU1: Package temperature/speed normal
+[1299688.025216] mce: CPU2: Package temperature/speed normal
+[1299688.025217] mce: CPU3: Package temperature/speed normal
+[1299688.025217] mce: CPU7: Package temperature/speed normal
+[1300596.129371] usb 1-2: USB disconnect, device number 11
+[1306108.170533] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1306108.179006] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1306108.322841] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[1306108.430350] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[1306108.530912] wlp5s0: authentication with XX:XX:XX:XX:XX:XX timed out
+[1306109.207709] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1306109.217652] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1306109.368441] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[1306109.484382] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[1306109.611986] wlp5s0: authentication with XX:XX:XX:XX:XX:XX timed out
+[1306117.943107] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[1306117.951377] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[1306117.993085] wlp5s0: authenticated
+[1306117.994848] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[1306117.999027] wlp5s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1411 status=0 aid=3)
+[1306118.001697] wlp5s0: associated
+[1306118.025057] wlp5s0: Limiting TX power to 23 (23 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[1330748.103517] mce: CPU5: Core temperature above threshold, cpu clock throttled (total events = 14563)
+[1330748.103518] mce: CPU1: Core temperature above threshold, cpu clock throttled (total events = 14563)
+[1330748.103519] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50710)
+[1330748.103519] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50710)
+[1330748.103561] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50710)
+[1330748.103561] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50710)
+[1330748.103563] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50709)
+[1330748.103563] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50709)
+[1330748.103565] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50710)
+[1330748.103566] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50710)
+[1330748.106604] mce: CPU1: Core temperature/speed normal
+[1330748.106604] mce: CPU5: Core temperature/speed normal
+[1330748.106605] mce: CPU5: Package temperature/speed normal
+[1330748.106606] mce: CPU1: Package temperature/speed normal
+[1330748.106649] mce: CPU4: Package temperature/speed normal
+[1330748.106649] mce: CPU0: Package temperature/speed normal
+[1330748.106650] mce: CPU2: Package temperature/speed normal
+[1330748.106651] mce: CPU6: Package temperature/speed normal
+[1330748.106652] mce: CPU3: Package temperature/speed normal
+[1330748.106652] mce: CPU7: Package temperature/speed normal
+[1357292.986771] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15807)
+[1357292.986772] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15807)
+[1357292.986773] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50717)
+[1357292.986774] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50717)
+[1357292.986815] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50718)
+[1357292.986816] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50718)
+[1357292.986817] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50718)
+[1357292.986818] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50718)
+[1357292.986819] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50718)
+[1357292.986820] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50718)
+[1357292.987694] mce: CPU6: Core temperature/speed normal
+[1357292.987695] mce: CPU2: Core temperature/speed normal
+[1357292.987695] mce: CPU6: Package temperature/speed normal
+[1357292.987696] mce: CPU2: Package temperature/speed normal
+[1357292.987740] mce: CPU5: Package temperature/speed normal
+[1357292.987741] mce: CPU4: Package temperature/speed normal
+[1357292.987741] mce: CPU1: Package temperature/speed normal
+[1357292.987742] mce: CPU0: Package temperature/speed normal
+[1357292.987743] mce: CPU3: Package temperature/speed normal
+[1357292.987743] mce: CPU7: Package temperature/speed normal
+[1360887.432142] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 24114)
+[1360887.432143] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 24114)
+[1360887.432144] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50721)
+[1360887.432145] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50721)
+[1360887.432187] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50721)
+[1360887.432188] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50721)
+[1360887.432189] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50721)
+[1360887.432190] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50721)
+[1360887.432192] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50720)
+[1360887.432193] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50720)
+[1360887.433088] mce: CPU7: Core temperature/speed normal
+[1360887.433089] mce: CPU3: Core temperature/speed normal
+[1360887.433090] mce: CPU3: Package temperature/speed normal
+[1360887.433090] mce: CPU7: Package temperature/speed normal
+[1360887.433133] mce: CPU1: Package temperature/speed normal
+[1360887.433134] mce: CPU5: Package temperature/speed normal
+[1360887.433135] mce: CPU0: Package temperature/speed normal
+[1360887.433135] mce: CPU4: Package temperature/speed normal
+[1360887.433136] mce: CPU6: Package temperature/speed normal
+[1360887.433137] mce: CPU2: Package temperature/speed normal
+[1364531.605922] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 15810)
+[1364531.605922] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 15810)
+[1364531.605924] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 50726)
+[1364531.605924] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 50726)
+[1364531.605965] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 50727)
+[1364531.605966] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 50727)
+[1364531.605967] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 50727)
+[1364531.605968] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 50727)
+[1364531.605969] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 50727)
+[1364531.605970] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 50727)
+[1364531.606976] mce: CPU6: Core temperature/speed normal
+[1364531.606976] mce: CPU2: Core temperature/speed normal
+[1364531.606977] mce: CPU6: Package temperature/speed normal
+[1364531.606977] mce: CPU2: Package temperature/speed normal
+[1364531.607022] mce: CPU5: Package temperature/speed normal
+[1364531.607022] mce: CPU1: Package temperature/speed normal
+[1364531.607023] mce: CPU4: Package temperature/speed normal
+[1364531.607024] mce: CPU0: Package temperature/speed normal
+[1364531.607025] mce: CPU3: Package temperature/speed normal
+[1364531.607025] mce: CPU7: Package temperature/speed normal
+[1365140.670951] Lockdown: hwinfo: /dev/mem,kmem,port is restricted; see man kernel_lockdown.7
+[1365140.670963] Lockdown: hwinfo: /dev/mem,kmem,port is restricted; see man kernel_lockdown.7
+[1365140.672198] Lockdown: hwinfo: /dev/mem,kmem,port is restricted; see man kernel_lockdown.7
+[1365141.767286] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
+[1365141.767748] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
