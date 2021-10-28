@@ -1,0 +1,87 @@
+[35813.108519] perf: interrupt took too long (2511 > 2500), lowering kernel.perf_event_max_sample_rate to 79500
+[35844.635664] ------------[ cut here ]------------
+[35844.635687] URB         pK-error submitted while active
+[35844.635741] WARNING: CPU: 7 PID: 0 at drivers/usb/core/urb.c:363 usb_submit_urb+0x4f1/0x5e0
+[35844.635746] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep ipheth nls_iso8859_1 snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc snd_sof snd_hda_codec_hdmi iwlmvm snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi snd_hda_codec_realtek snd_soc_core mac80211 snd_hda_codec_generic snd_compress ac97_bus snd_pcm_dmaengine libarc4 ledtrig_audio nouveau snd_hda_intel snd_intel_dspcfg ttm drm_kms_helper snd_hda_codec snd_hda_core intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp mei_hdcp snd_seq_midi snd_seq_midi_event i2c_algo_bit snd_rawmidi snd_hwdep fb_sys_fops iwlwifi kvm_intel kvm btusb snd_seq snd_pcm syscopyarea btrtl sysfillrect sysimgblt snd_seq_device snd_timer btbcm crct10dif_pclmul ghash_clmulni_intel btintel input_leds joydev mei_me mei aesni_intel bluetooth cfg80211 snd mxm_wmi wmi_bmof sparse_keymap crypto_simd cryptd glue_helper rapl intel_cstate
+[35844.635812]  soundcore ecdh_generic ecc intel_pch_thermal mac_hid ie31200_edac acpi_pad sch_fq_codel parport_pc ppdev lp drm parport ip_tables x_tables autofs4 hid_generic usbhid hid nvme crc32_pclmul e1000e ahci nvme_core i2c_i801 libahci wmi video
+[35844.635846] CPU: 7 PID: 0 Comm: swapper/7 Not tainted 5.4.0-48-generic #52-Ubuntu
+[35844.635848] Hardware name: Micro-Star International Co., Ltd. B360 Gaming Aegis 3 8 (MS-B918)/MS-B9181, BIOS 8.40 09/17/2018
+[35844.635854] RIP: 0010:usb_submit_urb+0x4f1/0x5e0
+[35844.635859] Code: 3d c9 a1 01 01 00 b8 f0 ff ff ff 0f 85 0a fd ff ff 48 89 fe 48 c7 c7 a0 6c a0 8d 89 45 d4 c6 05 aa a1 01 01 01 e8 aa da 8a ff <0f> 0b 8b 45 d4 e9 e7 fc ff ff 41 ba 01 00 00 00 e9 04 fd ff ff b8
+[35844.635861] RSP: 0018:ffffac1ec02a4758 EFLAGS: 00010282
+[35844.635865] RAX: 0000000000000000 RBX: ffff8d8dde6e9000 RCX: 0000000000000000
+[35844.635867] RDX: ffff8d8ef59e7740 RSI: ffff8d8ef59d78c8 RDI: 0000000000000300
+[35844.635869] RBP: ffffac1ec02a4798 R08: ffff8d8ef59d78c8 R09: 0000000000000004
+[35844.635871] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8d8eb7ea8780
+[35844.635874] R13: ffff8d8dde6e9000 R14: 0000000000000042 R15: ffff8d8dde6e9000
+[35844.635877] FS:  0000000000000000(0000) GS:ffff8d8ef59c0000(0000) knlGS:0000000000000000
+[35844.635880] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[35844.635883] CR2: 00001cc672155000 CR3: 00000001e580a001 CR4: 00000000003606e0
+[35844.635885] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[35844.635887] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[35844.635889] Call Trace:
+[35844.635893]  <IRQ>
+[35844.635903]  ? skb_checksum_help+0x88/0x1b0
+[35844.635913]  ipheth_tx+0x11b/0x250 [ipheth]
+[35844.635918]  dev_hard_start_xmit+0x91/0x1f0
+[35844.635923]  ? validate_xmit_skb_list+0x40/0x70
+[35844.635929]  sch_direct_xmit+0x113/0x340
+[35844.635934]  __dev_queue_xmit+0x57b/0x8e0
+[35844.635941]  ? update_load_avg+0x7c/0x670
+[35844.635947]  dev_queue_xmit+0x10/0x20
+[35844.635952]  ip_finish_output2+0x2ce/0x590
+[35844.635957]  __ip_finish_output+0xbf/0x1d0
+[35844.635963]  ip_finish_output+0x2d/0xb0
+[35844.635967]  ip_output+0x75/0xf0
+[35844.635974]  ? try_to_wake_up+0x224/0x6a0
+[35844.635983]  ? __wake_up_common_lock+0x8a/0xc0
+[35844.635989]  ip_local_out+0x3d/0x50
+[35844.635994]  __ip_queue_xmit+0x17a/0x450
+[35844.635999]  ? pollwake+0x72/0x90
+[35844.636005]  ip_queue_xmit+0x10/0x20
+[35844.636008]  __tcp_transmit_skb+0x53c/0xaf0
+[35844.636013]  __tcp_send_ack.part.0+0xcb/0x120
+[35844.636016]  tcp_send_ack+0x1c/0x20
+[35844.636021]  __tcp_ack_snd_check+0x3c/0x1a0
+[35844.636024]  tcp_rcv_established+0x592/0x650
+[35844.636029]  tcp_v4_do_rcv+0x140/0x200
+[35844.636033]  tcp_v4_rcv+0xbf1/0xd00
+[35844.636037]  ip_protocol_deliver_rcu+0x30/0x1b0
+[35844.636040]  ip_local_deliver_finish+0x48/0x50
+[35844.636043]  ip_local_deliver+0x73/0xf0
+[35844.636047]  ? tcp_v4_early_demux+0xfa/0x160
+[35844.636050]  ? ip_rcv_finish_core.isra.0+0x11d/0x3c0
+[35844.636053]  ip_rcv_finish+0x85/0xa0
+[35844.636055]  ip_rcv+0xbc/0xd0
+[35844.636060]  ? xhci_giveback_urb_in_irq.isra.0+0x83/0xf0
+[35844.636064]  __netif_receive_skb_core+0x6c3/0xc90
+[35844.636069]  ? consume_skb+0x34/0x90
+[35844.636074]  ? packet_rcv+0x46/0x4c0
+[35844.636081]  __netif_receive_skb_one_core+0x3f/0xa0
+[35844.636084]  __netif_receive_skb+0x18/0x60
+[35844.636087]  process_backlog+0xa1/0x160
+[35844.636090]  net_rx_action+0x13a/0x370
+[35844.636095]  __do_softirq+0xe1/0x2d6
+[35844.636101]  irq_exit+0xae/0xb0
+[35844.636103]  do_IRQ+0x5a/0xf0
+[35844.636108]  common_interrupt+0xf/0xf
+[35844.636110]  </IRQ>
+[35844.636115] RIP: 0010:cpuidle_enter_state+0xc5/0x450
+[35844.636118] Code: ff e8 1f d4 80 ff 80 7d c7 00 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 65 03 00 00 31 ff e8 52 3d 87 ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 8f 02 00 00 49 63 cd 4c 8b 7d d0 4c 2b 7d c8 48 8d
+[35844.636120] RSP: 0018:ffffac1ec010fe38 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffde
+[35844.636123] RAX: ffff8d8ef59ead00 RBX: ffffffff8dd59c20 RCX: 000000000000001f
+[35844.636125] RDX: 0000000000000000 RSI: 000000002819b16f RDI: 0000000000000000
+[35844.636126] RBP: ffffac1ec010fe78 R08: 00002099bac4a08c R09: 0000000000000001
+[35844.636128] R10: ffff8d8efdfd6328 R11: 0000000000000000 R12: ffff8d8ef59f5a00
+[35844.636129] R13: 0000000000000008 R14: 0000000000000008 R15: ffff8d8ef59f5a00
+[35844.636135]  ? cpuidle_enter_state+0xa1/0x450
+[35844.636138]  cpuidle_enter+0x2e/0x40
+[35844.636142]  call_cpuidle+0x23/0x40
+[35844.636144]  do_idle+0x1dd/0x270
+[35844.636149]  cpu_startup_entry+0x20/0x30
+[35844.636153]  start_secondary+0x167/0x1c0
+[35844.636163]  secondary_startup_64+0xa4/0xb0
+[35844.636167] ---[ end trace d564bd85607eff65 ]---
+[35844.636199] ipheth 1-4.1:4.2: ipheth_tx: usb_submit_urb: -16
+[36144.090244] Non-volatile memory driver v1.3
+[36144.226346] st: Version 20160209, fixed bufsize 32768, s/g segs 256
