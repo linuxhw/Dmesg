@@ -1,0 +1,49 @@
+[ 3940.140072] perf: interrupt took too long (2503 > 2500), lowering kernel.perf_event_max_sample_rate to 79750
+[ 4447.982687] ------------[ cut here ]------------
+[ 4447.982743] WARNING: CPU: 3 PID: 14564 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 4447.982744] Modules linked in: ccm zfs(PO) zunicode(PO) zavl(PO) icp(PO) zcommon(PO) znvpair(PO) spl(O) zlua(PO) snd_hda_codec_hdmi intel_rapl_msr mei_hdcp rtl8xxxu snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg snd_hda_codec intel_rapl_common snd_hda_core snd_hwdep x86_pkg_temp_thermal intel_powerclamp coretemp snd_pcm rtl8192cu rtl_usb rtl8192c_common snd_seq_midi snd_seq_midi_event rtlwifi snd_rawmidi mac80211 kvm cfg80211 snd_seq intel_cstate intel_rapl_perf snd_seq_device snd_timer input_leds libarc4 serio_raw mei_me snd mei soundcore mac_hid sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 overlay nls_iso8859_1 dm_mirror dm_region_hash dm_log nouveau hid_generic crct10dif_pclmul crc32_pclmul ghash_clmulni_intel mxm_wmi cryptd wmi i2c_algo_bit uas usbhid ttm psmouse hid drm_kms_helper syscopyarea sysfillrect sysimgblt usb_storage fb_sys_fops drm pata_acpi r8169 i2c_i801 lpc_ich realtek video
+[ 4447.982790] CPU: 3 PID: 14564 Comm: VizCompositorTh Tainted: P           O      5.4.0-26-generic #30-Ubuntu
+[ 4447.982792] Hardware name: Gigabyte Tecohnology Co., Ltd. H61M-DS2/H61M-DS2, BIOS F4 12/21/2011
+[ 4447.982826] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 4447.982829] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 5a 16 18 d9 66 2e 0f 1f 84 00 00 00 00 00 66 66 66
+[ 4447.982830] RSP: 0018:ffffa5aec3eabad0 EFLAGS: 00010282
+[ 4447.982833] RAX: 00000000fffffffe RBX: ffffa5aec3eabb00 RCX: 0000000000000000
+[ 4447.982834] RDX: 0000000000000000 RSI: ffffa5aec3eaba40 RDI: ffffa5aec3eabae0
+[ 4447.982835] RBP: ffffa5aec3eabaf0 R08: 0000000000000000 R09: 0000000000000000
+[ 4447.982836] R10: 0000000000000030 R11: 0000000000000001 R12: ffffa5aec3eabb38
+[ 4447.982837] R13: ffff8e2519b920b0 R14: 0000000000000000 R15: ffff8e2518d59bf0
+[ 4447.982840] FS:  00007fbea13fd700(0000) GS:ffff8e251ab80000(0000) knlGS:0000000000000000
+[ 4447.982841] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 4447.982842] CR2: 00007f81f7a65a10 CR3: 000000009f80a004 CR4: 00000000000606e0
+[ 4447.982844] Call Trace:
+[ 4447.982902]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[ 4447.982956]  nouveau_gem_object_close+0x1f5/0x210 [nouveau]
+[ 4447.982980]  drm_gem_object_release_handle+0x35/0xa0 [drm]
+[ 4447.982993]  ? drm_gem_object_handle_put_unlocked+0xb0/0xb0 [drm]
+[ 4447.982998]  idr_for_each+0x60/0xd0
+[ 4447.983013]  drm_gem_release+0x21/0x30 [drm]
+[ 4447.983025]  drm_file_free.part.0+0x222/0x270 [drm]
+[ 4447.983042]  drm_release+0xa5/0xe0 [drm]
+[ 4447.983046]  __fput+0xcc/0x260
+[ 4447.983048]  ____fput+0xe/0x10
+[ 4447.983052]  task_work_run+0x8f/0xb0
+[ 4447.983055]  do_exit+0x351/0xac0
+[ 4447.983057]  ? hrtimer_try_to_cancel+0x85/0x110
+[ 4447.983059]  do_group_exit+0x47/0xb0
+[ 4447.983062]  get_signal+0x169/0x890
+[ 4447.983064]  ? hrtimer_init_sleeper+0x90/0x90
+[ 4447.983068]  do_signal+0x34/0x6c0
+[ 4447.983071]  ? do_futex+0x10f/0x1e0
+[ 4447.983073]  ? __x64_sys_futex+0x13f/0x170
+[ 4447.983076]  exit_to_usermode_loop+0xbf/0x160
+[ 4447.983079]  do_syscall_64+0x163/0x190
+[ 4447.983082]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 4447.983084] RIP: 0033:0x7fbebdb13ed9
+[ 4447.983089] Code: Bad RIP value.
+[ 4447.983091] RSP: 002b:00007fbea13fc660 EFLAGS: 00000246 ORIG_RAX: 00000000000000ca
+[ 4447.983093] RAX: fffffffffffffdfc RBX: 00007fbea13fc880 RCX: 00007fbebdb13ed9
+[ 4447.983094] RDX: 0000000000000000 RSI: 0000000000000080 RDI: 00007fbea13fc8a8
+[ 4447.983096] RBP: 0000000000000000 R08: 0000000000000000 R09: 00007fbea13fc6c8
+[ 4447.983097] R10: 00007fbea13fc6c0 R11: 0000000000000246 R12: 00007fbea13fc858
+[ 4447.983098] R13: 00007fbea13fc8a8 R14: 00007fbea13fc760 R15: 00007fbea13fc8a4
+[ 4447.983101] ---[ end trace 109511e336263ebc ]---
