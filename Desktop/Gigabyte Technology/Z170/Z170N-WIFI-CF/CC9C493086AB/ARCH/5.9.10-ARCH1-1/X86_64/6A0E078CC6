@@ -1,0 +1,36 @@
+[79721.705463] ------------[ cut here ]------------
+[79721.705752] WARNING: CPU: 4 PID: 219 at drivers/gpu/drm/amd/amdgpu/../display/dc/dcn20/dcn20_resource.c:3241 dcn20_validate_bandwidth_fp+0x8d/0xd0 [amdgpu]
+[79721.705754] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq snd_seq_device tun rfcomm fuse xt_nat xt_tcpudp veth xt_conntrack xt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_filter iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c br_netfilter bridge stp llc input_leds hid_steam cmac algif_hash algif_skcipher af_alg intel_rapl_msr intel_rapl_common overlay bnep x86_pkg_temp_thermal intel_powerclamp coretemp iwlmvm kvm_intel joydev mac80211 kvm btusb snd_hda_codec_realtek mousedev libarc4 btrtl snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi btbcm irqbypass btintel snd_hda_intel crct10dif_pclmul hid_generic iwlwifi crc32_pclmul bluetooth nls_iso8859_1 snd_intel_dspcfg ghash_clmulni_intel snd_hda_codec usbhid nls_cp437 dwc3 snd_hda_core aesni_intel vfat snd_hwdep roles ecdh_generic hid crypto_simd iTCO_wdt ulpi ecc intel_pmc_bxt fat mei_hdcp ee1004 iTCO_vendor_support cryptd udc_core intel_wmi_thunderbolt glue_helper
+[79721.705808]  cfg80211 igb snd_pcm rapl intel_cstate snd_timer intel_uncore mei_me snd i2c_i801 pcspkr e1000e rfkill soundcore dca i2c_smbus mei dwc3_pci intel_pch_thermal wmi evdev mac_hid sg crypto_user ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 crc32c_intel xhci_pci xhci_pci_renesas xhci_hcd radeon amdgpu gpu_sched i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops cec rc_core ttm drm agpgart
+[79721.705842] CPU: 4 PID: 219 Comm: kworker/4:1 Not tainted 5.9.10-arch1-1 #1
+[79721.705844] Hardware name: Gigabyte Technology Co., Ltd. To be filled by O.E.M./Z170N-WIFI-CF, BIOS FA 07/11/2016
+[79721.705888] Workqueue: events drm_mode_rmfb_work_fn [drm]
+[79721.706156] RIP: 0010:dcn20_validate_bandwidth_fp+0x8d/0xd0 [amdgpu]
+[79721.706161] Code: 00 7b 35 22 85 14 1f 00 00 75 2f 31 d2 f2 0f 11 85 58 26 00 00 48 89 ee 4c 89 e7 e8 3d f6 ff ff 89 c2 22 95 14 1f 00 00 75 30 <0f> 0b 48 89 9d 58 26 00 00 5b 5d 41 5c c3 75 c9 48 89 9d 58 26 00
+[79721.706163] RSP: 0018:ffff9f5c40333bd8 EFLAGS: 00010246
+[79721.706167] RAX: 0000000000000001 RBX: 4079400000000000 RCX: 00000000396c7c04
+[79721.706170] RDX: 0000000000000000 RSI: 70618811fe21c151 RDI: 00000000000311a0
+[79721.706172] RBP: ffff8ea994940000 R08: ffff8eaba46fa000 R09: ffff8eac5bb80000
+[79721.706174] R10: ffff8eaba46fa000 R11: 0000000100000001 R12: ffff8eac5bb80000
+[79721.706176] R13: ffff8eabfbe969a0 R14: ffff8eac5b097800 R15: ffff8ea994940000
+[79721.706180] FS:  0000000000000000(0000) GS:ffff8eac66500000(0000) knlGS:0000000000000000
+[79721.706182] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[79721.706185] CR2: 00007f91ddb53840 CR3: 00000003f5032003 CR4: 00000000003706e0
+[79721.706187] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[79721.706189] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[79721.706191] Call Trace:
+[79721.706460]  dcn20_validate_bandwidth+0x24/0x40 [amdgpu]
+[79721.706710]  dc_validate_global_state+0x2f2/0x390 [amdgpu]
+[79721.707008]  amdgpu_dm_atomic_check+0xf05/0x1080 [amdgpu]
+[79721.707055]  drm_atomic_check_only+0x57c/0x7f0 [drm]
+[79721.707100]  drm_atomic_commit+0x13/0x50 [drm]
+[79721.707139]  drm_framebuffer_remove+0x3bf/0x450 [drm]
+[79721.707179]  drm_mode_rmfb_work_fn+0x3c/0x50 [drm]
+[79721.707187]  process_one_work+0x1da/0x3d0
+[79721.707193]  worker_thread+0x1f9/0x3d0
+[79721.707199]  ? rescuer_thread+0x410/0x410
+[79721.707205]  kthread+0x142/0x160
+[79721.707211]  ? __kthread_bind_mask+0x60/0x60
+[79721.707218]  ret_from_fork+0x22/0x30
+[79721.707225] ---[ end trace 4af96030f49cce09 ]---
+[82948.041570] L1TF CPU bug present and SMT on, data leak possible. See CVE-2018-3646 and https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/l1tf.html for details.
