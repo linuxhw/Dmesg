@@ -1,0 +1,596 @@
+[86909.410201] ------------[ cut here ]------------
+[86909.410363] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[86909.410367] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[86909.410464]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[86909.410546] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[86909.410548] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[86909.410610] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[86909.410613] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[86909.410618] RAX: 0000000000000024 RBX: ffff8f4c87105100 RCX: 0000000000000000
+[86909.410620] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[86909.410623] RBP: ffff8f4c8f203de8 R08: 000000000000098d R09: 0000000000000004
+[86909.410626] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[86909.410629] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[86909.410634] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[86909.410636] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[86909.410639] CR2: 00007f3c996264fc CR3: 000000001c20a004 CR4: 00000000001606f0
+[86909.410642] Call Trace:
+[86909.410646]  <IRQ>
+[86909.410659]  ? kmem_cache_alloc+0xa2/0x1b0
+[86909.410668]  ? __build_skb+0x2b/0xf0
+[86909.410674]  ? __netdev_alloc_skb+0xc8/0x120
+[86909.410683]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[86909.410700]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[86909.410717]  ath9k_tasklet+0x171/0x250 [ath9k]
+[86909.410728]  tasklet_action+0x64/0x110
+[86909.410735]  __do_softirq+0xe4/0x2d4
+[86909.410743]  irq_exit+0xc5/0xd0
+[86909.410750]  do_IRQ+0x86/0xe0
+[86909.410757]  common_interrupt+0x8c/0x8c
+[86909.410760]  </IRQ>
+[86909.410767] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[86909.410769] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffda
+[86909.410774] RAX: ffff8f4c8f221840 RBX: 00004f0b2c8489b8 RCX: 000000000000001f
+[86909.410777] RDX: 00004f0b2c8489b8 RSI: fffffffe06832d03 RDI: 0000000000000000
+[86909.410780] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[86909.410782] R10: ffffffff89c03de0 R11: 00008df84cc9cf4b R12: ffff8f4c8f22b800
+[86909.410785] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[86909.410795]  cpuidle_enter+0x17/0x20
+[86909.410804]  call_cpuidle+0x23/0x40
+[86909.410810]  do_idle+0x18c/0x1f0
+[86909.410816]  cpu_startup_entry+0x73/0x80
+[86909.410824]  rest_init+0xae/0xb0
+[86909.410831]  start_kernel+0x4dc/0x4fd
+[86909.410839]  x86_64_start_reservations+0x24/0x26
+[86909.410844]  x86_64_start_kernel+0x74/0x77
+[86909.410850]  secondary_startup_64+0xa5/0xb0
+[86909.410854] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[86909.410940] ---[ end trace 55b7a03781a08eb4 ]---
+[86909.505435] wlp2s0: authenticate with XX:XX:XX:XX:XX:XX
+[86909.520490] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[86909.641423] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[86909.769248] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[86909.840301] wlp2s0: authentication with XX:XX:XX:XX:XX:XX timed out
+[86911.253384] ------------[ cut here ]------------
+[86911.253520] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[86911.253522] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[86911.253602]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[86911.253674] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[86911.253676] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[86911.253716] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[86911.253718] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[86911.253722] RAX: 0000000000000024 RBX: ffff8f4c8891cc00 RCX: 0000000000000000
+[86911.253724] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[86911.253727] RBP: ffff8f4c8f203de8 R08: 00000000000009c2 R09: 0000000000000004
+[86911.253729] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[86911.253731] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[86911.253735] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[86911.253737] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[86911.253740] CR2: 00007fc18a5cc020 CR3: 000000001c20a004 CR4: 00000000001606f0
+[86911.253742] Call Trace:
+[86911.253746]  <IRQ>
+[86911.253759]  ? kmem_cache_alloc+0xa2/0x1b0
+[86911.253767]  ? __build_skb+0x2b/0xf0
+[86911.253771]  ? __netdev_alloc_skb+0xc8/0x120
+[86911.253778]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[86911.253792]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[86911.253805]  ath9k_tasklet+0x171/0x250 [ath9k]
+[86911.253813]  tasklet_action+0x64/0x110
+[86911.253818]  __do_softirq+0xe4/0x2d4
+[86911.253824]  irq_exit+0xc5/0xd0
+[86911.253830]  do_IRQ+0x86/0xe0
+[86911.253836]  common_interrupt+0x8c/0x8c
+[86911.253838]  </IRQ>
+[86911.253846] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[86911.253848] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffda
+[86911.253852] RAX: ffff8f4c8f221840 RBX: 00004f0b9a611e26 RCX: 000000000000001f
+[86911.253855] RDX: 00004f0b9a611e26 RSI: fffffffe06832d03 RDI: 0000000000000000
+[86911.253857] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[86911.253859] R10: ffffffff89c03de0 R11: 00008df912174e1c R12: ffff8f4c8f22b800
+[86911.253861] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[86911.253869]  cpuidle_enter+0x17/0x20
+[86911.253876]  call_cpuidle+0x23/0x40
+[86911.253881]  do_idle+0x18c/0x1f0
+[86911.253888]  cpu_startup_entry+0x73/0x80
+[86911.253894]  rest_init+0xae/0xb0
+[86911.253901]  start_kernel+0x4dc/0x4fd
+[86911.253907]  x86_64_start_reservations+0x24/0x26
+[86911.253912]  x86_64_start_kernel+0x74/0x77
+[86911.253917]  secondary_startup_64+0xa5/0xb0
+[86911.253921] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[86911.253998] ---[ end trace 55b7a03781a08eb5 ]---
+[86911.254010] ------------[ cut here ]------------
+[86911.254081] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[86911.254083] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[86911.254156]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[86911.254215] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[86911.254216] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[86911.254246] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[86911.254248] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[86911.254252] RAX: 0000000000000024 RBX: ffff8f4c8891d700 RCX: 0000000000000000
+[86911.254254] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[86911.254256] RBP: ffff8f4c8f203de8 R08: 00000000000009f2 R09: 0000000000000004
+[86911.254258] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[86911.254260] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[86911.254263] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[86911.254266] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[86911.254268] CR2: 00007fc18a5cc020 CR3: 000000001c20a004 CR4: 00000000001606f0
+[86911.254269] Call Trace:
+[86911.254271]  <IRQ>
+[86911.254278]  ? kmem_cache_alloc+0xa2/0x1b0
+[86911.254284]  ? __build_skb+0x2b/0xf0
+[86911.254288]  ? __netdev_alloc_skb+0xc8/0x120
+[86911.254294]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[86911.254305]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[86911.254316]  ath9k_tasklet+0x171/0x250 [ath9k]
+[86911.254322]  tasklet_action+0x64/0x110
+[86911.254326]  __do_softirq+0xe4/0x2d4
+[86911.254332]  irq_exit+0xc5/0xd0
+[86911.254338]  do_IRQ+0x86/0xe0
+[86911.254344]  common_interrupt+0x8c/0x8c
+[86911.254345]  </IRQ>
+[86911.254351] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[86911.254352] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffda
+[86911.254356] RAX: ffff8f4c8f221840 RBX: 00004f0b9a611e26 RCX: 000000000000001f
+[86911.254358] RDX: 00004f0b9a611e26 RSI: fffffffe06832d03 RDI: 0000000000000000
+[86911.254361] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[86911.254363] R10: ffffffff89c03de0 R11: 00008df912174e1c R12: ffff8f4c8f22b800
+[86911.254365] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[86911.254373]  cpuidle_enter+0x17/0x20
+[86911.254379]  call_cpuidle+0x23/0x40
+[86911.254384]  do_idle+0x18c/0x1f0
+[86911.254390]  cpu_startup_entry+0x73/0x80
+[86911.254395]  rest_init+0xae/0xb0
+[86911.254401]  start_kernel+0x4dc/0x4fd
+[86911.254407]  x86_64_start_reservations+0x24/0x26
+[86911.254411]  x86_64_start_kernel+0x74/0x77
+[86911.254416]  secondary_startup_64+0xa5/0xb0
+[86911.254420] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[86911.254494] ---[ end trace 55b7a03781a08eb6 ]---
+[86924.099684] IPv6: ADDRCONF(NETDEV_UP): wlp2s0: link is not ready
+[86925.196013] wlp2s0: authenticate with XX:XX:XX:XX:XX:XX
+[86925.218365] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[86925.219975] wlp2s0: authenticated
+[86925.223114] wlp2s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[86925.229475] wlp2s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x431 status=0 aid=1)
+[86925.229637] wlp2s0: associated
+[86925.237428] IPv6: ADDRCONF(NETDEV_CHANGE): wlp2s0: link becomes ready
+[98425.569654] wlp2s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[98427.983514] wlp2s0: authenticate with XX:XX:XX:XX:XX:XX
+[98428.004842] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[98428.009242] wlp2s0: authenticated
+[98428.011988] wlp2s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[98428.018335] wlp2s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x401 status=0 aid=2)
+[98428.018508] wlp2s0: associated
+[145755.318957] TCP: wlp2s0: Driver has suspect GRO implementation, TCP performance may be compromised.
+[147479.656217] ------------[ cut here ]------------
+[147479.656389] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147479.656393] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[147479.656491]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[147479.656576] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[147479.656579] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[147479.656641] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147479.656645] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[147479.656649] RAX: 0000000000000024 RBX: ffff8f4c871ba600 RCX: 0000000000000000
+[147479.656652] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[147479.656654] RBP: ffff8f4c8f203de8 R08: 0000000000000b1f R09: 0000000000000004
+[147479.656657] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[147479.656659] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[147479.656663] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[147479.656665] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[147479.656668] CR2: 00007fea1e21d4fc CR3: 000000001c20a006 CR4: 00000000001606f0
+[147479.656670] Call Trace:
+[147479.656676]  <IRQ>
+[147479.656694]  ? map_single+0x3c/0x90
+[147479.656703]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[147479.656710]  ? swiotlb_tbl_unmap_single+0xf4/0x120
+[147479.656726]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[147479.656741]  ath9k_tasklet+0x171/0x250 [ath9k]
+[147479.656752]  tasklet_action+0x64/0x110
+[147479.656758]  __do_softirq+0xe4/0x2d4
+[147479.656765]  irq_exit+0xc5/0xd0
+[147479.656773]  do_IRQ+0x86/0xe0
+[147479.656780]  common_interrupt+0x8c/0x8c
+[147479.656782]  </IRQ>
+[147479.656791] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[147479.656793] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffdb
+[147479.656799] RAX: ffff8f4c8f221840 RBX: 00008621c88404a3 RCX: 000000000000001f
+[147479.656806] RDX: 00008621c88404a3 RSI: fffffffe06832d03 RDI: 0000000000000000
+[147479.656808] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[147479.656811] R10: ffffffff89c03de0 R11: 0000f0e7754afd0f R12: ffff8f4c8f22b800
+[147479.656814] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[147479.656826]  cpuidle_enter+0x17/0x20
+[147479.656834]  call_cpuidle+0x23/0x40
+[147479.656842]  do_idle+0x18c/0x1f0
+[147479.656851]  cpu_startup_entry+0x73/0x80
+[147479.656859]  rest_init+0xae/0xb0
+[147479.656868]  start_kernel+0x4dc/0x4fd
+[147479.656875]  x86_64_start_reservations+0x24/0x26
+[147479.656881]  x86_64_start_kernel+0x74/0x77
+[147479.656888]  secondary_startup_64+0xa5/0xb0
+[147479.656893] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[147479.656988] ---[ end trace 55b7a03781a08eb7 ]---
+[147479.657017] ------------[ cut here ]------------
+[147479.657142] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147479.657145] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[147479.657238]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[147479.657313] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[147479.657316] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[147479.657369] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147479.657372] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[147479.657376] RAX: 0000000000000024 RBX: ffff8f4c871bb600 RCX: 0000000000000000
+[147479.657378] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[147479.657380] RBP: ffff8f4c8f203de8 R08: 0000000000000b4e R09: 0000000000000004
+[147479.657382] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[147479.657384] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[147479.657388] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[147479.657390] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[147479.657392] CR2: 00007fea1e21d4fc CR3: 000000001c20a006 CR4: 00000000001606f0
+[147479.657394] Call Trace:
+[147479.657397]  <IRQ>
+[147479.657410]  ? map_single+0x3c/0x90
+[147479.657418]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[147479.657424]  ? swiotlb_tbl_unmap_single+0xf4/0x120
+[147479.657437]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[147479.657449]  ath9k_tasklet+0x171/0x250 [ath9k]
+[147479.657458]  tasklet_action+0x64/0x110
+[147479.657463]  __do_softirq+0xe4/0x2d4
+[147479.657470]  irq_exit+0xc5/0xd0
+[147479.657476]  do_IRQ+0x86/0xe0
+[147479.657482]  common_interrupt+0x8c/0x8c
+[147479.657484]  </IRQ>
+[147479.657490] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[147479.657492] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffdb
+[147479.657496] RAX: ffff8f4c8f221840 RBX: 00008621c88404a3 RCX: 000000000000001f
+[147479.657498] RDX: 00008621c88404a3 RSI: fffffffe06832d03 RDI: 0000000000000000
+[147479.657500] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[147479.657502] R10: ffffffff89c03de0 R11: 0000f0e7754afd0f R12: ffff8f4c8f22b800
+[147479.657504] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[147479.657512]  cpuidle_enter+0x17/0x20
+[147479.657519]  call_cpuidle+0x23/0x40
+[147479.657525]  do_idle+0x18c/0x1f0
+[147479.657531]  cpu_startup_entry+0x73/0x80
+[147479.657536]  rest_init+0xae/0xb0
+[147479.657543]  start_kernel+0x4dc/0x4fd
+[147479.657549]  x86_64_start_reservations+0x24/0x26
+[147479.657554]  x86_64_start_kernel+0x74/0x77
+[147479.657560]  secondary_startup_64+0xa5/0xb0
+[147479.657564] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[147479.657640] ---[ end trace 55b7a03781a08eb8 ]---
+[147479.657663] ------------[ cut here ]------------
+[147479.657769] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147479.657772] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[147479.657851]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[147479.657916] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[147479.657917] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[147479.657955] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147479.657957] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[147479.657960] RAX: 0000000000000024 RBX: ffff8f4c871ba900 RCX: 0000000000000000
+[147479.657962] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[147479.657964] RBP: ffff8f4c8f203de8 R08: 0000000000000b7d R09: 0000000000000004
+[147479.657966] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[147479.657968] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[147479.657971] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[147479.657973] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[147479.657975] CR2: 00007fea1e21d4fc CR3: 000000001c20a006 CR4: 00000000001606f0
+[147479.657977] Call Trace:
+[147479.657981]  <IRQ>
+[147479.657993]  ? map_single+0x3c/0x90
+[147479.658001]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[147479.658007]  ? swiotlb_tbl_unmap_single+0xf4/0x120
+[147479.658019]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[147479.658030]  ath9k_tasklet+0x171/0x250 [ath9k]
+[147479.658039]  tasklet_action+0x64/0x110
+[147479.658044]  __do_softirq+0xe4/0x2d4
+[147479.658051]  irq_exit+0xc5/0xd0
+[147479.658058]  do_IRQ+0x86/0xe0
+[147479.658063]  common_interrupt+0x8c/0x8c
+[147479.658065]  </IRQ>
+[147479.658070] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[147479.658072] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffdb
+[147479.658076] RAX: ffff8f4c8f221840 RBX: 00008621c88404a3 RCX: 000000000000001f
+[147479.658078] RDX: 00008621c88404a3 RSI: fffffffe06832d03 RDI: 0000000000000000
+[147479.658080] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[147479.658082] R10: ffffffff89c03de0 R11: 0000f0e7754afd0f R12: ffff8f4c8f22b800
+[147479.658084] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[147479.658092]  cpuidle_enter+0x17/0x20
+[147479.658098]  call_cpuidle+0x23/0x40
+[147479.658103]  do_idle+0x18c/0x1f0
+[147479.658110]  cpu_startup_entry+0x73/0x80
+[147479.658115]  rest_init+0xae/0xb0
+[147479.658122]  start_kernel+0x4dc/0x4fd
+[147479.658128]  x86_64_start_reservations+0x24/0x26
+[147479.658133]  x86_64_start_kernel+0x74/0x77
+[147479.658138]  secondary_startup_64+0xa5/0xb0
+[147479.658142] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[147479.658218] ---[ end trace 55b7a03781a08eb9 ]---
+[147491.739787] ------------[ cut here ]------------
+[147491.739886] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147491.739888] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[147491.739948]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[147491.740000] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[147491.740002] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[147491.740030] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147491.740032] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[147491.740035] RAX: 0000000000000024 RBX: ffff8f4c87279900 RCX: 0000000000000000
+[147491.740036] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[147491.740038] RBP: ffff8f4c8f203de8 R08: 0000000000000bac R09: 0000000000000004
+[147491.740040] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[147491.740041] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[147491.740044] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[147491.740046] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[147491.740047] CR2: 000055cb57305c70 CR3: 000000001c20a005 CR4: 00000000001606f0
+[147491.740049] Call Trace:
+[147491.740052]  <IRQ>
+[147491.740063]  ? map_single+0x3c/0x90
+[147491.740069]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[147491.740073]  ? swiotlb_tbl_unmap_single+0xf4/0x120
+[147491.740083]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[147491.740092]  ath9k_tasklet+0x171/0x250 [ath9k]
+[147491.740098]  tasklet_action+0x64/0x110
+[147491.740101]  __do_softirq+0xe4/0x2d4
+[147491.740106]  irq_exit+0xc5/0xd0
+[147491.740111]  do_IRQ+0x86/0xe0
+[147491.740115]  common_interrupt+0x8c/0x8c
+[147491.740117]  </IRQ>
+[147491.740122] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[147491.740123] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffdb
+[147491.740126] RAX: ffff8f4c8f221840 RBX: 0000862498c07d67 RCX: 000000000000001f
+[147491.740128] RDX: 0000862498c07d67 RSI: fffffffe06832d03 RDI: 0000000000000000
+[147491.740129] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[147491.740131] R10: ffffffff89c03de0 R11: 0000f0ec82c790bf R12: ffff8f4c8f22b800
+[147491.740132] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[147491.740139]  cpuidle_enter+0x17/0x20
+[147491.740143]  call_cpuidle+0x23/0x40
+[147491.740147]  do_idle+0x18c/0x1f0
+[147491.740152]  cpu_startup_entry+0x73/0x80
+[147491.740156]  rest_init+0xae/0xb0
+[147491.740161]  start_kernel+0x4dc/0x4fd
+[147491.740165]  x86_64_start_reservations+0x24/0x26
+[147491.740169]  x86_64_start_kernel+0x74/0x77
+[147491.740173]  secondary_startup_64+0xa5/0xb0
+[147491.740176] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[147491.740231] ---[ end trace 55b7a03781a08eba ]---
+[147491.740242] ------------[ cut here ]------------
+[147491.740293] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147491.740294] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[147491.740347]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[147491.740389] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[147491.740390] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[147491.740412] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147491.740413] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[147491.740415] RAX: 0000000000000024 RBX: ffff8f4c87278f00 RCX: 0000000000000000
+[147491.740417] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[147491.740418] RBP: ffff8f4c8f203de8 R08: 0000000000000bdb R09: 0000000000000004
+[147491.740420] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[147491.740421] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[147491.740424] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[147491.740425] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[147491.740427] CR2: 000055cb57305c70 CR3: 000000001c20a005 CR4: 00000000001606f0
+[147491.740428] Call Trace:
+[147491.740430]  <IRQ>
+[147491.740436]  ? map_single+0x3c/0x90
+[147491.740440]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[147491.740444]  ? swiotlb_tbl_unmap_single+0xf4/0x120
+[147491.740452]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[147491.740460]  ath9k_tasklet+0x171/0x250 [ath9k]
+[147491.740465]  tasklet_action+0x64/0x110
+[147491.740468]  __do_softirq+0xe4/0x2d4
+[147491.740472]  irq_exit+0xc5/0xd0
+[147491.740476]  do_IRQ+0x86/0xe0
+[147491.740480]  common_interrupt+0x8c/0x8c
+[147491.740481]  </IRQ>
+[147491.740485] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[147491.740486] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffdb
+[147491.740489] RAX: ffff8f4c8f221840 RBX: 0000862498c07d67 RCX: 000000000000001f
+[147491.740491] RDX: 0000862498c07d67 RSI: fffffffe06832d03 RDI: 0000000000000000
+[147491.740492] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[147491.740494] R10: ffffffff89c03de0 R11: 0000f0ec82c790bf R12: ffff8f4c8f22b800
+[147491.740495] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[147491.740501]  cpuidle_enter+0x17/0x20
+[147491.740505]  call_cpuidle+0x23/0x40
+[147491.740509]  do_idle+0x18c/0x1f0
+[147491.740513]  cpu_startup_entry+0x73/0x80
+[147491.740517]  rest_init+0xae/0xb0
+[147491.740521]  start_kernel+0x4dc/0x4fd
+[147491.740525]  x86_64_start_reservations+0x24/0x26
+[147491.740529]  x86_64_start_kernel+0x74/0x77
+[147491.740532]  secondary_startup_64+0xa5/0xb0
+[147491.740535] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[147491.740589] ---[ end trace 55b7a03781a08ebb ]---
+[147491.740597] ------------[ cut here ]------------
+[147491.740642] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147491.740643] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[147491.740696]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[147491.740737] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[147491.740739] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[147491.740760] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147491.740761] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[147491.740763] RAX: 0000000000000024 RBX: ffff8f4c81b76500 RCX: 0000000000000000
+[147491.740765] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[147491.740766] RBP: ffff8f4c8f203de8 R08: 0000000000000c0a R09: 0000000000000004
+[147491.740768] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[147491.740769] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[147491.740771] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[147491.740773] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[147491.740775] CR2: 000055cb57305c70 CR3: 000000001c20a005 CR4: 00000000001606f0
+[147491.740776] Call Trace:
+[147491.740777]  <IRQ>
+[147491.740783]  ? map_single+0x3c/0x90
+[147491.740787]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[147491.740791]  ? swiotlb_tbl_unmap_single+0xf4/0x120
+[147491.740798]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[147491.740806]  ath9k_tasklet+0x171/0x250 [ath9k]
+[147491.740811]  tasklet_action+0x64/0x110
+[147491.740813]  __do_softirq+0xe4/0x2d4
+[147491.740818]  irq_exit+0xc5/0xd0
+[147491.740822]  do_IRQ+0x86/0xe0
+[147491.740826]  common_interrupt+0x8c/0x8c
+[147491.740827]  </IRQ>
+[147491.740830] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[147491.740832] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffdb
+[147491.740835] RAX: ffff8f4c8f221840 RBX: 0000862498c07d67 RCX: 000000000000001f
+[147491.740836] RDX: 0000862498c07d67 RSI: fffffffe06832d03 RDI: 0000000000000000
+[147491.740837] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[147491.740839] R10: ffffffff89c03de0 R11: 0000f0ec82c790bf R12: ffff8f4c8f22b800
+[147491.740840] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[147491.740846]  cpuidle_enter+0x17/0x20
+[147491.740850]  call_cpuidle+0x23/0x40
+[147491.740854]  do_idle+0x18c/0x1f0
+[147491.740859]  cpu_startup_entry+0x73/0x80
+[147491.740862]  rest_init+0xae/0xb0
+[147491.740866]  start_kernel+0x4dc/0x4fd
+[147491.740870]  x86_64_start_reservations+0x24/0x26
+[147491.740874]  x86_64_start_kernel+0x74/0x77
+[147491.740877]  secondary_startup_64+0xa5/0xb0
+[147491.740880] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[147491.740934] ---[ end trace 55b7a03781a08ebc ]---
+[147515.292105] ------------[ cut here ]------------
+[147515.292271] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147515.292276] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[147515.292375]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[147515.292459] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[147515.292462] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[147515.292524] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147515.292529] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[147515.292533] RAX: 0000000000000024 RBX: ffff8f4c88415d00 RCX: 0000000000000000
+[147515.292536] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[147515.292539] RBP: ffff8f4c8f203de8 R08: 0000000000000c39 R09: 0000000000000004
+[147515.292541] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[147515.292543] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[147515.292547] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[147515.292550] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[147515.292552] CR2: 00001c1af0259000 CR3: 000000001c20a003 CR4: 00000000001606f0
+[147515.292556] Call Trace:
+[147515.292561]  <IRQ>
+[147515.292579]  ? map_single+0x3c/0x90
+[147515.292588]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[147515.292595]  ? swiotlb_tbl_unmap_single+0xf4/0x120
+[147515.292611]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[147515.292627]  ath9k_tasklet+0x171/0x250 [ath9k]
+[147515.292637]  tasklet_action+0x64/0x110
+[147515.292643]  __do_softirq+0xe4/0x2d4
+[147515.292650]  irq_exit+0xc5/0xd0
+[147515.292658]  do_IRQ+0x86/0xe0
+[147515.292664]  common_interrupt+0x8c/0x8c
+[147515.292667]  </IRQ>
+[147515.292674] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[147515.292677] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffdb
+[147515.292682] RAX: ffff8f4c8f221840 RBX: 0000862a14948ccf RCX: 000000000000001f
+[147515.292689] RDX: 0000862a14948ccf RSI: fffffffe06832d03 RDI: 0000000000000000
+[147515.292692] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[147515.292694] R10: ffffffff89c03de0 R11: 0000f0f65bf1673c R12: ffff8f4c8f22b800
+[147515.292698] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[147515.292709]  cpuidle_enter+0x17/0x20
+[147515.292717]  call_cpuidle+0x23/0x40
+[147515.292724]  do_idle+0x18c/0x1f0
+[147515.292734]  cpu_startup_entry+0x73/0x80
+[147515.292742]  rest_init+0xae/0xb0
+[147515.292751]  start_kernel+0x4dc/0x4fd
+[147515.292759]  x86_64_start_reservations+0x24/0x26
+[147515.292765]  x86_64_start_kernel+0x74/0x77
+[147515.292773]  secondary_startup_64+0xa5/0xb0
+[147515.292777] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[147515.292874] ---[ end trace 55b7a03781a08ebd ]---
+[147696.649127] ------------[ cut here ]------------
+[147696.649269] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147696.649272] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[147696.649358]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[147696.649429] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[147696.649431] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[147696.649472] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147696.649475] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[147696.649479] RAX: 0000000000000024 RBX: ffff8f4c72cc9700 RCX: 0000000000000000
+[147696.649481] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[147696.649483] RBP: ffff8f4c8f203de8 R08: 0000000000000c74 R09: 0000000000000004
+[147696.649486] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[147696.649488] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[147696.649491] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[147696.649494] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[147696.649496] CR2: 00007fd5337fe1f0 CR3: 000000001c20a006 CR4: 00000000001606f0
+[147696.649499] Call Trace:
+[147696.649503]  <IRQ>
+[147696.649517]  ? map_single+0x3c/0x90
+[147696.649525]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[147696.649530]  ? swiotlb_tbl_unmap_single+0xf4/0x120
+[147696.649544]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[147696.649557]  ath9k_tasklet+0x171/0x250 [ath9k]
+[147696.649565]  tasklet_action+0x64/0x110
+[147696.649571]  __do_softirq+0xe4/0x2d4
+[147696.649577]  irq_exit+0xc5/0xd0
+[147696.649583]  do_IRQ+0x86/0xe0
+[147696.649589]  common_interrupt+0x8c/0x8c
+[147696.649592]  </IRQ>
+[147696.649598] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[147696.649601] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffda
+[147696.649605] RAX: ffff8f4c8f221840 RBX: 000086544e4d48e5 RCX: 000000000000001f
+[147696.649607] RDX: 000086544e4d48e5 RSI: fffffffe06832d03 RDI: 0000000000000000
+[147696.649609] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[147696.649611] R10: ffffffff89c03de0 R11: 0000f142315696c8 R12: ffff8f4c8f22b800
+[147696.649613] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[147696.649622]  cpuidle_enter+0x17/0x20
+[147696.649628]  call_cpuidle+0x23/0x40
+[147696.649634]  do_idle+0x18c/0x1f0
+[147696.649640]  cpu_startup_entry+0x73/0x80
+[147696.649646]  rest_init+0xae/0xb0
+[147696.649653]  start_kernel+0x4dc/0x4fd
+[147696.649659]  x86_64_start_reservations+0x24/0x26
+[147696.649664]  x86_64_start_kernel+0x74/0x77
+[147696.649670]  secondary_startup_64+0xa5/0xb0
+[147696.649673] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[147696.649754] ---[ end trace 55b7a03781a08ebe ]---
+[147696.649773] ------------[ cut here ]------------
+[147696.649847] WARNING: CPU: 0 PID: 0 at /build/linux-dWhjJj/linux-4.15.0/net/mac80211/rx.c:630 ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147696.649849] Modules linked in: ccm usblp ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c rfcomm cmac bnep nls_iso8859_1 ath3k uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_core videodev media btusb btrtl btbcm btintel bluetooth ecdh_generic hid_multitouch rtsx_usb_ms memstick wmi_bmof snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel cryptd intel_cstate intel_rapl_perf i915 snd_hda_intel snd_hda_codec arc4 snd_hda_core snd_hwdep snd_pcm ath9k snd_seq_midi ath9k_common snd_seq_midi_event ath9k_hw snd_rawmidi input_leds joydev ath snd_seq serio_raw drm_kms_helper mac80211
+[147696.649923]  snd_seq_device drm snd_timer cfg80211 lpc_ich snd i2c_algo_bit fb_sys_fops shpchp syscopyarea sysfillrect mei_me mei soundcore sysimgblt ideapad_laptop sparse_keymap wmi video mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs xor zstd_compress raid6_pq dm_mirror dm_region_hash dm_log usbhid hid rtsx_usb_sdmmc rtsx_usb psmouse ahci libahci r8169 mii
+[147696.649982] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W        4.15.0-70-generic #79-Ubuntu
+[147696.649984] Hardware name: LENOVO 20257/Ideapad S210, BIOS 80CN15WW 04/10/2013
+[147696.650015] RIP: 0010:ieee80211_rx_napi+0x96e/0xad0 [mac80211]
+[147696.650017] RSP: 0018:ffff8f4c8f203d18 EFLAGS: 00010286
+[147696.650021] RAX: 0000000000000024 RBX: ffff8f4c72cc8400 RCX: 0000000000000000
+[147696.650023] RDX: 0000000000000000 RSI: 00000000000000f6 RDI: 0000000000000300
+[147696.650025] RBP: ffff8f4c8f203de8 R08: 0000000000000ca3 R09: 0000000000000004
+[147696.650027] R10: 0000000000000000 R11: 0000000000000001 R12: ffff8f4c85868760
+[147696.650029] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000004
+[147696.650032] FS:  0000000000000000(0000) GS:ffff8f4c8f200000(0000) knlGS:0000000000000000
+[147696.650034] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[147696.650036] CR2: 00007fd5337fe1f0 CR3: 000000001c20a006 CR4: 00000000001606f0
+[147696.650038] Call Trace:
+[147696.650040]  <IRQ>
+[147696.650049]  ? map_single+0x3c/0x90
+[147696.650056]  ? ath9k_cmn_rx_skb_postprocess+0x4b/0x130 [ath9k_common]
+[147696.650062]  ? swiotlb_tbl_unmap_single+0xf4/0x120
+[147696.650072]  ath_rx_tasklet+0xa73/0xfc0 [ath9k]
+[147696.650084]  ath9k_tasklet+0x171/0x250 [ath9k]
+[147696.650090]  tasklet_action+0x64/0x110
+[147696.650094]  __do_softirq+0xe4/0x2d4
+[147696.650101]  irq_exit+0xc5/0xd0
+[147696.650107]  do_IRQ+0x86/0xe0
+[147696.650112]  common_interrupt+0x8c/0x8c
+[147696.650114]  </IRQ>
+[147696.650119] RIP: 0010:cpuidle_enter_state+0xa7/0x2f0
+[147696.650121] RSP: 0018:ffffffff89c03e10 EFLAGS: 00000246 ORIG_RAX: ffffffffffffffda
+[147696.650125] RAX: ffff8f4c8f221840 RBX: 000086544e4d48e5 RCX: 000000000000001f
+[147696.650127] RDX: 000086544e4d48e5 RSI: fffffffe06832d03 RDI: 0000000000000000
+[147696.650129] RBP: ffffffff89c03e50 R08: 0000000000000004 R09: 0000000000021080
+[147696.650131] R10: ffffffff89c03de0 R11: 0000f142315696c8 R12: ffff8f4c8f22b800
+[147696.650133] R13: 0000000000000005 R14: ffffffff89d73438 R15: 0000000000000000
+[147696.650141]  cpuidle_enter+0x17/0x20
+[147696.650146]  call_cpuidle+0x23/0x40
+[147696.650152]  do_idle+0x18c/0x1f0
+[147696.650158]  cpu_startup_entry+0x73/0x80
+[147696.650163]  rest_init+0xae/0xb0
+[147696.650169]  start_kernel+0x4dc/0x4fd
+[147696.650175]  x86_64_start_reservations+0x24/0x26
+[147696.650179]  x86_64_start_kernel+0x74/0x77
+[147696.650184]  secondary_startup_64+0xa5/0xb0
+[147696.650187] Code: 95 70 ff ff ff 4c 8b b3 d8 00 00 00 44 8b 85 60 ff ff ff 4c 8b ba d8 00 00 00 e9 19 f9 ff ff 48 c7 c7 e8 2e 93 c0 e8 82 32 01 c8 <0f> 0b 48 89 df e8 f8 5a 77 c8 e9 61 f7 ff ff 48 89 de 4c 89 e7 
+[147696.650262] ---[ end trace 55b7a03781a08ebf ]---
+[148055.908062] usblp1: removed
+[148055.913011] usblp 3-1:1.0: usblp1: USB Bidirectional printer dev 3 if 0 alt 0 proto 2 vid 0x04E8 pid 0x3321
+[148145.930599] usblp1: removed
+[148145.935627] usblp 3-1:1.0: usblp1: USB Bidirectional printer dev 3 if 0 alt 0 proto 2 vid 0x04E8 pid 0x3321
+[153486.976055] usblp1: removed
+[153486.984591] usblp 3-1:1.0: usblp1: USB Bidirectional printer dev 3 if 0 alt 0 proto 2 vid 0x04E8 pid 0x3321
+[159410.275735] usblp1: removed
+[159410.277520] usblp 3-1:1.0: usblp1: USB Bidirectional printer dev 3 if 0 alt 0 proto 2 vid 0x04E8 pid 0x3321
