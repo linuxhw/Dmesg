@@ -1,0 +1,620 @@
+[ 1196.485888] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1200.982046] PM: suspend entry (deep)
+[ 1200.989473] Filesystems sync: 0.007 seconds
+[ 1201.254744] general protection fault, probably for non-canonical address 0x8000000000000001: 0000 [#1] SMP PTI
+[ 1201.254755] CPU: 4 PID: 5627 Comm: systemd-sleep Tainted: G           OE     5.8.0-59-generic #66~20.04.1-Ubuntu
+[ 1201.254758] Hardware name: TIMI TM1707/TM1707, BIOS XMAKB5RRP0905 12/07/2018
+[ 1201.254767] RIP: 0010:dis_dev_get+0x15/0x40 [bbswitch]
+[ 1201.254772] Code: 48 c7 c6 a0 10 4a c0 48 89 e5 e8 46 91 27 ce 5d c3 0f 1f 40 00 0f 1f 44 00 00 48 8b 05 e4 34 00 00 48 8b 40 10 48 85 c0 74 20 <48> 8b 78 38 48 85 ff 74 17 55 48 81 c7 b0 00 00 00 be 04 00 00 00
+[ 1201.254776] RSP: 0018:ffffbbb4425a3ca0 EFLAGS: 00010282
+[ 1201.254781] RAX: 8000000000000001 RBX: ffffffff8fc1f260 RCX: 0000000000000003
+[ 1201.254784] RDX: 0000000000000000 RSI: 0000000000000003 RDI: ffffffffc04a4000
+[ 1201.254786] RBP: ffffbbb4425a3cb8 R08: 0000000000000000 R09: 0000000000000000
+[ 1201.254789] R10: ffffffff8fa69a40 R11: 0000000000000000 R12: 0000000000000003
+[ 1201.254791] R13: 0000000000000000 R14: 00000000fffffff5 R15: ffffbbb4425a3d54
+[ 1201.254795] FS:  00007f24396cd980(0000) GS:ffff9b6966d00000(0000) knlGS:0000000000000000
+[ 1201.254799] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1201.254802] CR2: 00007ffe51a6fe28 CR3: 0000000175f26004 CR4: 00000000003606e0
+[ 1201.254804] Call Trace:
+[ 1201.254812]  ? bbswitch_pm_handler+0x57/0xb0 [bbswitch]
+[ 1201.254821]  notifier_call_chain+0x4f/0x70
+[ 1201.254827]  __blocking_notifier_call_chain+0x4e/0x70
+[ 1201.254833]  __pm_notifier_call_chain+0x1f/0x40
+[ 1201.254840]  pm_suspend.cold+0x16d/0x37e
+[ 1201.254845]  state_store+0x82/0xe0
+[ 1201.254854]  kobj_attr_store+0x12/0x20
+[ 1201.254860]  sysfs_kf_write+0x3e/0x50
+[ 1201.254864]  kernfs_fop_write_iter+0x13c/0x1d0
+[ 1201.254873]  new_sync_write+0x113/0x1a0
+[ 1201.254878]  vfs_write+0x1c5/0x200
+[ 1201.254883]  ksys_write+0x67/0xe0
+[ 1201.254887]  __x64_sys_write+0x1a/0x20
+[ 1201.254894]  do_syscall_64+0x49/0xc0
+[ 1201.254900]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 1201.254904] RIP: 0033:0x7f243a54a1e7
+[ 1201.254910] Code: 64 89 02 48 c7 c0 ff ff ff ff eb bb 0f 1f 80 00 00 00 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 48 89 54 24 18 48 89 74 24
+[ 1201.254914] RSP: 002b:00007ffe51a718f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[ 1201.254917] RAX: ffffffffffffffda RBX: 0000000000000004 RCX: 00007f243a54a1e7
+[ 1201.254920] RDX: 0000000000000004 RSI: 00007ffe51a719b0 RDI: 0000000000000004
+[ 1201.254923] RBP: 00007ffe51a719b0 R08: 0000000000000004 R09: 000000000000000d
+[ 1201.254925] R10: 000055d32e53f128 R11: 0000000000000246 R12: 0000000000000004
+[ 1201.254928] R13: 000055d32fccf2d0 R14: 0000000000000004 R15: 00007f243a6258a0
+[ 1201.254932] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep bbswitch(OE) nls_iso8859_1 snd_hda_codec_hdmi snd_hda_codec_realtek intel_rapl_msr snd_hda_codec_generic ledtrig_audio intel_rapl_common x86_pkg_temp_thermal intel_powerclamp kvm_intel mei_hdcp snd_hda_intel kvm snd_intel_dspcfg crct10dif_pclmul ghash_clmulni_intel snd_hda_codec snd_hda_core aesni_intel snd_hwdep crypto_simd cryptd glue_helper snd_pcm iwlmvm rapl btusb snd_seq_midi btrtl mac80211 i915 intel_cstate snd_seq_midi_event btbcm libarc4 snd_rawmidi btintel bluetooth snd_seq uvcvideo iwlwifi snd_seq_device videobuf2_vmalloc videobuf2_memops snd_timer joydev videobuf2_v4l2 input_leds videobuf2_common drm_kms_helper videodev ecdh_generic serio_raw snd cfg80211 cec intel_wmi_thunderbolt efi_pstore ecc xiaomi_wmi mc rc_core wmi_bmof i2c_algo_bit fb_sys_fops syscopyarea sysfillrect intel_xhci_usb_role_switch sysimgblt roles soundcore hid_multitouch mei_me ucsi_acpi typec_ucsi mei intel_pch_thermal
+[ 1201.254994]  typec acpi_pad mac_hid sch_fq_codel coretemp parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic rtsx_pci_sdmmc crc32_pclmul psmouse nvme i2c_i801 rtsx_pci intel_lpss_pci i2c_smbus nvme_core intel_lpss i2c_hid xhci_pci idma64 hid xhci_pci_renesas virt_dma pinctrl_sunrisepoint pinctrl_intel video wmi
+[ 1201.255027] ---[ end trace e8540ccb9a44267d ]---
+[ 1201.702457] RIP: 0010:dis_dev_get+0x15/0x40 [bbswitch]
+[ 1201.702460] Code: 48 c7 c6 a0 10 4a c0 48 89 e5 e8 46 91 27 ce 5d c3 0f 1f 40 00 0f 1f 44 00 00 48 8b 05 e4 34 00 00 48 8b 40 10 48 85 c0 74 20 <48> 8b 78 38 48 85 ff 74 17 55 48 81 c7 b0 00 00 00 be 04 00 00 00
+[ 1201.702461] RSP: 0018:ffffbbb4425a3ca0 EFLAGS: 00010282
+[ 1201.702463] RAX: 8000000000000001 RBX: ffffffff8fc1f260 RCX: 0000000000000003
+[ 1201.702463] RDX: 0000000000000000 RSI: 0000000000000003 RDI: ffffffffc04a4000
+[ 1201.702464] RBP: ffffbbb4425a3cb8 R08: 0000000000000000 R09: 0000000000000000
+[ 1201.702465] R10: ffffffff8fa69a40 R11: 0000000000000000 R12: 0000000000000003
+[ 1201.702466] R13: 0000000000000000 R14: 00000000fffffff5 R15: ffffbbb4425a3d54
+[ 1201.702467] FS:  00007f24396cd980(0000) GS:ffff9b6966d00000(0000) knlGS:0000000000000000
+[ 1201.702467] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1201.702468] CR2: 00007ffe51a6fe28 CR3: 0000000175f26004 CR4: 00000000003606e0
+[ 1201.715697] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1201.850158] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1201.917166] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1205.406889] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1205.418987] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1205.426858] wlp3s0: authenticated
+[ 1205.427912] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1205.437819] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1205.465295] wlp3s0: associated
+[ 1205.561645] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1231.165968] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1231.242815] PM: suspend entry (deep)
+[ 1231.242819] PM: suspend exit
+[ 1231.242855] PM: suspend entry (s2idle)
+[ 1231.242856] PM: suspend exit
+[ 1231.276110] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1231.410244] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1231.478689] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1235.004084] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1235.016496] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1235.029042] wlp3s0: authenticated
+[ 1235.032276] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1235.038382] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1235.051634] wlp3s0: associated
+[ 1235.161147] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1261.424676] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1261.486421] PM: suspend entry (deep)
+[ 1261.486424] PM: suspend exit
+[ 1261.486452] PM: suspend entry (s2idle)
+[ 1261.486453] PM: suspend exit
+[ 1261.517902] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1261.651110] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1261.717849] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1265.188920] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1265.201878] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1265.213652] wlp3s0: authenticated
+[ 1265.216516] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1265.224197] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1265.240517] wlp3s0: associated
+[ 1265.348031] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1291.673941] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1291.727151] PM: suspend entry (deep)
+[ 1291.727154] PM: suspend exit
+[ 1291.727182] PM: suspend entry (s2idle)
+[ 1291.727183] PM: suspend exit
+[ 1291.758345] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1291.892686] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1291.960610] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1295.480480] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1295.493043] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1295.500395] wlp3s0: authenticated
+[ 1295.504584] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1295.510397] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1295.521147] wlp3s0: associated
+[ 1295.634096] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1321.923335] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1322.000148] PM: suspend entry (deep)
+[ 1322.000151] PM: suspend exit
+[ 1322.000189] PM: suspend entry (s2idle)
+[ 1322.000190] PM: suspend exit
+[ 1322.030357] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1322.165021] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1322.233916] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1325.760965] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1325.772684] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1325.784468] wlp3s0: authenticated
+[ 1325.790682] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1325.800518] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1325.819014] wlp3s0: associated
+[ 1325.915289] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1352.173727] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1352.292648] PM: suspend entry (deep)
+[ 1352.292651] PM: suspend exit
+[ 1352.292689] PM: suspend entry (s2idle)
+[ 1352.292690] PM: suspend exit
+[ 1352.323843] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1352.458134] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1352.527693] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1356.051337] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1356.062952] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1356.069858] wlp3s0: authenticated
+[ 1356.072670] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1356.076725] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1356.083306] wlp3s0: associated
+[ 1356.191377] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1382.423306] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1382.492193] PM: suspend entry (deep)
+[ 1382.492196] PM: suspend exit
+[ 1382.492228] PM: suspend entry (s2idle)
+[ 1382.492229] PM: suspend exit
+[ 1382.522372] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1382.656470] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1382.725934] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1386.249446] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1386.263148] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1386.270295] wlp3s0: authenticated
+[ 1386.272651] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1386.281306] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1386.288071] wlp3s0: associated
+[ 1386.397354] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1412.674029] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1412.744509] PM: suspend entry (deep)
+[ 1412.744512] PM: suspend exit
+[ 1412.744550] PM: suspend entry (s2idle)
+[ 1412.744551] PM: suspend exit
+[ 1412.774292] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1412.907222] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1412.974307] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1416.443020] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1416.455720] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1416.466361] wlp3s0: authenticated
+[ 1416.468494] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1416.482645] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1416.495281] wlp3s0: associated
+[ 1416.590584] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1442.923922] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1442.994465] PM: suspend entry (deep)
+[ 1442.994468] PM: suspend exit
+[ 1442.994498] PM: suspend entry (s2idle)
+[ 1442.994498] PM: suspend exit
+[ 1443.025446] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1443.158097] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1443.226065] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1446.698118] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1446.710315] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1446.723477] wlp3s0: authenticated
+[ 1446.724304] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1446.732264] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1446.740147] wlp3s0: associated
+[ 1446.864034] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1473.177450] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1473.238625] PM: suspend entry (deep)
+[ 1473.238628] PM: suspend exit
+[ 1473.238671] PM: suspend entry (s2idle)
+[ 1473.238672] PM: suspend exit
+[ 1473.270189] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1473.404513] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1473.471955] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1476.943656] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1476.955514] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1476.963673] wlp3s0: authenticated
+[ 1476.964138] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1476.975292] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1476.983319] wlp3s0: associated
+[ 1477.088502] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1503.426570] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1503.494242] PM: suspend entry (deep)
+[ 1503.494245] PM: suspend exit
+[ 1503.494275] PM: suspend entry (s2idle)
+[ 1503.494276] PM: suspend exit
+[ 1503.525400] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1503.659372] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1503.727431] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1507.240724] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1507.252254] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1507.264666] wlp3s0: authenticated
+[ 1507.268013] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1507.273509] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1507.282570] wlp3s0: associated
+[ 1507.390309] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1533.676528] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1533.731789] PM: suspend entry (deep)
+[ 1533.731791] PM: suspend exit
+[ 1533.731820] PM: suspend entry (s2idle)
+[ 1533.731821] PM: suspend exit
+[ 1533.761589] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1533.895033] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1533.963883] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1537.489963] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1537.503723] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1537.511015] wlp3s0: authenticated
+[ 1537.511736] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1537.518071] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1537.525725] wlp3s0: associated
+[ 1537.641438] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1563.919997] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1563.975997] PM: suspend entry (deep)
+[ 1563.976000] PM: suspend exit
+[ 1563.976034] PM: suspend entry (s2idle)
+[ 1563.976034] PM: suspend exit
+[ 1564.007219] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1564.140484] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1564.207293] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1567.678768] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1567.691560] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1567.700601] wlp3s0: authenticated
+[ 1567.703583] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1567.707683] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1567.714366] wlp3s0: associated
+[ 1567.822043] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1594.171439] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1594.233677] PM: suspend entry (deep)
+[ 1594.233680] PM: suspend exit
+[ 1594.233718] PM: suspend entry (s2idle)
+[ 1594.233720] PM: suspend exit
+[ 1594.265772] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1594.398674] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1594.465469] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1597.938519] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1597.951229] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1597.959168] wlp3s0: authenticated
+[ 1597.963246] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1597.967412] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1597.986785] wlp3s0: associated
+[ 1598.085388] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1624.421228] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1624.483593] PM: suspend entry (deep)
+[ 1624.483595] PM: suspend exit
+[ 1624.483626] PM: suspend entry (s2idle)
+[ 1624.483627] PM: suspend exit
+[ 1624.514711] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1624.648046] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1624.714986] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1628.185961] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1628.197852] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1628.204502] wlp3s0: authenticated
+[ 1628.211068] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1628.222501] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1628.235154] wlp3s0: associated
+[ 1628.347386] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1654.672725] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1654.747222] PM: suspend entry (deep)
+[ 1654.747225] PM: suspend exit
+[ 1654.747254] PM: suspend entry (s2idle)
+[ 1654.747255] PM: suspend exit
+[ 1654.777720] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1654.911157] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1654.977967] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1658.450483] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1658.463569] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1658.470708] wlp3s0: authenticated
+[ 1658.474747] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1658.478756] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1658.485101] wlp3s0: associated
+[ 1658.613795] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1684.921865] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1684.981300] PM: suspend entry (deep)
+[ 1684.981303] PM: suspend exit
+[ 1684.981331] PM: suspend entry (s2idle)
+[ 1684.981332] PM: suspend exit
+[ 1685.012328] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1685.145632] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1685.213749] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1688.734224] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1688.746010] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1688.753000] wlp3s0: authenticated
+[ 1688.754367] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1688.758628] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1688.764432] wlp3s0: associated
+[ 1688.875144] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1715.173608] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1715.238025] PM: suspend entry (deep)
+[ 1715.238028] PM: suspend exit
+[ 1715.238080] PM: suspend entry (s2idle)
+[ 1715.238082] PM: suspend exit
+[ 1715.268768] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1715.402634] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1715.470770] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1718.996373] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1719.008704] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1719.015679] wlp3s0: authenticated
+[ 1719.022238] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1719.026390] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1719.032553] wlp3s0: associated
+[ 1719.140944] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1745.420411] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1745.481887] PM: suspend entry (deep)
+[ 1745.481890] PM: suspend exit
+[ 1745.481919] PM: suspend entry (s2idle)
+[ 1745.481920] PM: suspend exit
+[ 1745.512946] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1745.646279] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1745.713455] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1749.188907] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1749.201743] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1749.208785] wlp3s0: authenticated
+[ 1749.209679] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1749.214075] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1749.223625] wlp3s0: associated
+[ 1749.334900] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1775.670597] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1775.734764] PM: suspend entry (deep)
+[ 1775.734766] PM: suspend exit
+[ 1775.734792] PM: suspend entry (s2idle)
+[ 1775.734793] PM: suspend exit
+[ 1775.766219] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1775.899033] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1775.968457] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1779.487562] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1779.500789] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1779.507609] wlp3s0: authenticated
+[ 1779.509454] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1779.515380] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1779.519878] wlp3s0: associated
+[ 1779.626721] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1805.919415] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1805.983744] PM: suspend entry (deep)
+[ 1805.983747] PM: suspend exit
+[ 1805.983776] PM: suspend entry (s2idle)
+[ 1805.983777] PM: suspend exit
+[ 1806.014974] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1806.148032] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1806.216549] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1809.739046] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1809.752217] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1809.759432] wlp3s0: authenticated
+[ 1809.761122] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1809.765330] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1809.774009] wlp3s0: associated
+[ 1809.882705] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1836.168761] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1836.234054] PM: suspend entry (deep)
+[ 1836.234057] PM: suspend exit
+[ 1836.234095] PM: suspend entry (s2idle)
+[ 1836.234096] PM: suspend exit
+[ 1836.265704] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1836.405268] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1836.471462] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1839.952584] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1839.965274] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1839.973869] wlp3s0: authenticated
+[ 1839.976782] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1839.980970] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1839.990170] wlp3s0: associated
+[ 1840.101027] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1866.421797] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1866.485269] PM: suspend entry (deep)
+[ 1866.485272] PM: suspend exit
+[ 1866.485302] PM: suspend entry (s2idle)
+[ 1866.485303] PM: suspend exit
+[ 1866.515307] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1866.648922] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1866.716450] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1870.192217] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1870.204485] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1870.211618] wlp3s0: authenticated
+[ 1870.212275] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1870.216735] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1870.223706] wlp3s0: associated
+[ 1870.331976] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1896.670632] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1896.731121] PM: suspend entry (deep)
+[ 1896.731124] PM: suspend exit
+[ 1896.731165] PM: suspend entry (s2idle)
+[ 1896.731166] PM: suspend exit
+[ 1896.763551] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1896.897609] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1896.966251] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1900.492441] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1900.505331] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1900.518528] wlp3s0: authenticated
+[ 1900.520044] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1900.525839] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1900.530721] wlp3s0: associated
+[ 1900.637061] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1926.922449] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1926.982600] PM: suspend entry (deep)
+[ 1926.982604] PM: suspend exit
+[ 1926.982638] PM: suspend entry (s2idle)
+[ 1926.982639] PM: suspend exit
+[ 1927.013917] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1927.147737] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1927.217097] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1930.739911] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1930.753370] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1930.760091] wlp3s0: authenticated
+[ 1930.763687] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1930.770058] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1930.777125] wlp3s0: associated
+[ 1930.883773] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1957.168111] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1957.234799] PM: suspend entry (deep)
+[ 1957.234803] PM: suspend exit
+[ 1957.234843] PM: suspend entry (s2idle)
+[ 1957.234844] PM: suspend exit
+[ 1957.265127] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1957.399875] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1957.468813] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1960.994094] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1961.005820] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1961.012655] wlp3s0: authenticated
+[ 1961.015285] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1961.025360] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1961.029685] wlp3s0: associated
+[ 1961.139588] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 1987.421534] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 1987.480679] PM: suspend entry (deep)
+[ 1987.480681] PM: suspend exit
+[ 1987.480741] PM: suspend entry (s2idle)
+[ 1987.480742] PM: suspend exit
+[ 1987.511542] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1987.643911] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 1987.710779] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 1991.186276] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1991.198993] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1991.206081] wlp3s0: authenticated
+[ 1991.206782] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1991.210985] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 1991.217851] wlp3s0: associated
+[ 1991.328076] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2017.666432] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2017.726332] PM: suspend entry (deep)
+[ 2017.726336] PM: suspend exit
+[ 2017.726376] PM: suspend entry (s2idle)
+[ 2017.726377] PM: suspend exit
+[ 2017.759029] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2017.892037] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2017.961027] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2021.440233] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2021.454622] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2021.461929] wlp3s0: authenticated
+[ 2021.462381] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2021.467099] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2021.473303] wlp3s0: associated
+[ 2021.582642] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2047.918418] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2048.032966] PM: suspend entry (deep)
+[ 2048.032970] PM: suspend exit
+[ 2048.033007] PM: suspend entry (s2idle)
+[ 2048.033008] PM: suspend exit
+[ 2048.065296] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2048.198777] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2048.266764] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2051.783992] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2051.795520] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2051.802795] wlp3s0: authenticated
+[ 2051.806043] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2051.812049] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2051.826116] wlp3s0: associated
+[ 2051.926575] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2078.170005] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2078.284485] PM: suspend entry (deep)
+[ 2078.284488] PM: suspend exit
+[ 2078.284516] PM: suspend entry (s2idle)
+[ 2078.284517] PM: suspend exit
+[ 2078.316455] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2078.449875] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2078.517978] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2082.034477] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2082.047361] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2082.054496] wlp3s0: authenticated
+[ 2082.057750] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2082.066382] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2082.070631] wlp3s0: associated
+[ 2082.180371] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2108.415691] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2108.516694] PM: suspend entry (deep)
+[ 2108.516697] PM: suspend exit
+[ 2108.516729] PM: suspend entry (s2idle)
+[ 2108.516730] PM: suspend exit
+[ 2108.549066] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2108.682974] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2108.752382] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2112.275219] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2112.288062] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2112.300881] wlp3s0: authenticated
+[ 2112.301198] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2112.336364] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2112.348379] wlp3s0: associated
+[ 2112.518198] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2138.664465] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2138.724609] PM: suspend entry (deep)
+[ 2138.724611] PM: suspend exit
+[ 2138.724638] PM: suspend entry (s2idle)
+[ 2138.724639] PM: suspend exit
+[ 2138.754767] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2138.888143] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2138.956280] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2142.484420] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2142.497114] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2142.517480] wlp3s0: authenticated
+[ 2142.520894] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2142.533833] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2142.551370] wlp3s0: associated
+[ 2142.771541] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2168.910748] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2168.976676] PM: suspend entry (deep)
+[ 2168.976679] PM: suspend exit
+[ 2168.976716] PM: suspend entry (s2idle)
+[ 2168.976717] PM: suspend exit
+[ 2169.007879] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2169.142223] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2169.210135] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2172.676466] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2172.689466] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2172.798023] wlp3s0: authenticated
+[ 2172.800470] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2172.819745] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2172.825734] wlp3s0: associated
+[ 2173.034888] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2199.166708] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2199.232710] PM: suspend entry (deep)
+[ 2199.232713] PM: suspend exit
+[ 2199.232740] PM: suspend entry (s2idle)
+[ 2199.232741] PM: suspend exit
+[ 2199.264759] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2199.398504] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2199.466089] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2202.941499] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2202.955288] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2202.963466] wlp3s0: authenticated
+[ 2202.963988] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2202.969105] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2202.978113] wlp3s0: associated
+[ 2203.083077] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2229.416054] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2229.476455] PM: suspend entry (deep)
+[ 2229.476458] PM: suspend exit
+[ 2229.476486] PM: suspend entry (s2idle)
+[ 2229.476487] PM: suspend exit
+[ 2229.507447] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2229.640681] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2229.707428] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2233.180038] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2233.192879] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2233.200321] wlp3s0: authenticated
+[ 2233.206088] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2233.211033] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2233.219399] wlp3s0: associated
+[ 2233.329532] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2259.663365] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2259.756891] PM: suspend entry (deep)
+[ 2259.756894] PM: suspend exit
+[ 2259.756923] PM: suspend entry (s2idle)
+[ 2259.756924] PM: suspend exit
+[ 2259.788783] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2259.923404] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2259.992536] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2263.520709] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2263.533219] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2263.553385] wlp3s0: authenticated
+[ 2263.559424] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2263.576134] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2263.616597] wlp3s0: associated
+[ 2263.790983] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2289.917546] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2289.975678] PM: suspend entry (deep)
+[ 2289.975682] PM: suspend exit
+[ 2289.975722] PM: suspend entry (s2idle)
+[ 2289.975723] PM: suspend exit
+[ 2290.006622] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2290.139803] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2290.206782] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2293.678204] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2293.690752] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2293.699789] wlp3s0: authenticated
+[ 2293.702902] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2293.708815] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2293.713060] wlp3s0: associated
+[ 2293.819584] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[ 2320.161767] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 2320.224494] PM: suspend entry (deep)
+[ 2320.224496] PM: suspend exit
+[ 2320.224528] PM: suspend entry (s2idle)
+[ 2320.224529] PM: suspend exit
+[ 2320.254724] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2320.387560] iwlwifi 0000:03:00.0: Applying debug destination EXTERNAL_DRAM
+[ 2320.456009] iwlwifi 0000:03:00.0: FW already configured (0) - re-configuring
+[ 2323.985648] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 2323.999201] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2324.006649] wlp3s0: authenticated
+[ 2324.010527] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2324.014588] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0xc11 status=0 aid=1)
+[ 2324.021624] wlp3s0: associated
+[ 2324.128978] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
