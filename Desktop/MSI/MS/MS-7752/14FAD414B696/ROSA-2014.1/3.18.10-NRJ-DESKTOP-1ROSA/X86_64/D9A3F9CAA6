@@ -1,0 +1,1208 @@
+[  197.028337]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.028343] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.028344] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.028345]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.028346]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.028347]  ffff8800b7eb6c58 ffff8800b7eb6c00 ffffffffffffffff ffff880210f28000
+[  197.028348] Call Trace:
+[  197.028350]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.028352]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.028353]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.028363]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.028367]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.028372]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.028376]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.028390]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.028405]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.028415]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.028425]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.028435]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.028438]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.028444]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.028450]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.028456]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.028458]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.028460]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.028461]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.028463]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.028465]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.028467]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.028468]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.028470]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.028471]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.028473]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.028474]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.028476]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.028477]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.028479]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.028480]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.028481] ---[ end trace 6516403728037538 ]---
+[  197.028483] ------------[ cut here ]------------
+[  197.028492] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.028494] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.028516]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.028534]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.028540] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.028541] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.028541]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.028543]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.028544]  ffff8800b7eb6858 ffff8800b7eb6800 ffffffffffffffff ffff880210f28000
+[  197.028545] Call Trace:
+[  197.028547]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.028549]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.028550]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.028560]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.028564]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.028568]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.028573]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.028582]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.028593]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.028599]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.028605]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.028611]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.028613]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.028619]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.028625]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.028631]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.028632]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.028634]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.028636]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.028637]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.028639]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.028641]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.028643]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.028644]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.028646]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.028647]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.028649]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.028650]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.028652]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.028653]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.028655]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.028656] ---[ end trace 6516403728037539 ]---
+[  197.028657] ------------[ cut here ]------------
+[  197.028666] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.028666] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.028680]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.028697]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.028703] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.028704] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.028704]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.028706]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.028707]  ffff8800b7eb4c58 ffff8800b7eb4c00 ffffffffffffffff ffff880210f28000
+[  197.028708] Call Trace:
+[  197.028710]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.028711]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.028713]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.028723]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.028727]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.028731]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.028736]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.028745]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.028756]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.028762]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.028768]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.028774]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.028776]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.028782]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.028788]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.028794]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.028796]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.028797]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.028799]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.028801]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.028803]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.028804]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.028806]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.028808]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.028809]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.028810]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.028812]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.028814]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.028815]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.028817]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.028818]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.028819] ---[ end trace 651640372803753a ]---
+[  197.028821] ------------[ cut here ]------------
+[  197.028829] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.028830] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.028844]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.028861]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.028867] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.028868] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.028868]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.028869]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.028871]  ffff8800b7eb4058 ffff8800b7eb4000 ffffffffffffffff ffff880210f28000
+[  197.028872] Call Trace:
+[  197.028874]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.028875]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.028877]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.028886]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.028891]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.028895]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.028899]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.028909]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.028920]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.028926]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.028932]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.028938]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.028939]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.028945]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.028952]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.028957]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.028959]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.028961]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.028962]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.028964]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.028966]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.028968]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.028969]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.028971]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.028972]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.028974]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.028975]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.028977]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.028978]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.028980]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.028981]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.028982] ---[ end trace 651640372803753b ]---
+[  197.028984] ------------[ cut here ]------------
+[  197.028992] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.028993] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.029007]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.029024]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.029030] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.029031] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.029031]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.029032]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.029034]  ffff8800b7eb5058 ffff8800b7eb5000 ffffffffffffffff ffff880210f28000
+[  197.029035] Call Trace:
+[  197.029037]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.029038]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.029040]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.029049]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.029054]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.029058]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.029062]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.029072]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.029082]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.029089]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.029095]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.029101]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.029102]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.029108]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.029114]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.029120]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.029122]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.029123]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.029125]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.029127]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.029129]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029130]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029132]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.029134]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.029140]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.029146]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.029151]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.029157]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.029162]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.029168]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.029174]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.029242] ---[ end trace 651640372803753c ]---
+[  197.029247] ------------[ cut here ]------------
+[  197.029261] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.029263] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.029296]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.029313]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.029319] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.029320] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.029320]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.029322]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.029323]  ffff8800b7eb4858 ffff8800b7eb4800 ffffffffffffffff ffff880210f28000
+[  197.029324] Call Trace:
+[  197.029326]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.029328]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.029329]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.029339]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.029347]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.029355]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.029363]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.029377]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.029391]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.029397]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.029403]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.029409]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.029411]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.029417]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.029423]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.029429]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.029434]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.029436]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.029438]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.029439]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.029441]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029445]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029447]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.029448]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.029450]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.029451]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.029455]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.029457]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.029458]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.029461]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.029463]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.029464] ---[ end trace 651640372803753d ]---
+[  197.029467] ------------[ cut here ]------------
+[  197.029476] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.029477] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.029491]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.029508]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.029514] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.029515] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.029515]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.029517]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.029518]  ffff8800b7eb6458 ffff8800b7eb6400 ffffffffffffffff ffff880210f28000
+[  197.029519] Call Trace:
+[  197.029521]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.029523]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.029524]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.029534]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.029538]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.029543]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.029547]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.029556]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.029567]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.029573]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.029579]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.029585]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.029587]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.029593]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.029599]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.029605]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.029607]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.029608]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.029610]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.029612]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.029614]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029615]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029617]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.029619]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.029620]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.029621]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.029623]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.029625]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.029626]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.029628]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.029629]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.029630] ---[ end trace 651640372803753e ]---
+[  197.029632] ------------[ cut here ]------------
+[  197.029641] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.029641] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.029655]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.029672]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.029678] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.029679] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.029679]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.029681]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.029682]  ffff8800b7eb4458 ffff8800b7eb4400 ffffffffffffffff ffff880210f28000
+[  197.029683] Call Trace:
+[  197.029685]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.029687]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.029688]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.029698]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.029702]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.029707]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.029711]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.029720]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.029731]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.029737]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.029743]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.029749]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.029751]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.029757]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.029763]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.029769]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.029771]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.029772]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.029774]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.029776]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.029777]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029779]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029781]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.029782]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.029784]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.029785]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.029787]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.029788]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.029790]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.029791]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.029793]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.029794] ---[ end trace 651640372803753f ]---
+[  197.029795] ------------[ cut here ]------------
+[  197.029804] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.029804] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.029818]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.029835]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.029841] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.029842] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.029843]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.029844]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.029845]  ffff8800b7eb6058 ffff8800b7eb6000 ffffffffffffffff ffff880210f28000
+[  197.029846] Call Trace:
+[  197.029848]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.029850]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.029851]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.029861]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.029865]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.029869]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.029874]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.029883]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.029894]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.029900]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.029906]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.029912]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.029914]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.029920]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.029926]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.029931]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.029933]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.029935]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.029936]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.029938]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.029940]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029942]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.029943]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.029945]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.029946]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.029948]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.029949]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.029951]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.029952]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.029954]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.029955]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.029956] ---[ end trace 6516403728037540 ]---
+[  197.029958] ------------[ cut here ]------------
+[  197.029966] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.029967] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.029981]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.029998]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.030004] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.030004] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.030005]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.030006]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.030008]  ffff8800b7eb5c58 ffff8800b7eb5c00 ffffffffffffffff ffff880210f28000
+[  197.030009] Call Trace:
+[  197.030011]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.030012]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.030014]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.030023]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.030028]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.030032]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.030036]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.030046]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.030057]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.030063]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.030069]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.030075]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.030076]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.030082]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.030088]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.030094]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.030096]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.030097]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.030099]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.030101]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.030103]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030104]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030106]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.030108]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.030109]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.030110]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.030112]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.030114]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.030115]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.030117]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.030118]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.030119] ---[ end trace 6516403728037541 ]---
+[  197.030121] ------------[ cut here ]------------
+[  197.030129] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.030130] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.030179]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.030196]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.030202] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.030203] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.030203]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.030205]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 00000000ffffffff
+[  197.030206]  ffff8800b7eb5858 ffff8800b7eb5800 ffffffffffffffff ffff880210f28000
+[  197.030207] Call Trace:
+[  197.030209]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.030211]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.030212]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.030222]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.030227]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.030235]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.030244]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.030257]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.030271]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.030281]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.030290]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.030296]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.030298]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.030304]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.030310]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.030316]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.030318]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.030319]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.030321]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.030323]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.030324]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030326]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030328]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.030329]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.030331]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.030332]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.030334]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.030336]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.030337]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.030341]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.030346]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.030349] ---[ end trace 6516403728037542 ]---
+[  197.030353] ------------[ cut here ]------------
+[  197.030364] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.030366] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.030401]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.030419]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.030425] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.030425] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.030426]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.030427]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.030428]  ffff8801e9d90c58 ffff8801e9d90c00 ffffffffffffffff ffff880210f28000
+[  197.030430] Call Trace:
+[  197.030431]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.030433]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.030435]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.030444]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.030449]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.030453]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.030460]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.030473]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.030485]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.030491]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.030498]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.030504]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.030506]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.030512]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.030518]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.030524]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.030525]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.030527]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.030529]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.030530]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.030532]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030534]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030535]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.030537]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.030539]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.030540]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.030542]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.030543]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.030545]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.030546]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.030548]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.030548] ---[ end trace 6516403728037543 ]---
+[  197.030550] ------------[ cut here ]------------
+[  197.030559] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.030560] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.030574]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.030591]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.030597] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.030598] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.030598]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.030599]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.030601]  ffff8801e9d91c58 ffff8801e9d91c00 ffffffffffffffff ffff880210f28000
+[  197.030602] Call Trace:
+[  197.030604]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.030605]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.030607]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.030616]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.030621]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.030625]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.030629]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.030639]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.030650]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.030656]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.030662]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.030668]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.030669]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.030675]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.030681]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.030687]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.030689]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.030691]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.030692]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.030694]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.030696]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030698]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030699]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.030701]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.030703]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.030704]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.030705]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.030707]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.030708]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.030710]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.030711]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.030712] ---[ end trace 6516403728037544 ]---
+[  197.030714] ------------[ cut here ]------------
+[  197.030723] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.030723] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.030737]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.030754]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.030760] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.030761] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.030761]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.030762]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.030764]  ffff88020076a858 ffff88020076a800 ffffffffffffffff ffff880210f28000
+[  197.030765] Call Trace:
+[  197.030767]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.030768]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.030770]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.030779]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.030784]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.030788]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.030792]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.030802]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.030813]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.030819]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.030825]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.030831]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.030832]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.030838]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.030844]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.030850]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.030852]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.030854]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.030855]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.030857]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.030859]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030860]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.030862]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.030864]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.030865]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.030866]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.030868]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.030870]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.030871]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.030873]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.030874]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.030875] ---[ end trace 6516403728037545 ]---
+[  197.030877] ------------[ cut here ]------------
+[  197.030885] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.030886] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.030900]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.030917]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.030923] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.030924] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.030924]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.030925]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.030927]  ffff880200769c58 ffff880200769c00 ffffffffffffffff ffff880210f28000
+[  197.030928] Call Trace:
+[  197.030930]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.030932]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.030933]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.030943]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.030947]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.030951]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.030956]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.030965]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.030976]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.030982]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.030988]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.030994]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.030996]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.031002]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.031008]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.031014]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.031016]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.031017]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.031019]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.031020]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.031022]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031024]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031026]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.031027]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.031029]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.031030]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.031032]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.031033]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.031035]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.031036]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.031038]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.031039] ---[ end trace 6516403728037546 ]---
+[  197.031040] ------------[ cut here ]------------
+[  197.031049] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.031050] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.031063]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.031080]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.031087] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.031087] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.031088]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.031089]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.031090]  ffff880200768858 ffff880200768800 ffffffffffffffff ffff880210f28000
+[  197.031092] Call Trace:
+[  197.031093]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.031095]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.031097]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.031106]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.031111]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.031115]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.031119]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.031129]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.031140]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.031152]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.031161]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.031179]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.031184]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.031194]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.031203]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.031212]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.031214]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.031215]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.031217]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.031219]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.031220]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031222]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031224]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.031225]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.031227]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.031228]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.031230]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.031231]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.031233]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.031234]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.031236]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.031236] ---[ end trace 6516403728037547 ]---
+[  197.031238] ------------[ cut here ]------------
+[  197.031247] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.031247] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.031261]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.031305]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.031311] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.031311] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.031312]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.031313]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.031314]  ffff880200768458 ffff880200768400 ffffffffffffffff ffff880210f28000
+[  197.031316] Call Trace:
+[  197.031317]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.031319]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.031320]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.031330]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.031334]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.031338]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.031342]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.031352]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.031366]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.031376]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.031385]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.031395]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.031400]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.031410]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.031416]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.031421]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.031423]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.031424]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.031426]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.031428]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.031430]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031431]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031433]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.031434]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.031436]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.031437]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.031439]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.031440]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.031442]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.031443]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.031445]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.031446] ---[ end trace 6516403728037548 ]---
+[  197.031447] ------------[ cut here ]------------
+[  197.031456] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.031459] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.031487]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.031504]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.031511] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.031512] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.031513]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.031514]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.031515]  ffff880200769458 ffff880200769400 ffffffffffffffff ffff880210f28000
+[  197.031516] Call Trace:
+[  197.031518]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.031520]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.031521]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.031530]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.031535]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.031539]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.031543]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.031552]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.031563]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.031569]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.031575]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.031581]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.031582]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.031588]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.031594]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.031600]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.031602]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.031603]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.031605]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.031607]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.031608]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031610]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031612]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.031613]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.031615]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.031616]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.031618]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.031619]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.031621]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.031622]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.031624]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.031624] ---[ end trace 6516403728037549 ]---
+[  197.031678] ------------[ cut here ]------------
+[  197.031690] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.031690] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.031704]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.031721]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.031728] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.031728] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.031729]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.031730]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 0000000000000002
+[  197.031732]  ffff8801ed883c58 ffff8801ed883c00 ffffffffffffffff ffff880210f28000
+[  197.031733] Call Trace:
+[  197.031735]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.031736]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.031738]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.031747]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.031752]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.031756]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.031761]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.031770]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.031781]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.031787]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.031793]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.031799]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.031801]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.031807]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.031813]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.031819]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.031821]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.031822]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.031824]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.031826]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.031827]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031829]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.031831]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.031832]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.031834]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.031835]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.031837]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.031838]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.031840]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.031841]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.031843]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.031844] ---[ end trace 651640372803754a ]---
+[  197.031983] ------------[ cut here ]------------
+[  197.031994] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.031994] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.032008]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.032025]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.032032] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.032032] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.032033]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.032034]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 0000000000000002
+[  197.032035]  ffff8801ed880c58 ffff8801ed880c00 ffffffffffffffff ffff880210f28000
+[  197.032036] Call Trace:
+[  197.032038]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.032040]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.032042]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.032051]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.032056]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.032060]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.032064]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.032074]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.032085]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.032091]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.032097]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.032103]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.032104]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.032110]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.032117]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.032122]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.032124]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.032126]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.032128]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.032129]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.032131]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032137]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032142]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.032148]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.032153]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.032158]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.032164]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.032170]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.032175]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.032177]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.032179]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.032180] ---[ end trace 651640372803754b ]---
+[  197.032182] ------------[ cut here ]------------
+[  197.032191] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.032192] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.032206]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.032223]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.032229] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.032230] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.032230]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.032231]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.032233]  ffff8801ed880058 ffff8801ed880000 ffffffffffffffff ffff880210f28000
+[  197.032234] Call Trace:
+[  197.032236]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.032241]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.032247]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.032260]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.032268]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.032276]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.032285]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.032296]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.032307]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.032313]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.032319]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.032325]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.032327]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.032333]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.032339]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.032348]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.032354]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.032356]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.032358]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.032360]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.032362]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032363]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032365]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.032367]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.032368]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.032369]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.032371]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.032373]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.032374]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.032380]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.032383]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.032384] ---[ end trace 651640372803754c ]---
+[  197.032386] ------------[ cut here ]------------
+[  197.032395] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.032397] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.032411]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.032428]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.032434] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.032435] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.032435]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.032437]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.032438]  ffff8801ed881858 ffff8801ed881800 ffffffffffffffff ffff880210f28000
+[  197.032439] Call Trace:
+[  197.032441]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.032443]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.032444]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.032454]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.032458]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.032462]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.032467]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.032476]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.032487]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.032493]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.032499]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.032505]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.032507]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.032513]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.032519]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.032525]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.032527]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.032528]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.032530]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.032532]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.032534]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032535]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032537]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.032539]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.032540]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.032541]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.032543]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.032545]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.032546]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.032548]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.032549]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.032550] ---[ end trace 651640372803754d ]---
+[  197.032552] ------------[ cut here ]------------
+[  197.032561] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.032562] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.032576]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.032592]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.032598] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.032599] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.032600]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.032601]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.032602]  ffff8801e9f15c58 ffff8801e9f15c00 ffffffffffffffff ffff880210f28000
+[  197.032603] Call Trace:
+[  197.032605]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.032607]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.032608]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.032618]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.032622]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.032627]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.032631]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.032640]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.032651]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.032657]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.032663]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.032669]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.032671]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.032677]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.032683]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.032689]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.032691]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.032692]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.032694]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.032696]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.032697]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032699]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032701]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.032702]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.032704]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.032705]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.032707]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.032708]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.032710]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.032711]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.032713]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.032714] ---[ end trace 651640372803754e ]---
+[  197.032715] ------------[ cut here ]------------
+[  197.032724] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.032724] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.032738]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.032755]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.032762] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.032762] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.032763]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.032764]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.032765]  ffff8801ed881c58 ffff8801ed881c00 ffffffffffffffff ffff880210f28000
+[  197.032767] Call Trace:
+[  197.032768]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.032770]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.032771]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.032781]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.032785]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.032790]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.032794]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.032803]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.032814]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.032820]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.032826]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.032832]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.032834]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.032840]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.032846]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.032852]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.032853]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.032855]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.032857]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.032858]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.032860]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032862]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.032864]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.032865]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.032867]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.032868]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.032870]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.032871]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.032873]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.032874]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.032876]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.032876] ---[ end trace 651640372803754f ]---
+[  197.032878] ------------[ cut here ]------------
+[  197.032887] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.032887] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.032901]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.032918]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.032924] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.032925] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.032925]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.032927]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 ffff880210f28000
+[  197.032928]  ffff8801ed882058 ffff8801ed882000 ffffffffffffffff ffff880210f28000
+[  197.032929] Call Trace:
+[  197.032931]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.032932]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.032934]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.032943]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.032948]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.032952]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.032956]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.032966]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.032977]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.032983]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.032989]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.032995]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.032996]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.033002]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.033009]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.033014]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.033016]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.033018]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.033019]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.033021]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.033023]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.033025]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.033026]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.033028]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.033030]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.033031]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.033032]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.033034]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.033035]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.033037]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.033038]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.033039] ---[ end trace 6516403728037550 ]---
+[  197.033043] ------------[ cut here ]------------
+[  197.033052] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.033052] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.033066]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.033083]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.033089] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.033090] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.033090]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.033092]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 0000000000000002
+[  197.033093]  ffff8801ed882858 ffff8801ed882800 ffffffffffffffff ffff880210f28000
+[  197.033094] Call Trace:
+[  197.033096]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.033097]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.033099]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.033108]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.033113]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.033117]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.033121]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.033131]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.033145]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.033156]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.033166]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.033175]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.033181]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.033191]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.033199]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.033205]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.033207]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.033209]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.033210]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.033212]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.033214]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.033216]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.033217]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.033219]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.033221]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.033222]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.033223]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.033225]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.033226]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.033228]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.033229]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.033230] ---[ end trace 6516403728037551 ]---
+[  197.033236] ------------[ cut here ]------------
+[  197.033246] WARNING: CPU: 2 PID: 10368 at drivers/gpu/drm/radeon/radeon_object.c:84 radeon_ttm_bo_destroy+0xf1/0x100 [radeon]()
+[  197.033246] Modules linked in: bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables l2tp_ppp l2tp_core pppox ip6_udp_tunnel
+[  197.033291]  udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore shpchp xhci_pci edac_core xhci_hcd
+[  197.033307]  button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4
+[  197.033314] CPU: 2 PID: 10368 Comm: plugin-containe Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  197.033315] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  197.033315]  0000000000000009 ffff8800b686b978 ffffffff816d636c 0000000000000007
+[  197.033316]  0000000000000000 ffff8800b686b9b8 ffffffff8106de91 0000000000000002
+[  197.033318]  ffff8801fa3d4c58 ffff8801fa3d4c00 ffffffffffffffff ffff880210f28000
+[  197.033319] Call Trace:
+[  197.033321]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  197.033322]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  197.033324]  [<ffffffff8106df6a>] warn_slowpath_null+0x1a/0x20
+[  197.033334]  [<ffffffffc0240ee1>] radeon_ttm_bo_destroy+0xf1/0x100 [radeon]
+[  197.033342]  [<ffffffffc01f0616>] ttm_bo_release_list+0xa6/0x1a0 [ttm]
+[  197.033350]  [<ffffffffc01f082d>] ttm_bo_release+0x11d/0x2d0 [ttm]
+[  197.033358]  [<ffffffffc01f0a09>] ttm_bo_unref+0x29/0x30 [ttm]
+[  197.033371]  [<ffffffffc02413da>] radeon_bo_unref+0x2a/0x50 [radeon]
+[  197.033386]  [<ffffffffc025639c>] radeon_gem_object_free+0x3c/0x40 [radeon]
+[  197.033395]  [<ffffffffc01163e7>] drm_gem_object_free+0x27/0x40 [drm]
+[  197.033405]  [<ffffffffc0116970>] drm_gem_object_handle_unreference_unlocked+0x120/0x130 [drm]
+[  197.033412]  [<ffffffffc0116af7>] drm_gem_object_release_handle+0x57/0x80 [drm]
+[  197.033414]  [<ffffffff813d3605>] idr_for_each+0xa5/0x100
+[  197.033420]  [<ffffffffc0116aa0>] ? drm_gem_dumb_destroy+0x20/0x20 [drm]
+[  197.033426]  [<ffffffffc0117454>] drm_gem_release+0x24/0x40 [drm]
+[  197.033432]  [<ffffffffc01161fb>] drm_release+0x43b/0x520 [drm]
+[  197.033434]  [<ffffffff811c98ab>] __fput+0xcb/0x1e0
+[  197.033435]  [<ffffffff811c9a0e>] ____fput+0xe/0x10
+[  197.033437]  [<ffffffff8108abfc>] task_work_run+0xbc/0xe0
+[  197.033439]  [<ffffffff810706bf>] do_exit+0x39f/0xaf0
+[  197.033440]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.033442]  [<ffffffff811dc710>] ? poll_select_copy_remaining+0x130/0x130
+[  197.033444]  [<ffffffff81070ea7>] do_group_exit+0x47/0xc0
+[  197.033445]  [<ffffffff8107d253>] get_signal+0x273/0x700
+[  197.033447]  [<ffffffff810145e8>] do_signal+0x28/0xbd0
+[  197.033448]  [<ffffffff8109f28d>] ? set_next_entity+0x9d/0xb0
+[  197.033450]  [<ffffffff811e6062>] ? __fget+0x72/0xb0
+[  197.033452]  [<ffffffff811e6105>] ? __fget_light+0x25/0x70
+[  197.033453]  [<ffffffff8101e429>] ? read_tsc+0x9/0x10
+[  197.033455]  [<ffffffff81015200>] do_notify_resume+0x70/0x90
+[  197.033456]  [<ffffffff816dda48>] int_signal+0x12/0x17
+[  197.033457] ---[ end trace 6516403728037552 ]---
+[  197.267443] systemd-journald[469]: Vacuuming done, freed 19664896 bytes
+[  197.303095] systemd-journald[469]: Failed to write entry (25 items, 90780308 bytes) despite vacuuming, ignoring: Argument list too long
+[  197.312398] systemd-journald[469]: /dev/kmsg buffer overrun, some messages lost.
+[  345.335502] parport0: PC-style at 0x378 (0x778) [PCSPP,TRISTATE,EPP]
+[  345.336055] parport0: irq 7 detected
+[  345.418461] ppdev: user-space parallel port driver
+[  345.443832] lp0: using parport0 (polling).
+[  345.443843] lp0: console ready
+[  345.503710] console [lp0] disabled
+[  345.503719] console [lp0] disabled
+[  345.506814] ------------[ cut here ]------------
+[  345.506821] WARNING: CPU: 1 PID: 15221 at fs/sysfs/group.c:219 sysfs_remove_group+0xa1/0xb0()
+[  345.506822] sysfs group ffffffff81cb95a0 not found for kobject 'parport0'
+[  345.506823] Modules linked in: ppdev parport_pc(-) parport bnep bluetooth nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_proto_gre nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_proto_udplite nf_conntrack_proto_sctp nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack iptable_filter ip_tables x_tables
+[  345.506844]  l2tp_ppp l2tp_core pppox ip6_udp_tunnel udp_tunnel ppp_generic slhc af_packet cfg80211 rfkill iTCO_wdt iTCO_vendor_support intel_rapl x86_pkg_temp_thermal msr intel_powerclamp coretemp kvm_intel kvm snd_usb_audio snd_usbmidi_lib crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel aes_x86_64 snd_rawmidi lrw snd_seq_device gf128mul glue_helper ablk_helper cryptd joydev i2c_i801 mxm_wmi snd_hda_codec_realtek evdev microcode uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_core v4l2_common videodev media serio_raw lpc_ich snd_hda_codec_generic r8169 mii 8250_fintek fan thermal snd_hda_codec_hdmi tpm_infineon tpm_tis tpm snd_hda_intel processor mei_me battery mei snd_hda_controller intel_smartconnect snd_hda_codec snd_hwdep snd_pcm snd_timer snd ie31200_edac soundcore
+[  345.506869]  shpchp xhci_pci edac_core xhci_hcd button hid_generic hid_logitech_dj usbhid hid radeon i2c_algo_bit drm_kms_helper ttm drm sr_mod ehci_pci ehci_hcd usbcore usb_common wmi video dm_mirror dm_region_hash dm_log dm_mod binfmt_misc ipv6 autofs4 [last unloaded: lp]
+[  345.506881] CPU: 1 PID: 15221 Comm: rmmod Tainted: G        W      3.18.10-nrj-desktop-1rosa #1
+[  345.506882] Hardware name: MSI MS-7752/Z77A-G45 (MS-7752), BIOS V2.12 09/29/2013
+[  345.506883]  0000000000000009 ffff8800d4b8bcd8 ffffffff816d636c 0000000000000007
+[  345.506885]  ffff8800d4b8bd28 ffff8800d4b8bd18 ffffffff8106de91 ffff880210f18690
+[  345.506886]  0000000000000000 ffffffff81cb95a0 ffff8802002d8810 0000000000000000
+[  345.506888] Call Trace:
+[  345.506893]  [<ffffffff816d636c>] dump_stack+0x4e/0x71
+[  345.506896]  [<ffffffff8106de91>] warn_slowpath_common+0x81/0xa0
+[  345.506898]  [<ffffffff8106def6>] warn_slowpath_fmt+0x46/0x50
+[  345.506900]  [<ffffffff8124115c>] ? kernfs_find_and_get_ns+0x4c/0x60
+[  345.506901]  [<ffffffff81244c71>] sysfs_remove_group+0xa1/0xb0
+[  345.506904]  [<ffffffff814f7017>] dpm_sysfs_remove+0x57/0x60
+[  345.506906]  [<ffffffff814ebf45>] device_del+0x45/0x1f0
+[  345.506908]  [<ffffffff814ec112>] device_unregister+0x22/0x80
+[  345.506909]  [<ffffffff814ec1ec>] device_destroy+0x3c/0x50
+[  345.506912]  [<ffffffffc0a27071>] pp_detach+0x21/0x30 [ppdev]
+[  345.506914]  [<ffffffffc06b05be>] parport_remove_port+0x3e/0x180 [parport]
+[  345.506916]  [<ffffffffc0a2dc0a>] parport_pc_unregister_port+0x2a/0x1b0 [parport_pc]
+[  345.506918]  [<ffffffff814eba57>] ? put_device+0x17/0x20
+[  345.506920]  [<ffffffffc0a31228>] parport_pc_exit+0x76/0xe4e [parport_pc]
+[  345.506923]  [<ffffffff810ec484>] SyS_delete_module+0x144/0x1e0
+[  345.506926]  [<ffffffff810151f1>] ? do_notify_resume+0x61/0x90
+[  345.506928]  [<ffffffff816dd7cd>] system_call_fastpath+0x16/0x1b
+[  345.506929] ---[ end trace 6516403728037553 ]---
+[  345.512428] parport0: PC-style at 0x378 (0x778) [PCSPP,TRISTATE,EPP]
+[  345.512983] parport0: irq 7 detected
+[  345.599289] lp0: using parport0 (polling).
+[  345.599293] lp0: console ready
+[  345.603472] ppa: Version 2.07 (for Linux 2.4.x)
+[  345.633887] Uniform Multi-Platform E-IDE driver
+[  345.644533] ide-cd driver 5.00
+[  345.648971] ide-gd driver 1.18
+[  345.663528] st: Version 20101219, fixed bufsize 32768, s/g segs 256
+[  345.785700] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[  345.785734] sr 2:0:0:0: Attached scsi generic sg1 type 5
