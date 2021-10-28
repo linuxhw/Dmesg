@@ -1,0 +1,683 @@
+[    2.612410]  efdbbb08 da8fdcbf efdbbb4c f4829984 efdbbb38 da566aea f483b6d7 efdbbb68
+[    2.612416]  00000057 f4829984 00003281 f47c7f30 00003281 f0b69800 eff11e40 eff4cc00
+[    2.612422]  efdbbb54 da566b4b 00000009 00000000 efdbbb4c f483b6d7 efdbbb68 efdbbbb8
+[    2.612428] Call Trace:
+[    2.612435]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    2.612439]  [<da566aea>] __warn+0xea/0x110
+[    2.612490]  [<f47c7f30>] ? intel_atomic_check+0xcd0/0x1130 [i915]
+[    2.612493]  [<da566b4b>] warn_slowpath_fmt+0x3b/0x40
+[    2.612544]  [<f47c7f30>] intel_atomic_check+0xcd0/0x1130 [i915]
+[    2.612573]  [<f455afac>] drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    2.612579]  [<da67dd0a>] ? kmemdup+0x2a/0x40
+[    2.612598]  [<f455b276>] drm_atomic_commit+0x16/0x50 [drm]
+[    2.612649]  [<f47cb722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[    2.612703]  [<f4808562>] intel_tv_detect+0x122/0x5e0 [i915]
+[    2.612723]  [<f4554df5>] ? drm_get_edid+0x25/0x3a0 [drm]
+[    2.612740]  [<f45b4fa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[    2.612750]  [<f45c28f2>] drm_fb_helper_initial_config+0x82/0x3e0 [drm_kms_helper]
+[    2.612801]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    2.612804]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    2.612808]  [<da57e681>] process_one_work+0x121/0x400
+[    2.612810]  [<da57e997>] worker_thread+0x37/0x4c0
+[    2.612813]  [<da57e960>] ? process_one_work+0x400/0x400
+[    2.612816]  [<da583d0c>] kthread+0x9c/0xb0
+[    2.612819]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    2.612822]  [<da583c70>] ? kthread_park+0x50/0x50
+[    2.612826]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    2.612828] ---[ end trace a4f089abf72fced9 ]---
+[    2.621088] ------------[ cut here ]------------
+[    2.621160] WARNING: CPU: 1 PID: 87 at drivers/gpu/drm/i915/intel_display.c:13558 intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[    2.621162] encoder's enabled state mismatch (expected 0, found 1)
+[    2.621163] Modules linked in: i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    2.621180] CPU: 1 PID: 87 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    2.621182] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[    2.621189] Workqueue: events_unbound async_run_entry_fn
+[    2.621191]  efdbbae4 da8fdcbf efdbbb28 f4829984 efdbbb14 da566aea f482d008 efdbbb44
+[    2.621197]  00000057 f4829984 000034f6 f47c67a1 000034f6 effd8214 eff11e40 effd8220
+[    2.621203]  efdbbb30 da566b4b 00000009 00000000 efdbbb28 f482d008 efdbbb44 efdbbbb4
+[    2.621209] Call Trace:
+[    2.621216]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    2.621219]  [<da566aea>] __warn+0xea/0x110
+[    2.621269]  [<f47c67a1>] ? intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[    2.621272]  [<da566b4b>] warn_slowpath_fmt+0x3b/0x40
+[    2.621322]  [<f47c67a1>] intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[    2.621336]  [<f45bec45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[    2.621345]  [<f45bb32e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[    2.621395]  [<f47c6c25>] intel_atomic_commit+0x345/0x480 [i915]
+[    2.621422]  [<f455afac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    2.621442]  [<f455b2a9>] drm_atomic_commit+0x49/0x50 [drm]
+[    2.621493]  [<f47cb722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[    2.621546]  [<f4808562>] intel_tv_detect+0x122/0x5e0 [i915]
+[    2.621566]  [<f4554df5>] ? drm_get_edid+0x25/0x3a0 [drm]
+[    2.621577]  [<f45b4fa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[    2.621587]  [<f45c28f2>] drm_fb_helper_initial_config+0x82/0x3e0 [drm_kms_helper]
+[    2.621638]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    2.621641]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    2.621645]  [<da57e681>] process_one_work+0x121/0x400
+[    2.621647]  [<da57e997>] worker_thread+0x37/0x4c0
+[    2.621650]  [<da57e960>] ? process_one_work+0x400/0x400
+[    2.621653]  [<da583d0c>] kthread+0x9c/0xb0
+[    2.621656]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    2.621659]  [<da583c70>] ? kthread_park+0x50/0x50
+[    2.621663]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    2.621665] ---[ end trace a4f089abf72fceda ]---
+[    2.621669] ------------[ cut here ]------------
+[    2.621720] WARNING: CPU: 1 PID: 87 at drivers/gpu/drm/i915/intel_display.c:13566 intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[    2.621721] encoder detached but still enabled on pipe B.
+[    2.621722] Modules linked in: i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    2.621734] CPU: 1 PID: 87 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    2.621736] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[    2.621738] Workqueue: events_unbound async_run_entry_fn
+[    2.621740]  efdbbae4 da8fdcbf efdbbb28 f4829984 efdbbb14 da566aea f482d044 efdbbb44
+[    2.621745]  00000057 f4829984 000034fe f47c6891 000034fe effd8214 eff11e40 effd8220
+[    2.621751]  efdbbb30 da566b4b 00000009 00000000 efdbbb28 f482d044 efdbbb44 efdbbbb4
+[    2.621757] Call Trace:
+[    2.621760]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    2.621762]  [<da566aea>] __warn+0xea/0x110
+[    2.621812]  [<f47c6891>] ? intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[    2.621815]  [<da566b4b>] warn_slowpath_fmt+0x3b/0x40
+[    2.621865]  [<f47c6891>] intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[    2.621875]  [<f45bec45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[    2.621884]  [<f45bb32e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[    2.621934]  [<f47c6c25>] intel_atomic_commit+0x345/0x480 [i915]
+[    2.621954]  [<f455afac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    2.621974]  [<f455b2a9>] drm_atomic_commit+0x49/0x50 [drm]
+[    2.622005]  [<f47cb722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[    2.622005]  [<f4808562>] intel_tv_detect+0x122/0x5e0 [i915]
+[    2.622005]  [<f4554df5>] ? drm_get_edid+0x25/0x3a0 [drm]
+[    2.622005]  [<f45b4fa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[    2.622005]  [<f45c28f2>] drm_fb_helper_initial_config+0x82/0x3e0 [drm_kms_helper]
+[    2.622005]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    2.622005]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    2.622005]  [<da57e681>] process_one_work+0x121/0x400
+[    2.622005]  [<da57e997>] worker_thread+0x37/0x4c0
+[    2.622005]  [<da57e960>] ? process_one_work+0x400/0x400
+[    2.622005]  [<da583d0c>] kthread+0x9c/0xb0
+[    2.622005]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    2.622005]  [<da583c70>] ? kthread_park+0x50/0x50
+[    2.622005]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    2.622208] ---[ end trace a4f089abf72fcedb ]---
+[    2.622211] ------------[ cut here ]------------
+[    2.622263] WARNING: CPU: 1 PID: 87 at drivers/gpu/drm/i915/intel_display.c:6958 verify_connector_state+0x294/0x350 [i915]
+[    2.622264] connector enabled without attached crtc
+[    2.622265] Modules linked in: i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    2.622277] CPU: 1 PID: 87 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    2.622278] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[    2.622280] Workqueue: events_unbound async_run_entry_fn
+[    2.622282]  efdbbaac da8fdcbf efdbbaf0 f4829984 efdbbadc da566aea f482bed8 efdbbb0c
+[    2.622288]  00000057 f4829984 00001b2e f47bcd74 00001b2e eff4cc00 eff8ffd0 effd8220
+[    2.622294]  efdbbaf8 da566b4b 00000009 00000000 efdbbaf0 f482bed8 efdbbb0c efdbbb30
+[    2.622300] Call Trace:
+[    2.622303]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    2.622305]  [<da566aea>] __warn+0xea/0x110
+[    2.622355]  [<f47bcd74>] ? verify_connector_state+0x294/0x350 [i915]
+[    2.622357]  [<da566b4b>] warn_slowpath_fmt+0x3b/0x40
+[    2.622407]  [<f47bcd74>] verify_connector_state+0x294/0x350 [i915]
+[    2.622457]  [<f47c6556>] intel_atomic_commit_tail+0xbf6/0xf80 [i915]
+[    2.622467]  [<f45bec45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[    2.622476]  [<f45bb32e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[    2.622526]  [<f47c6c25>] intel_atomic_commit+0x345/0x480 [i915]
+[    2.622546]  [<f455afac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    2.622566]  [<f455b2a9>] drm_atomic_commit+0x49/0x50 [drm]
+[    2.622617]  [<f47cb722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[    2.622670]  [<f4808562>] intel_tv_detect+0x122/0x5e0 [i915]
+[    2.622690]  [<f4554df5>] ? drm_get_edid+0x25/0x3a0 [drm]
+[    2.622701]  [<f45b4fa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[    2.622710]  [<f45c28f2>] drm_fb_helper_initial_config+0x82/0x3e0 [drm_kms_helper]
+[    2.622762]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    2.622764]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    2.622767]  [<da57e681>] process_one_work+0x121/0x400
+[    2.622770]  [<da57e997>] worker_thread+0x37/0x4c0
+[    2.622772]  [<da57e960>] ? process_one_work+0x400/0x400
+[    2.622774]  [<da583d0c>] kthread+0x9c/0xb0
+[    2.622777]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    2.622780]  [<da583c70>] ? kthread_park+0x50/0x50
+[    2.622782]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    2.622784] ---[ end trace a4f089abf72fcedc ]---
+[    2.984140] ------------[ cut here ]------------
+[    2.984262] WARNING: CPU: 1 PID: 87 at drivers/gpu/drm/i915/intel_display.c:12929 intel_atomic_check+0xcd0/0x1130 [i915]
+[    2.984264] WARN_ON(!connector_state->crtc)
+[    2.984267] Modules linked in:
+[    2.984269]  i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    2.984297] CPU: 1 PID: 87 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    2.984300] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[    2.984306] Workqueue: events_unbound async_run_entry_fn
+[    2.984311]  efdbbba8 da8fdcbf efdbbbec f4829984 efdbbbd8 da566aea f483b6d7 efdbbc08
+[    2.984325]  00000057 f4829984 00003281 f47c7f30 00003281 f0b68800 eff11e40 eff4cc00
+[    2.984338]  efdbbbf4 da566b4b 00000009 00000000 efdbbbec f483b6d7 efdbbc08 efdbbc58
+[    2.984352] Call Trace:
+[    2.984360]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    2.984365]  [<da566aea>] __warn+0xea/0x110
+[    2.984485]  [<f47c7f30>] ? intel_atomic_check+0xcd0/0x1130 [i915]
+[    2.984487]  [<da566b4b>] warn_slowpath_fmt+0x3b/0x40
+[    2.984537]  [<f47c7f30>] intel_atomic_check+0xcd0/0x1130 [i915]
+[    2.984558]  [<f455afac>] drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    2.984576]  [<f4547d5d>] ? vblank_disable_fn+0x3d/0x80 [drm]
+[    2.984626]  [<f479fc20>] ? gen2_write16+0x130/0x130 [i915]
+[    2.984646]  [<f455b276>] drm_atomic_commit+0x16/0x50 [drm]
+[    2.984664]  [<f45483a9>] ? drm_wait_one_vblank+0x59/0x180 [drm]
+[    2.984714]  [<f47cb987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[    2.984766]  [<f48087c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[    2.984778]  [<f45b4fa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[    2.984787]  [<f45c28f2>] drm_fb_helper_initial_config+0x82/0x3e0 [drm_kms_helper]
+[    2.984838]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    2.984840]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    2.984843]  [<da57e681>] process_one_work+0x121/0x400
+[    2.984846]  [<da57e997>] worker_thread+0x37/0x4c0
+[    2.984848]  [<da57e960>] ? process_one_work+0x400/0x400
+[    2.984850]  [<da583d0c>] kthread+0x9c/0xb0
+[    2.984853]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    2.984856]  [<da583c70>] ? kthread_park+0x50/0x50
+[    2.984858]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    2.984860] ---[ end trace a4f089abf72fcedd ]---
+[    3.105088] ------------[ cut here ]------------
+[    3.105209] WARNING: CPU: 1 PID: 87 at drivers/gpu/drm/i915/intel_display.c:13558 intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[    3.105212] encoder's enabled state mismatch (expected 0, found 1)
+[    3.105213] Modules linked in: i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    3.105242] CPU: 1 PID: 87 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    3.105245] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[    3.105251] Workqueue: events_unbound async_run_entry_fn
+[    3.105255]  efdbbb84 da8fdcbf efdbbbc8 f4829984 efdbbbb4 da566aea f482d008 efdbbbe4
+[    3.105269]  00000057 f4829984 000034f6 f47c67a1 000034f6 effd8214 eff11e40 effd8220
+[    3.105283]  efdbbbd0 da566b4b 00000009 00000000 efdbbbc8 f482d008 efdbbbe4 efdbbc54
+[    3.105297] Call Trace:
+[    3.105304]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    3.105309]  [<da566aea>] __warn+0xea/0x110
+[    3.105418]  [<f47c67a1>] ? intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[    3.105421]  [<da566b4b>] warn_slowpath_fmt+0x3b/0x40
+[    3.105471]  [<f47c67a1>] intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[    3.105481]  [<f45bec45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[    3.105490]  [<f45bb32e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[    3.105540]  [<f47c6c25>] intel_atomic_commit+0x345/0x480 [i915]
+[    3.105560]  [<f455afac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    3.105610]  [<f479fc20>] ? gen2_write16+0x130/0x130 [i915]
+[    3.105630]  [<f455b2a9>] drm_atomic_commit+0x49/0x50 [drm]
+[    3.105680]  [<f47cb987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[    3.105732]  [<f48087c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[    3.105743]  [<f45b4fa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[    3.105752]  [<f45c28f2>] drm_fb_helper_initial_config+0x82/0x3e0 [drm_kms_helper]
+[    3.105803]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    3.105806]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    3.105809]  [<da57e681>] process_one_work+0x121/0x400
+[    3.105811]  [<da57e997>] worker_thread+0x37/0x4c0
+[    3.105814]  [<da57e960>] ? process_one_work+0x400/0x400
+[    3.105816]  [<da583d0c>] kthread+0x9c/0xb0
+[    3.105818]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    3.105821]  [<da583c70>] ? kthread_park+0x50/0x50
+[    3.105823]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    3.105825] ---[ end trace a4f089abf72fcede ]---
+[    3.105827] ------------[ cut here ]------------
+[    3.105878] WARNING: CPU: 1 PID: 87 at drivers/gpu/drm/i915/intel_display.c:13566 intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[    3.105880] encoder detached but still enabled on pipe B.
+[    3.105880] Modules linked in: i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    3.105892] CPU: 1 PID: 87 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    3.105893] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[    3.105896] Workqueue: events_unbound async_run_entry_fn
+[    3.105897]  efdbbb84 da8fdcbf efdbbbc8 f4829984 efdbbbb4 da566aea f482d044 efdbbbe4
+[    3.105903]  00000057 f4829984 000034fe f47c6891 000034fe effd8214 eff11e40 effd8220
+[    3.105909]  efdbbbd0 da566b4b 00000009 00000000 efdbbbc8 f482d044 efdbbbe4 efdbbc54
+[    3.105915] Call Trace:
+[    3.105918]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    3.105920]  [<da566aea>] __warn+0xea/0x110
+[    3.105970]  [<f47c6891>] ? intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[    3.105972]  [<da566b4b>] warn_slowpath_fmt+0x3b/0x40
+[    3.106022]  [<f47c6891>] intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[    3.106032]  [<f45bec45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[    3.106041]  [<f45bb32e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[    3.106047]  [<f47c6c25>] intel_atomic_commit+0x345/0x480 [i915]
+[    3.106047]  [<f455afac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    3.106047]  [<f479fc20>] ? gen2_write16+0x130/0x130 [i915]
+[    3.106047]  [<f455b2a9>] drm_atomic_commit+0x49/0x50 [drm]
+[    3.106047]  [<f47cb987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[    3.106047]  [<f48087c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[    3.106047]  [<f45b4fa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[    3.106047]  [<f45c28f2>] drm_fb_helper_initial_config+0x82/0x3e0 [drm_kms_helper]
+[    3.106047]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    3.106047]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    3.106047]  [<da57e681>] process_one_work+0x121/0x400
+[    3.106047]  [<da57e997>] worker_thread+0x37/0x4c0
+[    3.106047]  [<da57e960>] ? process_one_work+0x400/0x400
+[    3.106047]  [<da583d0c>] kthread+0x9c/0xb0
+[    3.106047]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    3.106047]  [<da583c70>] ? kthread_park+0x50/0x50
+[    3.106047]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    3.106385] ---[ end trace a4f089abf72fcedf ]---
+[    3.106389] ------------[ cut here ]------------
+[    3.106439] WARNING: CPU: 1 PID: 87 at drivers/gpu/drm/i915/intel_display.c:6958 verify_connector_state+0x294/0x350 [i915]
+[    3.106440] connector enabled without attached crtc
+[    3.106441] Modules linked in: i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    3.106453] CPU: 1 PID: 87 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    3.106454] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[    3.106457] Workqueue: events_unbound async_run_entry_fn
+[    3.106458]  efdbbb4c da8fdcbf efdbbb90 f4829984 efdbbb7c da566aea f482bed8 efdbbbac
+[    3.106464]  00000057 f4829984 00001b2e f47bcd74 00001b2e eff4cc00 eff8ffd0 effd8220
+[    3.106470]  efdbbb98 da566b4b 00000009 00000000 efdbbb90 f482bed8 efdbbbac efdbbbd0
+[    3.106476] Call Trace:
+[    3.106479]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    3.106481]  [<da566aea>] __warn+0xea/0x110
+[    3.106531]  [<f47bcd74>] ? verify_connector_state+0x294/0x350 [i915]
+[    3.106533]  [<da566b4b>] warn_slowpath_fmt+0x3b/0x40
+[    3.106582]  [<f47bcd74>] verify_connector_state+0x294/0x350 [i915]
+[    3.106632]  [<f47c6556>] intel_atomic_commit_tail+0xbf6/0xf80 [i915]
+[    3.106642]  [<f45bec45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[    3.106651]  [<f45bb32e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[    3.106701]  [<f47c6c25>] intel_atomic_commit+0x345/0x480 [i915]
+[    3.106721]  [<f455afac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    3.106770]  [<f479fc20>] ? gen2_write16+0x130/0x130 [i915]
+[    3.106790]  [<f455b2a9>] drm_atomic_commit+0x49/0x50 [drm]
+[    3.106840]  [<f47cb987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[    3.106892]  [<f48087c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[    3.106903]  [<f45b4fa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[    3.106912]  [<f45c28f2>] drm_fb_helper_initial_config+0x82/0x3e0 [drm_kms_helper]
+[    3.106963]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    3.106966]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    3.106968]  [<da57e681>] process_one_work+0x121/0x400
+[    3.106971]  [<da57e997>] worker_thread+0x37/0x4c0
+[    3.106973]  [<da57e960>] ? process_one_work+0x400/0x400
+[    3.106976]  [<da583d0c>] kthread+0x9c/0xb0
+[    3.106978]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    3.106981]  [<da583c70>] ? kthread_park+0x50/0x50
+[    3.106983]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    3.106985] ---[ end trace a4f089abf72fcee0 ]---
+[    3.107954] ------------[ cut here ]------------
+[    3.108006] WARNING: CPU: 1 PID: 87 at drivers/gpu/drm/i915/intel_fbdev.c:414 intel_fb_initial_config+0x3fc/0x5f0 [i915]
+[    3.108020] WARN_ON(!connector->state->crtc)
+[    3.108021] Modules linked in:
+[    3.108022]  i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    3.108034] CPU: 1 PID: 87 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    3.108035] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[    3.108038] Workqueue: events_unbound async_run_entry_fn
+[    3.108039]  efdbbd18 da8fdcbf efdbbd5c f48304e4 efdbbd48 da566aea f483d013 efdbbd78
+[    3.108045]  00000057 f48304e4 0000019e f47e1c3c 0000019e 00000001 eff4cc00 00000000
+[    3.108051]  efdbbd64 da566b4b 00000009 00000000 efdbbd5c f483d013 efdbbd78 efdbbdd8
+[    3.108057] Call Trace:
+[    3.108060]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    3.108063]  [<da566aea>] __warn+0xea/0x110
+[    3.108112]  [<f47e1c3c>] ? intel_fb_initial_config+0x3fc/0x5f0 [i915]
+[    3.108115]  [<da566b4b>] warn_slowpath_fmt+0x3b/0x40
+[    3.108164]  [<f47e1c3c>] intel_fb_initial_config+0x3fc/0x5f0 [i915]
+[    3.108214]  [<f47e1840>] ? intelfb_create+0x4a0/0x4a0 [i915]
+[    3.108223]  [<f45c1e3b>] drm_setup_crtcs+0x1ab/0x990 [drm_kms_helper]
+[    3.108244]  [<f455e35a>] ? drm_mode_connector_update_edid_property+0x4a/0x70 [drm]
+[    3.108254]  [<f45c2914>] drm_fb_helper_initial_config+0xa4/0x3e0 [drm_kms_helper]
+[    3.108303]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    3.108306]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    3.108309]  [<da57e681>] process_one_work+0x121/0x400
+[    3.108311]  [<da57e997>] worker_thread+0x37/0x4c0
+[    3.108314]  [<da57e960>] ? process_one_work+0x400/0x400
+[    3.108316]  [<da583d0c>] kthread+0x9c/0xb0
+[    3.108319]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    3.108321]  [<da583c70>] ? kthread_park+0x50/0x50
+[    3.108324]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    3.108325] ---[ end trace a4f089abf72fcee1 ]---
+[    3.114882] fbcon: inteldrmfb (fb0) is primary device
+[    3.115225] ------------[ cut here ]------------
+[    3.115247] WARNING: CPU: 1 PID: 87 at drivers/gpu/drm/drm_atomic_helper.c:783 drm_atomic_helper_update_legacy_modeset_state+0x23a/0x270 [drm_kms_helper]
+[    3.115258] Modules linked in: i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    3.115262] CPU: 1 PID: 87 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    3.115264] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[    3.115271] Workqueue: events_unbound async_run_entry_fn
+[    3.115276]  efdbbab0 da8fdcbf 00000000 f45c4d70 efdbbae0 da566aea dae4b4d8 00000001
+[    3.115281]  00000057 f45c4d70 0000030f f45bb86a 0000030f eff4cc00 00000000 f0b68800
+[    3.115285]  efdbbaf4 da566bba 00000009 00000000 00000000 efdbbb1c f45bb86a f47c5352
+[    3.115286] Call Trace:
+[    3.115293]  [<da8fdcbf>] dump_stack+0x58/0x79
+[    3.115296]  [<da566aea>] __warn+0xea/0x110
+[    3.115305]  [<f45bb86a>] ? drm_atomic_helper_update_legacy_modeset_state+0x23a/0x270 [drm_kms_helper]
+[    3.115308]  [<da566bba>] warn_slowpath_null+0x2a/0x30
+[    3.115316]  [<f45bb86a>] drm_atomic_helper_update_legacy_modeset_state+0x23a/0x270 [drm_kms_helper]
+[    3.115390]  [<f47c5352>] ? intel_pre_plane_update+0x62/0x170 [i915]
+[    3.115440]  [<f47c641c>] intel_atomic_commit_tail+0xabc/0xf80 [i915]
+[    3.115450]  [<f45bec45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[    3.115459]  [<f45bb32e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[    3.115508]  [<f47c6c25>] intel_atomic_commit+0x345/0x480 [i915]
+[    3.115538]  [<f455afac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    3.115558]  [<f455b2a9>] drm_atomic_commit+0x49/0x50 [drm]
+[    3.115568]  [<f45c0c63>] restore_fbdev_mode+0x153/0x2a0 [drm_kms_helper]
+[    3.115587]  [<f455a074>] ? drm_modeset_lock_all_ctx+0x94/0xb0 [drm]
+[    3.115596]  [<f45c27b7>] drm_fb_helper_restore_fbdev_mode_unlocked+0x27/0x70 [drm_kms_helper]
+[    3.115604]  [<f45c282d>] drm_fb_helper_set_par+0x2d/0x70 [drm_kms_helper]
+[    3.115654]  [<f47e1345>] intel_fbdev_set_par+0x15/0x70 [i915]
+[    3.115658]  [<da98b9dd>] fbcon_init+0x55d/0x5b0
+[    3.115662]  [<daa56cb2>] ? klist_class_dev_get+0x12/0x20
+[    3.115666]  [<dac2946e>] ? klist_node_init+0x2e/0x50
+[    3.115670]  [<daa1405b>] visual_init+0xbb/0x120
+[    3.115672]  [<daa155f4>] do_bind_con_driver+0x174/0x360
+[    3.115675]  [<da9007f1>] ? kobject_set_name_vargs+0x61/0x90
+[    3.115678]  [<daa15abe>] do_take_over_console+0x10e/0x180
+[    3.115682]  [<da987aff>] do_fbcon_takeover+0x5f/0xc0
+[    3.115684]  [<da98c547>] fbcon_event_notify+0x797/0x8b0
+[    3.115689]  [<da73e90c>] ? sysfs_add_file_mode_ns+0xac/0x1b0
+[    3.115691]  [<da5852fe>] notifier_call_chain+0x4e/0x70
+[    3.115693]  [<da585619>] __blocking_notifier_call_chain+0x39/0x60
+[    3.115696]  [<da58565f>] blocking_notifier_call_chain+0x1f/0x30
+[    3.115698]  [<da98e5b6>] fb_notifier_call_chain+0x16/0x20
+[    3.115700]  [<da98ff2f>] register_framebuffer+0x1df/0x300
+[    3.115709]  [<f45c2abc>] drm_fb_helper_initial_config+0x24c/0x3e0 [drm_kms_helper]
+[    3.115759]  [<f47e2426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    3.115762]  [<da586af8>] async_run_entry_fn+0x38/0x180
+[    3.115765]  [<da57e681>] process_one_work+0x121/0x400
+[    3.115767]  [<da57e997>] worker_thread+0x37/0x4c0
+[    3.115770]  [<da57e960>] ? process_one_work+0x400/0x400
+[    3.115772]  [<da583d0c>] kthread+0x9c/0xb0
+[    3.115776]  [<da521c63>] ? __switch_to+0x1d3/0x490
+[    3.115778]  [<da583c70>] ? kthread_park+0x50/0x50
+[    3.115781]  [<dac31637>] ret_from_fork+0x1b/0x28
+[    3.115783] ---[ end trace a4f089abf72fcee2 ]---
+[    3.167189] Console: switching to colour frame buffer device 160x50
+[    3.301823] i915 0000:00:02.0: fb0: inteldrmfb frame buffer device
+[    3.312286] dracut: Starting plymouth daemon
+[    3.826468] ata_piix 0000:00:1f.1: version 2.13
+[    3.837047] scsi host4: ata_piix
+[    3.845952] scsi host5: ata_piix
+[    3.846086] ata5: PATA max UDMA/100 cmd 0x1f0 ctl 0x3f6 bmdma 0x1810 irq 14
+[    3.846088] ata6: PATA max UDMA/100 cmd 0x170 ctl 0x376 bmdma 0x1818 irq 15
+[    3.846285] ata6: port disabled--ignoring
+[    3.858351] yenta_cardbus 0000:0a:06.0: CardBus bridge found [1734:10c1]
+[    3.858380] yenta_cardbus 0000:0a:06.0: Enabling burst memory read transactions
+[    3.858386] yenta_cardbus 0000:0a:06.0: Using CSCINT to route CSC interrupts to PCI
+[    3.858388] yenta_cardbus 0000:0a:06.0: Routing CardBus interrupts to PCI
+[    3.858393] yenta_cardbus 0000:0a:06.0: TI: mfunc 0x00001202, devctl 0x44
+[    3.860832] ACPI: bus type USB registered
+[    3.860895] usbcore: registered new interface driver usbfs
+[    3.860915] usbcore: registered new interface driver hub
+[    3.860988] usbcore: registered new device driver usb
+[    3.874085] sdhci: Secure Digital Host Controller Interface driver
+[    3.874088] sdhci: Copyright(c) Pierre Ossman
+[    3.881894] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    3.887364] ehci-pci: EHCI PCI platform driver
+[    3.887663] ehci-pci 0000:00:1d.7: EHCI Host Controller
+[    3.887674] ehci-pci 0000:00:1d.7: new USB bus registered, assigned bus number 1
+[    3.887696] ehci-pci 0000:00:1d.7: debug port 1
+[    3.891598] ehci-pci 0000:00:1d.7: cache line size of 64 is not supported
+[    3.893433] ehci-pci 0000:00:1d.7: irq 23, io mem 0xd4544000
+[    3.900033] ehci-pci 0000:00:1d.7: USB 2.0 started, EHCI 1.00
+[    3.900155] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    3.900158] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    3.900160] usb usb1: Product: EHCI Host Controller
+[    3.900162] usb usb1: Manufacturer: Linux 4.9.20-desktop-pae-1bP ehci_hcd
+[    3.900164] usb usb1: SerialNumber: ...
+[    3.900383] hub 1-0:1.0: USB hub found
+[    3.900394] hub 1-0:1.0: 8 ports detected
+[    3.906549] uhci_hcd: USB Universal Host Controller Interface driver
+[    3.906791] uhci_hcd 0000:00:1d.0: UHCI Host Controller
+[    3.906801] uhci_hcd 0000:00:1d.0: new USB bus registered, assigned bus number 2
+[    3.906811] uhci_hcd 0000:00:1d.0: detected 2 ports
+[    3.906839] uhci_hcd 0000:00:1d.0: irq 23, io base 0x00001820
+[    3.906931] usb usb2: New USB device found, idVendor=1d6b, idProduct=0001
+[    3.906934] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    3.906936] usb usb2: Product: UHCI Host Controller
+[    3.906938] usb usb2: Manufacturer: Linux 4.9.20-desktop-pae-1bP uhci_hcd
+[    3.906940] usb usb2: SerialNumber: ...
+[    3.907201] hub 2-0:1.0: USB hub found
+[    3.907211] hub 2-0:1.0: 2 ports detected
+[    3.907535] uhci_hcd 0000:00:1d.1: UHCI Host Controller
+[    3.907542] uhci_hcd 0000:00:1d.1: new USB bus registered, assigned bus number 3
+[    3.907551] uhci_hcd 0000:00:1d.1: detected 2 ports
+[    3.907589] uhci_hcd 0000:00:1d.1: irq 17, io base 0x00001840
+[    3.907659] usb usb3: New USB device found, idVendor=1d6b, idProduct=0001
+[    3.907661] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    3.907663] usb usb3: Product: UHCI Host Controller
+[    3.907665] usb usb3: Manufacturer: Linux 4.9.20-desktop-pae-1bP uhci_hcd
+[    3.907667] usb usb3: SerialNumber: ...
+[    3.907863] hub 3-0:1.0: USB hub found
+[    3.907872] hub 3-0:1.0: 2 ports detected
+[    3.908214] uhci_hcd 0000:00:1d.2: UHCI Host Controller
+[    3.908220] uhci_hcd 0000:00:1d.2: new USB bus registered, assigned bus number 4
+[    3.908228] uhci_hcd 0000:00:1d.2: detected 2 ports
+[    3.908260] uhci_hcd 0000:00:1d.2: irq 18, io base 0x00001860
+[    3.908332] usb usb4: New USB device found, idVendor=1d6b, idProduct=0001
+[    3.908335] usb usb4: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    3.908337] usb usb4: Product: UHCI Host Controller
+[    3.908339] usb usb4: Manufacturer: Linux 4.9.20-desktop-pae-1bP uhci_hcd
+[    3.908341] usb usb4: SerialNumber: ...
+[    3.908532] hub 4-0:1.0: USB hub found
+[    3.908542] hub 4-0:1.0: 2 ports detected
+[    3.908839] uhci_hcd 0000:00:1d.3: UHCI Host Controller
+[    3.908846] uhci_hcd 0000:00:1d.3: new USB bus registered, assigned bus number 5
+[    3.908854] uhci_hcd 0000:00:1d.3: detected 2 ports
+[    3.908887] uhci_hcd 0000:00:1d.3: irq 19, io base 0x00001880
+[    3.908956] usb usb5: New USB device found, idVendor=1d6b, idProduct=0001
+[    3.908959] usb usb5: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    3.908961] usb usb5: Product: UHCI Host Controller
+[    3.908963] usb usb5: Manufacturer: Linux 4.9.20-desktop-pae-1bP uhci_hcd
+[    3.908965] usb usb5: SerialNumber: ...
+[    3.909185] hub 5-0:1.0: USB hub found
+[    3.909194] hub 5-0:1.0: 2 ports detected
+[    4.019473] ata5.00: ATAPI: HL-DT-ST DVDRAM GSA-T10N, PW03, max UDMA/33
+[    4.041314] ata5.00: configured for UDMA/33
+[    4.047147] scsi 4:0:0:0: CD-ROM            HL-DT-ST DVDRAM GSA-T10N  PW03 PQ: 0 ANSI: 5
+[    4.082984] sr 4:0:0:0: [sr0] scsi3-mmc drive: 24x/24x writer dvd-ram cd/rw xa/form2 cdda tray
+[    4.082989] cdrom: Uniform CD-ROM driver Revision: 3.20
+[    4.083448] sr 4:0:0:0: Attached scsi CD-ROM sr0
+[    4.184917] yenta_cardbus 0000:0a:06.0: ISA IRQ mask 0x0cf8, PCI irq 22
+[    4.184922] yenta_cardbus 0000:0a:06.0: Socket status: 30000006
+[    4.184926] pci_bus 0000:0a: Raising subordinate bus# of parent bus (#0a) from #0b to #0e
+[    4.184935] yenta_cardbus 0000:0a:06.0: pcmcia: parent PCI bridge window: [io  0x4000-0x4fff]
+[    4.184938] pcmcia_socket pcmcia_socket0: cs: IO port probe 0x4000-0x4fff:
+[    4.186551]  excluding 0x4000-0x40ff 0x4400-0x44ff
+[    4.192247] yenta_cardbus 0000:0a:06.0: pcmcia: parent PCI bridge window: [mem 0xd4100000-0xd41fffff]
+[    4.192250] pcmcia_socket pcmcia_socket0: cs: memory probe 0xd4100000-0xd41fffff:
+[    4.192253]  excluding 0xd4100000-0xd410ffff
+[    4.193057] sdhci-pci 0000:0a:06.2: SDHCI controller found [1524:0550] (rev 1)
+[    4.196042] mmc0: SDHCI controller on PCI [0000:0a:06.2] using PIO
+[    4.196066] sdhci-pci 0000:0a:06.4: SDHCI controller found [1524:0551] (rev 1)
+[    4.196080] sdhci-pci 0000:0a:06.4: enabling device (0004 -> 0006)
+[    4.199051] mmc1: SDHCI controller on PCI [0000:0a:06.4] using PIO
+[    4.392058] usb 2-2: new full-speed USB device number 2 using uhci_hcd
+[    4.419204] PM: Marking nosave pages: [mem 0x00000000-0x00000fff]
+[    4.419207] PM: Marking nosave pages: [mem 0x0009f000-0x000fffff]
+[    4.419211] PM: Basic memory bitmaps created
+[    4.423064] PM: Basic memory bitmaps freed
+[    4.426413] PM: Starting manual resume from disk
+[    4.426419] PM: Hibernation image partition 8:2 present
+[    4.426420] PM: Looking for hibernation image.
+[    4.426776] PM: Image not found (code -22)
+[    4.426779] PM: Hibernation image not present or could not be loaded.
+[    4.597079] usb 2-2: New USB device found, idVendor=0a12, idProduct=0001
+[    4.597082] usb 2-2: New USB device strings: Mfr=0, Product=0, SerialNumber=...
+[    4.610816] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: data=ordered
+[    4.666899] random: crng init done
+[    4.759995] dracut: Checking ext4: /dev/disk/by-uuid/HASH_A58-2DC1-E153-5FF5-576590FD4698
+[    4.760284] dracut: issuing e2fsck -a  /dev/disk/by-uuid/HASH_A58-2DC1-E153-5FF5-576590FD4698
+[    4.837535] dracut: /dev/disk/by-uuid/HASH_A58-2DC1-E153-5FF5-576590FD4698: clean, 154144/4743168 files, 1579772/18960075 blocks
+[    4.840525] dracut: Mounting /dev/disk/by-uuid/HASH_A58-2DC1-E153-5FF5-576590FD4698 with -o rw,relatime,data=ordered,ro
+[    4.986561] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: data=ordered
+[    5.164664] dracut: Mounted root filesystem /dev/sda1
+[    5.451921] dracut: Switching root
+[    5.591417] Not activating Mandatory Access Control as /sbin/tomoyo-init does not exist.
+[    7.297141] NET: Registered protocol family 10
+[    7.328339] ip_tables: (C) FCB9-52CA Netfilter Core Team
+[    7.333330] cgroup: cgroup2: unknown option "nsdelegate"
+[    7.485785] systemd[1]: systemd 236 running in system mode. (+PAM +AUDIT -SELINUX +IMA -APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN default-hierarchy=hybrid)
+[    7.486027] systemd[1]: Detected architecture x86.
+[    7.503607] systemd[1]: Set hostname to ...
+[    8.228422] systemd[1]: File /usr/lib/systemd/system/systemd-journald.service:35 configures an IP firewall (IPAddressDeny=any), but the local system does not support BPF/cgroup based firewalling.
+[    8.228428] systemd[1]: Proceeding WITHOUT firewalling in effect! (This warning is only shown for the first loaded unit using IP firewalling.)
+[    9.012448] systemd[1]: Received SIGRTMIN+20 from PID 312 (plymouthd).
+[    9.013110] systemd[1]: Created slice User and Session Slice.
+[    9.013237] systemd[1]: Reached target Login Prompts.
+[    9.026751] systemd[1]: Reached target OpenVPN Networks.
+[    9.027193] systemd[1]: Created slice System Slice.
+[   10.427547] vboxguest: loading out-of-tree module taints kernel.
+[   10.431136] vboxguest: PCI device not found, probably running on physical hardware.
+[   10.456887] vboxguest: PCI device not found, probably running on physical hardware.
+[   10.525459] EXT4-fs (sda1): re-mounted. Opts: (null)
+[   11.240571] systemd-journald[523]: Received request to flush runtime journal from PID 1
+[   13.191815] thermal LNXTHERM:00: registered as thermal_zone0
+[   13.191819] ACPI: Thermal Zone [TZS0] (37 C)
+[   13.201792] thermal LNXTHERM:01: registered as thermal_zone1
+[   13.201795] ACPI: Thermal Zone [TZS1] (47 C)
+[   13.216945] shpchp: Standard Hot Plug PCI Controller Driver version: 0.4
+[   13.242356] ACPI: AC Adapter [ADP1] (on-line)
+[   13.399908] ACPI: Battery Slot [BAT0] (battery present)
+[   13.424897] FUJITSU Extended Socket Network Device Driver - version 1.1 - Copyright (c) 2015 FUJITSU LIMITED
+[   13.514780] snd_hda_codec_realtek hdaudioC0D0: autoconfig for ALC861-VD: line_outs=1 (0x14/0x0/0x0/0x0/0x0) type:hp
+[   13.514784] snd_hda_codec_realtek hdaudioC0D0:    speaker_outs=0 (0x0/0x0/0x0/0x0/0x0)
+[   13.514787] snd_hda_codec_realtek hdaudioC0D0:    hp_outs=0 (0x0/0x0/0x0/0x0/0x0)
+[   13.514789] snd_hda_codec_realtek hdaudioC0D0:    mono: mono_out=0x0
+[   13.514791] snd_hda_codec_realtek hdaudioC0D0:    inputs:
+[   13.514794] snd_hda_codec_realtek hdaudioC0D0:      Internal Mic=0x19
+[   13.514796] snd_hda_codec_realtek hdaudioC0D0:      Mic=0x18
+[   13.689516] input: HDA Digital PCBeep as /devices/pci0000:00/0000:00:1b.0/sound/card0/input9
+[   13.690717] input: HDA Intel Mic as /devices/pci0000:00/0000:00:1b.0/sound/card0/input10
+[   13.714580] Uniform Multi-Platform E-IDE driver
+[   13.744190] intel_rng: FWH not detected
+[   13.804311] i801_smbus 0000:00:1f.3: SMBus using PCI interrupt
+[   13.833162] ACPI Warning: SystemIO range 0x0000000000001028-0x000000000000102F conflicts with OpRegion 0x0000000000001000-0x000000000000107F (\PMIO) (20160831/utaddress-247)
+[   13.833177] ACPI: If an ACPI driver is available for this device, you should use it instead of the native driver
+[   13.833181] ACPI Warning: SystemIO range 0x00000000000011B0-0x00000000000011BF conflicts with OpRegion 0x0000000000001180-0x00000000000011BB (\GPIO) (20160831/utaddress-247)
+[   13.833187] ACPI: If an ACPI driver is available for this device, you should use it instead of the native driver
+[   13.833188] ACPI Warning: SystemIO range 0x0000000000001180-0x00000000000011AF conflicts with OpRegion 0x0000000000001180-0x00000000000011BB (\GPIO) (20160831/utaddress-247)
+[   13.833193] ACPI: If an ACPI driver is available for this device, you should use it instead of the native driver
+[   13.833194] lpc_ich: Resource conflict(s) found affecting gpio_ich
+[   13.864113] leds_ss4200: no LED devices found
+[   13.978705] intel_powerclamp: No package C-state available
+[   13.990640] intel_powerclamp: No package C-state available
+[   13.998378] wistron_btns: BIOS signature found at c00f5b10, entry point 000FDD20
+[   13.998515] BUG: unable to handle kernel paging request at c00fdd20
+[   13.998600] IP: [<c00fdd20>] 0xc00fdd20
+[   13.998641] *pdpt = 000000001b0d5001 *pde = 000000001b161063 
+[   13.998696] *pte = 80000000000fd163 
+
+[   13.998752] Oops: 0011 [#1] SMP
+[   13.998783] Modules linked in: wistron_btns(+) sparse_keymap input_polldev coretemp rfkill lpc_ich psmouse i2c_i801 i2c_smbus rng_core ide_pci_generic piix ide_core snd_hda_codec_si3054 input_leds snd_hda_codec_realtek snd_hda_codec_generic parport_pc snd_hda_intel parport fjes snd_hda_codec snd_hda_core snd_hwdep evdev snd_pcm snd_timer battery snd ac soundcore shpchp thermal acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 pcmcia sr_mod ata_generic pata_acpi uhci_hcd ehci_pci sdhci_pci ehci_hcd sdhci mmc_core usbcore yenta_socket serio_raw pcmcia_rsrc ata_piix pcmcia_core usb_common i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   13.999008] CPU: 0 PID: 557 Comm: systemd-udevd Tainted: G        W  O    4.9.20-desktop-pae-1bP #1
+[   13.999008] Hardware name: FUJITSU SIEMENS AMILO Pro Edition V3505        /AMILO Pro Edition V3505        , BIOS R01-B0E    01/08/2007
+[   13.999008] task: efddd280 task.stack: f30b4000
+[   13.999008] EIP: 0060:[<c00fdd20>] EFLAGS: 00010092 CPU: 0
+[   13.999008] EIP is at 0xc00fdd20
+[   13.999008] EAX: 00009610 EBX: 0000012e ECX: 00000000 EDX: 00000000
+[   13.999008] ESI: f30b5c54 EDI: 0000012e EBP: f409d400 ESP: f30b5c24
+[   13.999008]  DS: 007b ES: 007b FS: 00d8 GS: 0033 SS: 0068
+[   13.999008] CR0: 80050033 CR2: c00fdd20 CR3: 2ffff1e0 CR4: 000006f0
+[   13.999008] Stack:
+[   13.999008]  f48c9047 f30b5c4c 00000000 0000012e 00009610 00000292 f30b5c54 eff46c00
+[   13.999008]  f48cb014 eff46c0c f30b5c6c f48c945d 00009610 0000012e 00000000 eff46c0c
+[   13.999008]  f48cb014 eff46c0c f30b5c88 daa57d03 f30b5c88 daa55392 eff46c0c f48cb014
+[   13.999008] Call Trace:
+[   13.999008]  [<f48c9047>] ? call_bios+0x47/0x70 [wistron_btns]
+[   13.999008]  [<f48c945d>] ? wistron_probe+0x2d/0x290 [wistron_btns]
+[   13.999008]  [<daa57d03>] ? platform_drv_probe+0x43/0xb0
+[   13.999008]  [<daa55392>] ? driver_sysfs_add+0x62/0x80
+[   13.999008]  [<daa55d19>] ? driver_probe_device+0x1f9/0x470
+[   13.999008]  [<da99eb49>] ? acpi_driver_match_device+0x38/0x51
+[   13.999008]  [<daa58280>] ? platform_match+0x20/0xb0
+[   13.999008]  [<daa56106>] ? __device_attach_driver+0x76/0x110
+[   13.999008]  [<dac2971b>] ? klist_next+0x1b/0x100
+[   13.999008]  [<daa56090>] ? __driver_attach+0x100/0x100
+[   13.999008]  [<daa53dd7>] ? bus_for_each_drv+0x47/0x80
+[   13.999008]  [<daa559ba>] ? __device_attach+0xaa/0x120
+[   13.999008]  [<daa56090>] ? __driver_attach+0x100/0x100
+[   13.999008]  [<daa561e2>] ? device_initial_probe+0x12/0x20
+[   13.999008]  [<daa54d47>] ? bus_probe_device+0x77/0x80
+[   13.999008]  [<daa52d25>] ? device_add+0x3a5/0x660
+[   13.999008]  [<da67dc55>] ? kfree_const+0x25/0x30
+[   13.999008]  [<da67dc55>] ? kfree_const+0x25/0x30
+[   13.999008]  [<da9007f1>] ? kobject_set_name_vargs+0x61/0x90
+[   13.999008]  [<daa57a76>] ? platform_device_add+0x176/0x290
+[   13.999008]  [<f48d82d3>] ? wb_module_init+0x256/0xf83 [wistron_btns]
+[   13.999008]  [<f48d807d>] ? dmi_matched+0x7d/0x7d [wistron_btns]
+[   13.999008]  [<da502155>] ? do_one_initcall+0x35/0x160
+[   13.999008]  [<da69c827>] ? vunmap_page_range+0x137/0x250
+[   13.999008]  [<da90cefa>] ? __bitmap_weight+0x2a/0x70
+[   13.999008]  [<da67deb5>] ? kvfree+0x45/0x50
+[   13.999008]  [<da65fbf6>] ? do_init_module+0x21/0x1c3
+[   13.999008]  [<da6b43b0>] ? kmem_cache_alloc_trace+0x30/0x140
+[   13.999008]  [<da65fbf6>] ? do_init_module+0x21/0x1c3
+[   13.999008]  [<da65fc25>] ? do_init_module+0x50/0x1c3
+[   13.999008]  [<da5f1c1d>] ? load_module+0x1fdd/0x2560
+[   13.999008]  [<da5f22ee>] ? SyS_init_module+0x14e/0x180
+[   13.999008]  [<da5032e7>] ? syscall_trace_enter+0x217/0x250
+[   13.999008]  [<da5036fa>] ? do_fast_syscall_32+0x8a/0x150
+[   13.999008]  [<dac316b7>] ? sysenter_past_esp+0x40/0x6a
+[   13.999008] Code: 00 e8 9a fe ff ff 86 c4 66 5b 66 5a 5e c3 00 00 00 00 00 00 00 00 00 00 00 00 00 c3 c3 00 00 00 00 00 00 00 00 00 00 00 00 00 00 <57> 50 c1 e0 10 66 8b c3 8b f8 58 e8 ef 00 00 00 73 11 e8 e8 00
+[   13.999008] EIP: [<c00fdd20>] 
+[   13.999008] 0xc00fdd20
+[   13.999008]  SS:ESP 0068:f30b5c24
+[   13.999008] CR2: 00000000c00fdd20
+[   13.999008] ---[ end trace a4f089abf72fcee3 ]---
+[   14.476346] psmouse serio4: synaptics: Touchpad model: 1, fw: 6.2, id: 0x1280b1, caps: 0xa04713/0x204000/0x0/0x0, board id: 0, fw id: 235996
+[   14.499789] ppdev: user-space parallel port driver
+[   14.510593] input: SynPS/2 Synaptics TouchPad as /devices/platform/i8042/serio4/input/input14
+[   14.579851] Bluetooth: Core ver 2.22
+[   14.579886] NET: Registered protocol family 31
+[   14.579889] Bluetooth: HCI device and connection manager initialized
+[   14.580327] Bluetooth: HCI socket layer initialized
+[   14.580333] Bluetooth: L2CAP socket layer initialized
+[   14.580343] Bluetooth: SCO socket layer initialized
+[   15.147513] usbcore: registered new interface driver btusb
+[   15.605128] sky2: driver version 1.30
+[   15.605475] sky2 0000:02:00.0: Yukon-2 EC Ultra chip revision 2
+[   15.606739] sky2 0000:02:00.0 eth0: addr XX:XX:XX:XX:XX:XX
+[   15.666864] sky2 0000:02:00.0 enp2s0: renamed from eth0
+[   15.747890] iTCO_vendor_support: vendor-support=0
+[   15.798688] iTCO_wdt: Intel TCO WatchDog Timer Driver v1.11
+[   15.798774] iTCO_wdt: Found a ICH7-M or ICH7-U TCO device (Version=2, TCOBASE=0x1060)
+[   15.799529] iTCO_wdt: initialized. heartbeat=30 sec (nowayout=1)
+[   16.442868] audit_printk_skb: 12 callbacks suppressed
+[   16.619620] Adding 2306860k swap on /dev/sda2.  Priority:-1 extents:1 across:2306860k FS
+[   16.681854] iwl3945: Intel(R) PRO/Wireless 3945ABG/BG Network Connection driver for Linux, in-tree:s
+[   16.681862] iwl3945: Copyright(c) AD1C-2DF1 Intel Corporation
+[   16.681954] iwl3945 0000:04:00.0: can't disable ASPM; OS doesn't have ASPM control
+[   16.722741] iwl3945 0000:04:00.0: Tunable channels: 13 802.11bg, 23 802.11a channels
+[   16.722747] iwl3945 0000:04:00.0: Detected Intel Wireless WiFi Link 3945ABG
+[   16.755338] ieee80211 phy0: Selected rate control algorithm 'iwl-3945-rs'
+[   17.039362] wl: module license 'MIXED/Proprietary' taints kernel.
+[   17.059440] iwl3945 0000:04:00.0 wlp4s0: renamed from wlan0
+[   22.111146] audit_printk_skb: 21 callbacks suppressed
+[   44.330176] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[   44.330184] Bluetooth: BNEP filters: protocol multicast
+[   44.330193] Bluetooth: BNEP socket layer initialized
+[   46.519109] audit_printk_skb: 57 callbacks suppressed
+[   50.712705] IPv6: ADDRCONF(NETDEV_UP): enp2s0: link is not ready
+[   50.717029] sky2 0000:02:00.0 enp2s0: enabling interface
+[   50.718954] IPv6: ADDRCONF(NETDEV_UP): enp2s0: link is not ready
+[   50.734475] IPv6: ADDRCONF(NETDEV_UP): wlp4s0: link is not ready
+[   51.090491] iwl3945 0000:04:00.0: loaded firmware version XXX.XXX.XXX.XXX
+[   51.160406] IPv6: ADDRCONF(NETDEV_UP): wlp4s0: link is not ready
+[   51.230898] IPv6: ADDRCONF(NETDEV_UP): wlp4s0: link is not ready
+[   51.657824] audit_printk_skb: 48 callbacks suppressed
+[   51.710935] NET: Registered protocol family 17
+[   51.826242] IPv6: ADDRCONF(NETDEV_UP): wlp4s0: link is not ready
+[   83.470134] Bluetooth: RFCOMM TTY layer initialized
+[   83.470153] Bluetooth: RFCOMM socket layer initialized
+[   83.470165] Bluetooth: RFCOMM ver 1.11
+[  373.074829] IPv6: ADDRCONF(NETDEV_UP): wlp4s0: link is not ready
+[  511.450047] IPv6: ADDRCONF(NETDEV_UP): wlp4s0: link is not ready
+[  514.825525] wlp4s0: authenticate with XX:XX:XX:XX:XX:XX
+[  514.832493] wlp4s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[  514.834369] wlp4s0: authenticated
+[  514.835285] wlp4s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[  514.838090] wlp4s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=2)
+[  514.839598] wlp4s0: associated
+[  514.839680] IPv6: ADDRCONF(NETDEV_CHANGE): wlp4s0: link becomes ready
+[  515.896598] IPv6: wlp4s0: IPv6 duplicate address XXXX::XXX:XXX:XXX:XXX detected!
+[  516.065103] IPv6: wlp4s0: IPv6 duplicate address XXXX::XXX:XXX:XXX:XXX detected!
+[  516.169137] IPv6: wlp4s0: IPv6 duplicate address XXXX::XXX:XXX:XXX:XXX detected!
+[  516.544891] audit_printk_skb: 12 callbacks suppressed
+[  527.012625] audit_printk_skb: 6 callbacks suppressed
+[  542.391793] audit_printk_skb: 21 callbacks suppressed
+[  548.077309] audit_printk_skb: 69 callbacks suppressed
+[  555.689838] audit_printk_skb: 42 callbacks suppressed
+[  569.513415] audit_printk_skb: 18 callbacks suppressed
+[  588.184445] audit_printk_skb: 12 callbacks suppressed
+[  605.796578] audit_printk_skb: 27 callbacks suppressed
+[  666.744618] audit_printk_skb: 12 callbacks suppressed
+[  705.903291] audit_printk_skb: 6 callbacks suppressed
+[  797.604892] audit_printk_skb: 48 callbacks suppressed
+[  834.259584] audit_printk_skb: 9 callbacks suppressed
+[  977.246103] audit_printk_skb: 12 callbacks suppressed
+[  996.775034] audit_printk_skb: 12 callbacks suppressed
+[ 1071.002537] audit_printk_skb: 45 callbacks suppressed
+[ 1123.665816] fuse init (API version 7.26)
+[ 1212.152450] audit_printk_skb: 12 callbacks suppressed
+[ 1227.083628] audit_printk_skb: 12 callbacks suppressed
+[ 1377.286513] audit_printk_skb: 6 callbacks suppressed
+[ 1387.799907] audit_printk_skb: 12 callbacks suppressed
+[ 1413.942639] audit_printk_skb: 6 callbacks suppressed
+[ 1477.491144] ide-cd driver 5.00
+[ 1477.601583] ide-gd driver 1.18
+[ 1477.729224] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[ 1477.890383] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[ 1477.890506] sr 4:0:0:0: Attached scsi generic sg1 type 5
