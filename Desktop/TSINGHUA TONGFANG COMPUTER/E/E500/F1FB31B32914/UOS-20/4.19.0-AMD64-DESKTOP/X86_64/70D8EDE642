@@ -1,0 +1,1548 @@
+[    5.208899]  __driver_attach+0xea/0x110
+[    5.208900]  ? driver_probe_device+0xf0/0xf0
+[    5.208901]  bus_for_each_dev+0x77/0xc0
+[    5.208903]  ? klist_add_tail+0x3b/0x70
+[    5.208904]  bus_add_driver+0x152/0x230
+[    5.208905]  ? 0xffffffffc090e000
+[    5.208906]  driver_register+0x6b/0xb0
+[    5.208906]  ? 0xffffffffc090e000
+[    5.208908]  do_one_initcall+0x46/0x1c3
+[    5.208909]  ? _cond_resched+0x15/0x30
+[    5.208911]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    5.208912]  do_init_module+0x5a/0x210
+[    5.208913]  load_module.constprop.62+0x214f/0x22a0
+[    5.208916]  ? security_kernel_post_read_file+0x38/0x50
+[    5.208917]  ? __do_sys_finit_module+0xa8/0x110
+[    5.208918]  __do_sys_finit_module+0xa8/0x110
+[    5.208920]  do_syscall_64+0x5a/0x110
+[    5.208921]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    5.208922] RIP: 0033:0x7f87c16da099
+[    5.208924] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    5.208924] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    5.208925] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    5.208925] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    5.208926] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    5.208926] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    5.208927] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    5.208928] ---[ end trace 30ce409ac2ee48d1 ]---
+[    5.217321] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    5.424587] ------------[ cut here ]------------
+[    5.424589] eDP powered off while attempting aux channel communication.
+[    5.424632] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    5.424632] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    5.424641] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    5.424642] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    5.424665] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    5.424666] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    5.424667] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    5.424668] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    5.424668] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    5.424669] RBP: ffff945c47072108 R08: 0000000000000673 R09: 0000000000000004
+[    5.424669] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    5.424670] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    5.424670] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    5.424671] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    5.424672] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    5.424672] Call Trace:
+[    5.424677]  ? finish_wait+0x80/0x80
+[    5.424699]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    5.424722]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    5.424727]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    5.424731]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    5.424754]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    5.424775]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    5.424796]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    5.424819]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    5.424842]  ? fwtable_write32+0x46/0x210 [i915]
+[    5.424863]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    5.424882]  i915_driver_load+0xab4/0xd50 [i915]
+[    5.424885]  ? _cond_resched+0x15/0x30
+[    5.424886]  ? mutex_lock+0xe/0x30
+[    5.424887]  ? acpi_dev_found+0x5f/0x70
+[    5.424889]  local_pci_probe+0x41/0x90
+[    5.424890]  pci_device_probe+0xff/0x1b0
+[    5.424892]  really_probe+0x24b/0x3b0
+[    5.424893]  driver_probe_device+0xb3/0xf0
+[    5.424894]  __driver_attach+0xea/0x110
+[    5.424895]  ? driver_probe_device+0xf0/0xf0
+[    5.424896]  bus_for_each_dev+0x77/0xc0
+[    5.424898]  ? klist_add_tail+0x3b/0x70
+[    5.424899]  bus_add_driver+0x152/0x230
+[    5.424900]  ? 0xffffffffc090e000
+[    5.424901]  driver_register+0x6b/0xb0
+[    5.424901]  ? 0xffffffffc090e000
+[    5.424903]  do_one_initcall+0x46/0x1c3
+[    5.424904]  ? _cond_resched+0x15/0x30
+[    5.424905]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    5.424907]  do_init_module+0x5a/0x210
+[    5.424908]  load_module.constprop.62+0x214f/0x22a0
+[    5.424911]  ? security_kernel_post_read_file+0x38/0x50
+[    5.424912]  ? __do_sys_finit_module+0xa8/0x110
+[    5.424913]  __do_sys_finit_module+0xa8/0x110
+[    5.424915]  do_syscall_64+0x5a/0x110
+[    5.424916]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    5.424917] RIP: 0033:0x7f87c16da099
+[    5.424918] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    5.424919] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    5.424920] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    5.424920] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    5.424920] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    5.424921] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    5.424921] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    5.424923] ---[ end trace 30ce409ac2ee48d2 ]---
+[    5.433316] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    5.640586] ------------[ cut here ]------------
+[    5.640587] eDP powered off while attempting aux channel communication.
+[    5.640631] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    5.640632] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    5.640640] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    5.640641] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    5.640663] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    5.640664] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    5.640665] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    5.640666] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    5.640666] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    5.640667] RBP: ffff945c47072108 R08: 00000000000006b4 R09: 0000000000000004
+[    5.640667] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    5.640668] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    5.640669] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    5.640669] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    5.640670] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    5.640670] Call Trace:
+[    5.640675]  ? finish_wait+0x80/0x80
+[    5.640697]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    5.640720]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    5.640726]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    5.640729]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    5.640752]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    5.640773]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    5.640794]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    5.640816]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    5.640839]  ? fwtable_write32+0x46/0x210 [i915]
+[    5.640861]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    5.640880]  i915_driver_load+0xab4/0xd50 [i915]
+[    5.640882]  ? _cond_resched+0x15/0x30
+[    5.640883]  ? mutex_lock+0xe/0x30
+[    5.640885]  ? acpi_dev_found+0x5f/0x70
+[    5.640886]  local_pci_probe+0x41/0x90
+[    5.640888]  pci_device_probe+0xff/0x1b0
+[    5.640890]  really_probe+0x24b/0x3b0
+[    5.640891]  driver_probe_device+0xb3/0xf0
+[    5.640892]  __driver_attach+0xea/0x110
+[    5.640893]  ? driver_probe_device+0xf0/0xf0
+[    5.640894]  bus_for_each_dev+0x77/0xc0
+[    5.640895]  ? klist_add_tail+0x3b/0x70
+[    5.640896]  bus_add_driver+0x152/0x230
+[    5.640897]  ? 0xffffffffc090e000
+[    5.640898]  driver_register+0x6b/0xb0
+[    5.640899]  ? 0xffffffffc090e000
+[    5.640901]  do_one_initcall+0x46/0x1c3
+[    5.640902]  ? _cond_resched+0x15/0x30
+[    5.640903]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    5.640905]  do_init_module+0x5a/0x210
+[    5.640906]  load_module.constprop.62+0x214f/0x22a0
+[    5.640908]  ? security_kernel_post_read_file+0x38/0x50
+[    5.640910]  ? __do_sys_finit_module+0xa8/0x110
+[    5.640911]  __do_sys_finit_module+0xa8/0x110
+[    5.640913]  do_syscall_64+0x5a/0x110
+[    5.640914]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    5.640915] RIP: 0033:0x7f87c16da099
+[    5.640916] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    5.640917] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    5.640917] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    5.640918] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    5.640918] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    5.640919] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    5.640919] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    5.640921] ---[ end trace 30ce409ac2ee48d3 ]---
+[    5.649314] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    5.856586] ------------[ cut here ]------------
+[    5.856587] eDP powered off while attempting aux channel communication.
+[    5.856632] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    5.856633] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    5.856641] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    5.856642] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    5.856665] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    5.856666] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    5.856666] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    5.856667] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    5.856668] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    5.856668] RBP: ffff945c47072108 R08: 00000000000006f5 R09: 0000000000000004
+[    5.856669] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    5.856669] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    5.856670] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    5.856671] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    5.856671] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    5.856672] Call Trace:
+[    5.856677]  ? finish_wait+0x80/0x80
+[    5.856698]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    5.856722]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    5.856728]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    5.856732]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    5.856755]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    5.856777]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    5.856797]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    5.856820]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    5.856843]  ? fwtable_write32+0x46/0x210 [i915]
+[    5.856864]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    5.856883]  i915_driver_load+0xab4/0xd50 [i915]
+[    5.856885]  ? _cond_resched+0x15/0x30
+[    5.856886]  ? mutex_lock+0xe/0x30
+[    5.856888]  ? acpi_dev_found+0x5f/0x70
+[    5.856889]  local_pci_probe+0x41/0x90
+[    5.856891]  pci_device_probe+0xff/0x1b0
+[    5.856893]  really_probe+0x24b/0x3b0
+[    5.856894]  driver_probe_device+0xb3/0xf0
+[    5.856895]  __driver_attach+0xea/0x110
+[    5.856896]  ? driver_probe_device+0xf0/0xf0
+[    5.856897]  bus_for_each_dev+0x77/0xc0
+[    5.856898]  ? klist_add_tail+0x3b/0x70
+[    5.856899]  bus_add_driver+0x152/0x230
+[    5.856900]  ? 0xffffffffc090e000
+[    5.856901]  driver_register+0x6b/0xb0
+[    5.856902]  ? 0xffffffffc090e000
+[    5.856904]  do_one_initcall+0x46/0x1c3
+[    5.856905]  ? _cond_resched+0x15/0x30
+[    5.856906]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    5.856908]  do_init_module+0x5a/0x210
+[    5.856909]  load_module.constprop.62+0x214f/0x22a0
+[    5.856911]  ? security_kernel_post_read_file+0x38/0x50
+[    5.856913]  ? __do_sys_finit_module+0xa8/0x110
+[    5.856914]  __do_sys_finit_module+0xa8/0x110
+[    5.856915]  do_syscall_64+0x5a/0x110
+[    5.856917]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    5.856918] RIP: 0033:0x7f87c16da099
+[    5.856919] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    5.856920] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    5.856920] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    5.856921] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    5.856921] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    5.856922] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    5.856922] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    5.856924] ---[ end trace 30ce409ac2ee48d4 ]---
+[    5.865317] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    6.072589] ------------[ cut here ]------------
+[    6.072590] eDP powered off while attempting aux channel communication.
+[    6.072634] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.072635] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    6.072643] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    6.072644] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    6.072666] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.072667] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    6.072668] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    6.072669] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    6.072669] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    6.072670] RBP: ffff945c47072108 R08: 0000000000000736 R09: 0000000000000004
+[    6.072670] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    6.072671] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    6.072672] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    6.072672] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    6.072673] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    6.072673] Call Trace:
+[    6.072678]  ? finish_wait+0x80/0x80
+[    6.072700]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    6.072723]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    6.072728]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    6.072732]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    6.072756]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    6.072776]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    6.072797]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    6.072820]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    6.072843]  ? fwtable_write32+0x46/0x210 [i915]
+[    6.072864]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    6.072884]  i915_driver_load+0xab4/0xd50 [i915]
+[    6.072886]  ? _cond_resched+0x15/0x30
+[    6.072887]  ? mutex_lock+0xe/0x30
+[    6.072888]  ? acpi_dev_found+0x5f/0x70
+[    6.072890]  local_pci_probe+0x41/0x90
+[    6.072891]  pci_device_probe+0xff/0x1b0
+[    6.072893]  really_probe+0x24b/0x3b0
+[    6.072894]  driver_probe_device+0xb3/0xf0
+[    6.072895]  __driver_attach+0xea/0x110
+[    6.072896]  ? driver_probe_device+0xf0/0xf0
+[    6.072898]  bus_for_each_dev+0x77/0xc0
+[    6.072899]  ? klist_add_tail+0x3b/0x70
+[    6.072900]  bus_add_driver+0x152/0x230
+[    6.072901]  ? 0xffffffffc090e000
+[    6.072902]  driver_register+0x6b/0xb0
+[    6.072903]  ? 0xffffffffc090e000
+[    6.072905]  do_one_initcall+0x46/0x1c3
+[    6.072906]  ? _cond_resched+0x15/0x30
+[    6.072907]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    6.072909]  do_init_module+0x5a/0x210
+[    6.072910]  load_module.constprop.62+0x214f/0x22a0
+[    6.072912]  ? security_kernel_post_read_file+0x38/0x50
+[    6.072914]  ? __do_sys_finit_module+0xa8/0x110
+[    6.072915]  __do_sys_finit_module+0xa8/0x110
+[    6.072916]  do_syscall_64+0x5a/0x110
+[    6.072918]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    6.072919] RIP: 0033:0x7f87c16da099
+[    6.072920] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    6.072921] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    6.072921] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    6.072922] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    6.072922] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    6.072923] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    6.072923] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    6.072925] ---[ end trace 30ce409ac2ee48d5 ]---
+[    6.081317] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    6.288588] ------------[ cut here ]------------
+[    6.288589] eDP powered off while attempting aux channel communication.
+[    6.288633] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.288634] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    6.288643] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    6.288643] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    6.288666] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.288667] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    6.288668] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    6.288669] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    6.288669] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    6.288670] RBP: ffff945c47072108 R08: 0000000000000777 R09: 0000000000000004
+[    6.288670] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    6.288671] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    6.288672] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    6.288672] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    6.288673] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    6.288673] Call Trace:
+[    6.288679]  ? finish_wait+0x80/0x80
+[    6.288700]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    6.288724]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    6.288729]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    6.288733]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    6.288756]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    6.288777]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    6.288798]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    6.288821]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    6.288844]  ? fwtable_write32+0x46/0x210 [i915]
+[    6.288866]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    6.288885]  i915_driver_load+0xab4/0xd50 [i915]
+[    6.288887]  ? _cond_resched+0x15/0x30
+[    6.288888]  ? mutex_lock+0xe/0x30
+[    6.288890]  ? acpi_dev_found+0x5f/0x70
+[    6.288891]  local_pci_probe+0x41/0x90
+[    6.288893]  pci_device_probe+0xff/0x1b0
+[    6.288895]  really_probe+0x24b/0x3b0
+[    6.288896]  driver_probe_device+0xb3/0xf0
+[    6.288897]  __driver_attach+0xea/0x110
+[    6.288898]  ? driver_probe_device+0xf0/0xf0
+[    6.288899]  bus_for_each_dev+0x77/0xc0
+[    6.288901]  ? klist_add_tail+0x3b/0x70
+[    6.288902]  bus_add_driver+0x152/0x230
+[    6.288903]  ? 0xffffffffc090e000
+[    6.288904]  driver_register+0x6b/0xb0
+[    6.288904]  ? 0xffffffffc090e000
+[    6.288906]  do_one_initcall+0x46/0x1c3
+[    6.288907]  ? _cond_resched+0x15/0x30
+[    6.288909]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    6.288910]  do_init_module+0x5a/0x210
+[    6.288912]  load_module.constprop.62+0x214f/0x22a0
+[    6.288914]  ? security_kernel_post_read_file+0x38/0x50
+[    6.288915]  ? __do_sys_finit_module+0xa8/0x110
+[    6.288916]  __do_sys_finit_module+0xa8/0x110
+[    6.288918]  do_syscall_64+0x5a/0x110
+[    6.288919]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    6.288920] RIP: 0033:0x7f87c16da099
+[    6.288921] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    6.288922] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    6.288923] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    6.288923] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    6.288924] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    6.288924] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    6.288925] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    6.288926] ---[ end trace 30ce409ac2ee48d6 ]---
+[    6.297320] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    6.504591] ------------[ cut here ]------------
+[    6.504592] eDP powered off while attempting aux channel communication.
+[    6.504637] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.504638] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    6.504646] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    6.504646] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    6.504669] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.504670] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    6.504671] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    6.504672] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    6.504672] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    6.504673] RBP: ffff945c47072108 R08: 00000000000007b8 R09: 0000000000000004
+[    6.504673] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    6.504674] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    6.504674] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    6.504675] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    6.504676] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    6.504676] Call Trace:
+[    6.504681]  ? finish_wait+0x80/0x80
+[    6.504703]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    6.504726]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    6.504731]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    6.504735]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    6.504759]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    6.504780]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    6.504801]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    6.504823]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    6.504847]  ? fwtable_write32+0x46/0x210 [i915]
+[    6.504868]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    6.504887]  i915_driver_load+0xab4/0xd50 [i915]
+[    6.504889]  ? _cond_resched+0x15/0x30
+[    6.504890]  ? mutex_lock+0xe/0x30
+[    6.504892]  ? acpi_dev_found+0x5f/0x70
+[    6.504893]  local_pci_probe+0x41/0x90
+[    6.504895]  pci_device_probe+0xff/0x1b0
+[    6.504896]  really_probe+0x24b/0x3b0
+[    6.504897]  driver_probe_device+0xb3/0xf0
+[    6.504898]  __driver_attach+0xea/0x110
+[    6.504899]  ? driver_probe_device+0xf0/0xf0
+[    6.504901]  bus_for_each_dev+0x77/0xc0
+[    6.504903]  ? klist_add_tail+0x3b/0x70
+[    6.504904]  bus_add_driver+0x152/0x230
+[    6.504905]  ? 0xffffffffc090e000
+[    6.504906]  driver_register+0x6b/0xb0
+[    6.504906]  ? 0xffffffffc090e000
+[    6.504908]  do_one_initcall+0x46/0x1c3
+[    6.504909]  ? _cond_resched+0x15/0x30
+[    6.504911]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    6.504912]  do_init_module+0x5a/0x210
+[    6.504914]  load_module.constprop.62+0x214f/0x22a0
+[    6.504916]  ? security_kernel_post_read_file+0x38/0x50
+[    6.504918]  ? __do_sys_finit_module+0xa8/0x110
+[    6.504918]  __do_sys_finit_module+0xa8/0x110
+[    6.504920]  do_syscall_64+0x5a/0x110
+[    6.504921]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    6.504922] RIP: 0033:0x7f87c16da099
+[    6.504923] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    6.504924] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    6.504925] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    6.504925] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    6.504926] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    6.504926] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    6.504927] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    6.504928] ---[ end trace 30ce409ac2ee48d7 ]---
+[    6.513322] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    6.720586] ------------[ cut here ]------------
+[    6.720587] eDP powered off while attempting aux channel communication.
+[    6.720632] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.720632] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    6.720641] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    6.720642] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    6.720665] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.720666] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    6.720666] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    6.720667] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    6.720668] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    6.720668] RBP: ffff945c47072108 R08: 00000000000007f9 R09: 0000000000000004
+[    6.720669] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    6.720669] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    6.720670] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    6.720671] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    6.720671] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    6.720672] Call Trace:
+[    6.720677]  ? finish_wait+0x80/0x80
+[    6.720698]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    6.720722]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    6.720728]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    6.720731]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    6.720754]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    6.720775]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    6.720796]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    6.720818]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    6.720842]  ? fwtable_write32+0x46/0x210 [i915]
+[    6.720862]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    6.720882]  i915_driver_load+0xab4/0xd50 [i915]
+[    6.720884]  ? _cond_resched+0x15/0x30
+[    6.720885]  ? mutex_lock+0xe/0x30
+[    6.720886]  ? acpi_dev_found+0x5f/0x70
+[    6.720888]  local_pci_probe+0x41/0x90
+[    6.720889]  pci_device_probe+0xff/0x1b0
+[    6.720891]  really_probe+0x24b/0x3b0
+[    6.720893]  driver_probe_device+0xb3/0xf0
+[    6.720894]  __driver_attach+0xea/0x110
+[    6.720895]  ? driver_probe_device+0xf0/0xf0
+[    6.720896]  bus_for_each_dev+0x77/0xc0
+[    6.720897]  ? klist_add_tail+0x3b/0x70
+[    6.720898]  bus_add_driver+0x152/0x230
+[    6.720899]  ? 0xffffffffc090e000
+[    6.720900]  driver_register+0x6b/0xb0
+[    6.720901]  ? 0xffffffffc090e000
+[    6.720903]  do_one_initcall+0x46/0x1c3
+[    6.720904]  ? _cond_resched+0x15/0x30
+[    6.720905]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    6.720907]  do_init_module+0x5a/0x210
+[    6.720908]  load_module.constprop.62+0x214f/0x22a0
+[    6.720911]  ? security_kernel_post_read_file+0x38/0x50
+[    6.720912]  ? __do_sys_finit_module+0xa8/0x110
+[    6.720913]  __do_sys_finit_module+0xa8/0x110
+[    6.720915]  do_syscall_64+0x5a/0x110
+[    6.720916]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    6.720917] RIP: 0033:0x7f87c16da099
+[    6.720918] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    6.720919] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    6.720920] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    6.720920] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    6.720921] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    6.720921] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    6.720922] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    6.720923] ---[ end trace 30ce409ac2ee48d8 ]---
+[    6.729317] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    6.936591] ------------[ cut here ]------------
+[    6.936592] eDP powered off while attempting aux channel communication.
+[    6.936637] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.936637] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    6.936646] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    6.936646] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    6.936669] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    6.936670] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    6.936671] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    6.936672] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    6.936672] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    6.936673] RBP: ffff945c47072108 R08: 000000000000083a R09: 0000000000000004
+[    6.936673] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    6.936673] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    6.936674] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    6.936675] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    6.936676] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    6.936676] Call Trace:
+[    6.936681]  ? finish_wait+0x80/0x80
+[    6.936702]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    6.936726]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    6.936731]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    6.936735]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    6.936758]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    6.936779]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    6.936800]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    6.936823]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    6.936846]  ? fwtable_write32+0x46/0x210 [i915]
+[    6.936867]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    6.936886]  i915_driver_load+0xab4/0xd50 [i915]
+[    6.936889]  ? _cond_resched+0x15/0x30
+[    6.936890]  ? mutex_lock+0xe/0x30
+[    6.936891]  ? acpi_dev_found+0x5f/0x70
+[    6.936893]  local_pci_probe+0x41/0x90
+[    6.936894]  pci_device_probe+0xff/0x1b0
+[    6.936896]  really_probe+0x24b/0x3b0
+[    6.936897]  driver_probe_device+0xb3/0xf0
+[    6.936898]  __driver_attach+0xea/0x110
+[    6.936899]  ? driver_probe_device+0xf0/0xf0
+[    6.936900]  bus_for_each_dev+0x77/0xc0
+[    6.936902]  ? klist_add_tail+0x3b/0x70
+[    6.936903]  bus_add_driver+0x152/0x230
+[    6.936904]  ? 0xffffffffc090e000
+[    6.936905]  driver_register+0x6b/0xb0
+[    6.936905]  ? 0xffffffffc090e000
+[    6.936907]  do_one_initcall+0x46/0x1c3
+[    6.936908]  ? _cond_resched+0x15/0x30
+[    6.936910]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    6.936911]  do_init_module+0x5a/0x210
+[    6.936912]  load_module.constprop.62+0x214f/0x22a0
+[    6.936915]  ? security_kernel_post_read_file+0x38/0x50
+[    6.936916]  ? __do_sys_finit_module+0xa8/0x110
+[    6.936917]  __do_sys_finit_module+0xa8/0x110
+[    6.936919]  do_syscall_64+0x5a/0x110
+[    6.936920]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    6.936921] RIP: 0033:0x7f87c16da099
+[    6.936922] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    6.936923] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    6.936924] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    6.936924] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    6.936925] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    6.936925] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    6.936926] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    6.936927] ---[ end trace 30ce409ac2ee48d9 ]---
+[    6.945321] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    7.152588] ------------[ cut here ]------------
+[    7.152590] eDP powered off while attempting aux channel communication.
+[    7.152633] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    7.152633] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    7.152642] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    7.152643] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    7.152666] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    7.152666] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    7.152667] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    7.152668] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    7.152669] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    7.152669] RBP: ffff945c47072108 R08: 000000000000087b R09: 0000000000000004
+[    7.152670] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    7.152670] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    7.152671] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    7.152672] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    7.152672] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    7.152673] Call Trace:
+[    7.152678]  ? finish_wait+0x80/0x80
+[    7.152699]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    7.152722]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    7.152728]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    7.152732]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    7.152754]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    7.152776]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    7.152797]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    7.152820]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    7.152843]  ? fwtable_write32+0x46/0x210 [i915]
+[    7.152864]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    7.152883]  i915_driver_load+0xab4/0xd50 [i915]
+[    7.152886]  ? _cond_resched+0x15/0x30
+[    7.152887]  ? mutex_lock+0xe/0x30
+[    7.152888]  ? acpi_dev_found+0x5f/0x70
+[    7.152890]  local_pci_probe+0x41/0x90
+[    7.152891]  pci_device_probe+0xff/0x1b0
+[    7.152893]  really_probe+0x24b/0x3b0
+[    7.152894]  driver_probe_device+0xb3/0xf0
+[    7.152895]  __driver_attach+0xea/0x110
+[    7.152896]  ? driver_probe_device+0xf0/0xf0
+[    7.152898]  bus_for_each_dev+0x77/0xc0
+[    7.152899]  ? klist_add_tail+0x3b/0x70
+[    7.152900]  bus_add_driver+0x152/0x230
+[    7.152901]  ? 0xffffffffc090e000
+[    7.152902]  driver_register+0x6b/0xb0
+[    7.152903]  ? 0xffffffffc090e000
+[    7.152904]  do_one_initcall+0x46/0x1c3
+[    7.152905]  ? _cond_resched+0x15/0x30
+[    7.152907]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    7.152909]  do_init_module+0x5a/0x210
+[    7.152910]  load_module.constprop.62+0x214f/0x22a0
+[    7.152912]  ? security_kernel_post_read_file+0x38/0x50
+[    7.152914]  ? __do_sys_finit_module+0xa8/0x110
+[    7.152914]  __do_sys_finit_module+0xa8/0x110
+[    7.152916]  do_syscall_64+0x5a/0x110
+[    7.152917]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    7.152919] RIP: 0033:0x7f87c16da099
+[    7.152920] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    7.152920] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    7.152921] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    7.152922] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    7.152922] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    7.152922] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    7.152923] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    7.152924] ---[ end trace 30ce409ac2ee48da ]---
+[    7.161320] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    7.368586] ------------[ cut here ]------------
+[    7.368587] eDP powered off while attempting aux channel communication.
+[    7.368630] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    7.368631] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    7.368640] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    7.368640] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    7.368663] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    7.368664] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    7.368665] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    7.368666] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    7.368666] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    7.368667] RBP: ffff945c47072108 R08: 00000000000008bc R09: 0000000000000004
+[    7.368667] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    7.368668] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    7.368668] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    7.368669] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    7.368669] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    7.368670] Call Trace:
+[    7.368675]  ? finish_wait+0x80/0x80
+[    7.368697]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    7.368720]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    7.368726]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    7.368729]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    7.368752]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    7.368774]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    7.368794]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    7.368817]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    7.368840]  ? fwtable_write32+0x46/0x210 [i915]
+[    7.368861]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    7.368881]  i915_driver_load+0xab4/0xd50 [i915]
+[    7.368883]  ? _cond_resched+0x15/0x30
+[    7.368884]  ? mutex_lock+0xe/0x30
+[    7.368886]  ? acpi_dev_found+0x5f/0x70
+[    7.368887]  local_pci_probe+0x41/0x90
+[    7.368889]  pci_device_probe+0xff/0x1b0
+[    7.368890]  really_probe+0x24b/0x3b0
+[    7.368891]  driver_probe_device+0xb3/0xf0
+[    7.368893]  __driver_attach+0xea/0x110
+[    7.368894]  ? driver_probe_device+0xf0/0xf0
+[    7.368895]  bus_for_each_dev+0x77/0xc0
+[    7.368897]  ? klist_add_tail+0x3b/0x70
+[    7.368898]  bus_add_driver+0x152/0x230
+[    7.368899]  ? 0xffffffffc090e000
+[    7.368900]  driver_register+0x6b/0xb0
+[    7.368900]  ? 0xffffffffc090e000
+[    7.368902]  do_one_initcall+0x46/0x1c3
+[    7.368903]  ? _cond_resched+0x15/0x30
+[    7.368904]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    7.368906]  do_init_module+0x5a/0x210
+[    7.368907]  load_module.constprop.62+0x214f/0x22a0
+[    7.368910]  ? security_kernel_post_read_file+0x38/0x50
+[    7.368911]  ? __do_sys_finit_module+0xa8/0x110
+[    7.368912]  __do_sys_finit_module+0xa8/0x110
+[    7.368914]  do_syscall_64+0x5a/0x110
+[    7.368915]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    7.368916] RIP: 0033:0x7f87c16da099
+[    7.368917] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    7.368918] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    7.368919] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    7.368919] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    7.368920] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    7.368920] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    7.368921] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    7.368922] ---[ end trace 30ce409ac2ee48db ]---
+[    7.377315] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    7.584586] ------------[ cut here ]------------
+[    7.584588] eDP powered off while attempting aux channel communication.
+[    7.584631] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    7.584632] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    7.584641] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    7.584641] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    7.584664] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    7.584665] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    7.584666] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    7.584667] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    7.584667] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    7.584668] RBP: ffff945c47072108 R08: 00000000000008fd R09: 0000000000000004
+[    7.584668] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    7.584669] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    7.584669] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    7.584670] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    7.584671] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    7.584671] Call Trace:
+[    7.584677]  ? finish_wait+0x80/0x80
+[    7.584698]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    7.584721]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    7.584727]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    7.584731]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    7.584754]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    7.584775]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    7.584796]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    7.584819]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    7.584842]  ? fwtable_write32+0x46/0x210 [i915]
+[    7.584863]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    7.584882]  i915_driver_load+0xab4/0xd50 [i915]
+[    7.584885]  ? _cond_resched+0x15/0x30
+[    7.584886]  ? mutex_lock+0xe/0x30
+[    7.584888]  ? acpi_dev_found+0x5f/0x70
+[    7.584889]  local_pci_probe+0x41/0x90
+[    7.584891]  pci_device_probe+0xff/0x1b0
+[    7.584893]  really_probe+0x24b/0x3b0
+[    7.584894]  driver_probe_device+0xb3/0xf0
+[    7.584895]  __driver_attach+0xea/0x110
+[    7.584896]  ? driver_probe_device+0xf0/0xf0
+[    7.584897]  bus_for_each_dev+0x77/0xc0
+[    7.584899]  ? klist_add_tail+0x3b/0x70
+[    7.584900]  bus_add_driver+0x152/0x230
+[    7.584901]  ? 0xffffffffc090e000
+[    7.584902]  driver_register+0x6b/0xb0
+[    7.584902]  ? 0xffffffffc090e000
+[    7.584904]  do_one_initcall+0x46/0x1c3
+[    7.584905]  ? _cond_resched+0x15/0x30
+[    7.584906]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    7.584908]  do_init_module+0x5a/0x210
+[    7.584909]  load_module.constprop.62+0x214f/0x22a0
+[    7.584911]  ? security_kernel_post_read_file+0x38/0x50
+[    7.584913]  ? __do_sys_finit_module+0xa8/0x110
+[    7.584914]  __do_sys_finit_module+0xa8/0x110
+[    7.584915]  do_syscall_64+0x5a/0x110
+[    7.584917]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    7.584918] RIP: 0033:0x7f87c16da099
+[    7.584919] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    7.584920] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    7.584920] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    7.584921] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    7.584921] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    7.584922] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    7.584922] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    7.584924] ---[ end trace 30ce409ac2ee48dc ]---
+[    7.593317] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    7.800587] ------------[ cut here ]------------
+[    7.800588] eDP powered off while attempting aux channel communication.
+[    7.800632] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    7.800632] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    7.800641] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    7.800642] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    7.800664] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    7.800665] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    7.800666] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    7.800667] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    7.800667] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    7.800668] RBP: ffff945c47072108 R08: 000000000000093e R09: 0000000000000004
+[    7.800668] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    7.800669] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    7.800670] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    7.800670] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    7.800671] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    7.800671] Call Trace:
+[    7.800676]  ? finish_wait+0x80/0x80
+[    7.800698]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    7.800721]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    7.800727]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    7.800731]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    7.800754]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    7.800775]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    7.800795]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    7.800818]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    7.800841]  ? fwtable_write32+0x46/0x210 [i915]
+[    7.800862]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    7.800881]  i915_driver_load+0xab4/0xd50 [i915]
+[    7.800884]  ? _cond_resched+0x15/0x30
+[    7.800884]  ? mutex_lock+0xe/0x30
+[    7.800886]  ? acpi_dev_found+0x5f/0x70
+[    7.800887]  local_pci_probe+0x41/0x90
+[    7.800889]  pci_device_probe+0xff/0x1b0
+[    7.800890]  really_probe+0x24b/0x3b0
+[    7.800891]  driver_probe_device+0xb3/0xf0
+[    7.800892]  __driver_attach+0xea/0x110
+[    7.800894]  ? driver_probe_device+0xf0/0xf0
+[    7.800895]  bus_for_each_dev+0x77/0xc0
+[    7.800896]  ? klist_add_tail+0x3b/0x70
+[    7.800897]  bus_add_driver+0x152/0x230
+[    7.800898]  ? 0xffffffffc090e000
+[    7.800899]  driver_register+0x6b/0xb0
+[    7.800900]  ? 0xffffffffc090e000
+[    7.800901]  do_one_initcall+0x46/0x1c3
+[    7.800903]  ? _cond_resched+0x15/0x30
+[    7.800904]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    7.800906]  do_init_module+0x5a/0x210
+[    7.800907]  load_module.constprop.62+0x214f/0x22a0
+[    7.800909]  ? security_kernel_post_read_file+0x38/0x50
+[    7.800911]  ? __do_sys_finit_module+0xa8/0x110
+[    7.800912]  __do_sys_finit_module+0xa8/0x110
+[    7.800913]  do_syscall_64+0x5a/0x110
+[    7.800915]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    7.800916] RIP: 0033:0x7f87c16da099
+[    7.800917] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    7.800918] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    7.800919] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    7.800919] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    7.800919] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    7.800920] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    7.800920] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    7.800922] ---[ end trace 30ce409ac2ee48dd ]---
+[    7.809315] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    8.016586] ------------[ cut here ]------------
+[    8.016587] eDP powered off while attempting aux channel communication.
+[    8.016631] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.016632] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    8.016640] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    8.016641] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    8.016664] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.016664] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    8.016665] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    8.016666] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    8.016667] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    8.016667] RBP: ffff945c47072108 R08: 000000000000097f R09: 0000000000000004
+[    8.016667] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    8.016668] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    8.016669] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    8.016669] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    8.016670] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    8.016671] Call Trace:
+[    8.016676]  ? finish_wait+0x80/0x80
+[    8.016698]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    8.016721]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    8.016727]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    8.016731]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    8.016753]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    8.016774]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    8.016795]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    8.016817]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    8.016840]  ? fwtable_write32+0x46/0x210 [i915]
+[    8.016861]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    8.016881]  i915_driver_load+0xab4/0xd50 [i915]
+[    8.016883]  ? _cond_resched+0x15/0x30
+[    8.016884]  ? mutex_lock+0xe/0x30
+[    8.016885]  ? acpi_dev_found+0x5f/0x70
+[    8.016887]  local_pci_probe+0x41/0x90
+[    8.016888]  pci_device_probe+0xff/0x1b0
+[    8.016890]  really_probe+0x24b/0x3b0
+[    8.016891]  driver_probe_device+0xb3/0xf0
+[    8.016892]  __driver_attach+0xea/0x110
+[    8.016893]  ? driver_probe_device+0xf0/0xf0
+[    8.016895]  bus_for_each_dev+0x77/0xc0
+[    8.016896]  ? klist_add_tail+0x3b/0x70
+[    8.016897]  bus_add_driver+0x152/0x230
+[    8.016898]  ? 0xffffffffc090e000
+[    8.016899]  driver_register+0x6b/0xb0
+[    8.016900]  ? 0xffffffffc090e000
+[    8.016902]  do_one_initcall+0x46/0x1c3
+[    8.016903]  ? _cond_resched+0x15/0x30
+[    8.016904]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    8.016906]  do_init_module+0x5a/0x210
+[    8.016907]  load_module.constprop.62+0x214f/0x22a0
+[    8.016909]  ? security_kernel_post_read_file+0x38/0x50
+[    8.016911]  ? __do_sys_finit_module+0xa8/0x110
+[    8.016912]  __do_sys_finit_module+0xa8/0x110
+[    8.016914]  do_syscall_64+0x5a/0x110
+[    8.016915]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    8.016916] RIP: 0033:0x7f87c16da099
+[    8.016917] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    8.016918] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    8.016919] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    8.016919] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    8.016919] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    8.016920] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    8.016920] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    8.016922] ---[ end trace 30ce409ac2ee48de ]---
+[    8.025316] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    8.232584] ------------[ cut here ]------------
+[    8.232585] eDP powered off while attempting aux channel communication.
+[    8.232628] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.232629] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    8.232638] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    8.232639] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    8.232662] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.232663] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    8.232664] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    8.232665] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    8.232665] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    8.232666] RBP: ffff945c47072108 R08: 00000000000009c0 R09: 0000000000000004
+[    8.232666] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    8.232667] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    8.232668] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    8.232668] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    8.232669] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    8.232669] Call Trace:
+[    8.232674]  ? finish_wait+0x80/0x80
+[    8.232696]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    8.232719]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    8.232725]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    8.232729]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    8.232751]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    8.232773]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    8.232793]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    8.232816]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    8.232839]  ? fwtable_write32+0x46/0x210 [i915]
+[    8.232860]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    8.232879]  i915_driver_load+0xab4/0xd50 [i915]
+[    8.232882]  ? _cond_resched+0x15/0x30
+[    8.232883]  ? mutex_lock+0xe/0x30
+[    8.232884]  ? acpi_dev_found+0x5f/0x70
+[    8.232886]  local_pci_probe+0x41/0x90
+[    8.232887]  pci_device_probe+0xff/0x1b0
+[    8.232889]  really_probe+0x24b/0x3b0
+[    8.232890]  driver_probe_device+0xb3/0xf0
+[    8.232891]  __driver_attach+0xea/0x110
+[    8.232892]  ? driver_probe_device+0xf0/0xf0
+[    8.232893]  bus_for_each_dev+0x77/0xc0
+[    8.232895]  ? klist_add_tail+0x3b/0x70
+[    8.232896]  bus_add_driver+0x152/0x230
+[    8.232896]  ? 0xffffffffc090e000
+[    8.232898]  driver_register+0x6b/0xb0
+[    8.232898]  ? 0xffffffffc090e000
+[    8.232900]  do_one_initcall+0x46/0x1c3
+[    8.232901]  ? _cond_resched+0x15/0x30
+[    8.232902]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    8.232904]  do_init_module+0x5a/0x210
+[    8.232905]  load_module.constprop.62+0x214f/0x22a0
+[    8.232908]  ? security_kernel_post_read_file+0x38/0x50
+[    8.232909]  ? __do_sys_finit_module+0xa8/0x110
+[    8.232910]  __do_sys_finit_module+0xa8/0x110
+[    8.232912]  do_syscall_64+0x5a/0x110
+[    8.232913]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    8.232914] RIP: 0033:0x7f87c16da099
+[    8.232915] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    8.232916] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    8.232917] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    8.232917] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    8.232918] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    8.232918] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    8.232919] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    8.232920] ---[ end trace 30ce409ac2ee48df ]---
+[    8.241313] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    8.448586] ------------[ cut here ]------------
+[    8.448587] eDP powered off while attempting aux channel communication.
+[    8.448630] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.448631] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    8.448640] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    8.448640] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    8.448663] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.448664] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    8.448665] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    8.448666] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    8.448666] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    8.448667] RBP: ffff945c47072108 R08: 0000000000000a01 R09: 0000000000000004
+[    8.448667] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    8.448668] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    8.448669] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    8.448669] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    8.448670] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    8.448670] Call Trace:
+[    8.448675]  ? finish_wait+0x80/0x80
+[    8.448697]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    8.448720]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    8.448725]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    8.448729]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    8.448752]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    8.448774]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    8.448795]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    8.448817]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    8.448840]  ? fwtable_write32+0x46/0x210 [i915]
+[    8.448862]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    8.448881]  i915_driver_load+0xab4/0xd50 [i915]
+[    8.448883]  ? _cond_resched+0x15/0x30
+[    8.448884]  ? mutex_lock+0xe/0x30
+[    8.448886]  ? acpi_dev_found+0x5f/0x70
+[    8.448887]  local_pci_probe+0x41/0x90
+[    8.448889]  pci_device_probe+0xff/0x1b0
+[    8.448891]  really_probe+0x24b/0x3b0
+[    8.448892]  driver_probe_device+0xb3/0xf0
+[    8.448893]  __driver_attach+0xea/0x110
+[    8.448894]  ? driver_probe_device+0xf0/0xf0
+[    8.448895]  bus_for_each_dev+0x77/0xc0
+[    8.448897]  ? klist_add_tail+0x3b/0x70
+[    8.448898]  bus_add_driver+0x152/0x230
+[    8.448899]  ? 0xffffffffc090e000
+[    8.448900]  driver_register+0x6b/0xb0
+[    8.448900]  ? 0xffffffffc090e000
+[    8.448902]  do_one_initcall+0x46/0x1c3
+[    8.448903]  ? _cond_resched+0x15/0x30
+[    8.448905]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    8.448906]  do_init_module+0x5a/0x210
+[    8.448907]  load_module.constprop.62+0x214f/0x22a0
+[    8.448910]  ? security_kernel_post_read_file+0x38/0x50
+[    8.448911]  ? __do_sys_finit_module+0xa8/0x110
+[    8.448912]  __do_sys_finit_module+0xa8/0x110
+[    8.448914]  do_syscall_64+0x5a/0x110
+[    8.448915]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    8.448916] RIP: 0033:0x7f87c16da099
+[    8.448917] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    8.448918] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    8.448919] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    8.448919] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    8.448920] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    8.448920] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    8.448921] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    8.448922] ---[ end trace 30ce409ac2ee48e0 ]---
+[    8.457316] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    8.664586] ------------[ cut here ]------------
+[    8.664587] eDP powered off while attempting aux channel communication.
+[    8.664631] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.664631] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    8.664640] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    8.664641] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    8.664664] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.664665] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    8.664665] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    8.664666] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    8.664667] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    8.664667] RBP: ffff945c47072108 R08: 0000000000000a42 R09: 0000000000000004
+[    8.664668] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    8.664668] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    8.664669] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    8.664670] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    8.664670] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    8.664671] Call Trace:
+[    8.664676]  ? finish_wait+0x80/0x80
+[    8.664697]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    8.664721]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    8.664726]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    8.664730]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    8.664753]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    8.664775]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    8.664796]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    8.664818]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    8.664841]  ? fwtable_write32+0x46/0x210 [i915]
+[    8.664863]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    8.664882]  i915_driver_load+0xab4/0xd50 [i915]
+[    8.664884]  ? _cond_resched+0x15/0x30
+[    8.664885]  ? mutex_lock+0xe/0x30
+[    8.664887]  ? acpi_dev_found+0x5f/0x70
+[    8.664888]  local_pci_probe+0x41/0x90
+[    8.664890]  pci_device_probe+0xff/0x1b0
+[    8.664892]  really_probe+0x24b/0x3b0
+[    8.664893]  driver_probe_device+0xb3/0xf0
+[    8.664894]  __driver_attach+0xea/0x110
+[    8.664895]  ? driver_probe_device+0xf0/0xf0
+[    8.664896]  bus_for_each_dev+0x77/0xc0
+[    8.664898]  ? klist_add_tail+0x3b/0x70
+[    8.664899]  bus_add_driver+0x152/0x230
+[    8.664900]  ? 0xffffffffc090e000
+[    8.664901]  driver_register+0x6b/0xb0
+[    8.664901]  ? 0xffffffffc090e000
+[    8.664903]  do_one_initcall+0x46/0x1c3
+[    8.664904]  ? _cond_resched+0x15/0x30
+[    8.664906]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    8.664907]  do_init_module+0x5a/0x210
+[    8.664908]  load_module.constprop.62+0x214f/0x22a0
+[    8.664911]  ? security_kernel_post_read_file+0x38/0x50
+[    8.664912]  ? __do_sys_finit_module+0xa8/0x110
+[    8.664913]  __do_sys_finit_module+0xa8/0x110
+[    8.664915]  do_syscall_64+0x5a/0x110
+[    8.664916]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    8.664917] RIP: 0033:0x7f87c16da099
+[    8.664918] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    8.664919] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    8.664920] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    8.664920] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    8.664921] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    8.664921] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    8.664922] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    8.664923] ---[ end trace 30ce409ac2ee48e1 ]---
+[    8.673316] [drm:wait_panel_status [i915]] *ERROR* PPS state mismatch
+[    8.880589] ------------[ cut here ]------------
+[    8.880590] eDP powered off while attempting aux channel communication.
+[    8.880634] WARNING: CPU: 7 PID: 129 at drivers/gpu/drm/i915/intel_dp.c:961 intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.880635] Modules linked in: sd_mod hid_generic usbhid hid crc32c_intel i915(+) i2c_algo_bit ahci aesni_intel drm_kms_helper libahci aes_x86_64 crypto_simd r8169 cryptd glue_helper realtek nvme libata libphy nvme_core scsi_mod drm fan thermal wmi video button
+[    8.880643] CPU: 7 PID: 129 Comm: systemd-udevd Tainted: G        W         4.19.0-amd64-desktop #3106
+[    8.880644] Hardware name: TSINGHUA TONGFANG COMPUTER E500/B460-N2(J), BIOS J008NS0 02/01/2021
+[    8.880667] RIP: 0010:intel_dp_aux_xfer+0x513/0x670 [i915]
+[    8.880668] Code: 73 bb ff ff 84 c0 0f 85 e2 fb ff ff 48 8b 7c 24 08 e8 e1 bb ff ff 84 c0 0f 85 d0 fb ff ff 48 c7 c7 18 56 88 c0 e8 77 e0 45 cb <0f> 0b 48 8b 7c 24 08 48 8d 74 24 40 48 8b ab 58 08 00 00 e8 e5 b9
+[    8.880669] RSP: 0018:ffffb7a9011ef7f0 EFLAGS: 00010286
+[    8.880670] RAX: 0000000000000000 RBX: ffff945c45ea0000 RCX: ffffffff8cc4de68
+[    8.880670] RDX: 0000000000000001 RSI: 0000000000000086 RDI: 0000000000000247
+[    8.880671] RBP: ffff945c47072108 R08: 0000000000000a83 R09: 0000000000000004
+[    8.880671] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000004
+[    8.880672] R13: ffffb7a9011ef8b0 R14: ffff945c47072108 R15: ffff945c45ea0000
+[    8.880673] FS:  00007f87c10e8d40(0000) GS:ffff945c573c0000(0000) knlGS:0000000000000000
+[    8.880673] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    8.880674] CR2: 00005584b071da58 CR3: 00000002471e8004 CR4: 00000000003606e0
+[    8.880674] Call Trace:
+[    8.880679]  ? finish_wait+0x80/0x80
+[    8.880701]  intel_dp_aux_transfer+0xb0/0x240 [i915]
+[    8.880724]  ? fwtable_read32+0x83/0x1b0 [i915]
+[    8.880730]  drm_dp_dpcd_access+0x79/0x110 [drm_kms_helper]
+[    8.880734]  drm_dp_dpcd_read+0x2e/0xc0 [drm_kms_helper]
+[    8.880757]  intel_dp_read_dpcd+0x24/0x50 [i915]
+[    8.880778]  intel_dp_init_connector+0x6d3/0xf20 [i915]
+[    8.880799]  intel_ddi_init+0x39a/0x4c0 [i915]
+[    8.880822]  intel_modeset_init+0x1436/0x1b30 [i915]
+[    8.880845]  ? fwtable_write32+0x46/0x210 [i915]
+[    8.880867]  ? intel_setup_gmbus+0x228/0x2c0 [i915]
+[    8.880886]  i915_driver_load+0xab4/0xd50 [i915]
+[    8.880889]  ? _cond_resched+0x15/0x30
+[    8.880889]  ? mutex_lock+0xe/0x30
+[    8.880891]  ? acpi_dev_found+0x5f/0x70
+[    8.880892]  local_pci_probe+0x41/0x90
+[    8.880894]  pci_device_probe+0xff/0x1b0
+[    8.880895]  really_probe+0x24b/0x3b0
+[    8.880896]  driver_probe_device+0xb3/0xf0
+[    8.880898]  __driver_attach+0xea/0x110
+[    8.880899]  ? driver_probe_device+0xf0/0xf0
+[    8.880900]  bus_for_each_dev+0x77/0xc0
+[    8.880901]  ? klist_add_tail+0x3b/0x70
+[    8.880903]  bus_add_driver+0x152/0x230
+[    8.880904]  ? 0xffffffffc090e000
+[    8.880905]  driver_register+0x6b/0xb0
+[    8.880905]  ? 0xffffffffc090e000
+[    8.880907]  do_one_initcall+0x46/0x1c3
+[    8.880908]  ? _cond_resched+0x15/0x30
+[    8.880910]  ? kmem_cache_alloc_trace+0x172/0x1e0
+[    8.880911]  do_init_module+0x5a/0x210
+[    8.880912]  load_module.constprop.62+0x214f/0x22a0
+[    8.880915]  ? security_kernel_post_read_file+0x38/0x50
+[    8.880916]  ? __do_sys_finit_module+0xa8/0x110
+[    8.880917]  __do_sys_finit_module+0xa8/0x110
+[    8.880919]  do_syscall_64+0x5a/0x110
+[    8.880920]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[    8.880921] RIP: 0033:0x7f87c16da099
+[    8.880922] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d c7 6d 0c 00 f7 d8 64 89 01 48
+[    8.880923] RSP: 002b:00007fff7fa1bd48 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
+[    8.880924] RAX: ffffffffffffffda RBX: 00005584b06021b0 RCX: 00007f87c16da099
+[    8.880924] RDX: 0000000000000000 RSI: 00007f87c15decad RDI: 000000000000000e
+[    8.880925] RBP: 00007f87c15decad R08: 0000000000000000 R09: 0000000000000000
+[    8.880925] R10: 000000000000000e R11: 0000000000000246 R12: 0000000000000000
+[    8.880926] R13: 00005584b05f9880 R14: 0000000000020000 R15: 00005584b06021b0
+[    8.880927] ---[ end trace 30ce409ac2ee48e2 ]---
+[    8.889297] [drm] failed to retrieve link info, disabling eDP
+[    9.426273] [drm] Initialized i915 1.6.0 20180719 for 0000:00:02.0 on minor 0
+[    9.427414] ACPI: Video Device [GFX0] (multi-head: yes  rom: no  post: no)
+[    9.427638] input: Video Bus as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/LNXVIDEO:00/input/input8
+[    9.458322] fbcon: inteldrmfb (fb0) is primary device
+[    9.484420] Console: switching to colour frame buffer device 240x67
+[    9.503503] i915 0000:00:02.0: fb0: inteldrmfb frame buffer device
+[    9.756511] raid6: sse2x1   gen() 13278 MB/s
+[    9.824498] raid6: sse2x1   xor()  9674 MB/s
+[    9.892510] raid6: sse2x2   gen() 15765 MB/s
+[    9.960508] raid6: sse2x2   xor() 11062 MB/s
+[   10.028508] raid6: sse2x4   gen() 18018 MB/s
+[   10.096507] raid6: sse2x4   xor() 11979 MB/s
+[   10.164501] raid6: avx2x1   gen() 26505 MB/s
+[   10.232506] raid6: avx2x1   xor() 18588 MB/s
+[   10.300506] raid6: avx2x2   gen() 32618 MB/s
+[   10.368507] raid6: avx2x2   xor() 20382 MB/s
+[   10.436506] raid6: avx2x4   gen() 34149 MB/s
+[   10.504501] raid6: avx2x4   xor() 22682 MB/s
+[   10.504502] raid6: using algorithm avx2x4 gen() 34149 MB/s
+[   10.504502] raid6: .... xor() 22682 MB/s, rmw enabled
+[   10.504503] raid6: using avx2x2 recovery algorithm
+[   10.505118] xor: automatically using best checksumming function   avx       
+[   10.512858] Btrfs loaded, crc32c=crc32c-intel
+[   10.567010] PM: Image not found (code -22)
+[   10.839816] EXT4-fs (nvme0n1p3): mounted filesystem with ordered data mode. Opts: (null)
+[   10.903346] partition count: 1, comm[1]: init, path: /usr/lib/systemd/systemd, cmdline: (null)
+[   10.903350] [hook_mmap_file] command: init, device(2), mount(2), elf enabled: 1
+[   10.978948] systemd[1]: RTC configured in localtime, applying delta of 480 minutes to system time.
+[   10.989194] systemd[1]: Inserted module 'autofs4'
+[   11.010575] systemd[1]: systemd 241 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD -IDN2 +IDN -PCRE2 default-hierarchy=hybrid)
+[   11.028697] systemd[1]: Detected architecture x86-64.
+[   11.032701] systemd[1]: Set hostname to ...
+[   11.108995] systemd[1]: /lib/systemd/system/smbd.service:9: PIDFile= references path below legacy directory /var/run/, updating /var/run/samba/smbd.pid \xe2\x86\x92 /run/samba/smbd.pid; please update the unit file accordingly.
+[   11.109223] systemd[1]: Configuration file /etc/systemd/system/runsunloginclient.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   11.110797] systemd[1]: /lib/systemd/system/nmbd.service:9: PIDFile= references path below legacy directory /var/run/, updating /var/run/samba/nmbd.pid \xe2\x86\x92 /run/samba/nmbd.pid; please update the unit file accordingly.
+[   11.111880] systemd[1]: Configuration file /lib/systemd/system/license.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   11.117509] systemd[1]: Configuration file /lib/systemd/system/com.deepin.userexperience.Daemon.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   11.121434] systemd[1]: Configuration file /lib/systemd/system/deepin-elf-verify.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   11.129926] systemd[1]: Listening on udev Kernel Socket.
+[   11.142276] EXT4-fs (nvme0n1p3): re-mounted. Opts: (null)
+[   11.143785] vfs_monitor: loading out-of-tree module taints kernel.
+[   11.144221] mp: /, major: 3, minor: 3
+[   11.144222] partition count: 1, comm[328]: systemd-modules, path: /usr/lib/systemd/systemd-modules-load, cmdline: /lib/systemd/systemd-modules-load
+[   11.209773] register_kretprobes 10 ok
+[   11.427797] parport_pc 00:02: reported by Plug and Play ACPI
+[   11.427869] parport0: PC-style at 0x378, irq 5 [PCSPP]
+[   11.444485] mei_me 0000:00:16.0: enabling device (0000 -> 0002)
+[   11.445514] sd 4:0:0:0: Attached scsi generic sg0 type 0
+[   11.447686] input: PC Speaker as /devices/platform/pcspkr/input/input9
+[   11.499957] EFI Variables Facility v0.08 2004-May-17
+[   11.500440] ppdev: user-space parallel port driver
+[   11.525199] HDAC: Support HDAC ID patch V1.0.0
+[   11.525201] HDAC: GFX HDAC patch V2.0.1
+[   11.525216] snd_hda_intel 0000:00:1f.3: enabling device (0400 -> 0402)
+[   11.525747] snd_hda_intel 0000:00:1f.3: chipset global capabilities = 0x9701
+[   11.525748] snd_hda_intel 0000:00:1f.3: number of I/O streams is 16, forcing separate stream tags
+[   11.525756] snd_hda_intel 0000:00:1f.3: Clearing TCSEL
+[   11.529769] snd_hda_intel 0000:00:1f.3: codec #0 probed OK
+[   11.529802] snd_hda_intel 0000:00:1f.3: codec #2 probed OK
+[   11.529803] snd_hda_intel 0000:00:1f.3: snd_hda_codec_device_init: entry
+[   11.530141] snd_hda_intel 0000:00:1f.3: snd_hda_codec_device_new: entry
+[   11.533622] snd_hda_intel 0000:00:1f.3: snd_hda_codec_device_init: entry
+[   11.533950] snd_hda_intel 0000:00:1f.3: snd_hda_codec_device_new: entry
+[   11.542064] snd_hda_codec_realtek hdaudioC0D0: SKU: Nid=0x1d sku_cfg=0x4024c601
+[   11.542066] snd_hda_codec_realtek hdaudioC0D0: SKU: port_connectivity=0x1
+[   11.542067] snd_hda_codec_realtek hdaudioC0D0: SKU: enable_pcbeep=0x0
+[   11.542068] snd_hda_codec_realtek hdaudioC0D0: SKU: check_sum=0x00000004
+[   11.542068] snd_hda_codec_realtek hdaudioC0D0: SKU: customization=0x000000c6
+[   11.542069] snd_hda_codec_realtek hdaudioC0D0: SKU: external_amp=0x0
+[   11.542070] snd_hda_codec_realtek hdaudioC0D0: SKU: platform_type=0x0
+[   11.542071] snd_hda_codec_realtek hdaudioC0D0: SKU: swap=0x0
+[   11.542071] snd_hda_codec_realtek hdaudioC0D0: SKU: override=0x1
+[   11.542472] snd_hda_codec_realtek hdaudioC0D0: autoconfig for ALC892: line_outs=1 (0x14/0x0/0x0/0x0/0x0) type:line
+[   11.542473] snd_hda_codec_realtek hdaudioC0D0:    speaker_outs=1 (0x15/0x0/0x0/0x0/0x0)
+[   11.542473] snd_hda_codec_realtek hdaudioC0D0:    hp_outs=1 (0x1b/0x0/0x0/0x0/0x0)
+[   11.542474] snd_hda_codec_realtek hdaudioC0D0:    mono: mono_out=0x0
+[   11.542474] snd_hda_codec_realtek hdaudioC0D0:    inputs:
+[   11.542475] snd_hda_codec_realtek hdaudioC0D0:      Front Mic=0x19
+[   11.542476] snd_hda_codec_realtek hdaudioC0D0:      Rear Mic=0x18
+[   11.542476] snd_hda_codec_realtek hdaudioC0D0:      Line=0x1a
+[   11.542477] snd_hda_codec_realtek hdaudioC0D0: realtek: No valid SSID, checking pincfg 0x4024c601 for NID 0x1d
+[   11.542478] snd_hda_codec_realtek hdaudioC0D0: realtek: Enabling init ASM_ID=0xc601 CODEC_ID=10ec0892
+[   11.544673] snd_hda_codec_realtek hdaudioC0D0: ==> lo_type=0, wired=1, mio=1, badness=0x0
+[   11.544675] snd_hda_codec_realtek hdaudioC0D0: multi_outs = 14/0/0/0 : 2/4/5/0 (type LO)
+[   11.544677] snd_hda_codec_realtek hdaudioC0D0:   out path: depth=3 '02:0c:14'
+[   11.544678] snd_hda_codec_realtek hdaudioC0D0: multi_ios(2) = 1a/18 : 4/5
+[   11.544679] snd_hda_codec_realtek hdaudioC0D0:   mio path: depth=3 '04:0e:1a'
+[   11.544680] snd_hda_codec_realtek hdaudioC0D0:   mio path: depth=3 '05:0f:18'
+[   11.544681] snd_hda_codec_realtek hdaudioC0D0: hp_outs = 1b/0/0/0 : 25/0/0/0
+[   11.544682] snd_hda_codec_realtek hdaudioC0D0:   hp  path: depth=3 '25:26:1b'
+[   11.544683] snd_hda_codec_realtek hdaudioC0D0: spk_outs = 15/0/0/0 : 3/0/0/0
+[   11.544684] snd_hda_codec_realtek hdaudioC0D0:   spk path: depth=3 '03:0d:15'
+[   11.544686] snd_hda_codec_realtek hdaudioC0D0: ==> Best config: lo_type=0, wired=1, mio=1
+[   11.544687] snd_hda_codec_realtek hdaudioC0D0: multi_outs = 14/0/0/0 : 2/4/5/0 (type LO)
+[   11.544688] snd_hda_codec_realtek hdaudioC0D0:   out path: depth=3 '02:0c:14'
+[   11.544689] snd_hda_codec_realtek hdaudioC0D0: multi_ios(2) = 1a/18 : 4/5
+[   11.544690] snd_hda_codec_realtek hdaudioC0D0:   mio path: depth=3 '04:0e:1a'
+[   11.544691] snd_hda_codec_realtek hdaudioC0D0:   mio path: depth=3 '05:0f:18'
+[   11.544692] snd_hda_codec_realtek hdaudioC0D0: hp_outs = 1b/0/0/0 : 25/0/0/0
+[   11.544693] snd_hda_codec_realtek hdaudioC0D0:   hp  path: depth=3 '25:26:1b'
+[   11.544694] snd_hda_codec_realtek hdaudioC0D0: spk_outs = 15/0/0/0 : 3/0/0/0
+[   11.544695] snd_hda_codec_realtek hdaudioC0D0:   spk path: depth=3 '03:0d:15'
+[   11.544790] snd_hda_codec_realtek hdaudioC0D0: loopback path: depth=2 '19:0b'
+[   11.545122] snd_hda_codec_realtek hdaudioC0D0: input path: depth=3 '19:23:08'
+[   11.545456] snd_hda_codec_realtek hdaudioC0D0: input path: depth=3 '19:22:09'
+[   11.545493] snd_hda_codec_realtek hdaudioC0D0: loopback path: depth=2 '18:0b'
+[   11.545495] snd_hda_codec_realtek hdaudioC0D0: input path: depth=3 '18:23:08'
+[   11.545496] snd_hda_codec_realtek hdaudioC0D0: input path: depth=3 '18:22:09'
+[   11.545498] snd_hda_codec_realtek hdaudioC0D0: loopback path: depth=2 '1a:0b'
+[   11.545500] snd_hda_codec_realtek hdaudioC0D0: input path: depth=3 '1a:23:08'
+[   11.545501] snd_hda_codec_realtek hdaudioC0D0: input path: depth=3 '1a:22:09'
+[   11.545503] snd_hda_codec_realtek hdaudioC0D0: Enable HP auto-muting on NID 0x1b
+[   11.545508] snd_hda_codec_realtek hdaudioC0D0: Enable Line-Out auto-muting on NID 0x14
+[   11.557335] snd_hda_codec_hdmi hdaudioC0D2: No i915 binding for Intel HDMI/DP codec
+[   11.557537] hdaudio hdaudioC0D2: Unable to bind the codec
+[   11.557718] input: HDA Intel Front Mic as /devices/pci0000:00/0000:00:1f.3/sound/card0/input10
+[   11.557755] input: HDA Intel Rear Mic as /devices/pci0000:00/0000:00:1f.3/sound/card0/input11
+[   11.557786] input: HDA Intel Line as /devices/pci0000:00/0000:00:1f.3/sound/card0/input12
+[   11.557819] input: HDA Intel Line Out as /devices/pci0000:00/0000:00:1f.3/sound/card0/input13
+[   11.557852] input: HDA Intel Front Headphone as /devices/pci0000:00/0000:00:1f.3/sound/card0/input14
+[   11.588080] Adding 11534332k swap on /dev/nvme0n1p7.  Priority:-2 extents:1 across:11534332k SSFS
+[   11.621693] EXT4-fs (nvme0n1p6): mounted filesystem with ordered data mode. Opts: (null)
+[   11.621710] partition /recovery [3, 5] added, comm[636]: mount
+[   11.631075] EXT4-fs (nvme0n1p2): mounted filesystem with ordered data mode. Opts: (null)
+[   11.631084] partition /boot [3, 2] added, comm[642]: mount
+[   11.633217] EXT4-fs (nvme0n1p5): mounted filesystem with ordered data mode. Opts: (null)
+[   11.633227] partition /data [3, 4] added, comm[639]: mount
+[   11.641003] partition /home [3, 4] added, comm[651]: mount
+[   11.643155] partition /opt [3, 4] added, comm[652]: mount
+[   11.644899] partition /var [3, 4] added, comm[654]: mount
+[   11.647647] [hook_mmap_file] is in developer mode
+[   11.647649] [hook_mmap_file] is in developer mode
+[   11.647650] [hook_mmap_file] is in developer mode
+[   11.648365] partition /root [3, 4] added, comm[656]: mount
+[   11.650684] partition /boot/efi [3, 1] added, comm[649]: mount
+[   11.650823] EXT4-fs (sda): mounted filesystem with ordered data mode. Opts: (null)
+[   11.650832] partition /lirui-disk [8, 0] added, comm[575]: mount
+[   11.655666] systemd-journald[327]: Received request to flush runtime journal from PID 1
+[   12.294353] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[   12.357800] broken atomic modeset userspace detected, disabling atomic
+[   12.415260] IPv6: ADDRCONF(NETDEV_UP): enp2s0: link is not ready
+[   12.417273] r8169 0000:02:00.0: firmware: direct-loading firmware rtl_nic/rtl8168e-3.fw
+[   12.417495] RTL8211E Gigabit Ethernet r8169-200:00: attached PHY driver [RTL8211E Gigabit Ethernet] (mii_bus:phy_addr=r8169-200:00, irq=IGNORE)
+[   12.621975] IPv6: ADDRCONF(NETDEV_UP): enp2s0: link is not ready
+[   12.664318] Bluetooth: Core ver 2.22
+[   12.664339] NET: Registered protocol family 31
+[   12.664339] Bluetooth: HCI device and connection manager initialized
+[   12.664343] Bluetooth: HCI socket layer initialized
+[   12.664346] Bluetooth: L2CAP socket layer initialized
+[   12.664350] Bluetooth: SCO socket layer initialized
+[   13.167538] fuse init (API version 7.27)
+[   13.529356] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
+[   13.535597] tun: Universal TUN/TAP device driver, 1.6
+[   13.536311] virbr0: port 1(virbr0-nic) entered blocking state
+[   13.536312] virbr0: port 1(virbr0-nic) entered disabled state
+[   13.536364] device virbr0-nic entered promiscuous mode
+[   13.732842] virbr0: port 1(virbr0-nic) entered blocking state
+[   13.732844] virbr0: port 1(virbr0-nic) entered listening state
+[   13.768205] virbr0: port 1(virbr0-nic) entered disabled state
+[   15.640205] r8169 0000:02:00.0 enp2s0: Link is Up - 1Gbps/Full - flow control off
+[   15.640212] IPv6: ADDRCONF(NETDEV_CHANGE): enp2s0: link becomes ready
+[   18.398329] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x8, stream=0x1, channel=0, format=0x4011
+[   18.417047] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x8
+[   18.418162] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[   18.428516] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[   18.444642] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[   18.456595] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[   18.468590] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[   18.482394] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x8, stream=0x1, channel=0, format=0x4011
+[   18.482398] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x8
+[   18.482409] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[   18.482410] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[   18.482410] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[   18.482411] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[   18.482412] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[   18.548751] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[   18.548753] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[   18.548754] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[   18.548754] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[   18.548755] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[   18.553235] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x8, stream=0x1, channel=0, format=0x4011
+[   18.716604] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[   18.716606] Bluetooth: BNEP filters: protocol multicast
+[   18.716609] Bluetooth: BNEP socket layer initialized
+[   19.284556] device enp2s0 entered promiscuous mode
+[   23.564584] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x8
+[   25.353642] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[   25.353644] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[   25.353644] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[   25.353645] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[   25.353645] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[   60.039003] pcieport 0000:00:1b.0: AER: Corrected error received: 0000:00:1b.0
+[   60.039007] pcieport 0000:00:1b.0: PCIe Bus Error: severity=Corrected, type=Physical Layer, (Receiver ID)
+[   60.039010] pcieport 0000:00:1b.0:   device [8086:a3eb] error status/mask=00000001/00002000
+[   60.039011] pcieport 0000:00:1b.0:    [ 0] RxErr                  (First)
+[  324.412020] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  324.412021] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  324.412022] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  324.412023] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  324.412023] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  329.425788] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  329.425790] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  329.425790] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  329.425791] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  329.425791] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[  335.099964] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  335.099967] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  335.099968] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  335.099969] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  335.099970] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  341.649119] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  341.649122] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  341.649122] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  341.649123] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  341.649123] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[  364.511505] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  364.511507] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  364.511508] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  364.511508] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  364.511509] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  370.174859] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  370.174860] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  370.174861] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  370.174862] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  370.174862] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[  400.686429] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  400.686431] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  400.686432] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  400.686432] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  400.686433] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  406.353787] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  406.353792] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  406.353793] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  406.353794] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  406.353794] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[  523.342672] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  523.342675] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  523.342676] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  523.342677] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  523.342677] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  529.004777] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  529.004779] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  529.004779] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  529.004780] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  529.004781] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[  619.815813] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  619.815816] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  619.815817] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  619.815818] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  619.815819] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  626.366116] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  626.366118] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  626.366118] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  626.366119] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  626.366120] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[  634.153096] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  634.153099] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  634.153100] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  634.153101] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  634.153102] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  639.819340] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  639.819343] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  639.819343] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  639.819344] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  639.819344] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[  642.973415] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  642.973417] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  642.973418] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  642.973419] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  642.973420] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  648.636578] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  648.636579] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  648.636580] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  648.636581] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  648.636581] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[  785.231285] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  785.231287] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  785.231288] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  785.231289] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  785.231289] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  790.898146] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  790.898151] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  790.898152] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  790.898153] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  790.898154] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[  791.204855] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[  791.204857] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[  791.204858] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[  791.204858] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[  791.204859] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[  796.869159] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[  796.869160] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[  796.869161] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[  796.869161] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[  796.869162] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 3528.941071] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 3528.941073] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 3528.941074] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 3528.941074] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 3528.941075] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 3534.605714] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 3534.605716] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 3534.605716] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 3534.605717] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 3534.605717] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 3614.632736] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 3614.632738] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 3614.632739] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 3614.632739] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 3614.632740] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 3620.299205] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 3620.299207] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 3620.299207] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 3620.299208] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 3620.299208] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 3643.924773] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 3643.924775] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 3643.924777] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 3643.924778] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 3643.924779] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 3649.590222] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 3649.590223] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 3649.590224] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 3649.590225] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 3649.590225] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 3659.809516] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 3659.809519] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 3659.809520] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 3659.809521] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 3659.809522] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 3665.475913] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 3665.475916] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 3665.475917] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 3665.475918] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 3665.475919] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 3674.882002] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 3674.882005] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 3674.882005] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 3674.882006] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 3674.882007] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 3686.148379] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 3686.148381] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 3686.148381] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 3686.148382] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 3686.148383] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 3687.784495] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 3687.784497] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 3687.784498] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 3687.784500] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 3687.784501] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 3693.448699] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 3693.448701] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 3693.448701] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 3693.448702] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 3693.448702] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 3701.723815] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 3701.723816] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 3701.723817] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 3701.723818] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 3701.723819] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 3707.388129] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 3707.388132] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 3707.388132] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 3707.388133] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 3707.388134] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 3710.627203] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 3710.627205] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 3710.627206] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 3710.627207] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 3710.627208] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 3720.095871] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 3720.095873] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 3720.095874] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 3720.095875] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 3720.095875] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 5302.337632] pcieport 0000:00:1b.0: AER: Corrected error received: 0000:00:1b.0
+[ 5302.337636] pcieport 0000:00:1b.0: PCIe Bus Error: severity=Corrected, type=Physical Layer, (Receiver ID)
+[ 5302.337639] pcieport 0000:00:1b.0:   device [8086:a3eb] error status/mask=00000001/00002000
+[ 5302.337640] pcieport 0000:00:1b.0:    [ 0] RxErr                  (First)
+[ 5509.646833] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 5509.646835] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 5509.646836] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 5509.646837] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 5509.646838] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 5515.313094] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 5515.313095] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 5515.313096] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 5515.313096] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 5515.313097] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 5641.864420] perf: interrupt took too long (2600 > 2500), lowering kernel.perf_event_max_sample_rate to 76750
+[ 6679.090588] pcieport 0000:00:1b.0: AER: Corrected error received: 0000:00:1b.0
+[ 6679.090592] pcieport 0000:00:1b.0: PCIe Bus Error: severity=Corrected, type=Physical Layer, (Receiver ID)
+[ 6679.090594] pcieport 0000:00:1b.0:   device [8086:a3eb] error status/mask=00000001/00002000
+[ 6679.090596] pcieport 0000:00:1b.0:    [ 0] RxErr                  (First)
+[ 6752.880636] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 6752.880639] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 6752.880640] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 6752.880641] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 6752.880642] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 6759.432050] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 6759.432053] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 6759.432054] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 6759.432055] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 6759.432055] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 6938.851880] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x2, stream=0x1, channel=0, format=0x4011
+[ 6938.851883] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x25, stream=0x1, channel=0, format=0x4011
+[ 6938.851884] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x4, stream=0x1, channel=0, format=0x4011
+[ 6938.851885] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x5, stream=0x1, channel=0, format=0x4011
+[ 6938.851886] snd_hda_codec_realtek hdaudioC0D0: hda_codec_setup_stream: NID=0x3, stream=0x1, channel=0, format=0x4011
+[ 6944.517773] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x2
+[ 6944.517777] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x4
+[ 6944.517778] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x5
+[ 6944.517780] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x25
+[ 6944.517781] snd_hda_codec_realtek hdaudioC0D0: hda_codec_cleanup_stream: NID=0x3
+[ 7000.753280] r8169 0000:02:00.0: invalid short VPD tag 00 at offset 1
