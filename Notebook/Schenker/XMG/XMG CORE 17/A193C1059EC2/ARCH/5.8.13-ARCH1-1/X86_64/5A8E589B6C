@@ -1,0 +1,1483 @@
+[   29.028734]  rpm_get_suppliers+0x5d/0xf0
+[   29.028735]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.028738]  __rpm_callback+0x112/0x130
+[   29.028739]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.028741]  rpm_callback+0x1f/0x70
+[   29.028743]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.028745]  rpm_resume+0x5d7/0x820
+[   29.028748]  pm_runtime_work+0x6c/0xa0
+[   29.028750]  process_one_work+0x1da/0x3d0
+[   29.028751]  worker_thread+0x4d/0x3d0
+[   29.028753]  ? rescuer_thread+0x410/0x410
+[   29.028755]  kthread+0x142/0x160
+[   29.028758]  ? __kthread_bind_mask+0x60/0x60
+[   29.028760]  ret_from_fork+0x22/0x30
+[   29.028763] ---[ end trace 5be9d46e8c059972 ]---
+[   29.028797] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.028798] ------------[ cut here ]------------
+[   29.028799] nouveau 0000:01:00.0: timeout
+[   29.028836] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.028836] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.028860]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.028869] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.028870] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.028872] Workqueue: pm pm_runtime_work
+[   29.028902] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.028904] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.028905] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.028906] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.028907] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.028908] RBP: ffff99514c72d148 R08: 0000000000001286 R09: 0000000000000001
+[   29.028909] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.028910] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.028911] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.028912] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.028914] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.028915] Call Trace:
+[   29.028951]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.028984]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.029017]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.029047]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.029050]  ? ktime_get+0x38/0xa0
+[   29.029087]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.029124]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.029154]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.029183]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.029213]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.029253]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.029293]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.029296]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.029298]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029300]  __rpm_callback+0x7b/0x130
+[   29.029302]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029304]  rpm_callback+0x1f/0x70
+[   29.029306]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029308]  rpm_resume+0x5d7/0x820
+[   29.029311]  rpm_get_suppliers+0x5d/0xf0
+[   29.029312]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029314]  __rpm_callback+0x112/0x130
+[   29.029316]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029318]  rpm_callback+0x1f/0x70
+[   29.029320]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029323]  rpm_resume+0x5d7/0x820
+[   29.029325]  pm_runtime_work+0x6c/0xa0
+[   29.029327]  process_one_work+0x1da/0x3d0
+[   29.029328]  worker_thread+0x4d/0x3d0
+[   29.029330]  ? rescuer_thread+0x410/0x410
+[   29.029332]  kthread+0x142/0x160
+[   29.029335]  ? __kthread_bind_mask+0x60/0x60
+[   29.029337]  ret_from_fork+0x22/0x30
+[   29.029340] ---[ end trace 5be9d46e8c059973 ]---
+[   29.029374] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.029376] ------------[ cut here ]------------
+[   29.029377] nouveau 0000:01:00.0: timeout
+[   29.029413] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.029413] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.029437]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.029447] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.029448] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.029450] Workqueue: pm pm_runtime_work
+[   29.029479] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.029482] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.029483] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.029484] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.029484] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.029486] RBP: ffff99514c72d148 R08: 00000000000012bd R09: 0000000000000001
+[   29.029487] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.029487] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.029489] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.029490] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.029491] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.029493] Call Trace:
+[   29.029528]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.029562]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.029595]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.029625]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.029627]  ? ktime_get+0x38/0xa0
+[   29.029665]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.029702]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.029732]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.029761]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.029790]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.029830]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.029869]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.029873]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.029874]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029877]  __rpm_callback+0x7b/0x130
+[   29.029878]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029880]  rpm_callback+0x1f/0x70
+[   29.029883]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029885]  rpm_resume+0x5d7/0x820
+[   29.029888]  rpm_get_suppliers+0x5d/0xf0
+[   29.029889]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029891]  __rpm_callback+0x112/0x130
+[   29.029893]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029895]  rpm_callback+0x1f/0x70
+[   29.029897]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.029900]  rpm_resume+0x5d7/0x820
+[   29.029902]  pm_runtime_work+0x6c/0xa0
+[   29.029904]  process_one_work+0x1da/0x3d0
+[   29.029906]  worker_thread+0x4d/0x3d0
+[   29.029908]  ? rescuer_thread+0x410/0x410
+[   29.029910]  kthread+0x142/0x160
+[   29.029912]  ? __kthread_bind_mask+0x60/0x60
+[   29.029914]  ret_from_fork+0x22/0x30
+[   29.029916] ---[ end trace 5be9d46e8c059974 ]---
+[   29.029950] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.029951] ------------[ cut here ]------------
+[   29.029953] nouveau 0000:01:00.0: timeout
+[   29.029989] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.029990] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.030014]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.030026] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.030027] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.030028] Workqueue: pm pm_runtime_work
+[   29.030059] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.030061] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.030062] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.030063] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.030064] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.030065] RBP: ffff99514c72d148 R08: 00000000000012f4 R09: 0000000000000001
+[   29.030066] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.030067] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.030068] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.030069] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.030071] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.030072] Call Trace:
+[   29.030107]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.030141]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.030173]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.030203]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.030206]  ? ktime_get+0x38/0xa0
+[   29.030243]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.030280]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.030310]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.030339]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.030369]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.030409]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.030448]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.030451]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.030452]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.030455]  __rpm_callback+0x7b/0x130
+[   29.030456]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.030459]  rpm_callback+0x1f/0x70
+[   29.030461]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.030464]  rpm_resume+0x5d7/0x820
+[   29.030466]  rpm_get_suppliers+0x5d/0xf0
+[   29.030468]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.030470]  __rpm_callback+0x112/0x130
+[   29.030471]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.030474]  rpm_callback+0x1f/0x70
+[   29.030475]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.030478]  rpm_resume+0x5d7/0x820
+[   29.030481]  pm_runtime_work+0x6c/0xa0
+[   29.030483]  process_one_work+0x1da/0x3d0
+[   29.030484]  worker_thread+0x4d/0x3d0
+[   29.030487]  ? rescuer_thread+0x410/0x410
+[   29.030489]  kthread+0x142/0x160
+[   29.030491]  ? __kthread_bind_mask+0x60/0x60
+[   29.030493]  ret_from_fork+0x22/0x30
+[   29.030496] ---[ end trace 5be9d46e8c059975 ]---
+[   29.030531] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.030532] ------------[ cut here ]------------
+[   29.030532] nouveau 0000:01:00.0: timeout
+[   29.030569] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.030569] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.030597]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.030603] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.030604] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.030605] Workqueue: pm pm_runtime_work
+[   29.030635] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.030636] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.030637] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.030639] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.030640] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.030640] RBP: ffff99514c72d148 R08: 000000000000132b R09: 0000000000000001
+[   29.030641] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.030642] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.030644] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.030644] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.030645] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.030646] Call Trace:
+[   29.030682]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.030715]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.030748]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.030778]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.030781]  ? ktime_get+0x38/0xa0
+[   29.030819]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.030856]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.030886]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.030916]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.030945]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.030985]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.031024]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.031028]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.031029]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031031]  __rpm_callback+0x7b/0x130
+[   29.031033]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031035]  rpm_callback+0x1f/0x70
+[   29.031037]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031039]  rpm_resume+0x5d7/0x820
+[   29.031042]  rpm_get_suppliers+0x5d/0xf0
+[   29.031044]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031045]  __rpm_callback+0x112/0x130
+[   29.031047]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031049]  rpm_callback+0x1f/0x70
+[   29.031051]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031054]  rpm_resume+0x5d7/0x820
+[   29.031056]  pm_runtime_work+0x6c/0xa0
+[   29.031058]  process_one_work+0x1da/0x3d0
+[   29.031059]  worker_thread+0x4d/0x3d0
+[   29.031061]  ? rescuer_thread+0x410/0x410
+[   29.031063]  kthread+0x142/0x160
+[   29.031064]  ? __kthread_bind_mask+0x60/0x60
+[   29.031067]  ret_from_fork+0x22/0x30
+[   29.031069] ---[ end trace 5be9d46e8c059976 ]---
+[   29.031118] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.031119] ------------[ cut here ]------------
+[   29.031119] nouveau 0000:01:00.0: timeout
+[   29.031155] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.031156] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.031181]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.031192] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.031193] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.031195] Workqueue: pm pm_runtime_work
+[   29.031225] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.031227] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.031228] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.031229] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.031229] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.031230] RBP: ffff99514c72d148 R08: 0000000000001362 R09: 0000000000000001
+[   29.031231] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.031232] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.031233] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.031234] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.031235] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.031237] Call Trace:
+[   29.031272]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.031306]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.031339]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.031369]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.031371]  ? ktime_get+0x38/0xa0
+[   29.031408]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.031446]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.031475]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.031505]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.031534]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.031575]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.031614]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.031617]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.031619]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031621]  __rpm_callback+0x7b/0x130
+[   29.031623]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031625]  rpm_callback+0x1f/0x70
+[   29.031627]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031630]  rpm_resume+0x5d7/0x820
+[   29.031632]  rpm_get_suppliers+0x5d/0xf0
+[   29.031634]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031636]  __rpm_callback+0x112/0x130
+[   29.031638]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031640]  rpm_callback+0x1f/0x70
+[   29.031641]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.031645]  rpm_resume+0x5d7/0x820
+[   29.031647]  pm_runtime_work+0x6c/0xa0
+[   29.031649]  process_one_work+0x1da/0x3d0
+[   29.031651]  worker_thread+0x4d/0x3d0
+[   29.031653]  ? rescuer_thread+0x410/0x410
+[   29.031655]  kthread+0x142/0x160
+[   29.031657]  ? __kthread_bind_mask+0x60/0x60
+[   29.031659]  ret_from_fork+0x22/0x30
+[   29.031662] ---[ end trace 5be9d46e8c059977 ]---
+[   29.031697] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.031697] ------------[ cut here ]------------
+[   29.031698] nouveau 0000:01:00.0: timeout
+[   29.031735] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.031735] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.031759]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.031767] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.031769] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.031771] Workqueue: pm pm_runtime_work
+[   29.031801] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.031803] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.031804] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.031805] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.031806] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.031807] RBP: ffff99514c72d148 R08: 0000000000001399 R09: 0000000000000001
+[   29.031808] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.031809] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.031810] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.031811] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.031812] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.031814] Call Trace:
+[   29.031850]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.031883]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.031916]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.031946]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.031949]  ? ktime_get+0x38/0xa0
+[   29.031986]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.032023]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.032053]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.032082]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.032112]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.032152]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.032191]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.032194]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.032195]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032198]  __rpm_callback+0x7b/0x130
+[   29.032199]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032202]  rpm_callback+0x1f/0x70
+[   29.032204]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032206]  rpm_resume+0x5d7/0x820
+[   29.032209]  rpm_get_suppliers+0x5d/0xf0
+[   29.032210]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032212]  __rpm_callback+0x112/0x130
+[   29.032214]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032216]  rpm_callback+0x1f/0x70
+[   29.032218]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032221]  rpm_resume+0x5d7/0x820
+[   29.032223]  pm_runtime_work+0x6c/0xa0
+[   29.032225]  process_one_work+0x1da/0x3d0
+[   29.032227]  worker_thread+0x4d/0x3d0
+[   29.032229]  ? rescuer_thread+0x410/0x410
+[   29.032231]  kthread+0x142/0x160
+[   29.032233]  ? __kthread_bind_mask+0x60/0x60
+[   29.032234]  ret_from_fork+0x22/0x30
+[   29.032237] ---[ end trace 5be9d46e8c059978 ]---
+[   29.032272] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.032273] ------------[ cut here ]------------
+[   29.032273] nouveau 0000:01:00.0: timeout
+[   29.032310] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.032310] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.032333]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.032342] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.032343] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.032345] Workqueue: pm pm_runtime_work
+[   29.032376] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.032378] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.032379] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.032380] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.032380] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.032382] RBP: ffff99514c72d148 R08: 00000000000013d0 R09: 0000000000000001
+[   29.032383] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.032384] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.032385] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.032386] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.032388] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.032390] Call Trace:
+[   29.032425]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.032459]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.032491]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.032521]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.032524]  ? ktime_get+0x38/0xa0
+[   29.032561]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.032598]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.032628]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.032657]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.032687]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.032727]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.032766]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.032770]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.032771]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032774]  __rpm_callback+0x7b/0x130
+[   29.032775]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032777]  rpm_callback+0x1f/0x70
+[   29.032780]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032782]  rpm_resume+0x5d7/0x820
+[   29.032785]  rpm_get_suppliers+0x5d/0xf0
+[   29.032786]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032788]  __rpm_callback+0x112/0x130
+[   29.032790]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032792]  rpm_callback+0x1f/0x70
+[   29.032794]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.032796]  rpm_resume+0x5d7/0x820
+[   29.032799]  pm_runtime_work+0x6c/0xa0
+[   29.032801]  process_one_work+0x1da/0x3d0
+[   29.032802]  worker_thread+0x4d/0x3d0
+[   29.032804]  ? rescuer_thread+0x410/0x410
+[   29.032806]  kthread+0x142/0x160
+[   29.032809]  ? __kthread_bind_mask+0x60/0x60
+[   29.032811]  ret_from_fork+0x22/0x30
+[   29.032814] ---[ end trace 5be9d46e8c059979 ]---
+[   29.032848] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.032849] ------------[ cut here ]------------
+[   29.032850] nouveau 0000:01:00.0: timeout
+[   29.032886] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.032887] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.032911]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.032923] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.032924] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.032925] Workqueue: pm pm_runtime_work
+[   29.032955] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.032957] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.032959] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.032959] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.032960] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.032961] RBP: ffff99514c72d148 R08: 0000000000001407 R09: 0000000000000001
+[   29.032962] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.032963] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.032964] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.032965] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.032966] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.032967] Call Trace:
+[   29.033003]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.033037]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.033069]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.033099]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.033102]  ? ktime_get+0x38/0xa0
+[   29.033139]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.033176]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.033206]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.033235]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.033265]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.033305]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.033344]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.033347]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.033349]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033351]  __rpm_callback+0x7b/0x130
+[   29.033353]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033355]  rpm_callback+0x1f/0x70
+[   29.033358]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033360]  rpm_resume+0x5d7/0x820
+[   29.033362]  rpm_get_suppliers+0x5d/0xf0
+[   29.033364]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033366]  __rpm_callback+0x112/0x130
+[   29.033367]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033369]  rpm_callback+0x1f/0x70
+[   29.033371]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033374]  rpm_resume+0x5d7/0x820
+[   29.033377]  pm_runtime_work+0x6c/0xa0
+[   29.033379]  process_one_work+0x1da/0x3d0
+[   29.033380]  worker_thread+0x4d/0x3d0
+[   29.033383]  ? rescuer_thread+0x410/0x410
+[   29.033385]  kthread+0x142/0x160
+[   29.033387]  ? __kthread_bind_mask+0x60/0x60
+[   29.033388]  ret_from_fork+0x22/0x30
+[   29.033391] ---[ end trace 5be9d46e8c05997a ]---
+[   29.033426] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.033427] ------------[ cut here ]------------
+[   29.033428] nouveau 0000:01:00.0: timeout
+[   29.033464] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.033464] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.033488]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.033500] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.033501] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.033503] Workqueue: pm pm_runtime_work
+[   29.033532] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.033534] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.033535] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.033536] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.033537] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.033538] RBP: ffff99514c72d148 R08: 000000000000143e R09: 0000000000000001
+[   29.033539] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.033540] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.033541] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.033542] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.033543] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.033544] Call Trace:
+[   29.033581]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.033614]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.033647]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.033677]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.033680]  ? ktime_get+0x38/0xa0
+[   29.033717]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.033755]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.033784]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.033814]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.033843]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.033883]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.033922]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.033925]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.033927]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033929]  __rpm_callback+0x7b/0x130
+[   29.033931]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033933]  rpm_callback+0x1f/0x70
+[   29.033935]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033937]  rpm_resume+0x5d7/0x820
+[   29.033940]  rpm_get_suppliers+0x5d/0xf0
+[   29.033941]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033943]  __rpm_callback+0x112/0x130
+[   29.033945]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033947]  rpm_callback+0x1f/0x70
+[   29.033949]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.033951]  rpm_resume+0x5d7/0x820
+[   29.033954]  pm_runtime_work+0x6c/0xa0
+[   29.033956]  process_one_work+0x1da/0x3d0
+[   29.033957]  worker_thread+0x4d/0x3d0
+[   29.033959]  ? rescuer_thread+0x410/0x410
+[   29.033961]  kthread+0x142/0x160
+[   29.033964]  ? __kthread_bind_mask+0x60/0x60
+[   29.033966]  ret_from_fork+0x22/0x30
+[   29.033969] ---[ end trace 5be9d46e8c05997b ]---
+[   29.034005] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.034005] ------------[ cut here ]------------
+[   29.034005] nouveau 0000:01:00.0: timeout
+[   29.034042] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.034043] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.034067]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.034081] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.034081] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.034083] Workqueue: pm pm_runtime_work
+[   29.034113] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.034115] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.034116] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.034117] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.034117] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.034118] RBP: ffff99514c72d148 R08: 0000000000001475 R09: 0000000000000001
+[   29.034120] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.034120] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.034121] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.034122] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.034123] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.034125] Call Trace:
+[   29.034161]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.034194]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.034227]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.034257]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.034260]  ? ktime_get+0x38/0xa0
+[   29.034297]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.034334]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.034364]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.034393]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.034412]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.034412]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.034412]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.034412]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.034412]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.034412]  __rpm_callback+0x7b/0x130
+[   29.034412]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.034412]  rpm_callback+0x1f/0x70
+[   29.034412]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.034412]  rpm_resume+0x5d7/0x820
+[   29.034412]  rpm_get_suppliers+0x5d/0xf0
+[   29.034412]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.034412]  __rpm_callback+0x112/0x130
+[   29.034412]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.034412]  rpm_callback+0x1f/0x70
+[   29.034412]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.034412]  rpm_resume+0x5d7/0x820
+[   29.034412]  pm_runtime_work+0x6c/0xa0
+[   29.034412]  process_one_work+0x1da/0x3d0
+[   29.034412]  worker_thread+0x4d/0x3d0
+[   29.034412]  ? rescuer_thread+0x410/0x410
+[   29.034412]  kthread+0x142/0x160
+[   29.034412]  ? __kthread_bind_mask+0x60/0x60
+[   29.034412]  ret_from_fork+0x22/0x30
+[   29.034412] ---[ end trace 5be9d46e8c05997c ]---
+[   29.034601] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.034602] ------------[ cut here ]------------
+[   29.034602] nouveau 0000:01:00.0: timeout
+[   29.034638] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.034639] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.034668]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.034679] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.034680] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.034682] Workqueue: pm pm_runtime_work
+[   29.034712] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.034714] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.034715] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.034716] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.034717] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.034718] RBP: ffff99514c72d148 R08: 00000000000014ac R09: 0000000000000001
+[   29.034719] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.034720] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.034721] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.034722] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.034723] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.034723] Call Trace:
+[   29.034758]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.034792]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.034825]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.034855]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.034857]  ? ktime_get+0x38/0xa0
+[   29.034895]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.034932]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.034962]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.034991]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.035021]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.035061]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.035100]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.035103]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.035105]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035107]  __rpm_callback+0x7b/0x130
+[   29.035109]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035111]  rpm_callback+0x1f/0x70
+[   29.035114]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035116]  rpm_resume+0x5d7/0x820
+[   29.035118]  rpm_get_suppliers+0x5d/0xf0
+[   29.035120]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035122]  __rpm_callback+0x112/0x130
+[   29.035124]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035126]  rpm_callback+0x1f/0x70
+[   29.035128]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035130]  rpm_resume+0x5d7/0x820
+[   29.035133]  pm_runtime_work+0x6c/0xa0
+[   29.035135]  process_one_work+0x1da/0x3d0
+[   29.035137]  worker_thread+0x4d/0x3d0
+[   29.035139]  ? rescuer_thread+0x410/0x410
+[   29.035141]  kthread+0x142/0x160
+[   29.035143]  ? __kthread_bind_mask+0x60/0x60
+[   29.035145]  ret_from_fork+0x22/0x30
+[   29.035147] ---[ end trace 5be9d46e8c05997d ]---
+[   29.035182] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.035183] ------------[ cut here ]------------
+[   29.035184] nouveau 0000:01:00.0: timeout
+[   29.035221] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.035221] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.035244]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.035253] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.035255] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.035257] Workqueue: pm pm_runtime_work
+[   29.035288] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.035290] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.035291] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.035292] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.035292] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.035294] RBP: ffff99514c72d148 R08: 00000000000014e3 R09: 0000000000000001
+[   29.035295] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.035295] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.035297] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.035298] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.035300] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.035302] Call Trace:
+[   29.035337]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.035371]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.035404]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.035434]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.035436]  ? ktime_get+0x38/0xa0
+[   29.035474]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.035511]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.035541]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.035570]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.035599]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.035640]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.035679]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.035683]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.035684]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035686]  __rpm_callback+0x7b/0x130
+[   29.035688]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035690]  rpm_callback+0x1f/0x70
+[   29.035693]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035695]  rpm_resume+0x5d7/0x820
+[   29.035698]  rpm_get_suppliers+0x5d/0xf0
+[   29.035699]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035701]  __rpm_callback+0x112/0x130
+[   29.035703]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035705]  rpm_callback+0x1f/0x70
+[   29.035707]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.035710]  rpm_resume+0x5d7/0x820
+[   29.035712]  pm_runtime_work+0x6c/0xa0
+[   29.035714]  process_one_work+0x1da/0x3d0
+[   29.035715]  worker_thread+0x4d/0x3d0
+[   29.035717]  ? rescuer_thread+0x410/0x410
+[   29.035719]  kthread+0x142/0x160
+[   29.035722]  ? __kthread_bind_mask+0x60/0x60
+[   29.035724]  ret_from_fork+0x22/0x30
+[   29.035726] ---[ end trace 5be9d46e8c05997e ]---
+[   29.035778] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.035779] ------------[ cut here ]------------
+[   29.035779] nouveau 0000:01:00.0: timeout
+[   29.035816] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.035816] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.035844]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.035853] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.035854] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.035857] Workqueue: pm pm_runtime_work
+[   29.035886] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.035888] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.035889] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.035891] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.035891] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.035893] RBP: ffff99514c72d148 R08: 000000000000151a R09: 0000000000000001
+[   29.035894] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.035894] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.035895] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.035897] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.035897] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.035898] Call Trace:
+[   29.035933]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.035967]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.035999]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.036029]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.036032]  ? ktime_get+0x38/0xa0
+[   29.036069]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.036106]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.036136]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.036166]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.036195]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.036235]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.036274]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.036278]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.036279]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036282]  __rpm_callback+0x7b/0x130
+[   29.036283]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036285]  rpm_callback+0x1f/0x70
+[   29.036288]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036290]  rpm_resume+0x5d7/0x820
+[   29.036293]  rpm_get_suppliers+0x5d/0xf0
+[   29.036294]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036296]  __rpm_callback+0x112/0x130
+[   29.036298]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036300]  rpm_callback+0x1f/0x70
+[   29.036302]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036304]  rpm_resume+0x5d7/0x820
+[   29.036307]  pm_runtime_work+0x6c/0xa0
+[   29.036309]  process_one_work+0x1da/0x3d0
+[   29.036311]  worker_thread+0x4d/0x3d0
+[   29.036313]  ? rescuer_thread+0x410/0x410
+[   29.036315]  kthread+0x142/0x160
+[   29.036317]  ? __kthread_bind_mask+0x60/0x60
+[   29.036319]  ret_from_fork+0x22/0x30
+[   29.036322] ---[ end trace 5be9d46e8c05997f ]---
+[   29.036358] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.036359] ------------[ cut here ]------------
+[   29.036361] nouveau 0000:01:00.0: timeout
+[   29.036397] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.036397] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.036420]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.036428] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.036429] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.036431] Workqueue: pm pm_runtime_work
+[   29.036463] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.036465] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.036466] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.036467] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.036467] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.036468] RBP: ffff99514c72d148 R08: 0000000000001551 R09: 0000000000000001
+[   29.036470] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.036470] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.036471] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.036472] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.036474] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.036475] Call Trace:
+[   29.036511]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.036545]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.036577]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.036607]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.036610]  ? ktime_get+0x38/0xa0
+[   29.036647]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.036684]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.036714]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.036743]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.036772]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.036813]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.036851]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.036855]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.036856]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036859]  __rpm_callback+0x7b/0x130
+[   29.036860]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036862]  rpm_callback+0x1f/0x70
+[   29.036865]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036867]  rpm_resume+0x5d7/0x820
+[   29.036870]  rpm_get_suppliers+0x5d/0xf0
+[   29.036871]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036874]  __rpm_callback+0x112/0x130
+[   29.036875]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036877]  rpm_callback+0x1f/0x70
+[   29.036879]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.036882]  rpm_resume+0x5d7/0x820
+[   29.036885]  pm_runtime_work+0x6c/0xa0
+[   29.036887]  process_one_work+0x1da/0x3d0
+[   29.036889]  worker_thread+0x4d/0x3d0
+[   29.036891]  ? rescuer_thread+0x410/0x410
+[   29.036893]  kthread+0x142/0x160
+[   29.036895]  ? __kthread_bind_mask+0x60/0x60
+[   29.036897]  ret_from_fork+0x22/0x30
+[   29.036899] ---[ end trace 5be9d46e8c059980 ]---
+[   29.036935] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.036935] ------------[ cut here ]------------
+[   29.036935] nouveau 0000:01:00.0: timeout
+[   29.036972] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.036972] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.036998]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.037007] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.037008] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.037010] Workqueue: pm pm_runtime_work
+[   29.037040] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.037043] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.037044] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.037045] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.037045] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.037046] RBP: ffff99514c72d148 R08: 0000000000001588 R09: 0000000000000001
+[   29.037048] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.037048] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.037049] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.037050] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.037051] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.037053] Call Trace:
+[   29.037088]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.037122]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.037155]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.037184]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.037187]  ? ktime_get+0x38/0xa0
+[   29.037224]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.037262]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.037291]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.037321]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.037350]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.037391]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.037430]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.037433]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.037435]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037437]  __rpm_callback+0x7b/0x130
+[   29.037439]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037441]  rpm_callback+0x1f/0x70
+[   29.037443]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037446]  rpm_resume+0x5d7/0x820
+[   29.037448]  rpm_get_suppliers+0x5d/0xf0
+[   29.037449]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037452]  __rpm_callback+0x112/0x130
+[   29.037453]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037455]  rpm_callback+0x1f/0x70
+[   29.037457]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037460]  rpm_resume+0x5d7/0x820
+[   29.037463]  pm_runtime_work+0x6c/0xa0
+[   29.037464]  process_one_work+0x1da/0x3d0
+[   29.037466]  worker_thread+0x4d/0x3d0
+[   29.037468]  ? rescuer_thread+0x410/0x410
+[   29.037470]  kthread+0x142/0x160
+[   29.037472]  ? __kthread_bind_mask+0x60/0x60
+[   29.037475]  ret_from_fork+0x22/0x30
+[   29.037477] ---[ end trace 5be9d46e8c059981 ]---
+[   29.037512] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.037513] ------------[ cut here ]------------
+[   29.037513] nouveau 0000:01:00.0: timeout
+[   29.037549] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.037550] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.037573]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.037585] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.037586] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.037588] Workqueue: pm pm_runtime_work
+[   29.037618] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.037620] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.037621] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.037622] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.037622] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.037623] RBP: ffff99514c72d148 R08: 00000000000015bf R09: 0000000000000001
+[   29.037625] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.037625] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.037626] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.037627] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.037628] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.037630] Call Trace:
+[   29.037665]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.037699]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.037732]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.037762]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.037764]  ? ktime_get+0x38/0xa0
+[   29.037801]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.037838]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.037868]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.037889]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.037889]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.037889]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.037889]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.037889]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.037889]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037889]  __rpm_callback+0x7b/0x130
+[   29.037889]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037889]  rpm_callback+0x1f/0x70
+[   29.037889]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037889]  rpm_resume+0x5d7/0x820
+[   29.037889]  rpm_get_suppliers+0x5d/0xf0
+[   29.037889]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037889]  __rpm_callback+0x112/0x130
+[   29.037889]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037889]  rpm_callback+0x1f/0x70
+[   29.037889]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.037889]  rpm_resume+0x5d7/0x820
+[   29.037889]  pm_runtime_work+0x6c/0xa0
+[   29.037889]  process_one_work+0x1da/0x3d0
+[   29.037889]  worker_thread+0x4d/0x3d0
+[   29.037889]  ? rescuer_thread+0x410/0x410
+[   29.037889]  kthread+0x142/0x160
+[   29.037889]  ? __kthread_bind_mask+0x60/0x60
+[   29.037889]  ret_from_fork+0x22/0x30
+[   29.037889] ---[ end trace 5be9d46e8c059982 ]---
+[   29.038109] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.038110] ------------[ cut here ]------------
+[   29.038111] nouveau 0000:01:00.0: timeout
+[   29.038152] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.038152] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.038189]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.038200] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.038201] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.038202] Workqueue: pm pm_runtime_work
+[   29.038232] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.038234] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.038235] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.038236] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.038237] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.038238] RBP: ffff99514c72d148 R08: 00000000000015f6 R09: 0000000000000001
+[   29.038239] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.038240] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.038241] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.038242] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.038243] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.038243] Call Trace:
+[   29.038279]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.038312]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.038345]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.038375]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.038378]  ? ktime_get+0x38/0xa0
+[   29.038415]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.038453]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.038482]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.038512]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.038541]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.038581]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.038620]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.038623]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.038625]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.038628]  __rpm_callback+0x7b/0x130
+[   29.038629]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.038631]  rpm_callback+0x1f/0x70
+[   29.038633]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.038636]  rpm_resume+0x5d7/0x820
+[   29.038638]  rpm_get_suppliers+0x5d/0xf0
+[   29.038640]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.038642]  __rpm_callback+0x112/0x130
+[   29.038643]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.038645]  rpm_callback+0x1f/0x70
+[   29.038647]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.038650]  rpm_resume+0x5d7/0x820
+[   29.038652]  pm_runtime_work+0x6c/0xa0
+[   29.038654]  process_one_work+0x1da/0x3d0
+[   29.038655]  worker_thread+0x4d/0x3d0
+[   29.038657]  ? rescuer_thread+0x410/0x410
+[   29.038660]  kthread+0x142/0x160
+[   29.038662]  ? __kthread_bind_mask+0x60/0x60
+[   29.038664]  ret_from_fork+0x22/0x30
+[   29.038667] ---[ end trace 5be9d46e8c059983 ]---
+[   29.038701] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.038701] ------------[ cut here ]------------
+[   29.038702] nouveau 0000:01:00.0: timeout
+[   29.038739] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.038740] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.038765]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.038772] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.038772] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.038774] Workqueue: pm pm_runtime_work
+[   29.038803] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.038805] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.038807] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.038807] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.038808] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.038809] RBP: ffff99514c72d148 R08: 000000000000162d R09: 0000000000000001
+[   29.038810] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.038811] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.038812] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.038814] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.038814] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.038815] Call Trace:
+[   29.038850]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.038883]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.038916]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.038946]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.038948]  ? ktime_get+0x38/0xa0
+[   29.038986]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.039023]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.039052]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.039082]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.039111]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.039152]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.039191]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.039194]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.039195]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039198]  __rpm_callback+0x7b/0x130
+[   29.039199]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039201]  rpm_callback+0x1f/0x70
+[   29.039204]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039206]  rpm_resume+0x5d7/0x820
+[   29.039208]  rpm_get_suppliers+0x5d/0xf0
+[   29.039210]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039212]  __rpm_callback+0x112/0x130
+[   29.039214]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039215]  rpm_callback+0x1f/0x70
+[   29.039217]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039219]  rpm_resume+0x5d7/0x820
+[   29.039223]  pm_runtime_work+0x6c/0xa0
+[   29.039225]  process_one_work+0x1da/0x3d0
+[   29.039227]  worker_thread+0x4d/0x3d0
+[   29.039228]  ? rescuer_thread+0x410/0x410
+[   29.039231]  kthread+0x142/0x160
+[   29.039234]  ? __kthread_bind_mask+0x60/0x60
+[   29.039235]  ret_from_fork+0x22/0x30
+[   29.039238] ---[ end trace 5be9d46e8c059984 ]---
+[   29.039272] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.039273] ------------[ cut here ]------------
+[   29.039274] nouveau 0000:01:00.0: timeout
+[   29.039311] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.039311] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.039341]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.039351] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.039352] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.039353] Workqueue: pm pm_runtime_work
+[   29.039385] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.039387] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.039388] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.039389] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.039389] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.039391] RBP: ffff99514c72d148 R08: 0000000000001664 R09: 0000000000000001
+[   29.039392] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.039392] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.039394] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.039395] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.039396] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.039398] Call Trace:
+[   29.039433]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.039467]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.039500]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.039530]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.039532]  ? ktime_get+0x38/0xa0
+[   29.039569]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.039607]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.039636]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.039666]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.039695]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.039735]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.039774]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.039778]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.039779]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039782]  __rpm_callback+0x7b/0x130
+[   29.039783]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039785]  rpm_callback+0x1f/0x70
+[   29.039788]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039790]  rpm_resume+0x5d7/0x820
+[   29.039793]  rpm_get_suppliers+0x5d/0xf0
+[   29.039794]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039796]  __rpm_callback+0x112/0x130
+[   29.039798]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039800]  rpm_callback+0x1f/0x70
+[   29.039802]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.039805]  rpm_resume+0x5d7/0x820
+[   29.039807]  pm_runtime_work+0x6c/0xa0
+[   29.039809]  process_one_work+0x1da/0x3d0
+[   29.039811]  worker_thread+0x4d/0x3d0
+[   29.039813]  ? rescuer_thread+0x410/0x410
+[   29.039815]  kthread+0x142/0x160
+[   29.039817]  ? __kthread_bind_mask+0x60/0x60
+[   29.039819]  ret_from_fork+0x22/0x30
+[   29.039822] ---[ end trace 5be9d46e8c059985 ]---
+[   29.039856] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.039858] ------------[ cut here ]------------
+[   29.039858] nouveau 0000:01:00.0: timeout
+[   29.039895] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.039895] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.039918]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.039929] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.039930] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.039932] Workqueue: pm pm_runtime_work
+[   29.039962] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.039964] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.039965] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.039966] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.039967] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.039968] RBP: ffff99514c72d148 R08: 000000000000169b R09: 0000000000000001
+[   29.039969] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.039970] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.039971] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.039972] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.039973] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.039975] Call Trace:
+[   29.040011]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.040044]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.040077]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.040107]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.040110]  ? ktime_get+0x38/0xa0
+[   29.040147]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.040184]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.040214]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.040243]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.040273]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.040313]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.040352]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.040355]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.040357]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040359]  __rpm_callback+0x7b/0x130
+[   29.040361]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040363]  rpm_callback+0x1f/0x70
+[   29.040365]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040367]  rpm_resume+0x5d7/0x820
+[   29.040370]  rpm_get_suppliers+0x5d/0xf0
+[   29.040372]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040374]  __rpm_callback+0x112/0x130
+[   29.040376]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040377]  rpm_callback+0x1f/0x70
+[   29.040379]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040381]  rpm_resume+0x5d7/0x820
+[   29.040385]  pm_runtime_work+0x6c/0xa0
+[   29.040386]  process_one_work+0x1da/0x3d0
+[   29.040388]  worker_thread+0x4d/0x3d0
+[   29.040390]  ? rescuer_thread+0x410/0x410
+[   29.040392]  kthread+0x142/0x160
+[   29.040395]  ? __kthread_bind_mask+0x60/0x60
+[   29.040397]  ret_from_fork+0x22/0x30
+[   29.040399] ---[ end trace 5be9d46e8c059986 ]---
+[   29.040434] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.040434] ------------[ cut here ]------------
+[   29.040435] nouveau 0000:01:00.0: timeout
+[   29.040471] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.040471] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.040506]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.040514] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.040515] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.040516] Workqueue: pm pm_runtime_work
+[   29.040545] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.040548] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.040549] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.040550] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.040551] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.040552] RBP: ffff99514c72d148 R08: 00000000000016d2 R09: 0000000000000001
+[   29.040553] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.040553] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.040555] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.040556] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.040557] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.040557] Call Trace:
+[   29.040592]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.040627]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.040660]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.040690]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.040692]  ? ktime_get+0x38/0xa0
+[   29.040730]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.040767]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.040797]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.040826]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.040855]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.040896]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.040935]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.040938]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.040940]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040942]  __rpm_callback+0x7b/0x130
+[   29.040944]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040946]  rpm_callback+0x1f/0x70
+[   29.040949]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040951]  rpm_resume+0x5d7/0x820
+[   29.040953]  rpm_get_suppliers+0x5d/0xf0
+[   29.040955]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040957]  __rpm_callback+0x112/0x130
+[   29.040958]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040960]  rpm_callback+0x1f/0x70
+[   29.040962]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.040965]  rpm_resume+0x5d7/0x820
+[   29.040967]  pm_runtime_work+0x6c/0xa0
+[   29.040969]  process_one_work+0x1da/0x3d0
+[   29.040971]  worker_thread+0x4d/0x3d0
+[   29.040973]  ? rescuer_thread+0x410/0x410
+[   29.040976]  kthread+0x142/0x160
+[   29.040978]  ? __kthread_bind_mask+0x60/0x60
+[   29.040980]  ret_from_fork+0x22/0x30
+[   29.040983] ---[ end trace 5be9d46e8c059987 ]---
+[   29.041017] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.041018] ------------[ cut here ]------------
+[   29.041019] nouveau 0000:01:00.0: timeout
+[   29.041056] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.041056] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.041082]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.041087] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.041087] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.041089] Workqueue: pm pm_runtime_work
+[   29.041119] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   29.041121] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 d8 bb ae f2 4c 89 ea 48 c7 c7 ac de 19 c1 48 89 c6 e8 3c 00 4c f2 <0f> 0b eb a8 e8 0d bb e2 f2 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   29.041123] RSP: 0018:ffffae51002c3aa0 EFLAGS: 00010086
+[   29.041123] RAX: 0000000000000000 RBX: ffff995149ea0c00 RCX: 0000000000000000
+[   29.041124] RDX: 0000000000000002 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.041125] RBP: ffff99514c72d148 R08: 0000000000001709 R09: 0000000000000001
+[   29.041126] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000246
+[   29.041127] R13: ffff99515c4ecbd0 R14: 00000006b8f81365 R15: ffff99515d180000
+[   29.041128] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.041130] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.041130] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.041131] Call Trace:
+[   29.041166]  nv50_instobj_release+0x27/0x90 [nouveau]
+[   29.041199]  nvkm_instobj_load+0x4f/0xa0 [nouveau]
+[   29.041232]  nvkm_instmem_init+0x62/0x80 [nouveau]
+[   29.041262]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.041265]  ? ktime_get+0x38/0xa0
+[   29.041302]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.041339]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.041369]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.041398]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.041399]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.041399]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.041399]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.041399]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.041399]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.041399]  __rpm_callback+0x7b/0x130
+[   29.041399]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.041399]  rpm_callback+0x1f/0x70
+[   29.041399]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.041399]  rpm_resume+0x5d7/0x820
+[   29.041399]  rpm_get_suppliers+0x5d/0xf0
+[   29.041399]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.041399]  __rpm_callback+0x112/0x130
+[   29.041399]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.041399]  rpm_callback+0x1f/0x70
+[   29.041399]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.041399]  rpm_resume+0x5d7/0x820
+[   29.041399]  pm_runtime_work+0x6c/0xa0
+[   29.041399]  process_one_work+0x1da/0x3d0
+[   29.041399]  worker_thread+0x4d/0x3d0
+[   29.041399]  ? rescuer_thread+0x410/0x410
+[   29.041399]  kthread+0x142/0x160
+[   29.041399]  ? __kthread_bind_mask+0x60/0x60
+[   29.041399]  ret_from_fork+0x22/0x30
+[   29.041399] ---[ end trace 5be9d46e8c059988 ]---
+[   29.041642] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.041643] ------------[ cut here ]------------
+[   29.041644] nouveau 0000:01:00.0: timeout
+[   29.041680] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:276 falcon_v1_wait_idle+0xdf/0xf0 [nouveau]
+[   29.041681] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.041714]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.041723] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.041724] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.041726] Workqueue: pm pm_runtime_work
+[   29.041755] RIP: 0010:falcon_v1_wait_idle+0xdf/0xf0 [nouveau]
+[   29.041756] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 83 11 af f2 4c 89 e2 48 c7 c7 44 db 19 c1 48 89 c6 e8 e7 55 4c f2 <0f> 0b eb aa e8 b8 10 e3 f2 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00
+[   29.041757] RSP: 0018:ffffae51002c3a58 EFLAGS: 00010282
+[   29.041760] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000000
+[   29.041761] RDX: 0000000000000001 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.041762] RBP: ffff99514aa95e58 R08: 0000000000001740 R09: 0000000000000001
+[   29.041763] R10: 0000000000000000 R11: 0000000000000001 R12: ffff99515c4ecbd0
+[   29.041764] R13: 0000000000000032 R14: ffff99515d39a100 R15: ffff99515d39a000
+[   29.041765] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.041766] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.041767] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.041768] Call Trace:
+[   29.041798]  nvkm_falcon_disable+0x3b/0x60 [nouveau]
+[   29.041828]  nvkm_falcon_reset+0x16/0x70 [nouveau]
+[   29.041864]  gp102_fb_vpr_scrub+0xb5/0x1a0 [nouveau]
+[   29.041899]  nvkm_fb_init+0x109/0x160 [nouveau]
+[   29.041929]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.041932]  ? ktime_get+0x38/0xa0
+[   29.041970]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.042007]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.042037]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.042067]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.042096]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.042137]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.042176]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.042179]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.042181]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042183]  __rpm_callback+0x7b/0x130
+[   29.042185]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042187]  rpm_callback+0x1f/0x70
+[   29.042188]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042191]  rpm_resume+0x5d7/0x820
+[   29.042194]  rpm_get_suppliers+0x5d/0xf0
+[   29.042196]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042198]  __rpm_callback+0x112/0x130
+[   29.042200]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042202]  rpm_callback+0x1f/0x70
+[   29.042204]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042206]  rpm_resume+0x5d7/0x820
+[   29.042209]  pm_runtime_work+0x6c/0xa0
+[   29.042211]  process_one_work+0x1da/0x3d0
+[   29.042213]  worker_thread+0x4d/0x3d0
+[   29.042215]  ? rescuer_thread+0x410/0x410
+[   29.042216]  kthread+0x142/0x160
+[   29.042218]  ? __kthread_bind_mask+0x60/0x60
+[   29.042221]  ret_from_fork+0x22/0x30
+[   29.042223] ---[ end trace 5be9d46e8c059989 ]---
+[   29.042257] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.042258] ------------[ cut here ]------------
+[   29.042258] nouveau 0000:01:00.0: timeout
+[   29.042293] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:289 nvkm_falcon_v1_enable+0x11e/0x130 [nouveau]
+[   29.042294] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.042317]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.042330] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.042331] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.042332] Workqueue: pm pm_runtime_work
+[   29.042361] RIP: 0010:nvkm_falcon_v1_enable+0x11e/0x130 [nouveau]
+[   29.042363] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 74 0e af f2 4c 89 e2 48 c7 c7 44 db 19 c1 48 89 c6 e8 d8 52 4c f2 <0f> 0b e9 6a ff ff ff e8 a6 0d e3 f2 66 0f 1f 44 00 00 0f 1f 44 00
+[   29.042364] RSP: 0018:ffffae51002c3a78 EFLAGS: 00010286
+[   29.042365] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000000
+[   29.042366] RDX: 0000000000000001 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.042367] RBP: ffff99514aa95e58 R08: 0000000000001778 R09: 0000000000000001
+[   29.042368] R10: 0000000000000000 R11: 0000000000000001 R12: ffff99515c4ecbd0
+[   29.042369] R13: 0000000000000032 R14: ffff99515d39a100 R15: ffff99515d39a000
+[   29.042370] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.042371] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.042373] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.042375] Call Trace:
+[   29.042405]  nvkm_falcon_reset+0x40/0x70 [nouveau]
+[   29.042441]  gp102_fb_vpr_scrub+0xb5/0x1a0 [nouveau]
+[   29.042475]  nvkm_fb_init+0x109/0x160 [nouveau]
+[   29.042505]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.042507]  ? ktime_get+0x38/0xa0
+[   29.042545]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.042582]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.042611]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.042641]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.042670]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.042710]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.042749]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.042753]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.042754]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042757]  __rpm_callback+0x7b/0x130
+[   29.042758]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042760]  rpm_callback+0x1f/0x70
+[   29.042763]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042765]  rpm_resume+0x5d7/0x820
+[   29.042768]  rpm_get_suppliers+0x5d/0xf0
+[   29.042769]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042771]  __rpm_callback+0x112/0x130
+[   29.042773]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042775]  rpm_callback+0x1f/0x70
+[   29.042777]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.042780]  rpm_resume+0x5d7/0x820
+[   29.042783]  pm_runtime_work+0x6c/0xa0
+[   29.042784]  process_one_work+0x1da/0x3d0
+[   29.042786]  worker_thread+0x4d/0x3d0
+[   29.042788]  ? rescuer_thread+0x410/0x410
+[   29.042791]  kthread+0x142/0x160
+[   29.042793]  ? __kthread_bind_mask+0x60/0x60
+[   29.042795]  ret_from_fork+0x22/0x30
+[   29.042798] ---[ end trace 5be9d46e8c05998a ]---
+[   29.042799] nouveau 0000:01:00.0: fb: Falcon mem scrubbing timeout
+[   29.043201] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.043202] ------------[ cut here ]------------
+[   29.043204] nouveau 0000:01:00.0: timeout
+[   29.043240] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:276 falcon_v1_wait_idle+0xdf/0xf0 [nouveau]
+[   29.043241] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.043274]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.043281] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.043282] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.043284] Workqueue: pm pm_runtime_work
+[   29.043312] RIP: 0010:falcon_v1_wait_idle+0xdf/0xf0 [nouveau]
+[   29.043315] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 83 11 af f2 4c 89 e2 48 c7 c7 44 db 19 c1 48 89 c6 e8 e7 55 4c f2 <0f> 0b eb aa e8 b8 10 e3 f2 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00
+[   29.043316] RSP: 0018:ffffae51002c3a58 EFLAGS: 00010282
+[   29.043317] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000000
+[   29.043318] RDX: 0000000000000001 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.043319] RBP: ffff99514aa95e58 R08: 00000000000017b0 R09: 0000000000000001
+[   29.043320] R10: 0000000000000000 R11: 0000000000000001 R12: ffff99515c4ecbd0
+[   29.043321] R13: 0000000000000032 R14: ffff99515d39a100 R15: ffff99515d39a000
+[   29.043322] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.043323] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.043324] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.043324] Call Trace:
+[   29.043354]  nvkm_falcon_disable+0x3b/0x60 [nouveau]
+[   29.043384]  nvkm_falcon_reset+0x16/0x70 [nouveau]
+[   29.043419]  gp102_fb_vpr_scrub+0x15b/0x1a0 [nouveau]
+[   29.043453]  nvkm_fb_init+0x109/0x160 [nouveau]
+[   29.043482]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.043485]  ? ktime_get+0x38/0xa0
+[   29.043523]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.043560]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.043589]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.043619]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.043648]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.043688]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.043727]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.043731]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.043732]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.043734]  __rpm_callback+0x7b/0x130
+[   29.043736]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.043738]  rpm_callback+0x1f/0x70
+[   29.043739]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.043741]  rpm_resume+0x5d7/0x820
+[   29.043745]  rpm_get_suppliers+0x5d/0xf0
+[   29.043747]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.043748]  __rpm_callback+0x112/0x130
+[   29.043750]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.043752]  rpm_callback+0x1f/0x70
+[   29.043754]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.043756]  rpm_resume+0x5d7/0x820
+[   29.043759]  pm_runtime_work+0x6c/0xa0
+[   29.043761]  process_one_work+0x1da/0x3d0
+[   29.043762]  worker_thread+0x4d/0x3d0
+[   29.043764]  ? rescuer_thread+0x410/0x410
+[   29.043765]  kthread+0x142/0x160
+[   29.043767]  ? __kthread_bind_mask+0x60/0x60
+[   29.043770]  ret_from_fork+0x22/0x30
+[   29.043774] ---[ end trace 5be9d46e8c05998b ]---
+[   29.043808] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   29.043809] ------------[ cut here ]------------
+[   29.043809] nouveau 0000:01:00.0: timeout
+[   29.043845] WARNING: CPU: 4 PID: 43 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:289 nvkm_falcon_v1_enable+0x11e/0x130 [nouveau]
+[   29.043846] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 rtsx_usb_sdmmc videobuf2_common mmc_core rtsx_usb_ms videodev memstick rtsx_usb mc btusb btrtl btbcm iwlmvm btintel joydev mousedev amdgpu mac80211 bluetooth nouveau snd_hda_codec_realtek libarc4 hid_multitouch snd_hda_codec_generic ucsi_ccg ecdh_generic ledtrig_audio ecc nls_iso8859_1 snd_hda_codec_hdmi nls_cp437 typec_ucsi asus_wmi hid_generic vfat edac_mce_amd wmi_bmof sparse_keymap typec iwlwifi gpu_sched snd_hda_intel mxm_wmi fat kvm_amd snd_intel_dspcfg i2c_algo_bit snd_hda_codec ttm kvm snd_hda_core drm_kms_helper cfg80211 r8169 snd_hwdep snd_pcm irqbypass crct10dif_pclmul crc32_pclmul cec ghash_clmulni_intel realtek aesni_intel snd_timer rc_core crypto_simd cryptd snd syscopyarea glue_helper sp5100_tco sysfillrect sysimgblt rapl input_leds pcspkr ccp k10temp i2c_piix4 libphy rfkill fb_sys_fops soundcore i2c_nvidia_gpu wmi battery tpm_crb tpm_tis i2c_hid tpm_tis_core hid tpm acpi_cpufreq
+[   29.043869]  rng_core evdev pinctrl_amd mac_hid ac drm sg crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd i8042 serio
+[   29.043877] CPU: 4 PID: 43 Comm: kworker/4:0 Tainted: G        W         5.8.13-arch1-1 #1
+[   29.043878] Hardware name: SchenkerTechnologiesGmbH XMG CORE 17(M20, RTX 2060)/GK7NxxR M20, BIOS N.1.15.A00 07/08/2020
+[   29.043880] Workqueue: pm pm_runtime_work
+[   29.043909] RIP: 0010:nvkm_falcon_v1_enable+0x11e/0x130 [nouveau]
+[   29.043912] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 74 0e af f2 4c 89 e2 48 c7 c7 44 db 19 c1 48 89 c6 e8 d8 52 4c f2 <0f> 0b e9 6a ff ff ff e8 a6 0d e3 f2 66 0f 1f 44 00 00 0f 1f 44 00
+[   29.043913] RSP: 0018:ffffae51002c3a78 EFLAGS: 00010286
+[   29.043914] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000000
+[   29.043914] RDX: 0000000000000001 RSI: ffffffffb476ad7f RDI: 00000000ffffffff
+[   29.043916] RBP: ffff99514aa95e58 R08: 00000000000017e8 R09: 0000000000000001
+[   29.043917] R10: 0000000000000000 R11: 0000000000000001 R12: ffff99515c4ecbd0
+[   29.043917] R13: 0000000000000032 R14: ffff99515d39a100 R15: ffff99515d39a000
+[   29.043919] FS:  0000000000000000(0000) GS:ffff99515f700000(0000) knlGS:0000000000000000
+[   29.043920] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   29.043921] CR2: 00007f45c400a028 CR3: 000000040980e000 CR4: 0000000000340ee0
+[   29.043921] Call Trace:
+[   29.043951]  nvkm_falcon_reset+0x40/0x70 [nouveau]
+[   29.043986]  gp102_fb_vpr_scrub+0x15b/0x1a0 [nouveau]
+[   29.044020]  nvkm_fb_init+0x109/0x160 [nouveau]
+[   29.044050]  nvkm_subdev_init+0x92/0xd0 [nouveau]
+[   29.044052]  ? ktime_get+0x38/0xa0
+[   29.044090]  nvkm_device_init+0x10b/0x190 [nouveau]
+[   29.044127]  nvkm_udevice_init+0x41/0x60 [nouveau]
+[   29.044156]  nvkm_object_init+0x3e/0x100 [nouveau]
+[   29.044186]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.044215]  nvkm_object_init+0x6f/0x100 [nouveau]
+[   29.044255]  nouveau_do_resume+0x29/0xd0 [nouveau]
+[   29.044294]  nouveau_pmops_runtime_resume+0x7a/0x170 [nouveau]
+[   29.044297]  pci_pm_runtime_resume+0xaa/0xc0
+[   29.044299]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.044301]  __rpm_callback+0x7b/0x130
+[   29.044302]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.044305]  rpm_callback+0x1f/0x70
+[   29.044307]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.044309]  rpm_resume+0x5d7/0x820
+[   29.044312]  rpm_get_suppliers+0x5d/0xf0
+[   29.044313]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.044316]  __rpm_callback+0x112/0x130
+[   29.044317]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.044319]  rpm_callback+0x1f/0x70
+[   29.044321]  ? pci_pm_freeze_noirq+0x110/0x110
+[   29.044324]  rpm_resume+0x5d7/0x820
+[   29.044326]  pm_runtime_work+0x6c/0xa0
+[   29.044328]  process_one_work+0x1da/0x3d0
+[   29.044330]  worker_thread+0x4d/0x3d0
+[   29.044332]  ? rescuer_thread+0x410/0x410
+[   29.044334]  kthread+0x142/0x160
+[   29.044336]  ? __kthread_bind_mask+0x60/0x60
+[   29.044338]  ret_from_fork+0x22/0x30
+[   29.044341] ---[ end trace 5be9d46e8c05998c ]---
+[   29.044342] nouveau 0000:01:00.0: fb: Falcon mem scrubbing timeout
+[   29.044347] nouveau 0000:01:00.0: fb: VPR still locked after scrub!
+[   29.044349] nouveau 0000:01:00.0: fb: init failed, -5
+[   29.044544] nouveau 0000:01:00.0: init failed with -5
+[   29.044546] nouveau: systemd-logind[490]:00000000:00000080: init failed with -5
+[   29.044548] nouveau: DRM-master:00000000:00000000: init failed with -5
+[   29.044550] nouveau: DRM-master:00000000:00000000: init failed with -5
+[   29.044553] nouveau 0000:01:00.0: DRM: Client resume failed with error: -5
+[   29.044554] nouveau 0000:01:00.0: DRM: resume failed with: -5
+[   29.058848] rfkill: input handler enabled
+[   31.054740] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[   31.547304] fuse: init (API version 7.31)
+[   33.785849] rfkill: input handler disabled
+[  183.488022] usb 3-2.1: new low-speed USB device number 5 using xhci_hcd
+[  183.618706] usb 3-2.1: New USB device found, idVendor=04f2, idProduct=0923, bcdDevice= 1.00
+[  183.618712] usb 3-2.1: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[  183.618714] usb 3-2.1: Product: HP USB Optical Mouse
+[  183.618716] usb 3-2.1: Manufacturer: PixArt
+[  183.698880] input: PixArt HP USB Optical Mouse as /devices/pci0000:00/0000:00:08.1/0000:05:00.3/usb3/3-2/3-2.1/3-2.1:1.0/0003:04F2:0923.0002/input/input20
+[  183.699548] hid-generic 0003:04F2:0923.0002: input,hidraw1: USB HID v1.11 Mouse [PixArt HP USB Optical Mouse] on usb-0000:05:00.3-2.1/input0
+[  183.699638] usbcore: registered new interface driver usbhid
+[  183.699640] usbhid: USB HID core driver
+[ 1901.138928] r8169 0000:02:00.0 enp2s0: Link is Down
+[ 1903.537103] usb 3-2.1: USB disconnect, device number 5
+[ 1972.527861] nouveau 0000:01:00.0: DRM: Dropped ACPI reprobe event due to RPM error: -22
+[ 1972.674795] ACPI: button: The lid device is not compliant to SW_LID.
+[ 2002.360888] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[ 2002.365017] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2002.394729] wlo1: authenticated
+[ 2002.397554] wlo1: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 2002.398415] wlo1: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x11 status=0 aid=15)
+[ 2002.402914] wlo1: associated
+[ 2002.418801] IPv6: ADDRCONF(NETDEV_CHANGE): wlo1: link becomes ready
+[ 2178.641241] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[ 2180.764504] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
