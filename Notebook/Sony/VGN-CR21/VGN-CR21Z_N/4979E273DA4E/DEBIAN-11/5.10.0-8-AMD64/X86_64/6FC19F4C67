@@ -1,0 +1,1408 @@
+[   17.363865] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.363866] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.363869] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.363871] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.363873] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.363875] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.363877] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.363880] ---[ end trace 03aee0d8ba0f8a1c ]---
+[   17.363902] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.363933] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.363970] ------------[ cut here ]------------
+[   17.363971] trying to bind memory to uninitialized GART !
+[   17.364018] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.364019] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.364101]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.364132] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.364133] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.364156] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.364159] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.364160] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.364163] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.364165] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.364167] RBP: ffff920c859f8300 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.364168] R10: ffffaa778062f888 R11: ffffffffb78bb650 R12: ffff920c89af0700
+[   17.364170] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.364172] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.364174] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.364176] CR2: 0000557990037000 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.364177] Call Trace:
+[   17.364201]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.364208]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.364213]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.364220]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.364225]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.364247]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.364269]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.364291]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.364315]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.364338]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.364362]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.364386]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.364389]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.364413]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.364431]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.364449]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.364473]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.364493]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.364496]  __x64_sys_ioctl+0x83/0xb0
+[   17.364498]  do_syscall_64+0x33/0x80
+[   17.364501]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.364504] RIP: 0033:0x7fabe9501cc7
+[   17.364506] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.364508] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.364511] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.364513] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.364515] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.364517] R10: 00007ffc89c1e027 R11: 0000000000000246 R12: 0000000000001000
+[   17.364518] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.364521] ---[ end trace 03aee0d8ba0f8a1d ]---
+[   17.364544] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.364573] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.364618] ------------[ cut here ]------------
+[   17.364619] trying to bind memory to uninitialized GART !
+[   17.364664] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.364665] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.364782]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.364815] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.364816] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.364839] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.364842] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.364844] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.364846] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.364848] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.364850] RBP: ffff920c859f8300 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.364852] R10: ffffaa778062f888 R11: ffffffffb78bbb18 R12: ffff920c89af0700
+[   17.364854] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.364856] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.364858] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.364860] CR2: 0000557990037000 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.364861] Call Trace:
+[   17.364886]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.364894]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.364900]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.364906]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.364912]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.364934]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.364956]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.364979]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.365009]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.365033]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.365062]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.365086]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.365094]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.365118]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.365149]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.365169]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.365193]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.365212]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.365217]  __x64_sys_ioctl+0x83/0xb0
+[   17.365220]  do_syscall_64+0x33/0x80
+[   17.365224]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.365226] RIP: 0033:0x7fabe9501cc7
+[   17.365229] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.365231] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.365234] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.365236] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.365238] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.365240] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.365241] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.365245] ---[ end trace 03aee0d8ba0f8a1e ]---
+[   17.365268] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.392828] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.392908] ------------[ cut here ]------------
+[   17.392910] trying to bind memory to uninitialized GART !
+[   17.393000] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.393002] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.393095]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.393135] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.393137] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.393160] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.393164] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.393166] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.393169] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.393171] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.393173] RBP: ffff920c859f8880 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.393174] R10: ffffaa778062f888 R11: ffffffffb78bbfe0 R12: ffff920c89af0700
+[   17.393176] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.393179] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.393181] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.393183] CR2: 00007fb2daab6000 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.393184] Call Trace:
+[   17.393214]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.393226]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.393233]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.393240]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.393246]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.393268]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.393290]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.393313]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.393336]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.393360]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.393385]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.393409]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.393415]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.393439]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.393481]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.393501]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.393525]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.393545]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.393550]  __x64_sys_ioctl+0x83/0xb0
+[   17.393554]  do_syscall_64+0x33/0x80
+[   17.393558]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.393561] RIP: 0033:0x7fabe9501cc7
+[   17.393564] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.393566] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.393569] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.393571] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.393573] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.393574] R10: 00007ffc89c1e027 R11: 0000000000000246 R12: 0000000000001000
+[   17.393576] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.393579] ---[ end trace 03aee0d8ba0f8a1f ]---
+[   17.393603] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.393644] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.393920] ------------[ cut here ]------------
+[   17.393922] trying to bind memory to uninitialized GART !
+[   17.394007] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.394008] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.394099]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.394135] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.394137] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.394160] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.394163] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.394165] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.394168] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.394170] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.394172] RBP: ffff920c859f8880 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.394174] R10: ffffaa778062f888 R11: ffffffffb78bc4a8 R12: ffff920c89af0700
+[   17.394175] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.394178] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.394180] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.394182] CR2: 0000563c25a8a0b8 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.394183] Call Trace:
+[   17.394211]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.394221]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.394227]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.394234]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.394240]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.394262]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.394284]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.394307]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.394330]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.394354]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.394379]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.394403]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.394407]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.394431]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.394463]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.394482]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.394506]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.394526]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.394530]  __x64_sys_ioctl+0x83/0xb0
+[   17.394533]  do_syscall_64+0x33/0x80
+[   17.394537]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.394540] RIP: 0033:0x7fabe9501cc7
+[   17.394543] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.394545] RSP: 002b:00007ffc89c20b08 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.394548] RAX: ffffffffffffffda RBX: 00007ffc89c20b80 RCX: 00007fabe9501cc7
+[   17.394550] RDX: 00007ffc89c20b80 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.394552] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.394554] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.394556] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.394559] ---[ end trace 03aee0d8ba0f8a20 ]---
+[   17.394583] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.394620] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.394672] ------------[ cut here ]------------
+[   17.394674] trying to bind memory to uninitialized GART !
+[   17.394733] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.394734] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.394820]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.394854] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.394856] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.394879] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.394882] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.394884] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.394887] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.394888] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.394890] RBP: ffff920c859f8880 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.394892] R10: ffffaa778062f888 R11: ffffffffb78bc970 R12: ffff920c89af0700
+[   17.394894] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.394896] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.394898] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.394900] CR2: 0000563c25a8a0b8 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.394901] Call Trace:
+[   17.394927]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.394934]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.394940]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.394947]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.394953]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.394975]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.394997]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.395019]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.395043]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.395067]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.395091]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.395115]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.395119]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.395142]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.395166]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.395184]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.395209]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.395228]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.395231]  __x64_sys_ioctl+0x83/0xb0
+[   17.395234]  do_syscall_64+0x33/0x80
+[   17.395238]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.395240] RIP: 0033:0x7fabe9501cc7
+[   17.395243] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.395244] RSP: 002b:00007ffc89c20b08 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.395248] RAX: ffffffffffffffda RBX: 00007ffc89c20b80 RCX: 00007fabe9501cc7
+[   17.395249] RDX: 00007ffc89c20b80 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.395251] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.395253] R10: 00007ffc89c1e367 R11: 0000000000000246 R12: 0000000000001000
+[   17.395255] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.395258] ---[ end trace 03aee0d8ba0f8a21 ]---
+[   17.395280] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.395315] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.395379] ------------[ cut here ]------------
+[   17.395380] trying to bind memory to uninitialized GART !
+[   17.395444] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.395445] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.395532]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.395565] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.395567] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.395589] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.395592] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.395594] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.395597] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.395598] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.395600] RBP: ffff920c859f8200 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.395602] R10: ffffaa778062f888 R11: ffffffffb78bce38 R12: ffff920c89af0700
+[   17.395604] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.395606] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.395608] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.395610] CR2: 0000563c25a8a0b8 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.395611] Call Trace:
+[   17.395636]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.395643]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.395649]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.395655]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.395661]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.395683]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.395705]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.395727]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.395751]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.395774]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.395798]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.395822]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.395826]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.395849]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.395871]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.395889]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.395913]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.395932]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.395936]  __x64_sys_ioctl+0x83/0xb0
+[   17.395938]  do_syscall_64+0x33/0x80
+[   17.395942]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.395944] RIP: 0033:0x7fabe9501cc7
+[   17.395947] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.395949] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.395952] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.395953] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.395955] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.395957] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.395959] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.395961] ---[ end trace 03aee0d8ba0f8a22 ]---
+[   17.395984] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.396016] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.396056] ------------[ cut here ]------------
+[   17.396058] trying to bind memory to uninitialized GART !
+[   17.396115] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.396116] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.396203]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.396236] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.396237] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.396260] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.396263] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.396265] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.396267] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.396269] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.396271] RBP: ffff920c859f8200 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.396273] R10: ffffaa778062f888 R11: ffffffffb78bd300 R12: ffff920c89af0700
+[   17.396274] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.396277] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.396279] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.396281] CR2: 0000563c25a8a0b8 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.396282] Call Trace:
+[   17.396306]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.396313]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.396319]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.396325]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.396331]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.396353]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.396375]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.396397]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.396421]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.396444]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.396469]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.396492]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.396496]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.396519]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.396541]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.396560]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.396584]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.396603]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.396607]  __x64_sys_ioctl+0x83/0xb0
+[   17.396610]  do_syscall_64+0x33/0x80
+[   17.396613]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.396616] RIP: 0033:0x7fabe9501cc7
+[   17.396619] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.396621] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.396624] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.396626] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.396627] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.396629] R10: 00007ffc89c1e027 R11: 0000000000000246 R12: 0000000000001000
+[   17.396631] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.396634] ---[ end trace 03aee0d8ba0f8a23 ]---
+[   17.396657] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.396688] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.416814] ------------[ cut here ]------------
+[   17.416818] trying to bind memory to uninitialized GART !
+[   17.416934] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.416936] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.417034]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.417072] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.417074] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.417097] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.417102] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.417104] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.417107] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.417109] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.417111] RBP: ffff920c859f8200 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.417113] R10: ffffaa778062f888 R11: ffffffffb78bd7c8 R12: ffff920c89af0700
+[   17.417114] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.417117] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.417119] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.417121] CR2: 0000557888bca028 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.417123] Call Trace:
+[   17.417151]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.417162]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.417170]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.417177]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.417183]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.417205]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.417228]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.417251]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.417275]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.417299]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.417325]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.417349]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.417354]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.417380]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.417423]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.417443]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.417469]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.417488]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.417493]  __x64_sys_ioctl+0x83/0xb0
+[   17.417498]  do_syscall_64+0x33/0x80
+[   17.417502]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.417505] RIP: 0033:0x7fabe9501cc7
+[   17.417509] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.417510] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.417514] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.417515] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.417517] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.417519] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.417521] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.417524] ---[ end trace 03aee0d8ba0f8a24 ]---
+[   17.417547] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.417588] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.417654] ------------[ cut here ]------------
+[   17.417656] trying to bind memory to uninitialized GART !
+[   17.417713] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.417714] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.417805]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.417840] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.417842] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.417864] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.417868] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.417870] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.417874] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.417876] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.417878] RBP: ffff920c859f8680 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.417879] R10: ffffaa778062f888 R11: ffffffffb78bdc90 R12: ffff920c89af0700
+[   17.417881] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.417884] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.417886] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.417888] CR2: 0000557888bca028 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.417889] Call Trace:
+[   17.417914]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.417921]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.417929]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.417935]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.417941]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.417963]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.417985]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.418009]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.418033]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.418056]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.418082]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.418106]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.418110]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.418135]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.418156]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.418174]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.418199]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.418219]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.418224]  __x64_sys_ioctl+0x83/0xb0
+[   17.418226]  do_syscall_64+0x33/0x80
+[   17.418229]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.418232] RIP: 0033:0x7fabe9501cc7
+[   17.418235] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.418236] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.418239] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.418241] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.418243] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.418245] R10: 00007ffc89c1e027 R11: 0000000000000246 R12: 0000000000001000
+[   17.418249] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.418251] ---[ end trace 03aee0d8ba0f8a25 ]---
+[   17.418274] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.418306] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.418551] ------------[ cut here ]------------
+[   17.418553] trying to bind memory to uninitialized GART !
+[   17.418618] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.418619] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.418711]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.418747] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.418748] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.418771] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.418774] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.418776] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.418780] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.418782] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.418784] RBP: ffff920c859f8680 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.418786] R10: ffffaa778062f888 R11: ffffffffb78be158 R12: ffff920c89af0700
+[   17.418787] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.418790] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.418792] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.418794] CR2: 0000557888bca028 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.418795] Call Trace:
+[   17.418820]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.418828]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.418836]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.418842]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.418848]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.418870]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.418892]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.418916]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.418939]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.418963]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.418987]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.419013]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.419016]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.419040]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.419063]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.419083]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.419107]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.419127]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.419131]  __x64_sys_ioctl+0x83/0xb0
+[   17.419136]  do_syscall_64+0x33/0x80
+[   17.419139]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.419142] RIP: 0033:0x7fabe9501cc7
+[   17.419145] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.419147] RSP: 002b:00007ffc89c20b08 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.419150] RAX: ffffffffffffffda RBX: 00007ffc89c20b80 RCX: 00007fabe9501cc7
+[   17.419152] RDX: 00007ffc89c20b80 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.419154] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.419156] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.419157] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.419160] ---[ end trace 03aee0d8ba0f8a26 ]---
+[   17.419184] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.419217] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.419260] ------------[ cut here ]------------
+[   17.419262] trying to bind memory to uninitialized GART !
+[   17.419312] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.419314] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.419402]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.419436] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.419438] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.419460] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.419463] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.419465] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.419469] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.419471] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.419473] RBP: ffff920c859f8680 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.419475] R10: ffffaa778062f888 R11: ffffffffb78be620 R12: ffff920c89af0700
+[   17.419477] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.419479] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.419481] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.419483] CR2: 0000557888bca028 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.419484] Call Trace:
+[   17.419508]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.419516]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.419523]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.419529]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.419535]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.419557]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.419579]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.419601]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.419626]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.419650]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.419674]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.419699]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.419702]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.419726]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.419746]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.419765]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.419790]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.419809]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.419814]  __x64_sys_ioctl+0x83/0xb0
+[   17.419817]  do_syscall_64+0x33/0x80
+[   17.419820]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.419823] RIP: 0033:0x7fabe9501cc7
+[   17.419825] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.419827] RSP: 002b:00007ffc89c20b08 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.419830] RAX: ffffffffffffffda RBX: 00007ffc89c20b80 RCX: 00007fabe9501cc7
+[   17.419832] RDX: 00007ffc89c20b80 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.419834] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.419836] R10: 00007ffc89c1e367 R11: 0000000000000246 R12: 0000000000001000
+[   17.419837] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.419840] ---[ end trace 03aee0d8ba0f8a27 ]---
+[   17.419863] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.419895] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.419951] ------------[ cut here ]------------
+[   17.419952] trying to bind memory to uninitialized GART !
+[   17.420002] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.420003] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.420091]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.420126] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.420127] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.420150] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.420153] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.420154] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.420158] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.420160] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.420162] RBP: ffff920c859f8e80 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.420164] R10: ffffaa778062f888 R11: ffffffffb78beae8 R12: ffff920c89af0700
+[   17.420166] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.420168] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.420170] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.420172] CR2: 0000557888bca028 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.420173] Call Trace:
+[   17.420197]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.420204]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.420211]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.420218]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.420223]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.420245]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.420267]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.420290]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.420315]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.420339]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.420363]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.420388]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.420391]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.420415]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.420435]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.420454]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.420478]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.420498]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.420503]  __x64_sys_ioctl+0x83/0xb0
+[   17.420505]  do_syscall_64+0x33/0x80
+[   17.420508]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.420511] RIP: 0033:0x7fabe9501cc7
+[   17.420513] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.420515] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.420518] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.420520] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.420522] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.420524] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.420525] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.420528] ---[ end trace 03aee0d8ba0f8a28 ]---
+[   17.420551] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.420583] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.420620] ------------[ cut here ]------------
+[   17.420622] trying to bind memory to uninitialized GART !
+[   17.420672] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.420673] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.420788]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.420823] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.420824] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.420849] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.420852] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.420853] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.420856] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.420858] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.420860] RBP: ffff920c859f8e80 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.420861] R10: ffffaa778062f888 R11: ffffffffb78befb0 R12: ffff920c89af0700
+[   17.420863] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.420866] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.420868] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.420869] CR2: 0000557888bca028 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.420871] Call Trace:
+[   17.420896]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.420906]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.420911]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.420918]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.420924]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.420946]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.420968]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.420990]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.421013]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.421037]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.421061]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.421085]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.421089]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.421112]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.421135]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.421153]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.421177]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.421197]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.421201]  __x64_sys_ioctl+0x83/0xb0
+[   17.421203]  do_syscall_64+0x33/0x80
+[   17.421207]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.421209] RIP: 0033:0x7fabe9501cc7
+[   17.421211] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.421213] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.421216] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.421218] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.421219] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.421221] R10: 00007ffc89c1e027 R11: 0000000000000246 R12: 0000000000001000
+[   17.421223] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.421226] ---[ end trace 03aee0d8ba0f8a29 ]---
+[   17.421249] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.436848] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.436962] ------------[ cut here ]------------
+[   17.436963] trying to bind memory to uninitialized GART !
+[   17.437076] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.437078] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.437174]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.437212] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.437214] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.437237] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.437240] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.437242] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.437245] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.437247] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.437248] RBP: ffff920c859f8e80 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.437250] R10: ffffaa778062f888 R11: ffffffffb78bf478 R12: ffff920c89af0700
+[   17.437252] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.437255] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.437257] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.437258] CR2: 000055c282ed8028 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.437260] Call Trace:
+[   17.437288]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.437303]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.437309]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.437317]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.437323]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.437345]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.437367]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.437390]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.437414]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.437438]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.437462]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.437486]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.437493]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.437517]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.437573]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.437592]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.437616]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.437636]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.437641]  __x64_sys_ioctl+0x83/0xb0
+[   17.437645]  do_syscall_64+0x33/0x80
+[   17.437650]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.437653] RIP: 0033:0x7fabe9501cc7
+[   17.437656] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.437658] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.437661] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.437663] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.437665] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.437666] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.437668] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.437672] ---[ end trace 03aee0d8ba0f8a2a ]---
+[   17.437695] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.437740] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.437815] ------------[ cut here ]------------
+[   17.437816] trying to bind memory to uninitialized GART !
+[   17.437880] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.437881] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.437968]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.438002] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.438004] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.438027] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.438029] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.438031] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.438034] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.438036] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.438038] RBP: ffff920c859f8c80 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.438039] R10: ffffaa778062f888 R11: ffffffffb78bf940 R12: ffff920c89af0700
+[   17.438041] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.438044] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.438046] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.438048] CR2: 000055c282ed8028 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.438049] Call Trace:
+[   17.438075]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.438084]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.438090]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.438097]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.438103]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.438125]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.438147]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.438169]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.438193]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.438217]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.438242]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.438266]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.438271]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.438295]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.438325]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.438344]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.438368]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.438388]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.438393]  __x64_sys_ioctl+0x83/0xb0
+[   17.438397]  do_syscall_64+0x33/0x80
+[   17.438400]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.438403] RIP: 0033:0x7fabe9501cc7
+[   17.438406] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.438407] RSP: 002b:00007ffc89c207c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.438411] RAX: ffffffffffffffda RBX: 00007ffc89c20840 RCX: 00007fabe9501cc7
+[   17.438412] RDX: 00007ffc89c20840 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.438414] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.438416] R10: 00007ffc89c1e027 R11: 0000000000000246 R12: 0000000000001000
+[   17.438418] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.438421] ---[ end trace 03aee0d8ba0f8a2b ]---
+[   17.438444] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.438481] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.610339] ------------[ cut here ]------------
+[   17.610343] trying to bind memory to uninitialized GART !
+[   17.610451] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.610453] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.610549]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.610589] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.610591] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.610614] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.610618] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.610621] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.610623] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.610627] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.610629] RBP: ffff920c859f8800 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.610631] R10: ffffaa778062f888 R11: ffffffffb78bfe08 R12: ffff920c89af0700
+[   17.610633] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.610636] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.610638] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.610640] CR2: 0000563c237c3f20 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.610641] Call Trace:
+[   17.610670]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.610680]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.610688]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.610695]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.610701]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.610723]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.610746]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.610769]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.610793]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.610817]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.610843]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.610867]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.610872]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.610897]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.610936]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.610955]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.610981]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.611000]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.611005]  __x64_sys_ioctl+0x83/0xb0
+[   17.611010]  do_syscall_64+0x33/0x80
+[   17.611013]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.611016] RIP: 0033:0x7fabe9501cc7
+[   17.611019] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.611021] RSP: 002b:00007ffc89c223b8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.611024] RAX: ffffffffffffffda RBX: 00007ffc89c22430 RCX: 00007fabe9501cc7
+[   17.611026] RDX: 00007ffc89c22430 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.611028] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.611030] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.611032] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.611035] ---[ end trace 03aee0d8ba0f8a2c ]---
+[   17.611058] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.611096] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.611151] ------------[ cut here ]------------
+[   17.611153] trying to bind memory to uninitialized GART !
+[   17.611208] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.611210] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.611297]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.611332] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.611334] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.611357] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.611360] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.611362] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.611364] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.611368] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.611369] RBP: ffff920c859f8800 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.611371] R10: ffffaa778062f888 R11: ffffffffb78c02d0 R12: ffff920c89af0700
+[   17.611373] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.611376] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.611378] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.611380] CR2: 0000563c237c3f20 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.611381] Call Trace:
+[   17.611406]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.611414]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.611421]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.611428]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.611433]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.611455]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.611478]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.611501]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.611525]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.611549]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.611575]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.611598]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.611602]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.611626]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.611649]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.611667]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.611691]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.611712]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.611716]  __x64_sys_ioctl+0x83/0xb0
+[   17.611719]  do_syscall_64+0x33/0x80
+[   17.611722]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.611724] RIP: 0033:0x7fabe9501cc7
+[   17.611727] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.611729] RSP: 002b:00007ffc89c223b8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.611732] RAX: ffffffffffffffda RBX: 00007ffc89c22430 RCX: 00007fabe9501cc7
+[   17.611734] RDX: 00007ffc89c22430 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.611736] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.611738] R10: 00007ffc89c1fc17 R11: 0000000000000246 R12: 0000000000001000
+[   17.611741] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.611744] ---[ end trace 03aee0d8ba0f8a2d ]---
+[   17.611767] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.611799] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.611885] ------------[ cut here ]------------
+[   17.611886] trying to bind memory to uninitialized GART !
+[   17.611940] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.611942] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.612031]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.612066] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.612067] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.612090] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.612093] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.612095] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.612099] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.612101] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.612103] RBP: ffff920c832d1100 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.612105] R10: ffffaa778062f888 R11: ffffffffb78c0798 R12: ffff920c89af0700
+[   17.612107] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.612110] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.612112] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.612114] CR2: 0000563c25ad2000 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.612115] Call Trace:
+[   17.612140]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.612148]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.612155]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.612162]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.612167]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.612189]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.612212]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.612235]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.612259]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.612283]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.612308]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.612332]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.612336]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.612359]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.612382]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.612400]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.612424]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.612443]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.612449]  __x64_sys_ioctl+0x83/0xb0
+[   17.612451]  do_syscall_64+0x33/0x80
+[   17.612454]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.612457] RIP: 0033:0x7fabe9501cc7
+[   17.612459] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.612461] RSP: 002b:00007ffc89c22408 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.612464] RAX: ffffffffffffffda RBX: 00007ffc89c22480 RCX: 00007fabe9501cc7
+[   17.612466] RDX: 00007ffc89c22480 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.612468] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.612470] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.612471] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.612474] ---[ end trace 03aee0d8ba0f8a2e ]---
+[   17.612497] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.612528] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.612565] ------------[ cut here ]------------
+[   17.612567] trying to bind memory to uninitialized GART !
+[   17.612617] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.612620] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.612706]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.612790] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.612792] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.612818] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.612821] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.612823] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.612826] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.612828] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.612830] RBP: ffff920c832d1100 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.612831] R10: ffffaa778062f888 R11: ffffffffb78c0c60 R12: ffff920c89af0700
+[   17.612833] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.612836] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.612838] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.612840] CR2: 0000563c25ad2000 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.612841] Call Trace:
+[   17.612867]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.612874]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.612880]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.612887]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.612893]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.612915]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.612937]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.612959]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.612983]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.613007]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.613031]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.613055]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.613059]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.613083]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.613109]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.613127]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.613152]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.613172]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.613176]  __x64_sys_ioctl+0x83/0xb0
+[   17.613179]  do_syscall_64+0x33/0x80
+[   17.613182]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.613185] RIP: 0033:0x7fabe9501cc7
+[   17.613188] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.613189] RSP: 002b:00007ffc89c22408 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.613193] RAX: ffffffffffffffda RBX: 00007ffc89c22480 RCX: 00007fabe9501cc7
+[   17.613194] RDX: 00007ffc89c22480 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.613196] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.613198] R10: 00007ffc89c1fc67 R11: 0000000000000246 R12: 0000000000001000
+[   17.613200] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.613203] ---[ end trace 03aee0d8ba0f8a2f ]---
+[   17.613226] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.615355] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.615559] ------------[ cut here ]------------
+[   17.615561] trying to bind memory to uninitialized GART !
+[   17.615672] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.615674] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.615769]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.615809] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.615811] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.615834] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.615838] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.615840] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.615842] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.615844] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.615846] RBP: ffff920c832d1580 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.615848] R10: ffffaa778062f888 R11: ffffffffb78c1128 R12: ffff920c89af0700
+[   17.615850] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.615852] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.615855] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.615856] CR2: 0000563c23850fc8 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.615858] Call Trace:
+[   17.615889]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.615903]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.615909]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.615917]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.615922]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.615945]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.615967]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.615991]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.616015]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.616038]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.616063]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.616087]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.616093]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.616116]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.616160]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.616180]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.616205]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.616224]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.616230]  __x64_sys_ioctl+0x83/0xb0
+[   17.616235]  do_syscall_64+0x33/0x80
+[   17.616239]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.616243] RIP: 0033:0x7fabe9501cc7
+[   17.616246] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.616248] RSP: 002b:00007ffc89c222a8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.616251] RAX: ffffffffffffffda RBX: 00007ffc89c22320 RCX: 00007fabe9501cc7
+[   17.616252] RDX: 00007ffc89c22320 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.616254] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.616256] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.616258] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.616261] ---[ end trace 03aee0d8ba0f8a30 ]---
+[   17.616284] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.620196] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.620475] ------------[ cut here ]------------
+[   17.620477] trying to bind memory to uninitialized GART !
+[   17.620565] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.620566] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.620659]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.620698] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.620699] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.620722] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.620726] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.620728] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.620757] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.620759] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.620761] RBP: ffff920c832d1580 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.620763] R10: ffffaa778062f888 R11: ffffffffb78c15f0 R12: ffff920c89af0700
+[   17.620765] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.620767] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.620769] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.620771] CR2: 00007f8396539298 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.620773] Call Trace:
+[   17.620802]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.620814]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.620820]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.620828]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.620834]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.620856]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.620878]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.620901]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.620925]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.620948]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.620973]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.620996]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.621002]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.621026]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.621066]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.621085]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.621110]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.621129]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.621134]  __x64_sys_ioctl+0x83/0xb0
+[   17.621138]  do_syscall_64+0x33/0x80
+[   17.621144]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.621147] RIP: 0033:0x7fabe9501cc7
+[   17.621150] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.621152] RSP: 002b:00007ffc89c222a8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.621155] RAX: ffffffffffffffda RBX: 00007ffc89c22320 RCX: 00007fabe9501cc7
+[   17.621157] RDX: 00007ffc89c22320 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.621159] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.621161] R10: 00007ffc89c1fb07 R11: 0000000000000246 R12: 0000000000001000
+[   17.621163] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.621166] ---[ end trace 03aee0d8ba0f8a31 ]---
+[   17.621190] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.621775] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.680087] ------------[ cut here ]------------
+[   17.680090] trying to bind memory to uninitialized GART !
+[   17.680200] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.680202] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.680297]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.680337] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.680339] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.680363] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.680366] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.680368] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.680373] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.680374] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.680376] RBP: ffff920c832d1500 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.680378] R10: ffffaa778062f888 R11: ffffffffb78c1ab8 R12: ffff920c89af0700
+[   17.680380] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.680383] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.680385] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.680387] CR2: 0000563c2383868c CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.680388] Call Trace:
+[   17.680417]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.680427]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.680435]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.680443]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.680449]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.680471]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.680493]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.680517]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.680541]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.680564]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.680589]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.680614]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.680620]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.680644]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.680683]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.680704]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.680728]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.680789]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.680793]  __x64_sys_ioctl+0x83/0xb0
+[   17.680798]  do_syscall_64+0x33/0x80
+[   17.680802]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.680805] RIP: 0033:0x7fabe9501cc7
+[   17.680808] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.680810] RSP: 002b:00007ffc89c22138 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.680814] RAX: ffffffffffffffda RBX: 00007ffc89c221b0 RCX: 00007fabe9501cc7
+[   17.680816] RDX: 00007ffc89c221b0 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.680818] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.680820] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.680822] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.680825] ---[ end trace 03aee0d8ba0f8a32 ]---
+[   17.680848] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.681438] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.681510] ------------[ cut here ]------------
+[   17.681511] trying to bind memory to uninitialized GART !
+[   17.681583] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.681585] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.681678]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.681716] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.681717] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.681741] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.681744] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.681746] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.681749] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.681751] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.681753] RBP: ffff920c832d1900 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.681755] R10: ffffaa778062f888 R11: ffffffffb78c1f80 R12: ffff920c89af0700
+[   17.681758] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.681760] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.681762] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.681764] CR2: 0000563c2383868c CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.681766] Call Trace:
+[   17.681792]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.681801]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.681807]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.681816]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.681822]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.681844]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.681866]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.681888]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.681916]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.681940]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.681964]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.681988]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.681994]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.682018]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.682047]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.682065]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.682091]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.682111]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.682115]  __x64_sys_ioctl+0x83/0xb0
+[   17.682119]  do_syscall_64+0x33/0x80
+[   17.682123]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.682125] RIP: 0033:0x7fabe9501cc7
+[   17.682130] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.682132] RSP: 002b:00007ffc89c22138 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.682135] RAX: ffffffffffffffda RBX: 00007ffc89c221b0 RCX: 00007fabe9501cc7
+[   17.682137] RDX: 00007ffc89c221b0 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.682138] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.682140] R10: 00007ffc89c1f997 R11: 0000000000000246 R12: 0000000000001000
+[   17.682142] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.682145] ---[ end trace 03aee0d8ba0f8a33 ]---
+[   17.682168] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.682203] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.682312] ------------[ cut here ]------------
+[   17.682314] trying to bind memory to uninitialized GART !
+[   17.682371] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.682373] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.682463]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.682498] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.682500] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.682523] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.682526] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.682528] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.682532] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.682534] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.682536] RBP: ffff920c832d1900 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.682537] R10: ffffaa778062f888 R11: ffffffffb78c2448 R12: ffff920c89af0700
+[   17.682539] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.682542] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.682544] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.682546] CR2: 0000563c2383868c CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.682547] Call Trace:
+[   17.682573]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.682580]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.682587]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.682594]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.682600]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.682622]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.682644]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.682668]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.682691]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.682715]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.682741]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.682765]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.682769]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.682792]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.682817]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.682836]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.682860]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.682879]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.682884]  __x64_sys_ioctl+0x83/0xb0
+[   17.682887]  do_syscall_64+0x33/0x80
+[   17.682890]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.682893] RIP: 0033:0x7fabe9501cc7
+[   17.682896] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.682898] RSP: 002b:00007ffc89c22138 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.682901] RAX: ffffffffffffffda RBX: 00007ffc89c221b0 RCX: 00007fabe9501cc7
+[   17.682902] RDX: 00007ffc89c221b0 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.682904] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.682906] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.682908] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.682911] ---[ end trace 03aee0d8ba0f8a34 ]---
+[   17.682933] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.682967] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.870026] ------------[ cut here ]------------
+[   17.870030] trying to bind memory to uninitialized GART !
+[   17.870139] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.870140] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.870232]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.870270] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.870272] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.870295] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.870299] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.870301] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.870304] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.870305] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.870307] RBP: ffff920c832d1c00 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.870309] R10: ffffaa778062f888 R11: ffffffffb78c2910 R12: ffff920c89af0700
+[   17.870311] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.870314] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.870316] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.870318] CR2: 0000557990277ae8 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.870320] Call Trace:
+[   17.870348]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.870363]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.870370]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.870377]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.870383]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.870405]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.870428]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.870450]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.870474]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.870498]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.870523]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.870546]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.870552]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.870576]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.870615]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.870634]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.870659]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.870678]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.870683]  __x64_sys_ioctl+0x83/0xb0
+[   17.870687]  do_syscall_64+0x33/0x80
+[   17.870691]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.870694] RIP: 0033:0x7fabe9501cc7
+[   17.870697] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.870699] RSP: 002b:00007ffc89c22138 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.870702] RAX: ffffffffffffffda RBX: 00007ffc89c221b0 RCX: 00007fabe9501cc7
+[   17.870704] RDX: 00007ffc89c221b0 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.870705] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.870708] R10: 00007ffc89c1f997 R11: 0000000000000246 R12: 0000000000001000
+[   17.870709] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.870712] ---[ end trace 03aee0d8ba0f8a35 ]---
+[   17.870736] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.870779] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.870893] ------------[ cut here ]------------
+[   17.870895] trying to bind memory to uninitialized GART !
+[   17.870958] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.870959] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.871047]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.871081] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.871083] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.871105] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.871108] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.871110] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.871113] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.871115] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.871117] RBP: ffff920c832d1c00 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.871118] R10: ffffaa778062f888 R11: ffffffffb78c2dd8 R12: ffff920c89af0700
+[   17.871120] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.871123] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.871125] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.871127] CR2: 0000557990277ae8 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.871128] Call Trace:
+[   17.871154]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.871161]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.871167]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.871173]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.871179]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.871201]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.871223]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.871246]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.871270]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.871293]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.871318]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.871341]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.871346]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.871369]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.871392]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.871410]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.871434]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.871454]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.871458]  __x64_sys_ioctl+0x83/0xb0
+[   17.871461]  do_syscall_64+0x33/0x80
+[   17.871464]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.871466] RIP: 0033:0x7fabe9501cc7
+[   17.871469] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.871471] RSP: 002b:00007ffc89c22138 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.871474] RAX: ffffffffffffffda RBX: 00007ffc89c221b0 RCX: 00007fabe9501cc7
+[   17.871476] RDX: 00007ffc89c221b0 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.871478] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.871480] R10: 00007ffc89db2080 R11: 0000000000000246 R12: 0000000000001000
+[   17.871481] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.871484] ---[ end trace 03aee0d8ba0f8a36 ]---
+[   17.871507] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.871541] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.871581] ------------[ cut here ]------------
+[   17.871583] trying to bind memory to uninitialized GART !
+[   17.871633] WARNING: CPU: 1 PID: 661 at drivers/gpu/drm/radeon/radeon_gart.c:297 radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.871634] Modules linked in: ccm rfcomm cmac algif_hash ecb algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc btusb btrtl btbcm snd_hda_codec_hdmi btintel bluetooth snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation jitterentropy_rng snd_soc_core iwl4965 snd_compress iwlegacy soundwire_cadence mac80211 snd_hda_codec ctr snd_hda_core drbg snd_hwdep soundwire_bus pcmcia aes_generic crypto_simd cryptd glue_helper coretemp joydev snd_pcm serio_raw at24 pcspkr ansi_cprng yenta_socket snd_timer iTCO_wdt cfg80211 intel_pmc_bxt ecdh_generic tifm_7xx1 iTCO_vendor_support pcmcia_rsrc ecc libaes snd sg watchdog tifm_core pcmcia_core libarc4 soundcore sony_laptop rfkill ac evdev acpi_cpufreq firewire_sbp2 msr fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic
+[   17.871718]  sr_mod cdrom crct10dif_common ata_generic radeon i2c_algo_bit ttm drm_kms_helper ata_piix libata cec drm psmouse scsi_mod firewire_ohci r8169 i2c_i801 i2c_smbus realtek mdio_devres lpc_ich firewire_core crc_itu_t ehci_pci uhci_hcd ehci_hcd usbcore libphy usb_common battery video button [last unloaded: videobuf2_memops]
+[   17.871752] CPU: 1 PID: 661 Comm: gnome-shell Tainted: G        W         5.10.0-8-amd64 #1 Debian 5.10.46-4
+[   17.871753] Hardware name: Sony Corporation VGN-CR21Z_N/VAIO, BIOS R1121Q0 06/02/2008
+[   17.871776] RIP: 0010:radeon_gart_bind+0xdf/0xf0 [radeon]
+[   17.871778] Code: 00 48 89 ef 48 8b 40 60 e8 4e b8 88 f6 31 c0 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 c7 c7 28 1f 67 c0 e8 f4 3b 50 f6 <0f> 0b b8 ea ff ff ff eb dc 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[   17.871780] RSP: 0018:ffffaa778062fa70 EFLAGS: 00010282
+[   17.871783] RAX: 0000000000000000 RBX: ffff920c89af06e8 RCX: ffff920cbbd18a08
+[   17.871784] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff920cbbd18a00
+[   17.871786] RBP: ffff920c832d1c00 R08: 0000000000000000 R09: ffffaa778062f890
+[   17.871788] R10: ffffaa778062f888 R11: ffffffffb78c32a0 R12: ffff920c89af0700
+[   17.871790] R13: ffffaa778062fc18 R14: ffff920c89528800 R15: ffffaa778062fb40
+[   17.871792] FS:  00007fabe3aacdc0(0000) GS:ffff920cbbd00000(0000) knlGS:0000000000000000
+[   17.871794] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.871796] CR2: 0000557990277ae8 CR3: 000000010292a000 CR4: 00000000000006e0
+[   17.871798] Call Trace:
+[   17.871822]  radeon_ttm_tt_bind+0x7c/0x240 [radeon]
+[   17.871829]  ttm_bo_handle_move_mem+0x451/0x460 [ttm]
+[   17.871834]  ttm_bo_validate+0x155/0x170 [ttm]
+[   17.871841]  ttm_bo_init_reserved+0x2a8/0x330 [ttm]
+[   17.871847]  ttm_bo_init+0x6d/0xe0 [ttm]
+[   17.871869]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.871891]  radeon_bo_create+0x184/0x200 [radeon]
+[   17.871913]  ? radeon_update_memory_usage.isra.0+0x50/0x50 [radeon]
+[   17.871937]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.871960]  radeon_gem_object_create+0xb0/0x1a0 [radeon]
+[   17.871984]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.872008]  radeon_gem_create_ioctl+0x66/0x120 [radeon]
+[   17.872011]  ? tomoyo_path_number_perm+0x66/0x1d0
+[   17.872035]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.872055]  drm_ioctl_kernel+0xaa/0xf0 [drm]
+[   17.872074]  drm_ioctl+0x20f/0x3a0 [drm]
+[   17.872098]  ? radeon_gem_pwrite_ioctl+0x20/0x20 [radeon]
+[   17.872117]  radeon_drm_ioctl+0x49/0x80 [radeon]
+[   17.872121]  __x64_sys_ioctl+0x83/0xb0
+[   17.872123]  do_syscall_64+0x33/0x80
+[   17.872127]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.872129] RIP: 0033:0x7fabe9501cc7
+[   17.872132] Code: 00 00 00 48 8b 05 c9 91 0c 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 99 91 0c 00 f7 d8 64 89 01 48
+[   17.872134] RSP: 002b:00007ffc89c22138 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   17.872137] RAX: ffffffffffffffda RBX: 00007ffc89c221b0 RCX: 00007fabe9501cc7
+[   17.872138] RDX: 00007ffc89c221b0 RSI: 00000000c020645d RDI: 000000000000000e
+[   17.872140] RBP: 00000000c020645d R08: 0000000000000010 R09: 0000000000000009
+[   17.872142] R10: 00007ffc89c1f997 R11: 0000000000000246 R12: 0000000000001000
+[   17.872144] R13: 000000000000000e R14: 0000000000001000 R15: 0000000000000009
+[   17.872147] ---[ end trace 03aee0d8ba0f8a37 ]---
+[   17.872169] [drm:radeon_ttm_tt_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[   17.872202] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[   17.872295] show_signal_msg: 7 callbacks suppressed
+[   17.872298] gnome-shell[661]: segfault at 48 ip 00007fabe90cc990 sp 00007ffc89c22538 error 4 in libmutter-cogl-7.so.0.0.0[7fabe90b4000+4a000]
+[   17.872310] Code: ff ff ff 0f 1f 80 00 00 00 00 e8 bb 91 fe ff 48 89 ef 45 31 e4 e8 78 96 fe ff eb 92 e8 f9 8c fe ff 66 0f 1f 84 00 00 00 00 00 <48> 8b 47 48 c3 66 66 2e 0f 1f 84 00 00 00 00 00 53 48 89 fb e8 e7
+[   18.065246] rfkill: input handler enabled
+[   22.631596] rfkill: input handler disabled
+[   24.692750] clocksource: timekeeping watchdog on CPU0: Marking clocksource 'tsc' as unstable because the skew is too large:
+[   24.692754] clocksource:                       'hpet' wd_now: 1597d7b8 wd_last: 14848f95 mask: ffffffff
+[   24.692756] clocksource:                       'tsc' cs_now: 10c47dd7da cs_last: 10879c2272 mask: ffffffffffffffff
+[   24.692758] tsc: Marking TSC unstable due to clocksource watchdog
+[   24.693837] TSC found unstable after boot, most likely due to broken BIOS. Use 'tsc=unstable'.
+[   24.693839] sched_clock: Marking unstable (24690528498, 3307132)<-(24703206774, -9371121)
+[   24.693976] clocksource: Switched to clocksource hpet
+[   27.820977] rfkill: input handler enabled
+[   34.478072] rfkill: input handler disabled
+[  359.608726] perf: interrupt took too long (2511 > 2500), lowering kernel.perf_event_max_sample_rate to 79500
+[  552.850412] perf: interrupt took too long (3145 > 3138), lowering kernel.perf_event_max_sample_rate to 63500
+[  807.615828] perf: interrupt took too long (3939 > 3931), lowering kernel.perf_event_max_sample_rate to 50750
+[ 1484.344053] perf: interrupt took too long (4936 > 4923), lowering kernel.perf_event_max_sample_rate to 40500
+[ 1730.220254] Non-volatile memory driver v1.3
+[ 1730.424232] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[ 1731.448552] r8169 0000:06:00.0: invalid short VPD tag 05 at offset 2
