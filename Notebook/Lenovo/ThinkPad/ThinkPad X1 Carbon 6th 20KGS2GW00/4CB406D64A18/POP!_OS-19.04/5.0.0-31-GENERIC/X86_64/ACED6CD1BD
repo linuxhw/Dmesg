@@ -1,0 +1,980 @@
+[ 1473.447903] ------------[ cut here ]------------
+[ 1473.448019] WARNING: CPU: 7 PID: 82 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 1473.448021] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 1473.448098]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 1473.448213] CPU: 7 PID: 82 Comm: kworker/7:1 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 1473.448217] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 1473.448251] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 1473.448291] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 1473.448298] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 1473.448302] RSP: 0018:ffffaf6e81ebfdf0 EFLAGS: 00010246
+[ 1473.448308] RAX: 0000000000000024 RBX: ffff9c553b14a1c0 RCX: 0000000000000000
+[ 1473.448311] RDX: 0000000000000000 RSI: ffff9c56c15d6448 RDI: ffff9c56c15d6448
+[ 1473.448314] RBP: ffffaf6e81ebfe28 R08: 0000000000000001 R09: 00000000000006cb
+[ 1473.448316] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e81ebfe40
+[ 1473.448318] R13: ffff9c56b77315b0 R14: 0000000000000002 R15: dead000000000100
+[ 1473.448323] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 1473.448326] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1473.448329] CR2: 00007fdaf299a000 CR3: 000000018ec0e005 CR4: 00000000003606e0
+[ 1473.448333] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 1473.448336] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 1473.448339] Call Trace:
+[ 1473.448376]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 1473.448389]  process_one_work+0x20f/0x410
+[ 1473.448397]  worker_thread+0x34/0x400
+[ 1473.448404]  kthread+0x120/0x140
+[ 1473.448410]  ? process_one_work+0x410/0x410
+[ 1473.448415]  ? __kthread_parkme+0x70/0x70
+[ 1473.448425]  ret_from_fork+0x35/0x40
+[ 1473.448433] ---[ end trace c6c2542c74322b66 ]---
+[ 1518.445972] ------------[ cut here ]------------
+[ 1518.446164] WARNING: CPU: 7 PID: 82 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 1518.446167] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 1518.446210]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 1518.446268] CPU: 7 PID: 82 Comm: kworker/7:1 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 1518.446269] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 1518.446294] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 1518.446308] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 1518.446309] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 1518.446311] RSP: 0000:ffffaf6e81ebfdf0 EFLAGS: 00010246
+[ 1518.446312] RAX: 0000000000000024 RBX: ffff9c5647933000 RCX: 0000000000000000
+[ 1518.446313] RDX: 0000000000000000 RSI: ffff9c56c15d6448 RDI: ffff9c56c15d6448
+[ 1518.446314] RBP: ffffaf6e81ebfe28 R08: 0000000000000001 R09: 00000000000006e8
+[ 1518.446315] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e81ebfe40
+[ 1518.446316] R13: ffff9c56b77315b4 R14: 0000000000000003 R15: dead000000000100
+[ 1518.446318] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 1518.446319] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1518.446320] CR2: 000016910fae9000 CR3: 000000043aca6001 CR4: 00000000003606e0
+[ 1518.446321] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 1518.446322] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 1518.446323] Call Trace:
+[ 1518.446335]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 1518.446340]  process_one_work+0x20f/0x410
+[ 1518.446343]  worker_thread+0x34/0x400
+[ 1518.446345]  kthread+0x120/0x140
+[ 1518.446347]  ? process_one_work+0x410/0x410
+[ 1518.446349]  ? __kthread_parkme+0x70/0x70
+[ 1518.446353]  ret_from_fork+0x35/0x40
+[ 1518.446355] ---[ end trace c6c2542c74322b67 ]---
+[ 1817.787761] iwlwifi 0000:02:00.0: Error sending SCAN_ABORT_UMAC: time out after 2000ms.
+[ 1817.787772] iwlwifi 0000:02:00.0: Current CMD queue read_ptr 58 write_ptr 59
+[ 1817.789086] iwlwifi 0000:02:00.0: HCMD_ACTIVE already clear for command SCAN_ABORT_UMAC
+[ 1817.789130] iwlwifi 0000:02:00.0: Microcode SW error detected.  Restarting 0x2000000.
+[ 1817.789198] iwlwifi 0000:02:00.0: Start IWL Error Log Dump:
+[ 1817.789203] iwlwifi 0000:02:00.0: Status: 0x00000100, count: 6
+[ 1817.789207] iwlwifi 0000:02:00.0: Loaded firmware version: 36.9f0a2d68.0
+[ 1817.789212] iwlwifi 0000:02:00.0: 0x00000084 | NMI_INTERRUPT_UNKNOWN       
+[ 1817.789216] iwlwifi 0000:02:00.0: 0x000002F0 | trm_hw_status0
+[ 1817.789219] iwlwifi 0000:02:00.0: 0x00000000 | trm_hw_status1
+[ 1817.789223] iwlwifi 0000:02:00.0: 0x0002485C | branchlink2
+[ 1817.789226] iwlwifi 0000:02:00.0: 0x0003A7CA | interruptlink1
+[ 1817.789229] iwlwifi 0000:02:00.0: 0x0003A7CA | interruptlink2
+[ 1817.789233] iwlwifi 0000:02:00.0: 0x00000000 | data1
+[ 1817.789236] iwlwifi 0000:02:00.0: 0x00000080 | data2
+[ 1817.789239] iwlwifi 0000:02:00.0: 0x07830000 | data3
+[ 1817.789242] iwlwifi 0000:02:00.0: 0x00000000 | beacon time
+[ 1817.789246] iwlwifi 0000:02:00.0: 0x6B62AE3D | tsf low
+[ 1817.789249] iwlwifi 0000:02:00.0: 0x00000000 | tsf hi
+[ 1817.789253] iwlwifi 0000:02:00.0: 0x00000000 | time gp1
+[ 1817.789256] iwlwifi 0000:02:00.0: 0x6B62AE3E | time gp2
+[ 1817.789259] iwlwifi 0000:02:00.0: 0x00000001 | uCode revision type
+[ 1817.789263] iwlwifi 0000:02:00.0: 0x00000024 | uCode version major
+[ 1817.789266] iwlwifi 0000:02:00.0: 0x9F0A2D68 | uCode version minor
+[ 1817.789269] iwlwifi 0000:02:00.0: 0x00000230 | hw version
+[ 1817.789273] iwlwifi 0000:02:00.0: 0x00489000 | board version
+[ 1817.789276] iwlwifi 0000:02:00.0: 0x8002FE01 | hcmd
+[ 1817.789280] iwlwifi 0000:02:00.0: 0x00022000 | isr0
+[ 1817.789283] iwlwifi 0000:02:00.0: 0x00800000 | isr1
+[ 1817.789286] iwlwifi 0000:02:00.0: 0x08001802 | isr2
+[ 1817.789289] iwlwifi 0000:02:00.0: 0x00400080 | isr3
+[ 1817.789292] iwlwifi 0000:02:00.0: 0x00000000 | isr4
+[ 1817.789295] iwlwifi 0000:02:00.0: 0x8000FB03 | last cmd Id
+[ 1817.789299] iwlwifi 0000:02:00.0: 0x00000000 | wait_event
+[ 1817.789302] iwlwifi 0000:02:00.0: 0x000077DD | l2p_control
+[ 1817.789306] iwlwifi 0000:02:00.0: 0x00000000 | l2p_duration
+[ 1817.789309] iwlwifi 0000:02:00.0: 0x00000000 | l2p_mhvalid
+[ 1817.789312] iwlwifi 0000:02:00.0: 0x00000000 | l2p_addr_match
+[ 1817.789315] iwlwifi 0000:02:00.0: 0x0000008F | lmpm_pmg_sel
+[ 1817.789319] iwlwifi 0000:02:00.0: 0x04120134 | timestamp
+[ 1817.789322] iwlwifi 0000:02:00.0: 0x00342840 | flow_handler
+[ 1817.789534] iwlwifi 0000:02:00.0: 0x00000000 | ADVANCED_SYSASSERT
+[ 1817.789537] iwlwifi 0000:02:00.0: 0x00000000 | umac branchlink1
+[ 1817.789540] iwlwifi 0000:02:00.0: 0x00000000 | umac branchlink2
+[ 1817.789544] iwlwifi 0000:02:00.0: 0x00000000 | umac interruptlink1
+[ 1817.789547] iwlwifi 0000:02:00.0: 0x00000000 | umac interruptlink2
+[ 1817.789550] iwlwifi 0000:02:00.0: 0x00000000 | umac data1
+[ 1817.789553] iwlwifi 0000:02:00.0: 0x00000000 | umac data2
+[ 1817.789556] iwlwifi 0000:02:00.0: 0x00000000 | umac data3
+[ 1817.789560] iwlwifi 0000:02:00.0: 0x00000000 | umac major
+[ 1817.789563] iwlwifi 0000:02:00.0: 0x00000000 | umac minor
+[ 1817.789566] iwlwifi 0000:02:00.0: 0x00000000 | frame pointer
+[ 1817.789569] iwlwifi 0000:02:00.0: 0x00000000 | stack pointer
+[ 1817.789572] iwlwifi 0000:02:00.0: 0x00000000 | last host cmd
+[ 1817.789576] iwlwifi 0000:02:00.0: 0x00000000 | isr status reg
+[ 1817.789581] ------------[ cut here ]------------
+[ 1817.789583] UMAC scan UID 0 status was not cleaned
+[ 1817.789670] WARNING: CPU: 0 PID: 1201 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:2039 iwl_mvm_report_scan_aborted+0x22b/0x240 [iwlmvm]
+[ 1817.789672] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 1817.789724]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 1817.789802] CPU: 0 PID: 1201 Comm: wpa_supplicant Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 1817.789804] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 1817.789829] RIP: 0010:iwl_mvm_report_scan_aborted+0x22b/0x240 [iwlmvm]
+[ 1817.789833] Code: ff ff 41 80 bc 24 f6 20 00 00 00 0f 85 92 fe ff ff 45 31 ed e9 74 ff ff ff 89 de 4c 89 ef c6 05 0b ed 02 00 01 e8 57 8c c6 c7 <0f> 0b e9 f9 fe ff ff e8 09 89 c6 c7 66 0f 1f 84 00 00 00 00 00 0f
+[ 1817.789835] RSP: 0018:ffffaf6e8298b7a0 EFLAGS: 00010286
+[ 1817.789838] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000006
+[ 1817.789841] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff9c56c1416440
+[ 1817.789843] RBP: ffffaf6e8298b7d0 R08: 0000000000000001 R09: 0000000000000742
+[ 1817.789844] R10: 0000000000000004 R11: 0000000000000000 R12: ffff9c56b77315a8
+[ 1817.789846] R13: ffffffffc1258680 R14: 000000000000001a R15: 0000000000000000
+[ 1817.789850] FS:  00007f4e383be800(0000) GS:ffff9c56c1400000(0000) knlGS:0000000000000000
+[ 1817.789852] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1817.789854] CR2: 000030bb27893000 CR3: 000000043aca6002 CR4: 00000000003606f0
+[ 1817.789857] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 1817.789859] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 1817.789860] Call Trace:
+[ 1817.789872]  ? __wake_up+0x13/0x20
+[ 1817.789892]  iwl_mvm_nic_restart+0x26/0x180 [iwlmvm]
+[ 1817.789910]  iwl_mvm_nic_error+0x40/0x50 [iwlmvm]
+[ 1817.789934]  iwl_pcie_send_hcmd_sync+0x2a7/0x4b0 [iwlwifi]
+[ 1817.789940]  ? wait_woken+0x80/0x80
+[ 1817.789960]  iwl_trans_pcie_send_hcmd+0x37/0xe0 [iwlwifi]
+[ 1817.789982]  iwl_trans_send_cmd+0x71/0xe0 [iwlwifi]
+[ 1817.790002]  iwl_mvm_send_cmd+0x36/0x90 [iwlmvm]
+[ 1817.790020]  iwl_mvm_send_cmd_pdu+0x51/0x70 [iwlmvm]
+[ 1817.790042]  iwl_mvm_scan_stop.part.31+0x210/0x290 [iwlmvm]
+[ 1817.790063]  iwl_mvm_scan_stop+0x19/0x20 [iwlmvm]
+[ 1817.790078]  iwl_mvm_mac_sched_scan_stop+0x3a/0x70 [iwlmvm]
+[ 1817.790132]  ieee80211_request_sched_scan_stop+0x8b/0x190 [mac80211]
+[ 1817.790178]  ieee80211_sched_scan_stop+0x2e/0x40 [mac80211]
+[ 1817.790229]  cfg80211_stop_sched_scan_req+0x64/0x1e0 [cfg80211]
+[ 1817.790267]  nl80211_stop_sched_scan+0x99/0xe0 [cfg80211]
+[ 1817.790274]  genl_family_rcv_msg+0x1d8/0x410
+[ 1817.790280]  ? __wake_up_sync_key+0x1e/0x30
+[ 1817.790285]  genl_rcv_msg+0x4c/0xa0
+[ 1817.790293]  ? _cond_resched+0x19/0x30
+[ 1817.790297]  ? genl_family_rcv_msg+0x410/0x410
+[ 1817.790301]  netlink_rcv_skb+0x4f/0x120
+[ 1817.790305]  genl_rcv+0x28/0x40
+[ 1817.790308]  netlink_unicast+0x199/0x230
+[ 1817.790312]  netlink_sendmsg+0x20d/0x3c0
+[ 1817.790321]  sock_sendmsg+0x3e/0x50
+[ 1817.790327]  ___sys_sendmsg+0x295/0x2f0
+[ 1817.790332]  ? ___sys_recvmsg+0x16c/0x200
+[ 1817.790339]  ? sock_do_ioctl+0x43/0x140
+[ 1817.790345]  ? __check_object_size+0x4d/0x17c
+[ 1817.790351]  ? sock_getsockopt+0x261/0xbfd
+[ 1817.790356]  ? sock_ioctl+0x19e/0x320
+[ 1817.790363]  ? __fpu__restore_sig+0xa4/0x470
+[ 1817.790368]  __sys_sendmsg+0x5c/0xa0
+[ 1817.790373]  __x64_sys_sendmsg+0x1f/0x30
+[ 1817.790379]  do_syscall_64+0x5a/0x110
+[ 1817.790384]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 1817.790388] RIP: 0033:0x7f4e38738f64
+[ 1817.790392] Code: 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b5 0f 1f 80 00 00 00 00 48 8d 05 79 b4 0c 00 8b 00 85 c0 75 13 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 54 c3 0f 1f 00 41 54 41 89 d4 55 48 89 f5 53
+[ 1817.790394] RSP: 002b:00007ffd6699e7c8 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[ 1817.790397] RAX: ffffffffffffffda RBX: 000055639f345720 RCX: 00007f4e38738f64
+[ 1817.790399] RDX: 0000000000000000 RSI: 00007ffd6699e800 RDI: 0000000000000006
+[ 1817.790401] RBP: 000055639f3b6e10 R08: 0000000000000000 R09: 0000000000020000
+[ 1817.790403] R10: 00007f4e387feca0 R11: 0000000000000246 R12: 000055639f345630
+[ 1817.790405] R13: 00007ffd6699e800 R14: 0000000000000000 R15: 00007ffd6699ee60
+[ 1817.790410] ---[ end trace c6c2542c74322b68 ]---
+[ 1817.790417] ieee80211 phy0: Hardware restart was requested
+[ 1817.790437] ------------[ cut here ]------------
+[ 1817.790527] WARNING: CPU: 7 PID: 17461 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 1817.790528] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 1817.790572]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 1817.790635] CPU: 7 PID: 17461 Comm: kworker/7:2 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 1817.790637] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 1817.790658] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 1817.790685] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 1817.790689] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 1817.790691] RSP: 0018:ffffaf6e91fabdf0 EFLAGS: 00010246
+[ 1817.790695] RAX: 0000000000000024 RBX: ffff9c5581689000 RCX: 0000000000000006
+[ 1817.790697] RDX: 0000000000000000 RSI: 0000000000000096 RDI: ffff9c56c15d6440
+[ 1817.790699] RBP: ffffaf6e91fabe28 R08: 0000000000000001 R09: 0000000000000785
+[ 1817.790701] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e91fabe40
+[ 1817.790703] R13: ffff9c56b77315b8 R14: 0000000000000004 R15: dead000000000100
+[ 1817.790706] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 1817.790708] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1817.790710] CR2: 00003bb92b28c008 CR3: 000000018ec0e004 CR4: 00000000003606e0
+[ 1817.790713] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 1817.790715] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 1817.790716] Call Trace:
+[ 1817.790738]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 1817.790747]  process_one_work+0x20f/0x410
+[ 1817.790753]  worker_thread+0x34/0x400
+[ 1817.790758]  kthread+0x120/0x140
+[ 1817.790763]  ? process_one_work+0x410/0x410
+[ 1817.790767]  ? __kthread_parkme+0x70/0x70
+[ 1817.790772]  ret_from_fork+0x35/0x40
+[ 1817.790777] ---[ end trace c6c2542c74322b69 ]---
+[ 2218.435059] ------------[ cut here ]------------
+[ 2218.435095] WARNING: CPU: 7 PID: 82 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2218.435096] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 2218.435115]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 2218.435146] CPU: 7 PID: 82 Comm: kworker/7:1 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 2218.435146] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 2218.435153] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 2218.435160] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2218.435161] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 2218.435162] RSP: 0018:ffffaf6e81ebfdf0 EFLAGS: 00010246
+[ 2218.435163] RAX: 0000000000000024 RBX: ffff9c560a3a91c0 RCX: 0000000000000000
+[ 2218.435164] RDX: 0000000000000000 RSI: ffff9c56c15d6448 RDI: ffff9c56c15d6448
+[ 2218.435165] RBP: ffffaf6e81ebfe28 R08: 0000000000000001 R09: 00000000000007a6
+[ 2218.435166] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e81ebfe40
+[ 2218.435167] R13: ffff9c56b77315a8 R14: 0000000000000000 R15: dead000000000100
+[ 2218.435168] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 2218.435169] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2218.435170] CR2: 00007fdaf8207ce0 CR3: 000000018ec0e003 CR4: 00000000003606e0
+[ 2218.435171] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 2218.435171] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 2218.435172] Call Trace:
+[ 2218.435179]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 2218.435182]  process_one_work+0x20f/0x410
+[ 2218.435184]  worker_thread+0x34/0x400
+[ 2218.435186]  kthread+0x120/0x140
+[ 2218.435187]  ? process_one_work+0x410/0x410
+[ 2218.435189]  ? __kthread_parkme+0x70/0x70
+[ 2218.435192]  ret_from_fork+0x35/0x40
+[ 2218.435194] ---[ end trace c6c2542c74322b6a ]---
+[ 2243.800492] ------------[ cut here ]------------
+[ 2243.800605] WARNING: CPU: 7 PID: 82 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2243.800607] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 2243.800668]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 2243.800759] CPU: 7 PID: 82 Comm: kworker/7:1 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 2243.800762] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 2243.800785] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 2243.800816] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2243.800821] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 2243.800824] RSP: 0000:ffffaf6e81ebfdf0 EFLAGS: 00010246
+[ 2243.800828] RAX: 0000000000000024 RBX: ffff9c55a55811c0 RCX: 0000000000000000
+[ 2243.800831] RDX: 0000000000000000 RSI: ffff9c56c15d6448 RDI: ffff9c56c15d6448
+[ 2243.800833] RBP: ffffaf6e81ebfe28 R08: 0000000000000001 R09: 00000000000007c3
+[ 2243.800835] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e81ebfe40
+[ 2243.800837] R13: ffff9c56b77315ac R14: 0000000000000001 R15: dead000000000100
+[ 2243.800841] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 2243.800844] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2243.800846] CR2: 00007f3388c06b38 CR3: 000000043ac42005 CR4: 00000000003606e0
+[ 2243.800849] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 2243.800851] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 2243.800853] Call Trace:
+[ 2243.800881]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 2243.800892]  process_one_work+0x20f/0x410
+[ 2243.800899]  worker_thread+0x34/0x400
+[ 2243.800905]  kthread+0x120/0x140
+[ 2243.800911]  ? process_one_work+0x410/0x410
+[ 2243.800915]  ? __kthread_parkme+0x70/0x70
+[ 2243.800923]  ret_from_fork+0x35/0x40
+[ 2243.800929] ---[ end trace c6c2542c74322b6b ]---
+[ 2258.776248] ------------[ cut here ]------------
+[ 2258.776295] WARNING: CPU: 7 PID: 82 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2258.776296] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 2258.776321]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 2258.776360] CPU: 7 PID: 82 Comm: kworker/7:1 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 2258.776361] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 2258.776369] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 2258.776386] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2258.776389] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 2258.776390] RSP: 0018:ffffaf6e81ebfdf0 EFLAGS: 00010246
+[ 2258.776392] RAX: 0000000000000024 RBX: ffff9c5591b501c0 RCX: 0000000000000000
+[ 2258.776393] RDX: 0000000000000000 RSI: ffff9c56c15d6448 RDI: ffff9c56c15d6448
+[ 2258.776394] RBP: ffffaf6e81ebfe28 R08: 0000000000000001 R09: 00000000000007e0
+[ 2258.776396] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e81ebfe40
+[ 2258.776397] R13: ffff9c56b77315b0 R14: 0000000000000002 R15: dead000000000100
+[ 2258.776399] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 2258.776400] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2258.776401] CR2: 0000179dd8d18000 CR3: 000000018ec0e002 CR4: 00000000003606e0
+[ 2258.776402] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 2258.776403] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 2258.776403] Call Trace:
+[ 2258.776414]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 2258.776418]  process_one_work+0x20f/0x410
+[ 2258.776420]  worker_thread+0x34/0x400
+[ 2258.776423]  kthread+0x120/0x140
+[ 2258.776425]  ? process_one_work+0x410/0x410
+[ 2258.776426]  ? __kthread_parkme+0x70/0x70
+[ 2258.776430]  ret_from_fork+0x35/0x40
+[ 2258.776432] ---[ end trace c6c2542c74322b6c ]---
+[ 2362.216493] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 315)
+[ 2362.216494] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 315)
+[ 2362.216496] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 758)
+[ 2362.216498] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 758)
+[ 2362.216564] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 758)
+[ 2362.216565] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 758)
+[ 2362.216565] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 758)
+[ 2362.216566] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 758)
+[ 2362.216567] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 758)
+[ 2362.216568] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 758)
+[ 2362.219488] mce: CPU4: Core temperature/speed normal
+[ 2362.219489] mce: CPU2: Package temperature/speed normal
+[ 2362.219490] mce: CPU6: Package temperature/speed normal
+[ 2362.219490] mce: CPU0: Core temperature/speed normal
+[ 2362.219491] mce: CPU4: Package temperature/speed normal
+[ 2362.219492] mce: CPU0: Package temperature/speed normal
+[ 2362.219541] mce: CPU5: Package temperature/speed normal
+[ 2362.219542] mce: CPU3: Package temperature/speed normal
+[ 2362.219543] mce: CPU1: Package temperature/speed normal
+[ 2362.219543] mce: CPU7: Package temperature/speed normal
+[ 2723.797218] ------------[ cut here ]------------
+[ 2723.797321] WARNING: CPU: 7 PID: 17461 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2723.797323] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 2723.797376]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 2723.797461] CPU: 7 PID: 17461 Comm: kworker/7:2 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 2723.797463] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 2723.797487] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 2723.797515] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2723.797519] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 2723.797522] RSP: 0018:ffffaf6e91fabdf0 EFLAGS: 00010246
+[ 2723.797525] RAX: 0000000000000024 RBX: ffff9c5564cd51c0 RCX: 0000000000000000
+[ 2723.797527] RDX: 0000000000000000 RSI: ffff9c56c15d6448 RDI: ffff9c56c15d6448
+[ 2723.797529] RBP: ffffaf6e91fabe28 R08: 0000000000000001 R09: 000000000000082b
+[ 2723.797531] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e91fabe40
+[ 2723.797533] R13: ffff9c56b77315b4 R14: 0000000000000003 R15: dead000000000100
+[ 2723.797536] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 2723.797538] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2723.797541] CR2: 00001946006fd000 CR3: 000000018ec0e005 CR4: 00000000003606e0
+[ 2723.797543] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 2723.797545] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 2723.797547] Call Trace:
+[ 2723.797572]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 2723.797582]  process_one_work+0x20f/0x410
+[ 2723.797588]  worker_thread+0x34/0x400
+[ 2723.797594]  kthread+0x120/0x140
+[ 2723.797599]  ? process_one_work+0x410/0x410
+[ 2723.797603]  ? __kthread_parkme+0x70/0x70
+[ 2723.797610]  ret_from_fork+0x35/0x40
+[ 2723.797615] ---[ end trace c6c2542c74322b6d ]---
+[ 2983.429269] ------------[ cut here ]------------
+[ 2983.429307] WARNING: CPU: 7 PID: 17461 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2983.429308] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 2983.429329]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 2983.429361] CPU: 7 PID: 17461 Comm: kworker/7:2 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 2983.429362] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 2983.429369] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 2983.429379] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 2983.429380] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 2983.429381] RSP: 0018:ffffaf6e91fabdf0 EFLAGS: 00010246
+[ 2983.429382] RAX: 0000000000000024 RBX: ffff9c5533d851c0 RCX: 0000000000000000
+[ 2983.429383] RDX: 0000000000000000 RSI: ffff9c56c15d6448 RDI: ffff9c56c15d6448
+[ 2983.429384] RBP: ffffaf6e91fabe28 R08: 0000000000000001 R09: 000000000000084d
+[ 2983.429385] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e91fabe40
+[ 2983.429385] R13: ffff9c56b77315b8 R14: 0000000000000004 R15: dead000000000100
+[ 2983.429386] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 2983.429387] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2983.429388] CR2: 0000557e56a7a010 CR3: 000000018ec0e003 CR4: 00000000003606e0
+[ 2983.429389] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 2983.429389] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 2983.429390] Call Trace:
+[ 2983.429399]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 2983.429403]  process_one_work+0x20f/0x410
+[ 2983.429405]  worker_thread+0x34/0x400
+[ 2983.429407]  kthread+0x120/0x140
+[ 2983.429409]  ? process_one_work+0x410/0x410
+[ 2983.429410]  ? __kthread_parkme+0x70/0x70
+[ 2983.429413]  ret_from_fork+0x35/0x40
+[ 2983.429415] ---[ end trace c6c2542c74322b6e ]---
+[ 3020.401495] usb 1-2.4.3: USB disconnect, device number 11
+[ 3020.401498] usb 1-XXX.XXX.XXX.XXX: USB disconnect, device number 12
+[ 3156.783568] ------------[ cut here ]------------
+[ 3156.783613] WARNING: CPU: 7 PID: 28256 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 3156.783614] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 3156.783636]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 3156.783672] CPU: 7 PID: 28256 Comm: kworker/7:1 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 3156.783673] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 3156.783682] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 3156.783693] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 3156.783694] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 3156.783695] RSP: 0000:ffffaf6e86033df0 EFLAGS: 00010246
+[ 3156.783697] RAX: 0000000000000024 RBX: ffff9c554aa43000 RCX: 0000000000000000
+[ 3156.783698] RDX: 0000000000000000 RSI: ffff9c56c15d6448 RDI: ffff9c56c15d6448
+[ 3156.783698] RBP: ffffaf6e86033e28 R08: 0000000000000001 R09: 000000000000086c
+[ 3156.783699] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e86033e40
+[ 3156.783700] R13: ffff9c56b77315bc R14: 0000000000000005 R15: dead000000000100
+[ 3156.783701] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 3156.783702] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3156.783703] CR2: 00000afda6aee000 CR3: 0000000325c66003 CR4: 00000000003606e0
+[ 3156.783704] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 3156.783705] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 3156.783705] Call Trace:
+[ 3156.783715]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 3156.783720]  process_one_work+0x20f/0x410
+[ 3156.783722]  worker_thread+0x34/0x400
+[ 3156.783724]  kthread+0x120/0x140
+[ 3156.783727]  ? process_one_work+0x410/0x410
+[ 3156.783728]  ? __kthread_parkme+0x70/0x70
+[ 3156.783731]  ret_from_fork+0x35/0x40
+[ 3156.783734] ---[ end trace c6c2542c74322b6f ]---
+[ 3573.074354] wlp2s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 3573.089604] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 3573.097988] wlp2s0: authenticated
+[ 3573.099132] wlp2s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 3573.144431] wlp2s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=2)
+[ 3573.150433] wlp2s0: associated
+[ 3574.506309] wlp2s0: Limiting TX power to 20 (20 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[ 3583.152900] wlp2s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 3585.309266] wlp2s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 3585.318991] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 3585.330617] wlp2s0: authenticated
+[ 3585.334815] wlp2s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 3585.342839] wlp2s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=2)
+[ 3585.346884] wlp2s0: associated
+[ 3585.353712] wlp2s0: deauthenticated from XX:XX:XX:XX:XX:XX (Reason: 2=PREV_AUTH_NOT_VALID)
+[ 6397.620156] evdi: [D] evdi_painter_dpms_notify:544 (dev=1) Notifying dpms mode: 3
+[ 6397.620169] evdi: [D] evdi_painter_dpms_notify:544 (dev=2) Notifying dpms mode: 3
+[ 6397.786474] evdi: [D] evdi_painter_dpms_notify:544 (dev=1) Notifying dpms mode: 0
+[ 6397.786498] evdi: [D] evdi_painter_dpms_notify:544 (dev=2) Notifying dpms mode: 0
+[ 6402.228176] PM: suspend entry (deep)
+[ 6402.228181] PM: Syncing filesystems ... done.
+[ 6402.243723] Freezing user space processes ... (elapsed 0.002 seconds) done.
+[ 6402.246517] OOM killer disabled.
+[ 6402.246518] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[ 6402.248034] printk: Suspending console(s) (use no_console_suspend to debug)
+[ 6402.278675] ------------[ cut here ]------------
+[ 6402.278680] UMAC scan UID 0 status was not cleaned
+[ 6402.278760] WARNING: CPU: 7 PID: 32047 at drivers/net/wireless/intel/iwlwifi/mvm/mac80211.c:1280 __iwl_mvm_mac_stop+0x155/0x160 [iwlmvm]
+[ 6402.278762] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 6402.278814]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 6402.278893] CPU: 7 PID: 32047 Comm: kworker/u16:2 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 6402.278896] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 6402.278906] Workqueue: events_unbound async_run_entry_fn
+[ 6402.278926] RIP: 0010:__iwl_mvm_mac_stop+0x155/0x160 [iwlmvm]
+[ 6402.278930] Code: c3 80 3d 96 89 04 00 00 74 0e 42 c7 84 a3 34 1f 00 00 00 00 00 00 eb d5 44 89 e6 4c 89 ef c6 05 79 89 04 00 01 e8 dd 28 c8 c7 <0f> 0b eb dc 0f 1f 80 00 00 00 00 0f 1f 44 00 00 55 48 89 e5 41 55
+[ 6402.278933] RSP: 0018:ffffaf6e85517cb8 EFLAGS: 00010286
+[ 6402.278936] RAX: 0000000000000000 RBX: ffff9c56b77315a8 RCX: 0000000000000006
+[ 6402.278938] RDX: 0000000000000007 RSI: 0000000000000092 RDI: ffff9c56c15d6440
+[ 6402.278941] RBP: ffffaf6e85517cd0 R08: 0000000000000002 R09: 0000000000022ac0
+[ 6402.278943] R10: 00000b0ee4c9c6f9 R11: 0000000000031dc8 R12: 0000000000000000
+[ 6402.278945] R13: ffffffffc1255df0 R14: 0000000000000000 R15: ffff9c56b7730cc8
+[ 6402.278948] FS:  0000000000000000(0000) GS:ffff9c56c15c0000(0000) knlGS:0000000000000000
+[ 6402.278951] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 6402.278953] CR2: 000055db42b1b2e6 CR3: 000000018ec0e001 CR4: 00000000003606e0
+[ 6402.278955] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 6402.278957] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 6402.278959] Call Trace:
+[ 6402.278981]  iwl_mvm_mac_stop+0xa4/0xc0 [iwlmvm]
+[ 6402.279025]  drv_stop+0x39/0x100 [mac80211]
+[ 6402.279075]  ieee80211_stop_device+0x43/0x50 [mac80211]
+[ 6402.279120]  __ieee80211_suspend+0x1ff/0x420 [mac80211]
+[ 6402.279162]  ieee80211_suspend+0x1a/0x20 [mac80211]
+[ 6402.279204]  wiphy_suspend+0x93/0x280 [cfg80211]
+[ 6402.279234]  ? wiphy_resume+0x130/0x130 [cfg80211]
+[ 6402.279242]  dpm_run_callback+0x66/0x150
+[ 6402.279247]  __device_suspend+0x12a/0x4b0
+[ 6402.279253]  ? __switch_to_asm+0x41/0x70
+[ 6402.279258]  async_suspend+0x1f/0x90
+[ 6402.279265]  async_run_entry_fn+0x3c/0x150
+[ 6402.279271]  process_one_work+0x20f/0x410
+[ 6402.279276]  worker_thread+0x34/0x400
+[ 6402.279281]  kthread+0x120/0x140
+[ 6402.279285]  ? process_one_work+0x410/0x410
+[ 6402.279289]  ? __kthread_parkme+0x70/0x70
+[ 6402.279294]  ret_from_fork+0x35/0x40
+[ 6402.279299] ---[ end trace c6c2542c74322b70 ]---
+[ 6402.522961] e1000e: EEE TX LPI TIMER: 00000011
+[ 6402.846588] ACPI: EC: interrupt blocked
+[ 6402.921150] ACPI: Preparing to enter system sleep state S3
+[ 6402.928834] ACPI: EC: event blocked
+[ 6402.928836] ACPI: EC: EC stopped
+[ 6402.928837] PM: Saving platform NVS memory
+[ 6402.928849] Disabling non-boot CPUs ...
+[ 6402.930921] smpboot: CPU 1 is now offline
+[ 6402.937574] smpboot: CPU 2 is now offline
+[ 6402.942948] IRQ 135: no longer affine to CPU3
+[ 6402.943974] smpboot: CPU 3 is now offline
+[ 6402.951732] smpboot: CPU 4 is now offline
+[ 6402.956753] IRQ 122: no longer affine to CPU5
+[ 6402.957761] smpboot: CPU 5 is now offline
+[ 6402.961489] IRQ 16: no longer affine to CPU6
+[ 6402.961499] IRQ 125: no longer affine to CPU6
+[ 6402.962507] smpboot: CPU 6 is now offline
+[ 6402.967075] smpboot: CPU 7 is now offline
+[ 6402.973403] ACPI: Low-level resume complete
+[ 6402.973484] ACPI: EC: EC started
+[ 6402.973485] PM: Restoring platform NVS memory
+[ 6402.974117] Enabling non-boot CPUs ...
+[ 6402.974175] x86: Booting SMP configuration:
+[ 6402.974176] smpboot: Booting Node 0 Processor 1 APIC 0x2
+[ 6402.976326]  cache: parent cpu1 should not be sleeping
+[ 6402.976496] CPU1 is up
+[ 6402.976521] smpboot: Booting Node 0 Processor 2 APIC 0x4
+[ 6402.976960]  cache: parent cpu2 should not be sleeping
+[ 6402.977143] CPU2 is up
+[ 6402.977166] smpboot: Booting Node 0 Processor 3 APIC 0x6
+[ 6402.977528]  cache: parent cpu3 should not be sleeping
+[ 6402.977721] CPU3 is up
+[ 6402.977751] smpboot: Booting Node 0 Processor 4 APIC 0x1
+[ 6402.978170]  cache: parent cpu4 should not be sleeping
+[ 6402.978513] CPU4 is up
+[ 6402.978538] smpboot: Booting Node 0 Processor 5 APIC 0x3
+[ 6402.978894]  cache: parent cpu5 should not be sleeping
+[ 6402.979101] CPU5 is up
+[ 6402.979122] smpboot: Booting Node 0 Processor 6 APIC 0x5
+[ 6402.979489]  cache: parent cpu6 should not be sleeping
+[ 6402.979708] CPU6 is up
+[ 6402.979729] smpboot: Booting Node 0 Processor 7 APIC 0x7
+[ 6402.980086]  cache: parent cpu7 should not be sleeping
+[ 6402.980344] CPU7 is up
+[ 6402.986124] ACPI: Waking up from system sleep state S3
+[ 6403.008618] ACPI: EC: interrupt unblocked
+[ 6403.076509] ACPI: EC: event unblocked
+[ 6403.085842] usb 2-3: Disable of device-initiated U1 failed.
+[ 6403.089454] usb 2-3: Disable of device-initiated U2 failed.
+[ 6403.101362] ACPI: button: The lid device is not compliant to SW_LID.
+[ 6403.288183] usb 2-3: reset SuperSpeed Gen 1 USB device number 2 using xhci_hcd
+[ 6403.308676] nvme nvme0: 8/0/0 default/read/poll queues
+[ 6403.439447] usb 1-5: reset high-speed USB device number 3 using xhci_hcd
+[ 6403.716113] usb 1-9: reset full-speed USB device number 9 using xhci_hcd
+[ 6403.828637] psmouse serio1: synaptics: queried max coordinates: x [..5676], y [..4760]
+[ 6403.862451] psmouse serio1: synaptics: queried min coordinates: x [1266..], y [1094..]
+[ 6403.991824] usb 1-8: reset high-speed USB device number 7 using xhci_hcd
+[ 6404.219937] usb 1-2.4.1: reset high-speed USB device number 8 using xhci_hcd
+[ 6404.330889] acpi LNXPOWER:01: Turning OFF
+[ 6404.331564] OOM killer enabled.
+[ 6404.331566] Restarting tasks ... done.
+[ 6404.415967] PM: suspend exit
+[ 6404.604353] e1000e: enp0s31f6 NIC Link is Down
+[ 6407.814168] cdc_ncm 1-2.4.1:1.5 enx0050b65a2bfa: network connection: disconnected
+[ 6408.182066] cdc_ncm 1-2.4.1:1.5 enx0050b65a2bfa: 1000 mbit/s downlink 1000 mbit/s uplink
+[ 6408.198124] cdc_ncm 1-2.4.1:1.5 enx0050b65a2bfa: network connection: connected
+[ 6582.741755] ------------[ cut here ]------------
+[ 6582.741808] WARNING: CPU: 5 PID: 21263 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 6582.741809] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 6582.741834]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 6582.741867] CPU: 5 PID: 21263 Comm: kworker/5:0 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 6582.741867] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 6582.741874] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 6582.741882] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 6582.741884] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 6582.741884] RSP: 0018:ffffaf6e86603df0 EFLAGS: 00010246
+[ 6582.741886] RAX: 0000000000000024 RBX: ffff9c56254c11c0 RCX: 0000000000000000
+[ 6582.741886] RDX: 0000000000000000 RSI: ffff9c56c1556448 RDI: ffff9c56c1556448
+[ 6582.741887] RBP: ffffaf6e86603e28 R08: 0000000000000001 R09: 0000000000000a13
+[ 6582.741888] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e86603e40
+[ 6582.741888] R13: ffff9c56b77315a8 R14: 0000000000000000 R15: dead000000000100
+[ 6582.741889] FS:  0000000000000000(0000) GS:ffff9c56c1540000(0000) knlGS:0000000000000000
+[ 6582.741890] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 6582.741891] CR2: 000038257cdda000 CR3: 000000018ec0e003 CR4: 00000000003606e0
+[ 6582.741891] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 6582.741892] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 6582.741892] Call Trace:
+[ 6582.741900]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 6582.741904]  process_one_work+0x20f/0x410
+[ 6582.741906]  worker_thread+0x34/0x400
+[ 6582.741908]  kthread+0x120/0x140
+[ 6582.741909]  ? process_one_work+0x410/0x410
+[ 6582.741910]  ? __kthread_parkme+0x70/0x70
+[ 6582.741913]  ret_from_fork+0x35/0x40
+[ 6582.741914] ---[ end trace c6c2542c74322b71 ]---
+[ 6928.741515] ------------[ cut here ]------------
+[ 6928.741635] WARNING: CPU: 5 PID: 21263 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 6928.741638] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 6928.741721]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 6928.741807] CPU: 5 PID: 21263 Comm: kworker/5:0 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 6928.741809] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 6928.741830] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 6928.741857] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 6928.741861] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 6928.741864] RSP: 0018:ffffaf6e86603df0 EFLAGS: 00010246
+[ 6928.741868] RAX: 0000000000000024 RBX: ffff9c56256d41c0 RCX: 0000000000000000
+[ 6928.741870] RDX: 0000000000000000 RSI: ffff9c56c1556448 RDI: ffff9c56c1556448
+[ 6928.741872] RBP: ffffaf6e86603e28 R08: 0000000000000001 R09: 0000000000000a34
+[ 6928.741874] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e86603e40
+[ 6928.741876] R13: ffff9c56b77315ac R14: 0000000000000001 R15: dead000000000100
+[ 6928.741879] FS:  0000000000000000(0000) GS:ffff9c56c1540000(0000) knlGS:0000000000000000
+[ 6928.741882] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 6928.741884] CR2: 00002d2cd4d64000 CR3: 000000018ec0e003 CR4: 00000000003606e0
+[ 6928.741886] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 6928.741888] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 6928.741890] Call Trace:
+[ 6928.741913]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 6928.741923]  process_one_work+0x20f/0x410
+[ 6928.741929]  worker_thread+0x34/0x400
+[ 6928.741935]  kthread+0x120/0x140
+[ 6928.741940]  ? process_one_work+0x410/0x410
+[ 6928.741944]  ? __kthread_parkme+0x70/0x70
+[ 6928.741951]  ret_from_fork+0x35/0x40
+[ 6928.741956] ---[ end trace c6c2542c74322b72 ]---
+[ 7305.749185] ------------[ cut here ]------------
+[ 7305.749266] WARNING: CPU: 5 PID: 21263 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 7305.749267] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 7305.749304]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 7305.749359] CPU: 5 PID: 21263 Comm: kworker/5:0 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 7305.749361] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 7305.749374] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 7305.749393] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 7305.749395] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 7305.749397] RSP: 0000:ffffaf6e86603df0 EFLAGS: 00010246
+[ 7305.749399] RAX: 0000000000000024 RBX: ffff9c56bd464000 RCX: 0000000000000000
+[ 7305.749401] RDX: 0000000000000000 RSI: ffff9c56c1556448 RDI: ffff9c56c1556448
+[ 7305.749402] RBP: ffffaf6e86603e28 R08: 0000000000000001 R09: 0000000000000a51
+[ 7305.749403] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e86603e40
+[ 7305.749404] R13: ffff9c56b77315b0 R14: 0000000000000002 R15: dead000000000100
+[ 7305.749407] FS:  0000000000000000(0000) GS:ffff9c56c1540000(0000) knlGS:0000000000000000
+[ 7305.749408] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7305.749410] CR2: 0000329f0f0f5048 CR3: 000000043aca6004 CR4: 00000000003606e0
+[ 7305.749411] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7305.749412] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7305.749413] Call Trace:
+[ 7305.749429]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 7305.749436]  process_one_work+0x20f/0x410
+[ 7305.749440]  worker_thread+0x34/0x400
+[ 7305.749444]  kthread+0x120/0x140
+[ 7305.749447]  ? process_one_work+0x410/0x410
+[ 7305.749450]  ? __kthread_parkme+0x70/0x70
+[ 7305.749455]  ret_from_fork+0x35/0x40
+[ 7305.749458] ---[ end trace c6c2542c74322b73 ]---
+[ 7660.752847] ------------[ cut here ]------------
+[ 7660.752895] WARNING: CPU: 5 PID: 21263 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 7660.752896] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 7660.752920]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 7660.752958] CPU: 5 PID: 21263 Comm: kworker/5:0 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 7660.752959] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 7660.752967] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 7660.752978] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 7660.752980] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 7660.752981] RSP: 0000:ffffaf6e86603df0 EFLAGS: 00010246
+[ 7660.752982] RAX: 0000000000000024 RBX: ffff9c56b4b7a000 RCX: 0000000000000000
+[ 7660.752983] RDX: 0000000000000000 RSI: ffff9c56c1556448 RDI: ffff9c56c1556448
+[ 7660.752984] RBP: ffffaf6e86603e28 R08: 0000000000000001 R09: 0000000000000a6e
+[ 7660.752984] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e86603e40
+[ 7660.752985] R13: ffff9c56b77315b4 R14: 0000000000000003 R15: dead000000000100
+[ 7660.752987] FS:  0000000000000000(0000) GS:ffff9c56c1540000(0000) knlGS:0000000000000000
+[ 7660.752988] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7660.752988] CR2: 000000c0000e9000 CR3: 00000002749fa001 CR4: 00000000003606e0
+[ 7660.752989] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7660.752990] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7660.752991] Call Trace:
+[ 7660.753001]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 7660.753006]  process_one_work+0x20f/0x410
+[ 7660.753009]  worker_thread+0x34/0x400
+[ 7660.753011]  kthread+0x120/0x140
+[ 7660.753013]  ? process_one_work+0x410/0x410
+[ 7660.753015]  ? __kthread_parkme+0x70/0x70
+[ 7660.753018]  ret_from_fork+0x35/0x40
+[ 7660.753020] ---[ end trace c6c2542c74322b74 ]---
+[ 7780.751926] ------------[ cut here ]------------
+[ 7780.751958] WARNING: CPU: 5 PID: 21263 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 7780.751958] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 7780.751976]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 7780.752003] CPU: 5 PID: 21263 Comm: kworker/5:0 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 7780.752003] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 7780.752009] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 7780.752017] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 7780.752018] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 7780.752019] RSP: 0018:ffffaf6e86603df0 EFLAGS: 00010246
+[ 7780.752020] RAX: 0000000000000024 RBX: ffff9c5564e85000 RCX: 0000000000000000
+[ 7780.752021] RDX: 0000000000000000 RSI: ffff9c56c1556448 RDI: ffff9c56c1556448
+[ 7780.752021] RBP: ffffaf6e86603e28 R08: 0000000000000001 R09: 0000000000000a8b
+[ 7780.752022] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e86603e40
+[ 7780.752022] R13: ffff9c56b77315b8 R14: 0000000000000004 R15: dead000000000100
+[ 7780.752023] FS:  0000000000000000(0000) GS:ffff9c56c1540000(0000) knlGS:0000000000000000
+[ 7780.752024] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7780.752025] CR2: 00007f6a582d7718 CR3: 000000018ec0e003 CR4: 00000000003606e0
+[ 7780.752025] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7780.752026] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7780.752026] Call Trace:
+[ 7780.752033]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 7780.752036]  process_one_work+0x20f/0x410
+[ 7780.752038]  worker_thread+0x34/0x400
+[ 7780.752040]  kthread+0x120/0x140
+[ 7780.752041]  ? process_one_work+0x410/0x410
+[ 7780.752042]  ? __kthread_parkme+0x70/0x70
+[ 7780.752045]  ret_from_fork+0x35/0x40
+[ 7780.752046] ---[ end trace c6c2542c74322b75 ]---
+[ 7858.733004] ------------[ cut here ]------------
+[ 7858.733049] WARNING: CPU: 5 PID: 21263 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 7858.733050] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 7858.733071]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 7858.733104] CPU: 5 PID: 21263 Comm: kworker/5:0 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 7858.733105] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 7858.733112] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 7858.733121] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 7858.733122] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 7858.733123] RSP: 0018:ffffaf6e86603df0 EFLAGS: 00010246
+[ 7858.733124] RAX: 0000000000000024 RBX: ffff9c56b86e0000 RCX: 0000000000000000
+[ 7858.733125] RDX: 0000000000000000 RSI: ffff9c56c1556448 RDI: ffff9c56c1556448
+[ 7858.733125] RBP: ffffaf6e86603e28 R08: 0000000000000001 R09: 0000000000000aa8
+[ 7858.733126] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e86603e40
+[ 7858.733127] R13: ffff9c56b77315bc R14: 0000000000000005 R15: dead000000000100
+[ 7858.733128] FS:  0000000000000000(0000) GS:ffff9c56c1540000(0000) knlGS:0000000000000000
+[ 7858.733128] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7858.733129] CR2: 000055653f120338 CR3: 000000018ec0e003 CR4: 00000000003606e0
+[ 7858.733130] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7858.733130] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7858.733131] Call Trace:
+[ 7858.733139]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 7858.733143]  process_one_work+0x20f/0x410
+[ 7858.733145]  worker_thread+0x34/0x400
+[ 7858.733147]  kthread+0x120/0x140
+[ 7858.733149]  ? process_one_work+0x410/0x410
+[ 7858.733150]  ? __kthread_parkme+0x70/0x70
+[ 7858.733153]  ret_from_fork+0x35/0x40
+[ 7858.733154] ---[ end trace c6c2542c74322b76 ]---
+[ 8214.730674] ------------[ cut here ]------------
+[ 8214.730791] WARNING: CPU: 5 PID: 21263 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 8214.730795] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 8214.730875]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 8214.730994] CPU: 5 PID: 21263 Comm: kworker/5:0 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 8214.730997] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 8214.731032] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 8214.731076] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 8214.731081] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 8214.731086] RSP: 0018:ffffaf6e86603df0 EFLAGS: 00010246
+[ 8214.731090] RAX: 0000000000000024 RBX: ffff9c56bd45b000 RCX: 0000000000000000
+[ 8214.731094] RDX: 0000000000000000 RSI: ffff9c56c1556448 RDI: ffff9c56c1556448
+[ 8214.731097] RBP: ffffaf6e86603e28 R08: 0000000000000001 R09: 0000000000000ac5
+[ 8214.731100] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e86603e40
+[ 8214.731103] R13: ffff9c56b77315c0 R14: 0000000000000006 R15: dead000000000100
+[ 8214.731108] FS:  0000000000000000(0000) GS:ffff9c56c1540000(0000) knlGS:0000000000000000
+[ 8214.731112] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8214.731115] CR2: 000000c000815000 CR3: 000000018ec0e006 CR4: 00000000003606e0
+[ 8214.731119] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8214.731122] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8214.731125] Call Trace:
+[ 8214.731161]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 8214.731175]  process_one_work+0x20f/0x410
+[ 8214.731183]  worker_thread+0x34/0x400
+[ 8214.731190]  kthread+0x120/0x140
+[ 8214.731197]  ? process_one_work+0x410/0x410
+[ 8214.731203]  ? __kthread_parkme+0x70/0x70
+[ 8214.731212]  ret_from_fork+0x35/0x40
+[ 8214.731221] ---[ end trace c6c2542c74322b77 ]---
+[ 8566.728463] ------------[ cut here ]------------
+[ 8566.728566] WARNING: CPU: 5 PID: 9239 at drivers/net/wireless/intel/iwlwifi/mvm/scan.c:1858 iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 8566.728568] Modules linked in: xt_tcpudp thunderbolt rfcomm xt_conntrack ipt_MASQUERADE nf_conntrack_netlink nfnetlink xfrm_user xfrm_algo xt_addrtype iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 br_netfilter bridge stp llc ip6table_filter ip6_tables iptable_filter bpfilter cmac aufs evdi(OE) overlay bnep dm_crypt nls_iso8859_1 intel_rapl x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel arc4 snd_soc_skl snd_soc_hdac_hda snd_hda_codec_hdmi snd_hda_ext_core snd_soc_skl_ipc crct10dif_pclmul snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match crc32_pclmul snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_hda_codec_realtek snd_hda_codec_generic snd_pcm_dmaengine ghash_clmulni_intel snd_hda_intel snd_hda_codec snd_usb_audio snd_hda_core snd_usbmidi_lib iwlmvm mac80211 snd_hwdep aesni_intel snd_seq_midi uvcvideo cdc_mbim snd_seq_midi_event cdc_wdm videobuf2_vmalloc snd_rawmidi videobuf2_memops aes_x86_64 videobuf2_v4l2 crypto_simd videobuf2_common
+[ 8566.728621]  cryptd thinkpad_acpi glue_helper iwlwifi videodev nvram intel_cstate input_leds joydev ledtrig_audio wmi_bmof intel_wmi_thunderbolt intel_rapl_perf serio_raw media snd_pcm cdc_ncm snd_seq btusb usbnet btrtl mii btbcm btintel snd_seq_device snd_timer bluetooth snd mei_me cfg80211 ecdh_generic mei intel_pch_thermal processor_thermal_device ucsi_acpi intel_xhci_usb_role_switch typec_ucsi intel_soc_dts_iosf roles typec soundcore int3403_thermal int340x_thermal_zone int3400_thermal mac_hid acpi_thermal_rel acpi_pad sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear system76_io(OE) hid_generic usbhid uas usb_storage i915 kvmgt vfio_mdev mdev vfio_iommu_type1 vfio kvm irqbypass i2c_algo_bit nvme drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops psmouse e1000e drm nvme_core i2c_i801 wmi i2c_hid hid video
+[ 8566.728700] CPU: 5 PID: 9239 Comm: kworker/5:2 Tainted: G        W  OE     5.0.0-31-generic #33-Ubuntu
+[ 8566.728702] Hardware name: LENOVO 20KGS2GW00/20KGS2GW00, BIOS N23ET66W (1.41 ) 09/02/2019
+[ 8566.728724] Workqueue: events iwl_mvm_async_handlers_wk [iwlmvm]
+[ 8566.728752] RIP: 0010:iwl_mvm_rx_umac_scan_complete_notif.cold.39+0xc/0x13 [iwlmvm]
+[ 8566.728755] Code: ff e9 a8 40 fe ff 48 c7 c7 b0 81 25 c1 e8 eb 7f cb c7 0f 0b bb 97 ff ff ff e9 20 48 fe ff 48 c7 c7 b0 81 25 c1 e8 d3 7f cb c7 <0f> 0b e9 1e 4b fe ff 48 c7 c7 b0 81 25 c1 e8 c0 7f cb c7 0f 0b 41
+[ 8566.728758] RSP: 0018:ffffaf6e9a077df0 EFLAGS: 00010246
+[ 8566.728762] RAX: 0000000000000024 RBX: ffff9c5564fa8000 RCX: 0000000000000000
+[ 8566.728764] RDX: 0000000000000000 RSI: ffff9c56c1556448 RDI: ffff9c56c1556448
+[ 8566.728766] RBP: ffffaf6e9a077e28 R08: 0000000000000001 R09: 0000000000000ae2
+[ 8566.728768] R10: 0000000000000004 R11: 0000000000000000 R12: ffffaf6e9a077e40
+[ 8566.728769] R13: ffff9c56b77315c4 R14: 0000000000000007 R15: dead000000000100
+[ 8566.728773] FS:  0000000000000000(0000) GS:ffff9c56c1540000(0000) knlGS:0000000000000000
+[ 8566.728775] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8566.728777] CR2: 00000000020237e4 CR3: 000000018ec0e001 CR4: 00000000003606e0
+[ 8566.728780] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8566.728782] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8566.728784] Call Trace:
+[ 8566.728808]  iwl_mvm_async_handlers_wk+0xb0/0x140 [iwlmvm]
+[ 8566.728817]  process_one_work+0x20f/0x410
+[ 8566.728823]  worker_thread+0x34/0x400
+[ 8566.728829]  kthread+0x120/0x140
+[ 8566.728834]  ? process_one_work+0x410/0x410
+[ 8566.728837]  ? __kthread_parkme+0x70/0x70
+[ 8566.728844]  ret_from_fork+0x35/0x40
+[ 8566.728850] ---[ end trace c6c2542c74322b78 ]---
+[14308.118825] mce: CPU3: Core temperature above threshold, cpu clock throttled (total events = 99)
+[14308.118826] mce: CPU7: Core temperature above threshold, cpu clock throttled (total events = 99)
+[14308.118828] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 760)
+[14308.118829] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 760)
+[14308.118830] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 760)
+[14308.118832] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 760)
+[14308.118869] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 760)
+[14308.118870] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 760)
+[14308.118871] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 760)
+[14308.118871] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 760)
+[14308.119785] mce: CPU7: Core temperature/speed normal
+[14308.119786] mce: CPU3: Core temperature/speed normal
+[14308.119786] mce: CPU0: Package temperature/speed normal
+[14308.119787] mce: CPU5: Package temperature/speed normal
+[14308.119788] mce: CPU6: Package temperature/speed normal
+[14308.119789] mce: CPU4: Package temperature/speed normal
+[14308.119790] mce: CPU1: Package temperature/speed normal
+[14308.119790] mce: CPU2: Package temperature/speed normal
+[14308.119791] mce: CPU3: Package temperature/speed normal
+[14308.119792] mce: CPU7: Package temperature/speed normal
+[14696.524789] mce: CPU1: Core temperature above threshold, cpu clock throttled (total events = 431)
+[14696.524790] mce: CPU5: Core temperature above threshold, cpu clock throttled (total events = 431)
+[14696.524792] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 762)
+[14696.524793] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 762)
+[14696.524794] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 762)
+[14696.524796] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 762)
+[14696.524797] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 762)
+[14696.524798] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 762)
+[14696.524799] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 762)
+[14696.524804] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 762)
+[15481.331741] input: XX:XX:XX:XX:XX:XX as /devices/virtual/input/input23
+[16004.002808] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 331)
+[16004.002809] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 331)
+[16004.002810] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 800)
+[16004.002811] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 800)
+[16004.002812] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 800)
+[16004.002813] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 800)
+[16004.002814] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 800)
+[16004.002815] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 800)
+[16004.002816] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 800)
+[16004.002821] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 800)
+[16004.007819] mce: CPU0: Core temperature/speed normal
+[16004.007820] mce: CPU1: Package temperature/speed normal
+[16004.007821] mce: CPU3: Package temperature/speed normal
+[16004.007822] mce: CPU2: Package temperature/speed normal
+[16004.007822] mce: CPU6: Package temperature/speed normal
+[16004.007823] mce: CPU5: Package temperature/speed normal
+[16004.007824] mce: CPU7: Package temperature/speed normal
+[16004.007824] mce: CPU4: Core temperature/speed normal
+[16004.007825] mce: CPU4: Package temperature/speed normal
+[16004.007826] mce: CPU0: Package temperature/speed normal
+[16065.598817] input: XX:XX:XX:XX:XX:XX as /devices/virtual/input/input24
+[16116.632314] input: XX:XX:XX:XX:XX:XX as /devices/virtual/input/input25
+[16136.249714] input: XX:XX:XX:XX:XX:XX as /devices/virtual/input/input26
+[16860.136837] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 75)
+[16860.136839] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 75)
+[16860.136841] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 804)
+[16860.136842] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 804)
+[16860.136844] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 804)
+[16860.136848] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 804)
+[16860.136868] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 804)
+[16860.136869] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 804)
+[16860.136873] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 804)
+[16860.136874] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 804)
+[16860.137825] mce: CPU6: Core temperature/speed normal
+[16860.137825] mce: CPU2: Core temperature/speed normal
+[16860.137827] mce: CPU5: Package temperature/speed normal
+[16860.137828] mce: CPU1: Package temperature/speed normal
+[16860.137829] mce: CPU7: Package temperature/speed normal
+[16860.137830] mce: CPU3: Package temperature/speed normal
+[16860.137831] mce: CPU2: Package temperature/speed normal
+[16860.137832] mce: CPU6: Package temperature/speed normal
+[16860.137844] mce: CPU0: Package temperature/speed normal
+[16860.137845] mce: CPU4: Package temperature/speed normal
+[17163.629791] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 825)
+[17163.629792] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 825)
+[17163.629794] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 825)
+[17163.629795] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 825)
+[17163.629797] mce: CPU1: Core temperature above threshold, cpu clock throttled (total events = 465)
+[17163.629799] mce: CPU5: Core temperature above threshold, cpu clock throttled (total events = 465)
+[17163.629800] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 825)
+[17163.629802] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 825)
+[17163.629804] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 825)
+[17163.629805] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 825)
+[17163.632814] mce: CPU1: Core temperature/speed normal
+[17163.632814] mce: CPU5: Core temperature/speed normal
+[17163.632816] mce: CPU4: Package temperature/speed normal
+[17163.632817] mce: CPU2: Package temperature/speed normal
+[17163.632818] mce: CPU0: Package temperature/speed normal
+[17163.632819] mce: CPU6: Package temperature/speed normal
+[17163.632820] mce: CPU3: Package temperature/speed normal
+[17163.632821] mce: CPU7: Package temperature/speed normal
+[17163.632822] mce: CPU5: Package temperature/speed normal
+[17163.632824] mce: CPU1: Package temperature/speed normal
+[17990.392801] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 82)
+[17990.392802] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 82)
+[17990.392804] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 840)
+[17990.392806] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 840)
+[17990.392808] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 840)
+[17990.392811] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 840)
+[17990.392812] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 840)
+[17990.392816] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 840)
+[17990.392821] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 840)
+[17990.392822] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 840)
+[17990.393837] mce: CPU6: Core temperature/speed normal
+[17990.393838] mce: CPU2: Core temperature/speed normal
+[17990.393839] mce: CPU5: Package temperature/speed normal
+[17990.393840] mce: CPU4: Package temperature/speed normal
+[17990.393841] mce: CPU0: Package temperature/speed normal
+[17990.393842] mce: CPU7: Package temperature/speed normal
+[17990.393843] mce: CPU3: Package temperature/speed normal
+[17990.393843] mce: CPU1: Package temperature/speed normal
+[17990.393844] mce: CPU2: Package temperature/speed normal
+[17990.393846] mce: CPU6: Package temperature/speed normal
+[18472.553819] mce: CPU5: Core temperature above threshold, cpu clock throttled (total events = 476)
+[18472.553820] mce: CPU1: Core temperature above threshold, cpu clock throttled (total events = 476)
+[18472.553822] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 841)
+[18472.553824] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 841)
+[18472.553826] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 841)
+[18472.553827] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 841)
+[18472.553829] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 841)
+[18472.553830] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 841)
+[18472.553832] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 841)
+[18472.553834] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 841)
+[18472.554784] mce: CPU5: Core temperature/speed normal
+[18472.554785] mce: CPU1: Core temperature/speed normal
+[18472.554786] mce: CPU0: Package temperature/speed normal
+[18472.554787] mce: CPU2: Package temperature/speed normal
+[18472.554788] mce: CPU6: Package temperature/speed normal
+[18472.554789] mce: CPU7: Package temperature/speed normal
+[18472.554790] mce: CPU4: Package temperature/speed normal
+[18472.554791] mce: CPU3: Package temperature/speed normal
+[18472.554792] mce: CPU1: Package temperature/speed normal
+[18472.554794] mce: CPU5: Package temperature/speed normal
+[18683.353373] input: XX:XX:XX:XX:XX:XX as /devices/virtual/input/input27
+[18938.920827] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 84)
+[18938.920828] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 84)
+[18938.920830] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 844)
+[18938.920832] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 844)
+[18938.920834] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 844)
+[18938.920835] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 844)
+[18938.920837] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 844)
+[18938.920839] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 844)
+[18938.920853] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 844)
+[18938.920854] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 844)
+[18938.921838] mce: CPU2: Core temperature/speed normal
+[18938.921839] mce: CPU6: Core temperature/speed normal
+[18938.921840] mce: CPU4: Package temperature/speed normal
+[18938.921842] mce: CPU3: Package temperature/speed normal
+[18938.921843] mce: CPU5: Package temperature/speed normal
+[18938.921843] mce: CPU0: Package temperature/speed normal
+[18938.921844] mce: CPU1: Package temperature/speed normal
+[18938.921846] mce: CPU7: Package temperature/speed normal
+[18938.921847] mce: CPU6: Package temperature/speed normal
+[18938.921849] mce: CPU2: Package temperature/speed normal
+[21283.868105] input: XX:XX:XX:XX:XX:XX as /devices/virtual/input/input28
+[21287.042832] mce: CPU6: Core temperature above threshold, cpu clock throttled (total events = 88)
+[21287.042833] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 351)
+[21287.042834] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 351)
+[21287.042835] mce: CPU2: Core temperature above threshold, cpu clock throttled (total events = 88)
+[21287.042836] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 937)
+[21287.042837] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 937)
+[21287.042838] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 937)
+[21287.042839] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 937)
+[21287.042840] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 937)
+[21287.042841] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 937)
+[21287.042841] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 937)
+[21287.042846] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 937)
+[21287.044794] mce: CPU4: Core temperature/speed normal
+[21287.044794] mce: CPU0: Core temperature/speed normal
+[22757.332795] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 364)
+[22757.332796] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 965)
+[22757.332797] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 965)
+[22757.332799] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 965)
+[22757.332800] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 364)
+[22757.332801] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 965)
+[22757.332802] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 965)
+[22757.332803] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 965)
+[22757.332821] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 965)
+[22757.332822] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 965)
+[22757.333838] mce: CPU4: Core temperature/speed normal
+[22757.333839] mce: CPU0: Core temperature/speed normal
+[22757.333840] mce: CPU3: Package temperature/speed normal
+[22757.333841] mce: CPU5: Package temperature/speed normal
+[22757.333842] mce: CPU1: Package temperature/speed normal
+[22757.333843] mce: CPU0: Package temperature/speed normal
+[22757.333843] mce: CPU2: Package temperature/speed normal
+[22757.333844] mce: CPU6: Package temperature/speed normal
+[22757.333845] mce: CPU7: Package temperature/speed normal
+[22757.333846] mce: CPU4: Package temperature/speed normal
+[24096.661800] mce: CPU4: Core temperature above threshold, cpu clock throttled (total events = 365)
+[24096.661800] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 365)
+[24096.661802] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 966)
+[24096.661803] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 966)
+[24096.661804] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 966)
+[24096.661805] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 966)
+[24096.661806] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 966)
+[24096.661807] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 966)
+[24096.661808] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 966)
+[24096.661813] mce: CPU4: Package temperature above threshold, cpu clock throttled (total events = 966)
+[24096.662800] mce: CPU0: Core temperature/speed normal
+[24096.662801] mce: CPU4: Core temperature/speed normal
+[24096.662801] mce: CPU5: Package temperature/speed normal
+[24096.662802] mce: CPU2: Package temperature/speed normal
+[24096.662803] mce: CPU1: Package temperature/speed normal
+[24096.662804] mce: CPU3: Package temperature/speed normal
+[24096.662804] mce: CPU6: Package temperature/speed normal
+[24096.662805] mce: CPU7: Package temperature/speed normal
+[24096.662806] mce: CPU4: Package temperature/speed normal
+[24096.662807] mce: CPU0: Package temperature/speed normal
