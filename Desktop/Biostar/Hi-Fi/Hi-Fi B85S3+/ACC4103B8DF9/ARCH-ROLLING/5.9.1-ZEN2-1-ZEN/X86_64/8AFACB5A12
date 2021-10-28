@@ -1,0 +1,437 @@
+[17989.014708] nvidia-modeset/: page allocation failure: order:4, mode:0x40cc0(GFP_KERNEL|__GFP_COMP), nodemask=(null),cpuset=/,mems_allowed=0
+[17989.014713] CPU: 2 PID: 456 Comm: nvidia-modeset/ Tainted: P        W  OE     5.9.1-zen2-1-zen #1
+[17989.014714] Hardware name: BIOSTAR Group Hi-Fi B85S3+/Hi-Fi B85S3+, BIOS 4.6.5 11/28/2014
+[17989.014715] Call Trace:
+[17989.014721]  dump_stack+0x6e/0x90
+[17989.014724]  warn_alloc.cold+0x78/0xdc
+[17989.014727]  ? __alloc_pages_direct_compact+0x140/0x160
+[17989.014729]  __alloc_pages_nodemask+0x1522/0x1640
+[17989.014732]  ? _raw_spin_unlock_irq+0x1d/0x30
+[17989.014733]  ? __schedule+0x843/0xc10
+[17989.014760]  ? _nv002400kms+0x12f/0x160 [nvidia_modeset]
+[17989.014762]  kmalloc_order_trace+0x39/0x100
+[17989.014764]  __kmalloc+0x2c8/0x320
+[17989.014774]  nvkms_alloc+0x20/0x50 [nvidia_modeset]
+[17989.014789]  _nv002714kms+0x16/0x30 [nvidia_modeset]
+[17989.014797]  ? _nv002589kms+0x4e/0x1610 [nvidia_modeset]
+[17989.014807]  ? _nv002422kms+0x40/0x40 [nvidia_modeset]
+[17989.014816]  ? _nv000550kms+0x365/0x3c0 [nvidia_modeset]
+[17989.014829]  ? _nv002676kms+0x309/0x3c0 [nvidia_modeset]
+[17989.014839]  ? _nv002694kms+0x29f/0x540 [nvidia_modeset]
+[17989.014841]  ? schedule+0x45/0x170
+[17989.014842]  ? schedule_timeout+0x12b/0x170
+[17989.014843]  ? preempt_count_add+0x68/0xa0
+[17989.014844]  ? _raw_spin_lock_irq+0x1a/0x40
+[17989.014845]  ? __down_interruptible+0x94/0x100
+[17989.014855]  ? _nv000528kms+0x71/0x80 [nvidia_modeset]
+[17989.014861]  ? nvkms_kthread_q_callback+0x7c/0xd0 [nvidia_modeset]
+[17989.014867]  ? _main_loop+0x83/0x130 [nvidia_modeset]
+[17989.014872]  ? nvkms_sema_up+0x10/0x10 [nvidia_modeset]
+[17989.014874]  ? kthread+0x19f/0x1d0
+[17989.014875]  ? __kthread_init_worker+0x50/0x50
+[17989.014877]  ? ret_from_fork+0x22/0x30
+[17989.014878] Mem-Info:
+[17989.014880] active_anon:1747 inactive_anon:3952459 isolated_anon:0
+                active_file:374 inactive_file:240 isolated_file:0
+                unevictable:8 dirty:0 writeback:4
+                slab_reclaimable:22279 slab_unreclaimable:20906
+                mapped:12189 shmem:47677 pagetables:10247 bounce:0
+                free:32825 free_pcp:164 free_cma:0
+[17989.014882] Node 0 active_anon:6988kB inactive_anon:15809836kB active_file:1496kB inactive_file:960kB unevictable:32kB isolated(anon):0kB isolated(file):0kB mapped:48756kB dirty:0kB writeback:16kB shmem:190708kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 2740224kB writeback_tmp:0kB kernel_stack:8624kB all_unreclaimable? no
+[17989.014883] Node 0 DMA free:13836kB min:64kB low:80kB high:96kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15984kB managed:15900kB mlocked:0kB pagetables:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[17989.014885] lowmem_reserve[]: 0 3453 15905 15905 15905
+[17989.014886] Node 0 DMA32 free:64012kB min:14660kB low:18324kB high:21988kB reserved_highatomic:0KB active_anon:0kB inactive_anon:3459360kB active_file:52kB inactive_file:820kB unevictable:0kB writepending:4kB present:3620124kB managed:3554588kB mlocked:0kB pagetables:1956kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[17989.014888] lowmem_reserve[]: 0 0 12451 12451 12451
+[17989.014889] Node 0 Normal free:53452kB min:52856kB low:66068kB high:79280kB reserved_highatomic:0KB active_anon:6988kB inactive_anon:12349332kB active_file:2480kB inactive_file:1324kB unevictable:32kB writepending:12kB present:13074432kB managed:12756680kB mlocked:32kB pagetables:39032kB bounce:0kB free_pcp:648kB local_pcp:0kB free_cma:0kB
+[17989.014890] lowmem_reserve[]: 0 0 0 0 0
+[17989.014891] Node 0 DMA: 1*4kB (U) 1*8kB (U) 0*16kB 0*32kB 2*64kB (U) 1*128kB (U) 1*256kB (U) 0*512kB 1*1024kB (U) 2*2048kB (UM) 2*4096kB (M) = 13836kB
+[17989.014895] Node 0 DMA32: 748*4kB (UME) 601*8kB (UME) 684*16kB (UME) 501*32kB (UME) 237*64kB (UME) 80*128kB (UME) 14*256kB (ME) 2*512kB (ME) 0*1024kB 0*2048kB 0*4096kB = 64792kB
+[17989.014899] Node 0 Normal: 995*4kB (UME) 2312*8kB (UE) 1249*16kB (UME) 357*32kB (UME) 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 53884kB
+[17989.014903] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[17989.014904] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[17989.014904] 48312 total pagecache pages
+[17989.014905] 0 pages in swap cache
+[17989.014906] Swap cache stats: add 0, delete 0, find 0/0
+[17989.014906] Free swap  = 0kB
+[17989.014906] Total swap = 0kB
+[17989.014907] 4177635 pages RAM
+[17989.014907] 0 pages HighMem/MovableOnly
+[17989.014907] 95843 pages reserved
+[17989.014908] 0 pages hwpoisoned
+[17989.055644] python3 invoked oom-killer: gfp_mask=0x100dca(GFP_HIGHUSER_MOVABLE|__GFP_ZERO), order=0, oom_score_adj=1000
+[17989.055645] CPU: 3 PID: 122324 Comm: python3 Tainted: P        W  OE     5.9.1-zen2-1-zen #1
+[17989.055646] Hardware name: BIOSTAR Group Hi-Fi B85S3+/Hi-Fi B85S3+, BIOS 4.6.5 11/28/2014
+[17989.055646] Call Trace:
+[17989.055649]  dump_stack+0x6e/0x90
+[17989.055652]  dump_header+0x4a/0x1f7
+[17989.055654]  oom_kill_process.cold+0xb/0x10
+[17989.055655]  out_of_memory+0x1ab/0x7b0
+[17989.055657]  __alloc_pages_nodemask+0x1554/0x1640
+[17989.055661]  alloc_pages_vma+0xa0/0x410
+[17989.055664]  handle_mm_fault+0xd36/0x16d0
+[17989.055667]  do_user_addr_fault+0x1fe/0x460
+[17989.055669]  ? asm_exc_page_fault+0x8/0x30
+[17989.055672]  exc_page_fault+0x82/0x1c0
+[17989.055673]  ? asm_exc_page_fault+0x8/0x30
+[17989.055674]  asm_exc_page_fault+0x1e/0x30
+[17989.055676] RIP: 0033:0x7f70e2d66ee1
+[17989.055679] Code: Bad RIP value.
+[17989.055679] RSP: 002b:00007fffa89564e8 EFLAGS: 00010206
+[17989.055680] RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000006acd040
+[17989.055681] RDX: 00007f6d36a1b040 RSI: 0000000000000000 RDI: 00007f6d382a0000
+[17989.055681] RBP: 00007f70e01bcf20 R08: 0000000000000020 R09: 00000000ffffffe4
+[17989.055682] R10: 0000000000000001 R11: 0000000000000246 R12: 0000000008352000
+[17989.055683] R13: 00007f6d36a1b010 R14: 0000000008352000 R15: 00007f70c606b590
+[17989.055684] Mem-Info:
+[17989.055686] active_anon:1747 inactive_anon:3953339 isolated_anon:0
+                active_file:68 inactive_file:0 isolated_file:0
+                unevictable:8 dirty:0 writeback:0
+                slab_reclaimable:22167 slab_unreclaimable:20798
+                mapped:11686 shmem:47677 pagetables:10249 bounce:0
+                free:32662 free_pcp:0 free_cma:0
+[17989.055688] Node 0 active_anon:6988kB inactive_anon:15813356kB active_file:272kB inactive_file:0kB unevictable:32kB isolated(anon):0kB isolated(file):0kB mapped:46744kB dirty:0kB writeback:0kB shmem:190708kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 2740224kB writeback_tmp:0kB kernel_stack:8624kB all_unreclaimable? yes
+[17989.055689] Node 0 DMA free:13836kB min:64kB low:80kB high:96kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15984kB managed:15900kB mlocked:0kB pagetables:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[17989.055691] lowmem_reserve[]: 0 3453 15905 15905 15905
+[17989.055692] Node 0 DMA32 free:64172kB min:14660kB low:18324kB high:21988kB reserved_highatomic:0KB active_anon:0kB inactive_anon:3459360kB active_file:48kB inactive_file:728kB unevictable:0kB writepending:0kB present:3620124kB managed:3554588kB mlocked:0kB pagetables:1956kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[17989.055694] lowmem_reserve[]: 0 0 12451 12451 12451
+[17989.055695] Node 0 Normal free:52640kB min:52856kB low:66068kB high:79280kB reserved_highatomic:0KB active_anon:6988kB inactive_anon:12352624kB active_file:336kB inactive_file:168kB unevictable:32kB writepending:0kB present:13074432kB managed:12756680kB mlocked:32kB pagetables:39040kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[17989.055697] lowmem_reserve[]: 0 0 0 0 0
+[17989.055698] Node 0 DMA: 1*4kB (U) 1*8kB (U) 0*16kB 0*32kB 2*64kB (U) 1*128kB (U) 1*256kB (U) 0*512kB 1*1024kB (U) 2*2048kB (UM) 2*4096kB (M) = 13836kB
+[17989.055702] Node 0 DMA32: 768*4kB (UME) 595*8kB (UME) 680*16kB (UME) 497*32kB (UME) 238*64kB (UME) 82*128kB (UME) 14*256kB (ME) 2*512kB (ME) 0*1024kB 0*2048kB 0*4096kB = 64952kB
+[17989.055706] Node 0 Normal: 1045*4kB (UME) 2332*8kB (UME) 1254*16kB (UME) 344*32kB (UME) 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 53908kB
+[17989.055710] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[17989.055710] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[17989.055711] 47878 total pagecache pages
+[17989.055711] 0 pages in swap cache
+[17989.055712] Swap cache stats: add 0, delete 0, find 0/0
+[17989.055712] Free swap  = 0kB
+[17989.055713] Total swap = 0kB
+[17989.055713] 4177635 pages RAM
+[17989.055714] 0 pages HighMem/MovableOnly
+[17989.055714] 95843 pages reserved
+[17989.055714] 0 pages hwpoisoned
+[17989.055715] Tasks state (memory values in pages):
+[17989.055715] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[17989.055719] [    263]     0   263    52107     1185   434176        0          -250 systemd-journal
+[17989.055720] [    276]     0   276     8643      724    94208        0         -1000 systemd-udevd
+[17989.055721] [    280]     0   280    19523      546    53248        0             0 lvmetad
+[17989.055722] [    374]    81   374     2184      519    57344        0          -900 dbus-daemon
+[17989.055723] [    375]     0   375   101132     1258   151552        0             0 NetworkManager
+[17989.055724] [    377]     0   377     4808      297    81920        0             0 systemd-logind
+[17989.055725] [    383]     0   383    76211      282    90112        0             0 lightdm
+[17989.055726] [    432]     0   432   779014    20205   851968        0             0 Xorg
+[17989.055727] [    433]     0   433    58828      172    94208        0             0 accounts-daemon
+[17989.055728] [    437]   102   437   745323     2114   258048        0             0 polkitd
+[17989.055729] [    592]     0   592    40236      300    77824        0             0 lightdm
+[17989.055730] [    602]  1000   602     5229      563    81920        0             0 systemd
+[17989.055731] [    603]  1000   603     7983     1231    94208        0             0 (sd-pam)
+[17989.055731] [    615]  1000   615    59116      748    86016        0             0 gnome-keyring-d
+[17989.055733] [    618]  1000   618    64298      934   126976        0             0 gnome-session-b
+[17989.055733] [    624]  1000   624     2097      462    57344        0             0 dbus-daemon
+[17989.055734] [    626]  1000   626    59010      246    86016        0             0 gvfsd
+[17989.055735] [    631]  1000   631    94754      714   102400        0             0 gvfsd-fuse
+[17989.055736] [    645]  1000   645    76100      198    86016        0             0 at-spi-bus-laun
+[17989.055737] [    651]  1000   651     1806      108    57344        0             0 dbus-daemon
+[17989.055738] [    677]  1000   677    21811       99    69632        0             0 gnome-session-c
+[17989.055739] [    679]  1000   679   154887      923   163840        0             0 gnome-session-b
+[17989.055740] [    696]  1000   696  1545091    83957  1708032        0             0 gnome-shell
+[17989.055741] [    698]  1000   698   255565     1075   131072        0             0 pulseaudio
+[17989.055742] [    707]   133   707    38418       64    65536        0             0 rtkit-daemon
+[17989.055742] [    739]  1000   739    59108      213    90112        0             0 gsettings-helpe
+[17989.055743] [    747]  1000   747    57982      101    90112        0             0 xdg-permission-
+[17989.055744] [    750]  1000   750   144970     1207   196608        0             0 gnome-shell-cal
+[17989.055745] [    759]  1000   759   266312     1521   258048        0             0 evolution-sourc
+[17989.055746] [    763]     0   763    62575      878   106496        0             0 upowerd
+[17989.055747] [    767]  1000   767   136863     2158   258048        0             0 goa-daemon
+[17989.055748] [    771]  1000   771   208289     1966   258048        0             0 evolution-calen
+[17989.055748] [    777]     0   777     3594      149    73728        0             0 wpa_supplicant
+[17989.055749] [    779]  1000   779    78277      341   110592        0             0 mission-control
+[17989.055750] [    784]  1000   784   124102     1072   147456        0             0 gvfs-udisks2-vo
+[17989.055751] [    787]     0   787    99198     1563   131072        0             0 udisksd
+[17989.055752] [    794]  1000   794    77761      249   102400        0             0 goa-identity-se
+[17989.055753] [    809]  1000   809    38848      235    65536        0             0 dconf-service
+[17989.055753] [    815]  1000   815   168866     1418   237568        0             0 evolution-addre
+[17989.055754] [    858]  1000   858    58623      241    98304        0             0 gvfs-gphoto2-vo
+[17989.055755] [    865]  1000   865    58050      128    81920        0             0 gvfs-goa-volume
+[17989.055756] [    871]  1000   871    58026      157    81920        0             0 gvfs-mtp-volume
+[17989.055757] [    877]  1000   877    78634      208   106496        0             0 gvfs-afc-volume
+[17989.055758] [    884]  1000   884   727827     1318   245760        0             0 gjs
+[17989.055758] [    886]  1000   886    40163      200    73728        0             0 at-spi2-registr
+[17989.055759] [    902]  1000   902    76510      140    90112        0             0 gsd-a11y-settin
+[17989.055760] [    903]  1000   903   128906     1989   212992        0             0 gsd-color
+[17989.055761] [    904]  1000   904    92189      485   159744        0             0 gsd-datetime
+[17989.055762] [    905]  1000   905    77041      205    94208        0             0 gsd-housekeepin
+[17989.055763] [    907]  1000   907    83533     1259   147456        0             0 gsd-keyboard
+[17989.055764] [    909]  1000   909   168708     1976   176128        0             0 gsd-media-keys
+[17989.055764] [    912]  1000   912   102295     1972   163840        0             0 gsd-power
+[17989.055765] [    915]  1000   915   326033     7501   376832        0             0 gnome-software
+[17989.055766] [    919]  1000   919    61419      314   114688        0             0 gsd-print-notif
+[17989.055767] [    921]  1000   921    94916      143    98304        0             0 gsd-rfkill
+[17989.055768] [    923]  1000   923    57962      154    77824        0             0 gsd-screensaver
+[17989.055769] [    930]  1000   930   114262      228   118784        0             0 gsd-sharing
+[17989.055769] [    933]  1000   933    81559     4921   233472        0             0 cpupower-gui
+[17989.055770] [    934]  1000   934    77866      727   102400        0             0 gsd-smartcard
+[17989.055771] [    935]  1000   935    78533      747   110592        0             0 gsd-sound
+[17989.055772] [    943]  1000   943    95319      163   102400        0             0 gsd-usb-protect
+[17989.055773] [    944]  1000   944    83573     1867   147456        0             0 gsd-wacom
+[17989.055774] [    945]  1000   945    83881     1914   151552        0             0 gsd-xsettings
+[17989.055775] [    948]  1000   948   181312     3933   368640        0             0 evolution-alarm
+[17989.055775] [    954]  1000   954    57735      253    81920        0             0 gsd-disk-utilit
+[17989.055776] [    974]  1000   974    84403      954   135168        0             0 gsd-printer
+[17989.055777] [   1011]   974  1011    60826     1268   102400        0             0 colord
+[17989.055778] [   1036]     0  1036     8406     2030   106496        0             0 cpupower-gui-he
+[17989.055779] [   1148]  1000  1148   510518    11376   716800        0             0 nvidia-settings
+[17989.055780] [   1722]  1000  1722   242837     5391   331776        0             0 tilix
+[17989.055781] [   1726]  1000  1726     1883      165    53248        0             0 bash
+[17989.055782] [   1739]  1000  1739     2318      463    61440        0             0 htop
+[17989.055783] [   1809]  1000  1809     1883      168    53248        0             0 bash
+[17989.055784] [   1818]  1000  1818     5701     2320    81920        0             0 nvtop
+[17989.055785] [   2379]  1000  2379    95964      284   106496        0             0 gvfsd-trash
+[17989.055786] [   2400]  1000  2400    39652      150    69632        0             0 gvfsd-metadata
+[17989.055787] [   2424]  1000  2424    77576      219    98304        0             0 gvfsd-network
+[17989.055787] [   2464]     0  2464     1949      440    49152        0             0 mount.ntfs
+[17989.055789] [   2511]     0  2511     1644      139    49152        0             0 mount.ntfs
+[17989.055789] [   2547]  1000  2547    78033      740   102400        0             0 gvfsd-dnssd
+[17989.055790] [   4189]  1000  4189    20037      216    53248        0             0 gamemoded
+[17989.055792] [ 112282]  1000 112282   214286     3424   319488        0             0 gnome-calendar
+[17989.055793] [ 112402]  1000 112402   151624    10916   266240        0             0 tracker-miner-f
+[17989.055794] [ 113474]  1000 113474     1883      183    49152        0             0 bash
+[17989.055795] [ 118454]     0 118454    40977     1604    86016        0          -999 python3
+[17989.055796] [ 121676]  1000 121676   156177     2101   262144        0             0 nautilus
+[17989.055797] [ 121866]  1000 121866   122812     7334   274432        0             0 python3
+[17989.055797] [ 122324]  1000 122324  3855173  3712158 29941760        0          1000 python3
+[17989.055798] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service,task=python3,pid=122324,uid=1000
+[17989.055804] Out of memory: Killed process 122324 (python3) total-vm:15420692kB, anon-rss:14848628kB, file-rss:4kB, shmem-rss:0kB, UID:1000 pgtables:29240kB oom_score_adj:1000
+[17989.418394] oom_reaper: reaped process 122324 (python3), now anon-rss:0kB, file-rss:0kB, shmem-rss:0kB
+[18024.725699] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 2 of NvKmsKapiDisplay 0x00000200
+[18024.981520] nvidia_uvm: module uses symbols from proprietary module nvidia, inheriting taint.
+[18024.981612] nvidia_uvm: Unknown symbol set_cpus_allowed_ptr (err -2)
+[18024.981629] nvidia_uvm: Unknown symbol mmu_notifier_unregister (err -2)
+[18024.981667] nvidia_uvm: Unknown symbol __mmu_notifier_register (err -2)
+[18031.672118] [drm:__nv_drm_connector_detect_internal [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to detect display state
+[18031.702729] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18031.890328] [drm:__nv_drm_connector_detect_internal [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to detect display state
+[18031.921425] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 2 of NvKmsKapiDisplay 0x00000200
+[18042.026626] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 2 of NvKmsKapiDisplay 0x00000200
+[18042.243655] [drm:__nv_drm_connector_detect_internal [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to detect display state
+[18042.274250] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18127.498367] nvidia-modeset/: page allocation failure: order:4, mode:0x40cc0(GFP_KERNEL|__GFP_COMP), nodemask=(null),cpuset=/,mems_allowed=0
+[18127.498371] CPU: 7 PID: 456 Comm: nvidia-modeset/ Tainted: P        W  OE     5.9.1-zen2-1-zen #1
+[18127.498371] Hardware name: BIOSTAR Group Hi-Fi B85S3+/Hi-Fi B85S3+, BIOS 4.6.5 11/28/2014
+[18127.498372] Call Trace:
+[18127.498377]  dump_stack+0x6e/0x90
+[18127.498379]  warn_alloc.cold+0x78/0xdc
+[18127.498381]  ? __alloc_pages_direct_compact+0x140/0x160
+[18127.498382]  __alloc_pages_nodemask+0x1522/0x1640
+[18127.498385]  ? _raw_spin_unlock_irq+0x1d/0x30
+[18127.498385]  ? __schedule+0x843/0xc10
+[18127.498410]  ? _nv002400kms+0x12f/0x160 [nvidia_modeset]
+[18127.498412]  kmalloc_order_trace+0x39/0x100
+[18127.498424]  __kmalloc+0x2c8/0x320
+[18127.498435]  nvkms_alloc+0x20/0x50 [nvidia_modeset]
+[18127.498455]  _nv002714kms+0x16/0x30 [nvidia_modeset]
+[18127.498463]  ? _nv002589kms+0x4e/0x1610 [nvidia_modeset]
+[18127.498472]  ? _nv002422kms+0x40/0x40 [nvidia_modeset]
+[18127.498481]  ? _nv000550kms+0x365/0x3c0 [nvidia_modeset]
+[18127.498493]  ? _nv002676kms+0x309/0x3c0 [nvidia_modeset]
+[18127.498503]  ? _nv002694kms+0x29f/0x540 [nvidia_modeset]
+[18127.498505]  ? schedule+0x45/0x170
+[18127.498506]  ? schedule_timeout+0x12b/0x170
+[18127.498508]  ? preempt_count_add+0x68/0xa0
+[18127.498509]  ? _raw_spin_lock_irq+0x1a/0x40
+[18127.498509]  ? __down_interruptible+0x94/0x100
+[18127.498519]  ? _nv000528kms+0x71/0x80 [nvidia_modeset]
+[18127.498524]  ? nvkms_kthread_q_callback+0x7c/0xd0 [nvidia_modeset]
+[18127.498530]  ? _main_loop+0x83/0x130 [nvidia_modeset]
+[18127.498535]  ? nvkms_sema_up+0x10/0x10 [nvidia_modeset]
+[18127.498537]  ? kthread+0x19f/0x1d0
+[18127.498538]  ? __kthread_init_worker+0x50/0x50
+[18127.498539]  ? ret_from_fork+0x22/0x30
+[18127.498550] Mem-Info:
+[18127.498562] active_anon:1744 inactive_anon:3955357 isolated_anon:0
+                active_file:155 inactive_file:452 isolated_file:0
+                unevictable:8 dirty:0 writeback:0
+                slab_reclaimable:21712 slab_unreclaimable:20186
+                mapped:10089 shmem:46063 pagetables:10273 bounce:0
+                free:32647 free_pcp:0 free_cma:0
+[18127.498564] Node 0 active_anon:6976kB inactive_anon:15821428kB active_file:620kB inactive_file:1808kB unevictable:32kB isolated(anon):0kB isolated(file):0kB mapped:40356kB dirty:0kB writeback:0kB shmem:184252kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 6682624kB writeback_tmp:0kB kernel_stack:8512kB all_unreclaimable? no
+[18127.498564] Node 0 DMA free:13836kB min:64kB low:80kB high:96kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15984kB managed:15900kB mlocked:0kB pagetables:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[18127.498566] lowmem_reserve[]: 0 3453 15905 15905 15905
+[18127.498567] Node 0 DMA32 free:64164kB min:14660kB low:18324kB high:21988kB reserved_highatomic:0KB active_anon:0kB inactive_anon:3464496kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:3620124kB managed:3554588kB mlocked:0kB pagetables:252kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[18127.498569] lowmem_reserve[]: 0 0 12451 12451 12451
+[18127.498570] Node 0 Normal free:52588kB min:52856kB low:66068kB high:79280kB reserved_highatomic:0KB active_anon:6976kB inactive_anon:12356412kB active_file:0kB inactive_file:1840kB unevictable:32kB writepending:0kB present:13074432kB managed:12756680kB mlocked:32kB pagetables:40840kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[18127.498572] lowmem_reserve[]: 0 0 0 0 0
+[18127.498573] Node 0 DMA: 1*4kB (U) 1*8kB (U) 0*16kB 0*32kB 2*64kB (U) 1*128kB (U) 1*256kB (U) 0*512kB 1*1024kB (U) 2*2048kB (UM) 2*4096kB (M) = 13836kB
+[18127.498577] Node 0 DMA32: 587*4kB (UME) 512*8kB (UE) 659*16kB (UE) 499*32kB (UME) 241*64kB (UE) 100*128kB (UME) 9*256kB (UME) 2*512kB (ME) 0*1024kB 0*2048kB 0*4096kB = 64508kB
+[18127.498591] Node 0 Normal: 2372*4kB (UME) 1199*8kB (UME) 910*16kB (UME) 365*32kB (UME) 88*64kB (UE) 11*128kB (UE) 0*256kB 0*512kB 1*1024kB (M) 0*2048kB 0*4096kB = 53384kB
+[18127.498595] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[18127.498596] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[18127.498596] 46719 total pagecache pages
+[18127.498597] 0 pages in swap cache
+[18127.498598] Swap cache stats: add 0, delete 0, find 0/0
+[18127.498598] Free swap  = 0kB
+[18127.498599] Total swap = 0kB
+[18127.498599] 4177635 pages RAM
+[18127.498599] 0 pages HighMem/MovableOnly
+[18127.498600] 95843 pages reserved
+[18127.498600] 0 pages hwpoisoned
+[18127.518252] python3 invoked oom-killer: gfp_mask=0x100dca(GFP_HIGHUSER_MOVABLE|__GFP_ZERO), order=0, oom_score_adj=1000
+[18127.518254] CPU: 1 PID: 123607 Comm: python3 Tainted: P        W  OE     5.9.1-zen2-1-zen #1
+[18127.518255] Hardware name: BIOSTAR Group Hi-Fi B85S3+/Hi-Fi B85S3+, BIOS 4.6.5 11/28/2014
+[18127.518255] Call Trace:
+[18127.518258]  dump_stack+0x6e/0x90
+[18127.518260]  dump_header+0x4a/0x1f7
+[18127.518262]  oom_kill_process.cold+0xb/0x10
+[18127.518263]  out_of_memory+0x1ab/0x7b0
+[18127.518265]  __alloc_pages_nodemask+0x1554/0x1640
+[18127.518268]  alloc_pages_vma+0xa0/0x410
+[18127.518271]  handle_mm_fault+0xd36/0x16d0
+[18127.518274]  do_user_addr_fault+0x1fe/0x460
+[18127.518275]  ? asm_exc_page_fault+0x8/0x30
+[18127.518277]  exc_page_fault+0x82/0x1c0
+[18127.518278]  ? asm_exc_page_fault+0x8/0x30
+[18127.518279]  asm_exc_page_fault+0x1e/0x30
+[18127.518281] RIP: 0033:0x7f3a4db82ee1
+[18127.518284] Code: Bad RIP value.
+[18127.518285] RSP: 002b:00007ffc2abc9968 EFLAGS: 00010206
+[18127.518285] RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000001bb9d0c
+[18127.518286] RDX: 00007f36abff7040 RSI: 0000000000000000 RDI: 00007f36b551e000
+[18127.518287] RBP: 00007f3a4b16a920 R08: 0000000000000020 R09: 00000000ffffffe4
+[18127.518287] R10: 0000000000000001 R11: 0000000000000246 R12: 000000000b0e0ccc
+[18127.518288] R13: 00007f36abff7010 R14: 000000000b0e0ccc R15: 00007f3a396d46b0
+[18127.518289] Mem-Info:
+[18127.518291] active_anon:1744 inactive_anon:3955357 isolated_anon:0
+                active_file:198 inactive_file:429 isolated_file:0
+                unevictable:8 dirty:0 writeback:0
+                slab_reclaimable:21704 slab_unreclaimable:20186
+                mapped:10089 shmem:46063 pagetables:10273 bounce:0
+                free:32655 free_pcp:0 free_cma:0
+[18127.518303] Node 0 active_anon:6976kB inactive_anon:15821428kB active_file:792kB inactive_file:1716kB unevictable:32kB isolated(anon):0kB isolated(file):0kB mapped:40356kB dirty:0kB writeback:0kB shmem:184252kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 6682624kB writeback_tmp:0kB kernel_stack:8512kB all_unreclaimable? yes
+[18127.518304] Node 0 DMA free:13836kB min:64kB low:80kB high:96kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15984kB managed:15900kB mlocked:0kB pagetables:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[18127.518305] lowmem_reserve[]: 0 3453 15905 15905 15905
+[18127.518307] Node 0 DMA32 free:64164kB min:14660kB low:18324kB high:21988kB reserved_highatomic:0KB active_anon:0kB inactive_anon:3464496kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:3620124kB managed:3554588kB mlocked:0kB pagetables:252kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[18127.518308] lowmem_reserve[]: 0 0 12451 12451 12451
+[18127.518309] Node 0 Normal free:52620kB min:52856kB low:66068kB high:79280kB reserved_highatomic:0KB active_anon:6976kB inactive_anon:12356412kB active_file:412kB inactive_file:1664kB unevictable:32kB writepending:0kB present:13074432kB managed:12756680kB mlocked:32kB pagetables:40840kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[18127.518311] lowmem_reserve[]: 0 0 0 0 0
+[18127.518312] Node 0 DMA: 1*4kB (U) 1*8kB (U) 0*16kB 0*32kB 2*64kB (U) 1*128kB (U) 1*256kB (U) 0*512kB 1*1024kB (U) 2*2048kB (UM) 2*4096kB (M) = 13836kB
+[18127.518316] Node 0 DMA32: 587*4kB (UME) 512*8kB (UE) 659*16kB (UE) 499*32kB (UME) 241*64kB (UE) 100*128kB (UME) 9*256kB (UME) 2*512kB (ME) 0*1024kB 0*2048kB 0*4096kB = 64508kB
+[18127.518320] Node 0 Normal: 2378*4kB (UME) 1201*8kB (UME) 912*16kB (UME) 364*32kB (UME) 89*64kB (UE) 11*128kB (UE) 0*256kB 0*512kB 1*1024kB (M) 0*2048kB 0*4096kB = 53488kB
+[18127.518333] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[18127.518334] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[18127.518334] 46719 total pagecache pages
+[18127.518335] 0 pages in swap cache
+[18127.518335] Swap cache stats: add 0, delete 0, find 0/0
+[18127.518336] Free swap  = 0kB
+[18127.518336] Total swap = 0kB
+[18127.518336] 4177635 pages RAM
+[18127.518337] 0 pages HighMem/MovableOnly
+[18127.518337] 95843 pages reserved
+[18127.518337] 0 pages hwpoisoned
+[18127.518338] Tasks state (memory values in pages):
+[18127.518338] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[18127.518341] [    263]     0   263    52107     1185   434176        0          -250 systemd-journal
+[18127.518342] [    276]     0   276     8643      723    94208        0         -1000 systemd-udevd
+[18127.518343] [    280]     0   280    19523      546    53248        0             0 lvmetad
+[18127.518344] [    374]    81   374     2184      518    57344        0          -900 dbus-daemon
+[18127.518345] [    375]     0   375   101132     1260   151552        0             0 NetworkManager
+[18127.518346] [    377]     0   377     4808      297    81920        0             0 systemd-logind
+[18127.518347] [    383]     0   383    76211      282    90112        0             0 lightdm
+[18127.518348] [    432]     0   432   776790    18576   827392        0             0 Xorg
+[18127.518349] [    433]     0   433    58828      172    94208        0             0 accounts-daemon
+[18127.518350] [    437]   102   437   745323     2149   258048        0             0 polkitd
+[18127.518351] [    592]     0   592    40236      300    77824        0             0 lightdm
+[18127.518351] [    602]  1000   602     5229      562    81920        0             0 systemd
+[18127.518352] [    603]  1000   603     7983     1231    94208        0             0 (sd-pam)
+[18127.518353] [    615]  1000   615    59141      806    86016        0             0 gnome-keyring-d
+[18127.518354] [    618]  1000   618    64298      934   126976        0             0 gnome-session-b
+[18127.518355] [    624]  1000   624     2097      462    57344        0             0 dbus-daemon
+[18127.518356] [    626]  1000   626    59010      245    86016        0             0 gvfsd
+[18127.518357] [    631]  1000   631    94754      714   102400        0             0 gvfsd-fuse
+[18127.518357] [    645]  1000   645    76100      198    86016        0             0 at-spi-bus-laun
+[18127.518358] [    651]  1000   651     1806      155    57344        0             0 dbus-daemon
+[18127.518359] [    677]  1000   677    21811       99    69632        0             0 gnome-session-c
+[18127.518360] [    679]  1000   679   154887      923   163840        0             0 gnome-session-b
+[18127.518361] [    696]  1000   696  1560141    99486  1839104        0             0 gnome-shell
+[18127.518362] [    698]  1000   698   255565     1075   131072        0             0 pulseaudio
+[18127.518363] [    707]   133   707    38418       64    65536        0             0 rtkit-daemon
+[18127.518363] [    739]  1000   739    59108      213    90112        0             0 gsettings-helpe
+[18127.518364] [    747]  1000   747    57982      101    90112        0             0 xdg-permission-
+[18127.518365] [    750]  1000   750   144970     1207   196608        0             0 gnome-shell-cal
+[18127.518366] [    759]  1000   759   266312     1521   258048        0             0 evolution-sourc
+[18127.518367] [    763]     0   763    62575      898   106496        0             0 upowerd
+[18127.518368] [    767]  1000   767   136863     2158   258048        0             0 goa-daemon
+[18127.518368] [    771]  1000   771   208289     1966   258048        0             0 evolution-calen
+[18127.518369] [    777]     0   777     3594      149    73728        0             0 wpa_supplicant
+[18127.518370] [    779]  1000   779    78277      429   110592        0             0 mission-control
+[18127.518371] [    784]  1000   784   124102     1072   147456        0             0 gvfs-udisks2-vo
+[18127.518372] [    787]     0   787    99198     1056   131072        0             0 udisksd
+[18127.518373] [    794]  1000   794    77761      249   102400        0             0 goa-identity-se
+[18127.518373] [    809]  1000   809    38848      234    65536        0             0 dconf-service
+[18127.518374] [    815]  1000   815   168866     1418   237568        0             0 evolution-addre
+[18127.518375] [    858]  1000   858    58623      241    98304        0             0 gvfs-gphoto2-vo
+[18127.518376] [    865]  1000   865    58050      128    81920        0             0 gvfs-goa-volume
+[18127.518377] [    871]  1000   871    58026      157    81920        0             0 gvfs-mtp-volume
+[18127.518377] [    877]  1000   877    78634      208   106496        0             0 gvfs-afc-volume
+[18127.518378] [    884]  1000   884   727827     1340   245760        0             0 gjs
+[18127.518379] [    886]  1000   886    40163      234    73728        0             0 at-spi2-registr
+[18127.518380] [    902]  1000   902    76510      140    90112        0             0 gsd-a11y-settin
+[18127.518380] [    903]  1000   903   128906     1483   212992        0             0 gsd-color
+[18127.518381] [    904]  1000   904    92189      485   159744        0             0 gsd-datetime
+[18127.518382] [    905]  1000   905    77041      205    94208        0             0 gsd-housekeepin
+[18127.518383] [    907]  1000   907    83533     1323   147456        0             0 gsd-keyboard
+[18127.518384] [    909]  1000   909   168708     2033   176128        0             0 gsd-media-keys
+[18127.518385] [    912]  1000   912   102295     2024   163840        0             0 gsd-power
+[18127.518385] [    915]  1000   915   326033     6994   376832        0             0 gnome-software
+[18127.518386] [    919]  1000   919    61419      314   114688        0             0 gsd-print-notif
+[18127.518387] [    921]  1000   921    94916      143    98304        0             0 gsd-rfkill
+[18127.518388] [    923]  1000   923    57962      154    77824        0             0 gsd-screensaver
+[18127.518389] [    930]  1000   930   114262      287   118784        0             0 gsd-sharing
+[18127.518390] [    933]  1000   933    81559     4934   233472        0             0 cpupower-gui
+[18127.518390] [    934]  1000   934    77866      727   102400        0             0 gsd-smartcard
+[18127.518391] [    935]  1000   935    78533      747   110592        0             0 gsd-sound
+[18127.518392] [    943]  1000   943    95319      163   102400        0             0 gsd-usb-protect
+[18127.518393] [    944]  1000   944    83573     1867   147456        0             0 gsd-wacom
+[18127.518394] [    945]  1000   945    83881     1968   151552        0             0 gsd-xsettings
+[18127.518394] [    948]  1000   948   181312     3935   368640        0             0 evolution-alarm
+[18127.518395] [    954]  1000   954    57735      312    81920        0             0 gsd-disk-utilit
+[18127.518396] [    974]  1000   974    84403      954   135168        0             0 gsd-printer
+[18127.518397] [   1011]   974  1011    60826     1267   102400        0             0 colord
+[18127.518398] [   1036]     0  1036     8406     2030   106496        0             0 cpupower-gui-he
+[18127.518399] [   1148]  1000  1148   512530    13371   733184        0             0 nvidia-settings
+[18127.518400] [   2379]  1000  2379    95964      284   106496        0             0 gvfsd-trash
+[18127.518401] [   2400]  1000  2400    39652      150    69632        0             0 gvfsd-metadata
+[18127.518401] [   2424]  1000  2424    77576      219    98304        0             0 gvfsd-network
+[18127.518402] [   2464]     0  2464     1949      440    49152        0             0 mount.ntfs
+[18127.518403] [   2511]     0  2511     1644      139    49152        0             0 mount.ntfs
+[18127.518404] [   2547]  1000  2547    78033      774   102400        0             0 gvfsd-dnssd
+[18127.518405] [   4189]  1000  4189    20037      216    53248        0             0 gamemoded
+[18127.518409] [ 112282]  1000 112282   214286     3424   319488        0             0 gnome-calendar
+[18127.518411] [ 112402]  1000 112402   151624    10915   266240        0             0 tracker-miner-f
+[18127.518412] [ 118454]     0 118454    40977     1604    86016        0          -999 python3
+[18127.518413] [ 121676]  1000 121676   156177     2111   262144        0             0 nautilus
+[18127.518414] [ 123193]  1000 123193   123751     3152   274432        0             0 tilix
+[18127.518415] [ 123197]  1000 123197     1883      166    57344        0             0 bash
+[18127.518415] [ 123262]     0 123262     3877      262    69632        0             0 sudo
+[18127.518416] [ 123298]     0 123298   105865     7810   282624        0             0 python3
+[18127.518417] [ 123607]     0 123607  3808658  3703279 29872128        0          1000 python3
+[18127.518418] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service,task=python3,pid=123607,uid=0
+[18127.518424] Out of memory: Killed process 123607 (python3) total-vm:15234632kB, anon-rss:14813112kB, file-rss:4kB, shmem-rss:0kB, UID:0 pgtables:29172kB oom_score_adj:1000
+[18127.713310] oom_reaper: reaped process 123607 (python3), now anon-rss:0kB, file-rss:0kB, shmem-rss:0kB
+[18186.143406] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18186.740693] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 2 of NvKmsKapiDisplay 0x00000200
+[18186.863867] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18186.951436] [drm:__nv_drm_connector_detect_internal [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to detect display state
+[18187.104888] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18187.226131] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18187.312748] [drm:__nv_drm_connector_detect_internal [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to detect display state
+[18187.343565] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 2 of NvKmsKapiDisplay 0x00000200
+[18187.467050] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18199.926628] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18200.180435] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18208.576492] [drm:__nv_drm_connector_detect_internal [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to detect display state
+[18208.607088] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18208.862943] [drm:nv_drm_connector_get_modes [nvidia_drm]] *ERROR* [nvidia-drm] [GPU ID 0x00000100] Failed to get mode at modeIndex 1 of NvKmsKapiDisplay 0x00000200
+[18809.645206] Non-volatile memory driver v1.3
+[18809.890628] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[18811.689092] r8169 0000:05:00.0: invalid short VPD tag 00 at offset 1
+[18816.636607] usb 2-3: reset high-speed USB device number 3 using xhci_hcd
