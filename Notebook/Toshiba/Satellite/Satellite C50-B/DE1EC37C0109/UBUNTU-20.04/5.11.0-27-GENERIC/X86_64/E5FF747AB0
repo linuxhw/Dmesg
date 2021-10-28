@@ -1,0 +1,219 @@
+[    7.150891]  ? process_one_work+0x3c0/0x3c0
+[    7.150906]  ? kthread_park+0x90/0x90
+[    7.150925]  ret_from_fork+0x22/0x30
+[    7.150953] ---[ end trace 60939f886b057144 ]---
+[    7.151010] i915 0000:00:02.0: [drm] *ERROR* [CRTC:51:pipe A] mismatch in pixel_rate (expected 76500, found 0)
+[    7.151039] i915 0000:00:02.0: [drm] *ERROR* [CRTC:51:pipe A] mismatch in hw.pipe_mode.crtc_clock (expected 76500, found 0)
+[    7.151060] i915 0000:00:02.0: [drm] *ERROR* [CRTC:51:pipe A] mismatch in hw.adjusted_mode.crtc_clock (expected 76500, found 0)
+[    7.151080] i915 0000:00:02.0: [drm] *ERROR* [CRTC:51:pipe A] mismatch in port_clock (expected 270000, found 0)
+[    7.151103] ------------[ cut here ]------------
+[    7.151108] pipe state doesn't match!
+[    7.151204] WARNING: CPU: 1 PID: 8 at drivers/gpu/drm/i915/display/intel_display.c:14743 intel_atomic_commit_tail+0xfab/0x10f0 [i915]
+[    7.151955] Modules linked in: hid_generic usbhid hid i915 rtsx_pci_sdmmc i2c_algo_bit drm_kms_helper crct10dif_pclmul crc32_pclmul syscopyarea ghash_clmulni_intel sysfillrect sysimgblt cryptd psmouse r8169 xhci_pci fb_sys_fops i2c_i801 cec xhci_pci_renesas ahci libahci rc_core rtsx_pci i2c_smbus lpc_ich realtek drm video
+[    7.152114] CPU: 1 PID: 8 Comm: kworker/u4:0 Tainted: G        W         5.11.0-27-generic #29~20.04.1-Ubuntu
+[    7.152132] Hardware name: TOSHIBA SATELLITE C50-B/ZBWAA, BIOS 5.10 08/10/2015
+[    7.152142] Workqueue: events_unbound async_run_entry_fn
+[    7.152162] RIP: 0010:intel_atomic_commit_tail+0xfab/0x10f0 [i915]
+[    7.152900] Code: c7 48 89 4d 88 e8 f5 d8 fe ff 48 8b 4d 88 e9 e4 f6 ff ff 83 b8 c8 0f 00 00 03 0f 85 28 fa ff ff e9 31 fa ff ff e8 8a 70 55 c8 <0f> 0b e9 c3 f8 ff ff 8b 45 ac 80 3d 09 48 12 00 00 48 c7 c7 20 36
+[    7.152915] RSP: 0018:ffffaad1c005f9b8 EFLAGS: 00010286
+[    7.152930] RAX: 0000000000000000 RBX: ffff89cb940c02d0 RCX: 0000000000000000
+[    7.152941] RDX: 0000000000000000 RSI: 0000000000000002 RDI: 0000000000000202
+[    7.152950] RBP: ffffaad1c005fa48 R08: ffffffff89673540 R09: ffffaad1c005f950
+[    7.152961] R10: 0000000000000001 R11: 0000000000000001 R12: ffff89cb939ad800
+[    7.152971] R13: ffff89cb94046000 R14: ffff89cb819ee000 R15: ffff89cb940c02d8
+[    7.152983] FS:  0000000000000000(0000) GS:ffff89cbbbd00000(0000) knlGS:0000000000000000
+[    7.152997] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[    7.153008] CR2: 000056311c21c030 CR3: 000000008ea10000 CR4: 00000000001006e0
+[    7.153021] Call Trace:
+[    7.153038]  intel_atomic_commit+0x325/0x3a0 [i915]
+[    7.153775]  drm_atomic_commit+0x4a/0x50 [drm]
+[    7.154020]  drm_client_modeset_commit_atomic+0x1df/0x220 [drm]
+[    7.154290]  drm_client_modeset_commit_locked+0x57/0x160 [drm]
+[    7.154525]  drm_client_modeset_commit+0x27/0x50 [drm]
+[    7.154753]  __drm_fb_helper_restore_fbdev_mode_unlocked+0xa1/0xd0 [drm_kms_helper]
+[    7.154888]  drm_fb_helper_set_par+0x40/0x50 [drm_kms_helper]
+[    7.155017]  intel_fbdev_set_par+0x1b/0x40 [i915]
+[    7.155753]  ? con_is_visible+0x2c/0x50
+[    7.155775]  fbcon_init+0x26c/0x500
+[    7.155794]  visual_init+0xd5/0x130
+[    7.155814]  do_bind_con_driver+0x1bd/0x2b0
+[    7.155834]  do_take_over_console+0x12f/0x1a0
+[    7.155852]  do_fbcon_takeover+0x5c/0xb0
+[    7.155873]  fbcon_fb_registered+0xf4/0x100
+[    7.155890]  register_framebuffer+0x207/0x310
+[    7.155914]  __drm_fb_helper_initial_config_and_unlock+0x99/0xd0 [drm_kms_helper]
+[    7.156045]  drm_fb_helper_initial_config+0x36/0x40 [drm_kms_helper]
+[    7.156174]  intel_fbdev_initial_config+0x18/0x30 [i915]
+[    7.156902]  async_run_entry_fn+0x3c/0x150
+[    7.156923]  process_one_work+0x220/0x3c0
+[    7.156941]  worker_thread+0x4d/0x3f0
+[    7.156960]  kthread+0x114/0x150
+[    7.156979]  ? process_one_work+0x3c0/0x3c0
+[    7.156994]  ? kthread_park+0x90/0x90
+[    7.157012]  ret_from_fork+0x22/0x30
+[    7.157040] ---[ end trace 60939f886b057145 ]---
+[    7.157219] Console: switching to colour frame buffer device 170x48
+[    7.188374] i915 0000:00:02.0: [drm] fb0: i915drmfb frame buffer device
+[    8.189083] process '/usr/bin/fstype' started with executable stack
+[    9.360704] EXT4-fs (sda4): recovery complete
+[    9.370953] EXT4-fs (sda4): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[    9.480403] loop0: detected capacity change from 0 to 4218768
+[    9.933542] overlayfs: "xino" feature enabled using 32 upper inode bits.
+[  207.235725] usb 2-4.2: USB disconnect, device number 5
+[  765.579583] systemd[1]: Inserted module 'autofs4'
+[  765.826055] systemd[1]: systemd 245.4-4ubuntu3.13 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=hybrid)
+[  765.846840] systemd[1]: Detected architecture x86-64.
+[  765.892521] systemd[1]: Set hostname to ...
+[  767.614659] systemd[1]: Created slice system-modprobe.slice.
+[  767.615352] systemd[1]: Created slice User and Session Slice.
+[  767.615569] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  767.616105] systemd[1]: Set up automount ...
+[  767.616202] systemd[1]: Reached target Remote File Systems.
+[  767.616235] systemd[1]: Reached target Slices.
+[  767.616280] systemd[1]: Reached target Swap.
+[  767.616530] systemd[1]: Listening on Device-mapper event daemon FIFOs.
+[  767.618071] systemd[1]: Listening on LVM2 poll daemon socket.
+[  767.618505] systemd[1]: Listening on Syslog Socket.
+[  767.618663] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[  767.619240] systemd[1]: Listening on Journal Audit Socket.
+[  767.619513] systemd[1]: Listening on Journal Socket (/dev/log).
+[  767.619870] systemd[1]: Listening on Journal Socket.
+[  767.620250] systemd[1]: Listening on udev Control Socket.
+[  767.620471] systemd[1]: Listening on udev Kernel Socket.
+[  767.623143] systemd[1]: Mounting Huge Pages File System...
+[  767.626805] systemd[1]: Mounting POSIX Message Queue File System...
+[  767.630570] systemd[1]: Mounting Kernel Debug File System...
+[  767.633778] systemd[1]: Mounting Kernel Trace File System...
+[  767.643511] systemd[1]: Starting Journal Service...
+[  767.650626] systemd[1]: Starting Availability of block devices...
+[  767.655446] systemd[1]: Starting Set the console keyboard layout...
+[  767.690685] systemd[1]: Starting Create list of static device nodes for the current kernel...
+[  767.693508] systemd[1]: Starting Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling...
+[  767.693635] systemd[1]: Condition check resulted in Load Kernel Module drm being skipped.
+[  767.694903] systemd[1]: Condition check resulted in Set Up Additional Binary Formats being skipped.
+[  767.740257] systemd[1]: Starting Load Kernel Modules...
+[  767.743201] systemd[1]: Starting Remount Root and Kernel File Systems...
+[  767.746314] systemd[1]: Starting udev Coldplug all Devices...
+[  767.749411] systemd[1]: Starting Uncomplicated firewall...
+[  767.754787] systemd[1]: Mounted Huge Pages File System.
+[  767.755228] systemd[1]: Mounted POSIX Message Queue File System.
+[  767.755614] systemd[1]: Mounted Kernel Debug File System.
+[  767.755967] systemd[1]: Mounted Kernel Trace File System.
+[  767.757349] systemd[1]: Finished Availability of block devices.
+[  767.759062] systemd[1]: Finished Create list of static device nodes for the current kernel.
+[  767.914303] systemd[1]: Finished Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling.
+[  767.928097] systemd[1]: Started Journal Service.
+[  768.290473] lp: driver loaded but no devices found
+[  768.302152] ppdev: user-space parallel port driver
+[  768.438342] systemd-journald[1088]: Received client request to flush runtime journal.
+[  772.298051] toshiba_bluetooth: Toshiba ACPI Bluetooth device driver
+[  772.654214] at24 0-0050: supply vcc not found, using dummy regulator
+[  772.654927] at24 0-0050: 256 byte spd EEPROM, read-only
+[  772.718121] usb 2-4.1: new full-speed USB device number 6 using xhci_hcd
+[  772.939257] usb 2-4.1: New USB device found, idVendor=0930, idProduct=0227, bcdDevice= 0.01
+[  772.939269] usb 2-4.1: New USB device strings: Mfr=0, Product=0, SerialNumber=...
+[  775.681241] toshiba_acpi: Toshiba Laptop ACPI Extras version 0.24
+[  775.723836] input: Toshiba input device as /devices/virtual/input/input13
+[  776.077013] toshiba_acpi: Supported laptop features: hotkeys touchpad special-function-keys panel-power-on usb3 cooling-method
+[  777.370535] mc: Linux media interface: v0.10
+[  778.252147] videodev: Linux video capture interface: v2.00
+[  778.276054] Bluetooth: Core ver 2.22
+[  778.276126] NET: Registered protocol family 31
+[  778.276129] Bluetooth: HCI device and connection manager initialized
+[  778.276297] Bluetooth: HCI socket layer initialized
+[  778.276302] Bluetooth: L2CAP socket layer initialized
+[  778.276324] Bluetooth: SCO socket layer initialized
+[  779.892212] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[  779.892875] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[  780.315932] usbcore: registered new interface driver btusb
+[  780.545030] uvcvideo: Found UVC 1.00 device TOSHIBA Web Camera - HD (13d3:5652)
+[  780.552304] input: TOSHIBA Web Camera - HD: TOSHIB as /devices/pci0000:00/0000:00:14.0/usb2/2-3/2-3:1.0/input/input14
+[  780.552465] usbcore: registered new interface driver uvcvideo
+[  780.552469] USB Video Class driver (1.1.1)
+[  780.876253] usbcore: registered new interface driver ath3k
+[  780.931577] usb 2-4.1: USB disconnect, device number 6
+[  781.278556] usb 2-4.1: new full-speed USB device number 7 using xhci_hcd
+[  781.499387] usb 2-4.1: New USB device found, idVendor=0930, idProduct=0227, bcdDevice= 0.02
+[  781.499415] usb 2-4.1: New USB device strings: Mfr=0, Product=0, SerialNumber=...
+[  782.112919] intel_rapl_common: Found RAPL domain package
+[  782.112927] intel_rapl_common: Found RAPL domain core
+[  782.664459] ath: phy0: WB335 2-ANT card detected
+[  782.664478] ath: phy0: Set BT/WLAN RX diversity capability
+[  782.671671] ath: phy0: Enable LNA combining
+[  782.672779] ath: phy0: ASPM enabled: 0x42
+[  782.672792] ath: EEPROM regdomain: 0x6a
+[  782.672797] ath: EEPROM indicates we should expect a direct regpair map
+[  782.672805] ath: Country alpha2 being used: 00
+[  782.672811] ath: Regpair used: 0x6a
+[  782.676111] ieee80211 phy0: Selected rate control algorithm 'minstrel_ht'
+[  782.681012] ieee80211 phy0: Atheros AR9565 Rev:2 mem=0xffffaad1c0e80000, irq=17
+[  782.727663] snd_hda_intel 0000:00:1b.0: bound 0000:00:02.0 (ops i915_audio_component_bind_ops [i915])
+[  782.828889] ath9k 0000:02:00.0 wlp2s0: renamed from wlan0
+[  783.295165] snd_hda_codec_realtek hdaudioC0D0: autoconfig for ALC233: line_outs=1 (0x14/0x0/0x0/0x0/0x0) type:speaker
+[  783.295179] snd_hda_codec_realtek hdaudioC0D0:    speaker_outs=0 (0x0/0x0/0x0/0x0/0x0)
+[  783.295184] snd_hda_codec_realtek hdaudioC0D0:    hp_outs=1 (0x21/0x0/0x0/0x0/0x0)
+[  783.295188] snd_hda_codec_realtek hdaudioC0D0:    mono: mono_out=0x0
+[  783.295192] snd_hda_codec_realtek hdaudioC0D0:    inputs:
+[  783.295195] snd_hda_codec_realtek hdaudioC0D0:      Mic=0x12
+[  783.381699] input: HDA Intel PCH Headphone as /devices/pci0000:00/0000:00:1b.0/sound/card0/input15
+[  783.381820] input: HDA Intel PCH HDMI/DP,pcm=3 as /devices/pci0000:00/0000:00:1b.0/sound/card0/input16
+[  787.193796] spl: loading out-of-tree module taints kernel.
+[  787.383451] znvpair: module license 'CDDL' taints kernel.
+[  787.383460] Disabling lock debugging due to kernel taint
+[  788.437799] ZFS: Loaded module v2.0.2-1ubuntu5, ZFS pool version 5000, ZFS filesystem version 5
+[  789.481028] loop1: detected capacity change from 0 to 32
+[  789.502431] loop2: detected capacity change from 0 to 856
+[  789.531670] loop3: detected capacity change from 0 to 170768
+[  789.553325] loop4: detected capacity change from 0 to 103520
+[  789.586291] loop5: detected capacity change from 0 to 636176
+[  789.599894] loop6: detected capacity change from 0 to 203456
+[  789.621661] loop7: detected capacity change from 0 to 113536
+[  789.653213] loop8: detected capacity change from 0 to 126504
+[  790.002823] loop9: detected capacity change from 0 to 272024
+[  790.397960] loop10: detected capacity change from 0 to 231360
+[  790.427064] loop11: detected capacity change from 0 to 12152
+[  790.458958] loop12: detected capacity change from 0 to 29664
+[  790.789789] loop13: detected capacity change from 0 to 337424
+[  790.822994] loop14: detected capacity change from 0 to 448512
+[  792.434981] loop15: detected capacity change from 0 to 494312
+[  792.556051] loop16: detected capacity change from 0 to 202800
+[  792.591152] loop17: detected capacity change from 0 to 616912
+[  792.635469] loop18: detected capacity change from 0 to 133320
+[  792.674223] loop19: detected capacity change from 0 to 21264
+[  792.716925] loop20: detected capacity change from 0 to 873216
+[  792.751233] loop21: detected capacity change from 0 to 1094808
+[  792.782630] loop22: detected capacity change from 0 to 104360
+[  792.814941] loop23: detected capacity change from 0 to 115104
+[  792.853156] loop24: detected capacity change from 0 to 8272
+[  792.886423] loop25: detected capacity change from 0 to 66152
+[  792.926177] loop26: detected capacity change from 0 to 380624
+[  793.400036] loop27: detected capacity change from 0 to 241888
+[  794.261279] loop28: detected capacity change from 0 to 544
+[  794.679136] loop29: detected capacity change from 0 to 177296
+[  795.347722] loop30: detected capacity change from 0 to 66144
+[  809.743706] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[  809.743715] Bluetooth: BNEP filters: protocol multicast
+[  809.743723] Bluetooth: BNEP socket layer initialized
+[  810.117494] NET: Registered protocol family 38
+[  814.745688] loop31: detected capacity change from 0 to 8
+[  824.273842] RTL8208 Fast Ethernet r8169-100:00: attached PHY driver (mii_bus:phy_addr=r8169-100:00, irq=IGNORE)
+[  824.650663] r8169 0000:01:00.0 enp1s0: Link is Down
+[  826.175152] wlp2s0: authenticate with XX:XX:XX:XX:XX:XX
+[  826.195334] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[  826.199961] wlp2s0: authenticated
+[  826.207779] wlp2s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[  826.216478] wlp2s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=4)
+[  826.216621] wlp2s0: associated
+[  826.216781] ath: EEPROM regdomain: 0x833a
+[  826.216785] ath: EEPROM indicates we should expect a country code
+[  826.216787] ath: doing EEPROM country->regdmn map search
+[  826.216789] ath: country maps to regdmn code: 0x37
+[  826.216791] ath: Country alpha2 being used: GB
+[  826.216793] ath: Regpair used: 0x37
+[  826.216795] ath: regdomain 0x833a dynamically updated by country element
+[  826.564104] IPv6: ADDRCONF(NETDEV_CHANGE): wlp2s0: link becomes ready
+[  840.715236] Bluetooth: RFCOMM TTY layer initialized
+[  840.715252] Bluetooth: RFCOMM socket layer initialized
+[  840.715266] Bluetooth: RFCOMM ver 1.11
+[  879.407898] rfkill: input handler disabled
+[ 1878.879283] perf: interrupt took too long (2513 > 2500), lowering kernel.perf_event_max_sample_rate to 79500
