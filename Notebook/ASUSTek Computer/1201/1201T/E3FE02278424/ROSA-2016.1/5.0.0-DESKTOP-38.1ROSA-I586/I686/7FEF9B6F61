@@ -1,0 +1,1511 @@
+[20391.775284]  vfs_mkdir+0xf5/0x1d0
+[20391.775288]  do_mkdirat+0xaf/0x100
+[20391.775292]  sys_mkdir+0x19/0x20
+[20391.775296]  do_fast_syscall_32+0x7f/0x1f0
+[20391.775301]  entry_SYSENTER_32+0x64/0xb3
+[20391.775304] EIP: 0xb7fd7871
+[20391.775308] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20391.775310] EAX: ffffffda EBX: 08d639a0 ECX: 000001ff EDX: b7fb5d0c
+[20391.775312] ESI: 08921008 EDI: 08943a00 EBP: 08dd1c48 ESP: bfa6465c
+[20391.775314] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000296
+[20391.780508] BUG: scheduling while atomic: hw-probe/22827/0x00000002
+[20391.780514] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20391.780560]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20391.780588] CPU: 0 PID: 22827 Comm: hw-probe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20391.780589] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20391.780590] Call Trace:
+[20391.780602]  dump_stack+0x60/0x86
+[20391.780608]  __schedule_bug+0x53/0x70
+[20391.780611]  __schedule+0x5bd/0x900
+[20391.780615]  ? generic_make_request+0x1eb/0x440
+[20391.780619]  schedule+0x35/0x80
+[20391.780621]  io_schedule+0x15/0x40
+[20391.780624]  bit_wait_io+0x10/0x50
+[20391.780627]  __wait_on_bit+0x5c/0x90
+[20391.780629]  ? bit_wait+0x50/0x50
+[20391.780632]  out_of_line_wait_on_bit+0x61/0x70
+[20391.780636]  ? init_wait_var_entry+0x50/0x50
+[20391.780640]  __wait_on_buffer+0x24/0x30
+[20391.780644]  ext4_wait_block_bitmap.part.14+0x52/0xa0
+[20391.780648]  ext4_wait_block_bitmap+0x1d/0x20
+[20391.780651]  ext4_mb_init_cache+0x1b9/0x680
+[20391.780655]  ? lru_cache_add+0xd/0x10
+[20391.780660]  ext4_mb_load_buddy_gfp+0x1f7/0x3b0
+[20391.780663]  ext4_mb_regular_allocator+0x162/0x410
+[20391.780668]  ext4_mb_new_blocks+0x6ad/0xb30
+[20391.780670]  ? ext4_find_extent+0x1a0/0x2e0
+[20391.780672]  ? ext4_find_extent+0x1a0/0x2e0
+[20391.780677]  ext4_ext_map_blocks+0xbc2/0x11d0
+[20391.780684]  ext4_map_blocks+0x135/0x650
+[20391.780689]  ext4_getblk+0x40/0x170
+[20391.780693]  ext4_bread+0x13/0x80
+[20391.780696]  ? ext4_mkdir+0x11d/0x3c0
+[20391.780698]  ext4_append+0x5f/0x100
+[20391.780701]  ext4_mkdir+0x1ad/0x3c0
+[20391.780706]  ? inode_permission+0x54/0x1a0
+[20391.780709]  ? ext4_init_dot_dotdot+0xc0/0xc0
+[20391.780712]  vfs_mkdir+0xf5/0x1d0
+[20391.780716]  do_mkdirat+0xaf/0x100
+[20391.780720]  sys_mkdir+0x19/0x20
+[20391.780723]  do_fast_syscall_32+0x7f/0x1f0
+[20391.780728]  entry_SYSENTER_32+0x64/0xb3
+[20391.780731] EIP: 0xb7fd7871
+[20391.780735] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20391.780737] EAX: ffffffda EBX: 08d639a0 ECX: 000001ff EDX: b7fb5d0c
+[20391.780738] ESI: 08921008 EDI: 08943a00 EBP: 08dd1c48 ESP: bfa6465c
+[20391.780740] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000296
+[20391.953650] BUG: scheduling while atomic: hw-probe/22827/0x00000003
+[20391.953657] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20391.953705]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20391.953735] CPU: 0 PID: 22827 Comm: hw-probe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20391.953736] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20391.953737] Call Trace:
+[20391.953750]  dump_stack+0x60/0x86
+[20391.953755]  __schedule_bug+0x53/0x70
+[20391.953759]  __schedule+0x5bd/0x900
+[20391.953763]  schedule+0x35/0x80
+[20391.953766]  io_schedule+0x15/0x40
+[20391.953769]  bit_wait_io+0x10/0x50
+[20391.953772]  __wait_on_bit+0x5c/0x90
+[20391.953774]  ? bit_wait+0x50/0x50
+[20391.953777]  out_of_line_wait_on_bit+0x61/0x70
+[20391.953781]  ? init_wait_var_entry+0x50/0x50
+[20391.953785]  __wait_on_buffer+0x24/0x30
+[20391.953790]  __ext4_get_inode_loc+0x2f7/0x460
+[20391.953794]  __ext4_iget+0xa1/0xda0
+[20391.953801]  ext4_lookup+0x9e/0x1b0
+[20391.953803]  ? ext4_lookup+0x9e/0x1b0
+[20391.953807]  ? lockref_get_not_dead+0x25/0x40
+[20391.953810]  ? ext4_find_entry+0x430/0x430
+[20391.953814]  __lookup_slow+0x69/0x120
+[20391.953818]  lookup_slow+0x2e/0x50
+[20391.953821]  walk_component+0x1b0/0x300
+[20391.953824]  ? path_init+0x1de/0x300
+[20391.953827]  ? terminate_walk+0x100/0x110
+[20391.953830]  path_lookupat+0x68/0x1c0
+[20391.953834]  filename_lookup+0x7f/0x170
+[20391.953839]  ? __check_object_size+0x104/0x130
+[20391.953843]  ? strncpy_from_user+0x3f/0x160
+[20391.953847]  user_path_at_empty+0x2a/0x40
+[20391.953850]  vfs_statx+0x60/0xc0
+[20391.953854]  __do_sys_stat64+0x24/0x40
+[20391.953859]  ? __audit_syscall_entry+0xac/0xf0
+[20391.953863]  ? syscall_trace_enter+0x220/0x260
+[20391.953867]  ? __audit_syscall_exit+0x1b6/0x260
+[20391.953870]  sys_stat64+0x13/0x20
+[20391.953872]  do_fast_syscall_32+0x7f/0x1f0
+[20391.953877]  entry_SYSENTER_32+0x64/0xb3
+[20391.953880] EIP: 0xb7fd7871
+[20391.953884] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20391.953886] EAX: ffffffda EBX: 08a5f060 ECX: 0892114c EDX: 08921008
+[20391.953888] ESI: 08921008 EDI: 08a5f060 EBP: 00000040 ESP: bfa64618
+[20391.953890] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000286
+[20391.995963] BUG: scheduling while atomic: sh/22845/0x00000002
+[20391.995969] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20391.996028]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20391.996057] CPU: 0 PID: 22845 Comm: sh Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20391.996059] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20391.996060] Call Trace:
+[20391.996073]  dump_stack+0x60/0x86
+[20391.996078]  __schedule_bug+0x53/0x70
+[20391.996082]  __schedule+0x5bd/0x900
+[20391.996087]  schedule+0x35/0x80
+[20391.996089]  io_schedule+0x15/0x40
+[20391.996092]  bit_wait_io+0x10/0x50
+[20391.996095]  __wait_on_bit+0x5c/0x90
+[20391.996097]  ? bit_wait+0x50/0x50
+[20391.996100]  out_of_line_wait_on_bit+0x61/0x70
+[20391.996105]  ? init_wait_var_entry+0x50/0x50
+[20391.996109]  __wait_on_buffer+0x24/0x30
+[20391.996113]  ext4_bread+0x6d/0x80
+[20391.996117]  __ext4_read_dirblock+0x22/0x320
+[20391.996120]  ext4_dx_find_entry+0xd5/0x150
+[20391.996125]  ext4_find_entry+0x11a/0x430
+[20391.996130]  ? ext4_find_entry+0x430/0x430
+[20391.996132]  ext4_lookup+0x47/0x1b0
+[20391.996136]  ? lockref_get_not_dead+0x25/0x40
+[20391.996139]  ? ext4_find_entry+0x430/0x430
+[20391.996143]  __lookup_slow+0x69/0x120
+[20391.996147]  lookup_slow+0x2e/0x50
+[20391.996150]  walk_component+0x1b0/0x300
+[20391.996153]  ? path_init+0x1de/0x300
+[20391.996156]  ? terminate_walk+0x100/0x110
+[20391.996159]  path_lookupat+0x68/0x1c0
+[20391.996163]  filename_lookup+0x7f/0x170
+[20391.996167]  ? __check_object_size+0x104/0x130
+[20391.996171]  ? strncpy_from_user+0x3f/0x160
+[20391.996175]  user_path_at_empty+0x2a/0x40
+[20391.996178]  vfs_statx+0x60/0xc0
+[20391.996182]  __do_sys_stat64+0x24/0x40
+[20391.996187]  ? __audit_syscall_entry+0xac/0xf0
+[20391.996192]  ? syscall_trace_enter+0x220/0x260
+[20391.996195]  ? __audit_syscall_exit+0x1b6/0x260
+[20391.996198]  sys_stat64+0x13/0x20
+[20391.996201]  do_fast_syscall_32+0x7f/0x1f0
+[20391.996206]  entry_SYSENTER_32+0x64/0xb3
+[20391.996209] EIP: 0xb7ee0871
+[20391.996213] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20391.996215] EAX: ffffffda EBX: 08b43208 ECX: bfbb8ed0 EDX: 08b43211
+[20391.996216] ESI: 08b43208 EDI: 08b42fe8 EBP: 08b42fe8 ESP: bfbb8e88
+[20391.996219] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000216
+[20392.074839] BUG: scheduling while atomic: lsmod/22848/0x00000002
+[20392.074852] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.074949]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.075010] CPU: 0 PID: 22848 Comm: lsmod Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.075012] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.075015] Call Trace:
+[20392.075039]  dump_stack+0x60/0x86
+[20392.075052]  __schedule_bug+0x53/0x70
+[20392.075060]  __schedule+0x5bd/0x900
+[20392.075068]  ? submit_bio+0x57/0x110
+[20392.075074]  schedule+0x35/0x80
+[20392.075080]  io_schedule+0x15/0x40
+[20392.075085]  bit_wait_io+0x10/0x50
+[20392.075091]  __wait_on_bit+0x5c/0x90
+[20392.075096]  ? bit_wait+0x50/0x50
+[20392.075102]  out_of_line_wait_on_bit+0x61/0x70
+[20392.075110]  ? init_wait_var_entry+0x50/0x50
+[20392.075119]  __wait_on_buffer+0x24/0x30
+[20392.075127]  ext4_find_entry+0x367/0x430
+[20392.075138]  ext4_lookup+0x47/0x1b0
+[20392.075144]  ? ext4_find_entry+0x430/0x430
+[20392.075152]  path_openat+0xe75/0x1160
+[20392.075164]  ? xas_load+0xc/0x70
+[20392.075172]  do_filp_open+0x5c/0xb0
+[20392.075182]  ? __alloc_fd+0x95/0x150
+[20392.075191]  do_sys_open+0x112/0x290
+[20392.075201]  ? io_apic_print_entries+0xa3/0x169
+[20392.075207]  sys_open+0x1d/0x20
+[20392.075215]  do_fast_syscall_32+0x7f/0x1f0
+[20392.075225]  entry_SYSENTER_32+0x64/0xb3
+[20392.075230] EIP: 0xb7f11871
+[20392.075237] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.075241] EAX: ffffffda EBX: bfd4082c ECX: 00088000 EDX: 00000000
+[20392.075245] ESI: bfd4082c EDI: 09a57065 EBP: 00000000 ESP: bfd406c0
+[20392.075249] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000282
+[20392.087892] BUG: scheduling while atomic: lsmod/22848/0x00000003
+[20392.087899] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.087944]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.087972] CPU: 0 PID: 22848 Comm: lsmod Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.087973] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.087974] Call Trace:
+[20392.087987]  dump_stack+0x60/0x86
+[20392.087992]  __schedule_bug+0x53/0x70
+[20392.087996]  __schedule+0x5bd/0x900
+[20392.088000]  schedule+0x35/0x80
+[20392.088002]  io_schedule+0x15/0x40
+[20392.088005]  bit_wait_io+0x10/0x50
+[20392.088008]  __wait_on_bit+0x5c/0x90
+[20392.088010]  ? bit_wait+0x50/0x50
+[20392.088013]  out_of_line_wait_on_bit+0x61/0x70
+[20392.088017]  ? init_wait_var_entry+0x50/0x50
+[20392.088021]  __wait_on_buffer+0x24/0x30
+[20392.088026]  __ext4_get_inode_loc+0x2f7/0x460
+[20392.088031]  __ext4_iget+0xa1/0xda0
+[20392.088037]  ext4_lookup+0x9e/0x1b0
+[20392.088040]  ? ext4_lookup+0x9e/0x1b0
+[20392.088043]  ? ext4_find_entry+0x430/0x430
+[20392.088047]  path_openat+0xe75/0x1160
+[20392.088052]  ? xas_load+0xc/0x70
+[20392.088056]  do_filp_open+0x5c/0xb0
+[20392.088061]  ? __alloc_fd+0x95/0x150
+[20392.088065]  do_sys_open+0x112/0x290
+[20392.088070]  ? io_apic_print_entries+0xa3/0x169
+[20392.088073]  sys_open+0x1d/0x20
+[20392.088077]  do_fast_syscall_32+0x7f/0x1f0
+[20392.088082]  entry_SYSENTER_32+0x64/0xb3
+[20392.088084] EIP: 0xb7f11871
+[20392.088088] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.088090] EAX: ffffffda EBX: bfd4082c ECX: 00088000 EDX: 00000000
+[20392.088091] ESI: bfd4082c EDI: 09a57065 EBP: 00000000 ESP: bfd406c0
+[20392.088094] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000282
+[20392.137882] BUG: scheduling while atomic: hwinfo/22849/0x00000003
+[20392.137897] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.138098]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.138159] CPU: 0 PID: 22849 Comm: hwinfo Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.138162] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.138165] Call Trace:
+[20392.138192]  dump_stack+0x60/0x86
+[20392.138203]  __schedule_bug+0x53/0x70
+[20392.138210]  __schedule+0x5bd/0x900
+[20392.138219]  schedule+0x35/0x80
+[20392.138224]  io_schedule+0x15/0x40
+[20392.138230]  bit_wait_io+0x10/0x50
+[20392.138235]  __wait_on_bit+0x5c/0x90
+[20392.138240]  ? bit_wait+0x50/0x50
+[20392.138246]  out_of_line_wait_on_bit+0x61/0x70
+[20392.138254]  ? init_wait_var_entry+0x50/0x50
+[20392.138263]  __wait_on_buffer+0x24/0x30
+[20392.138273]  __ext4_get_inode_loc+0x2f7/0x460
+[20392.138282]  __ext4_iget+0xa1/0xda0
+[20392.138294]  ext4_lookup+0x9e/0x1b0
+[20392.138300]  ? ext4_lookup+0x9e/0x1b0
+[20392.138305]  ? ext4_find_entry+0x430/0x430
+[20392.138314]  path_openat+0xe75/0x1160
+[20392.138327]  do_filp_open+0x5c/0xb0
+[20392.138336]  ? filemap_map_pages+0x146/0x300
+[20392.138347]  ? __alloc_fd+0x95/0x150
+[20392.138355]  do_sys_open+0x112/0x290
+[20392.138363]  sys_open+0x1d/0x20
+[20392.138371]  do_int80_syscall_32+0x55/0x110
+[20392.138381]  entry_INT80_32+0xd6/0xd6
+[20392.138387] EIP: 0xb7f2fbf4
+[20392.138395] Code: 89 82 34 09 00 00 b8 ff ff ff ff 5b c3 66 90 66 90 66 90 66 90 90 53 8b 54 24 10 8b 4c 24 0c 8b 5c 24 08 b8 05 00 00 00 cd 80 <5b> 3d 01 f0 ff ff 0f 83 50 f3 ff ff c3 66 90 66 90 66 90 66 90 66
+[20392.138399] EAX: ffffffda EBX: b7f0e3c0 ECX: 00080000 EDX: 00000014
+[20392.138403] ESI: bfb315fc EDI: 00000008 EBP: bfb31598 ESP: bfb31528
+[20392.138407] DS: 007b ES: 007b FS: 0000 GS: 0000 SS: 007b EFLAGS: 00000246
+[20392.236266] BUG: scheduling while atomic: hwinfo/22851/0x00000004
+[20392.236273] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.236322]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.236351] CPU: 0 PID: 22851 Comm: hwinfo Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.236352] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.236354] Call Trace:
+[20392.236366]  dump_stack+0x60/0x86
+[20392.236372]  __schedule_bug+0x53/0x70
+[20392.236376]  __schedule+0x5bd/0x900
+[20392.236380]  schedule+0x35/0x80
+[20392.236382]  io_schedule+0x15/0x40
+[20392.236385]  bit_wait_io+0x10/0x50
+[20392.236388]  __wait_on_bit+0x5c/0x90
+[20392.236390]  ? bit_wait+0x50/0x50
+[20392.236393]  out_of_line_wait_on_bit+0x61/0x70
+[20392.236397]  ? init_wait_var_entry+0x50/0x50
+[20392.236401]  __wait_on_buffer+0x24/0x30
+[20392.236406]  __ext4_get_inode_loc+0x2f7/0x460
+[20392.236411]  __ext4_iget+0xa1/0xda0
+[20392.236417]  ext4_lookup+0x9e/0x1b0
+[20392.236420]  ? ext4_lookup+0x9e/0x1b0
+[20392.236423]  ? lockref_get_not_dead+0x25/0x40
+[20392.236426]  ? ext4_find_entry+0x430/0x430
+[20392.236430]  __lookup_slow+0x69/0x120
+[20392.236434]  lookup_slow+0x2e/0x50
+[20392.236437]  walk_component+0x1b0/0x300
+[20392.236440]  ? inode_permission+0x54/0x1a0
+[20392.236444]  link_path_walk+0x15a/0x490
+[20392.236447]  ? path_init+0x1de/0x300
+[20392.236451]  ? alloc_empty_file+0x63/0xf0
+[20392.236454]  path_openat+0xa5/0x1160
+[20392.236458]  ? page_add_file_rmap+0x51/0x200
+[20392.236462]  ? alloc_set_pte+0x2dd/0x6b0
+[20392.236466]  ? xas_load+0xc/0x70
+[20392.236469]  do_filp_open+0x5c/0xb0
+[20392.236475]  ? __alloc_fd+0x95/0x150
+[20392.236479]  do_sys_open+0x112/0x290
+[20392.236483]  ? io_apic_print_entries+0xa3/0x169
+[20392.236486]  sys_open+0x1d/0x20
+[20392.236490]  do_fast_syscall_32+0x7f/0x1f0
+[20392.236495]  entry_SYSENTER_32+0x64/0xb3
+[20392.236498] EIP: 0xb7f3d871
+[20392.236502] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.236504] EAX: ffffffda EBX: 0878fa20 ECX: 00000000 EDX: 000001b6
+[20392.236506] ESI: 0878fa40 EDI: 00000008 EBP: b7c32000 ESP: bfdccbb8
+[20392.236508] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20392.258768] BUG: scheduling while atomic: hwinfo/22851/0x00000002
+[20392.258774] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.258820]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.258847] CPU: 0 PID: 22851 Comm: hwinfo Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.258848] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.258849] Call Trace:
+[20392.258862]  dump_stack+0x60/0x86
+[20392.258868]  __schedule_bug+0x53/0x70
+[20392.258871]  __schedule+0x5bd/0x900
+[20392.258876]  ? submit_bio+0x57/0x110
+[20392.258879]  schedule+0x35/0x80
+[20392.258881]  io_schedule+0x15/0x40
+[20392.258884]  bit_wait_io+0x10/0x50
+[20392.258887]  __wait_on_bit+0x5c/0x90
+[20392.258889]  ? bit_wait+0x50/0x50
+[20392.258892]  out_of_line_wait_on_bit+0x61/0x70
+[20392.258897]  ? init_wait_var_entry+0x50/0x50
+[20392.258900]  __wait_on_buffer+0x24/0x30
+[20392.258904]  ext4_find_entry+0x367/0x430
+[20392.258910]  ext4_lookup+0x47/0x1b0
+[20392.258913]  ? ext4_find_entry+0x430/0x430
+[20392.258916]  path_openat+0xe75/0x1160
+[20392.258922]  ? xas_load+0xc/0x70
+[20392.258926]  do_filp_open+0x5c/0xb0
+[20392.258931]  ? __alloc_fd+0x95/0x150
+[20392.258936]  do_sys_open+0x112/0x290
+[20392.258940]  ? io_apic_print_entries+0xa3/0x169
+[20392.258943]  sys_open+0x1d/0x20
+[20392.258947]  do_fast_syscall_32+0x7f/0x1f0
+[20392.258952]  entry_SYSENTER_32+0x64/0xb3
+[20392.258955] EIP: 0xb7f3d871
+[20392.258959] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.258960] EAX: ffffffda EBX: 0878fa20 ECX: 00000000 EDX: 000001b6
+[20392.258962] ESI: 0878fa40 EDI: 00000008 EBP: b7c32000 ESP: bfdccbb8
+[20392.258964] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20392.369676] BUG: scheduling while atomic: hwinfo/22851/0x00000002
+[20392.369683] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.369731]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.369761] CPU: 0 PID: 22851 Comm: hwinfo Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.369762] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.369764] Call Trace:
+[20392.369776]  dump_stack+0x60/0x86
+[20392.369782]  __schedule_bug+0x53/0x70
+[20392.369786]  __schedule+0x5bd/0x900
+[20392.369790]  ? submit_bio+0x57/0x110
+[20392.369793]  schedule+0x35/0x80
+[20392.369796]  io_schedule+0x15/0x40
+[20392.369799]  bit_wait_io+0x10/0x50
+[20392.369802]  __wait_on_bit+0x5c/0x90
+[20392.369804]  ? bit_wait+0x50/0x50
+[20392.369807]  out_of_line_wait_on_bit+0x61/0x70
+[20392.369811]  ? init_wait_var_entry+0x50/0x50
+[20392.369815]  __wait_on_buffer+0x24/0x30
+[20392.369819]  ext4_find_entry+0x367/0x430
+[20392.369824]  ext4_lookup+0x47/0x1b0
+[20392.369827]  ? ext4_find_entry+0x430/0x430
+[20392.369832]  path_openat+0xe75/0x1160
+[20392.369838]  ? unlock_page_memcg+0x10/0x20
+[20392.369841]  do_filp_open+0x5c/0xb0
+[20392.369847]  ? __alloc_fd+0x95/0x150
+[20392.369851]  do_sys_open+0x112/0x290
+[20392.369856]  ? io_apic_print_entries+0xa3/0x169
+[20392.369859]  sys_open+0x1d/0x20
+[20392.369862]  do_fast_syscall_32+0x7f/0x1f0
+[20392.369867]  entry_SYSENTER_32+0x64/0xb3
+[20392.369870] EIP: 0xb7f3d871
+[20392.369874] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.369876] EAX: ffffffda EBX: b7c8a0b8 ECX: 00000000 EDX: 000001b6
+[20392.369878] ESI: 08b07768 EDI: 00000008 EBP: b7c32000 ESP: bfdcaa88
+[20392.369880] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20392.946838] BUG: scheduling while atomic: modprobe/22857/0x00000002
+[20392.946845] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.946892]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.946920] CPU: 0 PID: 22857 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.946921] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.946922] Call Trace:
+[20392.946935]  dump_stack+0x60/0x86
+[20392.946941]  __schedule_bug+0x53/0x70
+[20392.946945]  __schedule+0x5bd/0x900
+[20392.946949]  schedule+0x35/0x80
+[20392.946952]  io_schedule+0x15/0x40
+[20392.946954]  bit_wait_io+0x10/0x50
+[20392.946957]  __wait_on_bit+0x5c/0x90
+[20392.946960]  ? bit_wait+0x50/0x50
+[20392.946963]  out_of_line_wait_on_bit+0x61/0x70
+[20392.946967]  ? init_wait_var_entry+0x50/0x50
+[20392.946972]  __wait_on_buffer+0x24/0x30
+[20392.946976]  ext4_bread+0x6d/0x80
+[20392.946980]  __ext4_read_dirblock+0x22/0x320
+[20392.946983]  htree_dirblock_to_tree+0x3c/0x200
+[20392.946988]  ? mntput+0x20/0x40
+[20392.946991]  ext4_htree_fill_tree+0x73/0x2b0
+[20392.946998]  ? kmem_cache_alloc_trace+0x157/0x1c0
+[20392.947003]  ? ext4_readdir+0xa07/0xac0
+[20392.947006]  ? free_rb_tree_fname+0x16/0x70
+[20392.947009]  ext4_readdir+0x7ee/0xac0
+[20392.947016]  ? security_file_permission+0x8d/0xe0
+[20392.947019]  iterate_dir+0x88/0x1a0
+[20392.947023]  ksys_getdents64+0x68/0x100
+[20392.947025]  ? sys_getdents+0xf0/0xf0
+[20392.947028]  sys_getdents64+0x16/0x20
+[20392.947032]  do_fast_syscall_32+0x7f/0x1f0
+[20392.947037]  entry_SYSENTER_32+0x64/0xb3
+[20392.947040] EIP: 0xb7f06871
+[20392.947044] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.947046] EAX: ffffffda EBX: 00000004 ECX: 09b81114 EDX: 00008000
+[20392.947048] ESI: 09b81114 EDI: b7ca9700 EBP: 08065ade ESP: bfb083f4
+[20392.947050] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20392.952595] BUG: scheduling while atomic: modprobe/22857/0x00000005
+[20392.952601] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.952646]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.952674] CPU: 0 PID: 22857 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.952675] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.952677] Call Trace:
+[20392.952688]  dump_stack+0x60/0x86
+[20392.952693]  __schedule_bug+0x53/0x70
+[20392.952696]  __schedule+0x5bd/0x900
+[20392.952700]  schedule+0x35/0x80
+[20392.952703]  io_schedule+0x15/0x40
+[20392.952706]  bit_wait_io+0x10/0x50
+[20392.952709]  __wait_on_bit+0x5c/0x90
+[20392.952711]  ? bit_wait+0x50/0x50
+[20392.952714]  out_of_line_wait_on_bit+0x61/0x70
+[20392.952719]  ? init_wait_var_entry+0x50/0x50
+[20392.952722]  __wait_on_buffer+0x24/0x30
+[20392.952727]  __ext4_get_inode_loc+0x2f7/0x460
+[20392.952732]  __ext4_iget+0xa1/0xda0
+[20392.952738]  ext4_lookup+0x9e/0x1b0
+[20392.952741]  ? ext4_lookup+0x9e/0x1b0
+[20392.952744]  ? lockref_get_not_dead+0x25/0x40
+[20392.952747]  ? ext4_find_entry+0x430/0x430
+[20392.952751]  __lookup_slow+0x69/0x120
+[20392.952754]  lookup_slow+0x2e/0x50
+[20392.952758]  walk_component+0x1b0/0x300
+[20392.952761]  ? path_init+0x165/0x300
+[20392.952764]  path_lookupat+0x68/0x1c0
+[20392.952768]  filename_lookup+0x7f/0x170
+[20392.952773]  ? __check_object_size+0x104/0x130
+[20392.952776]  ? strncpy_from_user+0x3f/0x160
+[20392.952780]  user_path_at_empty+0x2a/0x40
+[20392.952783]  vfs_statx+0x60/0xc0
+[20392.952788]  ? touch_atime+0x28/0xc0
+[20392.952791]  __do_sys_fstatat64+0x1e/0x40
+[20392.952796]  ? __audit_syscall_entry+0xac/0xf0
+[20392.952800]  ? syscall_trace_enter+0x220/0x260
+[20392.952803]  ? ksys_getdents64+0x68/0x100
+[20392.952806]  ? __audit_syscall_exit+0x1b6/0x260
+[20392.952809]  sys_fstatat64+0x19/0x20
+[20392.952811]  do_fast_syscall_32+0x7f/0x1f0
+[20392.952816]  entry_SYSENTER_32+0x64/0xb3
+[20392.952819] EIP: 0xb7f06871
+[20392.952822] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.952824] EAX: ffffffda EBX: 00000004 ECX: 09b81127 EDX: bfb0851c
+[20392.952826] ESI: 00000000 EDI: 080642cb EBP: 09b81127 ESP: bfb08414
+[20392.952828] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20392.966088] BUG: scheduling while atomic: modprobe/22857/0x00000002
+[20392.966094] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.966158]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.966188] CPU: 0 PID: 22857 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.966189] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.966191] Call Trace:
+[20392.966202]  dump_stack+0x60/0x86
+[20392.966207]  __schedule_bug+0x53/0x70
+[20392.966210]  __schedule+0x5bd/0x900
+[20392.966215]  ? submit_bio+0x57/0x110
+[20392.966218]  schedule+0x35/0x80
+[20392.966221]  io_schedule+0x15/0x40
+[20392.966223]  bit_wait_io+0x10/0x50
+[20392.966226]  __wait_on_bit+0x5c/0x90
+[20392.966228]  ? bit_wait+0x50/0x50
+[20392.966231]  out_of_line_wait_on_bit+0x61/0x70
+[20392.966235]  ? init_wait_var_entry+0x50/0x50
+[20392.966239]  __wait_on_buffer+0x24/0x30
+[20392.966243]  ext4_find_entry+0x367/0x430
+[20392.966248]  ? ext4_find_entry+0x430/0x430
+[20392.966251]  ext4_lookup+0x47/0x1b0
+[20392.966254]  ? __d_lookup+0x7c/0x160
+[20392.966257]  ? ext4_find_entry+0x430/0x430
+[20392.966260]  __lookup_slow+0x69/0x120
+[20392.966264]  lookup_slow+0x2e/0x50
+[20392.966267]  walk_component+0x1b0/0x300
+[20392.966270]  ? inode_permission+0x54/0x1a0
+[20392.966274]  link_path_walk+0x15a/0x490
+[20392.966278]  path_lookupat+0x81/0x1c0
+[20392.966282]  filename_lookup+0x7f/0x170
+[20392.966287]  ? strncpy_from_user+0x3f/0x160
+[20392.966292]  user_path_at_empty+0x2a/0x40
+[20392.966295]  vfs_statx+0x60/0xc0
+[20392.966299]  __do_sys_fstatat64+0x1e/0x40
+[20392.966304]  ? __audit_syscall_entry+0xac/0xf0
+[20392.966308]  ? syscall_trace_enter+0x220/0x260
+[20392.966312]  ? __audit_syscall_exit+0x1b6/0x260
+[20392.966314]  sys_fstatat64+0x19/0x20
+[20392.966317]  do_fast_syscall_32+0x7f/0x1f0
+[20392.966322]  entry_SYSENTER_32+0x64/0xb3
+[20392.966325] EIP: 0xb7f06871
+[20392.966328] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.966330] EAX: ffffffda EBX: 00000004 ECX: 09b81187 EDX: bfb0851c
+[20392.966332] ESI: 00000000 EDI: 080642cb EBP: 09b81187 ESP: bfb08414
+[20392.966334] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20392.966852] BUG: scheduling while atomic: modprobe/22857/0x00000002
+[20392.966854] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.966886]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.966905] CPU: 0 PID: 22857 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.966906] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.966907] Call Trace:
+[20392.966911]  dump_stack+0x60/0x86
+[20392.966915]  __schedule_bug+0x53/0x70
+[20392.966917]  __schedule+0x5bd/0x900
+[20392.966921]  ? submit_bio+0x57/0x110
+[20392.966924]  schedule+0x35/0x80
+[20392.966927]  io_schedule+0x15/0x40
+[20392.966930]  bit_wait_io+0x10/0x50
+[20392.966932]  __wait_on_bit+0x5c/0x90
+[20392.966935]  ? bit_wait+0x50/0x50
+[20392.966938]  out_of_line_wait_on_bit+0x61/0x70
+[20392.966942]  ? init_wait_var_entry+0x50/0x50
+[20392.966945]  __wait_on_buffer+0x24/0x30
+[20392.966948]  ext4_find_entry+0x367/0x430
+[20392.966955]  ? ext4_find_entry+0x430/0x430
+[20392.966957]  ext4_lookup+0x47/0x1b0
+[20392.966960]  ? __d_lookup+0x7c/0x160
+[20392.966963]  ? ext4_find_entry+0x430/0x430
+[20392.966966]  __lookup_slow+0x69/0x120
+[20392.966970]  lookup_slow+0x2e/0x50
+[20392.966973]  walk_component+0x1b0/0x300
+[20392.966977]  ? inode_permission+0x54/0x1a0
+[20392.966980]  link_path_walk+0x15a/0x490
+[20392.966985]  path_lookupat+0x81/0x1c0
+[20392.966989]  filename_lookup+0x7f/0x170
+[20392.966995]  ? strncpy_from_user+0x3f/0x160
+[20392.967000]  user_path_at_empty+0x2a/0x40
+[20392.967003]  vfs_statx+0x60/0xc0
+[20392.967007]  __do_sys_fstatat64+0x1e/0x40
+[20392.967012]  ? __audit_syscall_entry+0xac/0xf0
+[20392.967015]  ? syscall_trace_enter+0x220/0x260
+[20392.967020]  ? __audit_syscall_exit+0x1b6/0x260
+[20392.967022]  sys_fstatat64+0x19/0x20
+[20392.967025]  do_fast_syscall_32+0x7f/0x1f0
+[20392.967030]  entry_SYSENTER_32+0x64/0xb3
+[20392.967032] EIP: 0xb7f06871
+[20392.967034] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.967036] EAX: ffffffda EBX: 00000004 ECX: 09b81187 EDX: bfb0851c
+[20392.967037] ESI: 00000000 EDI: 080642cb EBP: 09b81187 ESP: bfb08414
+[20392.967039] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20392.971837] BUG: scheduling while atomic: modprobe/22857/0x00000002
+[20392.971842] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.971887]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.971914] CPU: 0 PID: 22857 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.971916] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.971917] Call Trace:
+[20392.971927]  dump_stack+0x60/0x86
+[20392.971931]  __schedule_bug+0x53/0x70
+[20392.971935]  __schedule+0x5bd/0x900
+[20392.971939]  ? submit_bio+0x57/0x110
+[20392.971942]  schedule+0x35/0x80
+[20392.971945]  io_schedule+0x15/0x40
+[20392.971947]  bit_wait_io+0x10/0x50
+[20392.971950]  __wait_on_bit+0x5c/0x90
+[20392.971953]  ? bit_wait+0x50/0x50
+[20392.971956]  out_of_line_wait_on_bit+0x61/0x70
+[20392.971960]  ? init_wait_var_entry+0x50/0x50
+[20392.971963]  __wait_on_buffer+0x24/0x30
+[20392.971967]  ext4_find_entry+0x367/0x430
+[20392.971972]  ? ext4_find_entry+0x430/0x430
+[20392.971975]  ext4_lookup+0x47/0x1b0
+[20392.971978]  ? __d_lookup+0x7c/0x160
+[20392.971980]  ? ext4_find_entry+0x430/0x430
+[20392.971984]  __lookup_slow+0x69/0x120
+[20392.971987]  lookup_slow+0x2e/0x50
+[20392.971991]  walk_component+0x1b0/0x300
+[20392.971995]  path_lookupat+0x68/0x1c0
+[20392.971999]  filename_lookup+0x7f/0x170
+[20392.972005]  user_path_at_empty+0x2a/0x40
+[20392.972009]  vfs_statx+0x60/0xc0
+[20392.972012]  __do_sys_fstatat64+0x1e/0x40
+[20392.972017]  ? __audit_syscall_entry+0xac/0xf0
+[20392.972021]  ? syscall_trace_enter+0x220/0x260
+[20392.972025]  ? __audit_syscall_exit+0x1b6/0x260
+[20392.972028]  sys_fstatat64+0x19/0x20
+[20392.972030]  do_fast_syscall_32+0x7f/0x1f0
+[20392.972035]  entry_SYSENTER_32+0x64/0xb3
+[20392.972038] EIP: 0xb7f06871
+[20392.972041] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.972043] EAX: ffffffda EBX: 00000004 ECX: 09b81187 EDX: bfb0851c
+[20392.972045] ESI: 00000000 EDI: 080642cb EBP: 09b81187 ESP: bfb08414
+[20392.972047] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20392.973594] BUG: scheduling while atomic: modprobe/22857/0x00000003
+[20392.973598] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.973638]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.973660] CPU: 0 PID: 22857 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.973661] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.973662] Call Trace:
+[20392.973670]  dump_stack+0x60/0x86
+[20392.973674]  __schedule_bug+0x53/0x70
+[20392.973677]  __schedule+0x5bd/0x900
+[20392.973681]  schedule+0x35/0x80
+[20392.973684]  io_schedule+0x15/0x40
+[20392.973687]  bit_wait_io+0x10/0x50
+[20392.973689]  __wait_on_bit+0x5c/0x90
+[20392.973692]  ? bit_wait+0x50/0x50
+[20392.973695]  out_of_line_wait_on_bit+0x61/0x70
+[20392.973698]  ? init_wait_var_entry+0x50/0x50
+[20392.973701]  __wait_on_buffer+0x24/0x30
+[20392.973706]  __ext4_get_inode_loc+0x2f7/0x460
+[20392.973710]  __ext4_iget+0xa1/0xda0
+[20392.973716]  ext4_lookup+0x9e/0x1b0
+[20392.973719]  ? ext4_lookup+0x9e/0x1b0
+[20392.973723]  ? lockref_get_not_dead+0x25/0x40
+[20392.973725]  ? ext4_find_entry+0x430/0x430
+[20392.973728]  __lookup_slow+0x69/0x120
+[20392.973732]  lookup_slow+0x2e/0x50
+[20392.973736]  walk_component+0x1b0/0x300
+[20392.973738]  ? path_init+0x165/0x300
+[20392.973742]  path_lookupat+0x68/0x1c0
+[20392.973746]  filename_lookup+0x7f/0x170
+[20392.973750]  ? __check_object_size+0x104/0x130
+[20392.973754]  ? strncpy_from_user+0x3f/0x160
+[20392.973758]  user_path_at_empty+0x2a/0x40
+[20392.973761]  vfs_statx+0x60/0xc0
+[20392.973764]  __do_sys_fstatat64+0x1e/0x40
+[20392.973769]  ? __audit_syscall_entry+0xac/0xf0
+[20392.973773]  ? syscall_trace_enter+0x220/0x260
+[20392.973776]  ? __audit_syscall_exit+0x1b6/0x260
+[20392.973779]  sys_fstatat64+0x19/0x20
+[20392.973781]  do_fast_syscall_32+0x7f/0x1f0
+[20392.973786]  entry_SYSENTER_32+0x64/0xb3
+[20392.973788] EIP: 0xb7f06871
+[20392.973791] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.973793] EAX: ffffffda EBX: 00000004 ECX: 09b811e7 EDX: bfb0851c
+[20392.973795] ESI: 00000000 EDI: 080642cb EBP: 09b811e7 ESP: bfb08414
+[20392.973797] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20392.988363] BUG: scheduling while atomic: modprobe/22857/0x00000002
+[20392.988369] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20392.988414]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20392.988442] CPU: 0 PID: 22857 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20392.988443] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20392.988444] Call Trace:
+[20392.988456]  dump_stack+0x60/0x86
+[20392.988461]  __schedule_bug+0x53/0x70
+[20392.988465]  __schedule+0x5bd/0x900
+[20392.988469]  schedule+0x35/0x80
+[20392.988472]  io_schedule+0x15/0x40
+[20392.988475]  bit_wait_io+0x10/0x50
+[20392.988478]  __wait_on_bit+0x5c/0x90
+[20392.988480]  ? bit_wait+0x50/0x50
+[20392.988483]  out_of_line_wait_on_bit+0x61/0x70
+[20392.988488]  ? init_wait_var_entry+0x50/0x50
+[20392.988492]  __wait_on_buffer+0x24/0x30
+[20392.988496]  ext4_bread+0x6d/0x80
+[20392.988500]  __ext4_read_dirblock+0x22/0x320
+[20392.988503]  htree_dirblock_to_tree+0x3c/0x200
+[20392.988507]  ? mntput+0x20/0x40
+[20392.988511]  ext4_htree_fill_tree+0x73/0x2b0
+[20392.988518]  ? kmem_cache_alloc_trace+0x157/0x1c0
+[20392.988523]  ? ext4_readdir+0xa07/0xac0
+[20392.988526]  ? free_rb_tree_fname+0x16/0x70
+[20392.988529]  ext4_readdir+0x7ee/0xac0
+[20392.988533]  ? mem_cgroup_commit_charge+0x67/0x380
+[20392.988539]  ? security_file_permission+0x8d/0xe0
+[20392.988542]  iterate_dir+0x88/0x1a0
+[20392.988545]  ksys_getdents64+0x68/0x100
+[20392.988548]  ? sys_getdents+0xf0/0xf0
+[20392.988551]  sys_getdents64+0x16/0x20
+[20392.988555]  do_fast_syscall_32+0x7f/0x1f0
+[20392.988560]  entry_SYSENTER_32+0x64/0xb3
+[20392.988563] EIP: 0xb7f06871
+[20392.988567] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20392.988569] EAX: ffffffda EBX: 00000004 ECX: 09b892b4 EDX: 00008000
+[20392.988571] ESI: 09b892b4 EDI: b7ca9700 EBP: 08065afe ESP: bfb083f4
+[20392.988572] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20393.281669] BUG: scheduling while atomic: modprobe/22865/0x00000002
+[20393.281675] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20393.281722]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20393.281751] CPU: 0 PID: 22865 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20393.281752] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20393.281754] Call Trace:
+[20393.281766]  dump_stack+0x60/0x86
+[20393.281772]  __schedule_bug+0x53/0x70
+[20393.281776]  __schedule+0x5bd/0x900
+[20393.281780]  ? submit_bio+0x57/0x110
+[20393.281783]  schedule+0x35/0x80
+[20393.281786]  io_schedule+0x15/0x40
+[20393.281789]  bit_wait_io+0x10/0x50
+[20393.281792]  __wait_on_bit+0x5c/0x90
+[20393.281794]  ? bit_wait+0x50/0x50
+[20393.281797]  out_of_line_wait_on_bit+0x61/0x70
+[20393.281801]  ? init_wait_var_entry+0x50/0x50
+[20393.281805]  __wait_on_buffer+0x24/0x30
+[20393.281809]  ext4_find_entry+0x367/0x430
+[20393.281814]  ? ext4_find_entry+0x430/0x430
+[20393.281816]  ext4_lookup+0x47/0x1b0
+[20393.281820]  ? __d_lookup+0x7c/0x160
+[20393.281822]  ? ext4_find_entry+0x430/0x430
+[20393.281826]  __lookup_slow+0x69/0x120
+[20393.281830]  lookup_slow+0x2e/0x50
+[20393.281833]  walk_component+0x1b0/0x300
+[20393.281836]  ? inode_permission+0x54/0x1a0
+[20393.281840]  link_path_walk+0x15a/0x490
+[20393.281843]  ? path_init+0x1de/0x300
+[20393.281846]  ? alloc_empty_file+0x63/0xf0
+[20393.281850]  path_openat+0xa5/0x1160
+[20393.281853]  ? __check_object_size+0x104/0x130
+[20393.281857]  ? strncpy_from_user+0x3f/0x160
+[20393.281861]  do_filp_open+0x5c/0xb0
+[20393.281867]  ? __alloc_fd+0x95/0x150
+[20393.281870]  do_sys_open+0x112/0x290
+[20393.281874]  sys_open+0x1d/0x20
+[20393.281878]  do_fast_syscall_32+0x7f/0x1f0
+[20393.281883]  entry_SYSENTER_32+0x64/0xb3
+[20393.281886] EIP: 0xb7f81871
+[20393.281890] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20393.281892] EAX: ffffffda EBX: 088292b8 ECX: 00088000 EDX: 00000000
+[20393.281894] ESI: 088292b8 EDI: 08829318 EBP: bf9cd648 ESP: bf9cd5d0
+[20393.281896] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000282
+[20393.288265] BUG: scheduling while atomic: modprobe/22865/0x00000003
+[20393.288271] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20393.288324]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20393.288356] CPU: 0 PID: 22865 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20393.288357] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20393.288358] Call Trace:
+[20393.288371]  dump_stack+0x60/0x86
+[20393.288376]  __schedule_bug+0x53/0x70
+[20393.288380]  __schedule+0x5bd/0x900
+[20393.288384]  schedule+0x35/0x80
+[20393.288387]  io_schedule+0x15/0x40
+[20393.288390]  bit_wait_io+0x10/0x50
+[20393.288393]  __wait_on_bit+0x5c/0x90
+[20393.288395]  ? bit_wait+0x50/0x50
+[20393.288399]  out_of_line_wait_on_bit+0x61/0x70
+[20393.288403]  ? init_wait_var_entry+0x50/0x50
+[20393.288407]  __wait_on_buffer+0x24/0x30
+[20393.288412]  __ext4_get_inode_loc+0x2f7/0x460
+[20393.288417]  __ext4_iget+0xa1/0xda0
+[20393.288423]  ext4_lookup+0x9e/0x1b0
+[20393.288426]  ? ext4_lookup+0x9e/0x1b0
+[20393.288429]  ? __d_lookup+0x7c/0x160
+[20393.288432]  ? ext4_find_entry+0x430/0x430
+[20393.288436]  __lookup_slow+0x69/0x120
+[20393.288440]  lookup_slow+0x2e/0x50
+[20393.288443]  walk_component+0x1b0/0x300
+[20393.288446]  ? inode_permission+0x54/0x1a0
+[20393.288450]  link_path_walk+0x15a/0x490
+[20393.288453]  ? path_init+0x1de/0x300
+[20393.288457]  ? alloc_empty_file+0x63/0xf0
+[20393.288460]  path_openat+0xa5/0x1160
+[20393.288464]  ? __check_object_size+0x104/0x130
+[20393.288468]  ? strncpy_from_user+0x3f/0x160
+[20393.288472]  do_filp_open+0x5c/0xb0
+[20393.288478]  ? __alloc_fd+0x95/0x150
+[20393.288482]  do_sys_open+0x112/0x290
+[20393.288486]  sys_open+0x1d/0x20
+[20393.288490]  do_fast_syscall_32+0x7f/0x1f0
+[20393.288495]  entry_SYSENTER_32+0x64/0xb3
+[20393.288498] EIP: 0xb7f81871
+[20393.288502] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20393.288504] EAX: ffffffda EBX: 088292b8 ECX: 00088000 EDX: 00000000
+[20393.288506] ESI: 088292b8 EDI: 08829318 EBP: bf9cd648 ESP: bf9cd5d0
+[20393.288508] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000282
+[20393.293116] BUG: scheduling while atomic: modprobe/22865/0x00000002
+[20393.293120] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20393.293166]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20393.293192] CPU: 0 PID: 22865 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20393.293193] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20393.293194] Call Trace:
+[20393.293203]  dump_stack+0x60/0x86
+[20393.293207]  __schedule_bug+0x53/0x70
+[20393.293211]  __schedule+0x5bd/0x900
+[20393.293215]  ? submit_bio+0x57/0x110
+[20393.293218]  schedule+0x35/0x80
+[20393.293221]  io_schedule+0x15/0x40
+[20393.293224]  bit_wait_io+0x10/0x50
+[20393.293226]  __wait_on_bit+0x5c/0x90
+[20393.293229]  ? bit_wait+0x50/0x50
+[20393.293232]  out_of_line_wait_on_bit+0x61/0x70
+[20393.293236]  ? init_wait_var_entry+0x50/0x50
+[20393.293239]  __wait_on_buffer+0x24/0x30
+[20393.293243]  ext4_find_entry+0x367/0x430
+[20393.293248]  ? ext4_find_entry+0x430/0x430
+[20393.293251]  ext4_lookup+0x47/0x1b0
+[20393.293254]  ? __d_lookup+0x7c/0x160
+[20393.293256]  ? ext4_find_entry+0x430/0x430
+[20393.293259]  __lookup_slow+0x69/0x120
+[20393.293263]  lookup_slow+0x2e/0x50
+[20393.293266]  walk_component+0x1b0/0x300
+[20393.293269]  ? inode_permission+0x54/0x1a0
+[20393.293273]  link_path_walk+0x15a/0x490
+[20393.293276]  ? path_init+0x1de/0x300
+[20393.293279]  ? alloc_empty_file+0x63/0xf0
+[20393.293282]  path_openat+0xa5/0x1160
+[20393.293286]  ? __check_object_size+0x104/0x130
+[20393.293289]  ? strncpy_from_user+0x3f/0x160
+[20393.293293]  do_filp_open+0x5c/0xb0
+[20393.293299]  ? __alloc_fd+0x95/0x150
+[20393.293302]  do_sys_open+0x112/0x290
+[20393.293306]  sys_open+0x1d/0x20
+[20393.293310]  do_fast_syscall_32+0x7f/0x1f0
+[20393.293314]  entry_SYSENTER_32+0x64/0xb3
+[20393.293317] EIP: 0xb7f81871
+[20393.293320] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20393.293322] EAX: ffffffda EBX: 088292b8 ECX: 00088000 EDX: 00000000
+[20393.293324] ESI: 088292b8 EDI: 08829318 EBP: bf9cd648 ESP: bf9cd5d0
+[20393.293326] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000282
+[20393.301405] BUG: scheduling while atomic: modprobe/22865/0x00000003
+[20393.301411] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20393.301456]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20393.301484] CPU: 0 PID: 22865 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20393.301485] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20393.301486] Call Trace:
+[20393.301496]  dump_stack+0x60/0x86
+[20393.301501]  __schedule_bug+0x53/0x70
+[20393.301505]  __schedule+0x5bd/0x900
+[20393.301509]  schedule+0x35/0x80
+[20393.301512]  io_schedule+0x15/0x40
+[20393.301515]  bit_wait_io+0x10/0x50
+[20393.301517]  __wait_on_bit+0x5c/0x90
+[20393.301520]  ? bit_wait+0x50/0x50
+[20393.301523]  out_of_line_wait_on_bit+0x61/0x70
+[20393.301527]  ? init_wait_var_entry+0x50/0x50
+[20393.301530]  __wait_on_buffer+0x24/0x30
+[20393.301535]  __ext4_get_inode_loc+0x2f7/0x460
+[20393.301539]  __ext4_iget+0xa1/0xda0
+[20393.301545]  ext4_lookup+0x9e/0x1b0
+[20393.301548]  ? ext4_lookup+0x9e/0x1b0
+[20393.301551]  ? __d_lookup+0x7c/0x160
+[20393.301554]  ? ext4_find_entry+0x430/0x430
+[20393.301557]  __lookup_slow+0x69/0x120
+[20393.301560]  lookup_slow+0x2e/0x50
+[20393.301564]  walk_component+0x1b0/0x300
+[20393.301567]  ? inode_permission+0x54/0x1a0
+[20393.301570]  link_path_walk+0x15a/0x490
+[20393.301573]  ? path_init+0x1de/0x300
+[20393.301577]  ? alloc_empty_file+0x63/0xf0
+[20393.301580]  path_openat+0xa5/0x1160
+[20393.301584]  ? __check_object_size+0x104/0x130
+[20393.301588]  ? strncpy_from_user+0x3f/0x160
+[20393.301592]  do_filp_open+0x5c/0xb0
+[20393.301597]  ? __alloc_fd+0x95/0x150
+[20393.301601]  do_sys_open+0x112/0x290
+[20393.301605]  sys_open+0x1d/0x20
+[20393.301609]  do_fast_syscall_32+0x7f/0x1f0
+[20393.301614]  entry_SYSENTER_32+0x64/0xb3
+[20393.301617] EIP: 0xb7f81871
+[20393.301620] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20393.301622] EAX: ffffffda EBX: 088292b8 ECX: 00088000 EDX: 00000000
+[20393.301624] ESI: 088292b8 EDI: 08829318 EBP: bf9cd648 ESP: bf9cd5d0
+[20393.301625] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000282
+[20393.314853] BUG: scheduling while atomic: modprobe/22865/0x00000002
+[20393.314858] Modules linked in: rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20393.314904]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20393.314931] CPU: 0 PID: 22865 Comm: modprobe Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20393.314932] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20393.314933] Call Trace:
+[20393.314945]  dump_stack+0x60/0x86
+[20393.314950]  __schedule_bug+0x53/0x70
+[20393.314954]  __schedule+0x5bd/0x900
+[20393.314958]  ? submit_bio+0x57/0x110
+[20393.314961]  schedule+0x35/0x80
+[20393.314964]  io_schedule+0x15/0x40
+[20393.314966]  bit_wait_io+0x10/0x50
+[20393.314969]  __wait_on_bit+0x5c/0x90
+[20393.314971]  ? bit_wait+0x50/0x50
+[20393.314974]  out_of_line_wait_on_bit+0x61/0x70
+[20393.314978]  ? init_wait_var_entry+0x50/0x50
+[20393.314982]  __wait_on_buffer+0x24/0x30
+[20393.314986]  ext4_find_entry+0x367/0x430
+[20393.314992]  ext4_lookup+0x47/0x1b0
+[20393.314995]  ? ext4_find_entry+0x430/0x430
+[20393.314998]  path_openat+0xe75/0x1160
+[20393.315004]  do_filp_open+0x5c/0xb0
+[20393.315009]  ? __alloc_fd+0x95/0x150
+[20393.315014]  do_sys_open+0x112/0x290
+[20393.315018]  sys_open+0x1d/0x20
+[20393.315022]  do_fast_syscall_32+0x7f/0x1f0
+[20393.315027]  entry_SYSENTER_32+0x64/0xb3
+[20393.315030] EIP: 0xb7f81871
+[20393.315033] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20393.315035] EAX: ffffffda EBX: 088292b8 ECX: 00088000 EDX: 00000000
+[20393.315037] ESI: 088292b8 EDI: 08829318 EBP: bf9cd648 ESP: bf9cd5d0
+[20393.315039] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000282
+[20393.355133] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[20393.560437] BUG: scheduling while atomic: hwinfo/22851/0x00000002
+[20393.560443] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20393.560498]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20393.560531] CPU: 0 PID: 22851 Comm: hwinfo Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20393.560532] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20393.560534] Call Trace:
+[20393.560546]  dump_stack+0x60/0x86
+[20393.560552]  __schedule_bug+0x53/0x70
+[20393.560556]  __schedule+0x5bd/0x900
+[20393.560561]  ? submit_bio+0x57/0x110
+[20393.560564]  schedule+0x35/0x80
+[20393.560567]  io_schedule+0x15/0x40
+[20393.560570]  bit_wait_io+0x10/0x50
+[20393.560572]  __wait_on_bit+0x5c/0x90
+[20393.560575]  ? bit_wait+0x50/0x50
+[20393.560578]  out_of_line_wait_on_bit+0x61/0x70
+[20393.560583]  ? init_wait_var_entry+0x50/0x50
+[20393.560586]  __wait_on_buffer+0x24/0x30
+[20393.560590]  ext4_find_entry+0x367/0x430
+[20393.560596]  ext4_lookup+0x47/0x1b0
+[20393.560599]  ? ext4_find_entry+0x430/0x430
+[20393.560604]  path_openat+0xe75/0x1160
+[20393.560610]  ? _copy_to_user+0x21/0x30
+[20393.560614]  do_filp_open+0x5c/0xb0
+[20393.560619]  ? __alloc_fd+0x95/0x150
+[20393.560624]  do_sys_open+0x112/0x290
+[20393.560628]  ? io_apic_print_entries+0xa3/0x169
+[20393.560632]  sys_open+0x1d/0x20
+[20393.560635]  do_fast_syscall_32+0x7f/0x1f0
+[20393.560640]  entry_SYSENTER_32+0x64/0xb3
+[20393.560644] EIP: 0xb7f3d871
+[20393.560647] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20393.560649] EAX: ffffffda EBX: b7cc9d88 ECX: 00000000 EDX: 000001b6
+[20393.560651] ESI: 08978798 EDI: 00000008 EBP: b7c32000 ESP: bfddcb48
+[20393.560653] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20393.578417] BUG: scheduling while atomic: hwinfo/22851/0x00000003
+[20393.578430] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20393.578526]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20393.578584] CPU: 0 PID: 22851 Comm: hwinfo Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20393.578587] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20393.578590] Call Trace:
+[20393.578616]  dump_stack+0x60/0x86
+[20393.578627]  __schedule_bug+0x53/0x70
+[20393.578635]  __schedule+0x5bd/0x900
+[20393.578643]  schedule+0x35/0x80
+[20393.578648]  io_schedule+0x15/0x40
+[20393.578654]  bit_wait_io+0x10/0x50
+[20393.578659]  __wait_on_bit+0x5c/0x90
+[20393.578664]  ? bit_wait+0x50/0x50
+[20393.578671]  out_of_line_wait_on_bit+0x61/0x70
+[20393.578680]  ? init_wait_var_entry+0x50/0x50
+[20393.578688]  __wait_on_buffer+0x24/0x30
+[20393.578697]  __ext4_get_inode_loc+0x2f7/0x460
+[20393.578706]  __ext4_iget+0xa1/0xda0
+[20393.578719]  ext4_lookup+0x9e/0x1b0
+[20393.578725]  ? ext4_lookup+0x9e/0x1b0
+[20393.578730]  ? ext4_find_entry+0x430/0x430
+[20393.578738]  path_openat+0xe75/0x1160
+[20393.578750]  ? _copy_to_user+0x21/0x30
+[20393.578758]  do_filp_open+0x5c/0xb0
+[20393.578768]  ? __alloc_fd+0x95/0x150
+[20393.578777]  do_sys_open+0x112/0x290
+[20393.578786]  ? io_apic_print_entries+0xa3/0x169
+[20393.578792]  sys_open+0x1d/0x20
+[20393.578800]  do_fast_syscall_32+0x7f/0x1f0
+[20393.578810]  entry_SYSENTER_32+0x64/0xb3
+[20393.578816] EIP: 0xb7f3d871
+[20393.578823] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20393.578827] EAX: ffffffda EBX: b7cc9d88 ECX: 00000000 EDX: 000001b6
+[20393.578830] ESI: 08978798 EDI: 00000008 EBP: b7c32000 ESP: bfddcb48
+[20393.578834] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20394.336773] BUG: scheduling while atomic: udevadm/22892/0x00000002
+[20394.336779] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20394.336835]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20394.336868] CPU: 0 PID: 22892 Comm: udevadm Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20394.336870] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20394.336871] Call Trace:
+[20394.336884]  dump_stack+0x60/0x86
+[20394.336890]  __schedule_bug+0x53/0x70
+[20394.336894]  __schedule+0x5bd/0x900
+[20394.336899]  ? submit_bio+0x57/0x110
+[20394.336902]  schedule+0x35/0x80
+[20394.336905]  io_schedule+0x15/0x40
+[20394.336909]  swap_readpage+0x1cd/0x1f0
+[20394.336913]  read_swap_cache_async+0x32/0x40
+[20394.336916]  swap_cluster_readahead+0x185/0x1e0
+[20394.336923]  ? get_mem_cgroup_from_mm+0x78/0xe0
+[20394.336927]  shmem_swapin+0x61/0x70
+[20394.336932]  ? alloc_inode+0x2b/0x90
+[20394.336937]  ? kmem_cache_alloc+0x157/0x1c0
+[20394.336944]  shmem_getpage_gfp+0x82b/0xb50
+[20394.336948]  ? mntput+0x20/0x40
+[20394.336953]  shmem_file_read_iter+0x14b/0x2e0
+[20394.336959]  new_sync_read+0xe3/0x160
+[20394.336963]  ? shmem_get_link+0xd0/0xd0
+[20394.336966]  __vfs_read+0x37/0x50
+[20394.336969]  vfs_read+0x77/0x140
+[20394.336973]  ksys_read+0x41/0xb0
+[20394.336976]  sys_read+0x16/0x20
+[20394.336980]  do_fast_syscall_32+0x7f/0x1f0
+[20394.336985]  entry_SYSENTER_32+0x64/0xb3
+[20394.336988] EIP: 0xb7f99871
+[20394.336992] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20394.336994] EAX: ffffffda EBX: 00000007 ECX: 01fe79e8 EDX: 00001000
+[20394.336996] ESI: 01fe7888 EDI: b7c22940 EBP: b7c222e0 ESP: bfaef9a8
+[20394.336998] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20394.656421] BUG: scheduling while atomic: hwinfo/22851/0x00000002
+[20394.656427] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20394.656476]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20394.656506] CPU: 0 PID: 22851 Comm: hwinfo Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20394.656507] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20394.656508] Call Trace:
+[20394.656521]  dump_stack+0x60/0x86
+[20394.656527]  __schedule_bug+0x53/0x70
+[20394.656531]  __schedule+0x5bd/0x900
+[20394.656537]  ? submit_bio+0x57/0x110
+[20394.656540]  schedule+0x35/0x80
+[20394.656542]  io_schedule+0x15/0x40
+[20394.656545]  bit_wait_io+0x10/0x50
+[20394.656548]  __wait_on_bit+0x5c/0x90
+[20394.656550]  ? bit_wait+0x50/0x50
+[20394.656553]  out_of_line_wait_on_bit+0x61/0x70
+[20394.656558]  ? init_wait_var_entry+0x50/0x50
+[20394.656562]  __wait_on_buffer+0x24/0x30
+[20394.656566]  ext4_find_entry+0x367/0x430
+[20394.656571]  ext4_lookup+0x47/0x1b0
+[20394.656574]  ? ext4_find_entry+0x430/0x430
+[20394.656579]  path_openat+0xe75/0x1160
+[20394.656585]  ? update_load_avg+0x95/0x700
+[20394.656589]  do_filp_open+0x5c/0xb0
+[20394.656594]  ? __alloc_fd+0x95/0x150
+[20394.656599]  do_sys_open+0x112/0x290
+[20394.656605]  ? io_apic_print_entries+0xa3/0x169
+[20394.656608]  sys_open+0x1d/0x20
+[20394.656612]  do_fast_syscall_32+0x7f/0x1f0
+[20394.656617]  entry_SYSENTER_32+0x64/0xb3
+[20394.656620] EIP: 0xb7f3d871
+[20394.656624] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20394.656626] EAX: ffffffda EBX: 0883fcc8 ECX: 00000000 EDX: 000001b6
+[20394.656628] ESI: 08830e10 EDI: 00000008 EBP: b7c32000 ESP: bfdccb48
+[20394.656630] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20394.773137] BUG: scheduling while atomic: lspci/22895/0x00000002
+[20394.773143] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20394.773198]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20394.773231] CPU: 0 PID: 22895 Comm: lspci Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20394.773233] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20394.773234] Call Trace:
+[20394.773247]  dump_stack+0x60/0x86
+[20394.773253]  __schedule_bug+0x53/0x70
+[20394.773257]  __schedule+0x5bd/0x900
+[20394.773262]  ? submit_bio+0x57/0x110
+[20394.773265]  schedule+0x35/0x80
+[20394.773268]  io_schedule+0x15/0x40
+[20394.773271]  bit_wait_io+0x10/0x50
+[20394.773274]  __wait_on_bit+0x5c/0x90
+[20394.773276]  ? bit_wait+0x50/0x50
+[20394.773279]  out_of_line_wait_on_bit+0x61/0x70
+[20394.773284]  ? init_wait_var_entry+0x50/0x50
+[20394.773288]  __wait_on_buffer+0x24/0x30
+[20394.773292]  ext4_find_entry+0x367/0x430
+[20394.773298]  ext4_lookup+0x47/0x1b0
+[20394.773301]  ? ext4_find_entry+0x430/0x430
+[20394.773305]  path_openat+0xe75/0x1160
+[20394.773309]  ? sdw_handle_slave_status+0x1c0/0x9a0
+[20394.773314]  ? cp_new_stat64+0x10e/0x120
+[20394.773318]  do_filp_open+0x5c/0xb0
+[20394.773324]  ? __alloc_fd+0x95/0x150
+[20394.773328]  do_sys_open+0x112/0x290
+[20394.773333]  ? io_apic_print_entries+0xa3/0x169
+[20394.773336]  sys_open+0x1d/0x20
+[20394.773340]  do_fast_syscall_32+0x7f/0x1f0
+[20394.773345]  entry_SYSENTER_32+0x64/0xb3
+[20394.773348] EIP: 0xb7fca871
+[20394.773352] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20394.773354] EAX: ffffffda EBX: b7fa5785 ECX: 00000000 EDX: 000001b6
+[20394.773356] ESI: 08b250b8 EDI: 00000008 EBP: b7f7e000 ESP: bfa51998
+[20394.773358] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20396.371556] BUG: scheduling while atomic: upowerd/5137/0x00000002
+[20396.371569] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.371666]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.371722] CPU: 0 PID: 5137 Comm: upowerd Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.371725] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.371728] Call Trace:
+[20396.371752]  dump_stack+0x60/0x86
+[20396.371764]  __schedule_bug+0x53/0x70
+[20396.371771]  __schedule+0x5bd/0x900
+[20396.371781]  ? submit_bio+0x57/0x110
+[20396.371787]  schedule+0x35/0x80
+[20396.371792]  io_schedule+0x15/0x40
+[20396.371801]  swap_readpage+0x1cd/0x1f0
+[20396.371809]  read_swap_cache_async+0x32/0x40
+[20396.371816]  swap_cluster_readahead+0x185/0x1e0
+[20396.371826]  ? __switch_to+0x51/0x3d0
+[20396.371833]  ? __switch_to_asm+0x1b/0x44
+[20396.371839]  ? __switch_to_asm+0x27/0x44
+[20396.371845]  swapin_readahead+0x346/0x520
+[20396.371856]  ? psi_task_change+0xe1/0x290
+[20396.371862]  ? xas_load+0xc/0x70
+[20396.371871]  ? find_get_entry+0xfb/0x150
+[20396.371879]  ? pagecache_get_page+0x24/0x230
+[20396.371885]  ? lookup_swap_cache+0x4b/0x150
+[20396.371893]  do_swap_page+0x61f/0xa70
+[20396.371902]  ? kmap_atomic_prot+0x143/0x160
+[20396.371909]  handle_mm_fault+0x7a0/0xf00
+[20396.371920]  __do_page_fault+0x1a0/0x490
+[20396.371927]  do_page_fault+0x25/0x130
+[20396.371934]  ? do_fast_syscall_32+0x1b7/0x1f0
+[20396.371939]  ? __do_page_fault+0x490/0x490
+[20396.371944]  common_exception+0x123/0x12a
+[20396.371950] EIP: 0xb7c28d32
+[20396.371957] Code: 90 8d b4 26 00 00 00 00 55 57 56 53 e8 08 18 00 00 81 c5 b7 af 02 00 83 ec 2c 8b 44 24 40 85 c0 0f 84 c9 00 00 00 8b 44 24 40 <8b> 38 85 ff 0f 84 34 02 00 00 8b 1f 81 fb fc 03 00 00 89 d8 0f 87
+[20396.371962] EAX: 012660b0 EBX: 0048ea08 ECX: 0045ffe0 EDX: b5d067e0
+[20396.371965] ESI: 0048df10 EDI: 00476017 EBP: b7c53cd0 ESP: bfd9d3b0
+[20396.371969] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00210202
+[20396.371976]  ? __do_page_fault+0x490/0x490
+[20396.372863] BUG: scheduling while atomic: upowerd/5137/0x00000002
+[20396.372867] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.372936]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.372975] CPU: 0 PID: 5137 Comm: upowerd Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.372977] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.372978] Call Trace:
+[20396.372987]  dump_stack+0x60/0x86
+[20396.372995]  __schedule_bug+0x53/0x70
+[20396.373001]  __schedule+0x5bd/0x900
+[20396.373008]  ? submit_bio+0x57/0x110
+[20396.373014]  schedule+0x35/0x80
+[20396.373020]  io_schedule+0x15/0x40
+[20396.373026]  swap_readpage+0x1cd/0x1f0
+[20396.373034]  read_swap_cache_async+0x32/0x40
+[20396.373040]  swap_cluster_readahead+0x185/0x1e0
+[20396.373050]  ? psi_task_change+0xe1/0x290
+[20396.373058]  swapin_readahead+0x346/0x520
+[20396.373065]  ? psi_memstall_leave+0x64/0x70
+[20396.373071]  ? xas_load+0xc/0x70
+[20396.373078]  ? find_get_entry+0xfb/0x150
+[20396.373086]  ? pagecache_get_page+0x24/0x230
+[20396.373093]  ? lookup_swap_cache+0x4b/0x150
+[20396.373100]  do_swap_page+0x61f/0xa70
+[20396.373108]  ? kmap_atomic_prot+0x143/0x160
+[20396.373116]  handle_mm_fault+0x7a0/0xf00
+[20396.373128]  __do_page_fault+0x1a0/0x490
+[20396.373136]  do_page_fault+0x25/0x130
+[20396.373142]  ? do_fast_syscall_32+0x1b7/0x1f0
+[20396.373146]  ? __do_page_fault+0x490/0x490
+[20396.373151]  common_exception+0x123/0x12a
+[20396.373155] EIP: 0xb7c0e63d
+[20396.373160] Code: fc fe ff 83 c4 18 5b c3 90 8d 74 26 00 56 53 31 c0 e8 07 02 ff ff 81 c3 a7 56 04 00 83 ec 04 8b 54 24 10 8b 4c 24 14 8b 71 10 <39> 72 10 74 0e 83 c4 04 0f b6 c0 5b 5e c3 90 8d 74 26 00 83 ec 08
+[20396.373164] EAX: 00000000 EBX: b7c53cd0 ECX: bfd9d364 EDX: 012609f8
+[20396.373167] ESI: 012641e8 EDI: 012590e0 EBP: 00000000 ESP: bfd9d2f0
+[20396.373171] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00210286
+[20396.373178]  ? __do_page_fault+0x490/0x490
+[20396.379643] BUG: scheduling while atomic: gdbus/5758/0x00000002
+[20396.379657] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.379757]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.379816] CPU: 0 PID: 5758 Comm: gdbus Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.379819] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.379822] Call Trace:
+[20396.379847]  dump_stack+0x60/0x86
+[20396.379859]  __schedule_bug+0x53/0x70
+[20396.379867]  __schedule+0x5bd/0x900
+[20396.379876]  ? submit_bio+0x57/0x110
+[20396.379881]  schedule+0x35/0x80
+[20396.379887]  io_schedule+0x15/0x40
+[20396.379895]  swap_readpage+0x1cd/0x1f0
+[20396.379903]  read_swap_cache_async+0x32/0x40
+[20396.379910]  swap_cluster_readahead+0x185/0x1e0
+[20396.379919]  swapin_readahead+0x346/0x520
+[20396.379927]  ? __bpf_prog_run32+0x3c/0x50
+[20396.379932]  ? preempt_schedule_common+0x1c/0x30
+[20396.379937]  ? preempt_schedule+0x26/0x30
+[20396.379945]  ? xas_load+0xc/0x70
+[20396.379955]  ? find_get_entry+0xfb/0x150
+[20396.379962]  ? pagecache_get_page+0x24/0x230
+[20396.379969]  ? wake_up_q+0x2e/0x70
+[20396.379976]  ? lookup_swap_cache+0x4b/0x150
+[20396.379984]  do_swap_page+0x61f/0xa70
+[20396.379993]  ? __seccomp_filter+0x51/0x620
+[20396.380002]  ? kmap_atomic_prot+0x143/0x160
+[20396.380010]  handle_mm_fault+0x7a0/0xf00
+[20396.380020]  __do_page_fault+0x1a0/0x490
+[20396.380027]  do_page_fault+0x25/0x130
+[20396.380035]  ? do_fast_syscall_32+0x1b7/0x1f0
+[20396.380039]  ? __do_page_fault+0x490/0x490
+[20396.380044]  common_exception+0x123/0x12a
+[20396.380050] EIP: 0xb7cd3b25
+[20396.380057] Code: 00 50 8d 83 ea 3a f3 ff 50 e8 67 ef fc ff 8d b4 26 00 00 00 00 53 e8 6a 01 fd ff 81 c3 5a 55 18 00 83 ec 08 8b 54 24 10 8b 02 <8b> 40 48 85 c0 74 14 83 ec 0c 52 ff d0 83 c4 18 5b c3 89 f6 8d bc
+[20396.380061] EAX: 012676a0 EBX: b7e59070 ECX: 00000000 EDX: 01259788
+[20396.380064] ESI: 01279a90 EDI: b5d02ba8 EBP: 01279a90 ESP: b66ff160
+[20396.380068] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00210286
+[20396.380074]  ? __do_page_fault+0x490/0x490
+[20396.386904] BUG: scheduling while atomic: gdbus/5758/0x00000002
+[20396.386911] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.386959]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.386987] CPU: 0 PID: 5758 Comm: gdbus Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.386988] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.386989] Call Trace:
+[20396.387002]  dump_stack+0x60/0x86
+[20396.387007]  __schedule_bug+0x53/0x70
+[20396.387011]  __schedule+0x5bd/0x900
+[20396.387015]  ? submit_bio+0x57/0x110
+[20396.387018]  schedule+0x35/0x80
+[20396.387021]  io_schedule+0x15/0x40
+[20396.387025]  swap_readpage+0x1cd/0x1f0
+[20396.387029]  read_swap_cache_async+0x32/0x40
+[20396.387032]  swap_cluster_readahead+0x185/0x1e0
+[20396.387037]  swapin_readahead+0x346/0x520
+[20396.387041]  ? __bpf_prog_run32+0x3c/0x50
+[20396.387045]  ? ___sys_recvmsg+0x106/0x150
+[20396.387049]  ? xas_load+0xc/0x70
+[20396.387054]  ? find_get_entry+0xfb/0x150
+[20396.387057]  ? pagecache_get_page+0x24/0x230
+[20396.387060]  ? lookup_swap_cache+0x4b/0x150
+[20396.387064]  do_swap_page+0x61f/0xa70
+[20396.387069]  ? kmap_atomic_prot+0x143/0x160
+[20396.387073]  handle_mm_fault+0x7a0/0xf00
+[20396.387078]  __do_page_fault+0x1a0/0x490
+[20396.387081]  do_page_fault+0x25/0x130
+[20396.387085]  ? do_fast_syscall_32+0x1b7/0x1f0
+[20396.387087]  ? __do_page_fault+0x490/0x490
+[20396.387090]  common_exception+0x123/0x12a
+[20396.387093] EIP: 0xb791c788
+[20396.387097] Code: 12 f7 81 94 00 00 00 00 02 00 00 75 06 8d 82 e0 04 fa ff c3 8d b4 26 00 00 00 00 8d bc 27 00 00 00 00 8b 4c 24 04 8b 54 24 08 <8a> 01 3a 02 75 09 41 42 84 c0 75 f4 31 c0 c3 b8 01 00 00 00 b9 ff
+[20396.387099] EAX: 012741b8 EBX: b7bf4c20 ECX: 01261394 EDX: b7da8173
+[20396.387100] ESI: 00000001 EDI: 01259000 EBP: 00000000 ESP: b66fefcc
+[20396.387102] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00210286
+[20396.387105]  ? __do_page_fault+0x490/0x490
+[20396.387412] BUG: scheduling while atomic: upowerd/5137/0x00000002
+[20396.387415] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.387452]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.387472] CPU: 0 PID: 5137 Comm: upowerd Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.387474] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.387474] Call Trace:
+[20396.387480]  dump_stack+0x60/0x86
+[20396.387484]  __schedule_bug+0x53/0x70
+[20396.387487]  __schedule+0x5bd/0x900
+[20396.387490]  ? submit_bio+0x57/0x110
+[20396.387494]  schedule+0x35/0x80
+[20396.387496]  io_schedule+0x15/0x40
+[20396.387500]  swap_readpage+0x1cd/0x1f0
+[20396.387504]  read_swap_cache_async+0x32/0x40
+[20396.387507]  swap_cluster_readahead+0x185/0x1e0
+[20396.387513]  swapin_readahead+0x346/0x520
+[20396.387517]  ? __bpf_prog_run32+0x3c/0x50
+[20396.387521]  ? futex_wait+0x1d3/0x210
+[20396.387524]  ? xas_load+0xc/0x70
+[20396.387528]  ? find_get_entry+0xfb/0x150
+[20396.387532]  ? pagecache_get_page+0x24/0x230
+[20396.387536]  ? lookup_swap_cache+0x4b/0x150
+[20396.387539]  do_swap_page+0x61f/0xa70
+[20396.387543]  ? kmap_atomic_prot+0x143/0x160
+[20396.387547]  handle_mm_fault+0x7a0/0xf00
+[20396.387553]  __do_page_fault+0x1a0/0x490
+[20396.387558]  do_page_fault+0x25/0x130
+[20396.387561]  ? do_fast_syscall_32+0x1b7/0x1f0
+[20396.387563]  ? __do_page_fault+0x490/0x490
+[20396.387565]  common_exception+0x123/0x12a
+[20396.387567] EIP: 0xb7c2873e
+[20396.387570] Code: 91 f0 04 00 00 0f 86 0f 01 00 00 83 e0 fc 89 c5 85 d2 0f 84 e4 00 00 00 f6 42 0e 04 0f 84 da 00 00 00 85 ed 0f 84 d2 00 00 00 <0f> b6 45 0c 0f b6 5a 0c 38 d8 0f 87 b2 00 00 00 0f b6 c8 8b 45 28
+[20396.387572] EAX: 0125ee80 EBX: b7e59070 ECX: b7c53cd0 EDX: 01264318
+[20396.387573] ESI: 012660b0 EDI: 01265120 EBP: 0125ee80 ESP: bfd9d424
+[20396.387575] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00210202
+[20396.387579]  ? __do_page_fault+0x490/0x490
+[20396.473421] BUG: scheduling while atomic: systemd/1/0x00000002
+[20396.473434] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.473535]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.473594] CPU: 0 PID: 1 Comm: systemd Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.473597] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.473599] Call Trace:
+[20396.473625]  dump_stack+0x60/0x86
+[20396.473636]  __schedule_bug+0x53/0x70
+[20396.473644]  __schedule+0x5bd/0x900
+[20396.473653]  schedule+0x35/0x80
+[20396.473658]  io_schedule+0x15/0x40
+[20396.473664]  bit_wait_io+0x10/0x50
+[20396.473670]  __wait_on_bit+0x5c/0x90
+[20396.473675]  ? bit_wait+0x50/0x50
+[20396.473681]  out_of_line_wait_on_bit+0x61/0x70
+[20396.473690]  ? init_wait_var_entry+0x50/0x50
+[20396.473698]  __wait_on_buffer+0x24/0x30
+[20396.473707]  ext4_bread+0x6d/0x80
+[20396.473714]  __ext4_read_dirblock+0x22/0x320
+[20396.473722]  ext4_dx_find_entry+0xd5/0x150
+[20396.473731]  ext4_find_entry+0x11a/0x430
+[20396.473742]  ext4_lookup+0x47/0x1b0
+[20396.473748]  ? ext4_find_entry+0x430/0x430
+[20396.473756]  path_openat+0xe75/0x1160
+[20396.473768]  do_filp_open+0x5c/0xb0
+[20396.473780]  ? __alloc_fd+0x95/0x150
+[20396.473789]  do_sys_open+0x112/0x290
+[20396.473796]  sys_open+0x1d/0x20
+[20396.473804]  do_fast_syscall_32+0x7f/0x1f0
+[20396.473814]  entry_SYSENTER_32+0x64/0xb3
+[20396.473821] EIP: 0xb7f9a871
+[20396.473828] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20396.473832] EAX: ffffffda EBX: 01e47250 ECX: 00088000 EDX: 000001b6
+[20396.473836] ESI: 01f43650 EDI: 00000008 EBP: b7bb9000 ESP: bfbaf104
+[20396.473840] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000293
+[20396.473849]  ? nmi+0x84/0x188
+[20396.484147] BUG: scheduling while atomic: systemd/1/0x00000003
+[20396.484153] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.484199]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.484227] CPU: 0 PID: 1 Comm: systemd Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.484228] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.484230] Call Trace:
+[20396.484242]  dump_stack+0x60/0x86
+[20396.484247]  __schedule_bug+0x53/0x70
+[20396.484251]  __schedule+0x5bd/0x900
+[20396.484255]  schedule+0x35/0x80
+[20396.484257]  io_schedule+0x15/0x40
+[20396.484260]  bit_wait_io+0x10/0x50
+[20396.484263]  __wait_on_bit+0x5c/0x90
+[20396.484265]  ? bit_wait+0x50/0x50
+[20396.484268]  out_of_line_wait_on_bit+0x61/0x70
+[20396.484273]  ? init_wait_var_entry+0x50/0x50
+[20396.484277]  __wait_on_buffer+0x24/0x30
+[20396.484281]  __ext4_get_inode_loc+0x2f7/0x460
+[20396.484286]  __ext4_iget+0xa1/0xda0
+[20396.484292]  ext4_lookup+0x9e/0x1b0
+[20396.484294]  ? ext4_lookup+0x9e/0x1b0
+[20396.484297]  ? ext4_find_entry+0x430/0x430
+[20396.484302]  path_openat+0xe75/0x1160
+[20396.484308]  do_filp_open+0x5c/0xb0
+[20396.484313]  ? __alloc_fd+0x95/0x150
+[20396.484318]  do_sys_open+0x112/0x290
+[20396.484321]  sys_open+0x1d/0x20
+[20396.484325]  do_fast_syscall_32+0x7f/0x1f0
+[20396.484330]  entry_SYSENTER_32+0x64/0xb3
+[20396.484333] EIP: 0xb7f9a871
+[20396.484337] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20396.484339] EAX: ffffffda EBX: 01e47250 ECX: 00088000 EDX: 000001b6
+[20396.484341] ESI: 01f43650 EDI: 00000008 EBP: b7bb9000 ESP: bfbaf104
+[20396.484343] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000293
+[20396.484347]  ? nmi+0x84/0x188
+[20396.499469] BUG: scheduling while atomic: systemd/1/0x00000002
+[20396.499475] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.499520]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.499548] CPU: 0 PID: 1 Comm: systemd Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.499549] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.499550] Call Trace:
+[20396.499561]  dump_stack+0x60/0x86
+[20396.499567]  __schedule_bug+0x53/0x70
+[20396.499570]  __schedule+0x5bd/0x900
+[20396.499575]  ? submit_bio+0x57/0x110
+[20396.499578]  schedule+0x35/0x80
+[20396.499581]  io_schedule+0x15/0x40
+[20396.499585]  swap_readpage+0x1cd/0x1f0
+[20396.499588]  read_swap_cache_async+0x32/0x40
+[20396.499592]  swap_cluster_readahead+0x185/0x1e0
+[20396.499597]  swapin_readahead+0x346/0x520
+[20396.499602]  ? generic_file_read_iter+0x8e8/0xa50
+[20396.499605]  ? xas_load+0xc/0x70
+[20396.499608]  ? find_get_entry+0xfb/0x150
+[20396.499612]  ? pagecache_get_page+0x24/0x230
+[20396.499615]  ? lookup_swap_cache+0x4b/0x150
+[20396.499619]  do_swap_page+0x61f/0xa70
+[20396.499623]  ? ext4_file_read_iter+0x43/0xe0
+[20396.499627]  ? kmap_atomic_prot+0x143/0x160
+[20396.499631]  handle_mm_fault+0x7a0/0xf00
+[20396.499634]  ? do_vfs_ioctl+0x84/0x660
+[20396.499639]  __do_page_fault+0x1a0/0x490
+[20396.499642]  do_page_fault+0x25/0x130
+[20396.499645]  ? __do_page_fault+0x490/0x490
+[20396.499648]  common_exception+0x123/0x12a
+[20396.499651] EIP: 0x50ed56
+[20396.499654] Code: b7 2c 68 01 ef 0f b6 6a 01 0f b7 2c 68 0f b7 04 70 01 ef 01 f8 01 c8 3d 33 1a 00 00 77 7e c1 e0 04 31 ff 8d b4 03 ec 23 fe ff <8b> 0e 85 c9 74 23 0f b6 01 38 02 75 1c 83 ec 08 83 c1 01 83 c2 01
+[20396.499656] EAX: 0000b600 EBX: 005e8e94 ECX: 000002cf EDX: bfbaf060
+[20396.499658] ESI: 005d6880 EDI: 00000000 EBP: 00000019 ESP: bfbaf020
+[20396.499660] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00010246
+[20396.499663]  ? __do_page_fault+0x490/0x490
+[20396.499666]  ? nmi+0x84/0x188
+[20396.513901] BUG: scheduling while atomic: systemd/1/0x00000002
+[20396.513907] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.513954]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.513983] CPU: 0 PID: 1 Comm: systemd Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.513984] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.513985] Call Trace:
+[20396.513997]  dump_stack+0x60/0x86
+[20396.514003]  __schedule_bug+0x53/0x70
+[20396.514006]  __schedule+0x5bd/0x900
+[20396.514010]  schedule+0x35/0x80
+[20396.514013]  io_schedule+0x15/0x40
+[20396.514016]  bit_wait_io+0x10/0x50
+[20396.514018]  __wait_on_bit+0x5c/0x90
+[20396.514021]  ? bit_wait+0x50/0x50
+[20396.514024]  out_of_line_wait_on_bit+0x61/0x70
+[20396.514028]  ? init_wait_var_entry+0x50/0x50
+[20396.514032]  __wait_on_buffer+0x24/0x30
+[20396.514037]  ext4_bread+0x6d/0x80
+[20396.514040]  __ext4_read_dirblock+0x22/0x320
+[20396.514044]  ext4_dx_find_entry+0xd5/0x150
+[20396.514049]  ext4_find_entry+0x11a/0x430
+[20396.514054]  ext4_lookup+0x47/0x1b0
+[20396.514057]  ? ext4_find_entry+0x430/0x430
+[20396.514061]  path_openat+0xe75/0x1160
+[20396.514068]  do_filp_open+0x5c/0xb0
+[20396.514073]  ? __alloc_fd+0x95/0x150
+[20396.514078]  do_sys_open+0x112/0x290
+[20396.514081]  sys_open+0x1d/0x20
+[20396.514085]  do_fast_syscall_32+0x7f/0x1f0
+[20396.514090]  entry_SYSENTER_32+0x64/0xb3
+[20396.514093] EIP: 0xb7f9a871
+[20396.514097] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20396.514099] EAX: ffffffda EBX: 01e91aa8 ECX: 00088000 EDX: 000001b6
+[20396.514100] ESI: 01f43650 EDI: 00000008 EBP: b7bb9000 ESP: bfbaf164
+[20396.514102] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000293
+[20396.514107]  ? nmi+0x84/0x188
+[20396.593172] BUG: scheduling while atomic: lspnp/23341/0x00000003
+[20396.593185] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.593285]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.593343] CPU: 0 PID: 23341 Comm: lspnp Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.593346] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.593349] Call Trace:
+[20396.593376]  dump_stack+0x60/0x86
+[20396.593386]  __schedule_bug+0x53/0x70
+[20396.593396]  __schedule+0x5bd/0x900
+[20396.593404]  schedule+0x35/0x80
+[20396.593409]  io_schedule+0x15/0x40
+[20396.593415]  bit_wait_io+0x10/0x50
+[20396.593420]  __wait_on_bit+0x5c/0x90
+[20396.593425]  ? bit_wait+0x50/0x50
+[20396.593431]  out_of_line_wait_on_bit+0x61/0x70
+[20396.593440]  ? init_wait_var_entry+0x50/0x50
+[20396.593448]  __wait_on_buffer+0x24/0x30
+[20396.593457]  __ext4_get_inode_loc+0x2f7/0x460
+[20396.593467]  __ext4_iget+0xa1/0xda0
+[20396.593479]  ext4_lookup+0x9e/0x1b0
+[20396.593484]  ? ext4_lookup+0x9e/0x1b0
+[20396.593490]  ? ext4_find_entry+0x430/0x430
+[20396.593498]  path_openat+0xe75/0x1160
+[20396.593513]  ? get_mem_cgroup_from_mm+0x78/0xe0
+[20396.593522]  do_filp_open+0x5c/0xb0
+[20396.593532]  ? __alloc_fd+0x95/0x150
+[20396.593541]  do_sys_open+0x112/0x290
+[20396.593550]  ? io_apic_print_entries+0xa3/0x169
+[20396.593555]  sys_open+0x1d/0x20
+[20396.593563]  do_fast_syscall_32+0x7f/0x1f0
+[20396.593574]  entry_SYSENTER_32+0x64/0xb3
+[20396.593580] EIP: 0xb7f1e871
+[20396.593587] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20396.593591] EAX: ffffffda EBX: 0804a650 ECX: 00000000 EDX: 000001b6
+[20396.593595] ESI: 08a96008 EDI: 00000008 EBP: b7efc000 ESP: bfe84c58
+[20396.593599] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000246
+[20396.743546] BUG: scheduling while atomic: smartctl/23345/0x00000002
+[20396.743553] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.743603]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.743633] CPU: 0 PID: 23345 Comm: smartctl Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.743634] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.743635] Call Trace:
+[20396.743647]  dump_stack+0x60/0x86
+[20396.743653]  __schedule_bug+0x53/0x70
+[20396.743656]  __schedule+0x5bd/0x900
+[20396.743661]  ? submit_bio+0x57/0x110
+[20396.743664]  schedule+0x35/0x80
+[20396.743667]  io_schedule+0x15/0x40
+[20396.743669]  bit_wait_io+0x10/0x50
+[20396.743672]  __wait_on_bit+0x5c/0x90
+[20396.743674]  ? bit_wait+0x50/0x50
+[20396.743677]  out_of_line_wait_on_bit+0x61/0x70
+[20396.743682]  ? init_wait_var_entry+0x50/0x50
+[20396.743685]  __wait_on_buffer+0x24/0x30
+[20396.743689]  ext4_find_entry+0x367/0x430
+[20396.743695]  ? ext4_find_entry+0x430/0x430
+[20396.743697]  ext4_lookup+0x47/0x1b0
+[20396.743701]  ? __d_lookup+0x7c/0x160
+[20396.743704]  ? ext4_find_entry+0x430/0x430
+[20396.743707]  __lookup_slow+0x69/0x120
+[20396.743711]  lookup_slow+0x2e/0x50
+[20396.743714]  walk_component+0x1b0/0x300
+[20396.743717]  ? path_init+0x1de/0x300
+[20396.743720]  ? terminate_walk+0x100/0x110
+[20396.743723]  path_lookupat+0x68/0x1c0
+[20396.743727]  filename_lookup+0x7f/0x170
+[20396.743732]  ? __check_object_size+0x104/0x130
+[20396.743735]  ? strncpy_from_user+0x3f/0x160
+[20396.743740]  user_path_at_empty+0x2a/0x40
+[20396.743743]  do_faccessat+0x97/0x1e0
+[20396.743748]  ? __audit_syscall_exit+0x1b6/0x260
+[20396.743750]  sys_access+0x18/0x20
+[20396.743754]  do_fast_syscall_32+0x7f/0x1f0
+[20396.743759]  entry_SYSENTER_32+0x64/0xb3
+[20396.743762] EIP: 0xb7f79871
+[20396.743766] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20396.743768] EAX: ffffffda EBX: 080990a4 ECX: 00000000 EDX: 00000003
+[20396.743770] ESI: 00000000 EDI: bff21e2c EBP: bff1e8c8 ESP: bff1e85c
+[20396.743772] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000296
+[20396.755419] BUG: scheduling while atomic: smartctl/23345/0x00000002
+[20396.755425] Modules linked in: st rfcomm ccm ib_core nf_log_ipv4 nf_log_common xt_LOG xt_recent iptable_nat nf_nat_ipv4 xt_comment nf_tables ipt_REJECT nf_reject_ipv4 xt_addrtype bridge stp llc xt_mark iptable_mangle xt_tcpudp xt_CT iptable_raw xt_multiport xt_conntrack nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_proto_gre nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter bnep dm_mirror dm_region_hash dm_log joydev edac_mce_amd kvm_amd kvm btusb btrtl btbcm btintel bluetooth irqbypass ecdh_generic uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev media input_leds asus_wmi sparse_keymap psmouse wmi_bmof k8temp
+[20396.755474]  snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer snd sp5100_tco i2c_piix4 soundcore arc4 ath9k ath9k_common ath9k_hw ath mac80211 cfg80211 mac_hid sch_fq_codel binfmt_misc ip_tables x_tables radeon pata_acpi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops ttm drm serio_raw pata_atiixp ahci atl1c libahci wmi video hid_generic usbhid hid autofs4
+[20396.755503] CPU: 0 PID: 23345 Comm: smartctl Tainted: G        W         5.0.0-desktop-38.1rosa-i586 #1
+[20396.755504] Hardware name: ASUSTeK Computer INC. 1201T/1201T, BIOS 0314    12/22/2009
+[20396.755506] Call Trace:
+[20396.755517]  dump_stack+0x60/0x86
+[20396.755523]  __schedule_bug+0x53/0x70
+[20396.755527]  __schedule+0x5bd/0x900
+[20396.755531]  schedule+0x35/0x80
+[20396.755534]  io_schedule+0x15/0x40
+[20396.755536]  bit_wait_io+0x10/0x50
+[20396.755539]  __wait_on_bit+0x5c/0x90
+[20396.755542]  ? bit_wait+0x50/0x50
+[20396.755545]  out_of_line_wait_on_bit+0x61/0x70
+[20396.755549]  ? init_wait_var_entry+0x50/0x50
+[20396.755553]  __wait_on_buffer+0x24/0x30
+[20396.755557]  __ext4_get_inode_loc+0x2f7/0x460
+[20396.755562]  __ext4_iget+0xa1/0xda0
+[20396.755568]  ext4_lookup+0x9e/0x1b0
+[20396.755571]  ? ext4_lookup+0x9e/0x1b0
+[20396.755574]  ? __d_lookup+0x7c/0x160
+[20396.755577]  ? ext4_find_entry+0x430/0x430
+[20396.755580]  __lookup_slow+0x69/0x120
+[20396.755584]  lookup_slow+0x2e/0x50
+[20396.755587]  walk_component+0x1b0/0x300
+[20396.755590]  ? path_init+0x1de/0x300
+[20396.755593]  ? terminate_walk+0x100/0x110
+[20396.755596]  path_lookupat+0x68/0x1c0
+[20396.755600]  filename_lookup+0x7f/0x170
+[20396.755605]  ? __check_object_size+0x104/0x130
+[20396.755609]  ? strncpy_from_user+0x3f/0x160
+[20396.755613]  user_path_at_empty+0x2a/0x40
+[20396.755616]  do_faccessat+0x97/0x1e0
+[20396.755621]  ? __audit_syscall_exit+0x1b6/0x260
+[20396.755624]  sys_access+0x18/0x20
+[20396.755628]  do_fast_syscall_32+0x7f/0x1f0
+[20396.755633]  entry_SYSENTER_32+0x64/0xb3
+[20396.755635] EIP: 0xb7f79871
+[20396.755639] Code: 8b 98 2c cd ff ff 85 d2 89 c8 74 02 89 0a 5b 5d c3 8b 04 24 c3 8b 14 24 c3 8b 1c 24 c3 8b 3c 24 c3 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d 76 00 58 b8 77 00 00 00 cd 80 90 8d 76
+[20396.755641] EAX: ffffffda EBX: 080990a4 ECX: 00000000 EDX: 00000003
+[20396.755643] ESI: 00000000 EDI: bff21e2c EBP: bff1e8c8 ESP: bff1e85c
+[20396.755645] DS: 007b ES: 007b FS: 0000 GS: 0033 SS: 007b EFLAGS: 00000296

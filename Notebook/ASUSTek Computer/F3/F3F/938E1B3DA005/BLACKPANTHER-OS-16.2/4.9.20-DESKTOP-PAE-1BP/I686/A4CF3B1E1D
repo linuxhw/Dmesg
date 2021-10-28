@@ -1,0 +1,1181 @@
+[   45.584352]  [<c4c68622>] ? free_hot_cold_page_list+0x42/0xa0
+[   45.584352]  [<c500c140>] ? complete_change_console+0xd0/0xd0
+[   45.584352]  [<c50015e2>] tty_ioctl+0x2f2/0xb40
+[   45.584352]  [<c4c683f5>] ? free_pages+0x15/0x20
+[   45.584352]  [<c50012f0>] ? no_tty+0x40/0x40
+[   45.584352]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   45.584352]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   45.584352]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   45.584352]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   45.584352]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   45.584352]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   45.584429] ---[ end trace 3eca24d78691fc93 ]---
+[   45.725307] ------------[ cut here ]------------
+[   45.725416] WARNING: CPU: 0 PID: 302 at drivers/gpu/drm/i915/intel_display.c:12929 intel_atomic_check+0xcd0/0x1130 [i915]
+[   45.725421] WARN_ON(!connector_state->crtc)
+[   45.725518] Modules linked in: wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper
+[   45.725526]  video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   45.725530] CPU: 0 PID: 302 Comm: plymouthd Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   45.725532] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   45.725537]  ef6cf8d0 c4efdcbf ef6cf914 f482c984 ef6cf900 c4b66aea f483e6d7 ef6cf930
+[   45.725541]  0000012e f482c984 00003281 f47caf30 00003281 f1ce1800 ef5889c0 ef71f000
+[   45.725545]  ef6cf91c c4b66b4b 00000009 00000000 ef6cf914 f483e6d7 ef6cf930 ef6cf980
+[   45.725546] Call Trace:
+[   45.725555]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   45.725559]  [<c4b66aea>] __warn+0xea/0x110
+[   45.725599]  [<f47caf30>] ? intel_atomic_check+0xcd0/0x1130 [i915]
+[   45.725601]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   45.725641]  [<f47caf30>] intel_atomic_check+0xcd0/0x1130 [i915]
+[   45.725672]  [<f4553fac>] drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   45.725690]  [<f4540d5d>] ? vblank_disable_fn+0x3d/0x80 [drm]
+[   45.725729]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   45.725749]  [<f4554276>] drm_atomic_commit+0x16/0x50 [drm]
+[   45.725767]  [<f45413a9>] ? drm_wait_one_vblank+0x59/0x180 [drm]
+[   45.725807]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   45.725846]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   45.725864]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   45.725873]  [<f45bc742>] drm_fb_helper_hotplug_event+0x122/0x170 [drm_kms_helper]
+[   45.725882]  [<f45bc7e5>] drm_fb_helper_restore_fbdev_mode_unlocked+0x55/0x70 [drm_kms_helper]
+[   45.725890]  [<f45bc82d>] drm_fb_helper_set_par+0x2d/0x70 [drm_kms_helper]
+[   45.725929]  [<f47e4345>] intel_fbdev_set_par+0x15/0x70 [i915]
+[   45.725933]  [<c4f8edba>] fb_set_var+0x24a/0x490
+[   45.725937]  [<c4b94c1d>] ? __enqueue_entity+0x6d/0x80
+[   45.725940]  [<c4b9d06a>] ? enqueue_entity+0x33a/0x1460
+[   45.725944]  [<c4f88e86>] fbcon_blank+0x316/0x360
+[   45.725949]  [<c5015dc6>] do_unblank_screen+0xc6/0x1b0
+[   45.725953]  [<c500c627>] vt_ioctl+0x4e7/0x1320
+[   45.725958]  [<c4e9e3f8>] ? tomoyo_path_number_perm+0x58/0x1d0
+[   45.725962]  [<c4c68622>] ? free_hot_cold_page_list+0x42/0xa0
+[   45.725965]  [<c500c140>] ? complete_change_console+0xd0/0xd0
+[   45.725969]  [<c50015e2>] tty_ioctl+0x2f2/0xb40
+[   45.725972]  [<c4c683f5>] ? free_pages+0x15/0x20
+[   45.725974]  [<c50012f0>] ? no_tty+0x40/0x40
+[   45.725978]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   45.725981]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   45.725983]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   45.725985]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   45.725988]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   45.725992]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   45.725994] ---[ end trace 3eca24d78691fc94 ]---
+[   45.769066] ------------[ cut here ]------------
+[   45.769175] WARNING: CPU: 0 PID: 302 at drivers/gpu/drm/i915/intel_display.c:13558 intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   45.769178] encoder's enabled state mismatch (expected 0, found 1)
+[   45.769253] Modules linked in: wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper
+[   45.769261]  video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   45.769265] CPU: 0 PID: 302 Comm: plymouthd Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   45.769267] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   45.769272]  ef6cf8ac c4efdcbf ef6cf8f0 f482c984 ef6cf8dc c4b66aea f4830008 ef6cf90c
+[   45.769277]  0000012e f482c984 000034f6 f47c97a1 000034f6 ef760214 ef5889c0 ef760220
+[   45.769281]  ef6cf8f8 c4b66b4b 00000009 00000000 ef6cf8f0 f4830008 ef6cf90c ef6cf97c
+[   45.769282] Call Trace:
+[   45.769290]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   45.769294]  [<c4b66aea>] __warn+0xea/0x110
+[   45.769334]  [<f47c97a1>] ? intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   45.769336]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   45.769376]  [<f47c97a1>] intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   45.769394]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   45.769403]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   45.769443]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   45.769472]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   45.769512]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   45.769532]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   45.769571]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   45.769611]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   45.769622]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   45.769631]  [<f45bc742>] drm_fb_helper_hotplug_event+0x122/0x170 [drm_kms_helper]
+[   45.769640]  [<f45bc7e5>] drm_fb_helper_restore_fbdev_mode_unlocked+0x55/0x70 [drm_kms_helper]
+[   45.769648]  [<f45bc82d>] drm_fb_helper_set_par+0x2d/0x70 [drm_kms_helper]
+[   45.769687]  [<f47e4345>] intel_fbdev_set_par+0x15/0x70 [i915]
+[   45.769691]  [<c4f8edba>] fb_set_var+0x24a/0x490
+[   45.769695]  [<c4b94c1d>] ? __enqueue_entity+0x6d/0x80
+[   45.769698]  [<c4b9d06a>] ? enqueue_entity+0x33a/0x1460
+[   45.769703]  [<c4f88e86>] fbcon_blank+0x316/0x360
+[   45.769708]  [<c5015dc6>] do_unblank_screen+0xc6/0x1b0
+[   45.769712]  [<c500c627>] vt_ioctl+0x4e7/0x1320
+[   45.769716]  [<c4e9e3f8>] ? tomoyo_path_number_perm+0x58/0x1d0
+[   45.769721]  [<c4c68622>] ? free_hot_cold_page_list+0x42/0xa0
+[   45.769723]  [<c500c140>] ? complete_change_console+0xd0/0xd0
+[   45.769727]  [<c50015e2>] tty_ioctl+0x2f2/0xb40
+[   45.769730]  [<c4c683f5>] ? free_pages+0x15/0x20
+[   45.769732]  [<c50012f0>] ? no_tty+0x40/0x40
+[   45.769736]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   45.769739]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   45.769741]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   45.769743]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   45.769746]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   45.769750]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   45.769752] ---[ end trace 3eca24d78691fc95 ]---
+[   45.769754] ------------[ cut here ]------------
+[   45.769795] WARNING: CPU: 0 PID: 302 at drivers/gpu/drm/i915/intel_display.c:13566 intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   45.769795] encoder detached but still enabled on pipe B.
+[   45.769831] Modules linked in: wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper
+[   45.769836]  video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   45.769839] CPU: 0 PID: 302 Comm: plymouthd Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   45.769840] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   45.769844]  ef6cf8ac c4efdcbf ef6cf8f0 f482c984 ef6cf8dc c4b66aea f4830044 ef6cf90c
+[   45.769848]  0000012e f482c984 000034fe f47c9891 000034fe ef760214 ef5889c0 ef760220
+[   45.769852]  ef6cf8f8 c4b66b4b 00000009 00000000 ef6cf8f0 f4830044 ef6cf90c ef6cf97c
+[   45.769853] Call Trace:
+[   45.769856]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   45.769858]  [<c4b66aea>] __warn+0xea/0x110
+[   45.769898]  [<f47c9891>] ? intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   45.769900]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   45.769940]  [<f47c9891>] intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   45.769950]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   45.769959]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   45.769999]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   45.770009]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   45.770009]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   45.770009]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   45.770009]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   45.770009]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   45.770009]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   45.770009]  [<f45bc742>] drm_fb_helper_hotplug_event+0x122/0x170 [drm_kms_helper]
+[   45.770009]  [<f45bc7e5>] drm_fb_helper_restore_fbdev_mode_unlocked+0x55/0x70 [drm_kms_helper]
+[   45.770009]  [<f45bc82d>] drm_fb_helper_set_par+0x2d/0x70 [drm_kms_helper]
+[   45.770009]  [<f47e4345>] intel_fbdev_set_par+0x15/0x70 [i915]
+[   45.770009]  [<c4f8edba>] fb_set_var+0x24a/0x490
+[   45.770009]  [<c4b94c1d>] ? __enqueue_entity+0x6d/0x80
+[   45.770009]  [<c4b9d06a>] ? enqueue_entity+0x33a/0x1460
+[   45.770009]  [<c4f88e86>] fbcon_blank+0x316/0x360
+[   45.770009]  [<c5015dc6>] do_unblank_screen+0xc6/0x1b0
+[   45.770009]  [<c500c627>] vt_ioctl+0x4e7/0x1320
+[   45.770009]  [<c4e9e3f8>] ? tomoyo_path_number_perm+0x58/0x1d0
+[   45.770009]  [<c4c68622>] ? free_hot_cold_page_list+0x42/0xa0
+[   45.770009]  [<c500c140>] ? complete_change_console+0xd0/0xd0
+[   45.770009]  [<c50015e2>] tty_ioctl+0x2f2/0xb40
+[   45.770009]  [<c4c683f5>] ? free_pages+0x15/0x20
+[   45.770009]  [<c50012f0>] ? no_tty+0x40/0x40
+[   45.770009]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   45.770009]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   45.770009]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   45.770009]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   45.770009]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   45.770009]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   45.770299] ---[ end trace 3eca24d78691fc96 ]---
+[   45.770303] ------------[ cut here ]------------
+[   45.770343] WARNING: CPU: 0 PID: 302 at drivers/gpu/drm/i915/intel_display.c:6958 verify_connector_state+0x294/0x350 [i915]
+[   45.770344] connector enabled without attached crtc
+[   45.770379] Modules linked in: wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper
+[   45.770384]  video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   45.770387] CPU: 0 PID: 302 Comm: plymouthd Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   45.770388] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   45.770392]  ef6cf874 c4efdcbf ef6cf8b8 f482c984 ef6cf8a4 c4b66aea f482eed8 ef6cf8d4
+[   45.770396]  0000012e f482c984 00001b2e f47bfd74 00001b2e ef71f000 ef54a7b0 ef760220
+[   45.770400]  ef6cf8c0 c4b66b4b 00000009 00000000 ef6cf8b8 f482eed8 ef6cf8d4 ef6cf8f8
+[   45.770401] Call Trace:
+[   45.770404]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   45.770406]  [<c4b66aea>] __warn+0xea/0x110
+[   45.770445]  [<f47bfd74>] ? verify_connector_state+0x294/0x350 [i915]
+[   45.770447]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   45.770487]  [<f47bfd74>] verify_connector_state+0x294/0x350 [i915]
+[   45.770527]  [<f47c9556>] intel_atomic_commit_tail+0xbf6/0xf80 [i915]
+[   45.770537]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   45.770546]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   45.770585]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   45.770605]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   45.770645]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   45.770665]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   45.770704]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   45.770744]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   45.770755]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   45.770764]  [<f45bc742>] drm_fb_helper_hotplug_event+0x122/0x170 [drm_kms_helper]
+[   45.770773]  [<f45bc7e5>] drm_fb_helper_restore_fbdev_mode_unlocked+0x55/0x70 [drm_kms_helper]
+[   45.770782]  [<f45bc82d>] drm_fb_helper_set_par+0x2d/0x70 [drm_kms_helper]
+[   45.770821]  [<f47e4345>] intel_fbdev_set_par+0x15/0x70 [i915]
+[   45.770823]  [<c4f8edba>] fb_set_var+0x24a/0x490
+[   45.770826]  [<c4b94c1d>] ? __enqueue_entity+0x6d/0x80
+[   45.770828]  [<c4b9d06a>] ? enqueue_entity+0x33a/0x1460
+[   45.770832]  [<c4f88e86>] fbcon_blank+0x316/0x360
+[   45.770835]  [<c5015dc6>] do_unblank_screen+0xc6/0x1b0
+[   45.770838]  [<c500c627>] vt_ioctl+0x4e7/0x1320
+[   45.770841]  [<c4e9e3f8>] ? tomoyo_path_number_perm+0x58/0x1d0
+[   45.770843]  [<c4c68622>] ? free_hot_cold_page_list+0x42/0xa0
+[   45.770846]  [<c500c140>] ? complete_change_console+0xd0/0xd0
+[   45.770849]  [<c50015e2>] tty_ioctl+0x2f2/0xb40
+[   45.770851]  [<c4c683f5>] ? free_pages+0x15/0x20
+[   45.770854]  [<c50012f0>] ? no_tty+0x40/0x40
+[   45.770856]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   45.770858]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   45.770860]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   45.770862]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   45.770864]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   45.770867]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   45.770868] ---[ end trace 3eca24d78691fc97 ]---
+[   46.099311] IPv6: ADDRCONF(NETDEV_UP): enp5s0: link is not ready
+[   46.099433] 8139too 0000:05:00.0 enp5s0: link down
+[   46.101501] IPv6: ADDRCONF(NETDEV_UP): enp5s0: link is not ready
+[   46.112120] IPv6: ADDRCONF(NETDEV_UP): wlp2s0: link is not ready
+[   46.174770] iwl3945 0000:02:00.0: loaded firmware version XXX.XXX.XXX.XXX
+[   46.244242] IPv6: ADDRCONF(NETDEV_UP): wlp2s0: link is not ready
+[   46.317046] IPv6: ADDRCONF(NETDEV_UP): wlp2s0: link is not ready
+[   47.387231] NET: Registered protocol family 17
+[   48.341769] IPv6: ADDRCONF(NETDEV_UP): wlp2s0: link is not ready
+[   51.006505] audit_printk_skb: 84 callbacks suppressed
+[   53.748715] ------------[ cut here ]------------
+[   53.748784] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:12929 intel_atomic_check+0xcd0/0x1130 [i915]
+[   53.748786] WARN_ON(!connector_state->crtc)
+[   53.748788] Modules linked in:
+[   53.748789]  af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   53.748872] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   53.748873] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   53.748875]  f274ba28 c4efdcbf f274ba6c f482c984 f274ba58 c4b66aea f483e6d7 f274ba88
+[   53.748882]  00000709 f482c984 00003281 f47caf30 00003281 f1cad000 ef5889c0 ef71f000
+[   53.748887]  f274ba74 c4b66b4b 00000009 00000000 f274ba6c f483e6d7 f274ba88 f274bad8
+[   53.748894] Call Trace:
+[   53.748903]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   53.748907]  [<c4b66aea>] __warn+0xea/0x110
+[   53.748948]  [<f47caf30>] ? intel_atomic_check+0xcd0/0x1130 [i915]
+[   53.748950]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   53.748991]  [<f47caf30>] intel_atomic_check+0xcd0/0x1130 [i915]
+[   53.749026]  [<f4553fac>] drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   53.749031]  [<c4c7dd0a>] ? kmemdup+0x2a/0x40
+[   53.749051]  [<f4554276>] drm_atomic_commit+0x16/0x50 [drm]
+[   53.749091]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[   53.749132]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[   53.749147]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   53.749147]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   53.749147]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   53.749147]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   53.749147]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.749147]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   53.749147]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.749147]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   53.749147]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   53.749147]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   53.749147]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   53.749147]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   53.749147]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   53.749147]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   53.749312] ---[ end trace 3eca24d78691fc98 ]---
+[   53.758000] ------------[ cut here ]------------
+[   53.758073] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13558 intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   53.758075] encoder's enabled state mismatch (expected 0, found 1)
+[   53.758076] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   53.758146]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   53.758161] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   53.758163] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   53.758165]  f274ba04 c4efdcbf f274ba48 f482c984 f274ba34 c4b66aea f4830008 f274ba64
+[   53.758171]  00000709 f482c984 000034f6 f47c97a1 000034f6 ef760214 ef5889c0 ef760220
+[   53.758177]  f274ba50 c4b66b4b 00000009 00000000 f274ba48 f4830008 f274ba64 f274bad4
+[   53.758183] Call Trace:
+[   53.758192]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   53.758196]  [<c4b66aea>] __warn+0xea/0x110
+[   53.758237]  [<f47c97a1>] ? intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   53.758239]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   53.758280]  [<f47c97a1>] intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   53.758294]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   53.758304]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   53.758344]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   53.758372]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   53.758393]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   53.758433]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[   53.758474]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[   53.758485]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   53.758491]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   53.758510]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   53.758513]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   53.758533]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.758551]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   53.758571]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.758589]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   53.758593]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   53.758597]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   53.758600]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   53.758602]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   53.758606]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   53.758609]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   53.758611] ---[ end trace 3eca24d78691fc99 ]---
+[   53.758615] ------------[ cut here ]------------
+[   53.758656] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13566 intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   53.758657] encoder detached but still enabled on pipe B.
+[   53.758658] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   53.758711]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   53.758721] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   53.758722] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   53.758723]  f274ba04 c4efdcbf f274ba48 f482c984 f274ba34 c4b66aea f4830044 f274ba64
+[   53.758729]  00000709 f482c984 000034fe f47c9891 000034fe ef760214 ef5889c0 ef760220
+[   53.758735]  f274ba50 c4b66b4b 00000009 00000000 f274ba48 f4830044 f274ba64 f274bad4
+[   53.758741] Call Trace:
+[   53.758744]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   53.758746]  [<c4b66aea>] __warn+0xea/0x110
+[   53.758786]  [<f47c9891>] ? intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   53.758789]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   53.758829]  [<f47c9891>] intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   53.758839]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   53.758848]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   53.758888]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   53.758908]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   53.758928]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   53.758968]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[   53.759007]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[   53.759007]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   53.759007]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   53.759007]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   53.759007]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   53.759007]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.759007]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   53.759007]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.759007]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   53.759007]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   53.759007]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   53.759007]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   53.759007]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   53.759007]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   53.759007]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   53.759154] ---[ end trace 3eca24d78691fc9a ]---
+[   53.759157] ------------[ cut here ]------------
+[   53.759197] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:6958 verify_connector_state+0x294/0x350 [i915]
+[   53.759198] connector enabled without attached crtc
+[   53.759199] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   53.759255]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   53.759266] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   53.759267] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   53.759268]  f274b9cc c4efdcbf f274ba10 f482c984 f274b9fc c4b66aea f482eed8 f274ba2c
+[   53.759274]  00000709 f482c984 00001b2e f47bfd74 00001b2e ef71f000 ef54a7b0 ef760220
+[   53.759280]  f274ba18 c4b66b4b 00000009 00000000 f274ba10 f482eed8 f274ba2c f274ba50
+[   53.759286] Call Trace:
+[   53.759289]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   53.759292]  [<c4b66aea>] __warn+0xea/0x110
+[   53.759331]  [<f47bfd74>] ? verify_connector_state+0x294/0x350 [i915]
+[   53.759334]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   53.759373]  [<f47bfd74>] verify_connector_state+0x294/0x350 [i915]
+[   53.759376]  [<c4b66b4b>] ? warn_slowpath_fmt+0x3b/0x40
+[   53.759415]  [<f47c9556>] intel_atomic_commit_tail+0xbf6/0xf80 [i915]
+[   53.759427]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   53.759436]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   53.759476]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   53.759497]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   53.759518]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   53.759557]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[   53.759598]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[   53.759609]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   53.759613]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   53.759633]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   53.759635]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   53.759655]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.759673]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   53.759692]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.759711]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   53.759714]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   53.759717]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   53.759719]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   53.759723]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   53.759725]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   53.759728]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   53.759730] ---[ end trace 3eca24d78691fc9b ]---
+[   53.891140] ------------[ cut here ]------------
+[   53.891254] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:12929 intel_atomic_check+0xcd0/0x1130 [i915]
+[   53.891258] WARN_ON(!connector_state->crtc)
+[   53.891261] Modules linked in:
+[   53.891264]  af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   53.891433] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   53.891437] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   53.891450]  f274bac8 c4efdcbf f274bb0c f482c984 f274baf8 c4b66aea f483e6d7 f274bb28
+[   53.891456]  00000709 f482c984 00003281 f47caf30 00003281 f1cae800 ef5889c0 ef71f000
+[   53.891462]  f274bb14 c4b66b4b 00000009 00000000 f274bb0c f483e6d7 f274bb28 f274bb78
+[   53.891468] Call Trace:
+[   53.891479]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   53.891483]  [<c4b66aea>] __warn+0xea/0x110
+[   53.891524]  [<f47caf30>] ? intel_atomic_check+0xcd0/0x1130 [i915]
+[   53.891527]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   53.891567]  [<f47caf30>] intel_atomic_check+0xcd0/0x1130 [i915]
+[   53.891607]  [<f4553fac>] drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   53.891625]  [<f4540d5d>] ? vblank_disable_fn+0x3d/0x80 [drm]
+[   53.891664]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   53.891685]  [<f4554276>] drm_atomic_commit+0x16/0x50 [drm]
+[   53.891703]  [<f45413a9>] ? drm_wait_one_vblank+0x59/0x180 [drm]
+[   53.891742]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   53.891782]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   53.891804]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   53.891810]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   53.891831]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   53.891834]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   53.891853]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.891871]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   53.891891]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.891909]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   53.891914]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   53.891919]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   53.891922]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   53.891924]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   53.891928]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   53.891932]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   53.891934] ---[ end trace 3eca24d78691fc9c ]---
+[   53.927052] ------------[ cut here ]------------
+[   53.927119] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13558 intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   53.927121] encoder's enabled state mismatch (expected 0, found 1)
+[   53.927123] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   53.927193]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   53.927207] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   53.927209] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   53.927211]  f274baa4 c4efdcbf f274bae8 f482c984 f274bad4 c4b66aea f4830008 f274bb04
+[   53.927218]  00000709 f482c984 000034f6 f47c97a1 000034f6 ef760214 ef5889c0 ef760220
+[   53.927223]  f274baf0 c4b66b4b 00000009 00000000 f274bae8 f4830008 f274bb04 f274bb74
+[   53.927230] Call Trace:
+[   53.927239]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   53.927243]  [<c4b66aea>] __warn+0xea/0x110
+[   53.927283]  [<f47c97a1>] ? intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   53.927286]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   53.927326]  [<f47c97a1>] intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   53.927345]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   53.927354]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   53.927394]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   53.927428]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   53.927468]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   53.927488]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   53.927528]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   53.927568]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   53.927579]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   53.927585]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   53.927605]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   53.927608]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   53.927628]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.927645]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   53.927665]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.927684]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   53.927689]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   53.927693]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   53.927695]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   53.927698]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   53.927701]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   53.927705]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   53.927707] ---[ end trace 3eca24d78691fc9d ]---
+[   53.927710] ------------[ cut here ]------------
+[   53.927751] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13566 intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   53.927752] encoder detached but still enabled on pipe B.
+[   53.927753] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   53.927806]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   53.927816] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   53.927818] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   53.927819]  f274baa4 c4efdcbf f274bae8 f482c984 f274bad4 c4b66aea f4830044 f274bb04
+[   53.927825]  00000709 f482c984 000034fe f47c9891 000034fe ef760214 ef5889c0 ef760220
+[   53.927831]  f274baf0 c4b66b4b 00000009 00000000 f274bae8 f4830044 f274bb04 f274bb74
+[   53.927837] Call Trace:
+[   53.927840]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   53.927842]  [<c4b66aea>] __warn+0xea/0x110
+[   53.927882]  [<f47c9891>] ? intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   53.927885]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   53.927925]  [<f47c9891>] intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   53.927936]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   53.927945]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   53.927985]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   53.928005]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   53.928017]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   53.928017]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   53.928017]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   53.928017]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   53.928017]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   53.928017]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   53.928017]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   53.928017]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   53.928017]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.928017]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   53.928017]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.928017]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   53.928017]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   53.928017]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   53.928017]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   53.928017]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   53.928017]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   53.928017]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   53.928298] ---[ end trace 3eca24d78691fc9e ]---
+[   53.928302] ------------[ cut here ]------------
+[   53.928342] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:6958 verify_connector_state+0x294/0x350 [i915]
+[   53.928344] connector enabled without attached crtc
+[   53.928345] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   53.928401]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   53.928411] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   53.928413] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   53.928414]  f274ba6c c4efdcbf f274bab0 f482c984 f274ba9c c4b66aea f482eed8 f274bacc
+[   53.928420]  00000709 f482c984 00001b2e f47bfd74 00001b2e ef71f000 ef54a7b0 ef760220
+[   53.928426]  f274bab8 c4b66b4b 00000009 00000000 f274bab0 f482eed8 f274bacc f274baf0
+[   53.928432] Call Trace:
+[   53.928435]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   53.928438]  [<c4b66aea>] __warn+0xea/0x110
+[   53.928477]  [<f47bfd74>] ? verify_connector_state+0x294/0x350 [i915]
+[   53.928480]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   53.928519]  [<f47bfd74>] verify_connector_state+0x294/0x350 [i915]
+[   53.928560]  [<f47c9556>] intel_atomic_commit_tail+0xbf6/0xf80 [i915]
+[   53.928573]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   53.928582]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   53.928621]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   53.928643]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   53.928684]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   53.928704]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   53.928744]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   53.928788]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   53.928799]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   53.928803]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   53.928823]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   53.928826]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   53.928846]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.928866]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   53.928885]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   53.928904]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   53.928907]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   53.928910]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   53.928913]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   53.928915]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   53.928919]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   53.928922]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   53.928924] ---[ end trace 3eca24d78691fc9f ]---
+[   79.591674] ------------[ cut here ]------------
+[   79.591751] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:12929 intel_atomic_check+0xcd0/0x1130 [i915]
+[   79.591753] WARN_ON(!connector_state->crtc)
+[   79.591755] Modules linked in:
+[   79.591756]  af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   79.591842] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   79.591844] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   79.591846]  f274ba28 c4efdcbf f274ba6c f482c984 f274ba58 c4b66aea f483e6d7 f274ba88
+[   79.591852]  00000709 f482c984 00003281 f47caf30 00003281 f1ca8800 ef5889c0 ef71f000
+[   79.591858]  f274ba74 c4b66b4b 00000009 00000000 f274ba6c f483e6d7 f274ba88 f274bad8
+[   79.591865] Call Trace:
+[   79.591876]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   79.591880]  [<c4b66aea>] __warn+0xea/0x110
+[   79.591920]  [<f47caf30>] ? intel_atomic_check+0xcd0/0x1130 [i915]
+[   79.591923]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   79.591963]  [<f47caf30>] intel_atomic_check+0xcd0/0x1130 [i915]
+[   79.592002]  [<f4553fac>] drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   79.592009]  [<c4c7dd0a>] ? kmemdup+0x2a/0x40
+[   79.592029]  [<f4554276>] drm_atomic_commit+0x16/0x50 [drm]
+[   79.592069]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[   79.592109]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[   79.592113]  [<c4ba0b20>] ? update_sd_lb_stats+0xd0/0x470
+[   79.592133]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   79.592139]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   79.592159]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   79.592162]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   79.592166]  [<c4b5ec8d>] ? kmap_atomic_prot+0xcd/0xf0
+[   79.592169]  [<c4b5eb7b>] ? __kunmap_atomic+0x5b/0xa0
+[   79.592188]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.592206]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   79.592226]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.592245]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   79.592249]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   79.592253]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   79.592256]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   79.592259]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   79.592263]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   79.592266]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   79.592290] ---[ end trace 3eca24d78691fca0 ]---
+[   79.602541] ------------[ cut here ]------------
+[   79.602604] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13558 intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   79.602607] encoder's enabled state mismatch (expected 0, found 1)
+[   79.602608] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   79.602678]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   79.602693] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   79.602695] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   79.602697]  f274ba04 c4efdcbf f274ba48 f482c984 f274ba34 c4b66aea f4830008 f274ba64
+[   79.602704]  00000709 f482c984 000034f6 f47c97a1 000034f6 ef760214 ef5889c0 ef760220
+[   79.602709]  f274ba50 c4b66b4b 00000009 00000000 f274ba48 f4830008 f274ba64 f274bad4
+[   79.602716] Call Trace:
+[   79.602725]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   79.602729]  [<c4b66aea>] __warn+0xea/0x110
+[   79.602770]  [<f47c97a1>] ? intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   79.602773]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   79.602813]  [<f47c97a1>] intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   79.602828]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   79.602837]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   79.602877]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   79.602906]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   79.602927]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   79.602967]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[   79.603005]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[   79.603005]  [<c4ba0b20>] ? update_sd_lb_stats+0xd0/0x470
+[   79.603005]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   79.603005]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   79.603005]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   79.603005]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   79.603005]  [<c4b5ec8d>] ? kmap_atomic_prot+0xcd/0xf0
+[   79.603005]  [<c4b5eb7b>] ? __kunmap_atomic+0x5b/0xa0
+[   79.603005]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.603005]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   79.603005]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.603005]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   79.603005]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   79.603005]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   79.603005]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   79.603005]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   79.603005]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   79.603005]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   79.603189] ---[ end trace 3eca24d78691fca1 ]---
+[   79.603193] ------------[ cut here ]------------
+[   79.603234] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13566 intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   79.603236] encoder detached but still enabled on pipe B.
+[   79.603237] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   79.603293]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   79.603303] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   79.603305] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   79.603306]  f274ba04 c4efdcbf f274ba48 f482c984 f274ba34 c4b66aea f4830044 f274ba64
+[   79.603312]  00000709 f482c984 000034fe f47c9891 000034fe ef760214 ef5889c0 ef760220
+[   79.603318]  f274ba50 c4b66b4b 00000009 00000000 f274ba48 f4830044 f274ba64 f274bad4
+[   79.603324] Call Trace:
+[   79.603327]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   79.603329]  [<c4b66aea>] __warn+0xea/0x110
+[   79.603369]  [<f47c9891>] ? intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   79.603372]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   79.603412]  [<f47c9891>] intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   79.603422]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   79.603431]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   79.603472]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   79.603495]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   79.603515]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   79.603555]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[   79.603596]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[   79.603600]  [<c4ba0b20>] ? update_sd_lb_stats+0xd0/0x470
+[   79.603611]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   79.603614]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   79.603634]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   79.603637]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   79.603640]  [<c4b5ec8d>] ? kmap_atomic_prot+0xcd/0xf0
+[   79.603642]  [<c4b5eb7b>] ? __kunmap_atomic+0x5b/0xa0
+[   79.603662]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.603679]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   79.603699]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.603722]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   79.603725]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   79.603728]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   79.603730]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   79.603733]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   79.603736]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   79.603738]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   79.603740] ---[ end trace 3eca24d78691fca2 ]---
+[   79.603743] ------------[ cut here ]------------
+[   79.603782] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:6958 verify_connector_state+0x294/0x350 [i915]
+[   79.603784] connector enabled without attached crtc
+[   79.603785] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   79.603840]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   79.603851] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   79.603854] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   79.603855]  f274b9cc c4efdcbf f274ba10 f482c984 f274b9fc c4b66aea f482eed8 f274ba2c
+[   79.603861]  00000709 f482c984 00001b2e f47bfd74 00001b2e ef71f000 ef54a7b0 ef760220
+[   79.603867]  f274ba18 c4b66b4b 00000009 00000000 f274ba10 f482eed8 f274ba2c f274ba50
+[   79.603873] Call Trace:
+[   79.603876]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   79.603879]  [<c4b66aea>] __warn+0xea/0x110
+[   79.603918]  [<f47bfd74>] ? verify_connector_state+0x294/0x350 [i915]
+[   79.603921]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   79.603960]  [<f47bfd74>] verify_connector_state+0x294/0x350 [i915]
+[   79.603965]  [<c4b66b4b>] ? warn_slowpath_fmt+0x3b/0x40
+[   79.604005]  [<f47c9556>] intel_atomic_commit_tail+0xbf6/0xf80 [i915]
+[   79.604015]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   79.604024]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   79.604064]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   79.604085]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   79.604107]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   79.604147]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[   79.604176]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[   79.604176]  [<c4ba0b20>] ? update_sd_lb_stats+0xd0/0x470
+[   79.604176]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   79.604176]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   79.604176]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   79.604176]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   79.604176]  [<c4b5ec8d>] ? kmap_atomic_prot+0xcd/0xf0
+[   79.604176]  [<c4b5eb7b>] ? __kunmap_atomic+0x5b/0xa0
+[   79.604176]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.604176]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   79.604176]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.604176]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   79.604176]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   79.604176]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   79.604176]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   79.604176]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   79.604176]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   79.604176]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   79.604344] ---[ end trace 3eca24d78691fca3 ]---
+[   79.743049] ------------[ cut here ]------------
+[   79.743106] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:12929 intel_atomic_check+0xcd0/0x1130 [i915]
+[   79.743108] WARN_ON(!connector_state->crtc)
+[   79.743109] Modules linked in:
+[   79.743111]  af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   79.743189] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   79.743190] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   79.743192]  f274bac8 c4efdcbf f274bb0c f482c984 f274baf8 c4b66aea f483e6d7 f274bb28
+[   79.743199]  00000709 f482c984 00003281 f47caf30 00003281 f1caa000 ef5889c0 ef71f000
+[   79.743204]  f274bb14 c4b66b4b 00000009 00000000 f274bb0c f483e6d7 f274bb28 f274bb78
+[   79.743211] Call Trace:
+[   79.743219]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   79.743222]  [<c4b66aea>] __warn+0xea/0x110
+[   79.743263]  [<f47caf30>] ? intel_atomic_check+0xcd0/0x1130 [i915]
+[   79.743265]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   79.743305]  [<f47caf30>] intel_atomic_check+0xcd0/0x1130 [i915]
+[   79.743334]  [<f4553fac>] drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   79.743352]  [<f4540d5d>] ? vblank_disable_fn+0x3d/0x80 [drm]
+[   79.743392]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   79.743412]  [<f4554276>] drm_atomic_commit+0x16/0x50 [drm]
+[   79.743430]  [<f45413a9>] ? drm_wait_one_vblank+0x59/0x180 [drm]
+[   79.743470]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   79.743510]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   79.743526]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   79.743531]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   79.743551]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   79.743554]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   79.743557]  [<c4b5ec8d>] ? kmap_atomic_prot+0xcd/0xf0
+[   79.743559]  [<c4b5eb7b>] ? __kunmap_atomic+0x5b/0xa0
+[   79.743579]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.743597]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   79.743616]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.743635]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   79.743639]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   79.743643]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   79.743645]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   79.743648]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   79.743651]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   79.743654]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   79.743656] ---[ end trace 3eca24d78691fca4 ]---
+[   79.807078] ------------[ cut here ]------------
+[   79.807182] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13558 intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   79.807186] encoder's enabled state mismatch (expected 0, found 1)
+[   79.807188] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   79.807295]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   79.807308] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   79.807309] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   79.807311]  f274baa4 c4efdcbf f274bae8 f482c984 f274bad4 c4b66aea f4830008 f274bb04
+[   79.807317]  00000709 f482c984 000034f6 f47c97a1 000034f6 ef760214 ef5889c0 ef760220
+[   79.807323]  f274baf0 c4b66b4b 00000009 00000000 f274bae8 f4830008 f274bb04 f274bb74
+[   79.807329] Call Trace:
+[   79.807336]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   79.807339]  [<c4b66aea>] __warn+0xea/0x110
+[   79.807379]  [<f47c97a1>] ? intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   79.807382]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   79.807422]  [<f47c97a1>] intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[   79.807435]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   79.807444]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   79.807485]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   79.807509]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   79.807549]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   79.807569]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   79.807609]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   79.807648]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   79.807659]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   79.807664]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   79.807683]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   79.807686]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   79.807690]  [<c4b5ec8d>] ? kmap_atomic_prot+0xcd/0xf0
+[   79.807692]  [<c4b5eb7b>] ? __kunmap_atomic+0x5b/0xa0
+[   79.807712]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.807729]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   79.807749]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.807768]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   79.807771]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   79.807775]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   79.807777]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   79.807779]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   79.807782]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   79.807785]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   79.807787] ---[ end trace 3eca24d78691fca5 ]---
+[   79.807790] ------------[ cut here ]------------
+[   79.807830] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13566 intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   79.807831] encoder detached but still enabled on pipe B.
+[   79.807832] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   79.807886]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   79.807896] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   79.807897] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   79.807898]  f274baa4 c4efdcbf f274bae8 f482c984 f274bad4 c4b66aea f4830044 f274bb04
+[   79.807904]  00000709 f482c984 000034fe f47c9891 000034fe ef760214 ef5889c0 ef760220
+[   79.807910]  f274baf0 c4b66b4b 00000009 00000000 f274bae8 f4830044 f274bb04 f274bb74
+[   79.807916] Call Trace:
+[   79.807919]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   79.807922]  [<c4b66aea>] __warn+0xea/0x110
+[   79.807962]  [<f47c9891>] ? intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   79.807964]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   79.808004]  [<f47c9891>] intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[   79.808015]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   79.808024]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   79.808043]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   79.808043]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   79.808043]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   79.808043]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   79.808043]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   79.808043]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   79.808043]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   79.808043]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   79.808043]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   79.808043]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   79.808043]  [<c4b5ec8d>] ? kmap_atomic_prot+0xcd/0xf0
+[   79.808043]  [<c4b5eb7b>] ? __kunmap_atomic+0x5b/0xa0
+[   79.808043]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.808043]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   79.808043]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.808043]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   79.808043]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   79.808043]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   79.808043]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   79.808043]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   79.808043]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   79.808043]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   79.808380] ---[ end trace 3eca24d78691fca6 ]---
+[   79.808383] ------------[ cut here ]------------
+[   79.808423] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:6958 verify_connector_state+0x294/0x350 [i915]
+[   79.808424] connector enabled without attached crtc
+[   79.808425] Modules linked in: af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[   79.808478]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[   79.808489] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[   79.808490] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[   79.808491]  f274ba6c c4efdcbf f274bab0 f482c984 f274ba9c c4b66aea f482eed8 f274bacc
+[   79.808497]  00000709 f482c984 00001b2e f47bfd74 00001b2e ef71f000 ef54a7b0 ef760220
+[   79.808503]  f274bab8 c4b66b4b 00000009 00000000 f274bab0 f482eed8 f274bacc f274baf0
+[   79.808509] Call Trace:
+[   79.808513]  [<c4efdcbf>] dump_stack+0x58/0x79
+[   79.808515]  [<c4b66aea>] __warn+0xea/0x110
+[   79.808554]  [<f47bfd74>] ? verify_connector_state+0x294/0x350 [i915]
+[   79.808557]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[   79.808596]  [<f47bfd74>] verify_connector_state+0x294/0x350 [i915]
+[   79.808637]  [<f47c9556>] intel_atomic_commit_tail+0xbf6/0xf80 [i915]
+[   79.808650]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[   79.808659]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[   79.808699]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[   79.808720]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[   79.808759]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[   79.808781]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[   79.808821]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[   79.808861]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[   79.808874]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[   79.808877]  [<c522e460>] ? mutex_lock+0x10/0x30
+[   79.808897]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[   79.808900]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[   79.808903]  [<c4b5ec8d>] ? kmap_atomic_prot+0xcd/0xf0
+[   79.808905]  [<c4b5eb7b>] ? __kunmap_atomic+0x5b/0xa0
+[   79.808925]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.808943]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[   79.808967]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[   79.808986]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[   79.808988]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[   79.808992]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[   79.808994]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[   79.808996]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[   79.808999]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[   79.809001]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[   79.809016] ---[ end trace 3eca24d78691fca7 ]---
+[  207.735266] IPv6: ADDRCONF(NETDEV_UP): wlp2s0: link is not ready
+[  211.057430] wlp2s0: authenticate with XX:XX:XX:XX:XX:XX
+[  211.061111] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[  211.067393] wlp2s0: authenticated
+[  211.071042] wlp2s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[  211.073827] wlp2s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x431 status=0 aid=2)
+[  211.075055] wlp2s0: associated
+[  211.075120] IPv6: ADDRCONF(NETDEV_CHANGE): wlp2s0: link becomes ready
+[  222.011639] audit_printk_skb: 48 callbacks suppressed
+[  556.089105] fuse init (API version 7.26)
+[  629.535294] audit_printk_skb: 93 callbacks suppressed
+[  634.536867] audit_printk_skb: 30 callbacks suppressed
+[  818.009193] wlp2s0: authenticate with XX:XX:XX:XX:XX:XX
+[  818.012956] wlp2s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[  818.014679] wlp2s0: authenticated
+[  818.015039] wlp2s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[  818.018985] wlp2s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x431 status=0 aid=2)
+[  818.020343] wlp2s0: associated
+[  877.855544] ------------[ cut here ]------------
+[  877.855608] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:12929 intel_atomic_check+0xcd0/0x1130 [i915]
+[  877.855610] WARN_ON(!connector_state->crtc)
+[  877.855612] Modules linked in:
+[  877.855613]  fuse ccm af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[  877.855699] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[  877.855700] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[  877.855703]  f274ba28 c4efdcbf f274ba6c f482c984 f274ba58 c4b66aea f483e6d7 f274ba88
+[  877.855709]  00000709 f482c984 00003281 f47caf30 00003281 eb52a800 ef5889c0 ef71f000
+[  877.855715]  f274ba74 c4b66b4b 00000009 00000000 f274ba6c f483e6d7 f274ba88 f274bad8
+[  877.855721] Call Trace:
+[  877.855730]  [<c4efdcbf>] dump_stack+0x58/0x79
+[  877.855734]  [<c4b66aea>] __warn+0xea/0x110
+[  877.855775]  [<f47caf30>] ? intel_atomic_check+0xcd0/0x1130 [i915]
+[  877.855777]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[  877.855818]  [<f47caf30>] intel_atomic_check+0xcd0/0x1130 [i915]
+[  877.855850]  [<f4553fac>] drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[  877.855855]  [<c4c7dd0a>] ? kmemdup+0x2a/0x40
+[  877.855875]  [<f4554276>] drm_atomic_commit+0x16/0x50 [drm]
+[  877.855915]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[  877.855956]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[  877.855973]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[  877.855979]  [<c522e460>] ? mutex_lock+0x10/0x30
+[  877.855999]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[  877.856002]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[  877.856010]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  877.856010]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[  877.856010]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  877.856010]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[  877.856010]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[  877.856010]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[  877.856010]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[  877.856010]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[  877.856010]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[  877.856010]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[  877.856133] ---[ end trace 3eca24d78691fca8 ]---
+[  877.864759] ------------[ cut here ]------------
+[  877.864822] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13558 intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[  877.864823] encoder's enabled state mismatch (expected 0, found 1)
+[  877.864825] Modules linked in: fuse ccm af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[  877.864897]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[  877.864912] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[  877.864914] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[  877.864916]  f274ba04 c4efdcbf f274ba48 f482c984 f274ba34 c4b66aea f4830008 f274ba64
+[  877.864922]  00000709 f482c984 000034f6 f47c97a1 000034f6 ef760214 ef5889c0 ef760220
+[  877.864928]  f274ba50 c4b66b4b 00000009 00000000 f274ba48 f4830008 f274ba64 f274bad4
+[  877.864934] Call Trace:
+[  877.864943]  [<c4efdcbf>] dump_stack+0x58/0x79
+[  877.864947]  [<c4b66aea>] __warn+0xea/0x110
+[  877.864988]  [<f47c97a1>] ? intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[  877.864990]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[  877.865008]  [<f47c97a1>] intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[  877.865008]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[  877.865008]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[  877.865008]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[  877.865008]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[  877.865008]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[  877.865008]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[  877.865008]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[  877.865008]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[  877.865008]  [<c522e460>] ? mutex_lock+0x10/0x30
+[  877.865008]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[  877.865008]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[  877.865279]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  877.865279]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[  877.865279]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  877.865279]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[  877.865279]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[  877.865279]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[  877.865279]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[  877.865279]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[  877.865279]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[  877.865279]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[  877.865392] ---[ end trace 3eca24d78691fca9 ]---
+[  877.865408] ------------[ cut here ]------------
+[  877.865449] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13566 intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[  877.865454] encoder detached but still enabled on pipe B.
+[  877.865455] Modules linked in: fuse ccm af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[  877.865511]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[  877.865522] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[  877.865523] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[  877.865524]  f274ba04 c4efdcbf f274ba48 f482c984 f274ba34 c4b66aea f4830044 f274ba64
+[  877.865530]  00000709 f482c984 000034fe f47c9891 000034fe ef760214 ef5889c0 ef760220
+[  877.865536]  f274ba50 c4b66b4b 00000009 00000000 f274ba48 f4830044 f274ba64 f274bad4
+[  877.865542] Call Trace:
+[  877.865546]  [<c4efdcbf>] dump_stack+0x58/0x79
+[  877.865549]  [<c4b66aea>] __warn+0xea/0x110
+[  877.865588]  [<f47c9891>] ? intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[  877.865591]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[  877.865631]  [<f47c9891>] intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[  877.865642]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[  877.865654]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[  877.865693]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[  877.865714]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[  877.865735]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[  877.865777]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[  877.865818]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[  877.865829]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[  877.865837]  [<c522e460>] ? mutex_lock+0x10/0x30
+[  877.865857]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[  877.865860]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[  877.865880]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  877.865897]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[  877.865917]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  877.865936]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[  877.865941]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[  877.865944]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[  877.865946]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[  877.865948]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[  877.865951]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[  877.865953]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[  877.865955] ---[ end trace 3eca24d78691fcaa ]---
+[  877.865958] ------------[ cut here ]------------
+[  877.865998] WARNING: CPU: 1 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:6958 verify_connector_state+0x294/0x350 [i915]
+[  877.866000] connector enabled without attached crtc
+[  877.866014] Modules linked in: fuse ccm af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[  877.866072]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[  877.866083] CPU: 1 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[  877.866084] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[  877.866085]  f274b9cc c4efdcbf f274ba10 f482c984 f274b9fc c4b66aea f482eed8 f274ba2c
+[  877.866091]  00000709 f482c984 00001b2e f47bfd74 00001b2e ef71f000 ef54a7b0 ef760220
+[  877.866098]  f274ba18 c4b66b4b 00000009 00000000 f274ba10 f482eed8 f274ba2c f274ba50
+[  877.866104] Call Trace:
+[  877.866107]  [<c4efdcbf>] dump_stack+0x58/0x79
+[  877.866112]  [<c4b66aea>] __warn+0xea/0x110
+[  877.866151]  [<f47bfd74>] ? verify_connector_state+0x294/0x350 [i915]
+[  877.866154]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[  877.866193]  [<f47bfd74>] verify_connector_state+0x294/0x350 [i915]
+[  877.866196]  [<c4b66b4b>] ? warn_slowpath_fmt+0x3b/0x40
+[  877.866236]  [<f47c9556>] intel_atomic_commit_tail+0xbf6/0xf80 [i915]
+[  877.866248]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[  877.866257]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[  877.866297]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[  877.866318]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[  877.866341]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[  877.866380]  [<f47ce722>] intel_get_load_detect_pipe+0x492/0x6a0 [i915]
+[  877.866421]  [<f480b562>] intel_tv_detect+0x122/0x5e0 [i915]
+[  877.866434]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[  877.866438]  [<c522e460>] ? mutex_lock+0x10/0x30
+[  877.866457]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[  877.866460]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[  877.866480]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  877.866498]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[  877.866520]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  877.866538]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[  877.866541]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[  877.866544]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[  877.866546]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[  877.866548]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[  877.866551]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[  877.866553]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[  877.866555] ---[ end trace 3eca24d78691fcab ]---
+[  878.008118] ------------[ cut here ]------------
+[  878.008227] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:12929 intel_atomic_check+0xcd0/0x1130 [i915]
+[  878.008230] WARN_ON(!connector_state->crtc)
+[  878.008233] Modules linked in:
+[  878.008236]  fuse ccm af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[  878.008410] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[  878.008412] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[  878.008414]  f274bac8 c4efdcbf f274bb0c f482c984 f274baf8 c4b66aea f483e6d7 f274bb28
+[  878.008420]  00000709 f482c984 00003281 f47caf30 00003281 eb52c000 ef5889c0 ef71f000
+[  878.008426]  f274bb14 c4b66b4b 00000009 00000000 f274bb0c f483e6d7 f274bb28 f274bb78
+[  878.008432] Call Trace:
+[  878.008440]  [<c4efdcbf>] dump_stack+0x58/0x79
+[  878.008444]  [<c4b66aea>] __warn+0xea/0x110
+[  878.008484]  [<f47caf30>] ? intel_atomic_check+0xcd0/0x1130 [i915]
+[  878.008487]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[  878.008527]  [<f47caf30>] intel_atomic_check+0xcd0/0x1130 [i915]
+[  878.008557]  [<f4553fac>] drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[  878.008576]  [<f4540d5d>] ? vblank_disable_fn+0x3d/0x80 [drm]
+[  878.008615]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[  878.008636]  [<f4554276>] drm_atomic_commit+0x16/0x50 [drm]
+[  878.008654]  [<f45413a9>] ? drm_wait_one_vblank+0x59/0x180 [drm]
+[  878.008694]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[  878.008734]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[  878.008750]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[  878.008756]  [<c522e460>] ? mutex_lock+0x10/0x30
+[  878.008776]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[  878.008779]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[  878.008798]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  878.008816]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[  878.008836]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  878.008854]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[  878.008858]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[  878.008862]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[  878.008865]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[  878.008867]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[  878.008870]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[  878.008873]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[  878.008876] ---[ end trace 3eca24d78691fcac ]---
+[  878.048047] ------------[ cut here ]------------
+[  878.048101] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13558 intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[  878.048145] encoder's enabled state mismatch (expected 0, found 1)
+[  878.048146] Modules linked in: fuse ccm af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[  878.048210]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[  878.048223] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[  878.048225] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[  878.048227]  f274baa4 c4efdcbf f274bae8 f482c984 f274bad4 c4b66aea f4830008 f274bb04
+[  878.048233]  00000709 f482c984 000034f6 f47c97a1 000034f6 ef760214 ef5889c0 ef760220
+[  878.048239]  f274baf0 c4b66b4b 00000009 00000000 f274bae8 f4830008 f274bb04 f274bb74
+[  878.048245] Call Trace:
+[  878.048251]  [<c4efdcbf>] dump_stack+0x58/0x79
+[  878.048254]  [<c4b66aea>] __warn+0xea/0x110
+[  878.048295]  [<f47c97a1>] ? intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[  878.048298]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[  878.048338]  [<f47c97a1>] intel_atomic_commit_tail+0xe41/0xf80 [i915]
+[  878.048351]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[  878.048360]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[  878.048401]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[  878.048425]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[  878.048465]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[  878.048485]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[  878.048525]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[  878.048565]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[  878.048576]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[  878.048581]  [<c522e460>] ? mutex_lock+0x10/0x30
+[  878.048601]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[  878.048604]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[  878.048624]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  878.048641]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[  878.048661]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  878.048680]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[  878.048683]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[  878.048686]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[  878.048689]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[  878.048691]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[  878.048694]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[  878.048697]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[  878.048699] ---[ end trace 3eca24d78691fcad ]---
+[  878.048702] ------------[ cut here ]------------
+[  878.048742] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:13566 intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[  878.048744] encoder detached but still enabled on pipe B.
+[  878.048744] Modules linked in: fuse ccm af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[  878.048798]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[  878.048808] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[  878.048810] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[  878.048811]  f274baa4 c4efdcbf f274bae8 f482c984 f274bad4 c4b66aea f4830044 f274bb04
+[  878.048817]  00000709 f482c984 000034fe f47c9891 000034fe ef760214 ef5889c0 ef760220
+[  878.048823]  f274baf0 c4b66b4b 00000009 00000000 f274bae8 f4830044 f274bb04 f274bb74
+[  878.048828] Call Trace:
+[  878.048831]  [<c4efdcbf>] dump_stack+0x58/0x79
+[  878.048834]  [<c4b66aea>] __warn+0xea/0x110
+[  878.048874]  [<f47c9891>] ? intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[  878.048877]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[  878.048916]  [<f47c9891>] intel_atomic_commit_tail+0xf31/0xf80 [i915]
+[  878.048927]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[  878.048936]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[  878.048976]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[  878.048997]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[  878.049015]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[  878.049015]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[  878.049015]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[  878.049015]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[  878.049015]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[  878.049015]  [<c522e460>] ? mutex_lock+0x10/0x30
+[  878.049015]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[  878.049015]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[  878.049015]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  878.049015]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[  878.049015]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  878.049015]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[  878.049015]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[  878.049015]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[  878.049015]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[  878.049015]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[  878.049015]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[  878.049015]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[  878.049286] ---[ end trace 3eca24d78691fcae ]---
+[  878.049290] ------------[ cut here ]------------
+[  878.049331] WARNING: CPU: 0 PID: 1801 at drivers/gpu/drm/i915/intel_display.c:6958 verify_connector_state+0x294/0x350 [i915]
+[  878.049332] connector enabled without attached crtc
+[  878.049333] Modules linked in: fuse ccm af_packet wl(PO) iTCO_wdt iTCO_vendor_support stkwebcam v4l2_common arc4 asus_laptop videodev iwl3945 iwlegacy media mac80211 coretemp sparse_keymap psmouse input_polldev cfg80211 8139too 8139cp rfkill r592 input_leds i2c_i801 mii memstick lpc_ich ide_pci_generic i2c_smbus snd_hda_codec_si3054 ide_core snd_hda_codec_idt snd_hda_codec_generic snd_hda_intel snd_hda_codec snd_hda_core snd_hwdep snd_pcm rng_core snd_timer shpchp snd thermal tpm_infineon fjes soundcore battery ac evdev acpi_cpufreq tpm_tis tpm_tis_core tpm sch_fq_codel ip_tables x_tables ipv6 crc_ccitt autofs4 hid_generic usbhid hid sr_mod ata_generic pata_acpi uhci_hcd ehci_pci ehci_hcd sdhci_pci sdhci usbcore firewire_ohci serio_raw mmc_core ata_piix firewire_core crc_itu_t usb_common i915 i2c_algo_bit
+[  878.049387]  drm_kms_helper video button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[  878.049397] CPU: 0 PID: 1801 Comm: Xorg Tainted: P        W  O    4.9.20-desktop-pae-1bP #1
+[  878.049398] Hardware name: ASUSTeK Computer Inc.  F3F                 /F3F       , BIOS 300                 01/23/2007
+[  878.049399]  f274ba6c c4efdcbf f274bab0 f482c984 f274ba9c c4b66aea f482eed8 f274bacc
+[  878.049405]  00000709 f482c984 00001b2e f47bfd74 00001b2e ef71f000 ef54a7b0 ef760220
+[  878.049411]  f274bab8 c4b66b4b 00000009 00000000 f274bab0 f482eed8 f274bacc f274baf0
+[  878.049417] Call Trace:
+[  878.049420]  [<c4efdcbf>] dump_stack+0x58/0x79
+[  878.049422]  [<c4b66aea>] __warn+0xea/0x110
+[  878.049462]  [<f47bfd74>] ? verify_connector_state+0x294/0x350 [i915]
+[  878.049465]  [<c4b66b4b>] warn_slowpath_fmt+0x3b/0x40
+[  878.049504]  [<f47bfd74>] verify_connector_state+0x294/0x350 [i915]
+[  878.049544]  [<f47c9556>] intel_atomic_commit_tail+0xbf6/0xf80 [i915]
+[  878.049555]  [<f45b8c45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[  878.049564]  [<f45b532e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[  878.049604]  [<f47c9c25>] intel_atomic_commit+0x345/0x480 [i915]
+[  878.049624]  [<f4553fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[  878.049664]  [<f47a2c20>] ? gen2_write16+0x130/0x130 [i915]
+[  878.049684]  [<f45542a9>] drm_atomic_commit+0x49/0x50 [drm]
+[  878.049724]  [<f47ce987>] intel_release_load_detect_pipe+0x57/0xa0 [i915]
+[  878.049764]  [<f480b7c5>] intel_tv_detect+0x385/0x5e0 [i915]
+[  878.049775]  [<f45aefa0>] drm_helper_probe_single_connector_modes+0x3f0/0x4c0 [drm_kms_helper]
+[  878.049778]  [<c522e460>] ? mutex_lock+0x10/0x30
+[  878.049798]  [<f455839d>] drm_mode_getconnector+0x26d/0x2e0 [drm]
+[  878.049801]  [<c522e8c4>] ? __ww_mutex_lock+0x14/0xa0
+[  878.049821]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  878.049839]  [<f453fa62>] drm_ioctl+0x212/0x460 [drm]
+[  878.049859]  [<f4558130>] ? drm_mode_connector_property_set_ioctl+0x40/0x40 [drm]
+[  878.049877]  [<f453f850>] ? drm_getunique+0x60/0x60 [drm]
+[  878.049880]  [<c4cdc8b1>] do_vfs_ioctl+0x81/0x740
+[  878.049883]  [<c4ea1f79>] ? tomoyo_file_ioctl+0x19/0x20
+[  878.049885]  [<c4e942cc>] ? security_file_ioctl+0x3c/0x60
+[  878.049887]  [<c4cdcfd0>] SyS_ioctl+0x60/0x70
+[  878.049890]  [<c4b036fa>] do_fast_syscall_32+0x8a/0x150
+[  878.049892]  [<c52316b7>] sysenter_past_esp+0x40/0x6a
+[  878.049894] ---[ end trace 3eca24d78691fcaf ]---
+[  895.951754] ide-cd driver 5.00
+[  895.962107] ide-gd driver 1.18
+[  895.994518] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[  896.126790] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[  896.127577] sr 1:0:0:0: Attached scsi generic sg1 type 5
