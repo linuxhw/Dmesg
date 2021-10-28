@@ -1,0 +1,996 @@
+[   17.408199] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.408200] CR2: 00007f06493e5fd8 CR3: 00000001c6bba000 CR4: 00000000003506f0
+[   17.408200] Call Trace:
+[   17.408213]  drm_dev_register+0x158/0x1b0 [drm]
+[   17.408289]  amdgpu_pci_probe+0x107/0x180 [amdgpu]
+[   17.408292]  local_pci_probe+0x42/0x80
+[   17.408293]  ? pci_match_device+0xd7/0x100
+[   17.408295]  pci_device_probe+0xfa/0x1b0
+[   17.408297]  really_probe+0x205/0x460
+[   17.408299]  driver_probe_device+0xe1/0x150
+[   17.408301]  device_driver_attach+0xa1/0xb0
+[   17.408302]  __driver_attach+0x8a/0x150
+[   17.408304]  ? device_driver_attach+0xb0/0xb0
+[   17.408305]  ? device_driver_attach+0xb0/0xb0
+[   17.408307]  bus_for_each_dev+0x89/0xd0
+[   17.408309]  bus_add_driver+0x12b/0x1e0
+[   17.408310]  driver_register+0x8b/0xe0
+[   17.408311]  ? 0xffffffffc131a000
+[   17.408312]  do_one_initcall+0x59/0x240
+[   17.408315]  do_init_module+0x5c/0x260
+[   17.408317]  load_module+0x21a7/0x2450
+[   17.408321]  __do_sys_init_module+0x12d/0x180
+[   17.408323]  do_syscall_64+0x33/0x40
+[   17.408325]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.408326] RIP: 0033:0x7f98eaf2de4e
+[   17.408327] Code: 48 8b 0d 25 10 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d f2 0f 0c 00 f7 d8 64 89 01 48
+[   17.408328] RSP: 002b:00007ffd92801178 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   17.408329] RAX: ffffffffffffffda RBX: 0000561b736bc630 RCX: 00007f98eaf2de4e
+[   17.408329] RDX: 00007f98eb06595d RSI: 0000000000afd4c9 RDI: 0000561b746cd4d0
+[   17.408330] RBP: 0000561b746cd4d0 R08: fffffffffffffff0 R09: 00007ffd928004e9
+[   17.408330] R10: 0000561b73609010 R11: 0000000000000246 R12: 00007f98eb06595d
+[   17.408331] R13: 0000000000000001 R14: 0000561b736bd2e0 R15: 0000561b736bc630
+[   17.408333] ---[ end trace f88a1613e4fab50a ]---
+[   17.408333] ------------[ cut here ]------------
+[   17.408334] Bogus possible_crtcs: [ENCODER:75:TMDS-75] possible_crtcs=0xf (full crtc mask=0x7)
+[   17.408359] WARNING: CPU: 0 PID: 239 at drivers/gpu/drm/drm_mode_config.c:617 drm_mode_config_validate+0x178/0x200 [drm]
+[   17.408359] Modules linked in: uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc amdgpu(+) btusb btrtl btbcm btintel bluetooth ecdh_generic ecc edac_mce_amd gpu_sched joydev mousedev ath10k_pci i2c_algo_bit ttm hid_multitouch ath10k_core drm_kms_helper kvm_amd kvm snd_hda_codec_realtek ath snd_hda_codec_generic ledtrig_audio irqbypass snd_hda_codec_hdmi hid_generic mac80211 snd_hda_intel snd_intel_dspcfg snd_hda_codec crct10dif_pclmul crc32_pclmul ghash_clmulni_intel aesni_intel cec snd_hda_core crypto_simd cryptd rc_core glue_helper syscopyarea sysfillrect sysimgblt snd_hwdep snd_pcm fb_sys_fops acer_wmi rapl sparse_keymap snd_timer wmi_bmof cfg80211 r8169 snd pcspkr realtek mdio_devres rfkill input_leds of_mdio soundcore libarc4 fixed_phy mac_hid libphy evdev ccp sp5100_tco k10temp tpm_crb i2c_hid hid tpm_tis tpm_tis_core battery ac tpm acpi_cpufreq rng_core i2c_piix4 pinctrl_amd acer_wireless wmi vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) sg fuse drm
+[   17.408376]  crypto_user agpgart ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 uas usb_storage rtsx_pci_sdmmc serio_raw atkbd mmc_core libps2 xhci_pci xhci_pci_renesas crc32c_intel xhci_hcd rtsx_pci i8042 serio
+[   17.408381] CPU: 0 PID: 239 Comm: systemd-udevd Tainted: G        W  OE     5.9.14-arch1-1 #1
+[   17.408381] Hardware name: Acer Aspire A315-41G/Metapod_RR, BIOS V1.18 06/18/2020
+[   17.408395] RIP: 0010:drm_mode_config_validate+0x178/0x200 [drm]
+[   17.408396] Code: 39 d6 75 e6 45 85 c8 74 0a 44 89 c0 f7 d0 44 85 c8 74 19 49 8b 55 38 41 8b 75 18 44 89 c9 48 c7 c7 70 91 34 c0 e8 0a 6f 0b f7 <0f> 0b 49 8b 45 08 4c 8d 68 f8 49 39 c4 0f 85 ed fe ff ff 5b 5d 41
+[   17.408397] RSP: 0018:ffff9c87005b7a58 EFLAGS: 00010282
+[   17.408397] RAX: 0000000000000000 RBX: ffff9736c1d0aad0 RCX: 0000000000000000
+[   17.408398] RDX: 0000000000000001 RSI: ffffffffb7d59b0f RDI: 00000000ffffffff
+[   17.408398] RBP: 0000000000000001 R08: 00000000000004c5 R09: 0000000000000001
+[   17.408399] R10: 0000000000000000 R11: 0000000000000001 R12: ffff9736c1d0aad8
+[   17.408400] R13: ffff9736c6e8f600 R14: ffff9736c1d0aad8 R15: 000000000000003f
+[   17.408401] FS:  00007f98ea63dec0(0000) GS:ffff9736c9c00000(0000) knlGS:0000000000000000
+[   17.408401] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.408402] CR2: 00007f06493e5fd8 CR3: 00000001c6bba000 CR4: 00000000003506f0
+[   17.408402] Call Trace:
+[   17.408415]  drm_dev_register+0x158/0x1b0 [drm]
+[   17.408491]  amdgpu_pci_probe+0x107/0x180 [amdgpu]
+[   17.408493]  local_pci_probe+0x42/0x80
+[   17.408494]  ? pci_match_device+0xd7/0x100
+[   17.408496]  pci_device_probe+0xfa/0x1b0
+[   17.408498]  really_probe+0x205/0x460
+[   17.408500]  driver_probe_device+0xe1/0x150
+[   17.408502]  device_driver_attach+0xa1/0xb0
+[   17.408504]  __driver_attach+0x8a/0x150
+[   17.408505]  ? device_driver_attach+0xb0/0xb0
+[   17.408506]  ? device_driver_attach+0xb0/0xb0
+[   17.408508]  bus_for_each_dev+0x89/0xd0
+[   17.408510]  bus_add_driver+0x12b/0x1e0
+[   17.408511]  driver_register+0x8b/0xe0
+[   17.408512]  ? 0xffffffffc131a000
+[   17.408513]  do_one_initcall+0x59/0x240
+[   17.408516]  do_init_module+0x5c/0x260
+[   17.408518]  load_module+0x21a7/0x2450
+[   17.408522]  __do_sys_init_module+0x12d/0x180
+[   17.408524]  do_syscall_64+0x33/0x40
+[   17.408526]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[   17.408527] RIP: 0033:0x7f98eaf2de4e
+[   17.408528] Code: 48 8b 0d 25 10 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d f2 0f 0c 00 f7 d8 64 89 01 48
+[   17.408528] RSP: 002b:00007ffd92801178 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   17.408529] RAX: ffffffffffffffda RBX: 0000561b736bc630 RCX: 00007f98eaf2de4e
+[   17.408530] RDX: 00007f98eb06595d RSI: 0000000000afd4c9 RDI: 0000561b746cd4d0
+[   17.408531] RBP: 0000561b746cd4d0 R08: fffffffffffffff0 R09: 00007ffd928004e9
+[   17.408531] R10: 0000561b73609010 R11: 0000000000000246 R12: 00007f98eb06595d
+[   17.408532] R13: 0000000000000001 R14: 0000561b736bd2e0 R15: 0000561b736bc630
+[   17.408534] ---[ end trace f88a1613e4fab50b ]---
+[   17.409655] [drm] Initialized amdgpu 3.39.0 20150101 for 0000:04:00.0 on minor 1
+[   17.500519] fbcon: Taking over console
+[   17.523955] Console: switching to colour frame buffer device 240x67
+[   25.143187] amdgpu: VI should always have 2 performance levels
+[   41.707447] EXT4-fs (sda3): mounted filesystem with ordered data mode. Opts: (null)
+[   46.326131] Generic FE-GE Realtek PHY r8169-201:00: attached PHY driver [Generic FE-GE Realtek PHY] (mii_bus:phy_addr=r8169-201:00, irq=IGNORE)
+[   46.489522] r8169 0000:02:00.1 enp2s0f1: Link is Down
+[   46.494756] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[   46.494764] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Receiver ID)
+[   46.494766] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00000040/00006000
+[   46.494767] pcieport 0000:00:01.7:    [ 6] BadTLP                
+[   46.529266] pcieport 0000:00:01.7: AER: Multiple Corrected error received: 0000:00:01.0
+[   46.529286] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[   46.529288] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001040/00006000
+[   46.529289] pcieport 0000:00:01.7:    [ 6] BadTLP                
+[   46.529290] pcieport 0000:00:01.7:    [12] Timeout               
+[   46.529297] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[   46.529303] pcieport 0000:00:01.7: AER: can't find device of ID0008
+[   49.789670] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[   49.804428] amdgpu: can't get the mac of 5
+[   51.919597] [drm] Cannot allocate secure buffer since TMZ is disabled
+[   60.271261] amdgpu: VI should always have 2 performance levels
+[  112.059790] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[  112.072343] amdgpu: can't get the mac of 5
+[  118.315039] amdgpu: VI should always have 2 performance levels
+[  158.342890] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[  158.355418] amdgpu: can't get the mac of 5
+[  164.617108] amdgpu: VI should always have 2 performance levels
+[  195.490568] usb 1-2: USB disconnect, device number 2
+[  195.949395] usb 1-2: new high-speed USB device number 4 using xhci_hcd
+[  196.096136] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[  196.096143] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[  196.096147] usb 1-2: Product: Nokia7.2
+[  196.096150] usb 1-2: Manufacturer: HMD Global
+[  196.096153] usb 1-2: SerialNumber: ...
+[  196.241726] usbcore: registered new interface driver cdc_ether
+[  196.258810] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[  196.258841] usbcore: registered new interface driver rndis_host
+[  196.268799] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[ 1231.422977] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[ 1231.436550] amdgpu: can't get the mac of 5
+[ 1237.696532] amdgpu: VI should always have 2 performance levels
+[ 2559.712379] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[ 2559.712390] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[ 2559.712393] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[ 2559.712396] pcieport 0000:00:01.7:    [12] Timeout               
+[ 9080.427799] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[ 9080.427809] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[ 9080.427812] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[ 9080.427815] pcieport 0000:00:01.7:    [12] Timeout               
+[11056.093612] usb 1-2: USB disconnect, device number 4
+[11056.093704] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[12128.343890] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[12128.343901] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[12128.343905] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[12128.343908] pcieport 0000:00:01.7:    [12] Timeout               
+[12479.567102] usb 1-2: new high-speed USB device number 5 using xhci_hcd
+[12479.714021] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[12479.714025] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[12479.714028] usb 1-2: Product: Nokia7.2
+[12479.714029] usb 1-2: Manufacturer: HMD Global
+[12479.714031] usb 1-2: SerialNumber: ...
+[12758.104856] usb 1-2: USB disconnect, device number 5
+[12758.463714] usb 1-2: new high-speed USB device number 6 using xhci_hcd
+[12758.611189] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[12758.611194] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[12758.611196] usb 1-2: Product: Nokia7.2
+[12758.611198] usb 1-2: Manufacturer: HMD Global
+[12758.611200] usb 1-2: SerialNumber: ...
+[12763.040759] usb 1-2: USB disconnect, device number 6
+[12763.533673] usb 1-2: new high-speed USB device number 7 using xhci_hcd
+[12763.680409] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[12763.680414] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[12763.680416] usb 1-2: Product: Nokia7.2
+[12763.680418] usb 1-2: Manufacturer: HMD Global
+[12763.680420] usb 1-2: SerialNumber: ...
+[12763.750826] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[12763.842728] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[12953.633679] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[12953.633689] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[12953.633692] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[12953.633695] pcieport 0000:00:01.7:    [12] Timeout               
+[13033.898559] usb 1-2: USB disconnect, device number 7
+[13033.898685] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[14299.508864] PM: suspend entry (deep)
+[14299.967777] Filesystems sync: 0.458 seconds
+[14300.023890] Freezing user space processes ... (elapsed 0.017 seconds) done.
+[14300.041110] OOM killer disabled.
+[14300.041111] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[14300.042440] printk: Suspending console(s) (use no_console_suspend to debug)
+[14300.100135] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[14300.181433] sd 0:0:0:0: [sda] Stopping disk
+[14300.303676] [drm] psp command (0x2) failed and response status is (0x117)
+[14300.303682] [drm] free PSP TMR buffer
+[14303.493173] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[14303.505672] amdgpu: can't get the mac of 5
+[14303.517134] amdgpu: VI should always have 2 performance levels
+[14303.578298] ACPI: EC: interrupt blocked
+[14303.707375] ACPI: Preparing to enter system sleep state S3
+[14303.708021] ACPI: EC: event blocked
+[14303.708021] ACPI: EC: EC stopped
+[14303.708022] PM: Saving platform NVS memory
+[14303.708253] Disabling non-boot CPUs ...
+[14303.709713] smpboot: CPU 1 is now offline
+[14303.711722] smpboot: CPU 2 is now offline
+[14303.713706] smpboot: CPU 3 is now offline
+[14303.714730] ACPI: Low-level resume complete
+[14303.714785] ACPI: EC: EC started
+[14303.714785] PM: Restoring platform NVS memory
+[14303.810017] Enabling non-boot CPUs ...
+[14303.810087] x86: Booting SMP configuration:
+[14303.810088] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[14303.810424] microcode: CPU1: patch_level=0x0810100b
+[14303.812651] ACPI: \_PR_.C001: Found 2 idle states
+[14303.812903] CPU1 is up
+[14303.812982] smpboot: Booting Node 0 Processor 2 APIC 0x2
+[14303.813349] microcode: CPU2: patch_level=0x0810100b
+[14303.815588] ACPI: \_PR_.C002: Found 2 idle states
+[14303.815862] CPU2 is up
+[14303.815885] smpboot: Booting Node 0 Processor 3 APIC 0x3
+[14303.816212] microcode: CPU3: patch_level=0x0810100b
+[14303.818441] ACPI: \_PR_.C003: Found 2 idle states
+[14303.818720] CPU3 is up
+[14303.819335] ACPI: Waking up from system sleep state S3
+[14303.820090] ACPI: EC: interrupt unblocked
+[14303.957015] ACPI: EC: event unblocked
+[14303.958806] [drm] PCIE GART of 1024M enabled (table at 0x000000F400900000).
+[14303.958864] [drm] PSP is resuming...
+[14303.974143] sd 0:0:0:0: [sda] Starting disk
+[14304.031235] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[14304.037810] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[14304.037819] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Receiver ID)
+[14304.037821] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00000040/00006000
+[14304.037823] pcieport 0000:00:01.7:    [ 6] BadTLP                
+[14304.039456] [drm] reserve 0x400000 from 0xf43fc00000 for PSP TMR
+[14304.046786] amdgpu: can't get the mac of 5
+[14304.187847] usb 1-4: reset full-speed USB device number 3 using xhci_hcd
+[14304.222446] amdgpu 0000:04:00.0: amdgpu: RAS: optional ras ta ucode is not available
+[14304.244147] [drm] kiq ring mec 2 pipe 1 q 0
+[14304.245113] amdgpu: dpm has been enabled
+[14304.270491] usb 3-1: reset high-speed USB device number 2 using xhci_hcd
+[14304.440367] [drm] VCN decode and encode initialized successfully(under SPG Mode).
+[14304.440399] amdgpu 0000:04:00.0: amdgpu: ring gfx uses VM inv eng 0 on hub 0
+[14304.440401] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+[14304.440403] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+[14304.440405] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+[14304.440406] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+[14304.440408] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+[14304.440409] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+[14304.440410] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+[14304.440412] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+[14304.440413] amdgpu 0000:04:00.0: amdgpu: ring kiq_2.1.0 uses VM inv eng 11 on hub 0
+[14304.440415] amdgpu 0000:04:00.0: amdgpu: ring sdma0 uses VM inv eng 0 on hub 1
+[14304.440416] amdgpu 0000:04:00.0: amdgpu: ring vcn_dec uses VM inv eng 1 on hub 1
+[14304.440417] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc0 uses VM inv eng 4 on hub 1
+[14304.440418] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc1 uses VM inv eng 5 on hub 1
+[14304.440419] amdgpu 0000:04:00.0: amdgpu: ring jpeg_dec uses VM inv eng 6 on hub 1
+[14304.451107] acpi LNXPOWER:02: Turning OFF
+[14304.451153] OOM killer enabled.
+[14304.451154] Restarting tasks ... 
+[14304.456737] Bluetooth: hci0: using rampatch file: qca/rampatch_usb_00000302.bin
+[14304.456741] Bluetooth: hci0: QCA: patch rome 0x302 build 0x3e8, firmware rome 0x302 build 0x111
+[14304.458325] done.
+[14304.460556] PM: suspend exit
+[14304.531321] Bluetooth: hci0: using NVM file: qca/nvm_usb_00000302.bin
+[14306.092471] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[14306.256605] ata1.00: configured for UDMA/100
+[14306.665809] Generic FE-GE Realtek PHY r8169-201:00: attached PHY driver [Generic FE-GE Realtek PHY] (mii_bus:phy_addr=r8169-201:00, irq=IGNORE)
+[14306.862541] r8169 0000:02:00.1 enp2s0f1: Link is Down
+[14306.975702] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[14306.975713] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Receiver ID)
+[14306.975716] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00000040/00006000
+[14306.975719] pcieport 0000:00:01.7:    [ 6] BadTLP                
+[14308.676020] acpi AMDI0010:01: Already enumerated
+[14313.349551] amdgpu: VI should always have 2 performance levels
+[14313.692656] acpi AMDI0010:01: Already enumerated
+[16081.825831] usb 1-2: new high-speed USB device number 8 using xhci_hcd
+[16082.718862] usb usb1-port2: Cannot enable. Maybe the USB cable is bad?
+[16082.842499] usb 1-2: new high-speed USB device number 9 using xhci_hcd
+[16082.986877] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[16082.986882] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[16082.986885] usb 1-2: Product: Nokia7.2
+[16082.986887] usb 1-2: Manufacturer: HMD Global
+[16082.986889] usb 1-2: SerialNumber: ...
+[16083.914103] usb 1-2: USB disconnect, device number 9
+[16084.622131] usb 1-2: new high-speed USB device number 10 using xhci_hcd
+[16084.767780] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[16084.767784] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[16084.767787] usb 1-2: Product: Nokia7.2
+[16084.767789] usb 1-2: Manufacturer: HMD Global
+[16084.767790] usb 1-2: SerialNumber: ...
+[16084.871347] usb 1-2: USB disconnect, device number 10
+[16085.162121] usb 1-2: new high-speed USB device number 11 using xhci_hcd
+[16085.306918] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[16085.306925] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[16085.306928] usb 1-2: Product: Nokia7.2
+[16085.306931] usb 1-2: Manufacturer: HMD Global
+[16085.306933] usb 1-2: SerialNumber: ...
+[16091.598116] usb 1-2: USB disconnect, device number 11
+[16091.859177] usb 1-2: new high-speed USB device number 12 using xhci_hcd
+[16092.809225] usb 1-2: device descriptor read/64, error -71
+[16093.059963] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[16093.059968] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[16093.059970] usb 1-2: Product: Nokia7.2
+[16093.059973] usb 1-2: Manufacturer: HMD Global
+[16093.059974] usb 1-2: SerialNumber: ...
+[16098.898376] usb 1-2: USB disconnect, device number 12
+[16099.389169] usb 1-2: new high-speed USB device number 13 using xhci_hcd
+[16099.532600] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[16099.532605] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[16099.532607] usb 1-2: Product: Nokia7.2
+[16099.532609] usb 1-2: Manufacturer: HMD Global
+[16099.532611] usb 1-2: SerialNumber: ...
+[16099.582884] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[16099.616944] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[16487.891210] perf: interrupt took too long (2509 > 2500), lowering kernel.perf_event_max_sample_rate to 79500
+[17095.103818] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[17095.103831] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[17095.103835] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[17095.103839] pcieport 0000:00:01.7:    [12] Timeout               
+[18247.659623] perf: interrupt took too long (3140 > 3136), lowering kernel.perf_event_max_sample_rate to 63600
+[19256.906750] acer_wmi: Unknown function number - 8 - 1
+[20064.899549] usb 1-2: USB disconnect, device number 13
+[20064.899680] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[20065.218034] usb 1-2: new high-speed USB device number 14 using xhci_hcd
+[20065.366460] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[20065.366465] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[20065.366468] usb 1-2: Product: Nokia7.2
+[20065.366470] usb 1-2: Manufacturer: HMD Global
+[20065.366472] usb 1-2: SerialNumber: ...
+[20065.417343] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[20065.453160] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[20176.148054] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[20176.148065] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[20176.148068] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[20176.148071] pcieport 0000:00:01.7:    [12] Timeout               
+[20184.676241] usb 1-2: USB disconnect, device number 14
+[20184.676346] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[20185.168046] usb 1-2: new high-speed USB device number 15 using xhci_hcd
+[20185.312689] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[20185.312693] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[20185.312696] usb 1-2: Product: Nokia7.2
+[20185.312698] usb 1-2: Manufacturer: HMD Global
+[20185.312700] usb 1-2: SerialNumber: ...
+[20185.408350] usb 1-2: can't set config #1, error -71
+[20185.408516] usb 1-2: USB disconnect, device number 15
+[20185.668043] usb 1-2: new high-speed USB device number 16 using xhci_hcd
+[20185.811678] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[20185.811682] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[20185.811684] usb 1-2: Product: Nokia7.2
+[20185.811685] usb 1-2: Manufacturer: HMD Global
+[20185.811687] usb 1-2: SerialNumber: ...
+[20185.865565] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[20185.931593] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[22208.110123] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[22208.110131] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[22208.110133] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[22208.110135] pcieport 0000:00:01.7:    [12] Timeout               
+[22633.360798] usb 1-2: USB disconnect, device number 16
+[22633.360956] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[22633.637539] usb 1-2: new high-speed USB device number 17 using xhci_hcd
+[22633.783457] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[22633.783460] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[22633.783462] usb 1-2: Product: Nokia7.2
+[22633.783463] usb 1-2: Manufacturer: HMD Global
+[22633.783464] usb 1-2: SerialNumber: ...
+[22633.835441] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[22634.808975] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[23242.350820] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[23242.350829] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[23242.350830] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[23242.350832] pcieport 0000:00:01.7:    [12] Timeout               
+[24295.981169] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[24295.981179] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[24295.981181] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[24295.981184] pcieport 0000:00:01.7:    [12] Timeout               
+[24583.142312] usb 1-2: USB disconnect, device number 17
+[24583.142440] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[24583.433853] usb 1-2: new high-speed USB device number 18 using xhci_hcd
+[24583.580669] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[24583.580672] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[24583.580674] usb 1-2: Product: Nokia7.2
+[24583.580675] usb 1-2: Manufacturer: HMD Global
+[24583.580676] usb 1-2: SerialNumber: ...
+[24583.633225] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[24585.444216] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[24591.425956] usb 1-2: USB disconnect, device number 18
+[24591.426079] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[24591.723832] usb 1-2: new high-speed USB device number 19 using xhci_hcd
+[24591.877784] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[24591.877790] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[24591.877794] usb 1-2: Product: Nokia7.2
+[24591.877797] usb 1-2: Manufacturer: HMD Global
+[24591.877800] usb 1-2: SerialNumber: ...
+[24591.918022] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[24591.945385] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[24592.694313] usb 1-2: USB disconnect, device number 19
+[24592.694440] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[24593.010944] usb 1-2: new high-speed USB device number 20 using xhci_hcd
+[24593.158408] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[24593.158413] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[24593.158416] usb 1-2: Product: Nokia7.2
+[24593.158418] usb 1-2: Manufacturer: HMD Global
+[24593.158420] usb 1-2: SerialNumber: ...
+[24593.198996] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[24593.225004] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[24719.887184] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[24719.887192] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[24719.887193] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[24719.887195] pcieport 0000:00:01.7:    [12] Timeout               
+[25274.920411] usb 1-2: USB disconnect, device number 20
+[25274.920562] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[25275.207042] usb 1-2: new high-speed USB device number 21 using xhci_hcd
+[25275.353726] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[25275.353728] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[25275.353730] usb 1-2: Product: Nokia7.2
+[25275.353731] usb 1-2: Manufacturer: HMD Global
+[25275.353732] usb 1-2: SerialNumber: ...
+[25275.408715] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[25275.434388] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[25411.230152] usb 1-2: USB disconnect, device number 21
+[25411.230283] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[25411.500388] usb 1-2: new high-speed USB device number 22 using xhci_hcd
+[25411.647095] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[25411.647098] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[25411.647099] usb 1-2: Product: Nokia7.2
+[25411.647100] usb 1-2: Manufacturer: HMD Global
+[25411.647101] usb 1-2: SerialNumber: ...
+[25411.695393] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[25411.718439] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[26904.543741] usb 1-2: USB disconnect, device number 22
+[26904.543866] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[26904.850087] usb 1-2: new high-speed USB device number 23 using xhci_hcd
+[26904.996907] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[26904.996910] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[26904.996911] usb 1-2: Product: Nokia7.2
+[26904.996912] usb 1-2: Manufacturer: HMD Global
+[26904.996914] usb 1-2: SerialNumber: ...
+[26905.046702] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[26905.082116] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[26905.738222] usb 1-2: USB disconnect, device number 23
+[26905.738320] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[26906.026728] usb 1-2: new high-speed USB device number 24 using xhci_hcd
+[26906.170536] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[26906.170539] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[26906.170541] usb 1-2: Product: Nokia7.2
+[26906.170542] usb 1-2: Manufacturer: HMD Global
+[26906.170543] usb 1-2: SerialNumber: ...
+[26906.231710] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[26906.256947] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[26906.610599] usb 1-2: USB disconnect, device number 24
+[26906.610734] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[26906.893431] usb 1-2: new high-speed USB device number 25 using xhci_hcd
+[26908.406772] usb usb1-port2: Cannot enable. Maybe the USB cable is bad?
+[26908.530081] usb 1-2: new high-speed USB device number 26 using xhci_hcd
+[26908.676695] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[26908.676698] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[26908.676700] usb 1-2: Product: Nokia7.2
+[26908.676701] usb 1-2: Manufacturer: HMD Global
+[26908.676703] usb 1-2: SerialNumber: ...
+[26938.373508] usb 1-2: USB disconnect, device number 26
+[26938.910083] usb 1-2: new high-speed USB device number 27 using xhci_hcd
+[26939.055845] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[26939.055848] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[26939.055849] usb 1-2: Product: Nokia7.2
+[26939.055850] usb 1-2: Manufacturer: HMD Global
+[26939.055851] usb 1-2: SerialNumber: ...
+[26939.122965] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[26939.148266] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[28172.154398] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[28172.154407] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[28172.154408] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[28172.154410] pcieport 0000:00:01.7:    [12] Timeout               
+[28452.274515] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[28452.274524] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[28452.274527] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[28452.274529] pcieport 0000:00:01.7:    [12] Timeout               
+[29052.434688] Web Content invoked oom-killer: gfp_mask=0x100cca(GFP_HIGHUSER_MOVABLE), order=0, oom_score_adj=0
+[29052.434692] CPU: 1 PID: 122669 Comm: Web Content Tainted: G        W  OE     5.9.14-arch1-1 #1
+[29052.434693] Hardware name: Acer Aspire A315-41G/Metapod_RR, BIOS V1.18 06/18/2020
+[29052.434694] Call Trace:
+[29052.434702]  dump_stack+0x6b/0x83
+[29052.434705]  dump_header+0x4a/0x1f7
+[29052.434708]  oom_kill_process.cold+0xb/0x10
+[29052.434711]  out_of_memory+0x1a9/0x4d0
+[29052.434714]  __alloc_pages_slowpath.constprop.0+0xc3d/0xd10
+[29052.434718]  __alloc_pages_nodemask+0x2f2/0x320
+[29052.434720]  pagecache_get_page+0x14a/0x360
+[29052.434722]  filemap_fault+0x682/0x8f0
+[29052.434741]  ext4_filemap_fault+0x2d/0x40 [ext4]
+[29052.434744]  __do_fault+0x38/0xd0
+[29052.434745]  handle_mm_fault+0x1542/0x1a40
+[29052.434750]  do_user_addr_fault+0x1e3/0x420
+[29052.434753]  exc_page_fault+0x82/0x1c0
+[29052.434756]  ? asm_exc_page_fault+0x8/0x30
+[29052.434757]  asm_exc_page_fault+0x1e/0x30
+[29052.434760] RIP: 0033:0x7fb1994a2bf4
+[29052.434764] Code: Unable to access opcode bytes at RIP 0x7fb1994a2bca.
+[29052.434765] RSP: 002b:00007ffe87107db0 EFLAGS: 00010213
+[29052.434767] RAX: 000000000000036d RBX: 00007fb17c4ccec0 RCX: 00007fb19d5a8e60
+[29052.434768] RDX: 0000000000000003 RSI: 0000000000000003 RDI: 00007fb191276d30
+[29052.434769] RBP: 0000000000000000 R08: 0000000000000000 R09: 00000000ffffffff
+[29052.434770] R10: 00007fb17b4013e8 R11: 0000000000000001 R12: 00007fb17dd9a140
+[29052.434770] R13: 00007fb191276d30 R14: 00007ffe87107e00 R15: 00007ffe87107e90
+[29052.434773] Mem-Info:
+[29052.434777] active_anon:1364 inactive_anon:1082803 isolated_anon:0
+                active_file:80 inactive_file:360 isolated_file:37
+                unevictable:0 dirty:0 writeback:1
+                slab_reclaimable:11688 slab_unreclaimable:18552
+                mapped:48519 shmem:57937 pagetables:8300 bounce:0
+                free:23197 free_pcp:942 free_cma:0
+[29052.434780] Node 0 active_anon:5456kB inactive_anon:4331212kB active_file:320kB inactive_file:1440kB unevictable:0kB isolated(anon):0kB isolated(file):148kB mapped:194076kB dirty:0kB writeback:4kB shmem:231748kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:14416kB all_unreclaimable? no
+[29052.434781] Node 0 DMA free:14876kB min:216kB low:268kB high:320kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15900kB mlocked:0kB pagetables:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[29052.434784] lowmem_reserve[]: 0 1616 4801 4801 4801
+[29052.434786] Node 0 DMA32 free:35396kB min:22676kB low:28344kB high:34012kB reserved_highatomic:0KB active_anon:872kB inactive_anon:1549104kB active_file:0kB inactive_file:52kB unevictable:0kB writepending:0kB present:1730264kB managed:1729284kB mlocked:0kB pagetables:9000kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[29052.434789] lowmem_reserve[]: 0 0 3185 3185 3185
+[29052.434791] Node 0 Normal free:42516kB min:46736kB low:57908kB high:69080kB reserved_highatomic:0KB active_anon:4584kB inactive_anon:2781872kB active_file:136kB inactive_file:1364kB unevictable:0kB writepending:0kB present:3394816kB managed:3268092kB mlocked:0kB pagetables:24200kB bounce:0kB free_pcp:3768kB local_pcp:1468kB free_cma:0kB
+[29052.434794] lowmem_reserve[]: 0 0 0 0 0
+[29052.434796] Node 0 DMA: 3*4kB (U) 2*8kB (U) 2*16kB (U) 1*32kB (U) 1*64kB (U) 1*128kB (U) 1*256kB (U) 0*512kB 0*1024kB 1*2048kB (M) 3*4096kB (M) = 14876kB
+[29052.434803] Node 0 DMA32: 409*4kB (UME) 449*8kB (UME) 355*16kB (UME) 171*32kB (UME) 125*64kB (UME) 44*128kB (UME) 11*256kB (UME) 5*512kB (UM) 0*1024kB 0*2048kB 0*4096kB = 35388kB
+[29052.434809] Node 0 Normal: 1918*4kB (UE) 1013*8kB (UE) 639*16kB (UME) 134*32kB (UME) 150*64kB (UME) 26*128kB (UME) 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 43216kB
+[29052.434817] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[29052.434818] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[29052.434818] 58483 total pagecache pages
+[29052.434819] 0 pages in swap cache
+[29052.434820] Swap cache stats: add 0, delete 0, find 0/0
+[29052.434821] Free swap  = 0kB
+[29052.434821] Total swap = 0kB
+[29052.434822] 1285268 pages RAM
+[29052.434822] 0 pages HighMem/MovableOnly
+[29052.434823] 31949 pages reserved
+[29052.434823] 0 pages hwpoisoned
+[29052.434824] Tasks state (memory values in pages):
+[29052.434824] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[29052.434831] [    215]     0   215    17651      348   147456        0          -250 systemd-journal
+[29052.434834] [    232]     0   232     7575      731    77824        0         -1000 systemd-udevd
+[29052.434835] [    236]     0   236    19524       36    53248        0             0 lvmetad
+[29052.434839] [    453]    81   453     2151      458    61440        0          -900 dbus-daemon
+[29052.434841] [    454]     0   454    82887      826   151552        0             0 NetworkManager
+[29052.434843] [    455]     0   455     3572      262    69632        0             0 systemd-logind
+[29052.434844] [    460]     0   460    34916      406   122880        0             0 sddm
+[29052.434846] [    467]     0   467   272881    21842   663552        0             0 Xorg
+[29052.434848] [    468]     0   468     3718      280    69632        0             0 wpa_supplicant
+[29052.434849] [    515]     0   515    98935      742   126976        0             0 udisksd
+[29052.434851] [    519]   102   519   677019     1317   225280        0             0 polkitd
+[29052.434852] [    538]     0   538    62716      408   114688        0             0 upowerd
+[29052.434854] [    570]     0   570    15639      419   114688        0             0 sddm-helper
+[29052.434856] [    572]  1000   572     4004      455    69632        0             0 systemd
+[29052.434857] [    573]  1000   573     6749      688    73728        0             0 (sd-pam)
+[29052.434859] [    585]  1000   585    70052     1419   266240        0             0 kwalletd5
+[29052.434860] [    586]  1000   586    35431      482   139264        0             0 startplasma-x11
+[29052.434862] [    593]  1000   593     2015      364    49152        0             0 dbus-daemon
+[29052.434864] [    595]  1000   595    59097      293    94208        0             0 gvfsd
+[29052.434865] [    600]  1000   600   113444      206   106496        0             0 gvfsd-fuse
+[29052.434867] [    641]  1000   641      563       22    36864        0             0 start_kdeinit
+[29052.434868] [    643]  1000   643    26693      953   184320        0             0 kdeinit5
+[29052.434870] [    644]  1000   644    69787     1331   237568        0             0 klauncher
+[29052.434871] [    660]  1000   660   250273     3628   430080        0             0 kded5
+[29052.434873] [    664]  1000   664   438189     9911   811008        0             0 kwin_x11
+[29052.434874] [    669]  1000   669   135581     1367   237568        0             0 kactivitymanage
+[29052.434876] [    676]  1000   676    70361     1547   258048        0             0 ksmserver
+[29052.434877] [    677]  1000   677    69711     1590   253952        0             0 kglobalaccel5
+[29052.434879] [    686]  1000   686    70454     1421   253952        0             0 kaccess
+[29052.434880] [    688]  1000   688    56158      635   159744        0             0 xembedsniproxy
+[29052.434881] [    690]  1000   690   839958    53205  1372160        0             0 plasmashell
+[29052.434883] [    697]  1000   697   107464     1440   278528        0             0 polkit-kde-auth
+[29052.434885] [    714]  1000   714    56412      637   163840        0             0 gmenudbusmenupr
+[29052.434886] [    716]  1000   716   238597     3655   389120        0             0 DiscoverNotifie
+[29052.434888] [    723]  1000   723    38781      156    69632        0             0 dconf-service
+[29052.434889] [    730]  1000   730   177215     2562   315392        0             0 kdeconnectd
+[29052.434891] [    735]  1000   735    58294      105    81920        0             0 agent
+[29052.434892] [    737]  1000   737   204671     1758   274432        0             0 org_kde_powerde
+[29052.434894] [    745]  1000   745   128217     3131   180224        0             0 tracker-miner-r
+[29052.434895] [    747]  1000   747   152034     4669   356352        0             0 tracker-miner-f
+[29052.434897] [    748]  1000   748   648716     2446   196608        0             0 pulseaudio
+[29052.434898] [    767]   133   767    38422       73    61440        0             0 rtkit-daemon
+[29052.434900] [    800]  1000   800    59084      214    86016        0             0 gsettings-helpe
+[29052.434901] [    812]  1000   812    54508      648   151552        0             0 kscreen_backend
+[29052.434903] [    831]  1000   831   124244      524   147456        0             0 gvfs-udisks2-vo
+[29052.434904] [    849]  1000   849    11305      164    86016        0             0 obexd
+[29052.434906] [    970]     0   970    58985      275    90112        0             0 accounts-daemon
+[29052.434908] [    983]  1000   983    39743      186    73728        0             0 gvfsd-metadata
+[29052.434909] [    992]  1000   992    26784      959   176128        0             0 file.so
+[29052.434911] [    993]  1000   993    26784      959   176128        0             0 file.so
+[29052.434912] [    995]  1000   995  1122228   180965  3428352        0             0 firefox
+[29052.434914] [   1156]  1000  1156    76085      220    81920        0             0 at-spi-bus-laun
+[29052.434915] [   1213]  1000  1213   830873    60758  2564096        0             0 Web Content
+[29052.434917] [   1277]  1000  1277   625307     8096   696320        0             0 Privileged Cont
+[29052.434918] [   1321]  1000  1321   753946    94280  2322432        0             0 WebExtensions
+[29052.434920] [   1380]  1000  1380   917028   109024  3739648        0             0 Web Content
+[29052.434921] [   2220]  1000  2220    77664      333    98304        0             0 gvfsd-trash
+[29052.434923] [   2229]  1000  2229     1777      110    61440        0             0 dbus-daemon
+[29052.434925] [   2230]  1000  2230   118253      634   139264        0             0 xdg-desktop-por
+[29052.434926] [   2234]  1000  2234   132057      213   114688        0             0 xdg-document-po
+[29052.434928] [   2237]  1000  2237    58220      187    86016        0             0 xdg-permission-
+[29052.434929] [   2242]  1000  2242      610       27    40960        0             0 fusermount
+[29052.434931] [   2253]  1000  2253    88305     1353   258048        0             0 xdg-desktop-por
+[29052.434932] [   2258]  1000  2258    22660      287    65536        0             0 pipewire
+[29052.434934] [   2260]  1000  2260    20638      242    61440        0             0 pipewire-media-
+[29052.434935] [   2266]  1000  2266    40168      238    73728        0             0 at-spi2-registr
+[29052.434937] [   5652]  1000  5652   248061     8307   344064        0             0 nautilus
+[29052.434938] [   6063]  1000  6063    58184      187    81920        0             0 flatpak-session
+[29052.434940] [   6068]  1000  6068     1761       74    53248        0             0 p11-kit-server
+[29052.434941] [   7249]  1000  7249    83714     2038   409600        0             0 RDD Process
+[29052.434943] [  12877]  1000 12877   727849    11132   929792        0             0 krunner
+[29052.434945] [  85258]  1000 85258  2344654    67512  2789376        0             0 Web Content
+[29052.434946] [  90365]  1000 90365      606       22    45056        0             0 bwrap
+[29052.434948] [  90379]  1000 90379      606       21    45056        0             0 bwrap
+[29052.434949] [  90380]  1000 90380    20278       80    61440        0             0 xdg-dbus-proxy
+[29052.434951] [  90382]  1000 90382      672       70    45056        0             0 bwrap
+[29052.434953] [  90392]  1000 90392     1893      123    57344        0             0 wps
+[29052.434954] [  90399]  1000 90399   181669    59890  1339392        0             0 wps
+[29052.434956] [ 100049]  1000 100049   578163    12252   856064        0             0 systemsettings5
+[29052.434957] [ 101314]  1000 101314   685513    39603  1343488        0             0 Web Content
+[29052.434959] [ 107604]  1000 107604   686942    47508  1339392        0             0 Web Content
+[29052.434960] [ 107721]  1000 107721   718499    66066  1634304        0             0 Web Content
+[29052.434962] [ 122669]  1000 122669   812177    96904  2707456        0             0 Web Content
+[29052.434964] [ 141252]  1000 141252   830788    91932  2826240        0             0 Web Content
+[29052.434966] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service,task=firefox,pid=995,uid=1000
+[29052.435137] Out of memory: Killed process 995 (firefox) total-vm:4488912kB, anon-rss:654696kB, file-rss:0kB, shmem-rss:69164kB, UID:1000 pgtables:3348kB oom_score_adj:0
+[29052.507191] oom_reaper: reaped process 995 (firefox), now anon-rss:0kB, file-rss:0kB, shmem-rss:68408kB
+[31015.682725] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[31015.682735] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[31015.682738] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[31015.682742] pcieport 0000:00:01.7:    [12] Timeout               
+[32335.552301] usb 1-2: USB disconnect, device number 27
+[32335.552469] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[32335.862371] usb 1-2: new high-speed USB device number 28 using xhci_hcd
+[32336.009704] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32336.009708] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32336.009711] usb 1-2: Product: Nokia7.2
+[32336.009713] usb 1-2: Manufacturer: HMD Global
+[32336.009715] usb 1-2: SerialNumber: ...
+[32336.059931] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[32336.503295] usb 1-2: USB disconnect, device number 28
+[32336.503371] rndis_host 1-2:1.0 usb0: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[32337.619067] usb 1-2: new high-speed USB device number 29 using xhci_hcd
+[32337.763376] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32337.763381] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32337.763383] usb 1-2: Product: Nokia7.2
+[32337.763385] usb 1-2: Manufacturer: HMD Global
+[32337.763387] usb 1-2: SerialNumber: ...
+[32337.824457] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[32338.238029] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[32338.256746] usb 1-2: USB disconnect, device number 29
+[32338.256827] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[32338.549039] usb 1-2: new high-speed USB device number 30 using xhci_hcd
+[32338.693334] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32338.693338] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32338.693340] usb 1-2: Product: Nokia7.2
+[32338.693342] usb 1-2: Manufacturer: HMD Global
+[32338.693343] usb 1-2: SerialNumber: ...
+[32338.748334] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[32338.981940] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[32340.495812] usb 1-2: USB disconnect, device number 30
+[32340.495949] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[32340.792373] usb 1-2: new high-speed USB device number 31 using xhci_hcd
+[32340.936087] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32340.936091] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32340.936094] usb 1-2: Product: Nokia7.2
+[32340.936096] usb 1-2: Manufacturer: HMD Global
+[32340.936097] usb 1-2: SerialNumber: ...
+[32340.988810] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[32341.020700] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[32343.253778] usb 1-2: USB disconnect, device number 31
+[32343.253912] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[32343.542780] usb 1-2: new high-speed USB device number 32 using xhci_hcd
+[32343.689386] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32343.689391] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32343.689394] usb 1-2: Product: Nokia7.2
+[32343.689396] usb 1-2: Manufacturer: HMD Global
+[32343.689398] usb 1-2: SerialNumber: ...
+[32343.741038] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[32343.773195] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[32346.789553] usb 1-2: USB disconnect, device number 32
+[32346.789686] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[32347.092399] usb 1-2: new high-speed USB device number 33 using xhci_hcd
+[32347.237476] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32347.237480] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32347.237483] usb 1-2: Product: Nokia7.2
+[32347.237484] usb 1-2: Manufacturer: HMD Global
+[32347.237486] usb 1-2: SerialNumber: ...
+[32347.293038] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[32347.321553] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[32350.765321] usb 1-2: USB disconnect, device number 33
+[32350.765453] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[32351.069068] usb 1-2: new high-speed USB device number 34 using xhci_hcd
+[32351.214486] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32351.214491] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32351.214493] usb 1-2: Product: Nokia7.2
+[32351.214495] usb 1-2: Manufacturer: HMD Global
+[32351.214497] usb 1-2: SerialNumber: ...
+[32351.263360] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[32351.294028] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[32351.898934] usb 1-2: USB disconnect, device number 34
+[32351.899114] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[32352.212404] usb 1-2: new high-speed USB device number 35 using xhci_hcd
+[32352.358150] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32352.358155] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32352.358158] usb 1-2: Product: Nokia7.2
+[32352.358160] usb 1-2: Manufacturer: HMD Global
+[32352.358162] usb 1-2: SerialNumber: ...
+[32352.413654] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[32352.447328] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[32353.685959] usb 1-2: USB disconnect, device number 35
+[32353.686115] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[32353.975719] usb 1-2: new high-speed USB device number 36 using xhci_hcd
+[32354.119152] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32354.119157] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32354.119160] usb 1-2: Product: Nokia7.2
+[32354.119162] usb 1-2: Manufacturer: HMD Global
+[32354.119164] usb 1-2: SerialNumber: ...
+[32354.198295] usb 1-2: can't set config #1, error -71
+[32354.199559] usb 1-2: USB disconnect, device number 36
+[32354.455735] usb 1-2: new high-speed USB device number 37 using xhci_hcd
+[32354.599615] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[32354.599620] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[32354.599622] usb 1-2: Product: Nokia7.2
+[32354.599624] usb 1-2: Manufacturer: HMD Global
+[32354.599625] usb 1-2: SerialNumber: ...
+[32354.652118] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[32354.703890] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[33164.135383] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[33164.135393] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[33164.135396] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[33164.135399] pcieport 0000:00:01.7:    [12] Timeout               
+[34416.602444] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[34416.602455] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[34416.602458] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[34416.602461] pcieport 0000:00:01.7:    [12] Timeout               
+[35452.468949] usb 1-2: USB disconnect, device number 37
+[35452.469078] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[35713.252120] usb 1-2: new high-speed USB device number 38 using xhci_hcd
+[35713.396921] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[35713.396925] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[35713.396927] usb 1-2: Product: Nokia7.2
+[35713.396929] usb 1-2: Manufacturer: HMD Global
+[35713.396931] usb 1-2: SerialNumber: ...
+[35717.881012] usb 1-2: USB disconnect, device number 38
+[35718.308420] usb 1-2: new high-speed USB device number 39 using xhci_hcd
+[35718.452301] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[35718.452305] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[35718.452308] usb 1-2: Product: Nokia7.2
+[35718.452309] usb 1-2: Manufacturer: HMD Global
+[35718.452311] usb 1-2: SerialNumber: ...
+[35718.498073] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[35718.532770] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[41258.990915] acer_wmi: Unknown function number - 8 - 0
+[41269.304747] PM: suspend entry (deep)
+[41270.646801] Filesystems sync: 1.342 seconds
+[41270.697336] Freezing user space processes ... (elapsed 0.039 seconds) done.
+[41270.736710] OOM killer disabled.
+[41270.736711] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[41270.737936] printk: Suspending console(s) (use no_console_suspend to debug)
+[41270.770738] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[41270.944027] [drm] free PSP TMR buffer
+[41270.980709] sd 0:0:0:0: [sda] Stopping disk
+[41274.211979] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[41274.225155] amdgpu: can't get the mac of 5
+[41274.236574] amdgpu: VI should always have 2 performance levels
+[41274.298490] ACPI: EC: interrupt blocked
+[41274.427933] ACPI: Preparing to enter system sleep state S3
+[41274.428601] ACPI: EC: event blocked
+[41274.428603] ACPI: EC: EC stopped
+[41274.428604] PM: Saving platform NVS memory
+[41274.428906] Disabling non-boot CPUs ...
+[41274.430553] smpboot: CPU 1 is now offline
+[41274.432776] smpboot: CPU 2 is now offline
+[41274.434939] smpboot: CPU 3 is now offline
+[41274.436152] ACPI: Low-level resume complete
+[41274.436207] ACPI: EC: EC started
+[41274.436208] PM: Restoring platform NVS memory
+[41274.531439] Enabling non-boot CPUs ...
+[41274.531509] x86: Booting SMP configuration:
+[41274.531510] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[41274.531845] microcode: CPU1: patch_level=0x0810100b
+[41274.534076] ACPI: \_PR_.C001: Found 2 idle states
+[41274.534338] CPU1 is up
+[41274.534378] smpboot: Booting Node 0 Processor 2 APIC 0x2
+[41274.534743] microcode: CPU2: patch_level=0x0810100b
+[41274.536997] ACPI: \_PR_.C002: Found 2 idle states
+[41274.537264] CPU2 is up
+[41274.537288] smpboot: Booting Node 0 Processor 3 APIC 0x3
+[41274.537613] microcode: CPU3: patch_level=0x0810100b
+[41274.539858] ACPI: \_PR_.C003: Found 2 idle states
+[41274.540138] CPU3 is up
+[41274.540701] ACPI: Waking up from system sleep state S3
+[41274.541465] ACPI: EC: interrupt unblocked
+[41274.677888] ACPI: EC: event unblocked
+[41274.679484] pcieport 0000:00:01.7: AER: Multiple Corrected error received: 0000:00:01.0
+[41274.679495] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Receiver ID)
+[41274.679496] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00000040/00006000
+[41274.679499] pcieport 0000:00:01.7:    [ 6] BadTLP                
+[41274.679932] [drm] PCIE GART of 1024M enabled (table at 0x000000F400900000).
+[41274.680005] [drm] PSP is resuming...
+[41274.694780] sd 0:0:0:0: [sda] Starting disk
+[41274.750907] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[41274.760781] [drm] reserve 0x400000 from 0xf43fc00000 for PSP TMR
+[41274.766180] amdgpu: can't get the mac of 5
+[41274.925009] usb 1-4: reset full-speed USB device number 3 using xhci_hcd
+[41274.943154] amdgpu 0000:04:00.0: amdgpu: RAS: optional ras ta ucode is not available
+[41274.964821] [drm] kiq ring mec 2 pipe 1 q 0
+[41274.965555] amdgpu: dpm has been enabled
+[41274.979574] usb 3-1: reset high-speed USB device number 2 using xhci_hcd
+[41275.160888] [drm] VCN decode and encode initialized successfully(under SPG Mode).
+[41275.160917] amdgpu 0000:04:00.0: amdgpu: ring gfx uses VM inv eng 0 on hub 0
+[41275.160919] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+[41275.160920] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+[41275.160922] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+[41275.160923] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+[41275.160925] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+[41275.160926] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+[41275.160928] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+[41275.160929] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+[41275.160930] amdgpu 0000:04:00.0: amdgpu: ring kiq_2.1.0 uses VM inv eng 11 on hub 0
+[41275.160931] amdgpu 0000:04:00.0: amdgpu: ring sdma0 uses VM inv eng 0 on hub 1
+[41275.160933] amdgpu 0000:04:00.0: amdgpu: ring vcn_dec uses VM inv eng 1 on hub 1
+[41275.160934] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc0 uses VM inv eng 4 on hub 1
+[41275.160935] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc1 uses VM inv eng 5 on hub 1
+[41275.160936] amdgpu 0000:04:00.0: amdgpu: ring jpeg_dec uses VM inv eng 6 on hub 1
+[41276.803109] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[41276.951111] ata1.00: configured for UDMA/100
+[41277.471507] OOM killer enabled.
+[41277.471509] Restarting tasks ... 
+[41277.471614] usb 1-2: USB disconnect, device number 39
+[41277.471710] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[41277.474301] done.
+[41277.476601] PM: suspend exit
+[41277.900846] Bluetooth: hci0: using rampatch file: qca/rampatch_usb_00000302.bin
+[41277.900852] Bluetooth: hci0: QCA: patch rome 0x302 build 0x3e8, firmware rome 0x302 build 0x111
+[41277.979834] Generic FE-GE Realtek PHY r8169-201:00: attached PHY driver [Generic FE-GE Realtek PHY] (mii_bus:phy_addr=r8169-201:00, irq=IGNORE)
+[41278.042407] Bluetooth: hci0: using NVM file: qca/nvm_usb_00000302.bin
+[41278.169866] r8169 0000:02:00.1 enp2s0f1: Link is Down
+[41279.243464] acpi AMDI0010:01: Already enumerated
+[41283.729921] amdgpu: VI should always have 2 performance levels
+[41284.143142] usb 1-2: new high-speed USB device number 40 using xhci_hcd
+[41284.263384] acpi AMDI0010:01: Already enumerated
+[41284.286963] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[41284.286968] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[41284.286971] usb 1-2: Product: Nokia7.2
+[41284.286973] usb 1-2: Manufacturer: HMD Global
+[41284.286975] usb 1-2: SerialNumber: ...
+[41294.194090] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[41294.194100] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[41294.194103] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[41294.194106] pcieport 0000:00:01.7:    [12] Timeout               
+[41294.276866] usb 1-2: USB disconnect, device number 40
+[41294.566477] usb 1-2: new high-speed USB device number 41 using xhci_hcd
+[41294.711138] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[41294.711143] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[41294.711146] usb 1-2: Product: Nokia7.2
+[41294.711148] usb 1-2: Manufacturer: HMD Global
+[41294.711150] usb 1-2: SerialNumber: ...
+[41295.282824] usb 1-2: USB disconnect, device number 41
+[41943.646717] usb 1-2: new high-speed USB device number 42 using xhci_hcd
+[41943.790184] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[41943.790189] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[41943.790191] usb 1-2: Product: Nokia7.2
+[41943.790193] usb 1-2: Manufacturer: HMD Global
+[41943.790195] usb 1-2: SerialNumber: ...
+[41948.736719] usb 1-2: USB disconnect, device number 42
+[41949.096701] usb 1-2: new high-speed USB device number 43 using xhci_hcd
+[41949.240319] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[41949.240324] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[41949.240327] usb 1-2: Product: Nokia7.2
+[41949.240329] usb 1-2: Manufacturer: HMD Global
+[41949.240331] usb 1-2: SerialNumber: ...
+[41954.392831] usb 1-2: USB disconnect, device number 43
+[41954.682976] usb 1-2: new high-speed USB device number 44 using xhci_hcd
+[41954.827828] usb 1-2: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[41954.827833] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[41954.827836] usb 1-2: Product: Nokia7.2
+[41954.827838] usb 1-2: Manufacturer: HMD Global
+[41954.827840] usb 1-2: SerialNumber: ...
+[41960.087735] usb 1-2: USB disconnect, device number 44
+[41960.549680] usb 1-2: new high-speed USB device number 45 using xhci_hcd
+[41960.693726] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[41960.693730] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[41960.693733] usb 1-2: Product: Nokia7.2
+[41960.693735] usb 1-2: Manufacturer: HMD Global
+[41960.693737] usb 1-2: SerialNumber: ...
+[41960.734164] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[41960.769667] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[41961.103871] usb 1-2: USB disconnect, device number 45
+[41961.103986] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[41961.399696] usb 1-2: new high-speed USB device number 46 using xhci_hcd
+[41961.543466] usb 1-2: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[41961.543470] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[41961.543473] usb 1-2: Product: Nokia7.2
+[41961.543475] usb 1-2: Manufacturer: HMD Global
+[41961.543477] usb 1-2: SerialNumber: ...
+[41961.599895] rndis_host 1-2:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-2, RNDIS device, XX:XX:XX:XX:XX:XX
+[41961.630644] rndis_host 1-2:1.0 enp4s0f3u2: renamed from usb0
+[42887.451479] acer_wmi: Unknown function number - 8 - 1
+[43357.129412] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[43357.129421] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[43357.129423] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[43357.129424] pcieport 0000:00:01.7:    [12] Timeout               
+[44666.106262] PM: suspend entry (deep)
+[44666.848633] Filesystems sync: 0.742 seconds
+[44666.848900] Freezing user space processes ... (elapsed 0.002 seconds) done.
+[44666.851195] OOM killer disabled.
+[44666.851195] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[44666.852479] printk: Suspending console(s) (use no_console_suspend to debug)
+[44666.882496] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[44667.049431] [drm] free PSP TMR buffer
+[44667.115382] sd 0:0:0:0: [sda] Stopping disk
+[44670.306020] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[44670.318517] amdgpu: can't get the mac of 5
+[44670.329976] amdgpu: VI should always have 2 performance levels
+[44670.391776] ACPI: EC: interrupt blocked
+[44670.523075] ACPI: Preparing to enter system sleep state S3
+[44670.523743] ACPI: EC: event blocked
+[44670.523744] ACPI: EC: EC stopped
+[44670.523745] PM: Saving platform NVS memory
+[44670.524034] Disabling non-boot CPUs ...
+[44670.525473] smpboot: CPU 1 is now offline
+[44670.527236] smpboot: CPU 2 is now offline
+[44670.528897] smpboot: CPU 3 is now offline
+[44670.529847] ACPI: Low-level resume complete
+[44670.529903] ACPI: EC: EC started
+[44670.529904] PM: Restoring platform NVS memory
+[44670.625135] Enabling non-boot CPUs ...
+[44670.625204] x86: Booting SMP configuration:
+[44670.625205] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[44670.625542] microcode: CPU1: patch_level=0x0810100b
+[44670.627758] ACPI: \_PR_.C001: Found 2 idle states
+[44670.628009] CPU1 is up
+[44670.628096] smpboot: Booting Node 0 Processor 2 APIC 0x2
+[44670.628461] microcode: CPU2: patch_level=0x0810100b
+[44670.630707] ACPI: \_PR_.C002: Found 2 idle states
+[44670.630974] CPU2 is up
+[44670.631007] smpboot: Booting Node 0 Processor 3 APIC 0x3
+[44670.631337] microcode: CPU3: patch_level=0x0810100b
+[44670.633568] ACPI: \_PR_.C003: Found 2 idle states
+[44670.633850] CPU3 is up
+[44670.634433] ACPI: Waking up from system sleep state S3
+[44670.635233] ACPI: EC: interrupt unblocked
+[44670.769467] ACPI: EC: event unblocked
+[44670.771688] [drm] PCIE GART of 1024M enabled (table at 0x000000F400900000).
+[44670.771747] [drm] PSP is resuming...
+[44670.780100] sd 0:0:0:0: [sda] Starting disk
+[44670.815782] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[44670.826617] [drm] reserve 0x400000 from 0xf43fc00000 for PSP TMR
+[44670.828417] amdgpu: can't get the mac of 5
+[44671.004843] amdgpu 0000:04:00.0: amdgpu: RAS: optional ras ta ucode is not available
+[44671.010332] usb 1-4: reset full-speed USB device number 3 using xhci_hcd
+[44671.027257] [drm] kiq ring mec 2 pipe 1 q 0
+[44671.027588] amdgpu: dpm has been enabled
+[44671.059066] usb 3-1: reset high-speed USB device number 2 using xhci_hcd
+[44671.222444] [drm] VCN decode and encode initialized successfully(under SPG Mode).
+[44671.222467] amdgpu 0000:04:00.0: amdgpu: ring gfx uses VM inv eng 0 on hub 0
+[44671.222469] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+[44671.222470] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+[44671.222472] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+[44671.222473] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+[44671.222474] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+[44671.222476] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+[44671.222477] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+[44671.222478] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+[44671.222479] amdgpu 0000:04:00.0: amdgpu: ring kiq_2.1.0 uses VM inv eng 11 on hub 0
+[44671.222480] amdgpu 0000:04:00.0: amdgpu: ring sdma0 uses VM inv eng 0 on hub 1
+[44671.222481] amdgpu 0000:04:00.0: amdgpu: ring vcn_dec uses VM inv eng 1 on hub 1
+[44671.222483] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc0 uses VM inv eng 4 on hub 1
+[44671.222483] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc1 uses VM inv eng 5 on hub 1
+[44671.222485] amdgpu 0000:04:00.0: amdgpu: ring jpeg_dec uses VM inv eng 6 on hub 1
+[44672.831840] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[44673.001965] ata1.00: configured for UDMA/100
+[44673.553548] OOM killer enabled.
+[44673.553549] Restarting tasks ... 
+[44673.559317] Bluetooth: hci0: using rampatch file: qca/rampatch_usb_00000302.bin
+[44673.559320] Bluetooth: hci0: QCA: patch rome 0x302 build 0x3e8, firmware rome 0x302 build 0x111
+[44673.571105] done.
+[44673.572937] PM: suspend exit
+[44673.633847] Bluetooth: hci0: using NVM file: qca/nvm_usb_00000302.bin
+[44673.678212] usb 1-1: new high-speed USB device number 47 using xhci_hcd
+[44673.821147] usb 1-1: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[44673.821151] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[44673.821153] usb 1-1: Product: Nokia7.2
+[44673.821155] usb 1-1: Manufacturer: HMD Global
+[44673.821157] usb 1-1: SerialNumber: ...
+[44673.877018] usb 1-2: USB disconnect, device number 46
+[44673.877075] rndis_host 1-2:1.0 enp4s0f3u2: unregister 'rndis_host' usb-0000:04:00.3-2, RNDIS device
+[44673.944907] Generic FE-GE Realtek PHY r8169-201:00: attached PHY driver [Generic FE-GE Realtek PHY] (mii_bus:phy_addr=r8169-201:00, irq=IGNORE)
+[44674.144975] r8169 0000:02:00.1 enp2s0f1: Link is Down
+[44674.254694] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[44674.254702] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Receiver ID)
+[44674.254704] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00000040/00006000
+[44674.254706] pcieport 0000:00:01.7:    [ 6] BadTLP                
+[44675.275108] acpi AMDI0010:01: Already enumerated
+[44679.739302] amdgpu: VI should always have 2 performance levels
+[44680.301796] acpi AMDI0010:01: Already enumerated
+[44686.908274] pcieport 0000:00:01.7: AER: Corrected error received: 0000:00:01.0
+[44686.908285] pcieport 0000:00:01.7: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Transmitter ID)
+[44686.908288] pcieport 0000:00:01.7:   device [1022:15d3] error status/mask=00001000/00006000
+[44686.908290] pcieport 0000:00:01.7:    [12] Timeout               
+[45648.210945] usb 1-1: USB disconnect, device number 47
+[45648.538391] usb 1-1: new high-speed USB device number 48 using xhci_hcd
+[45648.681520] usb 1-1: New USB device found, idVendor=2e04, idProduct=c025, bcdDevice= 4.04
+[45648.681524] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[45648.681527] usb 1-1: Product: Nokia7.2
+[45648.681529] usb 1-1: Manufacturer: HMD Global
+[45648.681531] usb 1-1: SerialNumber: ...
+[45662.988720] usb 1-1: USB disconnect, device number 48
+[45663.418036] usb 1-1: new high-speed USB device number 49 using xhci_hcd
+[45663.562801] usb 1-1: New USB device found, idVendor=2e04, idProduct=c022, bcdDevice= 4.04
+[45663.562806] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[45663.562808] usb 1-1: Product: Nokia7.2
+[45663.562810] usb 1-1: Manufacturer: HMD Global
+[45663.562812] usb 1-1: SerialNumber: ...
+[45663.612645] rndis_host 1-1:1.0 usb0: register 'rndis_host' at usb-0000:04:00.3-1, RNDIS device, XX:XX:XX:XX:XX:XX
+[45663.641880] rndis_host 1-1:1.0 enp4s0f3u1: renamed from usb0
+[45944.258473] [drm] PCIE GART of 256M enabled (table at 0x000000F400000000).
+[45944.271398] amdgpu: can't get the mac of 5
