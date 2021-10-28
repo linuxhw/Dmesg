@@ -1,0 +1,64 @@
+[ 6542.465563] printk: hwinfo (476747): Attempt to access syslog with CAP_SYS_ADMIN but no CAP_SYSLOG (deprecated).
+[ 6542.929867] nouveau 0000:01:00.0: Enabling HDA controller
+[ 6545.038099] ------------[ cut here ]------------
+[ 6545.038101] nouveau 0000:01:00.0: timeout
+[ 6545.038118] WARNING: CPU: 2 PID: 476747 at drivers/gpu/drm/nouveau/nvkm/subdev/pmu/base.c:107 nvkm_pmu_reset+0x151/0x170 [nouveau]
+[ 6545.038174] Modules linked in: rfcomm ccm cmac snd_soc_skl_hda_dsp algif_hash overlay algif_skcipher snd_soc_hdac_hdmi af_alg bnep snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi snd_hda_intel snd_intel_dspcfg soundwire_intel mei_hdcp intel_rapl_msr soundwire_generic_allocation soundwire_cadence snd_hda_codec snd_hda_core snd_hwdep soundwire_bus dell_laptop x86_pkg_temp_thermal ledtrig_audio intel_powerclamp dell_smm_hwmon snd_soc_core coretemp kvm_intel snd_compress ac97_bus snd_pcm_dmaengine kvm crct10dif_pclmul nls_iso8859_1 ghash_clmulni_intel snd_pcm aesni_intel crypto_simd cryptd dell_wmi glue_helper dell_smbios rapl snd_seq_midi nouveau dcdbas intel_cstate snd_seq_midi_event i915 iwlmvm snd_rawmidi mxm_wmi drm_ttm_helper efi_pstore snd_seq mac80211 snd_seq_device
+[ 6545.038203]  snd_timer btusb serio_raw uvcvideo snd btrtl ttm btbcm dell_wmi_sysman dell_wmi_descriptor wmi_bmof intel_wmi_thunderbolt btintel libarc4 videobuf2_vmalloc soundcore videobuf2_memops drm_kms_helper videobuf2_v4l2 bluetooth iwlwifi cec videobuf2_common rc_core processor_thermal_device videodev i2c_algo_bit processor_thermal_rfim fb_sys_fops processor_thermal_mbox input_leds joydev mc ecdh_generic mei_me syscopyarea ucsi_acpi processor_thermal_rapl intel_rapl_common sysfillrect typec_ucsi cros_ec_ishtp cfg80211 hid_multitouch ecc sysimgblt mei cros_ec intel_soc_dts_iosf intel_pch_thermal typec mac_hid int3403_thermal int340x_thermal_zone soc_button_array intel_hid int3400_thermal acpi_thermal_rel acpi_pad acpi_tad sparse_keymap sch_fq_codel msr parport_pc ppdev lp parport drm ip_tables x_tables autofs4 usbhid hid_sensor_custom hid_sensor_hub intel_ishtp_loader intel_ishtp_hid hid_generic crc32_pclmul psmouse nvme nvme_core r8169 intel_lpss_pci realtek intel_lpss i2c_i801 ahci
+[ 6545.038240]  idma64 i2c_smbus intel_ish_ipc virt_dma xhci_pci libahci intel_ishtp xhci_pci_renesas i2c_hid hid wmi video pinctrl_cannonlake
+[ 6545.038246] CPU: 2 PID: 476747 Comm: hwinfo Tainted: G        W         5.11.0-16-generic #17-Ubuntu
+[ 6545.038248] Hardware name: Dell Inc. Vostro 5490/0M9F58, BIOS 1.12.1 11/20/2020
+[ 6545.038249] RIP: 0010:nvkm_pmu_reset+0x151/0x170 [nouveau]
+[ 6545.038295] Code: 45 b8 48 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 74 1e e8 41 48 87 ea 4c 89 ea 48 c7 c7 07 26 26 c1 48 89 c6 e8 7c 75 c8 ea <0f> 0b e9 4e ff ff ff 4c 8b 2f eb dd 4c 8b 27 eb a5 e8 69 4a ce ea
+[ 6545.038296] RSP: 0018:ffffacdfc380b9b8 EFLAGS: 00010286
+[ 6545.038298] RAX: 0000000000000000 RBX: ffff8b44cb758c00 RCX: ffff8b481c698ac8
+[ 6545.038299] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8b481c698ac0
+[ 6545.038300] RBP: ffffacdfc380ba00 R08: 0000000000000000 R09: ffffacdfc380b798
+[ 6545.038300] R10: ffffacdfc380b790 R11: ffffffffacf53508 R12: ffff8b44cdbd7e00
+[ 6545.038301] R13: ffff8b44c16a3250 R14: 000005f36c348bf2 R15: 0000000000000000
+[ 6545.038302] FS:  00007f23488b7780(0000) GS:ffff8b481c680000(0000) knlGS:0000000000000000
+[ 6545.038303] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 6545.038304] CR2: 00005613fc827d80 CR3: 000000016e5a0005 CR4: 00000000003706e0
+[ 6545.038305] Call Trace:
+[ 6545.038307]  nvkm_pmu_init+0x1b/0x40 [nouveau]
+[ 6545.038351]  nvkm_subdev_init+0x99/0xd0 [nouveau]
+[ 6545.038380]  ? ktime_get+0x3e/0xa0
+[ 6545.038383]  nvkm_device_init+0x8c/0x120 [nouveau]
+[ 6545.038428]  nvkm_udevice_init+0x48/0x60 [nouveau]
+[ 6545.038474]  nvkm_object_init+0x43/0x110 [nouveau]
+[ 6545.038502]  nvkm_object_init+0x74/0x110 [nouveau]
+[ 6545.038531]  nvkm_object_init+0x74/0x110 [nouveau]
+[ 6545.038559]  nvkm_client_resume+0xe/0x10 [nouveau]
+[ 6545.038607]  nvif_client_resume+0x1d/0x20 [nouveau]
+[ 6545.038634]  nouveau_do_resume+0x2f/0xc0 [nouveau]
+[ 6545.038682]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau]
+[ 6545.038729]  pci_pm_runtime_resume+0xad/0xd0
+[ 6545.038731]  ? pci_pm_freeze_noirq+0x110/0x110
+[ 6545.038733]  __rpm_callback+0x8c/0x160
+[ 6545.038735]  ? pci_pm_freeze_noirq+0x110/0x110
+[ 6545.038736]  rpm_callback+0x24/0x80
+[ 6545.038737]  ? pci_pm_freeze_noirq+0x110/0x110
+[ 6545.038738]  rpm_resume+0x524/0x7e0
+[ 6545.038740]  __pm_runtime_resume+0x52/0x80
+[ 6545.038741]  pci_config_pm_runtime_get+0x53/0x60
+[ 6545.038742]  pci_read_config+0x93/0x270
+[ 6545.038744]  ? __kmalloc+0x118/0x250
+[ 6545.038746]  ? kernfs_file_read_iter+0x141/0x190
+[ 6545.038748]  sysfs_kf_bin_read+0x62/0x70
+[ 6545.038749]  kernfs_file_read_iter+0xac/0x190
+[ 6545.038751]  kernfs_fop_read_iter+0x25/0x30
+[ 6545.038752]  new_sync_read+0x10d/0x190
+[ 6545.038754]  vfs_read+0x15a/0x1c0
+[ 6545.038756]  ksys_read+0x67/0xe0
+[ 6545.038757]  __x64_sys_read+0x1a/0x20
+[ 6545.038758]  do_syscall_64+0x38/0x90
+[ 6545.038761]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 6545.038763] RIP: 0033:0x7f2347eba320
+[ 6545.038765] Code: 0b 31 c0 48 83 c4 08 e9 ae fe ff ff 48 8d 3d 27 b4 09 00 e8 b2 1e 02 00 66 90 83 3d 29 24 2d 00 00 75 10 b8 00 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 5e de 01 00 48 89 04 24
+[ 6545.038766] RSP: 002b:00007ffe78c15978 EFLAGS: 00000246 ORIG_RAX: 0000000000000000
+[ 6545.038767] RAX: ffffffffffffffda RBX: 0000000000800c98 RCX: 00007f2347eba320
+[ 6545.038768] RDX: 0000000000000040 RSI: 0000000000800ae0 RDI: 0000000000000004
+[ 6545.038769] RBP: 0000000000800ad0 R08: 0000000000000000 R09: 0000000000000038
+[ 6545.038770] R10: 0000000000000031 R11: 0000000000000246 R12: 00000000007e0e70
+[ 6545.038770] R13: 0000000000000004 R14: 00007ffe78c15a08 R15: 0000000000777010
+[ 6545.038772] ---[ end trace ea2fcab5cb211f6a ]---
