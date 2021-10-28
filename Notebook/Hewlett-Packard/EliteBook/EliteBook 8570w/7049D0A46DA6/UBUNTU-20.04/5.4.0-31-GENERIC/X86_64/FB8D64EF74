@@ -1,0 +1,437 @@
+[ 7413.852723] ------------[ cut here ]------------
+[ 7413.852756] WARNING: CPU: 1 PID: 11481 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 7413.852757] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 qcserial intel_rapl_msr intel_rapl_common usb_wwan qmi_wwan cdc_wdm usbnet mii usbserial x86_pkg_temp_thermal intel_powerclamp snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi coretemp ledtrig_audio btusb snd_hda_intel snd_intel_dspcfg iwldvm kvm btrtl btbcm mac80211 snd_hda_codec snd_hda_core btintel libarc4 crct10dif_pclmul ghash_clmulni_intel nouveau snd_hwdep snd_pcm ttm bluetooth ecdh_generic ecc aesni_intel drm_kms_helper crypto_simd cryptd snd_seq_midi snd_seq_midi_event glue_helper i2c_algo_bit snd_rawmidi snd_seq fb_sys_fops syscopyarea iwlwifi sysfillrect mei_hdcp sysimgblt snd_seq_device snd_timer snd soundcore intel_cstate intel_rapl_perf mei_me mei cfg80211 joydev hp_wmi input_leds mac_hid sparse_keymap hp_wireless wmi_bmof mxm_wmi hp_accel tpm_infineon lis3lv02d input_polldev serio_raw sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic
+[ 7413.852780]  usbhid hid crc32_pclmul psmouse sdhci_pci ahci cqhci e1000e libahci i2c_i801 lpc_ich sdhci video wmi
+[ 7413.852786] CPU: 1 PID: 11481 Comm: chrome Tainted: G        W         5.4.0-31-generic #35-Ubuntu
+[ 7413.852787] Hardware name: Hewlett-Packard HP EliteBook 8570w/176B, BIOS 68IAV Ver. F.40 01/31/2013
+[ 7413.852812] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 7413.852814] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 ea d6 fc f1 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44
+[ 7413.852815] RSP: 0018:ffff9ddf00a07bc8 EFLAGS: 00010282
+[ 7413.852816] RAX: 00000000fffffffe RBX: ffff9ddf00a07bf8 RCX: 0000000000000000
+[ 7413.852817] RDX: 0000000000000010 RSI: ffff9ddf00a07b38 RDI: ffff9ddf00a07bd8
+[ 7413.852818] RBP: ffff9ddf00a07be8 R08: ffff916190f97620 R09: 0000000000000000
+[ 7413.852819] R10: 0000000000000001 R11: ffff916190f96c40 R12: ffff9ddf00a07c30
+[ 7413.852820] R13: ffff9161b38760b0 R14: 0000000000000000 R15: ffff916190f96c38
+[ 7413.852821] FS:  00007fd169194b00(0000) GS:ffff9161b5a40000(0000) knlGS:0000000000000000
+[ 7413.852822] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7413.852823] CR2: 0000560387caa000 CR3: 0000000202162003 CR4: 00000000001606e0
+[ 7413.852824] Call Trace:
+[ 7413.852856]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[ 7413.852885]  nouveau_gem_object_close+0x1f5/0x210 [nouveau]
+[ 7413.852898]  drm_gem_object_release_handle+0x35/0xa0 [drm]
+[ 7413.852909]  drm_gem_handle_delete+0x59/0xa0 [drm]
+[ 7413.852919]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[ 7413.852926]  drm_gem_close_ioctl+0x24/0x30 [drm]
+[ 7413.852933]  drm_ioctl_kernel+0xae/0xf0 [drm]
+[ 7413.852940]  drm_ioctl+0x234/0x3d0 [drm]
+[ 7413.852946]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[ 7413.852949]  ? evict+0x14c/0x1b0
+[ 7413.852978]  nouveau_drm_ioctl+0x78/0xc0 [nouveau]
+[ 7413.852980]  do_vfs_ioctl+0x407/0x670
+[ 7413.852983]  ? __secure_computing+0x42/0xe0
+[ 7413.852984]  ksys_ioctl+0x67/0x90
+[ 7413.852987]  __x64_sys_ioctl+0x1a/0x20
+[ 7413.852990]  do_syscall_64+0x57/0x190
+[ 7413.852993]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 7413.852994] RIP: 0033:0x7fd161e1d5d7
+[ 7413.852996] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[ 7413.852997] RSP: 002b:00007ffee8f27d78 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 7413.852999] RAX: ffffffffffffffda RBX: 0000560387c75e90 RCX: 00007fd161e1d5d7
+[ 7413.853000] RDX: 00007ffee8f27db0 RSI: 0000000040086409 RDI: 000000000000000d
+[ 7413.853001] RBP: 00007ffee8f27db0 R08: 0000000000000000 R09: 0000000000000002
+[ 7413.853001] R10: 00007fd15238e070 R11: 0000000000000246 R12: 0000000040086409
+[ 7413.853002] R13: 000000000000000d R14: 0000000000000001 R15: 0000000087c5ad00
+[ 7413.853004] ---[ end trace 94013e0aafc376e5 ]---
+[ 7413.853752] ------------[ cut here ]------------
+[ 7413.853782] WARNING: CPU: 3 PID: 11501 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 7413.853782] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 qcserial intel_rapl_msr intel_rapl_common usb_wwan qmi_wwan cdc_wdm usbnet mii usbserial x86_pkg_temp_thermal intel_powerclamp snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi coretemp ledtrig_audio btusb snd_hda_intel snd_intel_dspcfg iwldvm kvm btrtl btbcm mac80211 snd_hda_codec snd_hda_core btintel libarc4 crct10dif_pclmul ghash_clmulni_intel nouveau snd_hwdep snd_pcm ttm bluetooth ecdh_generic ecc aesni_intel drm_kms_helper crypto_simd cryptd snd_seq_midi snd_seq_midi_event glue_helper i2c_algo_bit snd_rawmidi snd_seq fb_sys_fops syscopyarea iwlwifi sysfillrect mei_hdcp sysimgblt snd_seq_device snd_timer snd soundcore intel_cstate intel_rapl_perf mei_me mei cfg80211 joydev hp_wmi input_leds mac_hid sparse_keymap hp_wireless wmi_bmof mxm_wmi hp_accel tpm_infineon lis3lv02d input_polldev serio_raw sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic
+[ 7413.853816]  usbhid hid crc32_pclmul psmouse sdhci_pci ahci cqhci e1000e libahci i2c_i801 lpc_ich sdhci video wmi
+[ 7413.853823] CPU: 3 PID: 11501 Comm: ThreadPoolForeg Tainted: G        W         5.4.0-31-generic #35-Ubuntu
+[ 7413.853824] Hardware name: Hewlett-Packard HP EliteBook 8570w/176B, BIOS 68IAV Ver. F.40 01/31/2013
+[ 7413.853849] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 7413.853851] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 ea d6 fc f1 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44
+[ 7413.853852] RSP: 0018:ffff9ddf011b7bc8 EFLAGS: 00010282
+[ 7413.853853] RAX: 00000000fffffffe RBX: ffff9ddf011b7bf8 RCX: 0000000000000000
+[ 7413.853854] RDX: 0000000000000010 RSI: ffff9ddf011b7b38 RDI: ffff9ddf011b7bd8
+[ 7413.853855] RBP: ffff9ddf011b7be8 R08: 0000000000000000 R09: 0000000000000000
+[ 7413.853856] R10: 0000000000000030 R11: ffff916190f96c40 R12: ffff9ddf011b7c30
+[ 7413.853857] R13: ffff9161b38760b0 R14: 0000000000000000 R15: ffff916190f96c38
+[ 7413.853858] FS:  00007fd1477fe700(0000) GS:ffff9161b5ac0000(0000) knlGS:0000000000000000
+[ 7413.853859] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7413.853860] CR2: 00007fd140019018 CR3: 0000000202162005 CR4: 00000000001606e0
+[ 7413.853861] Call Trace:
+[ 7413.853903]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[ 7413.853945]  nouveau_gem_object_close+0x1f5/0x210 [nouveau]
+[ 7413.853958]  drm_gem_object_release_handle+0x35/0xa0 [drm]
+[ 7413.853967]  drm_gem_handle_delete+0x59/0xa0 [drm]
+[ 7413.853977]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[ 7413.853987]  drm_gem_close_ioctl+0x24/0x30 [drm]
+[ 7413.853997]  drm_ioctl_kernel+0xae/0xf0 [drm]
+[ 7413.854007]  drm_ioctl+0x234/0x3d0 [drm]
+[ 7413.854016]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[ 7413.854019]  ? sock_sendmsg+0x65/0x70
+[ 7413.854021]  ? sock_write_iter+0x93/0xf0
+[ 7413.854062]  nouveau_drm_ioctl+0x78/0xc0 [nouveau]
+[ 7413.854064]  do_vfs_ioctl+0x407/0x670
+[ 7413.854068]  ? __secure_computing+0x42/0xe0
+[ 7413.854069]  ksys_ioctl+0x67/0x90
+[ 7413.854071]  __x64_sys_ioctl+0x1a/0x20
+[ 7413.854074]  do_syscall_64+0x57/0x190
+[ 7413.854076]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 7413.854078] RIP: 0033:0x7fd161e1d5d7
+[ 7413.854079] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[ 7413.854080] RSP: 002b:00007fd1477fd238 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 7413.854082] RAX: ffffffffffffffda RBX: 00007fd1400158f0 RCX: 00007fd161e1d5d7
+[ 7413.854083] RDX: 00007fd1477fd270 RSI: 0000000040086409 RDI: 000000000000000d
+[ 7413.854084] RBP: 00007fd1477fd270 R08: 00007fd1620f48b0 R09: 00007fd1477fe700
+[ 7413.854084] R10: 00007fd1400008d0 R11: 0000000000000246 R12: 0000000040086409
+[ 7413.854085] R13: 000000000000000d R14: 00007fd164239db0 R15: 0000000000000000
+[ 7413.854087] ---[ end trace 94013e0aafc376e6 ]---
+[ 8965.859901] perf: interrupt took too long (2501 > 2500), lowering kernel.perf_event_max_sample_rate to 79750
+[ 9478.307532] ------------[ cut here ]------------
+[ 9478.307573] WARNING: CPU: 5 PID: 14575 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 9478.307574] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 qcserial intel_rapl_msr intel_rapl_common usb_wwan qmi_wwan cdc_wdm usbnet mii usbserial x86_pkg_temp_thermal intel_powerclamp snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi coretemp ledtrig_audio btusb snd_hda_intel snd_intel_dspcfg iwldvm kvm btrtl btbcm mac80211 snd_hda_codec snd_hda_core btintel libarc4 crct10dif_pclmul ghash_clmulni_intel nouveau snd_hwdep snd_pcm ttm bluetooth ecdh_generic ecc aesni_intel drm_kms_helper crypto_simd cryptd snd_seq_midi snd_seq_midi_event glue_helper i2c_algo_bit snd_rawmidi snd_seq fb_sys_fops syscopyarea iwlwifi sysfillrect mei_hdcp sysimgblt snd_seq_device snd_timer snd soundcore intel_cstate intel_rapl_perf mei_me mei cfg80211 joydev hp_wmi input_leds mac_hid sparse_keymap hp_wireless wmi_bmof mxm_wmi hp_accel tpm_infineon lis3lv02d input_polldev serio_raw sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic
+[ 9478.307611]  usbhid hid crc32_pclmul psmouse sdhci_pci ahci cqhci e1000e libahci i2c_i801 lpc_ich sdhci video wmi
+[ 9478.307620] CPU: 5 PID: 14575 Comm: ThreadPoolForeg Tainted: G        W         5.4.0-31-generic #35-Ubuntu
+[ 9478.307621] Hardware name: Hewlett-Packard HP EliteBook 8570w/176B, BIOS 68IAV Ver. F.40 01/31/2013
+[ 9478.307650] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 9478.307652] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 ea d6 fc f1 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44
+[ 9478.307652] RSP: 0018:ffff9ddf01237bc8 EFLAGS: 00010282
+[ 9478.307654] RAX: 00000000fffffffe RBX: ffff9ddf01237bf8 RCX: 0000000000000000
+[ 9478.307655] RDX: 0000000000000010 RSI: ffff9ddf01237b38 RDI: ffff9ddf01237bd8
+[ 9478.307656] RBP: ffff9ddf01237be8 R08: 0000000000000000 R09: 0000000000000000
+[ 9478.307657] R10: 0000000000000030 R11: ffff9161abb25440 R12: ffff9ddf01237c30
+[ 9478.307657] R13: ffff9161b38760b0 R14: 0000000000000000 R15: ffff9161abb25438
+[ 9478.307659] FS:  00007fc6f0efb700(0000) GS:ffff9161b5b40000(0000) knlGS:0000000000000000
+[ 9478.307660] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 9478.307661] CR2: 00007fc6e4018018 CR3: 00000002062b6004 CR4: 00000000001606e0
+[ 9478.307662] Call Trace:
+[ 9478.307706]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[ 9478.307748]  nouveau_gem_object_close+0x1f5/0x210 [nouveau]
+[ 9478.307766]  drm_gem_object_release_handle+0x35/0xa0 [drm]
+[ 9478.307776]  drm_gem_handle_delete+0x59/0xa0 [drm]
+[ 9478.307786]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[ 9478.307796]  drm_gem_close_ioctl+0x24/0x30 [drm]
+[ 9478.307806]  drm_ioctl_kernel+0xae/0xf0 [drm]
+[ 9478.307817]  drm_ioctl+0x234/0x3d0 [drm]
+[ 9478.307826]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[ 9478.307830]  ? sock_sendmsg+0x65/0x70
+[ 9478.307831]  ? sock_write_iter+0x93/0xf0
+[ 9478.307874]  nouveau_drm_ioctl+0x78/0xc0 [nouveau]
+[ 9478.307876]  do_vfs_ioctl+0x407/0x670
+[ 9478.307879]  ? __secure_computing+0x42/0xe0
+[ 9478.307881]  ksys_ioctl+0x67/0x90
+[ 9478.307882]  __x64_sys_ioctl+0x1a/0x20
+[ 9478.307885]  do_syscall_64+0x57/0x190
+[ 9478.307888]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 9478.307890] RIP: 0033:0x7fc7073845d7
+[ 9478.307891] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[ 9478.307892] RSP: 002b:00007fc6f0efa238 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 9478.307893] RAX: ffffffffffffffda RBX: 00007fc6e4015ef0 RCX: 00007fc7073845d7
+[ 9478.307894] RDX: 00007fc6f0efa270 RSI: 0000000040086409 RDI: 000000000000000d
+[ 9478.307895] RBP: 00007fc6f0efa270 R08: 00007fc70765b8b0 R09: 00007fc6f0efb700
+[ 9478.307896] R10: 00007fc6e40008d0 R11: 0000000000000246 R12: 0000000040086409
+[ 9478.307897] R13: 000000000000000d R14: 00007fc7097a0db0 R15: 0000000000000000
+[ 9478.307899] ---[ end trace 94013e0aafc376e7 ]---
+[ 9478.308288] ------------[ cut here ]------------
+[ 9478.308317] WARNING: CPU: 5 PID: 14575 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 9478.308317] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 qcserial intel_rapl_msr intel_rapl_common usb_wwan qmi_wwan cdc_wdm usbnet mii usbserial x86_pkg_temp_thermal intel_powerclamp snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi coretemp ledtrig_audio btusb snd_hda_intel snd_intel_dspcfg iwldvm kvm btrtl btbcm mac80211 snd_hda_codec snd_hda_core btintel libarc4 crct10dif_pclmul ghash_clmulni_intel nouveau snd_hwdep snd_pcm ttm bluetooth ecdh_generic ecc aesni_intel drm_kms_helper crypto_simd cryptd snd_seq_midi snd_seq_midi_event glue_helper i2c_algo_bit snd_rawmidi snd_seq fb_sys_fops syscopyarea iwlwifi sysfillrect mei_hdcp sysimgblt snd_seq_device snd_timer snd soundcore intel_cstate intel_rapl_perf mei_me mei cfg80211 joydev hp_wmi input_leds mac_hid sparse_keymap hp_wireless wmi_bmof mxm_wmi hp_accel tpm_infineon lis3lv02d input_polldev serio_raw sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic
+[ 9478.308347]  usbhid hid crc32_pclmul psmouse sdhci_pci ahci cqhci e1000e libahci i2c_i801 lpc_ich sdhci video wmi
+[ 9478.308354] CPU: 5 PID: 14575 Comm: ThreadPoolForeg Tainted: G        W         5.4.0-31-generic #35-Ubuntu
+[ 9478.308355] Hardware name: Hewlett-Packard HP EliteBook 8570w/176B, BIOS 68IAV Ver. F.40 01/31/2013
+[ 9478.308380] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[ 9478.308381] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 ea d6 fc f1 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44
+[ 9478.308382] RSP: 0018:ffff9ddf01237bc8 EFLAGS: 00010282
+[ 9478.308383] RAX: 00000000fffffffe RBX: ffff9ddf01237bf8 RCX: 0000000000000000
+[ 9478.308384] RDX: 0000000000000010 RSI: ffff9ddf01237b38 RDI: ffff9ddf01237bd8
+[ 9478.308385] RBP: ffff9ddf01237be8 R08: 0000000000000000 R09: 0000000000000000
+[ 9478.308386] R10: 0000000000000030 R11: ffff9161abb25440 R12: ffff9ddf01237c30
+[ 9478.308386] R13: ffff9161b38760b0 R14: 0000000000000000 R15: ffff9161abb25438
+[ 9478.308388] FS:  00007fc6f0efb700(0000) GS:ffff9161b5b40000(0000) knlGS:0000000000000000
+[ 9478.308389] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 9478.308390] CR2: 00007fc6e4019108 CR3: 00000002062b6004 CR4: 00000000001606e0
+[ 9478.308390] Call Trace:
+[ 9478.308432]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[ 9478.308473]  nouveau_gem_object_close+0x1f5/0x210 [nouveau]
+[ 9478.308485]  drm_gem_object_release_handle+0x35/0xa0 [drm]
+[ 9478.308495]  drm_gem_handle_delete+0x59/0xa0 [drm]
+[ 9478.308505]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[ 9478.308515]  drm_gem_close_ioctl+0x24/0x30 [drm]
+[ 9478.308525]  drm_ioctl_kernel+0xae/0xf0 [drm]
+[ 9478.308535]  drm_ioctl+0x234/0x3d0 [drm]
+[ 9478.308545]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[ 9478.308547]  ? sock_sendmsg+0x65/0x70
+[ 9478.308549]  ? sock_write_iter+0x93/0xf0
+[ 9478.308590]  nouveau_drm_ioctl+0x78/0xc0 [nouveau]
+[ 9478.308592]  do_vfs_ioctl+0x407/0x670
+[ 9478.308595]  ? __secure_computing+0x42/0xe0
+[ 9478.308596]  ksys_ioctl+0x67/0x90
+[ 9478.308598]  __x64_sys_ioctl+0x1a/0x20
+[ 9478.308600]  do_syscall_64+0x57/0x190
+[ 9478.308602]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 9478.308604] RIP: 0033:0x7fc7073845d7
+[ 9478.308605] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[ 9478.308606] RSP: 002b:00007fc6f0efa238 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 9478.308607] RAX: ffffffffffffffda RBX: 00007fc6e4018cc0 RCX: 00007fc7073845d7
+[ 9478.308608] RDX: 00007fc6f0efa270 RSI: 0000000040086409 RDI: 000000000000000d
+[ 9478.308609] RBP: 00007fc6f0efa270 R08: 00007fc70765b8b0 R09: 00007fc6f0efb700
+[ 9478.308610] R10: 00007fc6e40008d0 R11: 0000000000000246 R12: 0000000040086409
+[ 9478.308610] R13: 000000000000000d R14: 00007fc7097a0db0 R15: 0000000000000000
+[ 9478.308612] ---[ end trace 94013e0aafc376e8 ]---
+[ 9714.270198] input: ... (AVRCP) as /devices/virtual/input/input24
+[11572.294456] perf: interrupt took too long (3138 > 3126), lowering kernel.perf_event_max_sample_rate to 63500
+[15133.154404] perf: interrupt took too long (3945 > 3922), lowering kernel.perf_event_max_sample_rate to 50500
+[19731.915387] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[19731.916932] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[19731.934736] wlo1: authenticated
+[19731.934839] wlo1: waiting for beacon from XX:XX:XX:XX:XX:XX
+[19735.389498] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[19735.391649] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[19735.529326] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[19735.637378] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[19735.645810] wlo1: authenticated
+[19735.646136] wlo1: waiting for beacon from XX:XX:XX:XX:XX:XX
+[19739.123775] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[19739.128544] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[19739.233366] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[19739.238641] wlo1: authenticated
+[19739.238996] wlo1: waiting for beacon from XX:XX:XX:XX:XX:XX
+[19750.168915] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[19750.175557] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[19750.194500] wlo1: authenticated
+[19750.194846] wlo1: waiting for beacon from XX:XX:XX:XX:XX:XX
+[19764.219697] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[19764.223906] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[19764.233898] wlo1: authenticated
+[19764.237427] wlo1: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[19764.249263] wlo1: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1431 status=0 aid=1)
+[19764.276684] wlo1: associated
+[19764.432183] wlo1: Limiting TX power to 20 (20 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[19765.297186] IPv6: ADDRCONF(NETDEV_CHANGE): wlo1: link becomes ready
+[23308.671294] wlo1: disassociated from XX:XX:XX:XX:XX:XX (Reason: 2=PREV_AUTH_NOT_VALID)
+[23311.865787] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[23311.868882] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[23311.874176] wlo1: authenticated
+[23311.875472] wlo1: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[23311.883538] wlo1: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1431 status=0 aid=1)
+[23311.906580] wlo1: associated
+[23312.082534] wlo1: Limiting TX power to 20 (20 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[23908.718679] wlo1: disassociated from XX:XX:XX:XX:XX:XX (Reason: 2=PREV_AUTH_NOT_VALID)
+[23911.836682] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[23911.840697] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[23911.846446] wlo1: authenticated
+[23911.849137] wlo1: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[23911.857347] wlo1: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1431 status=0 aid=1)
+[23911.882688] wlo1: associated
+[23911.942118] wlo1: Limiting TX power to 20 (20 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[24508.764356] wlo1: disassociated from XX:XX:XX:XX:XX:XX (Reason: 2=PREV_AUTH_NOT_VALID)
+[24511.921878] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[24511.923252] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[24511.930624] wlo1: authenticated
+[24511.930825] wlo1: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[24511.939153] wlo1: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1431 status=0 aid=1)
+[24511.966048] wlo1: associated
+[24512.109257] wlo1: Limiting TX power to 20 (20 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[24947.510995] ------------[ cut here ]------------
+[24947.511036] WARNING: CPU: 6 PID: 17655 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[24947.511037] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 qcserial intel_rapl_msr intel_rapl_common usb_wwan qmi_wwan cdc_wdm usbnet mii usbserial x86_pkg_temp_thermal intel_powerclamp snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi coretemp ledtrig_audio btusb snd_hda_intel snd_intel_dspcfg iwldvm kvm btrtl btbcm mac80211 snd_hda_codec snd_hda_core btintel libarc4 crct10dif_pclmul ghash_clmulni_intel nouveau snd_hwdep snd_pcm ttm bluetooth ecdh_generic ecc aesni_intel drm_kms_helper crypto_simd cryptd snd_seq_midi snd_seq_midi_event glue_helper i2c_algo_bit snd_rawmidi snd_seq fb_sys_fops syscopyarea iwlwifi sysfillrect mei_hdcp sysimgblt snd_seq_device snd_timer snd soundcore intel_cstate intel_rapl_perf mei_me mei cfg80211 joydev hp_wmi input_leds mac_hid sparse_keymap hp_wireless wmi_bmof mxm_wmi hp_accel tpm_infineon lis3lv02d input_polldev serio_raw sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic
+[24947.511075]  usbhid hid crc32_pclmul psmouse sdhci_pci ahci cqhci e1000e libahci i2c_i801 lpc_ich sdhci video wmi
+[24947.511084] CPU: 6 PID: 17655 Comm: ThreadPoolForeg Tainted: G        W         5.4.0-31-generic #35-Ubuntu
+[24947.511085] Hardware name: Hewlett-Packard HP EliteBook 8570w/176B, BIOS 68IAV Ver. F.40 01/31/2013
+[24947.511111] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[24947.511113] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 ea d6 fc f1 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44
+[24947.511114] RSP: 0018:ffff9ddf01297bc8 EFLAGS: 00010282
+[24947.511116] RAX: 00000000fffffffe RBX: ffff9ddf01297bf8 RCX: 0000000000000000
+[24947.511117] RDX: 0000000000000010 RSI: ffff9ddf01297b38 RDI: ffff9ddf01297bd8
+[24947.511118] RBP: ffff9ddf01297be8 R08: ffff916190f94820 R09: 0000000000000000
+[24947.511118] R10: 0000000000000001 R11: ffff916190f94e40 R12: ffff9ddf01297c30
+[24947.511119] R13: ffff9161b38760b0 R14: 0000000000000000 R15: ffff916190f94e38
+[24947.511121] FS:  00007fa3e0efb700(0000) GS:ffff9161b5b80000(0000) knlGS:0000000000000000
+[24947.511122] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[24947.511123] CR2: 00007fa3d0019028 CR3: 000000018e088002 CR4: 00000000001606e0
+[24947.511123] Call Trace:
+[24947.511168]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[24947.511211]  nouveau_gem_object_close+0x1f5/0x210 [nouveau]
+[24947.511227]  drm_gem_object_release_handle+0x35/0xa0 [drm]
+[24947.511237]  drm_gem_handle_delete+0x59/0xa0 [drm]
+[24947.511248]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[24947.511258]  drm_gem_close_ioctl+0x24/0x30 [drm]
+[24947.511269]  drm_ioctl_kernel+0xae/0xf0 [drm]
+[24947.511280]  drm_ioctl+0x234/0x3d0 [drm]
+[24947.511290]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[24947.511294]  ? sock_sendmsg+0x65/0x70
+[24947.511296]  ? sock_write_iter+0x93/0xf0
+[24947.511338]  nouveau_drm_ioctl+0x78/0xc0 [nouveau]
+[24947.511342]  do_vfs_ioctl+0x407/0x670
+[24947.511346]  ? __secure_computing+0x42/0xe0
+[24947.511348]  ksys_ioctl+0x67/0x90
+[24947.511350]  __x64_sys_ioctl+0x1a/0x20
+[24947.511353]  do_syscall_64+0x57/0x190
+[24947.511356]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[24947.511358] RIP: 0033:0x7fa3f73a05d7
+[24947.511359] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[24947.511360] RSP: 002b:00007fa3e0efa238 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[24947.511361] RAX: ffffffffffffffda RBX: 00007fa3d0018fa0 RCX: 00007fa3f73a05d7
+[24947.511362] RDX: 00007fa3e0efa270 RSI: 0000000040086409 RDI: 000000000000000d
+[24947.511363] RBP: 00007fa3e0efa270 R08: 00007fa3f76778b0 R09: 00007fa3e0efb700
+[24947.511364] R10: 00007fa3d00008d0 R11: 0000000000000246 R12: 0000000040086409
+[24947.511365] R13: 000000000000000d R14: 00007fa3f97bcdb0 R15: 0000000000000000
+[24947.511366] ---[ end trace 94013e0aafc376e9 ]---
+[24947.512089] ------------[ cut here ]------------
+[24947.512117] WARNING: CPU: 6 PID: 17655 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[24947.512118] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 qcserial intel_rapl_msr intel_rapl_common usb_wwan qmi_wwan cdc_wdm usbnet mii usbserial x86_pkg_temp_thermal intel_powerclamp snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi coretemp ledtrig_audio btusb snd_hda_intel snd_intel_dspcfg iwldvm kvm btrtl btbcm mac80211 snd_hda_codec snd_hda_core btintel libarc4 crct10dif_pclmul ghash_clmulni_intel nouveau snd_hwdep snd_pcm ttm bluetooth ecdh_generic ecc aesni_intel drm_kms_helper crypto_simd cryptd snd_seq_midi snd_seq_midi_event glue_helper i2c_algo_bit snd_rawmidi snd_seq fb_sys_fops syscopyarea iwlwifi sysfillrect mei_hdcp sysimgblt snd_seq_device snd_timer snd soundcore intel_cstate intel_rapl_perf mei_me mei cfg80211 joydev hp_wmi input_leds mac_hid sparse_keymap hp_wireless wmi_bmof mxm_wmi hp_accel tpm_infineon lis3lv02d input_polldev serio_raw sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic
+[24947.512146]  usbhid hid crc32_pclmul psmouse sdhci_pci ahci cqhci e1000e libahci i2c_i801 lpc_ich sdhci video wmi
+[24947.512152] CPU: 6 PID: 17655 Comm: ThreadPoolForeg Tainted: G        W         5.4.0-31-generic #35-Ubuntu
+[24947.512153] Hardware name: Hewlett-Packard HP EliteBook 8570w/176B, BIOS 68IAV Ver. F.40 01/31/2013
+[24947.512178] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[24947.512180] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 ea d6 fc f1 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44
+[24947.512181] RSP: 0018:ffff9ddf01297bc8 EFLAGS: 00010282
+[24947.512182] RAX: 00000000fffffffe RBX: ffff9ddf01297bf8 RCX: 0000000000000000
+[24947.512183] RDX: 0000000000000010 RSI: ffff9ddf01297b38 RDI: ffff9ddf01297bd8
+[24947.512184] RBP: ffff9ddf01297be8 R08: 0000000000000000 R09: 0000000000000000
+[24947.512185] R10: 0000000000000030 R11: ffff916190f94e40 R12: ffff9ddf01297c30
+[24947.512186] R13: ffff9161b38760b0 R14: 0000000000000000 R15: ffff916190f94e38
+[24947.512187] FS:  00007fa3e0efb700(0000) GS:ffff9161b5b80000(0000) knlGS:0000000000000000
+[24947.512188] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[24947.512189] CR2: 00007fa3d0019028 CR3: 000000018e088002 CR4: 00000000001606e0
+[24947.512190] Call Trace:
+[24947.512233]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[24947.512275]  nouveau_gem_object_close+0x1f5/0x210 [nouveau]
+[24947.512287]  drm_gem_object_release_handle+0x35/0xa0 [drm]
+[24947.512297]  drm_gem_handle_delete+0x59/0xa0 [drm]
+[24947.512307]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[24947.512318]  drm_gem_close_ioctl+0x24/0x30 [drm]
+[24947.512328]  drm_ioctl_kernel+0xae/0xf0 [drm]
+[24947.512339]  drm_ioctl+0x234/0x3d0 [drm]
+[24947.512349]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[24947.512351]  ? sock_sendmsg+0x65/0x70
+[24947.512353]  ? sock_write_iter+0x93/0xf0
+[24947.512394]  nouveau_drm_ioctl+0x78/0xc0 [nouveau]
+[24947.512397]  do_vfs_ioctl+0x407/0x670
+[24947.512399]  ? __secure_computing+0x42/0xe0
+[24947.512401]  ksys_ioctl+0x67/0x90
+[24947.512403]  __x64_sys_ioctl+0x1a/0x20
+[24947.512405]  do_syscall_64+0x57/0x190
+[24947.512407]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[24947.512409] RIP: 0033:0x7fa3f73a05d7
+[24947.512410] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[24947.512411] RSP: 002b:00007fa3e0efa238 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[24947.512412] RAX: ffffffffffffffda RBX: 00007fa3d0015970 RCX: 00007fa3f73a05d7
+[24947.512413] RDX: 00007fa3e0efa270 RSI: 0000000040086409 RDI: 000000000000000d
+[24947.512414] RBP: 00007fa3e0efa270 R08: 00007fa3f76778b0 R09: 00007fa3e0efb700
+[24947.512415] R10: 00007fa3d00008d0 R11: 0000000000000246 R12: 0000000040086409
+[24947.512415] R13: 000000000000000d R14: 00007fa3f97bcdb0 R15: 0000000000000000
+[24947.512417] ---[ end trace 94013e0aafc376ea ]---
+[24947.638287] ------------[ cut here ]------------
+[24947.638323] WARNING: CPU: 2 PID: 16698 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[24947.638324] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 qcserial intel_rapl_msr intel_rapl_common usb_wwan qmi_wwan cdc_wdm usbnet mii usbserial x86_pkg_temp_thermal intel_powerclamp snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi coretemp ledtrig_audio btusb snd_hda_intel snd_intel_dspcfg iwldvm kvm btrtl btbcm mac80211 snd_hda_codec snd_hda_core btintel libarc4 crct10dif_pclmul ghash_clmulni_intel nouveau snd_hwdep snd_pcm ttm bluetooth ecdh_generic ecc aesni_intel drm_kms_helper crypto_simd cryptd snd_seq_midi snd_seq_midi_event glue_helper i2c_algo_bit snd_rawmidi snd_seq fb_sys_fops syscopyarea iwlwifi sysfillrect mei_hdcp sysimgblt snd_seq_device snd_timer snd soundcore intel_cstate intel_rapl_perf mei_me mei cfg80211 joydev hp_wmi input_leds mac_hid sparse_keymap hp_wireless wmi_bmof mxm_wmi hp_accel tpm_infineon lis3lv02d input_polldev serio_raw sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic
+[24947.638357]  usbhid hid crc32_pclmul psmouse sdhci_pci ahci cqhci e1000e libahci i2c_i801 lpc_ich sdhci video wmi
+[24947.638365] CPU: 2 PID: 16698 Comm: kworker/2:0 Tainted: G        W         5.4.0-31-generic #35-Ubuntu
+[24947.638366] Hardware name: Hewlett-Packard HP EliteBook 8570w/176B, BIOS 68IAV Ver. F.40 01/31/2013
+[24947.638404] Workqueue: events nouveau_cli_work [nouveau]
+[24947.638426] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[24947.638428] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 ea d6 fc f1 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44
+[24947.638429] RSP: 0018:ffff9ddf00dc7d98 EFLAGS: 00010282
+[24947.638430] RAX: 00000000fffffffe RBX: ffff9ddf00dc7dc8 RCX: 0000000000000000
+[24947.638431] RDX: 0000000000000010 RSI: ffff9ddf00dc7d08 RDI: ffff9ddf00dc7da8
+[24947.638432] RBP: ffff9ddf00dc7db8 R08: 0000000000000000 R09: 0000000000000000
+[24947.638433] R10: 0000000000000030 R11: 0000000000000018 R12: ffff9ddf00dc7e00
+[24947.638433] R13: dead000000000122 R14: dead000000000100 R15: ffff9161583afea8
+[24947.638435] FS:  0000000000000000(0000) GS:ffff9161b5a80000(0000) knlGS:0000000000000000
+[24947.638435] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[24947.638436] CR2: 00007fa3da62d010 CR3: 000000018e088002 CR4: 00000000001606e0
+[24947.638437] Call Trace:
+[24947.638475]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[24947.638510]  nouveau_gem_object_delete_work+0x3b/0x60 [nouveau]
+[24947.638544]  nouveau_cli_work+0xcb/0x110 [nouveau]
+[24947.638549]  process_one_work+0x1eb/0x3b0
+[24947.638551]  worker_thread+0x4d/0x400
+[24947.638554]  kthread+0x104/0x140
+[24947.638556]  ? process_one_work+0x3b0/0x3b0
+[24947.638557]  ? kthread_park+0x90/0x90
+[24947.638560]  ret_from_fork+0x35/0x40
+[24947.638561] ---[ end trace 94013e0aafc376eb ]---
+[25108.811176] wlo1: disassociated from XX:XX:XX:XX:XX:XX (Reason: 2=PREV_AUTH_NOT_VALID)
+[25111.892279] wlo1: authenticate with XX:XX:XX:XX:XX:XX
+[25111.897432] wlo1: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[25111.903103] wlo1: authenticated
+[25111.906620] wlo1: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[25111.914934] wlo1: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1431 status=0 aid=1)
+[25111.935808] wlo1: associated
+[25111.968402] wlo1: Limiting TX power to 20 (20 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[25397.185026] ------------[ cut here ]------------
+[25397.185072] WARNING: CPU: 5 PID: 18238 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[25397.185072] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 qcserial intel_rapl_msr intel_rapl_common usb_wwan qmi_wwan cdc_wdm usbnet mii usbserial x86_pkg_temp_thermal intel_powerclamp snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi coretemp ledtrig_audio btusb snd_hda_intel snd_intel_dspcfg iwldvm kvm btrtl btbcm mac80211 snd_hda_codec snd_hda_core btintel libarc4 crct10dif_pclmul ghash_clmulni_intel nouveau snd_hwdep snd_pcm ttm bluetooth ecdh_generic ecc aesni_intel drm_kms_helper crypto_simd cryptd snd_seq_midi snd_seq_midi_event glue_helper i2c_algo_bit snd_rawmidi snd_seq fb_sys_fops syscopyarea iwlwifi sysfillrect mei_hdcp sysimgblt snd_seq_device snd_timer snd soundcore intel_cstate intel_rapl_perf mei_me mei cfg80211 joydev hp_wmi input_leds mac_hid sparse_keymap hp_wireless wmi_bmof mxm_wmi hp_accel tpm_infineon lis3lv02d input_polldev serio_raw sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic
+[25397.185111]  usbhid hid crc32_pclmul psmouse sdhci_pci ahci cqhci e1000e libahci i2c_i801 lpc_ich sdhci video wmi
+[25397.185120] CPU: 5 PID: 18238 Comm: ThreadPoolForeg Tainted: G        W         5.4.0-31-generic #35-Ubuntu
+[25397.185121] Hardware name: Hewlett-Packard HP EliteBook 8570w/176B, BIOS 68IAV Ver. F.40 01/31/2013
+[25397.185147] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[25397.185149] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 ea d6 fc f1 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44
+[25397.185150] RSP: 0018:ffff9ddf0135fbc8 EFLAGS: 00010282
+[25397.185152] RAX: 00000000fffffffe RBX: ffff9ddf0135fbf8 RCX: 0000000000000000
+[25397.185152] RDX: 0000000000000010 RSI: ffff9ddf0135fb38 RDI: ffff9ddf0135fbd8
+[25397.185153] RBP: ffff9ddf0135fbe8 R08: 0000000000000000 R09: 0000000000000000
+[25397.185154] R10: 0000000000000030 R11: ffff916168853440 R12: ffff9ddf0135fc30
+[25397.185155] R13: ffff9161b38760b0 R14: 0000000000000000 R15: ffff916168853438
+[25397.185156] FS:  00007f6e82bf7700(0000) GS:ffff9161b5b40000(0000) knlGS:0000000000000000
+[25397.185157] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[25397.185158] CR2: 00007f6e78019038 CR3: 000000022f24e001 CR4: 00000000001606e0
+[25397.185159] Call Trace:
+[25397.185204]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[25397.185246]  nouveau_gem_object_close+0x1f5/0x210 [nouveau]
+[25397.185263]  drm_gem_object_release_handle+0x35/0xa0 [drm]
+[25397.185273]  drm_gem_handle_delete+0x59/0xa0 [drm]
+[25397.185283]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[25397.185292]  drm_gem_close_ioctl+0x24/0x30 [drm]
+[25397.185302]  drm_ioctl_kernel+0xae/0xf0 [drm]
+[25397.185313]  drm_ioctl+0x234/0x3d0 [drm]
+[25397.185322]  ? drm_gem_handle_create+0x40/0x40 [drm]
+[25397.185325]  ? sock_sendmsg+0x65/0x70
+[25397.185327]  ? sock_write_iter+0x93/0xf0
+[25397.185368]  nouveau_drm_ioctl+0x78/0xc0 [nouveau]
+[25397.185371]  do_vfs_ioctl+0x407/0x670
+[25397.185374]  ? __secure_computing+0x42/0xe0
+[25397.185376]  ksys_ioctl+0x67/0x90
+[25397.185377]  __x64_sys_ioctl+0x1a/0x20
+[25397.185380]  do_syscall_64+0x57/0x190
+[25397.185383]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[25397.185385] RIP: 0033:0x7f6e990795d7
+[25397.185386] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[25397.185387] RSP: 002b:00007f6e82bf6238 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[25397.185389] RAX: ffffffffffffffda RBX: 00007f6e780158b0 RCX: 00007f6e990795d7
+[25397.185390] RDX: 00007f6e82bf6270 RSI: 0000000040086409 RDI: 000000000000000d
+[25397.185390] RBP: 00007f6e82bf6270 R08: 00007f6e993508b0 R09: 00007f6e82bf7700
+[25397.185391] R10: 00007f6e780008d0 R11: 0000000000000246 R12: 0000000040086409
+[25397.185392] R13: 000000000000000d R14: 00007f6e9b495db0 R15: 0000000000000000
+[25397.185394] ---[ end trace 94013e0aafc376ec ]---
+[25397.259644] ------------[ cut here ]------------
+[25397.259677] WARNING: CPU: 3 PID: 17368 at drivers/gpu/drm/nouveau/nvif/vmm.c:68 nvif_vmm_put+0x6d/0x80 [nouveau]
+[25397.259678] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 qcserial intel_rapl_msr intel_rapl_common usb_wwan qmi_wwan cdc_wdm usbnet mii usbserial x86_pkg_temp_thermal intel_powerclamp snd_hda_codec_idt snd_hda_codec_generic snd_hda_codec_hdmi coretemp ledtrig_audio btusb snd_hda_intel snd_intel_dspcfg iwldvm kvm btrtl btbcm mac80211 snd_hda_codec snd_hda_core btintel libarc4 crct10dif_pclmul ghash_clmulni_intel nouveau snd_hwdep snd_pcm ttm bluetooth ecdh_generic ecc aesni_intel drm_kms_helper crypto_simd cryptd snd_seq_midi snd_seq_midi_event glue_helper i2c_algo_bit snd_rawmidi snd_seq fb_sys_fops syscopyarea iwlwifi sysfillrect mei_hdcp sysimgblt snd_seq_device snd_timer snd soundcore intel_cstate intel_rapl_perf mei_me mei cfg80211 joydev hp_wmi input_leds mac_hid sparse_keymap hp_wireless wmi_bmof mxm_wmi hp_accel tpm_infineon lis3lv02d input_polldev serio_raw sch_fq_codel parport_pc ppdev lp parport drm ip_tables x_tables autofs4 hid_generic
+[25397.259701]  usbhid hid crc32_pclmul psmouse sdhci_pci ahci cqhci e1000e libahci i2c_i801 lpc_ich sdhci video wmi
+[25397.259706] CPU: 3 PID: 17368 Comm: kworker/3:1 Tainted: G        W         5.4.0-31-generic #35-Ubuntu
+[25397.259707] Hardware name: Hewlett-Packard HP EliteBook 8570w/176B, BIOS 68IAV Ver. F.40 01/31/2013
+[25397.259737] Workqueue: events nouveau_cli_work [nouveau]
+[25397.259753] RIP: 0010:nvif_vmm_put+0x6d/0x80 [nouveau]
+[25397.259755] Code: 00 00 48 8d 55 e0 be 02 00 00 00 48 c7 45 e0 00 00 00 00 48 89 45 e8 e8 71 e5 ff ff 85 c0 75 0a 48 c7 43 08 00 00 00 00 eb b7 <0f> 0b eb f2 e8 ea d6 fc f1 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44
+[25397.259755] RSP: 0018:ffff9ddf0115fd98 EFLAGS: 00010282
+[25397.259756] RAX: 00000000fffffffe RBX: ffff9ddf0115fdc8 RCX: 0000000000000000
+[25397.259757] RDX: 0000000000000010 RSI: ffff9ddf0115fd08 RDI: ffff9ddf0115fda8
+[25397.259758] RBP: ffff9ddf0115fdb8 R08: 0000000000000000 R09: 0000000000000000
+[25397.259758] R10: 0000000000000030 R11: 0000000000000018 R12: ffff9ddf0115fe00
+[25397.259759] R13: dead000000000122 R14: dead000000000100 R15: ffff9161674b6300
+[25397.259759] FS:  0000000000000000(0000) GS:ffff9161b5ac0000(0000) knlGS:0000000000000000
+[25397.259760] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[25397.259761] CR2: 00005602113aaae0 CR3: 00000001f0e86001 CR4: 00000000001606e0
+[25397.259761] Call Trace:
+[25397.259792]  nouveau_vma_del+0x75/0xc0 [nouveau]
+[25397.259821]  nouveau_gem_object_delete_work+0x3b/0x60 [nouveau]
+[25397.259849]  nouveau_cli_work+0xcb/0x110 [nouveau]
+[25397.259852]  process_one_work+0x1eb/0x3b0
+[25397.259853]  worker_thread+0x4d/0x400
+[25397.259854]  kthread+0x104/0x140
+[25397.259856]  ? process_one_work+0x3b0/0x3b0
+[25397.259857]  ? kthread_park+0x90/0x90
+[25397.259859]  ret_from_fork+0x35/0x40
+[25397.259861] ---[ end trace 94013e0aafc376ed ]---
+[34303.673862] TCP: wlo1: Driver has suspect GRO implementation, TCP performance may be compromised.
+[34358.756602] perf: interrupt took too long (4932 > 4931), lowering kernel.perf_event_max_sample_rate to 40500
