@@ -1,0 +1,214 @@
+[48367.325251] ------------[ cut here ]------------
+[48367.325253] trying to bind memory to uninitialized GART !
+[48367.325331] WARNING: CPU: 0 PID: 18818 at /build/linux-hwe-uR14Ux/linux-hwe-5.3.0/drivers/gpu/drm/radeon/radeon_gart.c:299 radeon_gart_bind+0xff/0x110 [radeon]
+[48367.325332] Modules linked in: ccm uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc brcmsmac brcmutil b43 snd_hda_codec_realtek cordic intel_powerclamp snd_hda_codec_generic mac80211 ledtrig_audio snd_hda_codec_hdmi snd_hda_intel snd_intel_nhlt cfg80211 snd_hda_codec coretemp snd_hda_core snd_hwdep ssb snd_pcm libarc4 snd_seq_midi snd_seq_midi_event kvm_intel snd_rawmidi kvm snd_seq snd_seq_device irqbypass snd_timer radeon intel_cstate snd soundcore mei_me ttm acer_wmi drm_kms_helper mei drm sparse_keymap i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt joydev input_leds mxm_wmi lpc_ich serio_raw wmi_bmof intel_ips mac_hid binfmt_misc sch_fq_codel parport_pc ppdev lp parport dm_crypt ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear psmouse ahci libahci broadcom bcm_phy_lib bcma tg3 video wmi hid_generic usbhid hid
+[48367.325387] CPU: 0 PID: 18818 Comm: gst-plugin-scan Not tainted 5.3.0-42-generic #34~18.04.1-Ubuntu
+[48367.325388] Hardware name: Acer Aspire 5741G/Aspire 5741G, BIOS V1.21 02/24/2011
+[48367.325412] RIP: 0010:radeon_gart_bind+0xff/0x110 [radeon]
+[48367.325414] Code: 48 8b 40 60 e8 32 a6 55 cd 31 c0 48 83 c4 18 5b 41 5c 41 5d 41 5e 41 5f 5d c3 31 c0 eb ed 48 c7 c7 d0 0c 5a c0 e8 b1 38 7f cc <0f> 0b b8 ea ff ff ff eb d8 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[48367.325415] RSP: 0018:ffffb5554390f908 EFLAGS: 00010282
+[48367.325417] RAX: 0000000000000000 RBX: ffff9f87ca88e000 RCX: 0000000000000006
+[48367.325418] RDX: 0000000000000007 RSI: 0000000000000096 RDI: ffff9f8893c17440
+[48367.325419] RBP: ffffb5554390f948 R08: 000000000000dfba R09: 0000000000000004
+[48367.325420] R10: 0000000000000000 R11: 0000000000000001 R12: ffffb5554390fa28
+[48367.325421] R13: ffff9f888e4586e8 R14: ffff9f87ca88e000 R15: ffff9f87a72ab868
+[48367.325423] FS:  00007f9e5b948740(0000) GS:ffff9f8893c00000(0000) knlGS:0000000000000000
+[48367.325424] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[48367.325425] CR2: 00007f9e53d42fd0 CR3: 000000001ae90000 CR4: 00000000000006f0
+[48367.325426] Call Trace:
+[48367.325451]  radeon_ttm_backend_bind+0x61/0x240 [radeon]
+[48367.325459]  ttm_tt_bind+0x37/0x60 [ttm]
+[48367.325464]  ttm_bo_handle_move_mem+0x4f2/0x5b0 [ttm]
+[48367.325469]  ? ttm_bo_mem_space+0x17e/0x2f0 [ttm]
+[48367.325475]  ttm_bo_validate+0x122/0x140 [ttm]
+[48367.325500]  ? drm_detect_monitor_audio+0x36/0x140 [drm]
+[48367.325506]  ttm_bo_init_reserved+0x3a4/0x440 [ttm]
+[48367.325511]  ttm_bo_init+0x6b/0x110 [ttm]
+[48367.325533]  ? radeon_update_memory_usage.isra.7+0x50/0x50 [radeon]
+[48367.325555]  radeon_bo_create+0x16e/0x200 [radeon]
+[48367.325577]  ? radeon_update_memory_usage.isra.7+0x50/0x50 [radeon]
+[48367.325601]  radeon_gem_object_create+0xb0/0x190 [radeon]
+[48367.325626]  radeon_gem_create_ioctl+0x6b/0x100 [radeon]
+[48367.325631]  ? release_pages+0x2ee/0x3f0
+[48367.325655]  ? radeon_gem_pwrite_ioctl+0x30/0x30 [radeon]
+[48367.325670]  drm_ioctl_kernel+0xb0/0x100 [drm]
+[48367.325685]  drm_ioctl+0x389/0x450 [drm]
+[48367.325709]  ? radeon_gem_pwrite_ioctl+0x30/0x30 [radeon]
+[48367.325713]  ? unmap_region+0xf7/0x130
+[48367.325730]  radeon_drm_ioctl+0x4f/0x80 [radeon]
+[48367.325734]  do_vfs_ioctl+0xa9/0x640
+[48367.325737]  ksys_ioctl+0x75/0x80
+[48367.325739]  __x64_sys_ioctl+0x1a/0x20
+[48367.325744]  do_syscall_64+0x5a/0x130
+[48367.325750]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[48367.325752] RIP: 0033:0x7f9e5ae1f5d7
+[48367.325754] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[48367.325755] RSP: 002b:00007ffe5fd5dff8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[48367.325757] RAX: ffffffffffffffda RBX: 0000000000000002 RCX: 00007f9e5ae1f5d7
+[48367.325758] RDX: 00007ffe5fd5e080 RSI: 00000000c020645d RDI: 0000000000000008
+[48367.325759] RBP: 00007ffe5fd5e080 R08: 0000000000000010 R09: 0000000000000009
+[48367.325760] R10: 00007ffe5fd5e020 R11: 0000000000000246 R12: 00000000c020645d
+[48367.325761] R13: 0000000000000008 R14: 000055be395e3220 R15: 0000000000001000
+[48367.325764] ---[ end trace a84d156c3e1f7892 ]---
+[48367.325786] [drm:radeon_ttm_backend_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[48367.325823] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[48367.325959] ------------[ cut here ]------------
+[48367.325960] trying to bind memory to uninitialized GART !
+[48367.326002] WARNING: CPU: 0 PID: 18818 at /build/linux-hwe-uR14Ux/linux-hwe-5.3.0/drivers/gpu/drm/radeon/radeon_gart.c:299 radeon_gart_bind+0xff/0x110 [radeon]
+[48367.326002] Modules linked in: ccm uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc brcmsmac brcmutil b43 snd_hda_codec_realtek cordic intel_powerclamp snd_hda_codec_generic mac80211 ledtrig_audio snd_hda_codec_hdmi snd_hda_intel snd_intel_nhlt cfg80211 snd_hda_codec coretemp snd_hda_core snd_hwdep ssb snd_pcm libarc4 snd_seq_midi snd_seq_midi_event kvm_intel snd_rawmidi kvm snd_seq snd_seq_device irqbypass snd_timer radeon intel_cstate snd soundcore mei_me ttm acer_wmi drm_kms_helper mei drm sparse_keymap i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt joydev input_leds mxm_wmi lpc_ich serio_raw wmi_bmof intel_ips mac_hid binfmt_misc sch_fq_codel parport_pc ppdev lp parport dm_crypt ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear psmouse ahci libahci broadcom bcm_phy_lib bcma tg3 video wmi hid_generic usbhid hid
+[48367.326040] CPU: 0 PID: 18818 Comm: gst-plugin-scan Tainted: G        W         5.3.0-42-generic #34~18.04.1-Ubuntu
+[48367.326041] Hardware name: Acer Aspire 5741G/Aspire 5741G, BIOS V1.21 02/24/2011
+[48367.326064] RIP: 0010:radeon_gart_bind+0xff/0x110 [radeon]
+[48367.326065] Code: 48 8b 40 60 e8 32 a6 55 cd 31 c0 48 83 c4 18 5b 41 5c 41 5d 41 5e 41 5f 5d c3 31 c0 eb ed 48 c7 c7 d0 0c 5a c0 e8 b1 38 7f cc <0f> 0b b8 ea ff ff ff eb d8 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[48367.326067] RSP: 0018:ffffb5554390f908 EFLAGS: 00010282
+[48367.326068] RAX: 0000000000000000 RBX: ffff9f87ca88e000 RCX: 0000000000000006
+[48367.326069] RDX: 0000000000000007 RSI: 0000000000000096 RDI: ffff9f8893c17440
+[48367.326070] RBP: ffffb5554390f948 R08: 000000000000dff0 R09: 0000000000000004
+[48367.326071] R10: 0000000000000000 R11: 0000000000000001 R12: ffffb5554390fa28
+[48367.326072] R13: ffff9f888e4586e8 R14: ffff9f87ca88e000 R15: ffff9f87a72ab868
+[48367.326074] FS:  00007f9e5b948740(0000) GS:ffff9f8893c00000(0000) knlGS:0000000000000000
+[48367.326075] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[48367.326076] CR2: 00007f9e54163120 CR3: 000000001ae90000 CR4: 00000000000006f0
+[48367.326077] Call Trace:
+[48367.326100]  radeon_ttm_backend_bind+0x61/0x240 [radeon]
+[48367.326105]  ttm_tt_bind+0x37/0x60 [ttm]
+[48367.326110]  ttm_bo_handle_move_mem+0x4f2/0x5b0 [ttm]
+[48367.326115]  ? ttm_bo_mem_space+0x17e/0x2f0 [ttm]
+[48367.326120]  ttm_bo_validate+0x122/0x140 [ttm]
+[48367.326140]  ? drm_detect_monitor_audio+0x36/0x140 [drm]
+[48367.326145]  ttm_bo_init_reserved+0x3a4/0x440 [ttm]
+[48367.326150]  ttm_bo_init+0x6b/0x110 [ttm]
+[48367.326172]  ? radeon_update_memory_usage.isra.7+0x50/0x50 [radeon]
+[48367.326194]  radeon_bo_create+0x16e/0x200 [radeon]
+[48367.326216]  ? radeon_update_memory_usage.isra.7+0x50/0x50 [radeon]
+[48367.326240]  radeon_gem_object_create+0xb0/0x190 [radeon]
+[48367.326265]  radeon_gem_create_ioctl+0x6b/0x100 [radeon]
+[48367.326290]  ? radeon_gem_pwrite_ioctl+0x30/0x30 [radeon]
+[48367.326304]  drm_ioctl_kernel+0xb0/0x100 [drm]
+[48367.326319]  drm_ioctl+0x389/0x450 [drm]
+[48367.326344]  ? radeon_gem_pwrite_ioctl+0x30/0x30 [radeon]
+[48367.326361]  radeon_drm_ioctl+0x4f/0x80 [radeon]
+[48367.326363]  do_vfs_ioctl+0xa9/0x640
+[48367.326366]  ? handle_mm_fault+0xcb/0x210
+[48367.326368]  ksys_ioctl+0x75/0x80
+[48367.326371]  __x64_sys_ioctl+0x1a/0x20
+[48367.326373]  do_syscall_64+0x5a/0x130
+[48367.326375]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[48367.326377] RIP: 0033:0x7f9e5ae1f5d7
+[48367.326378] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[48367.326379] RSP: 002b:00007ffe5fd5dff8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[48367.326381] RAX: ffffffffffffffda RBX: 0000000000000002 RCX: 00007f9e5ae1f5d7
+[48367.326382] RDX: 00007ffe5fd5e080 RSI: 00000000c020645d RDI: 0000000000000008
+[48367.326383] RBP: 00007ffe5fd5e080 R08: 0000000000000010 R09: 0000000000000009
+[48367.326384] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c020645d
+[48367.326385] R13: 0000000000000008 R14: 000055be395e3220 R15: 0000000000000000
+[48367.326388] ---[ end trace a84d156c3e1f7893 ]---
+[48367.326410] [drm:radeon_ttm_backend_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[48367.326441] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[48367.425111] ------------[ cut here ]------------
+[48367.425112] trying to bind memory to uninitialized GART !
+[48367.425187] WARNING: CPU: 2 PID: 18818 at /build/linux-hwe-uR14Ux/linux-hwe-5.3.0/drivers/gpu/drm/radeon/radeon_gart.c:299 radeon_gart_bind+0xff/0x110 [radeon]
+[48367.425188] Modules linked in: ccm uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc brcmsmac brcmutil b43 snd_hda_codec_realtek cordic intel_powerclamp snd_hda_codec_generic mac80211 ledtrig_audio snd_hda_codec_hdmi snd_hda_intel snd_intel_nhlt cfg80211 snd_hda_codec coretemp snd_hda_core snd_hwdep ssb snd_pcm libarc4 snd_seq_midi snd_seq_midi_event kvm_intel snd_rawmidi kvm snd_seq snd_seq_device irqbypass snd_timer radeon intel_cstate snd soundcore mei_me ttm acer_wmi drm_kms_helper mei drm sparse_keymap i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt joydev input_leds mxm_wmi lpc_ich serio_raw wmi_bmof intel_ips mac_hid binfmt_misc sch_fq_codel parport_pc ppdev lp parport dm_crypt ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear psmouse ahci libahci broadcom bcm_phy_lib bcma tg3 video wmi hid_generic usbhid hid
+[48367.425232] CPU: 2 PID: 18818 Comm: gst-plugin-scan Tainted: G        W         5.3.0-42-generic #34~18.04.1-Ubuntu
+[48367.425234] Hardware name: Acer Aspire 5741G/Aspire 5741G, BIOS V1.21 02/24/2011
+[48367.425251] RIP: 0010:radeon_gart_bind+0xff/0x110 [radeon]
+[48367.425253] Code: 48 8b 40 60 e8 32 a6 55 cd 31 c0 48 83 c4 18 5b 41 5c 41 5d 41 5e 41 5f 5d c3 31 c0 eb ed 48 c7 c7 d0 0c 5a c0 e8 b1 38 7f cc <0f> 0b b8 ea ff ff ff eb d8 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[48367.425254] RSP: 0018:ffffb5554390f908 EFLAGS: 00010282
+[48367.425255] RAX: 0000000000000000 RBX: ffff9f87a7154180 RCX: 0000000000000006
+[48367.425256] RDX: 0000000000000007 RSI: 0000000000000096 RDI: ffff9f8893c97440
+[48367.425256] RBP: ffffb5554390f948 R08: 000000000000e025 R09: 0000000000000004
+[48367.425257] R10: 0000000000000000 R11: 0000000000000001 R12: ffffb5554390fa28
+[48367.425258] R13: ffff9f888e4586e8 R14: ffff9f87a7154180 R15: ffff9f87a2791868
+[48367.425259] FS:  00007f9e5b948740(0000) GS:ffff9f8893c80000(0000) knlGS:0000000000000000
+[48367.425260] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[48367.425261] CR2: 000055be3967f080 CR3: 000000001ae90000 CR4: 00000000000006e0
+[48367.425262] Call Trace:
+[48367.425281]  radeon_ttm_backend_bind+0x61/0x240 [radeon]
+[48367.425288]  ttm_tt_bind+0x37/0x60 [ttm]
+[48367.425291]  ttm_bo_handle_move_mem+0x4f2/0x5b0 [ttm]
+[48367.425295]  ? ttm_bo_mem_space+0x17e/0x2f0 [ttm]
+[48367.425299]  ttm_bo_validate+0x122/0x140 [ttm]
+[48367.425322]  ? drm_detect_monitor_audio+0x36/0x140 [drm]
+[48367.425326]  ttm_bo_init_reserved+0x3a4/0x440 [ttm]
+[48367.425330]  ttm_bo_init+0x6b/0x110 [ttm]
+[48367.425347]  ? radeon_update_memory_usage.isra.7+0x50/0x50 [radeon]
+[48367.425363]  radeon_bo_create+0x16e/0x200 [radeon]
+[48367.425378]  ? radeon_update_memory_usage.isra.7+0x50/0x50 [radeon]
+[48367.425397]  radeon_gem_object_create+0xb0/0x190 [radeon]
+[48367.425415]  radeon_gem_create_ioctl+0x6b/0x100 [radeon]
+[48367.425433]  ? radeon_gem_pwrite_ioctl+0x30/0x30 [radeon]
+[48367.425444]  drm_ioctl_kernel+0xb0/0x100 [drm]
+[48367.425455]  drm_ioctl+0x389/0x450 [drm]
+[48367.425473]  ? radeon_gem_pwrite_ioctl+0x30/0x30 [radeon]
+[48367.425479]  ? lru_cache_add_active_or_unevictable+0x39/0xb0
+[48367.425491]  radeon_drm_ioctl+0x4f/0x80 [radeon]
+[48367.425494]  do_vfs_ioctl+0xa9/0x640
+[48367.425497]  ? handle_mm_fault+0xcb/0x210
+[48367.425499]  ksys_ioctl+0x75/0x80
+[48367.425501]  __x64_sys_ioctl+0x1a/0x20
+[48367.425506]  do_syscall_64+0x5a/0x130
+[48367.425510]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[48367.425512] RIP: 0033:0x7f9e5ae1f5d7
+[48367.425514] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[48367.425514] RSP: 002b:00007ffe5fd5e058 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[48367.425516] RAX: ffffffffffffffda RBX: 0000000000000002 RCX: 00007f9e5ae1f5d7
+[48367.425517] RDX: 00007ffe5fd5e0e0 RSI: 00000000c020645d RDI: 0000000000000008
+[48367.425517] RBP: 00007ffe5fd5e0e0 R08: 0000000000000010 R09: 0000000000000009
+[48367.425518] R10: 00007ffe5fd5e080 R11: 0000000000000246 R12: 00000000c020645d
+[48367.425519] R13: 0000000000000008 R14: 000055be395e3220 R15: 0000000000001000
+[48367.425521] ---[ end trace a84d156c3e1f7894 ]---
+[48367.425538] [drm:radeon_ttm_backend_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[48367.425566] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)
+[48367.425604] ------------[ cut here ]------------
+[48367.425604] trying to bind memory to uninitialized GART !
+[48367.425634] WARNING: CPU: 2 PID: 18818 at /build/linux-hwe-uR14Ux/linux-hwe-5.3.0/drivers/gpu/drm/radeon/radeon_gart.c:299 radeon_gart_bind+0xff/0x110 [radeon]
+[48367.425635] Modules linked in: ccm uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc brcmsmac brcmutil b43 snd_hda_codec_realtek cordic intel_powerclamp snd_hda_codec_generic mac80211 ledtrig_audio snd_hda_codec_hdmi snd_hda_intel snd_intel_nhlt cfg80211 snd_hda_codec coretemp snd_hda_core snd_hwdep ssb snd_pcm libarc4 snd_seq_midi snd_seq_midi_event kvm_intel snd_rawmidi kvm snd_seq snd_seq_device irqbypass snd_timer radeon intel_cstate snd soundcore mei_me ttm acer_wmi drm_kms_helper mei drm sparse_keymap i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt joydev input_leds mxm_wmi lpc_ich serio_raw wmi_bmof intel_ips mac_hid binfmt_misc sch_fq_codel parport_pc ppdev lp parport dm_crypt ip_tables x_tables autofs4 raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear psmouse ahci libahci broadcom bcm_phy_lib bcma tg3 video wmi hid_generic usbhid hid
+[48367.425663] CPU: 2 PID: 18818 Comm: gst-plugin-scan Tainted: G        W         5.3.0-42-generic #34~18.04.1-Ubuntu
+[48367.425664] Hardware name: Acer Aspire 5741G/Aspire 5741G, BIOS V1.21 02/24/2011
+[48367.425680] RIP: 0010:radeon_gart_bind+0xff/0x110 [radeon]
+[48367.425681] Code: 48 8b 40 60 e8 32 a6 55 cd 31 c0 48 83 c4 18 5b 41 5c 41 5d 41 5e 41 5f 5d c3 31 c0 eb ed 48 c7 c7 d0 0c 5a c0 e8 b1 38 7f cc <0f> 0b b8 ea ff ff ff eb d8 0f 1f 84 00 00 00 00 00 66 66 66 66 90
+[48367.425682] RSP: 0018:ffffb5554390f908 EFLAGS: 00010282
+[48367.425683] RAX: 0000000000000000 RBX: ffff9f87a7154180 RCX: 0000000000000006
+[48367.425684] RDX: 0000000000000007 RSI: 0000000000000096 RDI: ffff9f8893c97440
+[48367.425685] RBP: ffffb5554390f948 R08: 000000000000e05b R09: 0000000000000004
+[48367.425686] R10: 0000000000000000 R11: 0000000000000001 R12: ffffb5554390fa28
+[48367.425686] R13: ffff9f888e4586e8 R14: ffff9f87a7154180 R15: ffff9f87a2791868
+[48367.425688] FS:  00007f9e5b948740(0000) GS:ffff9f8893c80000(0000) knlGS:0000000000000000
+[48367.425688] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[48367.425689] CR2: 000055be3967f080 CR3: 000000001ae90000 CR4: 00000000000006e0
+[48367.425690] Call Trace:
+[48367.425707]  radeon_ttm_backend_bind+0x61/0x240 [radeon]
+[48367.425710]  ttm_tt_bind+0x37/0x60 [ttm]
+[48367.425714]  ttm_bo_handle_move_mem+0x4f2/0x5b0 [ttm]
+[48367.425718]  ? ttm_bo_mem_space+0x17e/0x2f0 [ttm]
+[48367.425722]  ttm_bo_validate+0x122/0x140 [ttm]
+[48367.425737]  ? drm_detect_monitor_audio+0x36/0x140 [drm]
+[48367.425740]  ttm_bo_init_reserved+0x3a4/0x440 [ttm]
+[48367.425744]  ttm_bo_init+0x6b/0x110 [ttm]
+[48367.425761]  ? radeon_update_memory_usage.isra.7+0x50/0x50 [radeon]
+[48367.425798]  radeon_bo_create+0x16e/0x200 [radeon]
+[48367.425819]  ? radeon_update_memory_usage.isra.7+0x50/0x50 [radeon]
+[48367.425843]  radeon_gem_object_create+0xb0/0x190 [radeon]
+[48367.425865]  radeon_gem_create_ioctl+0x6b/0x100 [radeon]
+[48367.425887]  ? radeon_gem_pwrite_ioctl+0x30/0x30 [radeon]
+[48367.425899]  drm_ioctl_kernel+0xb0/0x100 [drm]
+[48367.425910]  drm_ioctl+0x389/0x450 [drm]
+[48367.425928]  ? radeon_gem_pwrite_ioctl+0x30/0x30 [radeon]
+[48367.425941]  radeon_drm_ioctl+0x4f/0x80 [radeon]
+[48367.425943]  do_vfs_ioctl+0xa9/0x640
+[48367.425945]  ? vfs_write+0x16a/0x1a0
+[48367.425947]  ksys_ioctl+0x75/0x80
+[48367.425949]  __x64_sys_ioctl+0x1a/0x20
+[48367.425950]  do_syscall_64+0x5a/0x130
+[48367.425952]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[48367.425953] RIP: 0033:0x7f9e5ae1f5d7
+[48367.425955] Code: b3 66 90 48 8b 05 b1 48 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 81 48 2d 00 f7 d8 64 89 01 48
+[48367.425955] RSP: 002b:00007ffe5fd5e058 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[48367.425957] RAX: ffffffffffffffda RBX: 0000000000000002 RCX: 00007f9e5ae1f5d7
+[48367.425958] RDX: 00007ffe5fd5e0e0 RSI: 00000000c020645d RDI: 0000000000000008
+[48367.425959] RBP: 00007ffe5fd5e0e0 R08: 0000000000000010 R09: 0000000000000009
+[48367.425959] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c020645d
+[48367.425960] R13: 0000000000000008 R14: 000055be395e3220 R15: 0000000000000000
+[48367.425962] ---[ end trace a84d156c3e1f7895 ]---
+[48367.425978] [drm:radeon_ttm_backend_bind [radeon]] *ERROR* failed to bind 1 pages at 0x00000000
+[48367.426003] [drm:radeon_gem_object_create [radeon]] *ERROR* Failed to allocate GEM object (4096, 2, 4096, -22)

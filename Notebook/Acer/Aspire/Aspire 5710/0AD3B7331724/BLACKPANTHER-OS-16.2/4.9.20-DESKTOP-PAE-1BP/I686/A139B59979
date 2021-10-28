@@ -1,0 +1,335 @@
+[    3.412888] Modules linked in:
+[    3.412889]  i915 video i2c_algo_bit wmi drm_kms_helper button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    3.412903] CPU: 1 PID: 88 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    3.412904] Hardware name: Acer             Aspire 5710     /Acadia, BIOS V1.50 07/17/2007
+[    3.412907] Workqueue: events_unbound async_run_entry_fn
+[    3.412909]  ef593d18 c80fdcbf ef593d5c f47544e4 ef593d48 c7d66aea f4761013 ef593d78
+[    3.412916]  00000058 f47544e4 0000019e f4705c3c 0000019e 00000001 ef6e8800 00000000
+[    3.412922]  ef593d64 c7d66b4b 00000009 00000000 ef593d5c f4761013 ef593d78 ef593dd8
+[    3.412928] Call Trace:
+[    3.412932]  [<c80fdcbf>] dump_stack+0x58/0x79
+[    3.412934]  [<c7d66aea>] __warn+0xea/0x110
+[    3.412981]  [<f4705c3c>] ? intel_fb_initial_config+0x3fc/0x5f0 [i915]
+[    3.412983]  [<c7d66b4b>] warn_slowpath_fmt+0x3b/0x40
+[    3.413006]  [<f4705c3c>] intel_fb_initial_config+0x3fc/0x5f0 [i915]
+[    3.413006]  [<f4705840>] ? intelfb_create+0x4a0/0x4a0 [i915]
+[    3.413006]  [<f41ade3b>] drm_setup_crtcs+0x1ab/0x990 [drm_kms_helper]
+[    3.413006]  [<f415435a>] ? drm_mode_connector_update_edid_property+0x4a/0x70 [drm]
+[    3.413006]  [<f41ae914>] drm_fb_helper_initial_config+0xa4/0x3e0 [drm_kms_helper]
+[    3.413006]  [<f4706426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    3.413006]  [<c7d86af8>] async_run_entry_fn+0x38/0x180
+[    3.413006]  [<c7d7e681>] process_one_work+0x121/0x400
+[    3.413006]  [<c7d7e997>] worker_thread+0x37/0x4c0
+[    3.413006]  [<c7d7e960>] ? process_one_work+0x400/0x400
+[    3.413006]  [<c7d83d0c>] kthread+0x9c/0xb0
+[    3.413006]  [<c7d21c63>] ? __switch_to+0x1d3/0x490
+[    3.413006]  [<c7d83c70>] ? kthread_park+0x50/0x50
+[    3.413006]  [<c8431637>] ret_from_fork+0x1b/0x28
+[    3.413192] ---[ end trace 18046846d9d33c20 ]---
+[    3.419054] fbcon: inteldrmfb (fb0) is primary device
+[    3.419370] ------------[ cut here ]------------
+[    3.419388] WARNING: CPU: 1 PID: 88 at drivers/gpu/drm/drm_atomic_helper.c:783 drm_atomic_helper_update_legacy_modeset_state+0x23a/0x270 [drm_kms_helper]
+[    3.419400] Modules linked in: i915 video i2c_algo_bit wmi drm_kms_helper button syscopyarea sysfillrect sysimgblt fb_sys_fops drm dm_mirror dm_region_hash dm_log dm_mod
+[    3.419404] CPU: 1 PID: 88 Comm: kworker/u4:4 Tainted: G        W       4.9.20-desktop-pae-1bP #1
+[    3.419406] Hardware name: Acer             Aspire 5710     /Acadia, BIOS V1.50 07/17/2007
+[    3.419413] Workqueue: events_unbound async_run_entry_fn
+[    3.419418]  ef593ab0 c80fdcbf 00000000 f41b0d70 ef593ae0 c7d66aea c864b4d8 00000001
+[    3.419423]  00000058 f41b0d70 0000030f f41a786a 0000030f ef6e8800 00000000 ef4a2000
+[    3.419427]  ef593af4 c7d66bba 00000009 00000000 00000000 ef593b1c f41a786a f46e9352
+[    3.419427] Call Trace:
+[    3.419435]  [<c80fdcbf>] dump_stack+0x58/0x79
+[    3.419438]  [<c7d66aea>] __warn+0xea/0x110
+[    3.419447]  [<f41a786a>] ? drm_atomic_helper_update_legacy_modeset_state+0x23a/0x270 [drm_kms_helper]
+[    3.419450]  [<c7d66bba>] warn_slowpath_null+0x2a/0x30
+[    3.419457]  [<f41a786a>] drm_atomic_helper_update_legacy_modeset_state+0x23a/0x270 [drm_kms_helper]
+[    3.419521]  [<f46e9352>] ? intel_pre_plane_update+0x62/0x170 [i915]
+[    3.419568]  [<f46ea41c>] intel_atomic_commit_tail+0xabc/0xf80 [i915]
+[    3.419577]  [<f41aac45>] ? drm_atomic_helper_swap_state+0x1c5/0x2d0 [drm_kms_helper]
+[    3.419584]  [<f41a732e>] ? drm_atomic_helper_prepare_planes+0x5e/0x110 [drm_kms_helper]
+[    3.419630]  [<f46eac25>] intel_atomic_commit+0x345/0x480 [i915]
+[    3.419655]  [<f4150fac>] ? drm_atomic_check_only+0x3ec/0x6a0 [drm]
+[    3.419672]  [<f41512a9>] drm_atomic_commit+0x49/0x50 [drm]
+[    3.419681]  [<f41acc63>] restore_fbdev_mode+0x153/0x2a0 [drm_kms_helper]
+[    3.419697]  [<f4150074>] ? drm_modeset_lock_all_ctx+0x94/0xb0 [drm]
+[    3.419706]  [<f41ae7b7>] drm_fb_helper_restore_fbdev_mode_unlocked+0x27/0x70 [drm_kms_helper]
+[    3.419713]  [<f41ae82d>] drm_fb_helper_set_par+0x2d/0x70 [drm_kms_helper]
+[    3.419759]  [<f4705345>] intel_fbdev_set_par+0x15/0x70 [i915]
+[    3.419763]  [<c818b9dd>] fbcon_init+0x55d/0x5b0
+[    3.419767]  [<c8256cb2>] ? klist_class_dev_get+0x12/0x20
+[    3.419771]  [<c842946e>] ? klist_node_init+0x2e/0x50
+[    3.419774]  [<c821405b>] visual_init+0xbb/0x120
+[    3.419777]  [<c82155f4>] do_bind_con_driver+0x174/0x360
+[    3.419780]  [<c81007f1>] ? kobject_set_name_vargs+0x61/0x90
+[    3.419782]  [<c8215abe>] do_take_over_console+0x10e/0x180
+[    3.419786]  [<c8187aff>] do_fbcon_takeover+0x5f/0xc0
+[    3.419788]  [<c818c547>] fbcon_event_notify+0x797/0x8b0
+[    3.419793]  [<c7f3e90c>] ? sysfs_add_file_mode_ns+0xac/0x1b0
+[    3.419795]  [<c7d852fe>] notifier_call_chain+0x4e/0x70
+[    3.419797]  [<c7d85619>] __blocking_notifier_call_chain+0x39/0x60
+[    3.419800]  [<c7d8565f>] blocking_notifier_call_chain+0x1f/0x30
+[    3.419802]  [<c818e5b6>] fb_notifier_call_chain+0x16/0x20
+[    3.419804]  [<c818ff2f>] register_framebuffer+0x1df/0x300
+[    3.419813]  [<f41aeabc>] drm_fb_helper_initial_config+0x24c/0x3e0 [drm_kms_helper]
+[    3.419859]  [<f4706426>] intel_fbdev_initial_config+0x16/0x30 [i915]
+[    3.419861]  [<c7d86af8>] async_run_entry_fn+0x38/0x180
+[    3.419865]  [<c7d7e681>] process_one_work+0x121/0x400
+[    3.419867]  [<c7d7e997>] worker_thread+0x37/0x4c0
+[    3.419869]  [<c7d7e960>] ? process_one_work+0x400/0x400
+[    3.419872]  [<c7d83d0c>] kthread+0x9c/0xb0
+[    3.419875]  [<c7d21c63>] ? __switch_to+0x1d3/0x490
+[    3.419878]  [<c7d83c70>] ? kthread_park+0x50/0x50
+[    3.419880]  [<c8431637>] ret_from_fork+0x1b/0x28
+[    3.419882] ---[ end trace 18046846d9d33c21 ]---
+[    3.471157] Console: switching to colour frame buffer device 160x50
+[    3.616659] i915 0000:00:02.0: fb0: inteldrmfb frame buffer device
+[    3.628086] dracut: Starting plymouth daemon
+[    4.454664] ata_piix 0000:00:1f.1: version 2.13
+[    4.459688] ACPI: bus type USB registered
+[    4.459734] usbcore: registered new interface driver usbfs
+[    4.459759] usbcore: registered new interface driver hub
+[    4.461062] scsi host4: ata_piix
+[    4.464256] usbcore: registered new device driver usb
+[    4.467052] scsi host5: ata_piix
+[    4.467168] ata5: PATA max UDMA/100 cmd 0x1f0 ctl 0x3f6 bmdma 0x5090 irq 14
+[    4.467171] ata6: PATA max UDMA/100 cmd 0x170 ctl 0x376 bmdma 0x5098 irq 15
+[    4.467366] ata6: port disabled--ignoring
+[    4.484827] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    4.485731] ehci-pci: EHCI PCI platform driver
+[    4.489091] ehci-pci 0000:00:1d.7: EHCI Host Controller
+[    4.489109] ehci-pci 0000:00:1d.7: new USB bus registered, assigned bus number 1
+[    4.489132] ehci-pci 0000:00:1d.7: debug port 1
+[    4.493064] ehci-pci 0000:00:1d.7: cache line size of 64 is not supported
+[    4.497065] ehci-pci 0000:00:1d.7: irq 23, io mem 0xd0644000
+[    4.504034] ehci-pci 0000:00:1d.7: USB 2.0 started, EHCI 1.00
+[    4.504120] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    4.504122] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    4.504125] usb usb1: Product: EHCI Host Controller
+[    4.504127] usb usb1: Manufacturer: Linux 4.9.20-desktop-pae-1bP ehci_hcd
+[    4.504129] usb usb1: SerialNumber: ...
+[    4.504426] hub 1-0:1.0: USB hub found
+[    4.504437] hub 1-0:1.0: 8 ports detected
+[    4.509401] uhci_hcd: USB Universal Host Controller Interface driver
+[    4.509665] uhci_hcd 0000:00:1d.0: UHCI Host Controller
+[    4.509678] uhci_hcd 0000:00:1d.0: new USB bus registered, assigned bus number 2
+[    4.509688] uhci_hcd 0000:00:1d.0: detected 2 ports
+[    4.509719] uhci_hcd 0000:00:1d.0: irq 23, io base 0x000050a0
+[    4.512082] usb usb2: New USB device found, idVendor=1d6b, idProduct=0001
+[    4.512085] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    4.512088] usb usb2: Product: UHCI Host Controller
+[    4.512090] usb usb2: Manufacturer: Linux 4.9.20-desktop-pae-1bP uhci_hcd
+[    4.512092] usb usb2: SerialNumber: ...
+[    4.514150] hub 2-0:1.0: USB hub found
+[    4.514162] hub 2-0:1.0: 2 ports detected
+[    4.514592] uhci_hcd 0000:00:1d.1: UHCI Host Controller
+[    4.514602] uhci_hcd 0000:00:1d.1: new USB bus registered, assigned bus number 3
+[    4.514610] uhci_hcd 0000:00:1d.1: detected 2 ports
+[    4.514651] uhci_hcd 0000:00:1d.1: irq 19, io base 0x000050c0
+[    4.514985] sdhci: Secure Digital Host Controller Interface driver
+[    4.514987] sdhci: Copyright(c) Pierre Ossman
+[    4.516077] usb usb3: New USB device found, idVendor=1d6b, idProduct=0001
+[    4.516081] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    4.516083] usb usb3: Product: UHCI Host Controller
+[    4.516085] usb usb3: Manufacturer: Linux 4.9.20-desktop-pae-1bP uhci_hcd
+[    4.516087] usb usb3: SerialNumber: ...
+[    4.518158] hub 3-0:1.0: USB hub found
+[    4.518171] hub 3-0:1.0: 2 ports detected
+[    4.518583] uhci_hcd 0000:00:1d.2: UHCI Host Controller
+[    4.518592] uhci_hcd 0000:00:1d.2: new USB bus registered, assigned bus number 4
+[    4.518602] uhci_hcd 0000:00:1d.2: detected 2 ports
+[    4.518642] uhci_hcd 0000:00:1d.2: irq 18, io base 0x000050e0
+[    4.518721] usb usb4: New USB device found, idVendor=1d6b, idProduct=0001
+[    4.518724] usb usb4: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    4.518726] usb usb4: Product: UHCI Host Controller
+[    4.518728] usb usb4: Manufacturer: Linux 4.9.20-desktop-pae-1bP uhci_hcd
+[    4.518730] usb usb4: SerialNumber: ...
+[    4.519134] hub 4-0:1.0: USB hub found
+[    4.519144] hub 4-0:1.0: 2 ports detected
+[    4.519537] uhci_hcd 0000:00:1d.3: UHCI Host Controller
+[    4.519545] uhci_hcd 0000:00:1d.3: new USB bus registered, assigned bus number 5
+[    4.519554] uhci_hcd 0000:00:1d.3: detected 2 ports
+[    4.519581] uhci_hcd 0000:00:1d.3: irq 16, io base 0x00005400
+[    4.523097] usb usb5: New USB device found, idVendor=1d6b, idProduct=0001
+[    4.523101] usb usb5: New USB device strings: Mfr=3, Product=2, SerialNumber=...
+[    4.523103] usb usb5: Product: UHCI Host Controller
+[    4.523105] usb usb5: Manufacturer: Linux 4.9.20-desktop-pae-1bP uhci_hcd
+[    4.523107] usb usb5: SerialNumber: ...
+[    4.524074] sdhci-pci 0000:06:00.1: SDHCI controller found [1524:0750] (rev 0)
+[    4.524090] pci 0000:00:1e.0: enabling device (0004 -> 0006)
+[    4.524106] sdhci-pci 0000:06:00.1: enabling device (0000 -> 0002)
+[    4.524418] hub 5-0:1.0: USB hub found
+[    4.524429] hub 5-0:1.0: 2 ports detected
+[    4.529064] mmc0: SDHCI controller on PCI [0000:06:00.1] using PIO
+[    4.529103] sdhci-pci 0000:06:00.3: SDHCI controller found [1524:0751] (rev 0)
+[    4.529118] sdhci-pci 0000:06:00.3: enabling device (0000 -> 0002)
+[    4.532083] mmc1: SDHCI controller on PCI [0000:06:00.3] using PIO
+[    4.643487] ata5.00: ATAPI: HL-DT-ST DVDRAM GSA-T20N, WP03, max UDMA/33
+[    4.665327] ata5.00: configured for UDMA/33
+[    4.670917] scsi 4:0:0:0: CD-ROM            HL-DT-ST DVDRAM GSA-T20N  WP03 PQ: 0 ANSI: 5
+[    4.707317] sr 4:0:0:0: [sr0] scsi3-mmc drive: 24x/24x writer dvd-ram cd/rw xa/form2 cdda tray
+[    4.707321] cdrom: Uniform CD-ROM driver Revision: 3.20
+[    4.707709] sr 4:0:0:0: Attached scsi CD-ROM sr0
+[    5.191426] random: crng init done
+[    6.028073] PM: Marking nosave pages: [mem 0x00000000-0x00000fff]
+[    6.028076] PM: Marking nosave pages: [mem 0x0009f000-0x000fffff]
+[    6.028081] PM: Basic memory bitmaps created
+[    6.058237] PM: Basic memory bitmaps freed
+[    6.058246] video LNXVIDEO:01: Restoring backlight state
+[    6.065043] PM: Starting manual resume from disk
+[    6.065049] PM: Hibernation image partition 8:9 present
+[    6.065050] PM: Looking for hibernation image.
+[    6.080395] PM: Image not found (code -22)
+[    6.080398] PM: Hibernation image not present or could not be loaded.
+[    6.302688] EXT4-fs (sda11): mounted filesystem with ordered data mode. Opts: data=ordered
+[    6.441599] dracut: Checking ext4: /dev/disk/by-uuid/HASH_C1E-39E9-E830-3D13-0985BBF580B2
+[    6.441893] dracut: issuing e2fsck -a  /dev/disk/by-uuid/HASH_C1E-39E9-E830-3D13-0985BBF580B2
+[    6.500767] dracut: /dev/disk/by-uuid/HASH_C1E-39E9-E830-3D13-0985BBF580B2: clean, 154145/1937712 files, 1401607/7744000 blocks
+[    6.504290] dracut: Mounting /dev/disk/by-uuid/HASH_C1E-39E9-E830-3D13-0985BBF580B2 with -o rw,relatime,data=ordered,ro
+[    6.569411] EXT4-fs (sda11): mounted filesystem with ordered data mode. Opts: data=ordered
+[    6.695268] dracut: Mounted root filesystem /dev/sda11
+[    7.048848] dracut: Switching root
+[    7.146929] Not activating Mandatory Access Control as /sbin/tomoyo-init does not exist.
+[    9.243427] NET: Registered protocol family 10
+[    9.285938] ip_tables: (C) FCB9-52CA Netfilter Core Team
+[    9.291788] cgroup: cgroup2: unknown option "nsdelegate"
+[    9.393532] systemd[1]: systemd 236 running in system mode. (+PAM +AUDIT -SELINUX +IMA -APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN default-hierarchy=hybrid)
+[    9.393765] systemd[1]: Detected architecture x86.
+[    9.405813] systemd[1]: Set hostname to ...
+[   10.103558] systemd[1]: File /usr/lib/systemd/system/systemd-journald.service:35 configures an IP firewall (IPAddressDeny=any), but the local system does not support BPF/cgroup based firewalling.
+[   10.103564] systemd[1]: Proceeding WITHOUT firewalling in effect! (This warning is only shown for the first loaded unit using IP firewalling.)
+[   10.319504] systemd[1]: Set up automount ...
+[   10.320176] systemd[1]: Created slice User and Session Slice.
+[   10.320285] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[   10.331959] systemd[1]: Created slice System Slice.
+[   10.334940] systemd[1]: Listening on Process Core Dump Socket.
+[   11.349601] EXT4-fs (sda11): re-mounted. Opts: (null)
+[   12.089765] systemd-journald[516]: Received request to flush runtime journal from PID 1
+[   12.285876] vboxguest: loading out-of-tree module taints kernel.
+[   12.289364] vboxguest: PCI device not found, probably running on physical hardware.
+[   12.317148] vboxguest: PCI device not found, probably running on physical hardware.
+[   14.021441] thermal LNXTHERM:00: registered as thermal_zone0
+[   14.021444] ACPI: Thermal Zone [TZ00] (54 C)
+[   14.053844] thermal LNXTHERM:01: registered as thermal_zone1
+[   14.053847] ACPI: Thermal Zone [TZ01] (54 C)
+[   14.085392] FUJITSU Extended Socket Network Device Driver - version 1.1 - Copyright (c) 2015 FUJITSU LIMITED
+[   14.129093] shpchp: Standard Hot Plug PCI Controller Driver version: 0.4
+[   14.238094] pps_core: LinuxPPS API ver. 1 registered
+[   14.238096] pps_core: Software ver. 5.3.6 - Copyright FAF7-631D Rodolfo Giometti <XXX@XXX>
+[   14.240524] PTP clock support registered
+[   14.271866] intel_rng: FWH not detected
+[   14.396278] tg3.c:v3.137 (May 11, 2014)
+[   14.401570] i801_smbus 0000:00:1f.3: SMBus using PCI interrupt
+[   14.440820] tg3 0000:04:00.0 eth0: Tigon3 [partno(BCM95787m) rev b002] (PCI Express) MAC address XX:XX:XX:XX:XX:XX
+[   14.440825] tg3 0000:04:00.0 eth0: attached PHY is 5787 (10/100/1000Base-T Ethernet) (WireSpeed[1], EEE[0])
+[   14.440828] tg3 0000:04:00.0 eth0: RXcsums[1] LinkChgREG[0] MIirq[0] ASF[0] TSOcap[1]
+[   14.440830] tg3 0000:04:00.0 eth0: dma_rwctrl[76180000] dma_mask[64-bit]
+[   14.444738] ACPI Warning: SystemIO range 0x0000000000001028-0x000000000000102F conflicts with OpRegion 0x0000000000001000-0x000000000000107F (\PMIO) (20160831/utaddress-247)
+[   14.444747] ACPI: If an ACPI driver is available for this device, you should use it instead of the native driver
+[   14.444751] ACPI Warning: SystemIO range 0x00000000000011B0-0x00000000000011BF conflicts with OpRegion 0x0000000000001180-0x00000000000011BB (\GPIO) (20160831/utaddress-247)
+[   14.444757] ACPI: If an ACPI driver is available for this device, you should use it instead of the native driver
+[   14.444758] ACPI Warning: SystemIO range 0x0000000000001180-0x00000000000011AF conflicts with OpRegion 0x0000000000001180-0x00000000000011BB (\GPIO) (20160831/utaddress-247)
+[   14.444763] ACPI: If an ACPI driver is available for this device, you should use it instead of the native driver
+[   14.444765] lpc_ich: Resource conflict(s) found affecting gpio_ich
+[   14.453196] ACPI: Battery Slot [BAT1] (battery present)
+[   14.462809] ACPI: AC Adapter [ACAD] (on-line)
+[   14.495481] leds_ss4200: no LED devices found
+[   14.505186] Uniform Multi-Platform E-IDE driver
+[   14.912196] iTCO_vendor_support: vendor-support=0
+[   14.914318] iTCO_wdt: Intel TCO WatchDog Timer Driver v1.11
+[   14.914427] iTCO_wdt: Found a ICH7-M or ICH7-U TCO device (Version=2, TCOBASE=0x1060)
+[   14.914598] iTCO_wdt: initialized. heartbeat=30 sec (nowayout=1)
+[   14.958725] snd_hda_codec_realtek hdaudioC0D0: autoconfig for ALC268: line_outs=1 (0x15/0x0/0x0/0x0/0x0) type:speaker
+[   14.958730] snd_hda_codec_realtek hdaudioC0D0:    speaker_outs=0 (0x0/0x0/0x0/0x0/0x0)
+[   14.958733] snd_hda_codec_realtek hdaudioC0D0:    hp_outs=1 (0x14/0x0/0x0/0x0/0x0)
+[   14.958735] snd_hda_codec_realtek hdaudioC0D0:    mono: mono_out=0x0
+[   14.958737] snd_hda_codec_realtek hdaudioC0D0:    dig-out=0x1e/0x0
+[   14.958739] snd_hda_codec_realtek hdaudioC0D0:    inputs:
+[   14.958742] snd_hda_codec_realtek hdaudioC0D0:      Internal Mic=0x19
+[   14.958745] snd_hda_codec_realtek hdaudioC0D0:      Mic=0x18
+[   14.958747] snd_hda_codec_realtek hdaudioC0D0:      Line=0x1a
+[   14.990324] input: HDA Digital PCBeep as /devices/pci0000:00/0000:00:1b.0/sound/card0/input8
+[   14.990857] input: HDA Intel Mic as /devices/pci0000:00/0000:00:1b.0/sound/card0/input9
+[   14.990997] input: HDA Intel Line as /devices/pci0000:00/0000:00:1b.0/sound/card0/input10
+[   14.991457] input: HDA Intel Front Headphone as /devices/pci0000:00/0000:00:1b.0/sound/card0/input11
+[   15.006426] acer_wmi: Acer Laptop ACPI-WMI Extras
+[   15.015103] acer_wmi: Function bitmap for Communication Device: 0x1
+[   15.015479] input: Acer BMA150 accelerometer as /devices/virtual/input/input12
+[   15.085333] tg3 0000:04:00.0 enp4s0: renamed from eth0
+[   15.097271] kvm: disabled by bios
+[   15.108205] kvm: disabled by bios
+[   16.028374] coretemp coretemp.0: Using relative temperature scale!
+[   16.028395] coretemp coretemp.0: Using relative temperature scale!
+[   16.100390] Adding 2085884k swap on /dev/sda9.  Priority:-1 extents:1 across:2085884k FS
+[   16.277415] intel_powerclamp: No package C-state available
+[   16.291545] intel_powerclamp: No package C-state available
+[   16.321431] input: AlpsPS/2 ALPS GlidePoint as /devices/platform/i8042/serio1/input/input7
+[   16.456382] iwl3945: Intel(R) PRO/Wireless 3945ABG/BG Network Connection driver for Linux, in-tree:s
+[   16.456384] iwl3945: Copyright(c) AD1C-2DF1 Intel Corporation
+[   16.456462] iwl3945 0000:05:00.0: can't disable ASPM; OS doesn't have ASPM control
+[   16.510280] iwl3945 0000:05:00.0: Tunable channels: 13 802.11bg, 23 802.11a channels
+[   16.510284] iwl3945 0000:05:00.0: Detected Intel Wireless WiFi Link 3945ABG
+[   16.552226] ieee80211 phy0: Selected rate control algorithm 'iwl-3945-rs'
+[   16.970059] Adding 3520508k swap on /dev/sda10.  Priority:-2 extents:1 across:3520508k FS
+[   17.258655] wl: module license 'MIXED/Proprietary' taints kernel.
+[   17.258658] Disabling lock debugging due to kernel taint
+[   17.277652] iwl3945 0000:05:00.0 wlp5s0: renamed from wlan0
+[   17.330514] audit_printk_skb: 24 callbacks suppressed
+[  126.551599] IPv6: ADDRCONF(NETDEV_UP): enp4s0: link is not ready
+[  126.732002] IPv6: ADDRCONF(NETDEV_UP): enp4s0: link is not ready
+[  126.738816] IPv6: ADDRCONF(NETDEV_UP): wlp5s0: link is not ready
+[  126.785180] iwl3945 0000:05:00.0: loaded firmware version XXX.XXX.XXX.XXX
+[  126.853980] IPv6: ADDRCONF(NETDEV_UP): wlp5s0: link is not ready
+[  126.926769] IPv6: ADDRCONF(NETDEV_UP): wlp5s0: link is not ready
+[  127.318168] NET: Registered protocol family 17
+[  127.629566] audit_printk_skb: 69 callbacks suppressed
+[  128.350455] IPv6: ADDRCONF(NETDEV_UP): wlp5s0: link is not ready
+[  134.064158] audit_printk_skb: 75 callbacks suppressed
+[  310.952618] IPv6: ADDRCONF(NETDEV_UP): wlp5s0: link is not ready
+[  314.328390] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[  314.329555] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[  314.331516] wlp5s0: authenticated
+[  314.332041] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[  314.335076] wlp5s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=5)
+[  314.337957] wlp5s0: associated
+[  314.338059] IPv6: ADDRCONF(NETDEV_CHANGE): wlp5s0: link becomes ready
+[  330.009649] audit_printk_skb: 45 callbacks suppressed
+[  798.797265] audit_printk_skb: 93 callbacks suppressed
+[  921.498313] audit_printk_skb: 9 callbacks suppressed
+[  936.171093] audit_printk_skb: 9 callbacks suppressed
+[  955.231278] audit_printk_skb: 39 callbacks suppressed
+[ 1385.025963] audit_printk_skb: 42 callbacks suppressed
+[ 1496.001837] audit_printk_skb: 30 callbacks suppressed
+[ 1558.741110] audit_printk_skb: 6 callbacks suppressed
+[ 1566.523138] audit_printk_skb: 9 callbacks suppressed
+[ 1604.038709] audit_printk_skb: 42 callbacks suppressed
+[ 1621.158318] audit_printk_skb: 42 callbacks suppressed
+[ 1632.994503] audit_printk_skb: 9 callbacks suppressed
+[ 1655.081202] audit_printk_skb: 42 callbacks suppressed
+[ 1671.780909] audit_printk_skb: 9 callbacks suppressed
+[ 1748.334908] audit_printk_skb: 66 callbacks suppressed
+[ 1762.680333] audit_printk_skb: 54 callbacks suppressed
+[ 1786.761382] audit_printk_skb: 42 callbacks suppressed
+[ 1799.694613] audit_printk_skb: 6 callbacks suppressed
+[ 1815.548067] audit_printk_skb: 9 callbacks suppressed
+[ 1821.610349] audit_printk_skb: 6 callbacks suppressed
+[ 1827.533578] audit_printk_skb: 3 callbacks suppressed
+[ 1929.794276] audit_printk_skb: 6 callbacks suppressed
+[ 1943.303515] audit_printk_skb: 15 callbacks suppressed
+[ 1977.050267] wlp5s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 1977.056203] wlp5s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1977.060288] wlp5s0: authenticated
+[ 1977.062035] wlp5s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 1977.065404] wlp5s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=5)
+[ 1977.075080] wlp5s0: associated
+[ 1981.438372] audit_printk_skb: 6 callbacks suppressed
+[ 2032.566950] audit_printk_skb: 9 callbacks suppressed
+[ 2069.259687] audit_printk_skb: 12 callbacks suppressed
+[ 2145.124346] audit_printk_skb: 9 callbacks suppressed
+[ 2230.981458] audit_printk_skb: 6 callbacks suppressed
+[ 2277.221182] audit_printk_skb: 6 callbacks suppressed
+[ 2345.560747] audit_printk_skb: 6 callbacks suppressed
+[ 2372.572497] audit_printk_skb: 6 callbacks suppressed
+[ 2386.993812] ide-cd driver 5.00
+[ 2387.059827] ide-gd driver 1.18
+[ 2387.158272] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[ 2387.381559] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[ 2387.382729] sr 4:0:0:0: Attached scsi generic sg1 type 5
