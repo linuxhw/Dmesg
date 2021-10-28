@@ -1,0 +1,83 @@
+[13723.047307] rtw_pci 0000:05:00.0: failed to send h2c command
+[14588.605822] ------------[ cut here ]------------
+[14588.605824] purge skb(s) not reported by firmware
+[14588.605873] WARNING: CPU: 3 PID: 123049 at drivers/net/wireless/realtek/rtw88/tx.c:167 rtw_tx_report_purge_timer+0x25/0x60 [rtw88]
+[14588.605875] Modules linked in: cdc_acm nls_utf8 isofs uas usb_storage rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi snd_soc_core snd_compress uvcvideo ac97_bus snd_pcm_dmaengine snd_hda_codec_hdmi rtwpci btusb rtw88 videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btrtl snd_hda_codec_realtek videobuf2_common snd_hda_codec_generic videodev mac80211 mc ledtrig_audio btbcm btintel cfg80211 bluetooth ecdh_generic ecc snd_hda_intel intel_telemetry_pltdrv snd_intel_dspcfg snd_hda_codec intel_punit_ipc libarc4 intel_telemetry_core intel_pmc_ipc x86_pkg_temp_thermal intel_powerclamp snd_hda_core coretemp snd_hwdep snd_pcm processor_thermal_device mei_hdcp intel_rapl_msr snd_seq_midi intel_rapl_common kvm_intel snd_seq_midi_event snd_rawmidi snd_seq snd_seq_device snd_timer
+[14588.605911]  int340x_thermal_zone intel_soc_dts_iosf kvm snd mei_me joydev intel_cstate intel_rapl_perf input_leds soundcore mei serio_raw hp_wmi sparse_keymap mac_hid wmi_bmof int3400_thermal acpi_thermal_rel hp_wireless sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 dm_crypt hid_generic usbhid hid crct10dif_pclmul crc32_pclmul ghash_clmulni_intel i915 aesni_intel i2c_algo_bit drm_kms_helper crypto_simd syscopyarea psmouse cryptd sysfillrect glue_helper sysimgblt fb_sys_fops i2c_i801 r8169 intel_lpss_pci ahci intel_lpss idma64 virt_dma realtek libahci drm wmi pinctrl_geminilake pinctrl_intel video
+[14588.605945] CPU: 3 PID: 123049 Comm: ruby Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[14588.605947] Hardware name: HP HP Laptop 14-ck0xxx/849E, BIOS F.42 06/20/2019
+[14588.605954] RIP: 0010:rtw_tx_report_purge_timer+0x25/0x60 [rtw88]
+[14588.605956] Code: 0f 1f 44 00 00 0f 1f 44 00 00 8b 47 f0 85 c0 75 01 c3 55 48 89 e5 41 55 41 54 53 48 89 fb 48 c7 c7 80 df ab c0 e8 e6 07 06 d8 <0f> 0b 4c 8d 6b d8 4c 89 ef e8 2d 3e a9 d8 48 8d 7b e0 49 89 c4 e8
+[14588.605957] RSP: 0000:ffffa85040188e48 EFLAGS: 00010286
+[14588.605959] RAX: 0000000000000000 RBX: ffff96c6f43897f0 RCX: 0000000000000006
+[14588.605960] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff96c6f7b978c0
+[14588.605960] RBP: ffffa85040188e60 R08: 0000000000000e5e R09: 0000000000000004
+[14588.605961] R10: 0000000000000000 R11: 0000000000000001 R12: ffff96c6f7b9ba80
+[14588.605962] R13: ffff96c6f43897f0 R14: ffffffffc0a40f00 R15: ffff96c6f43897f0
+[14588.605964] FS:  00007f9563df1700(0000) GS:ffff96c6f7b80000(0000) knlGS:0000000000000000
+[14588.605964] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[14588.605965] CR2: 00005632fc5ac000 CR3: 0000000265a1e000 CR4: 0000000000340ee0
+[14588.605966] Call Trace:
+[14588.605968]  <IRQ>
+[14588.605976]  call_timer_fn+0x32/0x130
+[14588.605979]  __run_timers.part.0+0x180/0x280
+[14588.605983]  ? timerqueue_add+0x9b/0xb0
+[14588.605985]  ? enqueue_hrtimer+0x3d/0x90
+[14588.605987]  ? ktime_get+0x3e/0xa0
+[14588.605989]  run_timer_softirq+0x2a/0x50
+[14588.605991]  __do_softirq+0xe1/0x2d6
+[14588.605992]  ? hrtimer_interrupt+0x13b/0x220
+[14588.605996]  irq_exit+0xae/0xb0
+[14588.605997]  smp_apic_timer_interrupt+0x7b/0x140
+[14588.605999]  apic_timer_interrupt+0xf/0x20
+[14588.606000]  </IRQ>
+[14588.606002] RIP: 0033:0x5632f7249a83
+[14588.606004] Code: 0f 1f 80 00 00 00 00 41 54 55 53 48 8b 47 18 48 8b 58 20 48 85 db 74 21 49 89 f4 48 89 d5 66 0f 1f 84 00 00 00 00 00 48 8b 3b <48> 8b 5b 08 48 89 ee 41 ff d4 48 85 db 75 ee 5b 5d 41 5c c3 66 0f
+[14588.606005] RSP: 002b:00007ffd91e7cfe0 EFLAGS: 00000206 ORIG_RAX: ffffffffffffff13
+[14588.606007] RAX: 00005632f9fd75c0 RBX: 00005632f9fbbbf0 RCX: 00005632fb5c9100
+[14588.606007] RDX: 0000000000000008 RSI: 00005632f71f9f80 RDI: 00005632f9d8e050
+[14588.606008] RBP: 0000000000000008 R08: 00005632fc59d310 R09: 00005632f90aec50
+[14588.606009] R10: 0000000000000000 R11: 00007f9563dedb10 R12: 00005632f71f9f80
+[14588.606010] R13: 00005632fc5aad18 R14: 00005632fc59d310 R15: 00005632f90fbfe0
+[14588.606012] ---[ end trace 6d1407ab2f845a15 ]---
+[14594.589953] ------------[ cut here ]------------
+[14594.589955] purge skb(s) not reported by firmware
+[14594.590006] WARNING: CPU: 3 PID: 3178 at drivers/net/wireless/realtek/rtw88/tx.c:167 rtw_tx_report_purge_timer+0x25/0x60 [rtw88]
+[14594.590007] Modules linked in: cdc_acm nls_utf8 isofs uas usb_storage rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 snd_sof_pci snd_sof_intel_hda_common snd_soc_hdac_hda snd_sof_intel_hda snd_sof_intel_byt snd_sof_intel_ipc snd_sof snd_sof_xtensa_dsp snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi snd_soc_core snd_compress uvcvideo ac97_bus snd_pcm_dmaengine snd_hda_codec_hdmi rtwpci btusb rtw88 videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btrtl snd_hda_codec_realtek videobuf2_common snd_hda_codec_generic videodev mac80211 mc ledtrig_audio btbcm btintel cfg80211 bluetooth ecdh_generic ecc snd_hda_intel intel_telemetry_pltdrv snd_intel_dspcfg snd_hda_codec intel_punit_ipc libarc4 intel_telemetry_core intel_pmc_ipc x86_pkg_temp_thermal intel_powerclamp snd_hda_core coretemp snd_hwdep snd_pcm processor_thermal_device mei_hdcp intel_rapl_msr snd_seq_midi intel_rapl_common kvm_intel snd_seq_midi_event snd_rawmidi snd_seq snd_seq_device snd_timer
+[14594.590046]  int340x_thermal_zone intel_soc_dts_iosf kvm snd mei_me joydev intel_cstate intel_rapl_perf input_leds soundcore mei serio_raw hp_wmi sparse_keymap mac_hid wmi_bmof int3400_thermal acpi_thermal_rel hp_wireless sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 dm_crypt hid_generic usbhid hid crct10dif_pclmul crc32_pclmul ghash_clmulni_intel i915 aesni_intel i2c_algo_bit drm_kms_helper crypto_simd syscopyarea psmouse cryptd sysfillrect glue_helper sysimgblt fb_sys_fops i2c_i801 r8169 intel_lpss_pci ahci intel_lpss idma64 virt_dma realtek libahci drm wmi pinctrl_geminilake pinctrl_intel video
+[14594.590083] CPU: 3 PID: 3178 Comm: gnome-shell Tainted: G        W         5.4.0-29-generic #33-Ubuntu
+[14594.590084] Hardware name: HP HP Laptop 14-ck0xxx/849E, BIOS F.42 06/20/2019
+[14594.590092] RIP: 0010:rtw_tx_report_purge_timer+0x25/0x60 [rtw88]
+[14594.590094] Code: 0f 1f 44 00 00 0f 1f 44 00 00 8b 47 f0 85 c0 75 01 c3 55 48 89 e5 41 55 41 54 53 48 89 fb 48 c7 c7 80 df ab c0 e8 e6 07 06 d8 <0f> 0b 4c 8d 6b d8 4c 89 ef e8 2d 3e a9 d8 48 8d 7b e0 49 89 c4 e8
+[14594.590096] RSP: 0000:ffffa85040188e48 EFLAGS: 00010286
+[14594.590097] RAX: 0000000000000000 RBX: ffff96c6f43897f0 RCX: 0000000000000006
+[14594.590098] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff96c6f7b978c0
+[14594.590099] RBP: ffffa85040188e60 R08: 0000000000000e8a R09: 0000000000000004
+[14594.590100] R10: 0000000000000000 R11: 0000000000000001 R12: ffff96c6f7b9ba80
+[14594.590101] R13: ffff96c6f43897f0 R14: ffffffffc0a40f00 R15: ffff96c6f43897f0
+[14594.590103] FS:  00007f2feec5ccc0(0000) GS:ffff96c6f7b80000(0000) knlGS:0000000000000000
+[14594.590104] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[14594.590105] CR2: 00007fa0302dd000 CR3: 000000026cf62000 CR4: 0000000000340ee0
+[14594.590106] Call Trace:
+[14594.590108]  <IRQ>
+[14594.590116]  call_timer_fn+0x32/0x130
+[14594.590119]  __run_timers.part.0+0x180/0x280
+[14594.590123]  ? timerqueue_add+0x9b/0xb0
+[14594.590124]  ? enqueue_hrtimer+0x3d/0x90
+[14594.590127]  ? ktime_get+0x3e/0xa0
+[14594.590129]  run_timer_softirq+0x2a/0x50
+[14594.590131]  __do_softirq+0xe1/0x2d6
+[14594.590133]  ? hrtimer_interrupt+0x13b/0x220
+[14594.590137]  irq_exit+0xae/0xb0
+[14594.590138]  smp_apic_timer_interrupt+0x7b/0x140
+[14594.590141]  apic_timer_interrupt+0xf/0x20
+[14594.590142]  </IRQ>
+[14594.590144] RIP: 0033:0x7f2ff43c83b6
+[14594.590145] Code: 84 3a ff ff ff eb bd 48 83 c4 18 5b 5d 41 5c 41 5d 41 5e 41 5f c3 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 00 f3 0f 1e fa 41 54 <55> 48 83 ec 08 48 85 ff 74 50 48 89 fd 49 89 f4 e8 35 93 ff ff 48
+[14594.590146] RSP: 002b:00007ffcf1741820 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[14594.590148] RAX: 0000000000000009 RBX: 0000558f02b9e140 RCX: 0000000000000000
+[14594.590149] RDX: 0000000000000001 RSI: 00007ffcf1741880 RDI: 0000558f02b9e470
+[14594.590150] RBP: 0000558f02b9e470 R08: 0000000000000001 R09: 0000558f0247c430
+[14594.590150] R10: 0000558f03834a90 R11: 0000000000000000 R12: 0000558f0557afd0
+[14594.590151] R13: 0000558f05ce8230 R14: 0000558f05ce8230 R15: 00007ffcf1741880
+[14594.590154] ---[ end trace 6d1407ab2f845a16 ]---
