@@ -1,0 +1,704 @@
+[ 3637.984070] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 3648.224071] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 3648.328045] ------------[ cut here ]------------
+[ 3648.328048] vblank wait timed out on crtc 1
+[ 3648.328150] WARNING: CPU: 0 PID: 6196 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 3648.328151] Modules linked in: xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi ath
+[ 3648.328200]  mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 3648.328234] CPU: 0 PID: 6196 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 3648.328235] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 3648.328250] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 3648.328251] RSP: 0018:ffffa7b600a87960 EFLAGS: 00010282
+[ 3648.328254] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 3648.328255] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f216490
+[ 3648.328256] RBP: ffffa7b600a879b8 R08: 0000000000000001 R09: 0000000000000b25
+[ 3648.328258] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 3648.328259] R13: 0000000000000000 R14: 0000000043001509 R15: ffff910ab470e968
+[ 3648.328261] FS:  00007f7eefe43600(0000) GS:ffff910b3f200000(0000) knlGS:0000000000000000
+[ 3648.328263] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3648.328265] CR2: 00007f28540013a8 CR3: 00000000b3ab0000 CR4: 00000000000006f0
+[ 3648.328266] Call Trace:
+[ 3648.328274]  ? wait_woken+0x80/0x80
+[ 3648.328330]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 3648.328366]  intel_tv_detect+0x147/0x510 [i915]
+[ 3648.328382]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 3648.328397]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 3648.328403]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 3648.328413]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 3648.328421]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 3648.328428]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 3648.328431]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 3648.328448]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 3648.328451]  ? lapic_next_event+0x20/0x30
+[ 3648.328467]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 3648.328481]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 3648.328494]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 3648.328509]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 3648.328514]  do_vfs_ioctl+0xa8/0x630
+[ 3648.328517]  ? handle_mm_fault+0xb1/0x1f0
+[ 3648.328520]  ? __do_page_fault+0x270/0x4d0
+[ 3648.328522]  SyS_ioctl+0x79/0x90
+[ 3648.328526]  do_syscall_64+0x73/0x130
+[ 3648.328529]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 3648.328531] RIP: 0033:0x7f7eed2405d7
+[ 3648.328532] RSP: 002b:00007ffc1ab98808 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 3648.328534] RAX: ffffffffffffffda RBX: 00005593640783c0 RCX: 00007f7eed2405d7
+[ 3648.328536] RDX: 00007ffc1ab98840 RSI: 00000000c05064a7 RDI: 000000000000000c
+[ 3648.328537] RBP: 00007ffc1ab98840 R08: 0000000000000000 R09: 0000000000000000
+[ 3648.328539] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 3648.328540] R13: 000000000000000c R14: 000000000000000c R15: 00007ffc1ab98840
+[ 3648.328542] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 3648.328585] ---[ end trace 729c73c7acebb426 ]---
+[ 3658.464073] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 3668.704070] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 4647.933328] rfkill: input handler enabled
+[ 4658.144066] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4658.248045] ------------[ cut here ]------------
+[ 4658.248048] vblank wait timed out on crtc 1
+[ 4658.248149] WARNING: CPU: 1 PID: 1395 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4658.248150] Modules linked in: xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi ath
+[ 4658.248199]  mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 4658.248233] CPU: 1 PID: 1395 Comm: gnome-shell Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 4658.248234] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 4658.248249] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4658.248250] RSP: 0018:ffffa7b6016ef960 EFLAGS: 00010282
+[ 4658.248252] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 4658.248254] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f316490
+[ 4658.248255] RBP: ffffa7b6016ef9b8 R08: 0000000000000001 R09: 0000000000000b5a
+[ 4658.248257] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 4658.248258] R13: 0000000000000000 R14: 000000004500150a R15: ffff910ab470e968
+[ 4658.248260] FS:  00007f2cc6b73ac0(0000) GS:ffff910b3f300000(0000) knlGS:0000000000000000
+[ 4658.248262] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 4658.248264] CR2: 00007f185b613900 CR3: 00000000b7b0e000 CR4: 00000000000006e0
+[ 4658.248265] Call Trace:
+[ 4658.248273]  ? wait_woken+0x80/0x80
+[ 4658.248330]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 4658.248365]  intel_tv_detect+0x147/0x510 [i915]
+[ 4658.248381]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 4658.248396]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 4658.248402]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 4658.248411]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4658.248419]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4658.248426]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 4658.248443]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 4658.248459]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4658.248472]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 4658.248485]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 4658.248501]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4658.248505]  ? eventfd_ctx_read+0x67/0x220
+[ 4658.248507]  ? wake_up_q+0x80/0x80
+[ 4658.248511]  do_vfs_ioctl+0xa8/0x630
+[ 4658.248514]  ? vfs_read+0x115/0x130
+[ 4658.248516]  SyS_ioctl+0x79/0x90
+[ 4658.248519]  do_syscall_64+0x73/0x130
+[ 4658.248522]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 4658.248525] RIP: 0033:0x7f2cc3c3a5d7
+[ 4658.248526] RSP: 002b:00007ffe46770338 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 4658.248528] RAX: ffffffffffffffda RBX: 0000000000000003 RCX: 00007f2cc3c3a5d7
+[ 4658.248530] RDX: 00007ffe46770370 RSI: 00000000c05064a7 RDI: 000000000000000b
+[ 4658.248531] RBP: 00007ffe46770370 R08: 0000560411ade4b0 R09: 00007f2cc3c92940
+[ 4658.248533] R10: 0000000000000007 R11: 0000000000000246 R12: 00000000c05064a7
+[ 4658.248534] R13: 000000000000000b R14: 000000000000000b R15: 00007ffe46770370
+[ 4658.248536] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 4658.248579] ---[ end trace 729c73c7acebb427 ]---
+[ 4668.384082] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4678.624078] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 4876.000077] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4876.104039] ------------[ cut here ]------------
+[ 4876.104042] vblank wait timed out on crtc 1
+[ 4876.104147] WARNING: CPU: 1 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4876.104148] Modules linked in: xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi ath
+[ 4876.104197]  mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 4876.104232] CPU: 1 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 4876.104233] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 4876.104248] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4876.104249] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 4876.104251] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 4876.104253] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f316490
+[ 4876.104254] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 0000000000000b8d
+[ 4876.104255] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 4876.104257] R13: 0000000000000000 R14: 000000004700150b R15: ffff910ab470e968
+[ 4876.104259] FS:  00007f287d2fd600(0000) GS:ffff910b3f300000(0000) knlGS:0000000000000000
+[ 4876.104261] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 4876.104262] CR2: 00007f185b613900 CR3: 0000000067a34000 CR4: 00000000000006e0
+[ 4876.104263] Call Trace:
+[ 4876.104272]  ? wait_woken+0x80/0x80
+[ 4876.104330]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 4876.104366]  intel_tv_detect+0x147/0x510 [i915]
+[ 4876.104372]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 4876.104383]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4876.104391]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4876.104398]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 4876.104402]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 4876.104418]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 4876.104434]  ? __drm_mode_object_find+0x59/0x100 [drm]
+[ 4876.104450]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4876.104463]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 4876.104476]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 4876.104491]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4876.104496]  ? new_sync_write+0xe7/0x140
+[ 4876.104499]  do_vfs_ioctl+0xa8/0x630
+[ 4876.104501]  ? vfs_write+0x132/0x1a0
+[ 4876.104504]  SyS_ioctl+0x79/0x90
+[ 4876.104507]  do_syscall_64+0x73/0x130
+[ 4876.104510]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 4876.104512] RIP: 0033:0x7f287a6fa5d7
+[ 4876.104514] RSP: 002b:00007fffe3f2a0c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 4876.104516] RAX: ffffffffffffffda RBX: 0000563f9268e8e8 RCX: 00007f287a6fa5d7
+[ 4876.104518] RDX: 00007fffe3f2a100 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 4876.104519] RBP: 00007fffe3f2a100 R08: 0000000000000000 R09: 0000000000000000
+[ 4876.104521] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 4876.104522] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f2a100
+[ 4876.104524] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 4876.104566] ---[ end trace 729c73c7acebb428 ]---
+[ 4886.240095] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4896.480083] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 4906.720073] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4906.820252] ------------[ cut here ]------------
+[ 4906.820255] vblank wait timed out on crtc 1
+[ 4906.820355] WARNING: CPU: 1 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4906.820356] Modules linked in: xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi ath
+[ 4906.820406]  mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 4906.820440] CPU: 1 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 4906.820441] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 4906.820456] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4906.820457] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 4906.820460] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 4906.820461] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f316490
+[ 4906.820463] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 0000000000000bbf
+[ 4906.820464] R10: 00000000000001c3 R11: 0000000000000000 R12: 0000000000000001
+[ 4906.820465] R13: 0000000000000000 R14: 000000004900150c R15: ffff910ab470e968
+[ 4906.820467] FS:  00007f287d2fd600(0000) GS:ffff910b3f300000(0000) knlGS:0000000000000000
+[ 4906.820469] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 4906.820471] CR2: 00007f185b613900 CR3: 0000000067a34000 CR4: 00000000000006e0
+[ 4906.820472] Call Trace:
+[ 4906.820480]  ? wait_woken+0x80/0x80
+[ 4906.820536]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 4906.820572]  intel_tv_detect+0x147/0x510 [i915]
+[ 4906.820578]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 4906.820588]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4906.820596]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4906.820603]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 4906.820607]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 4906.820623]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 4906.820639]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4906.820652]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 4906.820666]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 4906.820681]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4906.820685]  ? new_sync_write+0xe7/0x140
+[ 4906.820689]  do_vfs_ioctl+0xa8/0x630
+[ 4906.820691]  ? vfs_write+0x132/0x1a0
+[ 4906.820693]  SyS_ioctl+0x79/0x90
+[ 4906.820697]  do_syscall_64+0x73/0x130
+[ 4906.820700]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 4906.820702] RIP: 0033:0x7f287a6fa5d7
+[ 4906.820703] RSP: 002b:00007fffe3f29e88 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 4906.820705] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 4906.820707] RDX: 00007fffe3f29ec0 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 4906.820708] RBP: 00007fffe3f29ec0 R08: 0000000000000000 R09: 0000000000000001
+[ 4906.820710] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 4906.820711] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f29ec0
+[ 4906.820713] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 4906.820756] ---[ end trace 729c73c7acebb429 ]---
+[ 4916.960100] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4927.200085] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 4938.208096] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4938.312054] ------------[ cut here ]------------
+[ 4938.312057] vblank wait timed out on crtc 1
+[ 4938.312162] WARNING: CPU: 1 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4938.312163] Modules linked in: xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi ath
+[ 4938.312212]  mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 4938.312246] CPU: 1 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 4938.312247] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 4938.312262] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4938.312264] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 4938.312266] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 4938.312267] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f316490
+[ 4938.312269] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 0000000000000bf0
+[ 4938.312270] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 4938.312271] R13: 0000000000000000 R14: 000000004b00150d R15: ffff910ab470e968
+[ 4938.312273] FS:  00007f287d2fd600(0000) GS:ffff910b3f300000(0000) knlGS:0000000000000000
+[ 4938.312275] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 4938.312277] CR2: 00001412ae2a3b70 CR3: 0000000067a34000 CR4: 00000000000006e0
+[ 4938.312278] Call Trace:
+[ 4938.312286]  ? wait_woken+0x80/0x80
+[ 4938.312348]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 4938.312383]  intel_tv_detect+0x147/0x510 [i915]
+[ 4938.312399]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 4938.312414]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 4938.312420]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 4938.312430]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4938.312437]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4938.312444]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 4938.312461]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 4938.312477]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4938.312490]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 4938.312504]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 4938.312519]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4938.312524]  do_vfs_ioctl+0xa8/0x630
+[ 4938.312527]  ? recalc_sigpending+0x1b/0x50
+[ 4938.312531]  ? _copy_from_user+0x3e/0x60
+[ 4938.312534]  SyS_ioctl+0x79/0x90
+[ 4938.312537]  do_syscall_64+0x73/0x130
+[ 4938.312540]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 4938.312542] RIP: 0033:0x7f287a6fa5d7
+[ 4938.312543] RSP: 002b:00007fffe3f29f58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 4938.312546] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 4938.312548] RDX: 00007fffe3f29f90 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 4938.312549] RBP: 00007fffe3f29f90 R08: 0000000000000000 R09: 0000000000000000
+[ 4938.312550] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 4938.312552] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f29f90
+[ 4938.312554] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 4938.312597] ---[ end trace 729c73c7acebb42a ]---
+[ 4948.448095] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4958.688072] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 4968.928077] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4969.032045] ------------[ cut here ]------------
+[ 4969.032048] vblank wait timed out on crtc 1
+[ 4969.032150] WARNING: CPU: 1 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4969.032151] Modules linked in: xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi ath
+[ 4969.032200]  mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 4969.032235] CPU: 1 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 4969.032236] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 4969.032251] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 4969.032252] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 4969.032254] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 4969.032256] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f316490
+[ 4969.032257] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 0000000000000c22
+[ 4969.032258] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 4969.032260] R13: 0000000000000000 R14: 000000004d00150e R15: ffff910ab470e968
+[ 4969.032262] FS:  00007f287d2fd600(0000) GS:ffff910b3f300000(0000) knlGS:0000000000000000
+[ 4969.032264] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 4969.032265] CR2: 00007f3224650000 CR3: 0000000067a34000 CR4: 00000000000006e0
+[ 4969.032267] Call Trace:
+[ 4969.032275]  ? wait_woken+0x80/0x80
+[ 4969.032332]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 4969.032368]  intel_tv_detect+0x147/0x510 [i915]
+[ 4969.032383]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 4969.032399]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 4969.032404]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 4969.032413]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4969.032421]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 4969.032428]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 4969.032432]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 4969.032448]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 4969.032463]  ? __drm_mode_object_find+0x59/0x100 [drm]
+[ 4969.032479]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4969.032493]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 4969.032506]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 4969.032521]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 4969.032526]  do_vfs_ioctl+0xa8/0x630
+[ 4969.032529]  ? recalc_sigpending+0x1b/0x50
+[ 4969.032533]  ? _copy_from_user+0x3e/0x60
+[ 4969.032535]  SyS_ioctl+0x79/0x90
+[ 4969.032539]  do_syscall_64+0x73/0x130
+[ 4969.032542]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 4969.032544] RIP: 0033:0x7f287a6fa5d7
+[ 4969.032545] RSP: 002b:00007fffe3f29f58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 4969.032548] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 4969.032549] RDX: 00007fffe3f29f90 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 4969.032551] RBP: 00007fffe3f29f90 R08: 0000000000000000 R09: 0000000000000000
+[ 4969.032552] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 4969.032554] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f29f90
+[ 4969.032555] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 4969.032598] ---[ end trace 729c73c7acebb42b ]---
+[ 4979.168082] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 4989.408080] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 4992.191563] rfkill: input handler disabled
+[ 5019.104094] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 5019.208058] ------------[ cut here ]------------
+[ 5019.208062] vblank wait timed out on crtc 1
+[ 5019.208162] WARNING: CPU: 0 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 5019.208163] Modules linked in: xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi ath
+[ 5019.208211]  mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 5019.208244] CPU: 0 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 5019.208245] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 5019.208260] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 5019.208261] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 5019.208263] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 5019.208265] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f216490
+[ 5019.208266] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 0000000000000c57
+[ 5019.208267] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 5019.208269] R13: 0000000000000000 R14: 000000004f00150f R15: ffff910ab470e968
+[ 5019.208271] FS:  00007f287d2fd600(0000) GS:ffff910b3f200000(0000) knlGS:0000000000000000
+[ 5019.208272] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 5019.208274] CR2: 00007fd97a726b98 CR3: 0000000067a34000 CR4: 00000000000006f0
+[ 5019.208275] Call Trace:
+[ 5019.208283]  ? wait_woken+0x80/0x80
+[ 5019.208350]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 5019.208384]  intel_tv_detect+0x147/0x510 [i915]
+[ 5019.208399]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 5019.208413]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 5019.208419]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 5019.208437]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 5019.208444]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 5019.208451]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 5019.208455]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 5019.208470]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 5019.208474]  ? lapic_next_event+0x20/0x30
+[ 5019.208490]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 5019.208502]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 5019.208515]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 5019.208529]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 5019.208534]  do_vfs_ioctl+0xa8/0x630
+[ 5019.208536]  ? recalc_sigpending+0x1b/0x50
+[ 5019.208540]  ? _copy_from_user+0x3e/0x60
+[ 5019.208542]  SyS_ioctl+0x79/0x90
+[ 5019.208546]  do_syscall_64+0x73/0x130
+[ 5019.208549]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 5019.208551] RIP: 0033:0x7f287a6fa5d7
+[ 5019.208552] RSP: 002b:00007fffe3f29f58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 5019.208555] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 5019.208556] RDX: 00007fffe3f29f90 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 5019.208557] RBP: 00007fffe3f29f90 R08: 0000000000000000 R09: 0000000000000000
+[ 5019.208559] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 5019.208560] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f29f90
+[ 5019.208562] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 5019.208602] ---[ end trace 729c73c7acebb42c ]---
+[ 5029.344078] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 5039.584070] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 5049.824097] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 5049.928050] ------------[ cut here ]------------
+[ 5049.928053] vblank wait timed out on crtc 1
+[ 5049.928155] WARNING: CPU: 1 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 5049.928156] Modules linked in: xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi ath
+[ 5049.928205]  mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 5049.928239] CPU: 1 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 5049.928240] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 5049.928255] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 5049.928256] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 5049.928258] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 5049.928260] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f316490
+[ 5049.928262] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 0000000000000c8b
+[ 5049.928263] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 5049.928264] R13: 0000000000000000 R14: 0000000051001510 R15: ffff910ab470e968
+[ 5049.928266] FS:  00007f287d2fd600(0000) GS:ffff910b3f300000(0000) knlGS:0000000000000000
+[ 5049.928268] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 5049.928270] CR2: 00005584f53d9834 CR3: 0000000067a34000 CR4: 00000000000006e0
+[ 5049.928271] Call Trace:
+[ 5049.928279]  ? wait_woken+0x80/0x80
+[ 5049.928336]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 5049.928372]  intel_tv_detect+0x147/0x510 [i915]
+[ 5049.928387]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 5049.928402]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 5049.928408]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 5049.928419]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 5049.928426]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 5049.928433]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 5049.928437]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 5049.928453]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 5049.928468]  ? __drm_mode_object_find+0x59/0x100 [drm]
+[ 5049.928484]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 5049.928497]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 5049.928511]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 5049.928526]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 5049.928530]  do_vfs_ioctl+0xa8/0x630
+[ 5049.928533]  ? recalc_sigpending+0x1b/0x50
+[ 5049.928537]  ? _copy_from_user+0x3e/0x60
+[ 5049.928539]  SyS_ioctl+0x79/0x90
+[ 5049.928543]  do_syscall_64+0x73/0x130
+[ 5049.928546]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 5049.928548] RIP: 0033:0x7f287a6fa5d7
+[ 5049.928549] RSP: 002b:00007fffe3f29f58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 5049.928552] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 5049.928553] RDX: 00007fffe3f29f90 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 5049.928554] RBP: 00007fffe3f29f90 R08: 0000000000000000 R09: 0000000000000000
+[ 5049.928556] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 5049.928557] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f29f90
+[ 5049.928559] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 5049.928602] ---[ end trace 729c73c7acebb42d ]---
+[ 5060.064102] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 5070.304082] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 5329.101809] wlp6s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 5329.106008] wlp6s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 5329.132640] wlp6s0: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[ 5329.146879] wlp6s0: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[ 5329.161314] wlp6s0: authentication with XX:XX:XX:XX:XX:XX timed out
+[ 5354.006688] IPv6: ADDRCONF(NETDEV_UP): wlp6s0: link is not ready
+[ 5358.150622] wlp6s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 5358.154857] wlp6s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 5358.156841] wlp6s0: authenticated
+[ 5358.160079] wlp6s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 5358.162714] wlp6s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=1)
+[ 5358.162809] wlp6s0: associated
+[ 5358.481310] IPv6: ADDRCONF(NETDEV_CHANGE): wlp6s0: link becomes ready
+[ 5422.688932] wlp6s0: deauthenticated from XX:XX:XX:XX:XX:XX (Reason: 3=DEAUTH_LEAVING)
+[ 5424.004865] wlp6s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 5424.022735] wlp6s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 5424.051139] wlp6s0: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[ 5424.067096] wlp6s0: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[ 5424.082307] wlp6s0: authentication with XX:XX:XX:XX:XX:XX timed out
+[ 5429.850060] IPv6: ADDRCONF(NETDEV_UP): wlp6s0: link is not ready
+[ 5432.040784] wlp6s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 5432.057440] wlp6s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 5432.060215] wlp6s0: authenticated
+[ 5432.064226] wlp6s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 5432.066885] wlp6s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=1)
+[ 5432.066997] wlp6s0: associated
+[ 5436.092218] wlp6s0: deauthenticated from XX:XX:XX:XX:XX:XX (Reason: 3=DEAUTH_LEAVING)
+[ 5462.732997] wlp6s0: authenticate with XX:XX:XX:XX:XX:XX
+[ 5462.745518] wlp6s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[ 5462.747600] wlp6s0: authenticated
+[ 5462.752063] wlp6s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[ 5462.755024] wlp6s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x411 status=0 aid=1)
+[ 5462.755123] wlp6s0: associated
+[ 5462.801380] IPv6: ADDRCONF(NETDEV_CHANGE): wlp6s0: link becomes ready
+[ 8354.784062] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8354.888058] ------------[ cut here ]------------
+[ 8354.888061] vblank wait timed out on crtc 1
+[ 8354.888165] WARNING: CPU: 0 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8354.888166] Modules linked in: ccm xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi
+[ 8354.888215]  ath mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 8354.888250] CPU: 0 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 8354.888251] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 8354.888266] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8354.888267] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 8354.888269] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 8354.888271] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f216490
+[ 8354.888272] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 0000000000000e89
+[ 8354.888274] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 8354.888275] R13: 0000000000000000 R14: 0000000053001511 R15: ffff910ab470e968
+[ 8354.888277] FS:  00007f287d2fd600(0000) GS:ffff910b3f200000(0000) knlGS:0000000000000000
+[ 8354.888279] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8354.888280] CR2: 00007f185b613900 CR3: 0000000067a34000 CR4: 00000000000006f0
+[ 8354.888282] Call Trace:
+[ 8354.888289]  ? wait_woken+0x80/0x80
+[ 8354.888345]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 8354.888381]  intel_tv_detect+0x147/0x510 [i915]
+[ 8354.888396]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8354.888411]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8354.888417]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 8354.888429]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8354.888436]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8354.888444]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 8354.888447]  ? page_cache_next_hole+0x3a/0x50
+[ 8354.888464]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 8354.888480]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8354.888493]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 8354.888506]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 8354.888522]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8354.888526]  do_vfs_ioctl+0xa8/0x630
+[ 8354.888529]  ? recalc_sigpending+0x1b/0x50
+[ 8354.888533]  ? _copy_from_user+0x3e/0x60
+[ 8354.888535]  SyS_ioctl+0x79/0x90
+[ 8354.888539]  do_syscall_64+0x73/0x130
+[ 8354.888542]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 8354.888544] RIP: 0033:0x7f287a6fa5d7
+[ 8354.888545] RSP: 002b:00007fffe3f29f58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 8354.888548] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 8354.888549] RDX: 00007fffe3f29f90 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 8354.888550] RBP: 00007fffe3f29f90 R08: 0000000000000000 R09: 0000000000000000
+[ 8354.888552] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 8354.888553] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f29f90
+[ 8354.888555] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 8354.888598] ---[ end trace 729c73c7acebb42e ]---
+[ 8365.024077] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8375.264099] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 8386.016106] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8386.119963] ------------[ cut here ]------------
+[ 8386.119965] vblank wait timed out on crtc 1
+[ 8386.120056] WARNING: CPU: 0 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8386.120057] Modules linked in: ccm xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi
+[ 8386.120104]  ath mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 8386.120137] CPU: 0 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 8386.120139] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 8386.120153] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8386.120154] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 8386.120156] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 8386.120158] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f216490
+[ 8386.120159] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 0000000000000efe
+[ 8386.120160] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 8386.120162] R13: 0000000000000000 R14: 0000000055001512 R15: ffff910ab470e968
+[ 8386.120164] FS:  00007f287d2fd600(0000) GS:ffff910b3f200000(0000) knlGS:0000000000000000
+[ 8386.120165] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8386.120167] CR2: 00007f1856775000 CR3: 0000000067a34000 CR4: 00000000000006f0
+[ 8386.120168] Call Trace:
+[ 8386.120177]  ? wait_woken+0x80/0x80
+[ 8386.120236]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 8386.120270]  intel_tv_detect+0x147/0x510 [i915]
+[ 8386.120285]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8386.120299]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8386.120305]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 8386.120319]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8386.120326]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8386.120333]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 8386.120337]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 8386.120352]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 8386.120356]  ? lapic_next_event+0x20/0x30
+[ 8386.120371]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8386.120384]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 8386.120396]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 8386.120411]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8386.120415]  do_vfs_ioctl+0xa8/0x630
+[ 8386.120418]  ? recalc_sigpending+0x1b/0x50
+[ 8386.120421]  ? _copy_from_user+0x3e/0x60
+[ 8386.120424]  SyS_ioctl+0x79/0x90
+[ 8386.120427]  do_syscall_64+0x73/0x130
+[ 8386.120430]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 8386.120432] RIP: 0033:0x7f287a6fa5d7
+[ 8386.120433] RSP: 002b:00007fffe3f29f58 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 8386.120435] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 8386.120437] RDX: 00007fffe3f29f90 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 8386.120438] RBP: 00007fffe3f29f90 R08: 0000000000000000 R09: 0000000000000000
+[ 8386.120440] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 8386.120441] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f29f90
+[ 8386.120442] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 8386.120483] ---[ end trace 729c73c7acebb42f ]---
+[ 8396.256082] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8406.496063] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 8732.128090] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8732.230974] ------------[ cut here ]------------
+[ 8732.230978] vblank wait timed out on crtc 1
+[ 8732.231081] WARNING: CPU: 1 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8732.231082] Modules linked in: ccm xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi
+[ 8732.231129]  ath mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 8732.231162] CPU: 1 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 8732.231163] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 8732.231178] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8732.231179] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 8732.231181] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 8732.231182] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f316490
+[ 8732.231184] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 000000000000102c
+[ 8732.231185] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 8732.231186] R13: 0000000000000000 R14: 0000000057001513 R15: ffff910ab470e968
+[ 8732.231188] FS:  00007f287d2fd600(0000) GS:ffff910b3f300000(0000) knlGS:0000000000000000
+[ 8732.231190] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8732.231192] CR2: 0000562f9c39ff40 CR3: 0000000067a34000 CR4: 00000000000006e0
+[ 8732.231193] Call Trace:
+[ 8732.231201]  ? wait_woken+0x80/0x80
+[ 8732.231258]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 8732.231292]  intel_tv_detect+0x147/0x510 [i915]
+[ 8732.231307]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8732.231322]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8732.231327]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 8732.231341]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8732.231348]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8732.231355]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 8732.231358]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 8732.231374]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 8732.231388]  ? __drm_mode_object_find+0x59/0x100 [drm]
+[ 8732.231404]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8732.231416]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 8732.231429]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 8732.231443]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8732.231447]  ? new_sync_write+0xe7/0x140
+[ 8732.231451]  do_vfs_ioctl+0xa8/0x630
+[ 8732.231453]  ? vfs_write+0x132/0x1a0
+[ 8732.231455]  SyS_ioctl+0x79/0x90
+[ 8732.231458]  do_syscall_64+0x73/0x130
+[ 8732.231461]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 8732.231463] RIP: 0033:0x7f287a6fa5d7
+[ 8732.231464] RSP: 002b:00007fffe3f293b8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 8732.231467] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 8732.231468] RDX: 00007fffe3f293f0 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 8732.231469] RBP: 00007fffe3f293f0 R08: 0000000000000000 R09: 0000000000000000
+[ 8732.231471] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 8732.231472] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f293f0
+[ 8732.231474] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 8732.231515] ---[ end trace 729c73c7acebb430 ]---
+[ 8742.368086] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8752.608099] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 8817.376097] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8817.480046] ------------[ cut here ]------------
+[ 8817.480049] vblank wait timed out on crtc 1
+[ 8817.480149] WARNING: CPU: 1 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8817.480150] Modules linked in: ccm xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi
+[ 8817.480199]  ath mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 8817.480234] CPU: 1 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 8817.480236] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 8817.480250] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8817.480252] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 8817.480254] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 8817.480256] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f316490
+[ 8817.480257] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 000000000000108e
+[ 8817.480258] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 8817.480260] R13: 0000000000000000 R14: 0000000059001514 R15: ffff910ab470e968
+[ 8817.480262] FS:  00007f287d2fd600(0000) GS:ffff910b3f300000(0000) knlGS:0000000000000000
+[ 8817.480264] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8817.480265] CR2: 00007fdcd1baa030 CR3: 0000000067a34000 CR4: 00000000000006e0
+[ 8817.480267] Call Trace:
+[ 8817.480275]  ? wait_woken+0x80/0x80
+[ 8817.480330]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 8817.480366]  intel_tv_detect+0x147/0x510 [i915]
+[ 8817.480382]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8817.480397]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8817.480403]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 8817.480413]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8817.480420]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8817.480428]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 8817.480431]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 8817.480447]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 8817.480463]  ? __drm_mode_object_find+0x59/0x100 [drm]
+[ 8817.480479]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8817.480492]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 8817.480505]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 8817.480521]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8817.480525]  ? new_sync_write+0xe7/0x140
+[ 8817.480528]  do_vfs_ioctl+0xa8/0x630
+[ 8817.480531]  ? vfs_write+0x132/0x1a0
+[ 8817.480533]  SyS_ioctl+0x79/0x90
+[ 8817.480536]  do_syscall_64+0x73/0x130
+[ 8817.480539]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 8817.480542] RIP: 0033:0x7f287a6fa5d7
+[ 8817.480543] RSP: 002b:00007fffe3f293b8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 8817.480545] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 8817.480547] RDX: 00007fffe3f293f0 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 8817.480548] RBP: 00007fffe3f293f0 R08: 0000000000000000 R09: 0000000000000000
+[ 8817.480550] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 8817.480551] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f293f0
+[ 8817.480553] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 8817.480596] ---[ end trace 729c73c7acebb431 ]---
+[ 8827.616097] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8837.856091] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
+[ 8848.096086] [drm:drm_atomic_helper_wait_for_flip_done [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8848.200055] ------------[ cut here ]------------
+[ 8848.200058] vblank wait timed out on crtc 1
+[ 8848.200162] WARNING: CPU: 1 PID: 6993 at /build/linux-uQJ2um/linux-4.15.0/drivers/gpu/drm/drm_vblank.c:1073 drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8848.200163] Modules linked in: ccm xfrm_user xfrm4_tunnel tunnel4 ipcomp xfrm_ipcomp esp4 ah4 af_key xfrm_algo pci_stub vboxpci(OE) vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) xt_tcpudp ip6t_rpfilter ip6t_REJECT nf_reject_ipv6 ipt_REJECT nf_reject_ipv4 xt_conntrack ip_set nfnetlink ebtable_nat ebtable_broute ip6table_nat nf_conntrack_ipv6 nf_defrag_ipv6 nf_nat_ipv6 ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_conntrack_ipv4 nf_defrag_ipv4 nf_nat_ipv4 nf_nat nf_conntrack libcrc32c iptable_mangle iptable_raw iptable_security ebtable_filter ebtables input_leds coretemp joydev snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel kvm arc4 irqbypass acer_wmi serio_raw snd_hda_codec snd_hda_core snd_hwdep sparse_keymap snd_pcm ath5k snd_seq_midi lpc_ich snd_seq_midi_event snd_rawmidi
+[ 8848.200212]  ath mac80211 snd_seq snd_seq_device snd_timer cfg80211 snd soundcore shpchp mac_hid sch_fq_codel iptable_filter ip6table_filter ip6_tables br_netfilter bridge stp llc arp_tables parport_pc ppdev lp parport ip_tables x_tables autofs4 mxm_wmi i915 psmouse i2c_i801 i2c_algo_bit pata_acpi drm_kms_helper tg3 syscopyarea sysfillrect sysimgblt fb_sys_fops ptp pps_core drm wmi video hid_generic usbhid hid
+[ 8848.200247] CPU: 1 PID: 6993 Comm: Xorg Tainted: G        W  OE    4.15.0-45-generic #48-Ubuntu
+[ 8848.200248] Hardware name:  /Acadia   , BIOS V1.45 11/10/2008
+[ 8848.200263] RIP: 0010:drm_wait_one_vblank+0x181/0x190 [drm]
+[ 8848.200264] RSP: 0018:ffffa7b601f1f960 EFLAGS: 00010282
+[ 8848.200267] RAX: 0000000000000000 RBX: ffff910ab38d8000 RCX: 0000000000000006
+[ 8848.200268] RDX: 0000000000000007 RSI: 0000000000000082 RDI: ffff910b3f316490
+[ 8848.200270] RBP: ffffa7b601f1f9b8 R08: 0000000000000001 R09: 00000000000010c2
+[ 8848.200271] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 8848.200272] R13: 0000000000000000 R14: 000000005b001515 R15: ffff910ab470e968
+[ 8848.200274] FS:  00007f287d2fd600(0000) GS:ffff910b3f300000(0000) knlGS:0000000000000000
+[ 8848.200276] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8848.200278] CR2: 00007f89939d5000 CR3: 0000000067a34000 CR4: 00000000000006e0
+[ 8848.200279] Call Trace:
+[ 8848.200288]  ? wait_woken+0x80/0x80
+[ 8848.200346]  intel_get_load_detect_pipe+0x5b7/0x620 [i915]
+[ 8848.200382]  intel_tv_detect+0x147/0x510 [i915]
+[ 8848.200398]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8848.200413]  ? drm_get_edid+0xe8/0x3d0 [drm]
+[ 8848.200418]  ? __ww_mutex_lock_slowpath+0x16/0x20
+[ 8848.200429]  drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8848.200436]  ? drm_helper_probe_detect+0x50/0x90 [drm_kms_helper]
+[ 8848.200444]  drm_helper_probe_single_connector_modes+0xe2/0x710 [drm_kms_helper]
+[ 8848.200447]  ? __mark_inode_dirty+0x11d/0x3b0
+[ 8848.200463]  drm_mode_getconnector+0x15d/0x340 [drm]
+[ 8848.200479]  ? __drm_mode_object_find+0x59/0x100 [drm]
+[ 8848.200494]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8848.200508]  drm_ioctl_kernel+0x5f/0xb0 [drm]
+[ 8848.200521]  drm_ioctl+0x31b/0x3d0 [drm]
+[ 8848.200536]  ? drm_mode_connector_property_set_ioctl+0x60/0x60 [drm]
+[ 8848.200540]  ? new_sync_write+0xe7/0x140
+[ 8848.200544]  do_vfs_ioctl+0xa8/0x630
+[ 8848.200546]  ? vfs_write+0x132/0x1a0
+[ 8848.200548]  SyS_ioctl+0x79/0x90
+[ 8848.200552]  do_syscall_64+0x73/0x130
+[ 8848.200555]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+[ 8848.200557] RIP: 0033:0x7f287a6fa5d7
+[ 8848.200558] RSP: 002b:00007fffe3f293b8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 8848.200561] RAX: ffffffffffffffda RBX: 0000563f92807490 RCX: 00007f287a6fa5d7
+[ 8848.200562] RDX: 00007fffe3f293f0 RSI: 00000000c05064a7 RDI: 000000000000000d
+[ 8848.200564] RBP: 00007fffe3f293f0 R08: 0000000000000000 R09: 0000000000000000
+[ 8848.200565] R10: 0000000000000000 R11: 0000000000000246 R12: 00000000c05064a7
+[ 8848.200567] R13: 000000000000000d R14: 000000000000000d R15: 00007fffe3f293f0
+[ 8848.200569] Code: ff ff e8 13 f9 fe c4 48 8d 75 a8 4c 89 ff e8 17 5b 03 c5 45 85 ed 0f 85 ff fe ff ff 44 89 e6 48 c7 c7 10 c4 2b c0 e8 4f f6 fe c4 <0f> 0b e9 e9 fe ff ff 0f 1f 84 00 00 00 00 00 66 66 66 66 90 55 
+[ 8848.200611] ---[ end trace 729c73c7acebb432 ]---
+[ 8858.336107] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [CRTC:41:pipe B] flip_done timed out
+[ 8868.576084] [drm:drm_atomic_helper_wait_for_dependencies [drm_kms_helper]] *ERROR* [PLANE:35:plane B] flip_done timed out
