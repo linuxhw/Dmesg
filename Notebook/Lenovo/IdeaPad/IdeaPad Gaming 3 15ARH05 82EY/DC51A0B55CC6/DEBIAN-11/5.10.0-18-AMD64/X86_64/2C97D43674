@@ -1,0 +1,1557 @@
+[   70.274378]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.274396]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.274397] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.274414]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.274416]  ? __free_slab+0x5f/0x1d0
+[   70.274431]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.274456]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.274480]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.274502]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.274512]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.274519]  drm_release+0x65/0x110 [drm]
+[   70.274520]  __fput+0x95/0x240
+[   70.274521]  task_work_run+0x65/0xa0
+[   70.274523]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.274524]  syscall_exit_to_user_mode+0x28/0x150
+[   70.274525]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.274526] RIP: 0033:0x7f09931280ab
+[   70.274527] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.274528] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.274529] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.274529] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.274530] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.274531] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.274531] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.274533] ---[ end trace 0a8e08aa8805cd47 ]---
+[   70.274610] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.274610] ------------[ cut here ]------------
+[   70.274611] nouveau 0000:01:00.0: timeout
+[   70.274642] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.274643] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.274666]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.274681] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.274682] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.274701] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.274702] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.274704] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.274706] RSP: 0018:ffffae120006fa88 EFLAGS: 00010282
+[   70.274707] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.274708] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.274708] RBP: 0000000002000001 R08: 0000000000000000 R09: ffffae120006f8a8
+[   70.274709] R10: ffffae120006f8a0 R11: ffffffffa40bca18 R12: ffff8f3a19a7fc20
+[   70.274710] R13: ffff8f3700dfd9f0 R14: ffff8f3704f02b00 R15: 0000000000000000
+[   70.274711] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.274712] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.274713] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.274714] Call Trace:
+[   70.274733]  nvkm_vmm_unref_pdes+0xee/0x1f0 [nouveau]
+[   70.274734] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.274754]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.274772]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.274790]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.274809]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.274809] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.274827]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.274844]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.274845] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.274862]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.274880]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.274899]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.274917]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.274934]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.274950]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.274967]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.274970]  ? __free_slab+0x5f/0x1d0
+[   70.274986]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.275013]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.275014] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275036]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.275058]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.275070]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.275071] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275079]  drm_release+0x65/0x110 [drm]
+[   70.275082]  __fput+0x95/0x240
+[   70.275084]  task_work_run+0x65/0xa0
+[   70.275086]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.275089]  syscall_exit_to_user_mode+0x28/0x150
+[   70.275090]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.275092] RIP: 0033:0x7f09931280ab
+[   70.275093] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.275094] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.275095] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.275096] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.275096] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275098] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.275099] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.275100] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.275101] ---[ end trace 0a8e08aa8805cd48 ]---
+[   70.275186] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.275187] ------------[ cut here ]------------
+[   70.275188] nouveau 0000:01:00.0: timeout
+[   70.275224] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.275225] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.275254]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid
+[   70.275270] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275271]  video hid button
+[   70.275275] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.275275] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.275293] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.275295] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.275295] RSP: 0018:ffffae120006f810 EFLAGS: 00010082
+[   70.275296] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.275297] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.275297] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f630
+[   70.275298] R10: ffffae120006f628 R11: ffffffffa40bcfe8 R12: 0000000000000246
+[   70.275298] R13: ffff8f3700dfd9f0 R14: ffff8f370367aae0 R15: ffff8f373a9901e0
+[   70.275299] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.275300] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.275301] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.275301] Call Trace:
+[   70.275303] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275323]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.275344]  nvkm_vmm_iter.constprop.0+0x79c/0x860 [nouveau]
+[   70.275365]  ? tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.275384]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.275385] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275403]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.275423]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.275441]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.275442] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275460]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.275477]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.275498]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.275498] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275515]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.275535]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.275553]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.275554] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275572]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.275590]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.275608]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.275609] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.275627]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.275646]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.275663]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.275683]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.275700]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.275719]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.275736]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.275754]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.275770]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.275786]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.275789]  ? __free_slab+0x5f/0x1d0
+[   70.275804]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.275827]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.275849]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.275870]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.275878]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.275886]  drm_release+0x65/0x110 [drm]
+[   70.275888]  __fput+0x95/0x240
+[   70.275889]  task_work_run+0x65/0xa0
+[   70.275890]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.275892]  syscall_exit_to_user_mode+0x28/0x150
+[   70.275893]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.275893] RIP: 0033:0x7f09931280ab
+[   70.275894] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.275895] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.275896] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.275896] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.275897] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.275897] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.275898] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.275899] ---[ end trace 0a8e08aa8805cd49 ]---
+[   70.275977] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.275978] ------------[ cut here ]------------
+[   70.275978] nouveau 0000:01:00.0: timeout
+[   70.276008] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.276010] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.276033]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul
+[   70.276045] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.276046]  scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.276053] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.276054] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.276073] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.276075] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.276075] RSP: 0018:ffffae120006f848 EFLAGS: 00010286
+[   70.276076] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.276077] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.276077] RBP: 0000000001000005 R08: 0000000000000000 R09: ffffae120006f668
+[   70.276078] R10: ffffae120006f660 R11: ffffffffa40bd6f0 R12: ffff8f3a19a7fc20
+[   70.276079] R13: ffff8f3700dfd9f0 R14: ffff8f370367aae0 R15: ffff8f373a9901e0
+[   70.276080] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.276081] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.276081] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.276082] Call Trace:
+[   70.276101]  nvkm_vmm_iter.constprop.0+0x344/0x860 [nouveau]
+[   70.276102] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.276122]  ? tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.276141]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.276159]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.276178]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.276197]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.276198] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.276216]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.276234]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.276254]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.276255] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.276272]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.276291]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.276309]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.276329]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.276346]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.276363]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.276381]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.276400]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.276417]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.276435]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.276453]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.276472]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.276488]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.276506]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.276522]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.276539]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.276540]  ? __free_slab+0x5f/0x1d0
+[   70.276556]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.276579]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.276601]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.276620]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.276627]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.276635]  drm_release+0x65/0x110 [drm]
+[   70.276637]  __fput+0x95/0x240
+[   70.276638]  task_work_run+0x65/0xa0
+[   70.276639]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.276640]  syscall_exit_to_user_mode+0x28/0x150
+[   70.276641]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.276641] RIP: 0033:0x7f09931280ab
+[   70.276642] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.276643] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.276644] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.276644] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.276645] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.276646] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.276646] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.276648] ---[ end trace 0a8e08aa8805cd4a ]---
+[   70.276657] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.276744] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.276745] ------------[ cut here ]------------
+[   70.276745] nouveau 0000:01:00.0: timeout
+[   70.276773] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.276774] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2
+[   70.276786] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.276787]  snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic
+[   70.276805] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.276807]  usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.276820] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.276821] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.276838] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.276839] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.276840] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.276842] RSP: 0018:ffffae120006fa50 EFLAGS: 00010082
+[   70.276843] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.276844] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.276844] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f870
+[   70.276845] R10: ffffae120006f868 R11: ffffffffa40bddb0 R12: 0000000000000246
+[   70.276846] R13: ffff8f3700dfd9f0 R14: ffff8f3704f02b00 R15: 0000000000000001
+[   70.276847] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.276848] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.276849] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.276849] Call Trace:
+[   70.276870]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.276871] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.276891]  nvkm_vmm_unref_pdes+0x198/0x1f0 [nouveau]
+[   70.276911]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.276929]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.276948]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.276967]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.276985]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.277002]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.277020]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.277038]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.277057]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.277074]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.277091]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.277107]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.277124]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.277125]  ? __free_slab+0x5f/0x1d0
+[   70.277141]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.277164]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.277187]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.277207]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.277216]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.277224]  drm_release+0x65/0x110 [drm]
+[   70.277225]  __fput+0x95/0x240
+[   70.277226]  task_work_run+0x65/0xa0
+[   70.277227]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.277228]  syscall_exit_to_user_mode+0x28/0x150
+[   70.277229]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.277230] RIP: 0033:0x7f09931280ab
+[   70.277231] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.277231] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.277232] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.277233] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.277234] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.277235] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.277236] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.277237] ---[ end trace 0a8e08aa8805cd4b ]---
+[   70.277246] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277332] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.277336] ------------[ cut here ]------------
+[   70.277337] nouveau 0000:01:00.0: timeout
+[   70.277393] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.277397] Modules linked in: rfcomm cmac algif_hash
+[   70.277412] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277415]  algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel
+[   70.277496] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277497]  videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis
+[   70.277511] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277512]  tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd
+[   70.277527] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277527]  nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.277540] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.277540] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.277560] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.277561] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277562] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.277564] RSP: 0018:ffffae120006fa88 EFLAGS: 00010282
+[   70.277564] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.277565] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.277566] RBP: 0000000002000001 R08: 0000000000000000 R09: ffffae120006f8a8
+[   70.277566] R10: ffffae120006f8a0 R11: ffffffffa40be380 R12: ffff8f3a19a7fc20
+[   70.277567] R13: ffff8f3700dfd9f0 R14: ffff8f3704f02b00 R15: 0000000000000001
+[   70.277568] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.277569] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.277570] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.277571] Call Trace:
+[   70.277591]  nvkm_vmm_unref_pdes+0xee/0x1f0 [nouveau]
+[   70.277592] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277612]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.277630]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.277631] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277650]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.277669]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.277688]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.277689] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277712]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.277733]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.277735] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.277755]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.277777]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.277798]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.277817]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.277836]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.277855]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.277860]  ? __free_slab+0x5f/0x1d0
+[   70.277880]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.277905]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.277930]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.277954]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.277966]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.277976]  drm_release+0x65/0x110 [drm]
+[   70.277982]  __fput+0x95/0x240
+[   70.277986]  task_work_run+0x65/0xa0
+[   70.277991]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.277995]  syscall_exit_to_user_mode+0x28/0x150
+[   70.278000]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.278003] RIP: 0033:0x7f09931280ab
+[   70.278007] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.278011] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.278019] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.278024] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.278027] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.278027] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.278028] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.278029] ---[ end trace 0a8e08aa8805cd4c ]---
+[   70.278117] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.278118] ------------[ cut here ]------------
+[   70.278118] nouveau 0000:01:00.0: timeout
+[   70.278146] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.278147] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev
+[   70.278163] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.278164]  mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit
+[   70.278181] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.278182]  ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.278193] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.278194] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.278211] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.278212] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.278214] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.278215] RSP: 0018:ffffae120006f810 EFLAGS: 00010082
+[   70.278216] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.278217] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.278217] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f630
+[   70.278218] R10: ffffae120006f628 R11: ffffffffa40be9c8 R12: 0000000000000246
+[   70.278219] R13: ffff8f3700dfd9f0 R14: ffff8f370367a900 R15: ffff8f373a9901e0
+[   70.278220] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.278222] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.278222] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.278223] Call Trace:
+[   70.278244]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.278246] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.278269]  nvkm_vmm_iter.constprop.0+0x79c/0x860 [nouveau]
+[   70.278292]  ? tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.278294] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.278315]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.278337]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.278359]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.278380]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.278382] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.278402]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.278421]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.278445]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.278464]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.278485]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.278506]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.278527]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.278547]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.278568]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.278588]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.278610]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.278630]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.278651]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.278672]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.278693]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.278713]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.278733]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.278754]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.278774]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.278780]  ? __free_slab+0x5f/0x1d0
+[   70.278799]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.278825]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.278847]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.278869]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.278880]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.278888]  drm_release+0x65/0x110 [drm]
+[   70.278891]  __fput+0x95/0x240
+[   70.278893]  task_work_run+0x65/0xa0
+[   70.278896]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.278898]  syscall_exit_to_user_mode+0x28/0x150
+[   70.278899]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.278900] RIP: 0033:0x7f09931280ab
+[   70.278902] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.278902] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.278903] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.278904] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.278905] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.278905] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.278906] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.278907] ---[ end trace 0a8e08aa8805cd4d ]---
+[   70.278925] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.278988] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.278990] ------------[ cut here ]------------
+[   70.278990] nouveau 0000:01:00.0: timeout
+[   70.279034] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.279037] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth
+[   70.279068] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.279071]  edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd
+[   70.279090] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.279092]  ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep
+[   70.279134] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.279135]  crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.279150] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.279151]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic
+[   70.279164] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.279165]  crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.279174] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.279174] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.279194] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.279196] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.279197] RSP: 0018:ffffae120006f848 EFLAGS: 00010286
+[   70.279198] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.279199] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.279199] RBP: 0000000001000005 R08: 0000000000000000 R09: ffffae120006f668
+[   70.279200] R10: ffffae120006f660 R11: ffffffffa40bf0d0 R12: ffff8f3a19a7fc20
+[   70.279200] R13: ffff8f3700dfd9f0 R14: ffff8f370367a900 R15: ffff8f373a9901e0
+[   70.279202] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.279203] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.279203] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.279204] Call Trace:
+[   70.279224]  nvkm_vmm_iter.constprop.0+0x344/0x860 [nouveau]
+[   70.279225] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.279244]  ? tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.279263]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.279281]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.279301]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.279318]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.279338]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.279358]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.279380]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.279398]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.279419]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.279439]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.279459]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.279480]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.279498]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.279518]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.279538]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.279558]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.279578]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.279598]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.279618]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.279637]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.279655]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.279674]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.279692]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.279695]  ? __free_slab+0x5f/0x1d0
+[   70.279713]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.279737]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.279762]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.279784]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.279794]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.279804]  drm_release+0x65/0x110 [drm]
+[   70.279807]  __fput+0x95/0x240
+[   70.279810]  task_work_run+0x65/0xa0
+[   70.279813]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.279816]  syscall_exit_to_user_mode+0x28/0x150
+[   70.279818]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.279819] RIP: 0033:0x7f09931280ab
+[   70.279820] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.279821] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.279822] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.279822] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.279823] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.279823] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.279824] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.279825] ---[ end trace 0a8e08aa8805cd4e ]---
+[   70.279909] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.279910] ------------[ cut here ]------------
+[   70.279910] nouveau 0000:01:00.0: timeout
+[   70.279938] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.279939] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic
+[   70.279954] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.279955]  cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi
+[   70.279973] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.279974]  i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.279984] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.279985] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.280002] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.280003] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280008] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.280012] RSP: 0018:ffffae120006fa50 EFLAGS: 00010082
+[   70.280019] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.280022] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.280024] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280027] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f870
+[   70.280030] R10: ffffae120006f868 R11: ffffffffa40bf7f0 R12: 0000000000000246
+[   70.280034] R13: ffff8f3700dfd9f0 R14: ffff8f3704f02b00 R15: 0000000000000002
+[   70.280037] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.280041] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.280044] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.280047] Call Trace:
+[   70.280070]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.280071] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280093]  nvkm_vmm_unref_pdes+0x198/0x1f0 [nouveau]
+[   70.280114]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.280134]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.280154]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.280174]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.280194]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.280213]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.280234]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.280253]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.280272]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.280292]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.280310]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.280312]  ? __free_slab+0x5f/0x1d0
+[   70.280327]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.280351]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.280374]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.280394]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.280402]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.280410]  drm_release+0x65/0x110 [drm]
+[   70.280412]  __fput+0x95/0x240
+[   70.280413]  task_work_run+0x65/0xa0
+[   70.280415]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.280416]  syscall_exit_to_user_mode+0x28/0x150
+[   70.280417]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.280418] RIP: 0033:0x7f09931280ab
+[   70.280419] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.280419] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.280420] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.280421] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.280421] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.280422] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.280423] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.280424] ---[ end trace 0a8e08aa8805cd4f ]---
+[   70.280444] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280504] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.280506] ------------[ cut here ]------------
+[   70.280506] nouveau 0000:01:00.0: timeout
+[   70.280537] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.280540] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic
+[   70.280548] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280551]  kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch
+[   70.280565] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280566]  efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec
+[   70.280584] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280585]  t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.280592] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.280593] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.280614] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.280615] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280616] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.280618] RSP: 0018:ffffae120006fa88 EFLAGS: 00010282
+[   70.280619] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.280619] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.280620] RBP: 0000000002000001 R08: 0000000000000000 R09: ffffae120006f8a8
+[   70.280621] R10: ffffae120006f8a0 R11: ffffffffa40bfda8 R12: ffff8f3a19a7fc20
+[   70.280621] R13: ffff8f3700dfd9f0 R14: ffff8f3704f02b00 R15: 0000000000000002
+[   70.280622] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.280623] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.280625] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.280625] Call Trace:
+[   70.280645]  nvkm_vmm_unref_pdes+0xee/0x1f0 [nouveau]
+[   70.280646] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280666]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.280684]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.280685] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280703]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.280723]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.280741]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.280742] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.280760]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.280779]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.280796]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.280815]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.280831]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.280847]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.280848]  ? __free_slab+0x5f/0x1d0
+[   70.280864]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.280886]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.280908]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.280928]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.280936]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.280945]  drm_release+0x65/0x110 [drm]
+[   70.280946]  __fput+0x95/0x240
+[   70.280947]  task_work_run+0x65/0xa0
+[   70.280948]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.280949]  syscall_exit_to_user_mode+0x28/0x150
+[   70.280950]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.280951] RIP: 0033:0x7f09931280ab
+[   70.280952] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.280952] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.280953] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.280954] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.280954] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.280955] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.280955] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.280956] ---[ end trace 0a8e08aa8805cd50 ]---
+[   70.281035] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.281036] ------------[ cut here ]------------
+[   70.281036] nouveau 0000:01:00.0: timeout
+[   70.281063] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.281064] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog
+[   70.281085] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.281086]  snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek
+[   70.281104] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.281105]  hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.281111] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.281112] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.281129] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.281131] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.281132] RSP: 0018:ffffae120006fa50 EFLAGS: 00010082
+[   70.281132] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.281133] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.281134] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f870
+[   70.281134] R10: ffffae120006f868 R11: ffffffffa40c0378 R12: 0000000000000246
+[   70.281135] R13: ffff8f3700dfd9f0 R14: ffff8f3704f02b00 R15: 0000000000000003
+[   70.281135] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.281136] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.281136] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.281137] Call Trace:
+[   70.281158]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.281159] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.281180]  nvkm_vmm_unref_pdes+0x198/0x1f0 [nouveau]
+[   70.281199]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.281218]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.281219] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.281238]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.281257]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.281258] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.281276]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.281281]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.281281]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.281281]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.281281]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.281475] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.281281]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.281281]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.281281]  ? __free_slab+0x5f/0x1d0
+[   70.281281]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.281536] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.281281]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.281281]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.281281]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.281281]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.281281]  drm_release+0x65/0x110 [drm]
+[   70.281281]  __fput+0x95/0x240
+[   70.281281]  task_work_run+0x65/0xa0
+[   70.281281]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.281281]  syscall_exit_to_user_mode+0x28/0x150
+[   70.281281]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.281281] RIP: 0033:0x7f09931280ab
+[   70.281281] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.281281] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.281281] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.281281] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.281281] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.281281] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.281281] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.281281] ---[ end trace 0a8e08aa8805cd51 ]---
+[   70.281772] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.281774] ------------[ cut here ]------------
+[   70.281775] nouveau 0000:01:00.0: timeout
+[   70.281828] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.281831] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.281880]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.281898] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.281898] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.281917] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.281921] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.281922] RSP: 0018:ffffae120006fa88 EFLAGS: 00010282
+[   70.281922] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.281923] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.281924] RBP: 0000000002000001 R08: 0000000000000000 R09: ffffae120006f8a8
+[   70.281925] R10: ffffae120006f8a0 R11: ffffffffa40c0948 R12: ffff8f3a19a7fc20
+[   70.281925] R13: ffff8f3700dfd9f0 R14: ffff8f3704f02b00 R15: 0000000000000003
+[   70.281926] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.281927] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.281927] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.281928] Call Trace:
+[   70.281949]  nvkm_vmm_unref_pdes+0xee/0x1f0 [nouveau]
+[   70.281950] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.281971]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.281992]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.282012]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.282033]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.282054]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.282075]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.282095]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.282112]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.282129]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.282145]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.282164]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.282169]  ? __free_slab+0x5f/0x1d0
+[   70.282185]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.282209]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.282232]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.282252]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.282262]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.282270]  drm_release+0x65/0x110 [drm]
+[   70.282273]  __fput+0x95/0x240
+[   70.282276]  task_work_run+0x65/0xa0
+[   70.282278]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.282280]  syscall_exit_to_user_mode+0x28/0x150
+[   70.282282]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.282283] RIP: 0033:0x7f09931280ab
+[   70.282284] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.282285] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.282286] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.282286] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.282287] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.282288] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.282288] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.282289] ---[ end trace 0a8e08aa8805cd52 ]---
+[   70.282372] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.282373] ------------[ cut here ]------------
+[   70.282374] nouveau 0000:01:00.0: timeout
+[   70.282410] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.282412] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.282439]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper
+[   70.282445] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.282448]  nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.282462] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.282462] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.282479] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.282479] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.282482] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.282484] RSP: 0018:ffffae120006f978 EFLAGS: 00010086
+[   70.282485] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.282486] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.282486] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f798
+[   70.282487] R10: ffffae120006f790 R11: ffffffffa40c0e58 R12: 0000000000000246
+[   70.282488] R13: ffff8f3700dfd9f0 R14: ffff8f3703cf6ac0 R15: 0000000000000000
+[   70.282489] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.282490] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.282491] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.282491] Call Trace:
+[   70.282512]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.282511] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.282533]  nvkm_vmm_unref_pdes+0x198/0x1f0 [nouveau]
+[   70.282553]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.282571]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.282591]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.282608]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.282625]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.282643]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.282661]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.282681]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.282699]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.282716]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.282735]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.282753]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.282770]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.282787]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.282803]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.282820]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.282822]  ? __free_slab+0x5f/0x1d0
+[   70.282837]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.282859]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.282881]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.282902]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.282910]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.282918]  drm_release+0x65/0x110 [drm]
+[   70.282920]  __fput+0x95/0x240
+[   70.282921]  task_work_run+0x65/0xa0
+[   70.282922]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.282923]  syscall_exit_to_user_mode+0x28/0x150
+[   70.282924]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.282925] RIP: 0033:0x7f09931280ab
+[   70.282926] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.282926] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.282927] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.282928] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.282929] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.282929] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.282930] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.282931] ---[ end trace 0a8e08aa8805cd53 ]---
+[   70.282951] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283010] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.283012] ------------[ cut here ]------------
+[   70.283013] nouveau 0000:01:00.0: timeout
+[   70.283044] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.283046] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic
+[   70.283060] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283062]  cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu
+[   70.283078] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283080]  nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.283094] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.283095] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.283114] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.283113] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283116] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.283118] RSP: 0018:ffffae120006f9b0 EFLAGS: 00010282
+[   70.283119] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.283119] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.283120] RBP: 0000000005000001 R08: 0000000000000000 R09: ffffae120006f7d0
+[   70.283121] R10: ffffae120006f7c8 R11: ffffffffa40c1458 R12: ffff8f3a19a7fc20
+[   70.283121] R13: ffff8f3700dfd9f0 R14: ffff8f3703cf6ac0 R15: 0000000000000000
+[   70.283122] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.283123] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.283124] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.283125] Call Trace:
+[   70.283144]  nvkm_vmm_unref_pdes+0xee/0x1f0 [nouveau]
+[   70.283143] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283164]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.283182]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.283200]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.283218]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.283235]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.283253]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.283271]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.283290]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.283307]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.283325]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.283343]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.283361]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.283378]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.283396]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.283412]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.283428]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.283430]  ? __free_slab+0x5f/0x1d0
+[   70.283446]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.283468]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.283490]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.283511]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.283519]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.283527]  drm_release+0x65/0x110 [drm]
+[   70.283529]  __fput+0x95/0x240
+[   70.283530]  task_work_run+0x65/0xa0
+[   70.283531]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.283532]  syscall_exit_to_user_mode+0x28/0x150
+[   70.283533]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.283534] RIP: 0033:0x7f09931280ab
+[   70.283535] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.283535] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.283536] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.283537] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.283537] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.283538] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.283539] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.283540] ---[ end trace 0a8e08aa8805cd54 ]---
+[   70.283557] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283623] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.283624] ------------[ cut here ]------------
+[   70.283625] nouveau 0000:01:00.0: timeout
+[   70.283652] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.283653] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel
+[   70.283662] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283664]  snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev ac
+[   70.283679] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283682]  msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid
+[   70.283696] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283699]  button
+[   70.283701] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.283701] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.283718] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.283720] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.283721] RSP: 0018:ffffae120006f738 EFLAGS: 00010082
+[   70.283722] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.283723] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.283723] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f558
+[   70.283724] R10: ffffae120006f550 R11: ffffffffa40c1a58 R12: 0000000000000246
+[   70.283725] R13: ffff8f3700dfd9f0 R14: ffff8f37029abde0 R15: ffff8f373a9901e0
+[   70.283725] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.283726] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.283727] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.283727] Call Trace:
+[   70.283726] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.283749]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.283769]  nvkm_vmm_iter.constprop.0+0x79c/0x860 [nouveau]
+[   70.283788]  ? tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.283806]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.283824]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.283843]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.283860]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.283878]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.283896]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.283915]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.283933]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.283951]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.283969]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.283988]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.284005]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.284022]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.284040]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.284057]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.284075]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.284093]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.284111]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.284128]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.284147]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.284164]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.284183]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.284200]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.284217]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.284233]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.284250]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.284251]  ? __free_slab+0x5f/0x1d0
+[   70.284267]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.284290]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.284312]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.284333]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.284342]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.284350]  drm_release+0x65/0x110 [drm]
+[   70.284351]  __fput+0x95/0x240
+[   70.284350] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.284354]  task_work_run+0x65/0xa0
+[   70.284356]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.284357]  syscall_exit_to_user_mode+0x28/0x150
+[   70.284358]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.284359] RIP: 0033:0x7f09931280ab
+[   70.284360] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.284362] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.284363] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.284363] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.284364] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.284365] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.284366] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.284367] ---[ end trace 0a8e08aa8805cd55 ]---
+[   70.284368] systemd-journald[362]: /dev/kmsg buffer overrun, some messages lost.
+[   70.284443] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.284444] ------------[ cut here ]------------
+[   70.284445] nouveau 0000:01:00.0: timeout
+[   70.284475] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.284476] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.284502]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.284518] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.284520] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.284539] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.284540] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.284541] RSP: 0018:ffffae120006f770 EFLAGS: 00010282
+[   70.284542] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.284542] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.284543] RBP: 0000000001000005 R08: 0000000000000000 R09: ffffae120006f590
+[   70.284544] R10: ffffae120006f588 R11: ffffffffa40c21a8 R12: ffff8f3a19a7fc20
+[   70.284545] R13: ffff8f3700dfd9f0 R14: ffff8f37029abde0 R15: ffff8f373a9901e0
+[   70.284546] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.284547] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.284548] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.284548] Call Trace:
+[   70.284567]  nvkm_vmm_iter.constprop.0+0x344/0x860 [nouveau]
+[   70.284587]  ? tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.284605]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.284624]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.284642]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.284660]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.284678]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.284696]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.284715]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.284732]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.284751]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.284769]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.284787]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.284805]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.284822]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.284840]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.284858]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.284875]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.284893]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.284912]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.284929]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.284947]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.284965]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.284983]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.285000]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.285019]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.285037]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.285054]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.285056]  ? __free_slab+0x5f/0x1d0
+[   70.285072]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.285094]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.285117]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.285137]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.285146]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.285154]  drm_release+0x65/0x110 [drm]
+[   70.285156]  __fput+0x95/0x240
+[   70.285157]  task_work_run+0x65/0xa0
+[   70.285158]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.285160]  syscall_exit_to_user_mode+0x28/0x150
+[   70.285160]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.285161] RIP: 0033:0x7f09931280ab
+[   70.285162] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.285163] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.285165] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.285165] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.285166] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.285166] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.285167] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.285168] ---[ end trace 0a8e08aa8805cd56 ]---
+[   70.285248] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.285249] ------------[ cut here ]------------
+[   70.285250] nouveau 0000:01:00.0: timeout
+[   70.285277] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.285279] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.285307]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.285340] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.285341] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.285371] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.285374] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.285374] RSP: 0018:ffffae120006f780 EFLAGS: 00010082
+[   70.285376] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.285376] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.285377] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f5a0
+[   70.285378] R10: ffffae120006f598 R11: ffffffffa40c2820 R12: 0000000000000246
+[   70.285378] R13: ffff8f3700dfd9f0 R14: ffff8f370367a3c0 R15: ffff8f373a9901e0
+[   70.285380] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.285382] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.285383] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.285384] Call Trace:
+[   70.285408]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.285433]  nvkm_vmm_iter.constprop.0+0x79c/0x860 [nouveau]
+[   70.285455]  ? gf100_vmm_pgd_pde+0xb0/0x140 [nouveau]
+[   70.285476]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.285497]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.285518]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.285538]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.285556]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.285574]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.285597]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.285619]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.285641]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.285663]  ? nvkm_vmm_unref_pdes+0x1ba/0x1f0 [nouveau]
+[   70.285677]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.285677]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.285677]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.285677]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.285677]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.285677]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.285677]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.285677]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.285677]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.285677]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.285677]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.285677]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.285677]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.285677]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.285677]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.285677]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.285677]  ? __free_slab+0x5f/0x1d0
+[   70.285677]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.285677]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.285677]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.285677]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.285677]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.285677]  drm_release+0x65/0x110 [drm]
+[   70.285677]  __fput+0x95/0x240
+[   70.285677]  task_work_run+0x65/0xa0
+[   70.285677]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.285677]  syscall_exit_to_user_mode+0x28/0x150
+[   70.285677]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.285677] RIP: 0033:0x7f09931280ab
+[   70.285677] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.285677] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.285677] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.285677] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.285677] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.285677] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.285677] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.285677] ---[ end trace 0a8e08aa8805cd57 ]---
+[   70.286221] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.286222] ------------[ cut here ]------------
+[   70.286223] nouveau 0000:01:00.0: timeout
+[   70.286263] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.286267] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.286368]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.286388] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.286389] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.286409] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.286410] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.286411] RSP: 0018:ffffae120006f7b8 EFLAGS: 00010286
+[   70.286412] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.286413] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.286413] RBP: 0000000001000005 R08: 0000000000000000 R09: ffffae120006f5d8
+[   70.286414] R10: ffffae120006f5d0 R11: ffffffffa40c2eb0 R12: ffff8f3a19a7fc20
+[   70.286414] R13: ffff8f3700dfd9f0 R14: ffff8f370367a3c0 R15: ffff8f373a9901e0
+[   70.286415] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.286415] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.286416] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.286417] Call Trace:
+[   70.286437]  nvkm_vmm_iter.constprop.0+0x344/0x860 [nouveau]
+[   70.286457]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.286475]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.286493]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.286511]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.286533]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.286554]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.286577]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.286596]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.286618]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.286639]  ? nvkm_vmm_unref_pdes+0x1ba/0x1f0 [nouveau]
+[   70.286659]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.286679]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.286700]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.286720]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.286740]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.286761]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.286782]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.286803]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.286823]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.286844]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.286865]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.286886]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.286906]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.286926]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.286944]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.286963]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.286970]  ? __free_slab+0x5f/0x1d0
+[   70.286989]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.287015]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.287044]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.287066]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.287077]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.287086]  drm_release+0x65/0x110 [drm]
+[   70.287089]  __fput+0x95/0x240
+[   70.287091]  task_work_run+0x65/0xa0
+[   70.287092]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.287094]  syscall_exit_to_user_mode+0x28/0x150
+[   70.287095]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.287096] RIP: 0033:0x7f09931280ab
+[   70.287097] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.287098] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.287099] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.287100] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.287101] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.287102] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.287102] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.287104] ---[ end trace 0a8e08aa8805cd58 ]---
+[   70.287195] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.287196] ------------[ cut here ]------------
+[   70.287197] nouveau 0000:01:00.0: timeout
+[   70.287224] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.287225] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.287329]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.287358] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.287358] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.287375] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.287376] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.287376] RSP: 0018:ffffae120006f7c8 EFLAGS: 00010082
+[   70.287377] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.287377] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.287378] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f5e8
+[   70.287379] R10: ffffae120006f5e0 R11: ffffffffa40c3510 R12: 0000000000000246
+[   70.287379] R13: ffff8f3700dfd9f0 R14: ffff8f370367a780 R15: ffff8f373a9901e0
+[   70.287380] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.287380] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.287381] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.287381] Call Trace:
+[   70.287403]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.287424]  nvkm_vmm_iter.constprop.0+0x79c/0x860 [nouveau]
+[   70.287443]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.287463]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.287482]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.287500]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.287518]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.287536]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.287556]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.287573]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.287594]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.287614]  ? nvkm_vmm_unref_pdes+0x1ba/0x1f0 [nouveau]
+[   70.287634]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.287654]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.287674]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.287693]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.287713]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.287732]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.287752]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.287772]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.287792]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.287811]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.287833]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.287850]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.287869]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.287888]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.287906]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.287911]  ? __free_slab+0x5f/0x1d0
+[   70.287928]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.287953]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.287977]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.288000]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.288013]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.288024]  drm_release+0x65/0x110 [drm]
+[   70.288028]  __fput+0x95/0x240
+[   70.288030]  task_work_run+0x65/0xa0
+[   70.288033]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.288037]  syscall_exit_to_user_mode+0x28/0x150
+[   70.288039]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.288040] RIP: 0033:0x7f09931280ab
+[   70.288041] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.288041] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.288043] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.288043] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.288044] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.288044] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.288045] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.288046] ---[ end trace 0a8e08aa8805cd59 ]---
+[   70.288127] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.288129] ------------[ cut here ]------------
+[   70.288129] nouveau 0000:01:00.0: timeout
+[   70.288171] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.288176] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.288258]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.288277] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.288278] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.288297] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.288299] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.288299] RSP: 0018:ffffae120006f800 EFLAGS: 00010286
+[   70.288300] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.288301] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.288302] RBP: 0000000001000005 R08: 0000000000000000 R09: ffffae120006f620
+[   70.288302] R10: ffffae120006f618 R11: ffffffffa40c3b70 R12: ffff8f3a19a7fc20
+[   70.288303] R13: ffff8f3700dfd9f0 R14: ffff8f370367a780 R15: ffff8f373a9901e0
+[   70.288304] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.288305] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.288306] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.288306] Call Trace:
+[   70.288327]  nvkm_vmm_iter.constprop.0+0x344/0x860 [nouveau]
+[   70.288345]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.288365]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.288386]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.288406]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.288425]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.288445]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.288467]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.288485]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.288506]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.288526]  ? nvkm_vmm_unref_pdes+0x1ba/0x1f0 [nouveau]
+[   70.288546]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.288563]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau]
+[   70.288581]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.288601]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.288620]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.288638]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.288656]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.288674]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.288692]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.288709]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.288728]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.288746]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.288762]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.288779]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.288795]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.288797]  ? __free_slab+0x5f/0x1d0
+[   70.288812]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.288835]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.288858]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.288879]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.288887]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.288895]  drm_release+0x65/0x110 [drm]
+[   70.288896]  __fput+0x95/0x240
+[   70.288898]  task_work_run+0x65/0xa0
+[   70.288899]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.288900]  syscall_exit_to_user_mode+0x28/0x150
+[   70.288901]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.288902] RIP: 0033:0x7f09931280ab
+[   70.288903] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.288905] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.288906] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.288906] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.288907] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.288908] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.288908] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.288909] ---[ end trace 0a8e08aa8805cd5a ]---
+[   70.288996] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.288997] ------------[ cut here ]------------
+[   70.288998] nouveau 0000:01:00.0: timeout
+[   70.289025] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.289026] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.289053]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.289069] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.289069] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.289087] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.289089] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.289089] RSP: 0018:ffffae120006f810 EFLAGS: 00010082
+[   70.289090] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.289091] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.289091] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f630
+[   70.289092] R10: ffffae120006f628 R11: ffffffffa40c41b8 R12: 0000000000000246
+[   70.289092] R13: ffff8f3700dfd9f0 R14: ffff8f3705928240 R15: ffff8f373a990f00
+[   70.289094] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.289095] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.289095] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.289096] Call Trace:
+[   70.289117]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.289136]  nvkm_vmm_iter.constprop.0+0x79c/0x860 [nouveau]
+[   70.289154]  ? gf100_vmm_pgd_pde+0xb0/0x140 [nouveau]
+[   70.289172]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.289190]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.289209]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.289226]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.289243]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.289261]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.289281]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.289298]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.289318]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.289341]  ? nvkm_vmm_unref_pdes+0x1ba/0x1f0 [nouveau]
+[   70.289359]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.289376]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.289395]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.289413]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.289431]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.289449]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.289467]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.289485]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.289502]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.289523]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.289540]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.289556]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.289572]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.289589]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.289593]  ? __free_slab+0x5f/0x1d0
+[   70.289609]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.289632]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.289654]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.289676]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.289686]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.289694]  drm_release+0x65/0x110 [drm]
+[   70.289697]  __fput+0x95/0x240
+[   70.289700]  task_work_run+0x65/0xa0
+[   70.289701]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.289704]  syscall_exit_to_user_mode+0x28/0x150
+[   70.289706]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.289707] RIP: 0033:0x7f09931280ab
+[   70.289708] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.289709] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.289710] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.289711] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.289713] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.289713] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.289714] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.289715] ---[ end trace 0a8e08aa8805cd5b ]---
+[   70.289817] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.289819] ------------[ cut here ]------------
+[   70.289820] nouveau 0000:01:00.0: timeout
+[   70.289860] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.289861] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.289893]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.289913] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.289914] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.289934] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.289935] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.289936] RSP: 0018:ffffae120006f848 EFLAGS: 00010286
+[   70.289937] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.289937] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.289938] RBP: 0000000001000005 R08: 0000000000000000 R09: ffffae120006f668
+[   70.289939] R10: ffffae120006f660 R11: ffffffffa40c4818 R12: ffff8f3a19a7fc20
+[   70.289940] R13: ffff8f3700dfd9f0 R14: ffff8f3705928240 R15: ffff8f373a990f00
+[   70.289941] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.289941] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.289942] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.289943] Call Trace:
+[   70.289963]  nvkm_vmm_iter.constprop.0+0x344/0x860 [nouveau]
+[   70.289984]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.290005]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.290028]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.290049]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.290069]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.290090]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.290111]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.290130]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.290150]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.290170]  ? nvkm_vmm_unref_pdes+0x1ba/0x1f0 [nouveau]
+[   70.290188]  nvkm_vmm_unref_pdes+0x109/0x1f0 [nouveau]
+[   70.290206]  nvkm_vmm_unref_ptes+0x1ae/0x260 [nouveau]
+[   70.290224]  nvkm_vmm_iter.constprop.0+0x26a/0x860 [nouveau]
+[   70.290244]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.290264]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.290283]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.290300]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.290318]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.290336]  nvkm_vmm_unref+0x7c/0x1c0 [nouveau]
+[   70.290355]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.290372]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.290389]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.290406]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.290423]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.290424]  ? __free_slab+0x5f/0x1d0
+[   70.290440]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.290463]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.290485]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.290507]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.290515]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.290522]  drm_release+0x65/0x110 [drm]
+[   70.290525]  __fput+0x95/0x240
+[   70.290526]  task_work_run+0x65/0xa0
+[   70.290527]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.290529]  syscall_exit_to_user_mode+0x28/0x150
+[   70.290530]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.290531] RIP: 0033:0x7f09931280ab
+[   70.290532] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.290533] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.290534] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.290534] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.290535] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.290535] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.290536] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.290537] ---[ end trace 0a8e08aa8805cd5c ]---
+[   70.290624] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.290625] ------------[ cut here ]------------
+[   70.290626] nouveau 0000:01:00.0: timeout
+[   70.290653] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.290655] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.290680]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.290695] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.290696] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.290713] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   70.290715] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 e4 1f 93 e2 4c 89 ea 48 c7 c7 60 e5 86 c0 48 89 c6 e8 ca f8 b9 e2 <0f> 0b eb a8 e8 19 83 bd e2 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   70.290715] RSP: 0018:ffffae120006fa18 EFLAGS: 00010086
+[   70.290716] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.290717] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.290717] RBP: ffff8f370a8d0f48 R08: 0000000000000000 R09: ffffae120006f838
+[   70.290718] R10: ffffae120006f830 R11: ffffffffa40c4e48 R12: 0000000000000246
+[   70.290718] R13: ffff8f3700dfd9f0 R14: ffff8f373a927720 R15: ffff8f373a9901e0
+[   70.290719] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.290720] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.290721] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.290722] Call Trace:
+[   70.290743]  nv50_instobj_release+0x2f/0xc0 [nouveau]
+[   70.290764]  nvkm_vmm_iter.constprop.0+0x79c/0x860 [nouveau]
+[   70.290783]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.290802]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.290820]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.290838]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.290856]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.290874]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.290893]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.290909]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.290927]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.290944]  nvkm_vmm_unref+0x17b/0x1c0 [nouveau]
+[   70.290964]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.290981]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.290998]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.291015]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.291034]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.291037]  ? __free_slab+0x5f/0x1d0
+[   70.291054]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.291077]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.291099]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.291120]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.291131]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.291139]  drm_release+0x65/0x110 [drm]
+[   70.291142]  __fput+0x95/0x240
+[   70.291144]  task_work_run+0x65/0xa0
+[   70.291147]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.291150]  syscall_exit_to_user_mode+0x28/0x150
+[   70.291152]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.291154] RIP: 0033:0x7f09931280ab
+[   70.291155] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.291156] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.291157] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.291158] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.291158] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.291159] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.291159] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.291161] ---[ end trace 0a8e08aa8805cd5d ]---
+[   70.291240] nouveau 0000:01:00.0: tmr: stalled at ffffffffffffffff
+[   70.291241] ------------[ cut here ]------------
+[   70.291242] nouveau 0000:01:00.0: timeout
+[   70.291283] WARNING: CPU: 3 PID: 1 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:44 tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.291284] Modules linked in: rfcomm cmac algif_hash algif_skcipher af_alg bnep btusb btrtl btbcm btintel bluetooth edac_mce_amd snd_hda_codec_realtek rtw88_8822ce jitterentropy_rng rtw88_8822c snd_hda_codec_generic kvm_amd ledtrig_audio drbg snd_hda_codec_hdmi rtw88_pci nls_ascii kvm snd_hda_intel nls_cp437 rtw88_core snd_intel_dspcfg soundwire_intel vfat soundwire_generic_allocation irqbypass fat snd_soc_core aes_generic uvcvideo ghash_clmulni_intel snd_compress mac80211 soundwire_cadence snd_hda_codec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 snd_hda_core videobuf2_common aesni_intel videodev ansi_cprng snd_hwdep crypto_simd ecdh_generic cryptd soundwire_bus ecc glue_helper crc16 joydev mc libaes k10temp rapl snd_pcm hid_multitouch efi_pstore serio_raw pcspkr cfg80211 sp5100_tco wmi_bmof snd_timer watchdog snd snd_rn_pci_acp3x ccp snd_pci_acp3x soundcore libarc4 ideapad_laptop sparse_keymap rfkill tpm_crb tpm_tis tpm_tis_core tpm rng_core cm32181 industrialio acpi_cpufreq evdev
+[   70.291314]  ac msr parport_pc ppdev lp parport fuse configfs efivarfs ip_tables x_tables autofs4 xfs libcrc32c crc32c_generic usbhid amdgpu nouveau dm_mod gpu_sched mxm_wmi i2c_algo_bit ttm ahci xhci_pci drm_kms_helper nvme libahci xhci_hcd nvme_core libata r8169 cec t10_pi crc_t10dif crct10dif_generic realtek hid_generic crct10dif_pclmul mdio_devres usbcore drm crc32_pclmul scsi_mod crc32c_intel libphy i2c_piix4 usb_common crct10dif_common wmi battery i2c_hid video hid button
+[   70.291332] CPU: 3 PID: 1 Comm: systemd Tainted: G        W         5.10.0-18-amd64 #1 Debian 5.10.140-1
+[   70.291332] Hardware name: LENOVO 82EY/LNVNB161216, BIOS FCCN16WW 01/05/2021
+[   70.291351] RIP: 0010:tu102_vmm_flush+0x134/0x140 [nouveau]
+[   70.291353] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 5e 07 8e e2 4c 89 ea 48 c7 c7 de ff 86 c0 48 89 c6 e8 44 e0 b4 e2 <0f> 0b eb ab e8 93 6a b8 e2 0f 1f 00 0f 1f 44 00 00 ff 74 24 18 49
+[   70.291354] RSP: 0018:ffffae120006fa50 EFLAGS: 00010282
+[   70.291354] RAX: 0000000000000000 RBX: ffff8f370a983c00 RCX: ffff8f3a3f4dca08
+[   70.291355] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff8f3a3f4dca00
+[   70.291356] RBP: 0000000001000005 R08: 0000000000000000 R09: ffffae120006f870
+[   70.291356] R10: ffffae120006f868 R11: ffffffffa40c53b8 R12: ffff8f3a19a7fc20
+[   70.291357] R13: ffff8f3700dfd9f0 R14: ffff8f373a927720 R15: ffff8f373a9901e0
+[   70.291358] FS:  00007f099295c900(0000) GS:ffff8f3a3f4c0000(0000) knlGS:0000000000000000
+[   70.291359] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   70.291360] CR2: 00007f475d3d66d0 CR3: 0000000101e0e000 CR4: 0000000000350ee0
+[   70.291360] Call Trace:
+[   70.291380]  nvkm_vmm_iter.constprop.0+0x344/0x860 [nouveau]
+[   70.291399]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.291417]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.291437]  nvkm_vmm_put_locked+0xeb/0x240 [nouveau]
+[   70.291454]  ? nvkm_vmm_ptes_sparse+0x1d0/0x1d0 [nouveau]
+[   70.291473]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[   70.291490]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[   70.291510]  nv50_instobj_dtor+0xb1/0xf0 [nouveau]
+[   70.291527]  nvkm_memory_unref+0x4a/0x70 [nouveau]
+[   70.291546]  nvkm_mmu_ptc_put+0x55/0x1c0 [nouveau]
+[   70.291564]  nvkm_vmm_unref+0x17b/0x1c0 [nouveau]
+[   70.291583]  nvkm_uvmm_dtor+0x13/0x20 [nouveau]
+[   70.291601]  nvkm_object_dtor+0xae/0x100 [nouveau]
+[   70.291618]  nvkm_object_del+0x24/0xa0 [nouveau]
+[   70.291635]  nvkm_ioctl_del+0x37/0x60 [nouveau]
+[   70.291651]  nvkm_ioctl+0xde/0x180 [nouveau]
+[   70.291653]  ? __free_slab+0x5f/0x1d0
+[   70.291669]  nvif_object_dtor+0x5a/0x90 [nouveau]
+[   70.291691]  nouveau_vmm_fini+0x12/0x20 [nouveau]
+[   70.291714]  nouveau_cli_fini+0x48/0x90 [nouveau]
+[   70.291734]  nouveau_drm_postclose+0xfc/0x140 [nouveau]
+[   70.291742]  drm_file_free.part.0+0x21e/0x2a0 [drm]
+[   70.291751]  drm_release+0x65/0x110 [drm]
+[   70.291753]  __fput+0x95/0x240
+[   70.291754]  task_work_run+0x65/0xa0
+[   70.291755]  exit_to_user_mode_prepare+0x11c/0x120
+[   70.291756]  syscall_exit_to_user_mode+0x28/0x150
+[   70.291758]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
+[   70.291759] RIP: 0033:0x7f09931280ab
+[   70.291760] Code: 0f 05 48 3d 00 f0 ff ff 77 45 c3 0f 1f 40 00 48 83 ec 18 89 7c 24 0c e8 e3 4c f9 ff 8b 7c 24 0c 41 89 c0 b8 03 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 35 44 89 c7 89 44 24 0c e8 21 4d f9 ff 8b 44
+[   70.291761] RSP: 002b:00007ffdc21e45c0 EFLAGS: 00000293 ORIG_RAX: 0000000000000003
+[   70.291762] RAX: 0000000000000000 RBX: 00007f099295c6c8 RCX: 00007f09931280ab
+[   70.291762] RDX: 0000000000000000 RSI: 0000000000000007 RDI: 0000000000000073
+[   70.291763] RBP: 0000000000000073 R08: 0000000000000000 R09: 0000558676b8c8aa
+[   70.291763] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+[   70.291764] R13: 0000000000000000 R14: 0000558676b8e0f0 R15: 000055867830eb50
+[   70.291765] ---[ end trace 0a8e08aa8805cd5e ]---
+[  119.049715] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[  160.005566] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[  311.528605] Non-volatile memory driver v1.3
+[  313.881680] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[  313.966659] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[  316.685586] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[  316.709490] r8169 0000:03:00.0: invalid short VPD tag 00 at offset 1

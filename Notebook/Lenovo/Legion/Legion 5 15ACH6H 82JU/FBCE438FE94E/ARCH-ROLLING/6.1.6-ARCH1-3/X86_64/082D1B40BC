@@ -1,0 +1,860 @@
+[ 3275.518940] ------------[ cut here ]------------
+[ 3275.518942] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:198 nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.519004] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.519029]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.519049] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.519051] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.519053] RIP: 0010:nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.519096] Code: 18 48 89 42 08 48 89 10 4c 89 75 10 4c 89 75 18 48 8d 7d 30 48 89 2c 24 e8 5d 9b 03 00 48 89 e7 e8 05 65 00 00 e9 56 ff ff ff <0f> 0b e9 5c ff ff ff e8 84 86 54 d8 31 f6 ba 58 02 00 00 4c 89 ef
+[ 3275.519097] RSP: 0018:ffffb4d6816c3c38 EFLAGS: 00010283
+[ 3275.519098] RAX: 00000000ffffffea RBX: ffff8eee880f6400 RCX: 0000000000000040
+[ 3275.519099] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.519100] RBP: ffff8eee865ed040 R08: 0000000000000000 R09: 0000000000000000
+[ 3275.519101] R10: 0000000000000000 R11: 0000000000000000 R12: ffff8eee81a0c0d0
+[ 3275.519101] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700948
+[ 3275.519102] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.519103] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.519104] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.519105] PKRU: 55555554
+[ 3275.519105] Call Trace:
+[ 3275.519107]  <TASK>
+[ 3275.519109]  drm_gem_object_release_handle+0x31/0x60
+[ 3275.519113]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.519114]  idr_for_each+0x74/0xf0
+[ 3275.519117]  drm_gem_release+0x20/0x30
+[ 3275.519118]  drm_file_free+0x1a6/0x280
+[ 3275.519121]  drm_release+0x54/0xe0
+[ 3275.519123]  __fput+0x89/0x250
+[ 3275.519125]  task_work_run+0x5d/0x90
+[ 3275.519127]  do_exit+0x34c/0xae0
+[ 3275.519129]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.519132]  do_group_exit+0x31/0x80
+[ 3275.519134]  __x64_sys_exit_group+0x18/0x20
+[ 3275.519135]  do_syscall_64+0x5f/0x90
+[ 3275.519137]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.519139]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.519141]  ? exc_page_fault+0x74/0x170
+[ 3275.519142]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.519145] RIP: 0033:0x7f675e5da901
+[ 3275.519159] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.519160] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.519161] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.519162] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.519162] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.519163] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.519163] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.519165]  </TASK>
+[ 3275.519166] ---[ end trace 0000000000000000 ]---
+[ 3275.519175] ------------[ cut here ]------------
+[ 3275.519176] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:85 nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.519217] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.519234]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.519246] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.519248] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.519248] RIP: 0010:nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.519287] Code: 89 df e8 84 b8 0b d8 48 89 df e8 7c c5 e2 ff e8 c7 c5 a7 d7 48 89 ef be 0d 00 00 00 48 89 85 d8 01 00 00 5b 5d e9 d1 fd 10 d8 <0f> 0b be 0d 00 00 00 48 89 ef 5b 5d e9 c0 fd 10 d8 0f 1f 44 00 00
+[ 3275.519288] RSP: 0018:ffffb4d6816c3c60 EFLAGS: 00010283
+[ 3275.519289] RAX: 00000000ffffffea RBX: ffff8eee880f6400 RCX: 000000000040002d
+[ 3275.519290] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.519290] RBP: ffff8eee81a0c0d0 R08: 0000000000000000 R09: 000000000040002d
+[ 3275.519291] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
+[ 3275.519291] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700948
+[ 3275.519292] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.519293] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.519293] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.519294] PKRU: 55555554
+[ 3275.519295] Call Trace:
+[ 3275.519295]  <TASK>
+[ 3275.519296]  drm_gem_object_release_handle+0x54/0x60
+[ 3275.519297]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.519298]  idr_for_each+0x74/0xf0
+[ 3275.519300]  drm_gem_release+0x20/0x30
+[ 3275.519300]  drm_file_free+0x1a6/0x280
+[ 3275.519302]  drm_release+0x54/0xe0
+[ 3275.519304]  __fput+0x89/0x250
+[ 3275.519305]  task_work_run+0x5d/0x90
+[ 3275.519306]  do_exit+0x34c/0xae0
+[ 3275.519307]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.519309]  do_group_exit+0x31/0x80
+[ 3275.519311]  __x64_sys_exit_group+0x18/0x20
+[ 3275.519312]  do_syscall_64+0x5f/0x90
+[ 3275.519313]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.519315]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.519316]  ? exc_page_fault+0x74/0x170
+[ 3275.519317]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.519319] RIP: 0033:0x7f675e5da901
+[ 3275.519321] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.519322] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.519323] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.519323] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.519324] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.519324] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.519325] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.519326]  </TASK>
+[ 3275.519326] ---[ end trace 0000000000000000 ]---
+[ 3275.519335] ------------[ cut here ]------------
+[ 3275.519335] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:198 nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.519375] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.519392]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.519403] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.519404] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.519405] RIP: 0010:nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.519443] Code: 18 48 89 42 08 48 89 10 4c 89 75 10 4c 89 75 18 48 8d 7d 30 48 89 2c 24 e8 5d 9b 03 00 48 89 e7 e8 05 65 00 00 e9 56 ff ff ff <0f> 0b e9 5c ff ff ff e8 84 86 54 d8 31 f6 ba 58 02 00 00 4c 89 ef
+[ 3275.519444] RSP: 0018:ffffb4d6816c3c38 EFLAGS: 00010283
+[ 3275.519445] RAX: 00000000ffffffea RBX: ffff8eee880f5000 RCX: 000000000040002d
+[ 3275.519445] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.519446] RBP: ffff8eee8d590e00 R08: 0000000000000000 R09: 000000000040002d
+[ 3275.519447] R10: 0000000000000000 R11: 0000000000000000 R12: ffff8eee81a0c0d0
+[ 3275.519447] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700950
+[ 3275.519448] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.519449] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.519449] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.519450] PKRU: 55555554
+[ 3275.519450] Call Trace:
+[ 3275.519451]  <TASK>
+[ 3275.519451]  drm_gem_object_release_handle+0x31/0x60
+[ 3275.519453]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.519453]  idr_for_each+0x74/0xf0
+[ 3275.519455]  drm_gem_release+0x20/0x30
+[ 3275.519456]  drm_file_free+0x1a6/0x280
+[ 3275.519458]  drm_release+0x54/0xe0
+[ 3275.519459]  __fput+0x89/0x250
+[ 3275.519460]  task_work_run+0x5d/0x90
+[ 3275.519461]  do_exit+0x34c/0xae0
+[ 3275.519463]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.519464]  do_group_exit+0x31/0x80
+[ 3275.519466]  __x64_sys_exit_group+0x18/0x20
+[ 3275.519467]  do_syscall_64+0x5f/0x90
+[ 3275.519468]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.519470]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.519471]  ? exc_page_fault+0x74/0x170
+[ 3275.519472]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.519474] RIP: 0033:0x7f675e5da901
+[ 3275.519476] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.519476] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.519477] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.519478] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.519478] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.519479] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.519479] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.519481]  </TASK>
+[ 3275.519481] ---[ end trace 0000000000000000 ]---
+[ 3275.519488] ------------[ cut here ]------------
+[ 3275.519488] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:85 nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.519527] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.519544]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.519556] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.519557] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.519557] RIP: 0010:nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.519596] Code: 89 df e8 84 b8 0b d8 48 89 df e8 7c c5 e2 ff e8 c7 c5 a7 d7 48 89 ef be 0d 00 00 00 48 89 85 d8 01 00 00 5b 5d e9 d1 fd 10 d8 <0f> 0b be 0d 00 00 00 48 89 ef 5b 5d e9 c0 fd 10 d8 0f 1f 44 00 00
+[ 3275.519597] RSP: 0018:ffffb4d6816c3c60 EFLAGS: 00010283
+[ 3275.519597] RAX: 00000000ffffffea RBX: ffff8eee880f5000 RCX: 000000000040002c
+[ 3275.519598] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.519598] RBP: ffff8eee81a0c0d0 R08: 0000000000000000 R09: 000000000040002c
+[ 3275.519599] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000002
+[ 3275.519599] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700950
+[ 3275.519600] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.519601] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.519601] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.519602] PKRU: 55555554
+[ 3275.519602] Call Trace:
+[ 3275.519603]  <TASK>
+[ 3275.519603]  drm_gem_object_release_handle+0x54/0x60
+[ 3275.519604]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.519605]  idr_for_each+0x74/0xf0
+[ 3275.519607]  drm_gem_release+0x20/0x30
+[ 3275.519607]  drm_file_free+0x1a6/0x280
+[ 3275.519609]  drm_release+0x54/0xe0
+[ 3275.519611]  __fput+0x89/0x250
+[ 3275.519612]  task_work_run+0x5d/0x90
+[ 3275.519613]  do_exit+0x34c/0xae0
+[ 3275.519614]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.519616]  do_group_exit+0x31/0x80
+[ 3275.519617]  __x64_sys_exit_group+0x18/0x20
+[ 3275.519618]  do_syscall_64+0x5f/0x90
+[ 3275.519619]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.519621]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.519622]  ? exc_page_fault+0x74/0x170
+[ 3275.519624]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.519625] RIP: 0033:0x7f675e5da901
+[ 3275.519627] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.519628] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.519629] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.519629] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.519630] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.519630] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.519631] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.519632]  </TASK>
+[ 3275.519632] ---[ end trace 0000000000000000 ]---
+[ 3275.519640] ------------[ cut here ]------------
+[ 3275.519641] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:198 nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.519679] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.519696]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.519708] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.519709] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.519709] RIP: 0010:nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.519747] Code: 18 48 89 42 08 48 89 10 4c 89 75 10 4c 89 75 18 48 8d 7d 30 48 89 2c 24 e8 5d 9b 03 00 48 89 e7 e8 05 65 00 00 e9 56 ff ff ff <0f> 0b e9 5c ff ff ff e8 84 86 54 d8 31 f6 ba 58 02 00 00 4c 89 ef
+[ 3275.519748] RSP: 0018:ffffb4d6816c3c38 EFLAGS: 00010283
+[ 3275.519749] RAX: 00000000ffffffea RBX: ffff8eee880f7800 RCX: 000000000040002c
+[ 3275.519749] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.519750] RBP: ffff8eee86037dc0 R08: 0000000000000000 R09: 000000000040002c
+[ 3275.519750] R10: 0000000000000000 R11: 0000000000000000 R12: ffff8eee81a0c0d0
+[ 3275.519751] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700958
+[ 3275.519751] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.519752] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.519752] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.519753] PKRU: 55555554
+[ 3275.519753] Call Trace:
+[ 3275.519754]  <TASK>
+[ 3275.519754]  drm_gem_object_release_handle+0x31/0x60
+[ 3275.519756]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.519756]  idr_for_each+0x74/0xf0
+[ 3275.519758]  drm_gem_release+0x20/0x30
+[ 3275.519759]  drm_file_free+0x1a6/0x280
+[ 3275.519760]  drm_release+0x54/0xe0
+[ 3275.519762]  __fput+0x89/0x250
+[ 3275.519763]  task_work_run+0x5d/0x90
+[ 3275.519764]  do_exit+0x34c/0xae0
+[ 3275.519765]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.519767]  do_group_exit+0x31/0x80
+[ 3275.519768]  __x64_sys_exit_group+0x18/0x20
+[ 3275.519769]  do_syscall_64+0x5f/0x90
+[ 3275.519771]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.519772]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.519774]  ? exc_page_fault+0x74/0x170
+[ 3275.519775]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.519776] RIP: 0033:0x7f675e5da901
+[ 3275.519779] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.519779] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.519780] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.519781] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.519781] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.519781] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.519782] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.519783]  </TASK>
+[ 3275.519783] ---[ end trace 0000000000000000 ]---
+[ 3275.519791] ------------[ cut here ]------------
+[ 3275.519792] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:85 nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.519830] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.519847]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.519858] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.519859] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.519859] RIP: 0010:nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.519897] Code: 89 df e8 84 b8 0b d8 48 89 df e8 7c c5 e2 ff e8 c7 c5 a7 d7 48 89 ef be 0d 00 00 00 48 89 85 d8 01 00 00 5b 5d e9 d1 fd 10 d8 <0f> 0b be 0d 00 00 00 48 89 ef 5b 5d e9 c0 fd 10 d8 0f 1f 44 00 00
+[ 3275.519898] RSP: 0018:ffffb4d6816c3c60 EFLAGS: 00010283
+[ 3275.519899] RAX: 00000000ffffffea RBX: ffff8eee880f7800 RCX: 0000000000400021
+[ 3275.519899] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.519900] RBP: ffff8eee81a0c0d0 R08: 0000000000000000 R09: 0000000000400021
+[ 3275.519900] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000003
+[ 3275.519901] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700958
+[ 3275.519901] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.519902] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.519902] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.519903] PKRU: 55555554
+[ 3275.519903] Call Trace:
+[ 3275.519904]  <TASK>
+[ 3275.519904]  drm_gem_object_release_handle+0x54/0x60
+[ 3275.519905]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.519906]  idr_for_each+0x74/0xf0
+[ 3275.519907]  drm_gem_release+0x20/0x30
+[ 3275.519908]  drm_file_free+0x1a6/0x280
+[ 3275.519910]  drm_release+0x54/0xe0
+[ 3275.519911]  __fput+0x89/0x250
+[ 3275.519913]  task_work_run+0x5d/0x90
+[ 3275.519914]  do_exit+0x34c/0xae0
+[ 3275.519915]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.519917]  do_group_exit+0x31/0x80
+[ 3275.519918]  __x64_sys_exit_group+0x18/0x20
+[ 3275.519919]  do_syscall_64+0x5f/0x90
+[ 3275.519920]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.519922]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.519924]  ? exc_page_fault+0x74/0x170
+[ 3275.519927]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.519930] RIP: 0033:0x7f675e5da901
+[ 3275.519940] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.519941] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.519941] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.519942] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.519942] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.519943] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.519943] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.519945]  </TASK>
+[ 3275.519945] ---[ end trace 0000000000000000 ]---
+[ 3275.519953] ------------[ cut here ]------------
+[ 3275.519953] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:198 nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.519992] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.520009]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.520020] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.520021] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.520022] RIP: 0010:nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.520060] Code: 18 48 89 42 08 48 89 10 4c 89 75 10 4c 89 75 18 48 8d 7d 30 48 89 2c 24 e8 5d 9b 03 00 48 89 e7 e8 05 65 00 00 e9 56 ff ff ff <0f> 0b e9 5c ff ff ff e8 84 86 54 d8 31 f6 ba 58 02 00 00 4c 89 ef
+[ 3275.520060] RSP: 0018:ffffb4d6816c3c38 EFLAGS: 00010283
+[ 3275.520061] RAX: 00000000ffffffea RBX: ffff8eee83168800 RCX: 0000000000400021
+[ 3275.520062] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.520062] RBP: ffff8eee86037ec0 R08: 0000000000000000 R09: 0000000000400021
+[ 3275.520063] R10: 0000000000000000 R11: 0000000000000000 R12: ffff8eee81a0c0d0
+[ 3275.520063] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700960
+[ 3275.520064] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.520064] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.520065] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.520065] PKRU: 55555554
+[ 3275.520066] Call Trace:
+[ 3275.520066]  <TASK>
+[ 3275.520067]  drm_gem_object_release_handle+0x31/0x60
+[ 3275.520068]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.520069]  idr_for_each+0x74/0xf0
+[ 3275.520070]  drm_gem_release+0x20/0x30
+[ 3275.520071]  drm_file_free+0x1a6/0x280
+[ 3275.520073]  drm_release+0x54/0xe0
+[ 3275.520074]  __fput+0x89/0x250
+[ 3275.520075]  task_work_run+0x5d/0x90
+[ 3275.520076]  do_exit+0x34c/0xae0
+[ 3275.520077]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.520079]  do_group_exit+0x31/0x80
+[ 3275.520081]  __x64_sys_exit_group+0x18/0x20
+[ 3275.520082]  do_syscall_64+0x5f/0x90
+[ 3275.520083]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.520085]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.520086]  ? exc_page_fault+0x74/0x170
+[ 3275.520087]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.520089] RIP: 0033:0x7f675e5da901
+[ 3275.520091] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.520092] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.520092] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.520093] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.520093] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.520094] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.520094] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.520095]  </TASK>
+[ 3275.520096] ---[ end trace 0000000000000000 ]---
+[ 3275.520103] ------------[ cut here ]------------
+[ 3275.520104] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:85 nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.520143] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.520160]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.520171] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.520172] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.520172] RIP: 0010:nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.520211] Code: 89 df e8 84 b8 0b d8 48 89 df e8 7c c5 e2 ff e8 c7 c5 a7 d7 48 89 ef be 0d 00 00 00 48 89 85 d8 01 00 00 5b 5d e9 d1 fd 10 d8 <0f> 0b be 0d 00 00 00 48 89 ef 5b 5d e9 c0 fd 10 d8 0f 1f 44 00 00
+[ 3275.520211] RSP: 0018:ffffb4d6816c3c60 EFLAGS: 00010283
+[ 3275.520212] RAX: 00000000ffffffea RBX: ffff8eee83168800 RCX: 0000000000400020
+[ 3275.520213] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.520214] RBP: ffff8eee81a0c0d0 R08: 0000000000000000 R09: 0000000000400020
+[ 3275.520214] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000004
+[ 3275.520215] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700960
+[ 3275.520215] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.520216] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.520216] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.520217] PKRU: 55555554
+[ 3275.520217] Call Trace:
+[ 3275.520218]  <TASK>
+[ 3275.520218]  drm_gem_object_release_handle+0x54/0x60
+[ 3275.520219]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.520220]  idr_for_each+0x74/0xf0
+[ 3275.520221]  drm_gem_release+0x20/0x30
+[ 3275.520222]  drm_file_free+0x1a6/0x280
+[ 3275.520224]  drm_release+0x54/0xe0
+[ 3275.520226]  __fput+0x89/0x250
+[ 3275.520227]  task_work_run+0x5d/0x90
+[ 3275.520228]  do_exit+0x34c/0xae0
+[ 3275.520229]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.520231]  do_group_exit+0x31/0x80
+[ 3275.520232]  __x64_sys_exit_group+0x18/0x20
+[ 3275.520233]  do_syscall_64+0x5f/0x90
+[ 3275.520234]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.520236]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.520237]  ? exc_page_fault+0x74/0x170
+[ 3275.520238]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.520240] RIP: 0033:0x7f675e5da901
+[ 3275.520242] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.520243] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.520243] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.520244] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.520244] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.520245] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.520245] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.520246]  </TASK>
+[ 3275.520247] ---[ end trace 0000000000000000 ]---
+[ 3275.520255] ------------[ cut here ]------------
+[ 3275.520255] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:198 nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.520294] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.520310]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.520322] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.520323] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.520323] RIP: 0010:nouveau_gem_object_close+0x1f0/0x220 [nouveau]
+[ 3275.520361] Code: 18 48 89 42 08 48 89 10 4c 89 75 10 4c 89 75 18 48 8d 7d 30 48 89 2c 24 e8 5d 9b 03 00 48 89 e7 e8 05 65 00 00 e9 56 ff ff ff <0f> 0b e9 5c ff ff ff e8 84 86 54 d8 31 f6 ba 58 02 00 00 4c 89 ef
+[ 3275.520362] RSP: 0018:ffffb4d6816c3c38 EFLAGS: 00010283
+[ 3275.520362] RAX: 00000000ffffffea RBX: ffff8eee87539400 RCX: 0000000000400020
+[ 3275.520363] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.520363] RBP: ffff8eee86037700 R08: 0000000000000000 R09: 0000000000400020
+[ 3275.520364] R10: 0000000000000000 R11: 0000000000000000 R12: ffff8eee81a0c0d0
+[ 3275.520364] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700968
+[ 3275.520365] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.520365] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.520366] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.520367] PKRU: 55555554
+[ 3275.520367] Call Trace:
+[ 3275.520367]  <TASK>
+[ 3275.520368]  drm_gem_object_release_handle+0x31/0x60
+[ 3275.520369]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.520370]  idr_for_each+0x74/0xf0
+[ 3275.520371]  drm_gem_release+0x20/0x30
+[ 3275.520372]  drm_file_free+0x1a6/0x280
+[ 3275.520374]  drm_release+0x54/0xe0
+[ 3275.520375]  __fput+0x89/0x250
+[ 3275.520376]  task_work_run+0x5d/0x90
+[ 3275.520377]  do_exit+0x34c/0xae0
+[ 3275.520379]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.520380]  do_group_exit+0x31/0x80
+[ 3275.520382]  __x64_sys_exit_group+0x18/0x20
+[ 3275.520383]  do_syscall_64+0x5f/0x90
+[ 3275.520384]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.520386]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.520387]  ? exc_page_fault+0x74/0x170
+[ 3275.520388]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.520390] RIP: 0033:0x7f675e5da901
+[ 3275.520392] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.520392] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.520393] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.520394] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.520394] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.520395] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.520395] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.520396]  </TASK>
+[ 3275.520397] ---[ end trace 0000000000000000 ]---
+[ 3275.520404] ------------[ cut here ]------------
+[ 3275.520405] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nouveau_gem.c:85 nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.520443] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.520460]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.520472] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.520472] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.520473] RIP: 0010:nouveau_gem_object_del+0x6f/0x80 [nouveau]
+[ 3275.520511] Code: 89 df e8 84 b8 0b d8 48 89 df e8 7c c5 e2 ff e8 c7 c5 a7 d7 48 89 ef be 0d 00 00 00 48 89 85 d8 01 00 00 5b 5d e9 d1 fd 10 d8 <0f> 0b be 0d 00 00 00 48 89 ef 5b 5d e9 c0 fd 10 d8 0f 1f 44 00 00
+[ 3275.520512] RSP: 0018:ffffb4d6816c3c60 EFLAGS: 00010283
+[ 3275.520512] RAX: 00000000ffffffea RBX: ffff8eee87539400 RCX: 000000000040001f
+[ 3275.520513] RDX: 0000000000000001 RSI: 0000000000000202 RDI: ffff8eee81a0c1b4
+[ 3275.520513] RBP: ffff8eee81a0c0d0 R08: 0000000000000000 R09: 000000000040001f
+[ 3275.520514] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000005
+[ 3275.520514] R13: 0000000000000001 R14: ffff8eee836ace40 R15: ffff8eee82700968
+[ 3275.520515] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.520516] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.520516] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.520517] PKRU: 55555554
+[ 3275.520517] Call Trace:
+[ 3275.520517]  <TASK>
+[ 3275.520518]  drm_gem_object_release_handle+0x54/0x60
+[ 3275.520519]  ? drm_gem_object_handle_put_unlocked+0xf0/0xf0
+[ 3275.520520]  idr_for_each+0x74/0xf0
+[ 3275.520521]  drm_gem_release+0x20/0x30
+[ 3275.520522]  drm_file_free+0x1a6/0x280
+[ 3275.520524]  drm_release+0x54/0xe0
+[ 3275.520525]  __fput+0x89/0x250
+[ 3275.520526]  task_work_run+0x5d/0x90
+[ 3275.520527]  do_exit+0x34c/0xae0
+[ 3275.520529]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.520530]  do_group_exit+0x31/0x80
+[ 3275.520532]  __x64_sys_exit_group+0x18/0x20
+[ 3275.520533]  do_syscall_64+0x5f/0x90
+[ 3275.520534]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.520536]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.520537]  ? exc_page_fault+0x74/0x170
+[ 3275.520538]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.520540] RIP: 0033:0x7f675e5da901
+[ 3275.520542] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.520542] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.520543] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.520544] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.520544] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.520545] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.520545] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.520546]  </TASK>
+[ 3275.520547] ---[ end trace 0000000000000000 ]---
+[ 3275.520631] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 3275.521003] ------------[ cut here ]------------
+[ 3275.521003] nouveau 0000:01:00.0: timeout
+[ 3275.521013] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3275.521053] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.521070]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.521082] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.521083] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.521084] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3275.521120] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 58 10 1b d8 48 89 da 48 c7 c7 a6 d1 7a c0 48 89 c6 e8 1c 7b 5a d8 <0f> 0b eb aa e8 9d 2e 60 d8 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3275.521121] RSP: 0018:ffffb4d6816c3900 EFLAGS: 00010082
+[ 3275.521122] RAX: 0000000000000000 RBX: ffff8eee81a27be0 RCX: 0000000000000027
+[ 3275.521122] RDX: ffff8ef11ffa1668 RSI: 0000000000000001 RDI: ffff8ef11ffa1660
+[ 3275.521123] RBP: ffff8eee8375de98 R08: 0000000000000000 R09: ffffb4d6816c3788
+[ 3275.521123] R10: 0000000000000003 R11: ffffffff99eb7320 R12: 0000000000000246
+[ 3275.521124] R13: ffff8eee836aea00 R14: ffff8eee865ed740 R15: 0000000000000000
+[ 3275.521125] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.521125] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.521126] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.521126] PKRU: 55555554
+[ 3275.521127] Call Trace:
+[ 3275.521128]  <TASK>
+[ 3275.521129]  nv50_instobj_release+0x34/0xc0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521173]  nvkm_vmm_unref_pdes+0x198/0x1f0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521215]  nvkm_vmm_unref_ptes+0x18c/0x250 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521253]  nvkm_vmm_iter.constprop.0+0x2a8/0x890 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521290]  ? console_unlock+0x14c/0x1d0
+[ 3275.521291]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521329]  nvkm_vmm_put_locked+0x109/0x280 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521366]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521403]  nvkm_vmm_unref+0x80/0x1d0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521441]  nvkm_uvmm_dtor+0x16/0x20 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521480]  nvkm_object_dtor+0xb2/0x100 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521517]  nvkm_object_del+0x28/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521553]  nvkm_ioctl_del+0x3b/0x60 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521589]  nvkm_ioctl+0xdc/0x180 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521625]  nvif_object_dtor+0x84/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521660]  nouveau_vmm_fini+0x1f/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521707]  nouveau_cli_fini+0x48/0x90 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521750]  nouveau_drm_postclose+0x10a/0x150 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.521789]  drm_file_free+0x1cd/0x280
+[ 3275.521791]  drm_release+0x54/0xe0
+[ 3275.521793]  __fput+0x89/0x250
+[ 3275.521794]  task_work_run+0x5d/0x90
+[ 3275.521795]  do_exit+0x34c/0xae0
+[ 3275.521797]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.521798]  do_group_exit+0x31/0x80
+[ 3275.521800]  __x64_sys_exit_group+0x18/0x20
+[ 3275.521801]  do_syscall_64+0x5f/0x90
+[ 3275.521802]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.521804]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.521805]  ? exc_page_fault+0x74/0x170
+[ 3275.521806]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.521808] RIP: 0033:0x7f675e5da901
+[ 3275.521812] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.521812] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.521813] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.521814] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.521814] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.521815] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.521815] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.521816]  </TASK>
+[ 3275.521817] ---[ end trace 0000000000000000 ]---
+[ 3275.522463] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 3275.523337] ------------[ cut here ]------------
+[ 3275.523338] nouveau 0000:01:00.0: timeout
+[ 3275.523348] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:43 tu102_vmm_flush+0x165/0x170 [nouveau]
+[ 3275.523393] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.523411]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.523423] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.523424] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.523425] RIP: 0010:tu102_vmm_flush+0x165/0x170 [nouveau]
+[ 3275.523463] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 7d da 15 d8 48 89 da 48 c7 c7 6c ef 7a c0 48 89 c6 e8 41 45 55 d8 <0f> 0b eb a5 e8 c2 f8 5a d8 66 90 f3 0f 1e fa 0f 1f 44 00 00 ff 74
+[ 3275.523464] RSP: 0018:ffffb4d6816c3938 EFLAGS: 00010286
+[ 3275.523464] RAX: 0000000000000000 RBX: ffff8eee81a27be0 RCX: 0000000000000027
+[ 3275.523465] RDX: ffff8ef11ffa1668 RSI: 0000000000000001 RDI: ffff8ef11ffa1660
+[ 3275.523465] RBP: ffff8eee836aea00 R08: 0000000000000000 R09: ffffb4d6816c37c0
+[ 3275.523466] R10: 0000000000000003 R11: ffffffff99eb7908 R12: 0000000002000001
+[ 3275.523467] R13: ffff8eee836aea00 R14: ffff8eee865ed740 R15: 0000000000000000
+[ 3275.523467] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.523468] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.523469] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.523469] PKRU: 55555554
+[ 3275.523470] Call Trace:
+[ 3275.523470]  <TASK>
+[ 3275.523471]  nvkm_vmm_unref_pdes+0xee/0x1f0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523511]  nvkm_vmm_unref_ptes+0x18c/0x250 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523549]  nvkm_vmm_iter.constprop.0+0x2a8/0x890 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523586]  ? console_unlock+0x14c/0x1d0
+[ 3275.523587]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523624]  nvkm_vmm_put_locked+0x109/0x280 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523662]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523698]  nvkm_vmm_unref+0x80/0x1d0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523735]  nvkm_uvmm_dtor+0x16/0x20 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523773]  nvkm_object_dtor+0xb2/0x100 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523810]  nvkm_object_del+0x28/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523846]  nvkm_ioctl_del+0x3b/0x60 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523881]  nvkm_ioctl+0xdc/0x180 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523917]  nvif_object_dtor+0x84/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523952]  nouveau_vmm_fini+0x1f/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.523998]  nouveau_cli_fini+0x48/0x90 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524040]  nouveau_drm_postclose+0x10a/0x150 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524079]  drm_file_free+0x1cd/0x280
+[ 3275.524081]  drm_release+0x54/0xe0
+[ 3275.524083]  __fput+0x89/0x250
+[ 3275.524084]  task_work_run+0x5d/0x90
+[ 3275.524085]  do_exit+0x34c/0xae0
+[ 3275.524087]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.524089]  do_group_exit+0x31/0x80
+[ 3275.524090]  __x64_sys_exit_group+0x18/0x20
+[ 3275.524091]  do_syscall_64+0x5f/0x90
+[ 3275.524092]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.524094]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.524095]  ? exc_page_fault+0x74/0x170
+[ 3275.524097]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.524098] RIP: 0033:0x7f675e5da901
+[ 3275.524101] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.524102] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.524103] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.524103] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.524104] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.524104] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.524105] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.524106]  </TASK>
+[ 3275.524107] ---[ end trace 0000000000000000 ]---
+[ 3275.524179] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 3275.524508] ------------[ cut here ]------------
+[ 3275.524509] nouveau 0000:01:00.0: timeout
+[ 3275.524516] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3275.524555] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.524572]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.524583] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.524584] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.524585] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3275.524621] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 58 10 1b d8 48 89 da 48 c7 c7 a6 d1 7a c0 48 89 c6 e8 1c 7b 5a d8 <0f> 0b eb aa e8 9d 2e 60 d8 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3275.524622] RSP: 0018:ffffb4d6816c3870 EFLAGS: 00010086
+[ 3275.524623] RAX: 0000000000000000 RBX: ffff8eee81a27be0 RCX: 0000000000000027
+[ 3275.524623] RDX: ffff8ef11ffa1668 RSI: 0000000000000001 RDI: ffff8ef11ffa1660
+[ 3275.524624] RBP: ffff8eee8375de98 R08: 0000000000000000 R09: ffffb4d6816c36f8
+[ 3275.524624] R10: 0000000000000003 R11: ffffffff99eb7ed8 R12: 0000000000000246
+[ 3275.524625] R13: ffff8eee836aea00 R14: ffff8eee85741e40 R15: 0000000000000000
+[ 3275.524626] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.524626] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.524627] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.524628] PKRU: 55555554
+[ 3275.524628] Call Trace:
+[ 3275.524628]  <TASK>
+[ 3275.524629]  nv50_instobj_release+0x34/0xc0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524672]  nvkm_vmm_unref_pdes+0x198/0x1f0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524713]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524750]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524787]  nvkm_vmm_unref_ptes+0x18c/0x250 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524824]  nvkm_vmm_iter.constprop.0+0x2a8/0x890 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524861]  ? console_unlock+0x14c/0x1d0
+[ 3275.524862]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524900]  nvkm_vmm_put_locked+0x109/0x280 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524937]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.524974]  nvkm_vmm_unref+0x80/0x1d0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525011]  nvkm_uvmm_dtor+0x16/0x20 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525050]  nvkm_object_dtor+0xb2/0x100 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525086]  nvkm_object_del+0x28/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525122]  nvkm_ioctl_del+0x3b/0x60 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525158]  nvkm_ioctl+0xdc/0x180 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525196]  nvif_object_dtor+0x84/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525215]  nouveau_vmm_fini+0x1f/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525215]  nouveau_cli_fini+0x48/0x90 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525215]  nouveau_drm_postclose+0x10a/0x150 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.525215]  drm_file_free+0x1cd/0x280
+[ 3275.525215]  drm_release+0x54/0xe0
+[ 3275.525215]  __fput+0x89/0x250
+[ 3275.525215]  task_work_run+0x5d/0x90
+[ 3275.525215]  do_exit+0x34c/0xae0
+[ 3275.525215]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.525215]  do_group_exit+0x31/0x80
+[ 3275.525215]  __x64_sys_exit_group+0x18/0x20
+[ 3275.525215]  do_syscall_64+0x5f/0x90
+[ 3275.525215]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.525215]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.525215]  ? exc_page_fault+0x74/0x170
+[ 3275.525215]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.525215] RIP: 0033:0x7f675e5da901
+[ 3275.525215] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.525215] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.525215] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.525215] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.525215] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.525215] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.525215] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.525215]  </TASK>
+[ 3275.525215] ---[ end trace 0000000000000000 ]---
+[ 3275.526004] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 3275.526787] ------------[ cut here ]------------
+[ 3275.526787] nouveau 0000:01:00.0: timeout
+[ 3275.526797] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:43 tu102_vmm_flush+0x165/0x170 [nouveau]
+[ 3275.526841] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.526858]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.526870] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.526871] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.526871] RIP: 0010:tu102_vmm_flush+0x165/0x170 [nouveau]
+[ 3275.526909] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 7d da 15 d8 48 89 da 48 c7 c7 6c ef 7a c0 48 89 c6 e8 41 45 55 d8 <0f> 0b eb a5 e8 c2 f8 5a d8 66 90 f3 0f 1e fa 0f 1f 44 00 00 ff 74
+[ 3275.526909] RSP: 0018:ffffb4d6816c38a8 EFLAGS: 00010286
+[ 3275.526910] RAX: 0000000000000000 RBX: ffff8eee81a27be0 RCX: 0000000000000027
+[ 3275.526911] RDX: ffff8ef11ffa1668 RSI: 0000000000000001 RDI: ffff8ef11ffa1660
+[ 3275.526912] RBP: ffff8eee836aea00 R08: 0000000000000000 R09: ffffb4d6816c3730
+[ 3275.526912] R10: 0000000000000003 R11: ffffffff99eb84f0 R12: 0000000005000001
+[ 3275.526913] R13: ffff8eee836aea00 R14: ffff8eee85741e40 R15: 0000000000000000
+[ 3275.526913] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.526914] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.526915] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.526915] PKRU: 55555554
+[ 3275.526916] Call Trace:
+[ 3275.526916]  <TASK>
+[ 3275.526917]  nvkm_vmm_unref_pdes+0xee/0x1f0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.526957]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.526994]  nvkm_vmm_unref_pdes+0x182/0x1f0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527031]  nvkm_vmm_unref_ptes+0x18c/0x250 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527068]  nvkm_vmm_iter.constprop.0+0x2a8/0x890 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527105]  ? console_unlock+0x14c/0x1d0
+[ 3275.527106]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527144]  nvkm_vmm_put_locked+0x109/0x280 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527180]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527217]  nvkm_vmm_unref+0x80/0x1d0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527254]  nvkm_uvmm_dtor+0x16/0x20 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527292]  nvkm_object_dtor+0xb2/0x100 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527329]  nvkm_object_del+0x28/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527365]  nvkm_ioctl_del+0x3b/0x60 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527401]  nvkm_ioctl+0xdc/0x180 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527437]  nvif_object_dtor+0x84/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527472]  nouveau_vmm_fini+0x1f/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527517]  nouveau_cli_fini+0x48/0x90 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527558]  nouveau_drm_postclose+0x10a/0x150 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.527598]  drm_file_free+0x1cd/0x280
+[ 3275.527600]  drm_release+0x54/0xe0
+[ 3275.527601]  __fput+0x89/0x250
+[ 3275.527603]  task_work_run+0x5d/0x90
+[ 3275.527604]  do_exit+0x34c/0xae0
+[ 3275.527605]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.527607]  do_group_exit+0x31/0x80
+[ 3275.527608]  __x64_sys_exit_group+0x18/0x20
+[ 3275.527609]  do_syscall_64+0x5f/0x90
+[ 3275.527610]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.527612]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.527613]  ? exc_page_fault+0x74/0x170
+[ 3275.527615]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.527616] RIP: 0033:0x7f675e5da901
+[ 3275.527619] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.527620] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.527620] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.527621] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.527621] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.527622] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.527623] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.527624]  </TASK>
+[ 3275.527624] ---[ end trace 0000000000000000 ]---
+[ 3275.527698] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 3275.527913] ------------[ cut here ]------------
+[ 3275.527914] nouveau 0000:01:00.0: timeout
+[ 3275.527921] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3275.527968] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.527985]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.527997] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.527998] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.527999] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[ 3275.528035] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 58 10 1b d8 48 89 da 48 c7 c7 a6 d1 7a c0 48 89 c6 e8 1c 7b 5a d8 <0f> 0b eb aa e8 9d 2e 60 d8 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[ 3275.528036] RSP: 0018:ffffb4d6816c38c8 EFLAGS: 00010082
+[ 3275.528037] RAX: 0000000000000000 RBX: ffff8eee81a27be0 RCX: 0000000000000027
+[ 3275.528037] RDX: ffff8ef11ffa1668 RSI: 0000000000000001 RDI: ffff8ef11ffa1660
+[ 3275.528038] RBP: ffff8eee8375de98 R08: 0000000000000000 R09: ffffb4d6816c3750
+[ 3275.528038] R10: 0000000000000003 R11: ffffffff99eb8af0 R12: 0000000000000246
+[ 3275.528039] R13: 0000000000000031 R14: 0000000000000001 R15: 0000000000000000
+[ 3275.528039] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.528040] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.528041] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.528041] PKRU: 55555554
+[ 3275.528042] Call Trace:
+[ 3275.528042]  <TASK>
+[ 3275.528043]  nv50_instobj_release+0x34/0xc0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528085]  nvkm_vmm_iter.constprop.0+0x7e7/0x890 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528126]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528164]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528203]  nvkm_vmm_put_locked+0x109/0x280 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528240]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528276]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528313]  nvkm_vmm_put+0x34/0x50 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528350]  nv50_instobj_dtor+0xb9/0x100 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528389]  nvkm_memory_unref+0x4e/0x70 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528426]  nvkm_mmu_ptc_put+0x5a/0x1c0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528464]  nvkm_vmm_unref+0x182/0x1d0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528502]  nvkm_uvmm_dtor+0x16/0x20 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528551]  nvkm_object_dtor+0xb2/0x100 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528595]  nvkm_object_del+0x28/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528631]  nvkm_ioctl_del+0x3b/0x60 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528667]  nvkm_ioctl+0xdc/0x180 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528702]  nvif_object_dtor+0x84/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528734]  nouveau_vmm_fini+0x1f/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528734]  nouveau_cli_fini+0x48/0x90 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528734]  nouveau_drm_postclose+0x10a/0x150 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.528734]  drm_file_free+0x1cd/0x280
+[ 3275.528734]  drm_release+0x54/0xe0
+[ 3275.528734]  __fput+0x89/0x250
+[ 3275.528734]  task_work_run+0x5d/0x90
+[ 3275.528734]  do_exit+0x34c/0xae0
+[ 3275.528734]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.528734]  do_group_exit+0x31/0x80
+[ 3275.528734]  __x64_sys_exit_group+0x18/0x20
+[ 3275.528734]  do_syscall_64+0x5f/0x90
+[ 3275.528734]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.528734]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.528734]  ? exc_page_fault+0x74/0x170
+[ 3275.528734]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.528734] RIP: 0033:0x7f675e5da901
+[ 3275.528734] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.528734] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.528734] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.528734] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.528734] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.528734] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.528734] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.528734]  </TASK>
+[ 3275.528734] ---[ end trace 0000000000000000 ]---
+[ 3275.529298] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 3275.529758] ------------[ cut here ]------------
+[ 3275.529758] nouveau 0000:01:00.0: timeout
+[ 3275.529768] WARNING: CPU: 6 PID: 509 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:43 tu102_vmm_flush+0x165/0x170 [nouveau]
+[ 3275.529811] Modules linked in: ccm intel_rapl_msr intel_rapl_common hid_multitouch snd_sof_amd_rembrandt snd_sof_amd_renoir snd_sof_amd_acp edac_mce_amd snd_sof_pci rtw89_8852ae snd_hda_codec_realtek snd_sof rtw89_8852a kvm_amd snd_hda_codec_generic snd_sof_utils rtw89_pci ledtrig_audio snd_soc_core snd_hda_codec_hdmi kvm rtw89_core snd_compress snd_hda_intel ac97_bus snd_intel_dspcfg irqbypass snd_pcm_dmaengine crct10dif_pclmul snd_intel_sdw_acpi crc32_pclmul snd_pci_ps polyval_clmulni uvcvideo mac80211 snd_rpl_pci_acp6x polyval_generic snd_hda_codec btusb gf128mul snd_acp_pci ghash_clmulni_intel videobuf2_vmalloc btrtl snd_hda_core sha512_ssse3 videobuf2_memops snd_pci_acp6x btbcm videobuf2_v4l2 snd_hwdep vfat aesni_intel btintel fat libarc4 videobuf2_common snd_pci_acp5x crypto_simd btmtk r8169 snd_pcm cryptd snd_rn_pci_acp3x ucsi_acpi snd_acp_config rapl ideapad_laptop typec_ucsi realtek bluetooth pcspkr videodev snd_soc_acpi wdat_wdt mdio_devres typec sp5100_tco cm32181
+[ 3275.529828]  sparse_keymap snd_timer wmi_bmof platform_profile k10temp ecdh_generic i2c_piix4 mc snd snd_pci_acp3x cfg80211 ccp libphy soundcore roles rfkill i2c_hid_acpi industrialio joydev i2c_hid mousedev acpi_cpufreq mac_hid fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 usbhid amdgpu nouveau serio_raw atkbd libps2 mxm_wmi vivaldi_fmap gpu_sched drm_ttm_helper nvme drm_buddy ttm drm_display_helper nvme_core crc32c_intel xhci_pci i8042 video xhci_pci_renesas cec nvme_common serio wmi
+[ 3275.529840] CPU: 6 PID: 509 Comm: Xorg Tainted: G        W          6.1.6-arch1-3 #1 2118b28cf5a2e12ba3ae6687d675c54bc6d216c4
+[ 3275.529841] Hardware name: LENOVO 82JU/LNVNB161216, BIOS GKCN58WW 09/15/2022
+[ 3275.529842] RIP: 0010:tu102_vmm_flush+0x165/0x170 [nouveau]
+[ 3275.529879] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 7d da 15 d8 48 89 da 48 c7 c7 6c ef 7a c0 48 89 c6 e8 41 45 55 d8 <0f> 0b eb a5 e8 c2 f8 5a d8 66 90 f3 0f 1e fa 0f 1f 44 00 00 ff 74
+[ 3275.529880] RSP: 0018:ffffb4d6816c3900 EFLAGS: 00010282
+[ 3275.529881] RAX: 0000000000000000 RBX: ffff8eee81a27be0 RCX: 0000000000000027
+[ 3275.529881] RDX: ffff8ef11ffa1668 RSI: 0000000000000001 RDI: ffff8ef11ffa1660
+[ 3275.529882] RBP: ffff8eee88686c00 R08: 0000000000000000 R09: ffffb4d6816c3788
+[ 3275.529882] R10: 0000000000000003 R11: ffffffff99eb9120 R12: 0000000001000005
+[ 3275.529883] R13: 0000000000000031 R14: 0000000000000001 R15: 0000000000000000
+[ 3275.529883] FS:  0000000000000000(0000) GS:ffff8ef11ff80000(0000) knlGS:0000000000000000
+[ 3275.529884] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 3275.529885] CR2: 00007f675dcf7f1c CR3: 000000034e410000 CR4: 0000000000750ee0
+[ 3275.529885] PKRU: 55555554
+[ 3275.529886] Call Trace:
+[ 3275.529886]  <TASK>
+[ 3275.529887]  nvkm_vmm_iter.constprop.0+0x370/0x890 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.529927]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.529965]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530003]  nvkm_vmm_put_locked+0x109/0x280 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530040]  ? nvkm_vmm_ptes_sparse+0x1e0/0x1e0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530076]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530113]  nvkm_vmm_put+0x34/0x50 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530150]  nv50_instobj_dtor+0xb9/0x100 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530191]  nvkm_memory_unref+0x4e/0x70 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530228]  nvkm_mmu_ptc_put+0x5a/0x1c0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530272]  nvkm_vmm_unref+0x182/0x1d0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530310]  nvkm_uvmm_dtor+0x16/0x20 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530348]  nvkm_object_dtor+0xb2/0x100 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530384]  nvkm_object_del+0x28/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530421]  nvkm_ioctl_del+0x3b/0x60 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530460]  nvkm_ioctl+0xdc/0x180 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530496]  nvif_object_dtor+0x84/0xb0 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530531]  nouveau_vmm_fini+0x1f/0x30 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530576]  nouveau_cli_fini+0x48/0x90 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530619]  nouveau_drm_postclose+0x10a/0x150 [nouveau 5329ccef11e709c1b0cf29ab5461673e99b10d7b]
+[ 3275.530658]  drm_file_free+0x1cd/0x280
+[ 3275.530660]  drm_release+0x54/0xe0
+[ 3275.530662]  __fput+0x89/0x250
+[ 3275.530663]  task_work_run+0x5d/0x90
+[ 3275.530664]  do_exit+0x34c/0xae0
+[ 3275.530665]  ? __handle_mm_fault+0x660/0xfa0
+[ 3275.530667]  do_group_exit+0x31/0x80
+[ 3275.530668]  __x64_sys_exit_group+0x18/0x20
+[ 3275.530670]  do_syscall_64+0x5f/0x90
+[ 3275.530671]  ? handle_mm_fault+0xdf/0x2d0
+[ 3275.530672]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 3275.530674]  ? exc_page_fault+0x74/0x170
+[ 3275.530675]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 3275.530677] RIP: 0033:0x7f675e5da901
+[ 3275.530680] Code: Unable to access opcode bytes at 0x7f675e5da8d7.
+[ 3275.530680] RSP: 002b:00007ffe88a34548 EFLAGS: 00000246 ORIG_RAX: 00000000000000e7
+[ 3275.530681] RAX: ffffffffffffffda RBX: 00007f675e6dc940 RCX: 00007f675e5da901
+[ 3275.530681] RDX: 000000000000003c RSI: 00000000000000e7 RDI: 0000000000000000
+[ 3275.530682] RBP: 0000000000000000 R08: fffffffffffffd48 R09: 0000000000000000
+[ 3275.530683] R10: 00007ffe88a33e70 R11: 0000000000000246 R12: 00007f675e6dc940
+[ 3275.530683] R13: 0000000000000000 R14: 00007f675e6e2208 R15: 00007f675e6e2220
+[ 3275.530684]  </TASK>
+[ 3275.530685] ---[ end trace 0000000000000000 ]---
+[ 3277.458898] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[ 4345.218502] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[ 6332.421823] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[ 6334.788297] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[ 6468.424900] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
