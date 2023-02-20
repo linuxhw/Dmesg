@@ -1,0 +1,1438 @@
+[   27.230981] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.230982]  </TASK>
+[   27.230983] ---[ end trace 55c05641fd3e8924 ]---
+[   27.231001] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.231001] ------------[ cut here ]------------
+[   27.231002] nouveau 0000:01:00.0: timeout
+[   27.231008] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.231041] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.231057]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.231074] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.231075] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.231075] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.231106] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.231107] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.231108] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.231108] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.231109] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.231109] R10: ffffb958ccae3660 R11: ffffffff8a8cf8a8 R12: 0000000000000246
+[   27.231110] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.231110] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.231111] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.231111] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.231112] PKRU: 55555554
+[   27.231112] Call Trace:
+[   27.231113]  <TASK>
+[   27.231113]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231149]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231182]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231214]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231245]  ? ktime_get+0x38/0x90
+[   27.231246]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231289]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231323]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231355]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231386]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231416]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231456]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231491]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.231492]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.231494]  __rpm_callback+0x44/0x150
+[   27.231495]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.231496]  rpm_callback+0x59/0x70
+[   27.231497]  rpm_resume+0x532/0x7e0
+[   27.231498]  ? make_kuid+0xf/0x10
+[   27.231499]  ? dput+0x37/0x2e0
+[   27.231501]  __pm_runtime_resume+0x4a/0x80
+[   27.231502]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231536]  ? dput+0x37/0x2e0
+[   27.231537]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.231539]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.231549]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.231559]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.231569]  chrdev_open+0xc2/0x240
+[   27.231571]  ? cdev_device_add+0x90/0x90
+[   27.231571]  do_dentry_open+0x13e/0x370
+[   27.231573]  path_openat+0xb50/0xfa0
+[   27.231573]  ? _copy_to_iter+0xc9/0x710
+[   27.231575]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.231576]  ? mod_objcg_state+0x190/0x300
+[   27.231578]  do_filp_open+0xb2/0x150
+[   27.231579]  ? __check_object_size+0x136/0x150
+[   27.231581]  do_sys_openat2+0x96/0x160
+[   27.231582]  __x64_sys_openat+0x53/0x90
+[   27.231583]  do_syscall_64+0x5c/0x80
+[   27.231584]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.231585]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.231586] RIP: 0033:0x7f9dbb608054
+[   27.231587] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.231588] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.231588] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.231589] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.231589] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.231590] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.231590] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.231592]  </TASK>
+[   27.231592] ---[ end trace 55c05641fd3e8925 ]---
+[   27.231607] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.231607] ------------[ cut here ]------------
+[   27.231607] nouveau 0000:01:00.0: timeout
+[   27.231613] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.231646] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.231662]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.231679] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.231680] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.231681] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.231712] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.231712] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.231713] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.231713] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.231714] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.231714] R10: ffffb958ccae3660 R11: ffffffff8a8cf8a8 R12: 0000000000000246
+[   27.231715] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.231715] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.231716] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.231717] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.231717] PKRU: 55555554
+[   27.231717] Call Trace:
+[   27.231718]  <TASK>
+[   27.231719]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231754]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231790]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231821]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231852]  ? ktime_get+0x38/0x90
+[   27.231854]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231893]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231927]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231958]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.231988]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232018]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232058]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232093]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.232095]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.232096]  __rpm_callback+0x44/0x150
+[   27.232097]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.232098]  rpm_callback+0x59/0x70
+[   27.232099]  rpm_resume+0x532/0x7e0
+[   27.232100]  ? make_kuid+0xf/0x10
+[   27.232101]  ? dput+0x37/0x2e0
+[   27.232103]  __pm_runtime_resume+0x4a/0x80
+[   27.232104]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232138]  ? dput+0x37/0x2e0
+[   27.232140]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.232141]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.232152]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.232161]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.232172]  chrdev_open+0xc2/0x240
+[   27.232173]  ? cdev_device_add+0x90/0x90
+[   27.232174]  do_dentry_open+0x13e/0x370
+[   27.232175]  path_openat+0xb50/0xfa0
+[   27.232176]  ? _copy_to_iter+0xc9/0x710
+[   27.232178]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.232179]  ? mod_objcg_state+0x190/0x300
+[   27.232180]  do_filp_open+0xb2/0x150
+[   27.232182]  ? __check_object_size+0x136/0x150
+[   27.232183]  do_sys_openat2+0x96/0x160
+[   27.232184]  __x64_sys_openat+0x53/0x90
+[   27.232186]  do_syscall_64+0x5c/0x80
+[   27.232186]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.232188]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.232189] RIP: 0033:0x7f9dbb608054
+[   27.232190] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.232190] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.232191] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.232192] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.232192] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.232193] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.232193] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.232194]  </TASK>
+[   27.232194] ---[ end trace 55c05641fd3e8926 ]---
+[   27.232211] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.232211] ------------[ cut here ]------------
+[   27.232211] nouveau 0000:01:00.0: timeout
+[   27.232217] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.232250] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.232266]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.232284] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.232285] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.232285] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.232316] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.232317] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.232317] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.232318] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.232318] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.232319] R10: ffffb958ccae3660 R11: ffffffff8a8cf8a8 R12: 0000000000000246
+[   27.232319] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.232320] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.232320] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.232321] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.232321] PKRU: 55555554
+[   27.232322] Call Trace:
+[   27.232322]  <TASK>
+[   27.232323]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232359]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232391]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232423]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232454]  ? ktime_get+0x38/0x90
+[   27.232456]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232495]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232529]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232560]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232590]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232620]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232660]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232696]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.232697]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.232699]  __rpm_callback+0x44/0x150
+[   27.232700]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.232701]  rpm_callback+0x59/0x70
+[   27.232702]  rpm_resume+0x532/0x7e0
+[   27.232703]  ? make_kuid+0xf/0x10
+[   27.232704]  ? dput+0x37/0x2e0
+[   27.232706]  __pm_runtime_resume+0x4a/0x80
+[   27.232707]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232741]  ? dput+0x37/0x2e0
+[   27.232742]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.232743]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.232754]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.232764]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.232774]  chrdev_open+0xc2/0x240
+[   27.232775]  ? cdev_device_add+0x90/0x90
+[   27.232776]  do_dentry_open+0x13e/0x370
+[   27.232777]  path_openat+0xb50/0xfa0
+[   27.232778]  ? _copy_to_iter+0xc9/0x710
+[   27.232780]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.232781]  ? mod_objcg_state+0x190/0x300
+[   27.232783]  do_filp_open+0xb2/0x150
+[   27.232784]  ? __check_object_size+0x136/0x150
+[   27.232785]  do_sys_openat2+0x96/0x160
+[   27.232787]  __x64_sys_openat+0x53/0x90
+[   27.232788]  do_syscall_64+0x5c/0x80
+[   27.232789]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.232790]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.232791] RIP: 0033:0x7f9dbb608054
+[   27.232792] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.232792] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.232793] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.232794] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.232794] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.232795] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.232795] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.232796]  </TASK>
+[   27.232796] ---[ end trace 55c05641fd3e8927 ]---
+[   27.232814] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.232815] ------------[ cut here ]------------
+[   27.232815] nouveau 0000:01:00.0: timeout
+[   27.232821] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.232854] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.232870]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.232887] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.232888] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.232888] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.232924] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.232925] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.232926] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.232926] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.232927] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.232927] R10: ffffb958ccae3660 R11: ffffffff8a8cf8a8 R12: 0000000000000246
+[   27.232928] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.232928] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.232929] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.232929] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.232930] PKRU: 55555554
+[   27.232930] Call Trace:
+[   27.232930]  <TASK>
+[   27.232931]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.232967]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233000]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233032]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233063]  ? ktime_get+0x38/0x90
+[   27.233064]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233103]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233138]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233169]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233199]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233230]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233269]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233305]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.233307]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.233308]  __rpm_callback+0x44/0x150
+[   27.233309]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.233310]  rpm_callback+0x59/0x70
+[   27.233311]  rpm_resume+0x532/0x7e0
+[   27.233312]  ? make_kuid+0xf/0x10
+[   27.233313]  ? dput+0x37/0x2e0
+[   27.233315]  __pm_runtime_resume+0x4a/0x80
+[   27.233316]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233350]  ? dput+0x37/0x2e0
+[   27.233352]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.233353]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.233363]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.233373]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.233384]  chrdev_open+0xc2/0x240
+[   27.233385]  ? cdev_device_add+0x90/0x90
+[   27.233386]  do_dentry_open+0x13e/0x370
+[   27.233387]  path_openat+0xb50/0xfa0
+[   27.233388]  ? _copy_to_iter+0xc9/0x710
+[   27.233389]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.233391]  ? mod_objcg_state+0x190/0x300
+[   27.233392]  do_filp_open+0xb2/0x150
+[   27.233393]  ? __check_object_size+0x136/0x150
+[   27.233395]  do_sys_openat2+0x96/0x160
+[   27.233396]  __x64_sys_openat+0x53/0x90
+[   27.233397]  do_syscall_64+0x5c/0x80
+[   27.233398]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.233400]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.233401] RIP: 0033:0x7f9dbb608054
+[   27.233401] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.233402] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.233403] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.233403] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.233404] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.233404] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.233405] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.233406]  </TASK>
+[   27.233406] ---[ end trace 55c05641fd3e8928 ]---
+[   27.233421] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.233422] ------------[ cut here ]------------
+[   27.233422] nouveau 0000:01:00.0: timeout
+[   27.233428] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.233460] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.233476]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.233494] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.233495] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.233495] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.233526] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.233527] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.233527] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.233528] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.233528] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.233529] R10: ffffb958ccae3660 R11: ffffffff8a8cf8a8 R12: 0000000000000246
+[   27.233529] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.233530] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.233531] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.233531] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.233532] PKRU: 55555554
+[   27.233532] Call Trace:
+[   27.233532]  <TASK>
+[   27.233533]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233569]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233602]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233633]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233665]  ? ktime_get+0x38/0x90
+[   27.233666]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233705]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233740]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233771]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233801]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233831]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233871]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233906]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.233908]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.233909]  __rpm_callback+0x44/0x150
+[   27.233910]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.233911]  rpm_callback+0x59/0x70
+[   27.233912]  rpm_resume+0x532/0x7e0
+[   27.233913]  ? make_kuid+0xf/0x10
+[   27.233914]  ? dput+0x37/0x2e0
+[   27.233916]  __pm_runtime_resume+0x4a/0x80
+[   27.233917]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.233951]  ? dput+0x37/0x2e0
+[   27.233953]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.233954]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.233964]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.233974]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.233985]  chrdev_open+0xc2/0x240
+[   27.233986]  ? cdev_device_add+0x90/0x90
+[   27.233987]  do_dentry_open+0x13e/0x370
+[   27.233988]  path_openat+0xb50/0xfa0
+[   27.233989]  ? _copy_to_iter+0xc9/0x710
+[   27.233990]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.233992]  ? mod_objcg_state+0x190/0x300
+[   27.233993]  do_filp_open+0xb2/0x150
+[   27.233995]  ? __check_object_size+0x136/0x150
+[   27.233996]  do_sys_openat2+0x96/0x160
+[   27.233997]  __x64_sys_openat+0x53/0x90
+[   27.233998]  do_syscall_64+0x5c/0x80
+[   27.233999]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.234001]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.234002] RIP: 0033:0x7f9dbb608054
+[   27.234002] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.234003] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.234004] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.234004] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.234005] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.234005] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.234006] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.234007]  </TASK>
+[   27.234007] ---[ end trace 55c05641fd3e8929 ]---
+[   27.234026] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.234027] ------------[ cut here ]------------
+[   27.234027] nouveau 0000:01:00.0: timeout
+[   27.234033] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.234066] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.234081]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.234099] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.234100] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.234100] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.234136] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.234137] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.234137] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.234138] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.234138] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.234139] R10: ffffb958ccae3660 R11: ffffffff8a8cf8a8 R12: 0000000000000246
+[   27.234139] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.234140] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.234140] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.234141] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.234141] PKRU: 55555554
+[   27.234142] Call Trace:
+[   27.234142]  <TASK>
+[   27.234143]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234179]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234211]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234243]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234274]  ? ktime_get+0x38/0x90
+[   27.234276]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234314]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234349]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234379]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234411]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234441]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234481]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234516]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.234518]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.234519]  __rpm_callback+0x44/0x150
+[   27.234520]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.234521]  rpm_callback+0x59/0x70
+[   27.234522]  rpm_resume+0x532/0x7e0
+[   27.234523]  ? make_kuid+0xf/0x10
+[   27.234524]  ? dput+0x37/0x2e0
+[   27.234526]  __pm_runtime_resume+0x4a/0x80
+[   27.234527]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234561]  ? dput+0x37/0x2e0
+[   27.234562]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.234564]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.234574]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.234584]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.234594]  chrdev_open+0xc2/0x240
+[   27.234596]  ? cdev_device_add+0x90/0x90
+[   27.234597]  do_dentry_open+0x13e/0x370
+[   27.234598]  path_openat+0xb50/0xfa0
+[   27.234599]  ? _copy_to_iter+0xc9/0x710
+[   27.234600]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.234602]  ? mod_objcg_state+0x190/0x300
+[   27.234603]  do_filp_open+0xb2/0x150
+[   27.234604]  ? __check_object_size+0x136/0x150
+[   27.234606]  do_sys_openat2+0x96/0x160
+[   27.234607]  __x64_sys_openat+0x53/0x90
+[   27.234608]  do_syscall_64+0x5c/0x80
+[   27.234609]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.234611]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.234612] RIP: 0033:0x7f9dbb608054
+[   27.234612] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.234613] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.234614] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.234614] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.234615] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.234615] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.234616] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.234617]  </TASK>
+[   27.234617] ---[ end trace 55c05641fd3e892a ]---
+[   27.234642] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.234643] ------------[ cut here ]------------
+[   27.234643] nouveau 0000:01:00.0: timeout
+[   27.234649] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.234682] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.234699]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.234717] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.234718] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.234718] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.234749] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.234750] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.234751] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.234751] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.234752] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.234752] R10: ffffb958ccae3660 R11: ffffffff8a8b7a28 R12: 0000000000000246
+[   27.234753] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.234753] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.234754] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.234755] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.234755] PKRU: 55555554
+[   27.234755] Call Trace:
+[   27.234756]  <TASK>
+[   27.234756]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234793]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234825]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234857]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234888]  ? ktime_get+0x38/0x90
+[   27.234889]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234928]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234963]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.234994]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235024]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235054]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235095]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235130]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.235131]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.235133]  __rpm_callback+0x44/0x150
+[   27.235134]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.235135]  rpm_callback+0x59/0x70
+[   27.235136]  rpm_resume+0x532/0x7e0
+[   27.235137]  ? make_kuid+0xf/0x10
+[   27.235138]  ? dput+0x37/0x2e0
+[   27.235140]  __pm_runtime_resume+0x4a/0x80
+[   27.235141]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235175]  ? dput+0x37/0x2e0
+[   27.235177]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.235178]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.235189]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.235198]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.235209]  chrdev_open+0xc2/0x240
+[   27.235210]  ? cdev_device_add+0x90/0x90
+[   27.235211]  do_dentry_open+0x13e/0x370
+[   27.235212]  path_openat+0xb50/0xfa0
+[   27.235213]  ? _copy_to_iter+0xc9/0x710
+[   27.235215]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.235216]  ? mod_objcg_state+0x190/0x300
+[   27.235218]  do_filp_open+0xb2/0x150
+[   27.235219]  ? __check_object_size+0x136/0x150
+[   27.235220]  do_sys_openat2+0x96/0x160
+[   27.235222]  __x64_sys_openat+0x53/0x90
+[   27.235223]  do_syscall_64+0x5c/0x80
+[   27.235224]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.235225]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.235226] RIP: 0033:0x7f9dbb608054
+[   27.235227] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.235228] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.235229] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.235229] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.235230] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.235230] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.235231] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.235232]  </TASK>
+[   27.235232] ---[ end trace 55c05641fd3e892b ]---
+[   27.235249] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.235250] ------------[ cut here ]------------
+[   27.235250] nouveau 0000:01:00.0: timeout
+[   27.235256] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.235289] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.235305]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.235323] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.235324] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.235325] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.235356] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.235357] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.235357] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.235358] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.235358] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.235359] R10: ffffb958ccae3660 R11: ffffffff8a8b8100 R12: 0000000000000246
+[   27.235359] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.235360] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.235361] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.235361] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.235362] PKRU: 55555554
+[   27.235362] Call Trace:
+[   27.235362]  <TASK>
+[   27.235363]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235400]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235432]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235464]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235495]  ? ktime_get+0x38/0x90
+[   27.235496]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235536]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235570]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235601]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235632]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235662]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235702]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235737]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.235739]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.235740]  __rpm_callback+0x44/0x150
+[   27.235741]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.235742]  rpm_callback+0x59/0x70
+[   27.235743]  rpm_resume+0x532/0x7e0
+[   27.235744]  ? make_kuid+0xf/0x10
+[   27.235745]  ? dput+0x37/0x2e0
+[   27.235747]  __pm_runtime_resume+0x4a/0x80
+[   27.235748]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.235784]  ? dput+0x37/0x2e0
+[   27.235786]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.235787]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.235798]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.235808]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.235818]  chrdev_open+0xc2/0x240
+[   27.235819]  ? cdev_device_add+0x90/0x90
+[   27.235820]  do_dentry_open+0x13e/0x370
+[   27.235821]  path_openat+0xb50/0xfa0
+[   27.235822]  ? _copy_to_iter+0xc9/0x710
+[   27.235824]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.235825]  ? mod_objcg_state+0x190/0x300
+[   27.235827]  do_filp_open+0xb2/0x150
+[   27.235828]  ? __check_object_size+0x136/0x150
+[   27.235829]  do_sys_openat2+0x96/0x160
+[   27.235831]  __x64_sys_openat+0x53/0x90
+[   27.235832]  do_syscall_64+0x5c/0x80
+[   27.235833]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.235834]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.235835] RIP: 0033:0x7f9dbb608054
+[   27.235836] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.235837] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.235838] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.235838] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.235839] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.235839] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.235840] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.235841]  </TASK>
+[   27.235841] ---[ end trace 55c05641fd3e892c ]---
+[   27.235857] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.235858] ------------[ cut here ]------------
+[   27.235858] nouveau 0000:01:00.0: timeout
+[   27.235864] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.235897] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.235913]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.235931] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.235932] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.235932] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.235968] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.235969] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.235970] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.235970] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.235971] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.235971] R10: ffffb958ccae3660 R11: ffffffff8a8b87d8 R12: 0000000000000246
+[   27.235972] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.235972] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.235973] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.235973] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.235974] PKRU: 55555554
+[   27.235974] Call Trace:
+[   27.235975]  <TASK>
+[   27.235975]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236012]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236044]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236076]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236107]  ? ktime_get+0x38/0x90
+[   27.236109]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236148]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236183]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236214]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236244]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236274]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236314]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236350]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.236352]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.236353]  __rpm_callback+0x44/0x150
+[   27.236354]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.236355]  rpm_callback+0x59/0x70
+[   27.236356]  rpm_resume+0x532/0x7e0
+[   27.236357]  ? make_kuid+0xf/0x10
+[   27.236358]  ? dput+0x37/0x2e0
+[   27.236360]  __pm_runtime_resume+0x4a/0x80
+[   27.236361]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236395]  ? dput+0x37/0x2e0
+[   27.236396]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.236398]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.236408]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.236418]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.236428]  chrdev_open+0xc2/0x240
+[   27.236430]  ? cdev_device_add+0x90/0x90
+[   27.236431]  do_dentry_open+0x13e/0x370
+[   27.236432]  path_openat+0xb50/0xfa0
+[   27.236433]  ? _copy_to_iter+0xc9/0x710
+[   27.236434]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.236436]  ? mod_objcg_state+0x190/0x300
+[   27.236437]  do_filp_open+0xb2/0x150
+[   27.236438]  ? __check_object_size+0x136/0x150
+[   27.236440]  do_sys_openat2+0x96/0x160
+[   27.236441]  __x64_sys_openat+0x53/0x90
+[   27.236442]  do_syscall_64+0x5c/0x80
+[   27.236443]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.236444]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.236446] RIP: 0033:0x7f9dbb608054
+[   27.236446] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.236447] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.236448] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.236448] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.236449] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.236449] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.236450] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.236451]  </TASK>
+[   27.236451] ---[ end trace 55c05641fd3e892d ]---
+[   27.236469] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.236469] ------------[ cut here ]------------
+[   27.236470] nouveau 0000:01:00.0: timeout
+[   27.236476] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.236509] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.236526]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.236543] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.236544] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.236545] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.236576] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.236576] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.236577] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.236578] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.236578] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.236579] R10: ffffb958ccae3660 R11: ffffffff8a8b8eb0 R12: 0000000000000246
+[   27.236579] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.236580] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.236581] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.236581] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.236582] PKRU: 55555554
+[   27.236582] Call Trace:
+[   27.236582]  <TASK>
+[   27.236583]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236619]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236652]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236684]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236715]  ? ktime_get+0x38/0x90
+[   27.236716]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236755]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236790]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236821]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236851]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236881]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236921]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.236960]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.236962]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.236963]  __rpm_callback+0x44/0x150
+[   27.236964]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.236965]  rpm_callback+0x59/0x70
+[   27.236966]  rpm_resume+0x532/0x7e0
+[   27.236967]  ? make_kuid+0xf/0x10
+[   27.236968]  ? dput+0x37/0x2e0
+[   27.236970]  __pm_runtime_resume+0x4a/0x80
+[   27.236971]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237005]  ? dput+0x37/0x2e0
+[   27.237006]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.237008]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.237018]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.237028]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.237039]  chrdev_open+0xc2/0x240
+[   27.237040]  ? cdev_device_add+0x90/0x90
+[   27.237041]  do_dentry_open+0x13e/0x370
+[   27.237042]  path_openat+0xb50/0xfa0
+[   27.237043]  ? _copy_to_iter+0xc9/0x710
+[   27.237045]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.237046]  ? mod_objcg_state+0x190/0x300
+[   27.237047]  do_filp_open+0xb2/0x150
+[   27.237049]  ? __check_object_size+0x136/0x150
+[   27.237050]  do_sys_openat2+0x96/0x160
+[   27.237051]  __x64_sys_openat+0x53/0x90
+[   27.237052]  do_syscall_64+0x5c/0x80
+[   27.237053]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.237055]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.237056] RIP: 0033:0x7f9dbb608054
+[   27.237056] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.237057] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.237058] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.237059] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.237059] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.237060] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.237060] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.237061]  </TASK>
+[   27.237061] ---[ end trace 55c05641fd3e892e ]---
+[   27.237082] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.237083] ------------[ cut here ]------------
+[   27.237083] nouveau 0000:01:00.0: timeout
+[   27.237089] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.237122] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.237138]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.237156] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.237157] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.237157] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.237188] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.237189] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.237190] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.237190] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.237191] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.237191] R10: ffffb958ccae3660 R11: ffffffff8a8b9588 R12: 0000000000000246
+[   27.237192] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.237192] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.237193] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.237193] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.237194] PKRU: 55555554
+[   27.237194] Call Trace:
+[   27.237195]  <TASK>
+[   27.237195]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237232]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237264]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237296]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237327]  ? ktime_get+0x38/0x90
+[   27.237328]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237368]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237402]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237432]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237463]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237493]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237533]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237568]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.237570]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.237571]  __rpm_callback+0x44/0x150
+[   27.237572]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.237573]  rpm_callback+0x59/0x70
+[   27.237574]  rpm_resume+0x532/0x7e0
+[   27.237575]  ? make_kuid+0xf/0x10
+[   27.237577]  ? dput+0x37/0x2e0
+[   27.237578]  __pm_runtime_resume+0x4a/0x80
+[   27.237579]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237613]  ? dput+0x37/0x2e0
+[   27.237615]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.237616]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.237626]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.237636]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.237647]  chrdev_open+0xc2/0x240
+[   27.237648]  ? cdev_device_add+0x90/0x90
+[   27.237649]  do_dentry_open+0x13e/0x370
+[   27.237650]  path_openat+0xb50/0xfa0
+[   27.237651]  ? _copy_to_iter+0xc9/0x710
+[   27.237653]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.237654]  ? mod_objcg_state+0x190/0x300
+[   27.237656]  do_filp_open+0xb2/0x150
+[   27.237657]  ? __check_object_size+0x136/0x150
+[   27.237658]  do_sys_openat2+0x96/0x160
+[   27.237659]  __x64_sys_openat+0x53/0x90
+[   27.237661]  do_syscall_64+0x5c/0x80
+[   27.237662]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.237663]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.237664] RIP: 0033:0x7f9dbb608054
+[   27.237665] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.237665] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.237666] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.237667] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.237667] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.237668] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.237668] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.237669]  </TASK>
+[   27.237670] ---[ end trace 55c05641fd3e892f ]---
+[   27.237685] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.237685] ------------[ cut here ]------------
+[   27.237685] nouveau 0000:01:00.0: timeout
+[   27.237691] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.237724] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.237740]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.237758] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.237759] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.237759] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.237790] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.237791] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.237792] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.237792] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.237793] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.237793] R10: ffffb958ccae3660 R11: ffffffff8a8b9c60 R12: 0000000000000246
+[   27.237794] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.237794] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.237795] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.237795] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.237796] PKRU: 55555554
+[   27.237796] Call Trace:
+[   27.237796]  <TASK>
+[   27.237797]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237833]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237866]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237897]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237928]  ? ktime_get+0x38/0x90
+[   27.237930]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.237969]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238003]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238034]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238065]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238095]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238135]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238170]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.238172]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.238173]  __rpm_callback+0x44/0x150
+[   27.238174]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.238175]  rpm_callback+0x59/0x70
+[   27.238176]  rpm_resume+0x532/0x7e0
+[   27.238177]  ? make_kuid+0xf/0x10
+[   27.238178]  ? dput+0x37/0x2e0
+[   27.238180]  __pm_runtime_resume+0x4a/0x80
+[   27.238181]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238215]  ? dput+0x37/0x2e0
+[   27.238216]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.238218]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.238228]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.238238]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.238249]  chrdev_open+0xc2/0x240
+[   27.238250]  ? cdev_device_add+0x90/0x90
+[   27.238251]  do_dentry_open+0x13e/0x370
+[   27.238252]  path_openat+0xb50/0xfa0
+[   27.238253]  ? _copy_to_iter+0xc9/0x710
+[   27.238254]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.238256]  ? mod_objcg_state+0x190/0x300
+[   27.238257]  do_filp_open+0xb2/0x150
+[   27.238258]  ? __check_object_size+0x136/0x150
+[   27.238260]  do_sys_openat2+0x96/0x160
+[   27.238261]  __x64_sys_openat+0x53/0x90
+[   27.238262]  do_syscall_64+0x5c/0x80
+[   27.238263]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.238265]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.238266] RIP: 0033:0x7f9dbb608054
+[   27.238266] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.238267] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.238268] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.238269] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.238269] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.238269] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.238270] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.238271]  </TASK>
+[   27.238271] ---[ end trace 55c05641fd3e8930 ]---
+[   27.238289] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.238290] ------------[ cut here ]------------
+[   27.238290] nouveau 0000:01:00.0: timeout
+[   27.238295] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.238328] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.238344]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.238362] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.238362] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.238363] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.238394] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.238394] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.238395] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.238396] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.238396] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.238397] R10: ffffb958ccae3660 R11: ffffffff8a8ba338 R12: 0000000000000246
+[   27.238397] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.238398] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.238398] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.238399] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.238399] PKRU: 55555554
+[   27.238400] Call Trace:
+[   27.238400]  <TASK>
+[   27.238412] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.238401]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238437]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238470]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238501]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238533]  ? ktime_get+0x38/0x90
+[   27.238534]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238573]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238608]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238638]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238669]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238699]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238739]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238775]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.238776]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.238778]  __rpm_callback+0x44/0x150
+[   27.238779]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.238780]  rpm_callback+0x59/0x70
+[   27.238781]  rpm_resume+0x532/0x7e0
+[   27.238781]  ? make_kuid+0xf/0x10
+[   27.238783]  ? dput+0x37/0x2e0
+[   27.238784]  __pm_runtime_resume+0x4a/0x80
+[   27.238785]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.238823]  ? dput+0x37/0x2e0
+[   27.238824]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.238826]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.238836]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.238846]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.238856]  chrdev_open+0xc2/0x240
+[   27.238858]  ? cdev_device_add+0x90/0x90
+[   27.238859]  do_dentry_open+0x13e/0x370
+[   27.238860]  path_openat+0xb50/0xfa0
+[   27.238861]  ? _copy_to_iter+0xc9/0x710
+[   27.238862]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.238864]  ? mod_objcg_state+0x190/0x300
+[   27.238865]  do_filp_open+0xb2/0x150
+[   27.238866]  ? __check_object_size+0x136/0x150
+[   27.238868]  do_sys_openat2+0x96/0x160
+[   27.238869]  __x64_sys_openat+0x53/0x90
+[   27.238870]  do_syscall_64+0x5c/0x80
+[   27.238871]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.238872]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.238874] RIP: 0033:0x7f9dbb608054
+[   27.238874] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.238875] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.238876] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.238876] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.238877] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.238878] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.238878] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.238879]  </TASK>
+[   27.238879] ---[ end trace 55c05641fd3e8931 ]---
+[   27.238892] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.238896] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.238896] ------------[ cut here ]------------
+[   27.238897] nouveau 0000:01:00.0: timeout
+[   27.238903] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.238923] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.238940] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl
+[   27.238949] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.238949]  kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci
+[   27.238967]  xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.238975] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.238976] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.238978] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.238976] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.239007] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.239008] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.239009] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.239009] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.239010] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.239010] R10: ffffb958ccae3660 R11: ffffffff8a8baa40 R12: 0000000000000246
+[   27.239011] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.239011] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.239012] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.239013] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.239013] PKRU: 55555554
+[   27.239013] Call Trace:
+[   27.239014]  <TASK>
+[   27.239015]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239051]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239084]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239115]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239146]  ? ktime_get+0x38/0x90
+[   27.239148]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239187]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239222]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239253]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239283]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239313]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239355]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239390]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.239392]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.239393]  __rpm_callback+0x44/0x150
+[   27.239394]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.239395]  rpm_callback+0x59/0x70
+[   27.239396]  rpm_resume+0x532/0x7e0
+[   27.239397]  ? make_kuid+0xf/0x10
+[   27.239399]  ? dput+0x37/0x2e0
+[   27.239400]  __pm_runtime_resume+0x4a/0x80
+[   27.239401]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239435]  ? dput+0x37/0x2e0
+[   27.239437]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.239438]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.239449]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.239458]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.239469]  chrdev_open+0xc2/0x240
+[   27.239470]  ? cdev_device_add+0x90/0x90
+[   27.239471]  do_dentry_open+0x13e/0x370
+[   27.239472]  path_openat+0xb50/0xfa0
+[   27.239473]  ? _copy_to_iter+0xc9/0x710
+[   27.239475]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.239476]  ? mod_objcg_state+0x190/0x300
+[   27.239477]  do_filp_open+0xb2/0x150
+[   27.239479]  ? __check_object_size+0x136/0x150
+[   27.239480]  do_sys_openat2+0x96/0x160
+[   27.239481]  __x64_sys_openat+0x53/0x90
+[   27.239483]  do_syscall_64+0x5c/0x80
+[   27.239484]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.239485]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.239486] RIP: 0033:0x7f9dbb608054
+[   27.239487] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.239487] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.239488] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.239489] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.239489] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.239490] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.239490] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.239491]  </TASK>
+[   27.239492] ---[ end trace 55c05641fd3e8932 ]---
+[   27.239493] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.239507] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.239507] ------------[ cut here ]------------
+[   27.239508] nouveau 0000:01:00.0: timeout
+[   27.239522] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.239514] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.239546] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns
+[   27.239549] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.239550]  nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq
+[   27.239566]  i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd
+[   27.239576] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.239577]  button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.239582] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.239583] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.239583] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[   27.239614] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 54 32 c7 c8 4c 89 ea 48 c7 c7 5f 3c ad c0 48 89 c6 e8 ec 24 ed c8 <0f> 0b eb a8 e8 b9 2b f1 c8 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[   27.239615] RSP: 0018:ffffb958ccae3830 EFLAGS: 00010086
+[   27.239615] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.239616] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.239616] RBP: ffffa07744f22298 R08: 0000000000000000 R09: ffffb958ccae3668
+[   27.239617] R10: ffffb958ccae3660 R11: ffffffff8a8bb190 R12: 0000000000000246
+[   27.239617] R13: ffffa07741613cc0 R14: 0000000000000000 R15: 00000006555998aa
+[   27.239618] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.239619] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.239619] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.239620] PKRU: 55555554
+[   27.239620] Call Trace:
+[   27.239620]  <TASK>
+[   27.239622] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.239621]  nv50_instobj_release+0x2a/0x90 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239657]  nvkm_instobj_load+0x4f/0xa0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239690]  nvkm_instmem_init+0x62/0x80 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239722]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239753]  ? ktime_get+0x38/0x90
+[   27.239754]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239795]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239830]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239861]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239891]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239921]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239962]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.239997]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.239999]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.240000]  __rpm_callback+0x44/0x150
+[   27.240001]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.240002]  rpm_callback+0x59/0x70
+[   27.240003]  rpm_resume+0x532/0x7e0
+[   27.240004]  ? make_kuid+0xf/0x10
+[   27.240005]  ? dput+0x37/0x2e0
+[   27.240007]  __pm_runtime_resume+0x4a/0x80
+[   27.240008]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240042]  ? dput+0x37/0x2e0
+[   27.240044]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.240045]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.240056]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.240066]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.240076]  chrdev_open+0xc2/0x240
+[   27.240077]  ? cdev_device_add+0x90/0x90
+[   27.240078]  do_dentry_open+0x13e/0x370
+[   27.240079]  path_openat+0xb50/0xfa0
+[   27.240080]  ? _copy_to_iter+0xc9/0x710
+[   27.240082]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.240083]  ? mod_objcg_state+0x190/0x300
+[   27.240085]  do_filp_open+0xb2/0x150
+[   27.240086]  ? __check_object_size+0x136/0x150
+[   27.240087]  do_sys_openat2+0x96/0x160
+[   27.240089]  __x64_sys_openat+0x53/0x90
+[   27.240090]  do_syscall_64+0x5c/0x80
+[   27.240091]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.240092] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240092]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.240093] RIP: 0033:0x7f9dbb608054
+[   27.240094] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.240095] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240095] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.240096] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.240097] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.240097] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240097] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.240098] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.240099] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.240100] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240100]  </TASK>
+[   27.240101] ---[ end trace 55c05641fd3e8933 ]---
+[   27.240123] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.240124] ------------[ cut here ]------------
+[   27.240124] nouveau 0000:01:00.0: timeout
+[   27.240130] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/tu102.c:58 tu102_bar_bar1_wait+0x9a/0xb0 [nouveau]
+[   27.240163] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass
+[   27.240175] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240175]  rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery
+[   27.240192]  i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.240198] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.240199] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.240199] RIP: 0010:tu102_bar_bar1_wait+0x9a/0xb0 [nouveau]
+[   27.240230] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 e8 2a c7 c8 4c 89 e2 48 c7 c7 95 3c ad c0 48 89 c6 e8 80 1d ed c8 <0f> 0b eb b5 e8 4d 24 f1 c8 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   27.240231] RSP: 0018:ffffb958ccae3888 EFLAGS: 00010282
+[   27.240232] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.240232] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.240233] RBP: ffffa07744f22240 R08: 0000000000000000 R09: ffffb958ccae36c0
+[   27.240233] R10: ffffb958ccae36b8 R11: ffffffff8a8bb958 R12: ffffa07741613cc0
+[   27.240234] R13: ffffa07745a72400 R14: 0000000000000000 R15: 00000006555998aa
+[   27.240235] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.240235] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.240236] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.240236] PKRU: 55555554
+[   27.240237] Call Trace:
+[   27.240237]  <TASK>
+[   27.240247] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240238]  nvkm_bar_init+0x2e/0x50 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240270]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240301]  ? ktime_get+0x38/0x90
+[   27.240303]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240342]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240376]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240407]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240438]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240473]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240512]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240547]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.240549]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.240550]  __rpm_callback+0x44/0x150
+[   27.240551]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.240553]  rpm_callback+0x59/0x70
+[   27.240553]  rpm_resume+0x532/0x7e0
+[   27.240554]  ? make_kuid+0xf/0x10
+[   27.240555]  ? dput+0x37/0x2e0
+[   27.240557]  __pm_runtime_resume+0x4a/0x80
+[   27.240558]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240592]  ? dput+0x37/0x2e0
+[   27.240593]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.240595]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.240605]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.240615]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.240626]  chrdev_open+0xc2/0x240
+[   27.240627]  ? cdev_device_add+0x90/0x90
+[   27.240628]  do_dentry_open+0x13e/0x370
+[   27.240629]  path_openat+0xb50/0xfa0
+[   27.240630]  ? _copy_to_iter+0xc9/0x710
+[   27.240631]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.240632]  ? mod_objcg_state+0x190/0x300
+[   27.240634]  do_filp_open+0xb2/0x150
+[   27.240635]  ? __check_object_size+0x136/0x150
+[   27.240636]  do_sys_openat2+0x96/0x160
+[   27.240638]  __x64_sys_openat+0x53/0x90
+[   27.240639] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240639]  do_syscall_64+0x5c/0x80
+[   27.240640]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.240642] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240642]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.240643] RIP: 0033:0x7f9dbb608054
+[   27.240644] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.240645] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.240646] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.240646] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.240647] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.240647] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.240648] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.240649]  </TASK>
+[   27.240649] ---[ end trace 55c05641fd3e8934 ]---
+[   27.240659] ------------[ cut here ]------------
+[   27.240670] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240660] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/engine/disp/outp.c:252 nvkm_outp_init+0x18e/0x1b0 [nouveau]
+[   27.240696] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240700] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.240717]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm
+[   27.240725] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240725]  ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.240737] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.240738] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.240738] RIP: 0010:nvkm_outp_init+0x18e/0x1b0 [nouveau]
+[   27.240773] Code: 78 38 03 0f 87 c8 73 08 00 49 89 6c 24 38 eb 81 0f 0b e9 7a ff ff ff 48 8b 45 08 83 78 38 03 0f 86 6c ff ff ff e9 7d 73 08 00 <0f> 0b e9 60 ff ff ff 4c 89 e6 48 89 ef e8 90 01 00 00 e9 50 ff ff
+[   27.240773] RSP: 0018:ffffb958ccae3868 EFLAGS: 00010246
+[   27.240774] RAX: 0000000000000000 RBX: 0000000000000002 RCX: ffffa077452b70b0
+[   27.240775] RDX: 000000000000000e RSI: 0000000000000001 RDI: ffffa077452b70b0
+[   27.240775] RBP: ffffa0775572d200 R08: ffffa07744f22b40 R09: ffffb958ccae36c0
+[   27.240776] R10: ffffb958ccae36b8 R11: ffffffff8a8bb958 R12: 0000000000000000
+[   27.240776] R13: ffffa077452b7010 R14: 0000000000000000 R15: 00000006555998aa
+[   27.240777] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.240778] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.240778] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.240779] PKRU: 55555554
+[   27.240779] Call Trace:
+[   27.240780]  <TASK>
+[   27.240785] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.240781]  nvkm_disp_init+0x5a/0xe0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240818]  nvkm_engine_init+0xa7/0x120 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240854]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240885]  ? ktime_get+0x38/0x90
+[   27.240887]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240921]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240955]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.240986]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241017]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241047]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241086]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241122]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.241124]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.241125]  __rpm_callback+0x44/0x150
+[   27.241126]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.241128]  rpm_callback+0x59/0x70
+[   27.241129]  rpm_resume+0x532/0x7e0
+[   27.241129]  ? make_kuid+0xf/0x10
+[   27.241131]  ? dput+0x37/0x2e0
+[   27.241132]  __pm_runtime_resume+0x4a/0x80
+[   27.241133]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241168]  ? dput+0x37/0x2e0
+[   27.241169]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.241171]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.241181]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.241191]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.241202]  chrdev_open+0xc2/0x240
+[   27.241203]  ? cdev_device_add+0x90/0x90
+[   27.241204]  do_dentry_open+0x13e/0x370
+[   27.241206]  path_openat+0xb50/0xfa0
+[   27.241207]  ? _copy_to_iter+0xc9/0x710
+[   27.241208]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.241209]  ? mod_objcg_state+0x190/0x300
+[   27.241211]  do_filp_open+0xb2/0x150
+[   27.241212]  ? __check_object_size+0x136/0x150
+[   27.241214]  do_sys_openat2+0x96/0x160
+[   27.241215]  __x64_sys_openat+0x53/0x90
+[   27.241216]  do_syscall_64+0x5c/0x80
+[   27.241217]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.241219]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.241220] RIP: 0033:0x7f9dbb608054
+[   27.241221] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.241221] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241222] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.241223] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.241224] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.241224] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241224] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.241225] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.241225] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.241226] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241227]  </TASK>
+[   27.241227] ---[ end trace 55c05641fd3e8935 ]---
+[   27.241228] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241242] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   27.241243] ------------[ cut here ]------------
+[   27.241243] nouveau 0000:01:00.0: timeout
+[   27.241256] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241249] WARNING: CPU: 4 PID: 1484 at drivers/gpu/drm/nouveau/nvkm/engine/disp/tu102.c:42 tu102_disp_init+0x515/0x530 [nouveau]
+[   27.241278] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241288] Modules linked in: rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device af_packet nft_objref cmac algif_hash algif_skcipher af_alg nf_conntrack_netbios_ns nf_conntrack_broadcast nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables nfnetlink bnep joydev intel_rapl_msr hid_multitouch hid_generic intel_rapl_common mt7921e mt7921_common mt76_connac_lib edac_mce_amd btusb uvcvideo mt76 btrtl kvm_amd btbcm btintel mac80211 videobuf2_vmalloc bluetooth videobuf2_memops kvm videobuf2_v4l2 videobuf2_common videodev ecdh_generic ecc irqbypass rapl crc16 mc acer_wmi input_leds efi_pstore sparse_keymap cfg80211 snd_pci_acp6x wmi_bmof k10temp r8169 snd_pci_acp5x realtek snd_rn_pci_acp3x mdio_devres rfkill snd_pci_acp3x libarc4 libphy thermal ac snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi snd_hda_intel
+[   27.241304]  snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep snd_pcm snd_timer mac_hid snd soundcore i2c_designware_platform tpm_crb acpi_cpufreq i2c_designware_core tpm_tis tpm_tis_core tpm i2c_piix4 tiny_power_button acer_wireless vboxsf vboxguest fuse zram sd_mod uas usb_storage amdgpu nouveau iommu_v2 gpu_sched mxm_wmi i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helper ahci crct10dif_pclmul crc32_pclmul libahci ttm ghash_clmulni_intel aesni_intel crypto_simd libata cryptd drm xhci_pci xhci_pci_renesas nvme evdev scsi_mod xhci_hcd serio_raw drm_panel_orientation_quirks nvme_core ccp scsi_common agpgart t10_pi i2c_hid_acpi battery i2c_hid video hid wmi pinctrl_amd button ehci_hcd usbcore usb_common btrfs blake2b_generic libcrc32c crc32c_generic crc32c_intel xor raid6_pq dm_mirror dm_region_hash dm_log dm_mod overlay squashfs isofs cdrom i2c_dev i2c_core efivarfs unix ipv6 autofs4
+[   27.241322] CPU: 4 PID: 1484 Comm: gst-plugin-scan Tainted: G        W         5.16.7-desktop-1omv4003 #1 cb81018c8848292daa310822cf5c9da22176b5bf
+[   27.241323] Hardware name: Acer Nitro AN517-41/Kamiq_CAS, BIOS V1.08 07/21/2021
+[   27.241335] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241323] RIP: 0010:tu102_disp_init+0x515/0x530 [nouveau]
+[   27.241358] Code: 24 20 48 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 74 20 e8 bd cb c0 c8 4c 89 e2 48 c7 c7 a8 9a ad c0 48 89 c6 e8 55 be e6 c8 <0f> 0b b8 f0 ff ff ff eb 9e 4c 8b 27 eb db e8 18 c5 ea c8 0f 1f 84
+[   27.241358] RSP: 0018:ffffb958ccae3810 EFLAGS: 00010282
+[   27.241359] RAX: 0000000000000000 RBX: ffffa07745a72400 RCX: 0000000000000027
+[   27.241360] RDX: ffffa07c3651f948 RSI: 0000000000000001 RDI: ffffa07c3651f940
+[   27.241360] RBP: ffffa077452b7010 R08: 0000000000000000 R09: ffffb958ccae3648
+[   27.241361] R10: ffffb958ccae3640 R11: ffffffff8a8bc7e0 R12: ffffa07741613cc0
+[   27.241361] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241361] R13: ffffa077452b7010 R14: 0000000000000000 R15: 00000006555998aa
+[   27.241362] FS:  00007f9dbb093740(0000) GS:ffffa07c36500000(0000) knlGS:0000000000000000
+[   27.241363] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.241364] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241364] CR2: 00007f34a0001c28 CR3: 000000010a3c4000 CR4: 0000000000750ee0
+[   27.241365] PKRU: 55555554
+[   27.241365] Call Trace:
+[   27.241366]  <TASK>
+[   27.241366] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241367]  nvkm_disp_init+0x7d/0xe0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241402]  nvkm_engine_init+0xa7/0x120 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241432]  nvkm_subdev_init+0x92/0xd0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241463]  ? ktime_get+0x38/0x90
+[   27.241465]  nvkm_device_init+0x11f/0x1b0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241499]  nvkm_udevice_init+0x41/0x60 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241532]  nvkm_object_init+0x3e/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241563]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241594]  nvkm_object_init+0x73/0x110 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241624]  nouveau_do_resume+0x2b/0xc0 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241663]  nouveau_pmops_runtime_resume+0x7a/0x150 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241698]  pci_pm_runtime_resume+0xaa/0xc0
+[   27.241700]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.241701]  __rpm_callback+0x44/0x150
+[   27.241702]  ? pci_pm_freeze_noirq+0x100/0x100
+[   27.241704]  rpm_callback+0x59/0x70
+[   27.241705]  rpm_resume+0x532/0x7e0
+[   27.241705]  ? make_kuid+0xf/0x10
+[   27.241707]  ? dput+0x37/0x2e0
+[   27.241708]  __pm_runtime_resume+0x4a/0x80
+[   27.241709]  nouveau_drm_open+0x39/0x170 [nouveau 1e0e46a231af63affaf2376168d15f37771ae283]
+[   27.241748]  ? dput+0x37/0x2e0
+[   27.241750]  ? kmem_cache_alloc_trace+0x280/0x420
+[   27.241751]  drm_file_alloc+0x199/0x250 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.241761]  drm_open+0xd6/0x270 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.241772] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241771]  drm_stub_open+0xab/0x130 [drm 9cac2d7b628c008cd26d26dd007744df90caaafc]
+[   27.241782]  chrdev_open+0xc2/0x240
+[   27.241783]  ? cdev_device_add+0x90/0x90
+[   27.241784]  do_dentry_open+0x13e/0x370
+[   27.241785]  path_openat+0xb50/0xfa0
+[   27.241786]  ? _copy_to_iter+0xc9/0x710
+[   27.241788]  ? __mod_memcg_lruvec_state+0x41/0x80
+[   27.241789]  ? mod_objcg_state+0x190/0x300
+[   27.241790]  do_filp_open+0xb2/0x150
+[   27.241792]  ? __check_object_size+0x136/0x150
+[   27.241793]  do_sys_openat2+0x96/0x160
+[   27.241794]  __x64_sys_openat+0x53/0x90
+[   27.241796]  do_syscall_64+0x5c/0x80
+[   27.241797]  ? exit_to_user_mode_prepare+0x30/0x140
+[   27.241798]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   27.241799] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241799] RIP: 0033:0x7f9dbb608054
+[   27.241800] Code: 84 00 00 00 00 00 44 89 54 24 0c e8 56 10 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 88 10 f8 ff 8b 44
+[   27.241801] RSP: 002b:00007ffd35a76f80 EFLAGS: 00200293 ORIG_RAX: 0000000000000101
+[   27.241802] RAX: ffffffffffffffda RBX: 0000000002f4e100 RCX: 00007f9dbb608054
+[   27.241802] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241803] RDX: 0000000000000002 RSI: 000000000310be40 RDI: 00000000ffffff9c
+[   27.241803] RBP: 000000000310be40 R08: 0000000000000000 R09: 00007f9dbb703b01
+[   27.241804] R10: 0000000000000000 R11: 0000000000200293 R12: 0000000000000002
+[   27.241804] R13: 0000000000000001 R14: 0000000002f4e100 R15: 0000000002f4e100
+[   27.241805] systemd-journald[716]: /dev/kmsg buffer overrun, some messages lost.
+[   27.241806]  </TASK>
+[   27.241806] ---[ end trace 55c05641fd3e8936 ]---
+[   27.241807] nouveau 0000:01:00.0: disp: init failed, -16
+[   27.241825] nouveau 0000:01:00.0: init failed with -16
+[   27.241826] nouveau: Xorg[1000]:00000000:00000080: init failed with -16
+[   27.241827] nouveau: DRM-master:00000000:00000000: init failed with -16
+[   27.241828] nouveau: DRM-master:00000000:00000000: init failed with -16
+[   27.241830] nouveau 0000:01:00.0: DRM: Client resume failed with error: -16
+[   27.241831] nouveau 0000:01:00.0: DRM: resume failed with: -16
+[   68.257260] wlp4s0: authenticate with XXX
+[   68.437776] wlp4s0: send auth to XXX (try 1/3)
+[   68.441434] wlp4s0: authenticated
+[   68.443744] wlp4s0: associate with XXX (try 1/3)
+[   68.549751] wlp4s0: associate with XXX (try 2/3)
+[   68.607209] wlp4s0: RX AssocResp from XXX (capab=0x1511 status=0 aid=2)
+[   68.637825] wlp4s0: associated
+[   68.639118] wlp4s0: Limiting TX power to 20 (23 - 3) dBm as advertised by XXX
+[   68.808271] IPv6: ADDRCONF(NETDEV_CHANGE): wlp4s0: link becomes ready
+[  123.227936] usb 2-2: new SuperSpeed USB device number 2 using xhci_hcd
+[  123.240745] usb 2-2: New USB device found, idVendor=152d, idProduct=1561, bcdDevice= 2.04
+[  123.240754] usb 2-2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[  123.240757] usb 2-2: Product: SABRENT
+[  123.240760] usb 2-2: Manufacturer: SABRENT
+[  123.240762] usb 2-2: SerialNumber: ...
+[  123.242702] scsi host4: uas
+[  123.243492] scsi 4:0:0:0: Direct-Access     SABRENT                   0204 PQ: 0 ANSI: 6
+[  125.389149] sd 4:0:0:0: [sdc] 625142448 512-byte logical blocks: (320 GB/298 GiB)
+[  125.389157] sd 4:0:0:0: [sdc] 4096-byte physical blocks
+[  125.389323] sd 4:0:0:0: [sdc] Write Protect is off
+[  125.389326] sd 4:0:0:0: [sdc] Mode Sense: 53 00 00 08
+[  125.389641] sd 4:0:0:0: [sdc] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[  125.389969] sd 4:0:0:0: [sdc] Optimal transfer size 33553920 bytes not a multiple of physical block size (4096 bytes)
+[  125.421508]  sdc: sdc1 sdc2 sdc3 sdc4 < sdc5 >
+[  125.423759] sd 4:0:0:0: [sdc] Attached SCSI disk
+[  165.889167] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  165.889173] BTRFS info (device nvme0n1p2): using free space tree
+[  165.889176] BTRFS info (device nvme0n1p2): has skinny extents
+[  165.909760] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  166.004864] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  166.004869] BTRFS info (device nvme0n1p2): using free space tree
+[  166.004871] BTRFS info (device nvme0n1p2): has skinny extents
+[  166.023502] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  166.122946] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  166.122949] BTRFS info (device nvme0n1p2): using free space tree
+[  166.122950] BTRFS info (device nvme0n1p2): has skinny extents
+[  166.140607] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  166.238171] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  166.238175] BTRFS info (device nvme0n1p2): using free space tree
+[  166.238176] BTRFS info (device nvme0n1p2): has skinny extents
+[  166.256214] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  166.362455] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  166.362458] BTRFS info (device nvme0n1p2): using free space tree
+[  166.362459] BTRFS info (device nvme0n1p2): has skinny extents
+[  166.378833] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  166.478498] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  166.478502] BTRFS info (device nvme0n1p2): using free space tree
+[  166.478503] BTRFS info (device nvme0n1p2): has skinny extents
+[  166.494888] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  166.593633] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  166.593640] BTRFS info (device nvme0n1p2): using free space tree
+[  166.593642] BTRFS info (device nvme0n1p2): has skinny extents
+[  166.611121] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  166.710762] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  166.710766] BTRFS info (device nvme0n1p2): using free space tree
+[  166.710767] BTRFS info (device nvme0n1p2): has skinny extents
+[  166.728656] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  166.825486] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  166.825490] BTRFS info (device nvme0n1p2): using free space tree
+[  166.825490] BTRFS info (device nvme0n1p2): has skinny extents
+[  166.842846] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  170.711727] FAT-fs (nvme0n1p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+[  170.768157] BTRFS info (device nvme0n1p2): flagging fs with big metadata feature
+[  170.768163] BTRFS info (device nvme0n1p2): using free space tree
+[  170.768166] BTRFS info (device nvme0n1p2): has skinny extents
+[  170.789266] BTRFS info (device nvme0n1p2): enabling ssd optimizations
+[  170.942887] EXT4-fs (sda1): mounted filesystem without journal. Opts: noload. Quota mode: none.
+[  171.282807] EXT4-fs (sdc5): mounted filesystem without journal. Opts: noload. Quota mode: none.
+[  316.202493]  sdc: sdc1 sdc2 sdc3 sdc4 < sdc5 >
+[  324.265104]  sdc: sdc1 sdc2 sdc3 sdc4 < sdc5 >
+[  327.649029] EXT4-fs (sdc5): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[  327.692754] FAT-fs (sdc1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+[  327.999289] EXT4-fs (sdc2): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[  435.687651] Non-volatile memory driver v1.3
+[  437.150955] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[  437.184192] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[  437.329691] sd 1:0:0:0: Attached scsi generic sg0 type 0
+[  437.329746] sd 3:0:0:0: Attached scsi generic sg1 type 0
+[  437.329782] sd 4:0:0:0: Attached scsi generic sg2 type 0
