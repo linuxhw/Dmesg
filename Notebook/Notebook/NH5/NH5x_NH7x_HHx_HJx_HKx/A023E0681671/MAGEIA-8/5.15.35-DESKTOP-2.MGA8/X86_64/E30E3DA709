@@ -1,0 +1,1365 @@
+[ 1171.847145]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1171.847155] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1171.847156] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1171.847156] Workqueue: pm pm_runtime_work
+[ 1171.847157] RIP: 0010:tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1171.847186] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 3a 29 38 fc 4c 89 e2 48 c7 c7 3e 00 50 c0 48 89 c6 e8 4a ce 62 fc <0f> 0b eb a5 e8 cf 1b 68 fc 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f
+[ 1171.847187] RSP: 0018:ffffbf7d018f36a0 EFLAGS: 00010286
+[ 1171.847187] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1171.847188] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1171.847188] RBP: ffff9848438fc800 R08: 0000000000000000 R09: ffffbf7d018f34d8
+[ 1171.847189] R10: ffffbf7d018f34d0 R11: ffffffffbd6ae390 R12: ffff984841ea1780
+[ 1171.847189] R13: ffff9848414f7180 R14: 0000000000000020 R15: ffff9848414f7180
+[ 1171.847190] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1171.847190] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1171.847191] CR2: 00007f28777fcff8 CR3: 00000002b260a003 CR4: 0000000000770ee0
+[ 1171.847192] PKRU: 55555554
+[ 1171.847192] Call Trace:
+[ 1171.847192]  <TASK>
+[ 1171.847193]  nvkm_vmm_iter.constprop.0+0x341/0x860 [nouveau]
+[ 1171.847221]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1171.847249]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1171.847277]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 1171.847303]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1171.847329]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1171.847355]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 1171.847381]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 1171.847407]  nvkm_uvmm_mthd+0x5b7/0x6e0 [nouveau]
+[ 1171.847434]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1171.847451]  nvif_object_mthd+0x15e/0x200 [nouveau]
+[ 1171.847466]  ? nvkm_ioctl_mthd+0x30/0x70 [nouveau]
+[ 1171.847483]  ? nvif_object_mthd+0x174/0x200 [nouveau]
+[ 1171.847499]  nvif_vmm_map+0x115/0x130 [nouveau]
+[ 1171.847515]  nouveau_mem_map+0x7e/0xe0 [nouveau]
+[ 1171.847550]  nouveau_bo_move+0x5ce/0x840 [nouveau]
+[ 1171.847582]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1171.847585]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1171.847588]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1171.847590]  ? mutex_lock_killable+0x20/0x30
+[ 1171.847591]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1171.847624]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1171.847626]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1171.847658]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1171.847688]  pci_pm_runtime_suspend+0x57/0x160
+[ 1171.847689]  ? pci_dev_put+0x20/0x20
+[ 1171.847689]  __rpm_callback+0x37/0x160
+[ 1171.847691]  ? pci_dev_put+0x20/0x20
+[ 1171.847692]  rpm_callback+0x59/0x70
+[ 1171.847693]  ? pci_dev_put+0x20/0x20
+[ 1171.847694]  rpm_suspend+0x14a/0x6d0
+[ 1171.847695]  ? __switch_to_asm+0x42/0x70
+[ 1171.847696]  ? __switch_to+0x119/0x420
+[ 1171.847697]  pm_runtime_work+0x86/0x90
+[ 1171.847698]  process_one_work+0x21a/0x3c0
+[ 1171.847699]  worker_thread+0x4d/0x3e0
+[ 1171.847700]  ? process_one_work+0x3c0/0x3c0
+[ 1171.847702]  kthread+0x124/0x150
+[ 1171.847703]  ? set_kthread_struct+0x40/0x40
+[ 1171.847704]  ret_from_fork+0x1f/0x30
+[ 1171.847705]  </TASK>
+[ 1171.847705] ---[ end trace b3963e03f8449a91 ]---
+[ 1171.850168] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1171.850169] ------------[ cut here ]------------
+[ 1171.850169] nouveau 0000:01:00.0: timeout
+[ 1171.850178] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1171.850201] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1171.850218]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1171.850235]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1171.850246] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1171.850247] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1171.850247] Workqueue: pm pm_runtime_work
+[ 1171.850248] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1171.850270] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1171.850271] RSP: 0018:ffffbf7d018f3628 EFLAGS: 00010082
+[ 1171.850272] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1171.850273] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1171.850273] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f3460
+[ 1171.850274] R10: ffffbf7d018f3458 R11: ffffffffbd6ae9c0 R12: 0000000000000246
+[ 1171.850274] R13: ffff984841ea1780 R14: 000000000000000a R15: 000000000000000a
+[ 1171.850275] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1171.850275] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1171.850276] CR2: 00007f28777fcff8 CR3: 00000002b260a003 CR4: 0000000000770ee0
+[ 1171.850277] PKRU: 55555554
+[ 1171.850277] Call Trace:
+[ 1171.850277]  <TASK>
+[ 1171.850278]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1171.850308]  nvkm_vmm_ref_sptes.isra.0+0xfe/0x1b0 [nouveau]
+[ 1171.850338]  nvkm_vmm_ref_ptes+0x38/0x40 [nouveau]
+[ 1171.850367]  nvkm_vmm_iter.constprop.0+0x267/0x860 [nouveau]
+[ 1171.850394]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1171.850420]  ? gp100_vmm_pd0_mem+0x1c0/0x1c0 [nouveau]
+[ 1171.850449]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 1171.850475]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1171.850500]  ? gp100_vmm_pd0_mem+0x1c0/0x1c0 [nouveau]
+[ 1171.850527]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 1171.850553]  nvkm_mem_map_dma+0x56/0x80 [nouveau]
+[ 1171.850579]  nvkm_uvmm_mthd+0x5b7/0x6e0 [nouveau]
+[ 1171.850605]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1171.850625]  nvif_object_mthd+0x15e/0x200 [nouveau]
+[ 1171.850644]  ? nvkm_ioctl_mthd+0x30/0x70 [nouveau]
+[ 1171.850664]  ? nvif_object_mthd+0x174/0x200 [nouveau]
+[ 1171.850683]  nvif_vmm_map+0x115/0x130 [nouveau]
+[ 1171.850703]  nouveau_mem_map+0x7e/0xe0 [nouveau]
+[ 1171.850739]  nouveau_bo_move+0x5eb/0x840 [nouveau]
+[ 1171.850774]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1171.850777]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1171.850779]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1171.850782]  ? mutex_lock_killable+0x20/0x30
+[ 1171.850783]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1171.850816]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1171.850819]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1171.850852]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1171.850887]  pci_pm_runtime_suspend+0x57/0x160
+[ 1171.850887]  ? pci_dev_put+0x20/0x20
+[ 1171.850888]  __rpm_callback+0x37/0x160
+[ 1171.850890]  ? pci_dev_put+0x20/0x20
+[ 1171.850891]  rpm_callback+0x59/0x70
+[ 1171.850892]  ? pci_dev_put+0x20/0x20
+[ 1171.850893]  rpm_suspend+0x14a/0x6d0
+[ 1171.850894]  ? __switch_to_asm+0x42/0x70
+[ 1171.850895]  ? __switch_to+0x119/0x420
+[ 1171.850896]  pm_runtime_work+0x86/0x90
+[ 1171.850897]  process_one_work+0x21a/0x3c0
+[ 1171.850899]  worker_thread+0x4d/0x3e0
+[ 1171.850900]  ? process_one_work+0x3c0/0x3c0
+[ 1171.850901]  kthread+0x124/0x150
+[ 1171.850902]  ? set_kthread_struct+0x40/0x40
+[ 1171.850903]  ret_from_fork+0x1f/0x30
+[ 1171.850905]  </TASK>
+[ 1171.850905] ---[ end trace b3963e03f8449a92 ]---
+[ 1171.853369] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1171.853370] ------------[ cut here ]------------
+[ 1171.853370] nouveau 0000:01:00.0: timeout
+[ 1171.853378] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1171.853400] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1171.853417]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1171.853434]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1171.853445] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1171.853446] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1171.853446] Workqueue: pm pm_runtime_work
+[ 1171.853447] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1171.853469] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1171.853469] RSP: 0018:ffffbf7d018f3678 EFLAGS: 00010086
+[ 1171.853470] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1171.853471] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1171.853471] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f34b0
+[ 1171.853472] R10: ffffbf7d018f34a8 R11: ffffffffbd6af038 R12: 0000000000000246
+[ 1171.853472] R13: ffff984841ea1780 R14: 0000000000000000 R15: ffff9848414f7180
+[ 1171.853473] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1171.853473] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1171.853474] CR2: 00007f28777fcff8 CR3: 00000002b260a003 CR4: 0000000000770ee0
+[ 1171.853475] PKRU: 55555554
+[ 1171.853475] Call Trace:
+[ 1171.853475]  <TASK>
+[ 1171.853476]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1171.853506]  nvkm_vmm_iter.constprop.0+0x2b2/0x860 [nouveau]
+[ 1171.853536]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1171.853564]  ? gp100_vmm_pd0_mem+0x1c0/0x1c0 [nouveau]
+[ 1171.853594]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 1171.853621]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1171.853647]  ? gp100_vmm_pd0_mem+0x1c0/0x1c0 [nouveau]
+[ 1171.853675]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 1171.853701]  nvkm_mem_map_dma+0x56/0x80 [nouveau]
+[ 1171.853727]  nvkm_uvmm_mthd+0x5b7/0x6e0 [nouveau]
+[ 1171.853754]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1171.853774]  nvif_object_mthd+0x15e/0x200 [nouveau]
+[ 1171.853793]  ? nvkm_ioctl_mthd+0x30/0x70 [nouveau]
+[ 1171.853812]  ? nvif_object_mthd+0x174/0x200 [nouveau]
+[ 1171.853831]  nvif_vmm_map+0x115/0x130 [nouveau]
+[ 1171.853850]  nouveau_mem_map+0x7e/0xe0 [nouveau]
+[ 1171.853885]  nouveau_bo_move+0x5eb/0x840 [nouveau]
+[ 1171.853921]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1171.853923]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1171.853926]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1171.853928]  ? mutex_lock_killable+0x20/0x30
+[ 1171.853929]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1171.853963]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1171.853966]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1171.853998]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1171.854030]  pci_pm_runtime_suspend+0x57/0x160
+[ 1171.854031]  ? pci_dev_put+0x20/0x20
+[ 1171.854032]  __rpm_callback+0x37/0x160
+[ 1171.854033]  ? pci_dev_put+0x20/0x20
+[ 1171.854034]  rpm_callback+0x59/0x70
+[ 1171.854036]  ? pci_dev_put+0x20/0x20
+[ 1171.854036]  rpm_suspend+0x14a/0x6d0
+[ 1171.854038]  ? __switch_to_asm+0x42/0x70
+[ 1171.854039]  ? __switch_to+0x119/0x420
+[ 1171.854040]  pm_runtime_work+0x86/0x90
+[ 1171.854041]  process_one_work+0x21a/0x3c0
+[ 1171.854042]  worker_thread+0x4d/0x3e0
+[ 1171.854043]  ? process_one_work+0x3c0/0x3c0
+[ 1171.854045]  kthread+0x124/0x150
+[ 1171.854046]  ? set_kthread_struct+0x40/0x40
+[ 1171.854047]  ret_from_fork+0x1f/0x30
+[ 1171.854048]  </TASK>
+[ 1171.854048] ---[ end trace b3963e03f8449a93 ]---
+[ 1171.856514] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1171.856515] ------------[ cut here ]------------
+[ 1171.856516] nouveau 0000:01:00.0: timeout
+[ 1171.856523] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:43 tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1171.856555] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1171.856570]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1171.856585]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1171.856595] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1171.856596] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1171.856597] Workqueue: pm pm_runtime_work
+[ 1171.856598] RIP: 0010:tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1171.856627] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 3a 29 38 fc 4c 89 e2 48 c7 c7 3e 00 50 c0 48 89 c6 e8 4a ce 62 fc <0f> 0b eb a5 e8 cf 1b 68 fc 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f
+[ 1171.856628] RSP: 0018:ffffbf7d018f36a0 EFLAGS: 00010286
+[ 1171.856629] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1171.856629] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1171.856630] RBP: ffff9848438fc800 R08: 0000000000000000 R09: ffffbf7d018f34d8
+[ 1171.856630] R10: ffffbf7d018f34d0 R11: ffffffffbd6af680 R12: ffff984841ea1780
+[ 1171.856631] R13: 0000000000000000 R14: 0000000000000000 R15: ffff9848414f7180
+[ 1171.856631] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1171.856632] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1171.856632] CR2: 00007f28777fcff8 CR3: 00000002b260a003 CR4: 0000000000770ee0
+[ 1171.856633] PKRU: 55555554
+[ 1171.856633] Call Trace:
+[ 1171.856634]  <TASK>
+[ 1171.856634]  nvkm_vmm_iter.constprop.0+0x341/0x860 [nouveau]
+[ 1171.856664]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1171.856692]  ? gp100_vmm_pd0_mem+0x1c0/0x1c0 [nouveau]
+[ 1171.856720]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 1171.856747]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1171.856773]  ? gp100_vmm_pd0_mem+0x1c0/0x1c0 [nouveau]
+[ 1171.856801]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 1171.856826]  nvkm_mem_map_dma+0x56/0x80 [nouveau]
+[ 1171.856852]  nvkm_uvmm_mthd+0x5b7/0x6e0 [nouveau]
+[ 1171.856879]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1171.856896]  nvif_object_mthd+0x15e/0x200 [nouveau]
+[ 1171.856912]  ? nvkm_ioctl_mthd+0x30/0x70 [nouveau]
+[ 1171.856929]  ? nvif_object_mthd+0x174/0x200 [nouveau]
+[ 1171.856945]  nvif_vmm_map+0x115/0x130 [nouveau]
+[ 1171.856962]  nouveau_mem_map+0x7e/0xe0 [nouveau]
+[ 1171.856999]  nouveau_bo_move+0x5eb/0x840 [nouveau]
+[ 1171.857033]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1171.857036]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1171.857039]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1171.857041]  ? mutex_lock_killable+0x20/0x30
+[ 1171.857042]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1171.857076]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1171.857078]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1171.857112]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1171.857145]  pci_pm_runtime_suspend+0x57/0x160
+[ 1171.857146]  ? pci_dev_put+0x20/0x20
+[ 1171.857147]  __rpm_callback+0x37/0x160
+[ 1171.857149]  ? pci_dev_put+0x20/0x20
+[ 1171.857149]  rpm_callback+0x59/0x70
+[ 1171.857151]  ? pci_dev_put+0x20/0x20
+[ 1171.857151]  rpm_suspend+0x14a/0x6d0
+[ 1171.857153]  ? __switch_to_asm+0x42/0x70
+[ 1171.857154]  ? __switch_to+0x119/0x420
+[ 1171.857155]  pm_runtime_work+0x86/0x90
+[ 1171.857156]  process_one_work+0x21a/0x3c0
+[ 1171.857157]  worker_thread+0x4d/0x3e0
+[ 1171.857158]  ? process_one_work+0x3c0/0x3c0
+[ 1171.857160]  kthread+0x124/0x150
+[ 1171.857161]  ? set_kthread_struct+0x40/0x40
+[ 1171.857162]  ret_from_fork+0x1f/0x30
+[ 1171.857163]  </TASK>
+[ 1171.857163] ---[ end trace b3963e03f8449a94 ]---
+[ 1186.859667] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.859674] ------------[ cut here ]------------
+[ 1186.859675] nouveau 0000:01:00.0: timeout
+[ 1186.859743] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.859803] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.859855]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.859900]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.859932] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.859935] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.859937] Workqueue: pm pm_runtime_work
+[ 1186.859942] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.859989] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1186.859992] RSP: 0018:ffffbf7d018f3620 EFLAGS: 00010082
+[ 1186.859994] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.859995] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.859997] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f3458
+[ 1186.859998] R10: ffffbf7d018f3450 R11: ffffffffbd6afcb0 R12: 0000000000000246
+[ 1186.859999] R13: ffff984841ea1780 R14: 0000000000000020 R15: ffff9848438fe200
+[ 1186.860001] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.860003] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.860004] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.860006] PKRU: 55555554
+[ 1186.860007] Call Trace:
+[ 1186.860010]  <TASK>
+[ 1186.860014]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1186.860083]  nvkm_vmm_iter.constprop.0+0x6cd/0x860 [nouveau]
+[ 1186.860150]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.860209]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.860274]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 1186.860330]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.860385]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.860443]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 1186.860497]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 1186.860555]  gf100_mem_map+0xf8/0x180 [nouveau]
+[ 1186.860609]  nvkm_umem_map+0x67/0xf0 [nouveau]
+[ 1186.860666]  nvkm_ioctl_map+0x7b/0xb0 [nouveau]
+[ 1186.860707]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.860748]  nvif_object_map_handle+0x8c/0x100 [nouveau]
+[ 1186.860788]  nouveau_ttm_io_mem_reserve+0x166/0x2b0 [nouveau]
+[ 1186.860870]  ttm_kmap_iter_linear_io_init+0x1f/0x120 [ttm]
+[ 1186.860876]  ttm_bo_move_memcpy+0xaf/0x1e0 [ttm]
+[ 1186.860882]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.860887]  ? ttm_bo_move_accel_cleanup+0x8b/0x3a0 [ttm]
+[ 1186.860891]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.860968]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.860974]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.860980]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.860985]  ? mutex_lock_killable+0x20/0x30
+[ 1186.860989]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.861063]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.861069]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.861141]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.861206]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.861211]  ? pci_dev_put+0x20/0x20
+[ 1186.861213]  __rpm_callback+0x37/0x160
+[ 1186.861217]  ? pci_dev_put+0x20/0x20
+[ 1186.861219]  rpm_callback+0x59/0x70
+[ 1186.861221]  ? pci_dev_put+0x20/0x20
+[ 1186.861223]  rpm_suspend+0x14a/0x6d0
+[ 1186.861226]  ? __switch_to_asm+0x42/0x70
+[ 1186.861230]  ? __switch_to+0x119/0x420
+[ 1186.861233]  pm_runtime_work+0x86/0x90
+[ 1186.861234]  process_one_work+0x21a/0x3c0
+[ 1186.861239]  worker_thread+0x4d/0x3e0
+[ 1186.861242]  ? process_one_work+0x3c0/0x3c0
+[ 1186.861244]  kthread+0x124/0x150
+[ 1186.861247]  ? set_kthread_struct+0x40/0x40
+[ 1186.861249]  ret_from_fork+0x1f/0x30
+[ 1186.861253]  </TASK>
+[ 1186.861254] ---[ end trace b3963e03f8449a95 ]---
+[ 1186.863731] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.863733] ------------[ cut here ]------------
+[ 1186.863733] nouveau 0000:01:00.0: timeout
+[ 1186.863743] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.863766] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.863783]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.863800]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.863811] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.863812] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.863812] Workqueue: pm pm_runtime_work
+[ 1186.863813] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.863835] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1186.863836] RSP: 0018:ffffbf7d018f3620 EFLAGS: 00010082
+[ 1186.863837] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.863837] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.863838] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f3458
+[ 1186.863838] R10: ffffbf7d018f3450 R11: ffffffffbd6b0340 R12: 0000000000000246
+[ 1186.863839] R13: ffff984841ea1780 R14: 0000000000000020 R15: ffff9848438fe200
+[ 1186.863840] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.863840] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.863841] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.863842] PKRU: 55555554
+[ 1186.863842] Call Trace:
+[ 1186.863842]  <TASK>
+[ 1186.863843]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1186.863873]  nvkm_vmm_iter.constprop.0+0x6a2/0x860 [nouveau]
+[ 1186.863904]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.863933]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.863963]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 1186.863991]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.864018]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.864048]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 1186.864073]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 1186.864100]  gf100_mem_map+0xf8/0x180 [nouveau]
+[ 1186.864126]  nvkm_umem_map+0x67/0xf0 [nouveau]
+[ 1186.864153]  nvkm_ioctl_map+0x7b/0xb0 [nouveau]
+[ 1186.864172]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.864192]  nvif_object_map_handle+0x8c/0x100 [nouveau]
+[ 1186.864211]  nouveau_ttm_io_mem_reserve+0x166/0x2b0 [nouveau]
+[ 1186.864248]  ttm_kmap_iter_linear_io_init+0x1f/0x120 [ttm]
+[ 1186.864250]  ttm_bo_move_memcpy+0xaf/0x1e0 [ttm]
+[ 1186.864253]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.864255]  ? ttm_bo_move_accel_cleanup+0x8b/0x3a0 [ttm]
+[ 1186.864257]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.864292]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.864295]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.864297]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.864300]  ? mutex_lock_killable+0x20/0x30
+[ 1186.864301]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.864335]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.864337]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.864371]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.864405]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.864406]  ? pci_dev_put+0x20/0x20
+[ 1186.864407]  __rpm_callback+0x37/0x160
+[ 1186.864408]  ? pci_dev_put+0x20/0x20
+[ 1186.864409]  rpm_callback+0x59/0x70
+[ 1186.864410]  ? pci_dev_put+0x20/0x20
+[ 1186.864411]  rpm_suspend+0x14a/0x6d0
+[ 1186.864412]  ? __switch_to_asm+0x42/0x70
+[ 1186.864413]  ? __switch_to+0x119/0x420
+[ 1186.864414]  pm_runtime_work+0x86/0x90
+[ 1186.864415]  process_one_work+0x21a/0x3c0
+[ 1186.864417]  worker_thread+0x4d/0x3e0
+[ 1186.864418]  ? process_one_work+0x3c0/0x3c0
+[ 1186.864419]  kthread+0x124/0x150
+[ 1186.864420]  ? set_kthread_struct+0x40/0x40
+[ 1186.864421]  ret_from_fork+0x1f/0x30
+[ 1186.864423]  </TASK>
+[ 1186.864423] ---[ end trace b3963e03f8449a96 ]---
+[ 1186.866888] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.866889] ------------[ cut here ]------------
+[ 1186.866889] nouveau 0000:01:00.0: timeout
+[ 1186.866897] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.866921] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.866939]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.866956]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.866967] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.866968] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.866968] Workqueue: pm pm_runtime_work
+[ 1186.866969] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.866991] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1186.866992] RSP: 0018:ffffbf7d018f3620 EFLAGS: 00010082
+[ 1186.866993] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.866993] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.866994] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f3458
+[ 1186.866995] R10: ffffbf7d018f3450 R11: ffffffffbd6b09d0 R12: 0000000000000246
+[ 1186.866995] R13: ffff984841ea1780 R14: 0000000000000020 R15: ffff9848414f86c0
+[ 1186.866996] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.866996] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.866997] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.866998] PKRU: 55555554
+[ 1186.866998] Call Trace:
+[ 1186.866999]  <TASK>
+[ 1186.866999]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1186.867031]  nvkm_vmm_iter.constprop.0+0x49f/0x860 [nouveau]
+[ 1186.867061]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.867089]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.867119]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 1186.867146]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.867172]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.867199]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 1186.867226]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 1186.867252]  gf100_mem_map+0xf8/0x180 [nouveau]
+[ 1186.867279]  nvkm_umem_map+0x67/0xf0 [nouveau]
+[ 1186.867308]  nvkm_ioctl_map+0x7b/0xb0 [nouveau]
+[ 1186.867327]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.867347]  nvif_object_map_handle+0x8c/0x100 [nouveau]
+[ 1186.867366]  nouveau_ttm_io_mem_reserve+0x166/0x2b0 [nouveau]
+[ 1186.867403]  ttm_kmap_iter_linear_io_init+0x1f/0x120 [ttm]
+[ 1186.867406]  ttm_bo_move_memcpy+0xaf/0x1e0 [ttm]
+[ 1186.867408]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.867410]  ? ttm_bo_move_accel_cleanup+0x8b/0x3a0 [ttm]
+[ 1186.867413]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.867447]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.867449]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.867452]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.867454]  ? mutex_lock_killable+0x20/0x30
+[ 1186.867455]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.867489]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.867492]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.867524]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.867556]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.867557]  ? pci_dev_put+0x20/0x20
+[ 1186.867558]  __rpm_callback+0x37/0x160
+[ 1186.867559]  ? pci_dev_put+0x20/0x20
+[ 1186.867560]  rpm_callback+0x59/0x70
+[ 1186.867561]  ? pci_dev_put+0x20/0x20
+[ 1186.867562]  rpm_suspend+0x14a/0x6d0
+[ 1186.867563]  ? __switch_to_asm+0x42/0x70
+[ 1186.867564]  ? __switch_to+0x119/0x420
+[ 1186.867566]  pm_runtime_work+0x86/0x90
+[ 1186.867566]  process_one_work+0x21a/0x3c0
+[ 1186.867568]  worker_thread+0x4d/0x3e0
+[ 1186.867569]  ? process_one_work+0x3c0/0x3c0
+[ 1186.867570]  kthread+0x124/0x150
+[ 1186.867571]  ? set_kthread_struct+0x40/0x40
+[ 1186.867572]  ret_from_fork+0x1f/0x30
+[ 1186.867574]  </TASK>
+[ 1186.867574] ---[ end trace b3963e03f8449a97 ]---
+[ 1186.870039] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.870040] ------------[ cut here ]------------
+[ 1186.870040] nouveau 0000:01:00.0: timeout
+[ 1186.870048] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.870071] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.870089]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.870107]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.870118] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.870119] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.870119] Workqueue: pm pm_runtime_work
+[ 1186.870120] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.870142] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1186.870143] RSP: 0018:ffffbf7d018f3620 EFLAGS: 00010082
+[ 1186.870143] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.870144] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.870145] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f3458
+[ 1186.870145] R10: ffffbf7d018f3450 R11: ffffffffbd6b1060 R12: 0000000000000246
+[ 1186.870146] R13: ffff984841ea1780 R14: 0000000000000020 R15: ffff9848414f7900
+[ 1186.870146] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.870147] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.870147] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.870148] PKRU: 55555554
+[ 1186.870148] Call Trace:
+[ 1186.870149]  <TASK>
+[ 1186.870150]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1186.870179]  nvkm_vmm_iter.constprop.0+0x2b2/0x860 [nouveau]
+[ 1186.870209]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.870237]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.870267]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 1186.870294]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.870319]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.870346]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 1186.870371]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 1186.870398]  gf100_mem_map+0xf8/0x180 [nouveau]
+[ 1186.870423]  nvkm_umem_map+0x67/0xf0 [nouveau]
+[ 1186.870450]  nvkm_ioctl_map+0x7b/0xb0 [nouveau]
+[ 1186.870469]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.870488]  nvif_object_map_handle+0x8c/0x100 [nouveau]
+[ 1186.870507]  nouveau_ttm_io_mem_reserve+0x166/0x2b0 [nouveau]
+[ 1186.870544]  ttm_kmap_iter_linear_io_init+0x1f/0x120 [ttm]
+[ 1186.870547]  ttm_bo_move_memcpy+0xaf/0x1e0 [ttm]
+[ 1186.870549]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.870551]  ? ttm_bo_move_accel_cleanup+0x8b/0x3a0 [ttm]
+[ 1186.870554]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.870588]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.870591]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.870593]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.870596]  ? mutex_lock_killable+0x20/0x30
+[ 1186.870597]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.870630]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.870633]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.870667]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.870700]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.870701]  ? pci_dev_put+0x20/0x20
+[ 1186.870702]  __rpm_callback+0x37/0x160
+[ 1186.870703]  ? pci_dev_put+0x20/0x20
+[ 1186.870704]  rpm_callback+0x59/0x70
+[ 1186.870705]  ? pci_dev_put+0x20/0x20
+[ 1186.870706]  rpm_suspend+0x14a/0x6d0
+[ 1186.870708]  ? __switch_to_asm+0x42/0x70
+[ 1186.870709]  ? __switch_to+0x119/0x420
+[ 1186.870710]  pm_runtime_work+0x86/0x90
+[ 1186.870711]  process_one_work+0x21a/0x3c0
+[ 1186.870712]  worker_thread+0x4d/0x3e0
+[ 1186.870713]  ? process_one_work+0x3c0/0x3c0
+[ 1186.870714]  kthread+0x124/0x150
+[ 1186.870715]  ? set_kthread_struct+0x40/0x40
+[ 1186.870716]  ret_from_fork+0x1f/0x30
+[ 1186.870718]  </TASK>
+[ 1186.870718] ---[ end trace b3963e03f8449a98 ]---
+[ 1186.873186] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.873187] ------------[ cut here ]------------
+[ 1186.873187] nouveau 0000:01:00.0: timeout
+[ 1186.873195] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:43 tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1186.873227] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.873242]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.873257]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.873267] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.873268] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.873268] Workqueue: pm pm_runtime_work
+[ 1186.873269] RIP: 0010:tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1186.873297] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 3a 29 38 fc 4c 89 e2 48 c7 c7 3e 00 50 c0 48 89 c6 e8 4a ce 62 fc <0f> 0b eb a5 e8 cf 1b 68 fc 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f
+[ 1186.873298] RSP: 0018:ffffbf7d018f3648 EFLAGS: 00010286
+[ 1186.873298] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.873299] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.873300] RBP: ffff9848438fe200 R08: 0000000000000000 R09: ffffbf7d018f3480
+[ 1186.873300] R10: ffffbf7d018f3478 R11: ffffffffbd6b16f0 R12: ffff984841ea1780
+[ 1186.873300] R13: ffff9848414f7900 R14: 0000000000000020 R15: ffff9848414f7900
+[ 1186.873301] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.873302] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.873302] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.873303] PKRU: 55555554
+[ 1186.873303] Call Trace:
+[ 1186.873304]  <TASK>
+[ 1186.873304]  nvkm_vmm_iter.constprop.0+0x341/0x860 [nouveau]
+[ 1186.873332]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.873358]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.873385]  nvkm_vmm_ptes_get_map+0x2c/0x90 [nouveau]
+[ 1186.873411]  ? nvkm_vmm_ref_sptes.isra.0+0x1b0/0x1b0 [nouveau]
+[ 1186.873435]  ? gp100_vmm_pgt_sgl+0x180/0x180 [nouveau]
+[ 1186.873460]  nvkm_vmm_map+0x1d4/0x350 [nouveau]
+[ 1186.873485]  nvkm_vram_map+0x56/0x80 [nouveau]
+[ 1186.873510]  gf100_mem_map+0xf8/0x180 [nouveau]
+[ 1186.873535]  nvkm_umem_map+0x67/0xf0 [nouveau]
+[ 1186.873561]  nvkm_ioctl_map+0x7b/0xb0 [nouveau]
+[ 1186.873577]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.873594]  nvif_object_map_handle+0x8c/0x100 [nouveau]
+[ 1186.873609]  nouveau_ttm_io_mem_reserve+0x166/0x2b0 [nouveau]
+[ 1186.873644]  ttm_kmap_iter_linear_io_init+0x1f/0x120 [ttm]
+[ 1186.873647]  ttm_bo_move_memcpy+0xaf/0x1e0 [ttm]
+[ 1186.873649]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.873652]  ? ttm_bo_move_accel_cleanup+0x8b/0x3a0 [ttm]
+[ 1186.873654]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.873689]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.873692]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.873694]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.873696]  ? mutex_lock_killable+0x20/0x30
+[ 1186.873697]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.873731]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.873734]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.873766]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.873797]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.873797]  ? pci_dev_put+0x20/0x20
+[ 1186.873798]  __rpm_callback+0x37/0x160
+[ 1186.873800]  ? pci_dev_put+0x20/0x20
+[ 1186.873800]  rpm_callback+0x59/0x70
+[ 1186.873802]  ? pci_dev_put+0x20/0x20
+[ 1186.873802]  rpm_suspend+0x14a/0x6d0
+[ 1186.873804]  ? __switch_to_asm+0x42/0x70
+[ 1186.873805]  ? __switch_to+0x119/0x420
+[ 1186.873806]  pm_runtime_work+0x86/0x90
+[ 1186.873807]  process_one_work+0x21a/0x3c0
+[ 1186.873808]  worker_thread+0x4d/0x3e0
+[ 1186.873809]  ? process_one_work+0x3c0/0x3c0
+[ 1186.873810]  kthread+0x124/0x150
+[ 1186.873811]  ? set_kthread_struct+0x40/0x40
+[ 1186.873812]  ret_from_fork+0x1f/0x30
+[ 1186.873814]  </TASK>
+[ 1186.873814] ---[ end trace b3963e03f8449a99 ]---
+[ 1186.877686] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.877687] ------------[ cut here ]------------
+[ 1186.877688] nouveau 0000:01:00.0: timeout
+[ 1186.877696] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.877719] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.877737]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.877754]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.877766] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.877766] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.877767] Workqueue: pm pm_runtime_work
+[ 1186.877768] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.877790] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1186.877791] RSP: 0018:ffffbf7d018f3738 EFLAGS: 00010082
+[ 1186.877792] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.877792] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.877793] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f3570
+[ 1186.877793] R10: ffffbf7d018f3568 R11: ffffffffbd6b1d68 R12: 0000000000000246
+[ 1186.877794] R13: ffff984841ea1780 R14: ffff9848414f86c0 R15: ffff9848414f7900
+[ 1186.877795] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.877795] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.877796] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.877797] PKRU: 55555554
+[ 1186.877797] Call Trace:
+[ 1186.877797]  <TASK>
+[ 1186.877798]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1186.877829]  nvkm_vmm_unref_pdes+0xbc/0x1e0 [nouveau]
+[ 1186.877860]  nvkm_vmm_unref_ptes+0x1aa/0x260 [nouveau]
+[ 1186.877889]  ? nvkm_vmm_map+0x18d/0x350 [nouveau]
+[ 1186.877918]  nvkm_vmm_iter.constprop.0+0x267/0x860 [nouveau]
+[ 1186.877944]  ? nvkm_vram_map+0x10/0x80 [nouveau]
+[ 1186.877972]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.877998]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.878027]  nvkm_vmm_put_locked+0xf1/0x250 [nouveau]
+[ 1186.878054]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.878078]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.878104]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[ 1186.878129]  nvkm_umem_unmap+0x40/0x60 [nouveau]
+[ 1186.878154]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.878174]  nvif_object_unmap_handle+0x63/0x80 [nouveau]
+[ 1186.878193]  nouveau_ttm_io_mem_free+0x43/0x70 [nouveau]
+[ 1186.878229]  ttm_mem_io_free+0x27/0x50 [ttm]
+[ 1186.878232]  ttm_bo_move_memcpy+0x16d/0x1e0 [ttm]
+[ 1186.878234]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.878237]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.878272]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.878275]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.878277]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.878280]  ? mutex_lock_killable+0x20/0x30
+[ 1186.878281]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.878315]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.878318]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.878351]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.878382]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.878383]  ? pci_dev_put+0x20/0x20
+[ 1186.878384]  __rpm_callback+0x37/0x160
+[ 1186.878385]  ? pci_dev_put+0x20/0x20
+[ 1186.878386]  rpm_callback+0x59/0x70
+[ 1186.878387]  ? pci_dev_put+0x20/0x20
+[ 1186.878388]  rpm_suspend+0x14a/0x6d0
+[ 1186.878389]  ? __switch_to_asm+0x42/0x70
+[ 1186.878391]  ? __switch_to+0x119/0x420
+[ 1186.878392]  pm_runtime_work+0x86/0x90
+[ 1186.878392]  process_one_work+0x21a/0x3c0
+[ 1186.878394]  worker_thread+0x4d/0x3e0
+[ 1186.878395]  ? process_one_work+0x3c0/0x3c0
+[ 1186.878397]  kthread+0x124/0x150
+[ 1186.878398]  ? set_kthread_struct+0x40/0x40
+[ 1186.878399]  ret_from_fork+0x1f/0x30
+[ 1186.878400]  </TASK>
+[ 1186.878401] ---[ end trace b3963e03f8449a9a ]---
+[ 1186.880866] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.880867] ------------[ cut here ]------------
+[ 1186.880868] nouveau 0000:01:00.0: timeout
+[ 1186.880875] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:43 tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1186.880907] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.880923]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.880938]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.880948] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.880949] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.880949] Workqueue: pm pm_runtime_work
+[ 1186.880950] RIP: 0010:tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1186.880982] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 3a 29 38 fc 4c 89 e2 48 c7 c7 3e 00 50 c0 48 89 c6 e8 4a ce 62 fc <0f> 0b eb a5 e8 cf 1b 68 fc 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f
+[ 1186.880983] RSP: 0018:ffffbf7d018f3760 EFLAGS: 00010286
+[ 1186.880983] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.880984] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.880985] RBP: ffff9848438fe200 R08: 0000000000000000 R09: ffffbf7d018f3598
+[ 1186.880985] R10: ffffbf7d018f3590 R11: ffffffffbd6b23f8 R12: ffff984841ea1780
+[ 1186.880986] R13: ffff9848438fe200 R14: ffff9848414f86c0 R15: ffff9848414f7900
+[ 1186.880986] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.880987] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.880988] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.880988] PKRU: 55555554
+[ 1186.880989] Call Trace:
+[ 1186.880989]  <TASK>
+[ 1186.880990]  nvkm_vmm_unref_pdes+0xeb/0x1e0 [nouveau]
+[ 1186.881019]  nvkm_vmm_unref_ptes+0x1aa/0x260 [nouveau]
+[ 1186.881047]  ? nvkm_vmm_map+0x18d/0x350 [nouveau]
+[ 1186.881075]  nvkm_vmm_iter.constprop.0+0x267/0x860 [nouveau]
+[ 1186.881101]  ? nvkm_vram_map+0x10/0x80 [nouveau]
+[ 1186.881127]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.881153]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.881180]  nvkm_vmm_put_locked+0xf1/0x250 [nouveau]
+[ 1186.881204]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.881228]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.881253]  nvkm_vmm_put+0x30/0x50 [nouveau]
+[ 1186.881277]  nvkm_umem_unmap+0x40/0x60 [nouveau]
+[ 1186.881302]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.881320]  nvif_object_unmap_handle+0x63/0x80 [nouveau]
+[ 1186.881336]  nouveau_ttm_io_mem_free+0x43/0x70 [nouveau]
+[ 1186.881373]  ttm_mem_io_free+0x27/0x50 [ttm]
+[ 1186.881375]  ttm_bo_move_memcpy+0x16d/0x1e0 [ttm]
+[ 1186.881378]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.881380]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.881415]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.881418]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.881421]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.881423]  ? mutex_lock_killable+0x20/0x30
+[ 1186.881424]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.881458]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.881461]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.881496]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.881529]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.881530]  ? pci_dev_put+0x20/0x20
+[ 1186.881531]  __rpm_callback+0x37/0x160
+[ 1186.881532]  ? pci_dev_put+0x20/0x20
+[ 1186.881533]  rpm_callback+0x59/0x70
+[ 1186.881535]  ? pci_dev_put+0x20/0x20
+[ 1186.881535]  rpm_suspend+0x14a/0x6d0
+[ 1186.881537]  ? __switch_to_asm+0x42/0x70
+[ 1186.881538]  ? __switch_to+0x119/0x420
+[ 1186.881539]  pm_runtime_work+0x86/0x90
+[ 1186.881540]  process_one_work+0x21a/0x3c0
+[ 1186.881541]  worker_thread+0x4d/0x3e0
+[ 1186.881542]  ? process_one_work+0x3c0/0x3c0
+[ 1186.881543]  kthread+0x124/0x150
+[ 1186.881544]  ? set_kthread_struct+0x40/0x40
+[ 1186.881545]  ret_from_fork+0x1f/0x30
+[ 1186.881547]  </TASK>
+[ 1186.881547] ---[ end trace b3963e03f8449a9b ]---
+[ 1186.884013] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.884014] ------------[ cut here ]------------
+[ 1186.884014] nouveau 0000:01:00.0: timeout
+[ 1186.884022] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.884046] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.884063]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.884080]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.884091] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.884092] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.884093] Workqueue: pm pm_runtime_work
+[ 1186.884093] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.884116] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1186.884116] RSP: 0018:ffffbf7d018f3648 EFLAGS: 00010086
+[ 1186.884117] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.884118] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.884118] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f3480
+[ 1186.884119] R10: ffffbf7d018f3478 R11: ffffffffbd6b2a70 R12: 0000000000000246
+[ 1186.884119] R13: ffff984841ea1780 R14: ffffbf7d018f3780 R15: ffff9848414f7184
+[ 1186.884120] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.884121] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.884121] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.884122] PKRU: 55555554
+[ 1186.884122] Call Trace:
+[ 1186.884123]  <TASK>
+[ 1186.884123]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1186.884154]  nvkm_vmm_unref_ptes+0x181/0x260 [nouveau]
+[ 1186.884185]  nvkm_vmm_iter.constprop.0+0x267/0x860 [nouveau]
+[ 1186.884214]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.884242]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 1186.884271]  nvkm_vmm_put_locked+0xf1/0x250 [nouveau]
+[ 1186.884298]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.884324]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 1186.884351]  nvkm_uvmm_mthd+0x6b2/0x6e0 [nouveau]
+[ 1186.884380]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.884407]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.884427]  nvif_object_mthd+0x15e/0x200 [nouveau]
+[ 1186.884446]  ? nvkm_mmu_ptc_get+0x120/0x1e0 [nouveau]
+[ 1186.884475]  ? nvkm_vmm_put_region+0x146/0x150 [nouveau]
+[ 1186.884502]  nvif_vmm_put+0x5c/0x80 [nouveau]
+[ 1186.884522]  nouveau_mem_fini+0x24/0x80 [nouveau]
+[ 1186.884560]  nouveau_mem_del+0xe/0x20 [nouveau]
+[ 1186.884594]  ttm_resource_free+0x2e/0x40 [ttm]
+[ 1186.884597]  ttm_bo_move_accel_cleanup+0xa7/0x3a0 [ttm]
+[ 1186.884599]  ttm_bo_move_memcpy+0xf9/0x1e0 [ttm]
+[ 1186.884602]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.884604]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.884638]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.884641]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.884643]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.884646]  ? mutex_lock_killable+0x20/0x30
+[ 1186.884647]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.884680]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.884683]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.884716]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.884748]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.884749]  ? pci_dev_put+0x20/0x20
+[ 1186.884750]  __rpm_callback+0x37/0x160
+[ 1186.884752]  ? pci_dev_put+0x20/0x20
+[ 1186.884753]  rpm_callback+0x59/0x70
+[ 1186.884754]  ? pci_dev_put+0x20/0x20
+[ 1186.884755]  rpm_suspend+0x14a/0x6d0
+[ 1186.884756]  ? __switch_to_asm+0x42/0x70
+[ 1186.884757]  ? __switch_to+0x119/0x420
+[ 1186.884758]  pm_runtime_work+0x86/0x90
+[ 1186.884759]  process_one_work+0x21a/0x3c0
+[ 1186.884761]  worker_thread+0x4d/0x3e0
+[ 1186.884762]  ? process_one_work+0x3c0/0x3c0
+[ 1186.884763]  kthread+0x124/0x150
+[ 1186.884764]  ? set_kthread_struct+0x40/0x40
+[ 1186.884765]  ret_from_fork+0x1f/0x30
+[ 1186.884767]  </TASK>
+[ 1186.884767] ---[ end trace b3963e03f8449a9c ]---
+[ 1186.887232] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.887233] ------------[ cut here ]------------
+[ 1186.887233] nouveau 0000:01:00.0: timeout
+[ 1186.887241] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.887265] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.887282]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.887299]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.887310] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.887311] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.887312] Workqueue: pm pm_runtime_work
+[ 1186.887313] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.887335] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1186.887335] RSP: 0018:ffffbf7d018f3688 EFLAGS: 00010082
+[ 1186.887336] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.887337] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.887337] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f34c0
+[ 1186.887338] R10: ffffbf7d018f34b8 R11: ffffffffbd6b3130 R12: 0000000000000246
+[ 1186.887339] R13: ffff984841ea1780 R14: ffff98484fe4bae0 R15: ffff9848414f7180
+[ 1186.887339] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.887340] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.887341] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.887341] PKRU: 55555554
+[ 1186.887341] Call Trace:
+[ 1186.887342]  <TASK>
+[ 1186.887342]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1186.887372]  nvkm_vmm_iter.constprop.0+0x795/0x860 [nouveau]
+[ 1186.887401]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.887428]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 1186.887458]  nvkm_vmm_put_locked+0xf1/0x250 [nouveau]
+[ 1186.887485]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.887511]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 1186.887537]  nvkm_uvmm_mthd+0x6b2/0x6e0 [nouveau]
+[ 1186.887564]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.887590]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.887610]  nvif_object_mthd+0x15e/0x200 [nouveau]
+[ 1186.887629]  ? nvkm_mmu_ptc_get+0x120/0x1e0 [nouveau]
+[ 1186.887656]  ? nvkm_vmm_put_region+0x146/0x150 [nouveau]
+[ 1186.887682]  nvif_vmm_put+0x5c/0x80 [nouveau]
+[ 1186.887701]  nouveau_mem_fini+0x24/0x80 [nouveau]
+[ 1186.887738]  nouveau_mem_del+0xe/0x20 [nouveau]
+[ 1186.887773]  ttm_resource_free+0x2e/0x40 [ttm]
+[ 1186.887775]  ttm_bo_move_accel_cleanup+0xa7/0x3a0 [ttm]
+[ 1186.887778]  ttm_bo_move_memcpy+0xf9/0x1e0 [ttm]
+[ 1186.887780]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.887783]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.887817]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.887820]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.887823]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.887825]  ? mutex_lock_killable+0x20/0x30
+[ 1186.887826]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.887861]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.887863]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.887898]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.887930]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.887931]  ? pci_dev_put+0x20/0x20
+[ 1186.887932]  __rpm_callback+0x37/0x160
+[ 1186.887934]  ? pci_dev_put+0x20/0x20
+[ 1186.887934]  rpm_callback+0x59/0x70
+[ 1186.887936]  ? pci_dev_put+0x20/0x20
+[ 1186.887936]  rpm_suspend+0x14a/0x6d0
+[ 1186.887938]  ? __switch_to_asm+0x42/0x70
+[ 1186.887939]  ? __switch_to+0x119/0x420
+[ 1186.887940]  pm_runtime_work+0x86/0x90
+[ 1186.887941]  process_one_work+0x21a/0x3c0
+[ 1186.887942]  worker_thread+0x4d/0x3e0
+[ 1186.887944]  ? process_one_work+0x3c0/0x3c0
+[ 1186.887945]  kthread+0x124/0x150
+[ 1186.887946]  ? set_kthread_struct+0x40/0x40
+[ 1186.887947]  ret_from_fork+0x1f/0x30
+[ 1186.887948]  </TASK>
+[ 1186.887949] ---[ end trace b3963e03f8449a9d ]---
+[ 1186.890416] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.890417] ------------[ cut here ]------------
+[ 1186.890417] nouveau 0000:01:00.0: timeout
+[ 1186.890425] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:43 tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1186.890456] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.890472]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.890487]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.890497] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.890498] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.890498] Workqueue: pm pm_runtime_work
+[ 1186.890499] RIP: 0010:tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1186.890527] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 3a 29 38 fc 4c 89 e2 48 c7 c7 3e 00 50 c0 48 89 c6 e8 4a ce 62 fc <0f> 0b eb a5 e8 cf 1b 68 fc 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f
+[ 1186.890528] RSP: 0018:ffffbf7d018f36b0 EFLAGS: 00010282
+[ 1186.890528] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.890529] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.890530] RBP: ffff9848438fc800 R08: 0000000000000000 R09: ffffbf7d018f34e8
+[ 1186.890530] R10: ffffbf7d018f34e0 R11: ffffffffbd6b37d8 R12: ffff984841ea1780
+[ 1186.890531] R13: ffffffffc04a00c0 R14: ffff98484fe4bae0 R15: ffff9848414f7180
+[ 1186.890531] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.890532] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.890532] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.890533] PKRU: 55555554
+[ 1186.890533] Call Trace:
+[ 1186.890534]  <TASK>
+[ 1186.890534]  nvkm_vmm_iter.constprop.0+0x341/0x860 [nouveau]
+[ 1186.890562]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.890590]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 1186.890617]  nvkm_vmm_put_locked+0xf1/0x250 [nouveau]
+[ 1186.890642]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.890667]  ? gf100_vmm_invalidate_pdb+0x30/0x30 [nouveau]
+[ 1186.890691]  nvkm_uvmm_mthd+0x6b2/0x6e0 [nouveau]
+[ 1186.890716]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.890741]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.890758]  nvif_object_mthd+0x15e/0x200 [nouveau]
+[ 1186.890773]  ? nvkm_mmu_ptc_get+0x120/0x1e0 [nouveau]
+[ 1186.890798]  ? nvkm_vmm_put_region+0x146/0x150 [nouveau]
+[ 1186.890821]  nvif_vmm_put+0x5c/0x80 [nouveau]
+[ 1186.890837]  nouveau_mem_fini+0x24/0x80 [nouveau]
+[ 1186.890872]  nouveau_mem_del+0xe/0x20 [nouveau]
+[ 1186.890906]  ttm_resource_free+0x2e/0x40 [ttm]
+[ 1186.890908]  ttm_bo_move_accel_cleanup+0xa7/0x3a0 [ttm]
+[ 1186.890911]  ttm_bo_move_memcpy+0xf9/0x1e0 [ttm]
+[ 1186.890913]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.890915]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.890949]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.890952]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.890954]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.890957]  ? mutex_lock_killable+0x20/0x30
+[ 1186.890958]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.890994]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.890997]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.891033]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.891066]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.891067]  ? pci_dev_put+0x20/0x20
+[ 1186.891067]  __rpm_callback+0x37/0x160
+[ 1186.891069]  ? pci_dev_put+0x20/0x20
+[ 1186.891070]  rpm_callback+0x59/0x70
+[ 1186.891071]  ? pci_dev_put+0x20/0x20
+[ 1186.891072]  rpm_suspend+0x14a/0x6d0
+[ 1186.891073]  ? __switch_to_asm+0x42/0x70
+[ 1186.891074]  ? __switch_to+0x119/0x420
+[ 1186.891075]  pm_runtime_work+0x86/0x90
+[ 1186.891076]  process_one_work+0x21a/0x3c0
+[ 1186.891077]  worker_thread+0x4d/0x3e0
+[ 1186.891079]  ? process_one_work+0x3c0/0x3c0
+[ 1186.891080]  kthread+0x124/0x150
+[ 1186.891081]  ? set_kthread_struct+0x40/0x40
+[ 1186.891082]  ret_from_fork+0x1f/0x30
+[ 1186.891083]  </TASK>
+[ 1186.891084] ---[ end trace b3963e03f8449a9e ]---
+[ 1186.893547] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.893548] ------------[ cut here ]------------
+[ 1186.893548] nouveau 0000:01:00.0: timeout
+[ 1186.893556] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.893580] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.893597]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.893614]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.893626] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.893626] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.893627] Workqueue: pm pm_runtime_work
+[ 1186.893628] RIP: 0010:g84_bar_flush+0xce/0xe0 [nouveau]
+[ 1186.893650] Code: 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 75 03 4c 8b 2f e8 04 36 3d fc 4c 89 ea 48 c7 c7 54 e6 4f c0 48 89 c6 e8 14 db 67 fc <0f> 0b eb a8 e8 99 28 6d fc 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00
+[ 1186.893651] RSP: 0018:ffffbf7d018f3600 EFLAGS: 00010086
+[ 1186.893652] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.893653] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.893653] RBP: ffff984843534c58 R08: 0000000000000000 R09: ffffbf7d018f3438
+[ 1186.893654] R10: ffffbf7d018f3430 R11: ffffffffbd6b3e68 R12: 0000000000000246
+[ 1186.893654] R13: ffff984841ea1780 R14: ffff9848414f9240 R15: ffff9848414f7180
+[ 1186.893655] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.893656] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.893656] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.893657] PKRU: 55555554
+[ 1186.893657] Call Trace:
+[ 1186.893658]  <TASK>
+[ 1186.893658]  nv50_instobj_release+0x2a/0x90 [nouveau]
+[ 1186.893689]  nvkm_vmm_unref_pdes+0xbc/0x1e0 [nouveau]
+[ 1186.893720]  nvkm_vmm_unref_ptes+0x1aa/0x260 [nouveau]
+[ 1186.893749]  nvkm_vmm_iter.constprop.0+0x267/0x860 [nouveau]
+[ 1186.893777]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.893805]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.893834]  nvkm_vmm_put_locked+0xf1/0x250 [nouveau]
+[ 1186.893861]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.893887]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.893914]  nvkm_uvmm_mthd+0x6b2/0x6e0 [nouveau]
+[ 1186.893941]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.893961]  nvif_object_mthd+0x15e/0x200 [nouveau]
+[ 1186.893982]  ? nvkm_mmu_ptc_get+0x120/0x1e0 [nouveau]
+[ 1186.894009]  ? nvkm_vmm_put_region+0x146/0x150 [nouveau]
+[ 1186.894034]  nvif_vmm_put+0x5c/0x80 [nouveau]
+[ 1186.894053]  nouveau_mem_fini+0x3f/0x80 [nouveau]
+[ 1186.894090]  nouveau_mem_del+0xe/0x20 [nouveau]
+[ 1186.894126]  ttm_resource_free+0x2e/0x40 [ttm]
+[ 1186.894128]  ttm_bo_move_accel_cleanup+0xa7/0x3a0 [ttm]
+[ 1186.894131]  ttm_bo_move_memcpy+0xf9/0x1e0 [ttm]
+[ 1186.894133]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.894135]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.894170]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.894173]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.894175]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.894178]  ? mutex_lock_killable+0x20/0x30
+[ 1186.894179]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.894213]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.894216]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.894248]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.894280]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.894280]  ? pci_dev_put+0x20/0x20
+[ 1186.894281]  __rpm_callback+0x37/0x160
+[ 1186.894283]  ? pci_dev_put+0x20/0x20
+[ 1186.894283]  rpm_callback+0x59/0x70
+[ 1186.894285]  ? pci_dev_put+0x20/0x20
+[ 1186.894285]  rpm_suspend+0x14a/0x6d0
+[ 1186.894287]  ? __switch_to_asm+0x42/0x70
+[ 1186.894288]  ? __switch_to+0x119/0x420
+[ 1186.894289]  pm_runtime_work+0x86/0x90
+[ 1186.894290]  process_one_work+0x21a/0x3c0
+[ 1186.894291]  worker_thread+0x4d/0x3e0
+[ 1186.894292]  ? process_one_work+0x3c0/0x3c0
+[ 1186.894294]  kthread+0x124/0x150
+[ 1186.894295]  ? set_kthread_struct+0x40/0x40
+[ 1186.894296]  ret_from_fork+0x1f/0x30
+[ 1186.894297]  </TASK>
+[ 1186.894297] ---[ end trace b3963e03f8449a9f ]---
+[ 1186.896765] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[ 1186.896766] ------------[ cut here ]------------
+[ 1186.896766] nouveau 0000:01:00.0: timeout
+[ 1186.896774] WARNING: CPU: 13 PID: 867 at drivers/gpu/drm/nouveau/nvkm/subdev/mmu/vmmtu102.c:43 tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1186.896805] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1186.896820]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1186.896835]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1186.896844] CPU: 13 PID: 867 Comm: kworker/13:2 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1186.896845] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1186.896846] Workqueue: pm pm_runtime_work
+[ 1186.896846] RIP: 0010:tu102_vmm_flush+0x138/0x150 [nouveau]
+[ 1186.896876] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 3a 29 38 fc 4c 89 e2 48 c7 c7 3e 00 50 c0 48 89 c6 e8 4a ce 62 fc <0f> 0b eb a5 e8 cf 1b 68 fc 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f
+[ 1186.896877] RSP: 0018:ffffbf7d018f3628 EFLAGS: 00010282
+[ 1186.896877] RAX: 0000000000000000 RBX: ffff984843ca5000 RCX: ffff984f9f75c5c8
+[ 1186.896878] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f75c5c0
+[ 1186.896878] RBP: ffff9848438fc800 R08: 0000000000000000 R09: ffffbf7d018f3460
+[ 1186.896879] R10: ffffbf7d018f3458 R11: ffffffffbd6b4528 R12: ffff984841ea1780
+[ 1186.896879] R13: ffff9848438fc800 R14: ffff9848414f9240 R15: ffff9848414f7180
+[ 1186.896880] FS:  0000000000000000(0000) GS:ffff984f9f740000(0000) knlGS:0000000000000000
+[ 1186.896880] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1186.896881] CR2: 00007f28777fcff8 CR3: 000000011a8f8002 CR4: 0000000000770ee0
+[ 1186.896882] PKRU: 55555554
+[ 1186.896882] Call Trace:
+[ 1186.896882]  <TASK>
+[ 1186.896883]  nvkm_vmm_unref_pdes+0xeb/0x1e0 [nouveau]
+[ 1186.896912]  nvkm_vmm_unref_ptes+0x1aa/0x260 [nouveau]
+[ 1186.896939]  nvkm_vmm_iter.constprop.0+0x267/0x860 [nouveau]
+[ 1186.896965]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.896995]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.897024]  nvkm_vmm_put_locked+0xf1/0x250 [nouveau]
+[ 1186.897052]  ? nvkm_vmm_ptes_sparse+0x1c0/0x1c0 [nouveau]
+[ 1186.897078]  ? gp100_vmm_pgt_sparse+0xc0/0xc0 [nouveau]
+[ 1186.897104]  nvkm_uvmm_mthd+0x6b2/0x6e0 [nouveau]
+[ 1186.897130]  nvkm_ioctl+0xd2/0x170 [nouveau]
+[ 1186.897147]  nvif_object_mthd+0x15e/0x200 [nouveau]
+[ 1186.897163]  ? nvkm_mmu_ptc_get+0x120/0x1e0 [nouveau]
+[ 1186.897189]  ? nvkm_vmm_put_region+0x146/0x150 [nouveau]
+[ 1186.897213]  nvif_vmm_put+0x5c/0x80 [nouveau]
+[ 1186.897230]  nouveau_mem_fini+0x3f/0x80 [nouveau]
+[ 1186.897267]  nouveau_mem_del+0xe/0x20 [nouveau]
+[ 1186.897301]  ttm_resource_free+0x2e/0x40 [ttm]
+[ 1186.897303]  ttm_bo_move_accel_cleanup+0xa7/0x3a0 [ttm]
+[ 1186.897306]  ttm_bo_move_memcpy+0xf9/0x1e0 [ttm]
+[ 1186.897308]  ? ttm_bo_wait+0x39/0x60 [ttm]
+[ 1186.897311]  nouveau_bo_move+0x16f/0x840 [nouveau]
+[ 1186.897346]  ? ttm_pool_alloc+0xe5/0x580 [ttm]
+[ 1186.897349]  ttm_bo_handle_move_mem+0x8a/0x180 [ttm]
+[ 1186.897351]  ttm_mem_evict_first+0x277/0x480 [ttm]
+[ 1186.897354]  ? mutex_lock_killable+0x20/0x30
+[ 1186.897355]  ? nv50_display_fini+0xb8/0x100 [nouveau]
+[ 1186.897389]  ttm_resource_manager_evict_all+0xa2/0x1a0 [ttm]
+[ 1186.897392]  nouveau_do_suspend+0x82/0x180 [nouveau]
+[ 1186.897428]  nouveau_pmops_runtime_suspend+0x3b/0xb0 [nouveau]
+[ 1186.897461]  pci_pm_runtime_suspend+0x57/0x160
+[ 1186.897462]  ? pci_dev_put+0x20/0x20
+[ 1186.897463]  __rpm_callback+0x37/0x160
+[ 1186.897464]  ? pci_dev_put+0x20/0x20
+[ 1186.897465]  rpm_callback+0x59/0x70
+[ 1186.897466]  ? pci_dev_put+0x20/0x20
+[ 1186.897467]  rpm_suspend+0x14a/0x6d0
+[ 1186.897468]  ? __switch_to_asm+0x42/0x70
+[ 1186.897469]  ? __switch_to+0x119/0x420
+[ 1186.897471]  pm_runtime_work+0x86/0x90
+[ 1186.897471]  process_one_work+0x21a/0x3c0
+[ 1186.897473]  worker_thread+0x4d/0x3e0
+[ 1186.897474]  ? process_one_work+0x3c0/0x3c0
+[ 1186.897475]  kthread+0x124/0x150
+[ 1186.897476]  ? set_kthread_struct+0x40/0x40
+[ 1186.897477]  ret_from_fork+0x1f/0x30
+[ 1186.897479]  </TASK>
+[ 1186.897479] ---[ end trace b3963e03f8449aa0 ]---
+[ 1201.897047] nouveau 0000:01:00.0: DRM: failed to idle channel 0 [DRM]
+[ 1201.937114] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1201.975276] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.013401] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.051449] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.089592] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.127739] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.165867] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.204009] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.242137] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.280287] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.318437] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.356549] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.394680] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.432814] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.470929] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.509049] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.547177] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.585311] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.623427] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.661546] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.699670] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.737796] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.775915] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.814041] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.852169] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.890301] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.928455] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1202.966564] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.004682] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.042805] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.080927] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.119050] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.358425] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.394447] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.432417] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.470353] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.508293] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.546273] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.584213] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.622168] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.660086] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.698001] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.735920] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.773824] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.811719] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.849608] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.887501] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.925384] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1203.963242] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.001132] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.039056] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.077004] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.114937] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.152888] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.190772] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.228653] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.266535] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.304411] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.342230] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.380115] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.417994] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.455877] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.493756] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1204.531633] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 1228.361024] nouveau 0000:01:00.0: DRM: failed to idle channel 0 [DRM]
+[ 1228.363406] ------------[ cut here ]------------
+[ 1228.363407] nouveau 0000:01:00.0: disabling already-disabled device
+[ 1228.363415] WARNING: CPU: 2 PID: 179 at drivers/pci/pci.c:2182 pci_disable_device+0xce/0x130
+[ 1228.363421] Modules linked in: rfcomm ip6t_REJECT nf_reject_ipv6 xt_comment ip6table_mangle ip6table_nat ip6table_raw ip6table_filter ip6_tables xt_recent ipt_IFWLOG ipt_psd xt_set ip_set_hash_ip ip_set ipt_REJECT nf_reject_ipv4 xt_conntrack xt_hashlimit xt_addrtype xt_mark iptable_mangle iptable_nat xt_CT xt_tcpudp iptable_raw xt_NFLOG nfnetlink_log xt_LOG nf_log_syslog nf_nat_tftp nf_nat_snmp_basic nf_conntrack_snmp nf_nat_sip nf_nat_pptp nf_nat_irc nf_nat_h323 nf_nat_ftp nf_nat_amanda ts_kmp nf_conntrack_amanda nf_nat nf_conntrack_sane nf_conntrack_tftp nf_conntrack_sip nf_conntrack_pptp nf_conntrack_netlink nfnetlink nf_conntrack_netbios_ns nf_conntrack_broadcast nf_conntrack_irc nf_conntrack_h323 nf_conntrack_ftp nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter af_packet cmac algif_hash algif_skcipher af_alg bnep nls_iso8859_1 nls_cp437 vfat fat dm_mirror dm_region_hash dm_log dm_mod uvcvideo btusb btbcm btrtl videobuf2_vmalloc videobuf2_memops btintel videobuf2_v4l2
+[ 1228.363451]  videobuf2_common bluetooth videodev usbhid mc ecdh_generic ecc intel_rapl_msr intel_rapl_common joydev iwlmvm snd_sof_pci_intel_tgl intel_tcc_cooling snd_sof_intel_hda_common x86_pkg_temp_thermal mac80211 intel_powerclamp soundwire_intel coretemp soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda libarc4 snd_sof_pci snd_sof_xtensa_dsp hid_multitouch iTCO_wdt pmt_telemetry snd_sof iTCO_vendor_support hid_generic mei_hdcp kvm_intel pmt_class snd_soc_hdac_hda iwlwifi snd_hda_ext_core snd_soc_acpi_intel_match snd_hda_codec_realtek snd_soc_acpi kvm snd_hda_codec_generic snd_soc_core snd_hda_codec_hdmi snd_compress snd_pcm_dmaengine ac97_bus ledtrig_audio irqbypass snd_hda_intel intel_cstate snd_intel_dspcfg tpm_crb snd_intel_sdw_acpi cfg80211 intel_uncore snd_hda_codec r8169 i2c_i801 realtek tpm_tis mdio_devres psmouse input_leds thermal intel_hid tpm_tis_core tpm snd_hda_core sparse_keymap acpi_pad ac i2c_smbus snd_hwdep rfkill libphy mei_me snd_pcm mei
+[ 1228.363480]  intel_lpss_pci intel_lpss snd_timer idma64 intel_pmt snd soundcore sch_fq_codel fuse evdev nvram configfs efivarfs ip_tables x_tables ipv6 crc_ccitt autofs4 xhci_pci xhci_pci_renesas mmc_block xhci_hcd sdhci_pci crc32_pclmul cqhci crc32c_intel usbcore sdhci ghash_clmulni_intel aesni_intel mmc_core crypto_simd cryptd serio_raw usb_common i915 nouveau drm_ttm_helper i2c_algo_bit ttm drm_kms_helper i2c_hid_acpi i2c_hid hid mxm_wmi cec battery video drm wmi pinctrl_tigerlake button
+[ 1228.363498] CPU: 2 PID: 179 Comm: kworker/2:1 Tainted: G        W         5.15.35-desktop-2.mga8 #1
+[ 1228.363500] Hardware name: Notebook NH5x_NH7x_HHx_HJx_HKx/NH5x_NH7x_HHx_HJx_HKx, BIOS 1.07.04LWL 07/01/2021
+[ 1228.363501] Workqueue: pm pm_runtime_work
+[ 1228.363503] RIP: 0010:pci_disable_device+0xce/0x130
+[ 1228.363505] Code: 4d 85 e4 75 07 4c 8b a3 d0 00 00 00 48 8d bb d0 00 00 00 e8 b4 a1 12 00 4c 89 e2 48 c7 c7 90 30 38 bd 48 89 c6 e8 c4 46 3d 00 <0f> 0b e9 5d ff ff ff 48 8d 54 24 06 be 04 00 00 00 48 89 df e8 49
+[ 1228.363506] RSP: 0018:ffffbf7d00793d38 EFLAGS: 00010282
+[ 1228.363507] RAX: 0000000000000000 RBX: ffff984841ef3000 RCX: ffff984f9f49c5c8
+[ 1228.363508] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ffff984f9f49c5c0
+[ 1228.363509] RBP: ffff984841ef30d0 R08: 0000000000000000 R09: ffffbf7d00793b70
+[ 1228.363510] R10: ffffbf7d00793b68 R11: ffffffffbd6b51e8 R12: ffff984841ea1780
+[ 1228.363510] R13: 00000000fffffff0 R14: 0000000000000000 R15: ffff984f9f4b2805
+[ 1228.363511] FS:  0000000000000000(0000) GS:ffff984f9f480000(0000) knlGS:0000000000000000
+[ 1228.363512] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1228.363512] CR2: 00007faad7ffcc5c CR3: 00000002b260a003 CR4: 0000000000770ee0
+[ 1228.363513] PKRU: 55555554
+[ 1228.363514] Call Trace:
+[ 1228.363515]  <TASK>
+[ 1228.363518]  nouveau_pmops_runtime_suspend+0x4e/0xb0 [nouveau]
+[ 1228.363573]  pci_pm_runtime_suspend+0x57/0x160
+[ 1228.363574]  ? pci_dev_put+0x20/0x20
+[ 1228.363575]  __rpm_callback+0x37/0x160
+[ 1228.363578]  ? pci_dev_put+0x20/0x20
+[ 1228.363579]  rpm_callback+0x59/0x70
+[ 1228.363580]  ? pci_dev_put+0x20/0x20
+[ 1228.363581]  rpm_suspend+0x14a/0x6d0
+[ 1228.363582]  ? __switch_to_asm+0x42/0x70
+[ 1228.363584]  ? __switch_to+0x119/0x420
+[ 1228.363586]  pm_runtime_work+0x86/0x90
+[ 1228.363587]  process_one_work+0x21a/0x3c0
+[ 1228.363589]  worker_thread+0x4d/0x3e0
+[ 1228.363590]  ? process_one_work+0x3c0/0x3c0
+[ 1228.363591]  kthread+0x124/0x150
+[ 1228.363593]  ? set_kthread_struct+0x40/0x40
+[ 1228.363594]  ret_from_fork+0x1f/0x30
+[ 1228.363596]  </TASK>
+[ 1228.363596] ---[ end trace b3963e03f8449aa1 ]---
+[ 1584.900967] nouveau 0000:01:00.0: DRM: failed to idle channel 0 [DRM]
+[ 1969.699293] vboxdrv: loading out-of-tree module taints kernel.
+[ 1969.701650] vboxdrv: Found 16 processor cores
+[ 1969.717304] vboxdrv: TSC mode is Invariant, tentative frequency 2303999947 Hz
+[ 1969.717305] vboxdrv: Successfully loaded version 6.1.34_Mageia r150636 (interface 0x00320000)
+[ 1969.719102] VBoxNetFlt: Successfully started.
+[ 1969.720173] VBoxNetAdp: Successfully started.
+[ 2016.001681] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=86 TOS=0x00 PREC=0x00 TTL=58 ID=41912 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK PSH URGP=0 
+[ 2016.001697] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=40 TOS=0x00 PREC=0x00 TTL=58 ID=41914 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK FIN URGP=0 
+[ 2016.001705] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=71 TOS=0x00 PREC=0x00 TTL=58 ID=41913 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK PSH URGP=0 
+[ 2016.001713] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=40 TOS=0x00 PREC=0x00 TTL=58 ID=41915 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK FIN URGP=0 
+[ 2016.311706] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=117 TOS=0x00 PREC=0x00 TTL=58 ID=41916 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK PSH FIN URGP=0 
+[ 2016.724156] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=117 TOS=0x00 PREC=0x00 TTL=58 ID=41917 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK PSH FIN URGP=0 
+[ 2017.651594] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=117 TOS=0x00 PREC=0x00 TTL=58 ID=41918 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK PSH FIN URGP=0 
+[ 2019.404067] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=117 TOS=0x00 PREC=0x00 TTL=58 ID=41919 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK PSH FIN URGP=0 
+[ 2023.011799] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=117 TOS=0x00 PREC=0x00 TTL=58 ID=41920 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK PSH FIN URGP=0 
+[ 2030.228040] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=117 TOS=0x00 PREC=0x00 TTL=58 ID=41921 DF PROTO=TCP SPT=443 DPT=53194 WINDOW=68 RES=0x00 ACK PSH FIN URGP=0 
+[ 2346.492353] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=59 ID=63895 DF PROTO=TCP SPT=80 DPT=50780 WINDOW=238 RES=0x00 ACK FIN URGP=0 
+[ 2346.697214] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=59 ID=63896 DF PROTO=TCP SPT=80 DPT=50780 WINDOW=238 RES=0x00 ACK FIN URGP=0 
+[ 2347.005350] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=59 ID=63897 DF PROTO=TCP SPT=80 DPT=50780 WINDOW=238 RES=0x00 ACK FIN URGP=0 
+[ 2347.417720] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=59 ID=63898 DF PROTO=TCP SPT=80 DPT=50780 WINDOW=238 RES=0x00 ACK FIN URGP=0 
+[ 2348.344934] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=59 ID=63899 DF PROTO=TCP SPT=80 DPT=50780 WINDOW=238 RES=0x00 ACK FIN URGP=0 
+[ 3026.850339] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=84 TOS=0x00 PREC=0x00 TTL=64 ID=59107 PROTO=ICMP TYPE=8 CODE=0 ID=27065 SEQ=0 
+[ 3026.937440] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=84 TOS=0x00 PREC=0x00 TTL=64 ID=53213 PROTO=ICMP TYPE=8 CODE=0 ID=27065 SEQ=1 
+[ 3027.361724] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=84 TOS=0x00 PREC=0x00 TTL=64 ID=40084 PROTO=ICMP TYPE=8 CODE=0 ID=27065 SEQ=2 
+[ 3314.141239] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=52 ID=13716 DF PROTO=TCP SPT=32083 DPT=53632 WINDOW=8192 RES=0x00 SYN URGP=0 
+[ 3317.129810] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=52 ID=16947 DF PROTO=TCP SPT=32083 DPT=53632 WINDOW=8192 RES=0x00 SYN URGP=0 
+[ 3323.108854] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=48 TOS=0x00 PREC=0x00 TTL=52 ID=24125 DF PROTO=TCP SPT=32083 DPT=53632 WINDOW=8192 RES=0x00 SYN URGP=0 
+[ 3606.757054] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=191 TOS=0x00 PREC=0x00 TTL=114 ID=30646 DF PROTO=TCP SPT=443 DPT=52858 WINDOW=7374 RES=0x00 ACK PSH URGP=0 
+[ 3606.787960] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=191 TOS=0x00 PREC=0x00 TTL=114 ID=30647 DF PROTO=TCP SPT=443 DPT=52858 WINDOW=7374 RES=0x00 ACK PSH URGP=0 
+[ 3607.000793] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=342 TOS=0x00 PREC=0x00 TTL=114 ID=30648 DF PROTO=TCP SPT=443 DPT=52858 WINDOW=7374 RES=0x00 ACK PSH URGP=0 
+[ 3607.342523] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=342 TOS=0x00 PREC=0x00 TTL=114 ID=30649 DF PROTO=TCP SPT=443 DPT=52858 WINDOW=7374 RES=0x00 ACK PSH URGP=0 
+[ 3607.960261] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=342 TOS=0x00 PREC=0x00 TTL=114 ID=30650 DF PROTO=TCP SPT=443 DPT=52858 WINDOW=7374 RES=0x00 ACK PSH URGP=0 
+[ 3609.197980] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=342 TOS=0x00 PREC=0x00 TTL=114 ID=30651 DF PROTO=TCP SPT=443 DPT=52858 WINDOW=7374 RES=0x00 ACK PSH URGP=0 
+[ 3611.569790] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=342 TOS=0x00 PREC=0x00 TTL=114 ID=30652 DF PROTO=TCP SPT=443 DPT=52858 WINDOW=7374 RES=0x00 ACK PSH URGP=0 
+[ 3616.412878] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=342 TOS=0x00 PREC=0x00 TTL=114 ID=30653 DF PROTO=TCP SPT=443 DPT=52858 WINDOW=7374 RES=0x00 ACK PSH URGP=0 
+[ 3626.004496] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=40 TOS=0x00 PREC=0x00 TTL=114 ID=30654 DF PROTO=TCP SPT=443 DPT=52858 WINDOW=0 RES=0x00 ACK RST URGP=0 
+[ 4035.870212] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=365 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=UDP SPT=1900 DPT=56654 LEN=345 
+[ 4035.973178] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=547 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=UDP SPT=54774 DPT=56654 LEN=527 
+[ 4036.029894] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=390 TOS=0x00 PREC=0x00 TTL=64 ID=53560 DF PROTO=UDP SPT=60000 DPT=56654 LEN=370 
+[ 4036.029900] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=390 TOS=0x00 PREC=0x00 TTL=64 ID=14056 DF PROTO=UDP SPT=60000 DPT=56654 LEN=370 
+[ 4036.894195] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=547 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=UDP SPT=56186 DPT=56654 LEN=527 
+[ 4036.894198] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=365 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=UDP SPT=1900 DPT=56654 LEN=345 
+[ 4037.203115] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=390 TOS=0x00 PREC=0x00 TTL=64 ID=53581 DF PROTO=UDP SPT=60000 DPT=56654 LEN=370 
+[ 4037.203134] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=390 TOS=0x00 PREC=0x00 TTL=64 ID=14135 DF PROTO=UDP SPT=60000 DPT=56654 LEN=370 
+[ 4037.923992] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=547 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=UDP SPT=37813 DPT=56654 LEN=527 
+[ 4037.924066] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=365 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=UDP SPT=1900 DPT=56654 LEN=345 
+[ 4038.851406] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=365 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=UDP SPT=1900 DPT=56654 LEN=345 
+[ 4038.851406] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=547 TOS=0x00 PREC=0x00 TTL=64 ID=0 DF PROTO=UDP SPT=45225 DPT=56654 LEN=527 
+[ 4039.366457] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=390 TOS=0x00 PREC=0x00 TTL=64 ID=53679 DF PROTO=UDP SPT=60000 DPT=56654 LEN=370 
+[ 4039.366469] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=390 TOS=0x00 PREC=0x00 TTL=64 ID=14264 DF PROTO=UDP SPT=60000 DPT=56654 LEN=370 
+[ 4056.763910] nouveau 0000:01:00.0: DRM: failed to idle channel 0 [DRM]
+[ 4279.037967] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=86 TOS=0x00 PREC=0x00 TTL=49 ID=46350 PROTO=ICMP TYPE=3 CODE=3 [SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=58 TOS=0x00 PREC=0x00 TTL=244 ID=17 PROTO=UDP SPT=54219 DPT=50924 LEN=38 ] 
+[ 4279.037986] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=576 TOS=0x00 PREC=0x00 TTL=49 ID=46351 PROTO=ICMP TYPE=3 CODE=3 [SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=620 TOS=0x00 PREC=0x00 TTL=244 ID=17 PROTO=UDP SPT=54219 DPT=50924 LEN=600 ] 
+[ 4446.252729] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=86 TOS=0x00 PREC=0x00 TTL=49 ID=55289 PROTO=ICMP TYPE=3 CODE=3 [SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=58 TOS=0x00 PREC=0x00 TTL=245 ID=17 PROTO=UDP SPT=36281 DPT=50924 LEN=38 ] 
+[ 4446.271807] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=576 TOS=0x00 PREC=0x00 TTL=49 ID=55290 PROTO=ICMP TYPE=3 CODE=3 [SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=620 TOS=0x00 PREC=0x00 TTL=245 ID=17 PROTO=UDP SPT=36281 DPT=50924 LEN=600 ] 
+[ 4492.524897] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=78 TOS=0x00 PREC=0x00 TTL=56 ID=33525 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH URGP=0 
+[ 4492.713041] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=78 TOS=0x00 PREC=0x00 TTL=56 ID=33526 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH URGP=0 
+[ 4493.041144] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=78 TOS=0x00 PREC=0x00 TTL=56 ID=33527 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH URGP=0 
+[ 4493.453342] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=78 TOS=0x00 PREC=0x00 TTL=56 ID=33528 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH URGP=0 
+[ 4494.327606] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=78 TOS=0x00 PREC=0x00 TTL=56 ID=33529 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH URGP=0 
+[ 4496.056052] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=78 TOS=0x00 PREC=0x00 TTL=56 ID=33530 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH URGP=0 
+[ 4499.638979] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=78 TOS=0x00 PREC=0x00 TTL=56 ID=33531 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH URGP=0 
+[ 4506.735615] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=78 TOS=0x00 PREC=0x00 TTL=56 ID=33532 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH URGP=0 
+[ 4521.080371] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=78 TOS=0x00 PREC=0x00 TTL=56 ID=33533 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH URGP=0 
+[ 4526.130448] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=76 TOS=0x00 PREC=0x00 TTL=56 ID=33534 DF PROTO=TCP SPT=5223 DPT=52068 WINDOW=500 RES=0x00 ACK PSH FIN URGP=0 
+[ 5214.486637] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=116 ID=20497 DF PROTO=TCP SPT=16056 DPT=53632 WINDOW=64240 RES=0x00 SYN URGP=0 
+[ 5217.520515] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=116 ID=20499 DF PROTO=TCP SPT=16056 DPT=53632 WINDOW=64240 RES=0x00 SYN URGP=0 
+[ 5223.496031] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=116 ID=20501 DF PROTO=TCP SPT=16345 DPT=53632 WINDOW=64240 RES=0x00 SYN URGP=0 
+[ 6178.466972] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=127 TOS=0x00 PREC=0x00 TTL=57 ID=52259 DF PROTO=TCP SPT=443 DPT=42514 WINDOW=287 RES=0x00 ACK PSH FIN URGP=0 
+[ 6365.874846] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=60 TOS=0x00 PREC=0x00 TTL=112 ID=30457 DF PROTO=TCP SPT=58907 DPT=60878 WINDOW=64240 RES=0x00 SYN URGP=0 
+[ 6366.895330] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=60 TOS=0x00 PREC=0x00 TTL=112 ID=30458 DF PROTO=TCP SPT=58907 DPT=60878 WINDOW=64240 RES=0x00 SYN URGP=0 
+[ 6368.944172] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=60 TOS=0x00 PREC=0x00 TTL=112 ID=30459 DF PROTO=TCP SPT=58907 DPT=60878 WINDOW=64240 RES=0x00 SYN URGP=0 
+[ 6372.989597] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=60 TOS=0x00 PREC=0x00 TTL=112 ID=30460 DF PROTO=TCP SPT=58907 DPT=60878 WINDOW=64240 RES=0x00 SYN URGP=0 
+[ 6380.927108] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=60 TOS=0x00 PREC=0x00 TTL=112 ID=30461 DF PROTO=TCP SPT=58907 DPT=60878 WINDOW=64240 RES=0x00 SYN URGP=0 
+[ 6424.427700] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=52 ID=1165 DF PROTO=TCP SPT=19016 DPT=60878 WINDOW=8192 RES=0x00 SYN URGP=0 
+[ 6427.519119] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=52 TOS=0x00 PREC=0x00 TTL=52 ID=8796 DF PROTO=TCP SPT=19016 DPT=60878 WINDOW=8192 RES=0x00 SYN URGP=0 
+[ 6433.500066] net-fw DROP IN=wlp5s0 OUT= MAC=XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXX SRC=XXX.XXX.XXX.XXX DST=XXX.XXX.XXX.XXX LEN=48 TOS=0x00 PREC=0x00 TTL=52 ID=16611 DF PROTO=TCP SPT=19317 DPT=60878 WINDOW=8192 RES=0x00 SYN URGP=0 
+[ 6503.677703] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6503.715846] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6503.754020] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6503.792191] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6503.830317] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6503.868515] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6503.906662] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6503.944791] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6503.982922] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.021036] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.059164] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.097301] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.135448] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.173627] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.211786] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.249960] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.288118] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.326274] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.364407] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.402553] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.440700] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.478853] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.516992] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.555142] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.593295] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.631433] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.669572] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.707721] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.745870] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.784023] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.822161] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6504.860286] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6525.357826] nouveau 0000:01:00.0: DRM: failed to idle channel 0 [DRM]
+[ 6827.439866] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.478006] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.516148] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.554254] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.592417] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.630572] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.668722] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.706869] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.745011] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.783152] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.821284] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.859472] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.897618] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.935754] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6827.973897] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.012053] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.050207] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.088264] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.126407] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.164547] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.202696] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.240849] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.279006] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.317156] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.355286] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.393415] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.431564] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.469734] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.507883] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.546029] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.584185] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6828.622271] nouveau 0000:01:00.0: i2c: aux 0007: begin idle timeout ffffffff
+[ 6849.282877] nouveau 0000:01:00.0: DRM: failed to idle channel 0 [DRM]
+[ 6897.229832] nouveau 0000:01:00.0: DRM: failed to idle channel 0 [DRM]
+[11326.875231] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[11344.073185] BTRFS info (device nvme1n1p3): flagging fs with big metadata feature
+[11344.073187] BTRFS info (device nvme1n1p3): using free space tree
+[11344.073188] BTRFS info (device nvme1n1p3): has skinny extents
+[11344.077332] BTRFS info (device nvme1n1p3): enabling ssd optimizations
+[11449.906860] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
