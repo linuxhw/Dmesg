@@ -1,0 +1,1473 @@
+[72901.117524]  ? _nv009835rm+0xf9/0x1a0 [nvidia]
+[72901.117910]  ? preempt_count_add+0x68/0xa0
+[72901.117913]  rt_spin_lock+0x41/0x60
+[72901.117915]  ___slab_alloc.constprop.0+0xa6/0x640
+[72901.117919]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[72901.118119]  ? _nv011678rm+0x40/0x90 [nvidia]
+[72901.118442]  ? _nv039798rm+0x13/0x50 [nvidia]
+[72901.118764]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[72901.119085]  ? _nv040534rm+0x13/0x40 [nvidia]
+[72901.119411]  kmem_cache_alloc_trace+0x6c/0x1c0
+[72901.119414]  nv_post_event+0x95/0x140 [nvidia]
+[72901.119611]  _nv035299rm+0x59/0x80 [nvidia]
+[72901.119922]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[72901.120221]  ? _nv027614rm+0x10/0x10 [nvidia]
+[72901.120470]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[72901.120719]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[72901.121108]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[72901.121498]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[72901.121884]  ? _nv029406rm+0x161/0x440 [nvidia]
+[72901.122268]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[72901.122561]  ? disable_irq_nosync+0x10/0x10
+[72901.122565]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[72901.122857]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[72901.123052]  ? irq_thread_fn+0x20/0x60
+[72901.123055]  ? irq_thread+0xdc/0x1a0
+[72901.123057]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[72901.123059]  ? irq_thread_check_affinity+0xd0/0xd0
+[72901.123062]  ? kthread+0x189/0x1b0
+[72901.123064]  ? set_kthread_struct+0x40/0x40
+[72901.123065]  ? ret_from_fork+0x22/0x30
+[72917.856679] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[72917.856684] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[72917.856728]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[72917.856756] Preemption disabled at:
+[72917.856757] [<0000000000000000>] 0x0
+[72917.856761] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[72917.856763] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[72917.856765] Call Trace:
+[72917.856769]  dump_stack_lvl+0x46/0x5a
+[72917.856775]  __schedule_bug.cold+0x82/0x90
+[72917.856780]  __schedule+0x1199/0x1580
+[72917.856783]  ? push_rt_task.part.0+0x1e/0x320
+[72917.856788]  ? raw_spin_rq_unlock+0x18/0x60
+[72917.856791]  ? rt_mutex_setprio+0x1c3/0x4a0
+[72917.856793]  schedule_rtlock+0x1e/0x40
+[72917.856796]  rtlock_slowlock_locked+0x3bf/0xdc0
+[72917.856799]  ? preempt_count_add+0x68/0xa0
+[72917.856802]  rt_spin_lock+0x41/0x60
+[72917.856804]  ___slab_alloc.constprop.0+0xa6/0x640
+[72917.856808]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[72917.857078]  ? _nv011678rm+0x40/0x90 [nvidia]
+[72917.857403]  ? _nv039798rm+0x13/0x50 [nvidia]
+[72917.857726]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[72917.858049]  ? _nv040534rm+0x13/0x40 [nvidia]
+[72917.858416]  kmem_cache_alloc_trace+0x6c/0x1c0
+[72917.858419]  nv_post_event+0x95/0x140 [nvidia]
+[72917.858616]  _nv035299rm+0x59/0x80 [nvidia]
+[72917.858918]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[72917.859217]  ? _nv027614rm+0x10/0x10 [nvidia]
+[72917.859472]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[72917.859721]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[72917.860111]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[72917.860500]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[72917.860884]  ? _nv029406rm+0x161/0x440 [nvidia]
+[72917.861270]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[72917.861563]  ? disable_irq_nosync+0x10/0x10
+[72917.861567]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[72917.861860]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[72917.862055]  ? irq_thread_fn+0x20/0x60
+[72917.862057]  ? irq_thread+0xdc/0x1a0
+[72917.862060]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[72917.862062]  ? irq_thread_check_affinity+0xd0/0xd0
+[72917.862065]  ? kthread+0x189/0x1b0
+[72917.862067]  ? set_kthread_struct+0x40/0x40
+[72917.862068]  ? ret_from_fork+0x22/0x30
+[73014.376290] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[73014.376296] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[73014.376338]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[73014.376366] Preemption disabled at:
+[73014.376366] [<0000000000000000>] 0x0
+[73014.376372] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[73014.376374] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[73014.376376] Call Trace:
+[73014.376379]  dump_stack_lvl+0x46/0x5a
+[73014.376385]  __schedule_bug.cold+0x82/0x90
+[73014.376390]  __schedule+0x1199/0x1580
+[73014.376394]  ? raw_spin_rq_unlock+0x18/0x60
+[73014.376398]  ? rt_mutex_setprio+0x1c3/0x4a0
+[73014.376400]  schedule_rtlock+0x1e/0x40
+[73014.376403]  rtlock_slowlock_locked+0x3bf/0xdc0
+[73014.376406]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[73014.376674]  rt_spin_lock+0x41/0x60
+[73014.376676]  __wake_up_common_lock+0x61/0xb0
+[73014.376680]  ep_poll_callback+0xfe/0x220
+[73014.376685]  __wake_up_common+0x79/0x140
+[73014.376687]  __wake_up_common_lock+0x78/0xb0
+[73014.376690]  _nv035299rm+0x59/0x80 [nvidia]
+[73014.376994]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[73014.377294]  ? _nv027614rm+0x10/0x10 [nvidia]
+[73014.377558]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[73014.377807]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[73014.378197]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[73014.378587]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[73014.378981]  ? _nv029406rm+0x161/0x440 [nvidia]
+[73014.379366]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[73014.379659]  ? disable_irq_nosync+0x10/0x10
+[73014.379663]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[73014.379957]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[73014.380151]  ? irq_thread_fn+0x20/0x60
+[73014.380154]  ? irq_thread+0xdc/0x1a0
+[73014.380156]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[73014.380159]  ? irq_thread_check_affinity+0xd0/0xd0
+[73014.380161]  ? kthread+0x189/0x1b0
+[73014.380163]  ? set_kthread_struct+0x40/0x40
+[73014.380164]  ? ret_from_fork+0x22/0x30
+[75592.366163] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[75592.366168] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[75592.366210]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[75592.366238] Preemption disabled at:
+[75592.366239] [<0000000000000000>] 0x0
+[75592.366244] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[75592.366246] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[75592.366248] Call Trace:
+[75592.366252]  dump_stack_lvl+0x46/0x5a
+[75592.366258]  __schedule_bug.cold+0x82/0x90
+[75592.366263]  __schedule+0x1199/0x1580
+[75592.366266]  ? push_rt_task.part.0+0x1e/0x320
+[75592.366271]  ? raw_spin_rq_unlock+0x18/0x60
+[75592.366275]  ? rt_mutex_setprio+0x1c3/0x4a0
+[75592.366277]  schedule_rtlock+0x1e/0x40
+[75592.366279]  rtlock_slowlock_locked+0x3bf/0xdc0
+[75592.366283]  rt_spin_lock+0x41/0x60
+[75592.366285]  ___slab_alloc.constprop.0+0xa6/0x640
+[75592.366290]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[75592.366559]  ? _nv011678rm+0x40/0x90 [nvidia]
+[75592.366883]  ? _nv039798rm+0x13/0x50 [nvidia]
+[75592.367206]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[75592.367528]  ? _nv040534rm+0x13/0x40 [nvidia]
+[75592.367855]  kmem_cache_alloc_trace+0x6c/0x1c0
+[75592.367857]  nv_post_event+0x95/0x140 [nvidia]
+[75592.368054]  _nv035299rm+0x59/0x80 [nvidia]
+[75592.368377]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[75592.368691]  ? _nv027614rm+0x10/0x10 [nvidia]
+[75592.368939]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[75592.369188]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[75592.369577]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[75592.369973]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[75592.370358]  ? _nv029406rm+0x161/0x440 [nvidia]
+[75592.370743]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[75592.371036]  ? disable_irq_nosync+0x10/0x10
+[75592.371040]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[75592.371333]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[75592.371527]  ? irq_thread_fn+0x20/0x60
+[75592.371530]  ? irq_thread+0xdc/0x1a0
+[75592.371532]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[75592.371535]  ? irq_thread_check_affinity+0xd0/0xd0
+[75592.371537]  ? kthread+0x189/0x1b0
+[75592.371539]  ? set_kthread_struct+0x40/0x40
+[75592.371541]  ? ret_from_fork+0x22/0x30
+[76648.386812] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[76648.386818] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[76648.386861]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[76648.386889] Preemption disabled at:
+[76648.386890] [<0000000000000000>] 0x0
+[76648.386895] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[76648.386897] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[76648.386898] Call Trace:
+[76648.386902]  dump_stack_lvl+0x46/0x5a
+[76648.386908]  __schedule_bug.cold+0x82/0x90
+[76648.386913]  __schedule+0x1199/0x1580
+[76648.386916]  ? raw_spin_rq_unlock+0x18/0x60
+[76648.386921]  ? rt_mutex_setprio+0x1c3/0x4a0
+[76648.386923]  schedule_rtlock+0x1e/0x40
+[76648.386926]  rtlock_slowlock_locked+0x3bf/0xdc0
+[76648.386929]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[76648.387183]  ? _nv035290rm+0xc/0x20 [nvidia]
+[76648.387507]  rt_read_lock+0x68/0x90
+[76648.387509]  ep_poll_callback+0x31/0x220
+[76648.387514]  __wake_up_common+0x79/0x140
+[76648.387517]  __wake_up_common_lock+0x78/0xb0
+[76648.387521]  _nv035299rm+0x59/0x80 [nvidia]
+[76648.387832]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[76648.388132]  ? _nv027614rm+0x10/0x10 [nvidia]
+[76648.388381]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[76648.388630]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[76648.389019]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[76648.389409]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[76648.389808]  ? _nv029406rm+0x161/0x440 [nvidia]
+[76648.390208]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[76648.390507]  ? disable_irq_nosync+0x10/0x10
+[76648.390511]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[76648.390810]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[76648.391055]  ? irq_thread_fn+0x20/0x60
+[76648.391058]  ? irq_thread+0xdc/0x1a0
+[76648.391060]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[76648.391063]  ? irq_thread_check_affinity+0xd0/0xd0
+[76648.391065]  ? kthread+0x189/0x1b0
+[76648.391067]  ? set_kthread_struct+0x40/0x40
+[76648.391069]  ? ret_from_fork+0x22/0x30
+[78723.928633] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[78723.928638] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[78723.928680]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[78723.928709] Preemption disabled at:
+[78723.928709] [<0000000000000000>] 0x0
+[78723.928714] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[78723.928717] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[78723.928718] Call Trace:
+[78723.928722]  dump_stack_lvl+0x46/0x5a
+[78723.928729]  __schedule_bug.cold+0x82/0x90
+[78723.928734]  __schedule+0x1199/0x1580
+[78723.928736]  ? push_rt_task.part.0+0x1e/0x320
+[78723.928742]  ? raw_spin_rq_unlock+0x18/0x60
+[78723.928745]  ? rt_mutex_setprio+0x1c3/0x4a0
+[78723.928748]  schedule_rtlock+0x1e/0x40
+[78723.928750]  rtlock_slowlock_locked+0x3bf/0xdc0
+[78723.928752]  ? preempt_count_add+0x68/0xa0
+[78723.928756]  rt_spin_lock+0x41/0x60
+[78723.928758]  ___slab_alloc.constprop.0+0xa6/0x640
+[78723.928762]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[78723.929021]  ? _nv011678rm+0x40/0x90 [nvidia]
+[78723.929345]  ? _nv039798rm+0x13/0x50 [nvidia]
+[78723.929668]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[78723.929990]  ? _nv040534rm+0x13/0x40 [nvidia]
+[78723.930317]  kmem_cache_alloc_trace+0x6c/0x1c0
+[78723.930320]  nv_post_event+0x95/0x140 [nvidia]
+[78723.930517]  _nv035299rm+0x59/0x80 [nvidia]
+[78723.930819]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[78723.931128]  ? _nv027614rm+0x10/0x10 [nvidia]
+[78723.931377]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[78723.931626]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[78723.932036]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[78723.932431]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[78723.932816]  ? _nv029406rm+0x161/0x440 [nvidia]
+[78723.933200]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[78723.933494]  ? disable_irq_nosync+0x10/0x10
+[78723.933498]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[78723.933792]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[78723.933994]  ? irq_thread_fn+0x20/0x60
+[78723.933998]  ? irq_thread+0xdc/0x1a0
+[78723.934001]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[78723.934005]  ? irq_thread_check_affinity+0xd0/0xd0
+[78723.934008]  ? kthread+0x189/0x1b0
+[78723.934011]  ? set_kthread_struct+0x40/0x40
+[78723.934013]  ? ret_from_fork+0x22/0x30
+[78724.668912] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[78724.668917] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[78724.668959]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[78724.668988] Preemption disabled at:
+[78724.668988] [<0000000000000000>] 0x0
+[78724.668994] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[78724.668996] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[78724.668997] Call Trace:
+[78724.669001]  dump_stack_lvl+0x46/0x5a
+[78724.669008]  __schedule_bug.cold+0x82/0x90
+[78724.669012]  __schedule+0x1199/0x1580
+[78724.669016]  ? push_rt_task.part.0+0x1e/0x320
+[78724.669021]  ? raw_spin_rq_unlock+0x18/0x60
+[78724.669024]  ? rt_mutex_setprio+0x1c3/0x4a0
+[78724.669027]  schedule_rtlock+0x1e/0x40
+[78724.669029]  rtlock_slowlock_locked+0x3bf/0xdc0
+[78724.669032]  ? preempt_count_add+0x68/0xa0
+[78724.669035]  rt_spin_lock+0x41/0x60
+[78724.669037]  ___slab_alloc.constprop.0+0xa6/0x640
+[78724.669041]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[78724.669304]  ? _nv011678rm+0x40/0x90 [nvidia]
+[78724.669628]  ? _nv039798rm+0x13/0x50 [nvidia]
+[78724.669970]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[78724.670311]  ? _nv040534rm+0x13/0x40 [nvidia]
+[78724.670644]  kmem_cache_alloc_trace+0x6c/0x1c0
+[78724.670649]  nv_post_event+0x95/0x140 [nvidia]
+[78724.670944]  _nv035299rm+0x59/0x80 [nvidia]
+[78724.671297]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[78724.671597]  ? _nv027614rm+0x10/0x10 [nvidia]
+[78724.671846]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[78724.672095]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[78724.672485]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[78724.672876]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[78724.673261]  ? _nv029406rm+0x161/0x440 [nvidia]
+[78724.673646]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[78724.673941]  ? disable_irq_nosync+0x10/0x10
+[78724.673944]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[78724.674260]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[78724.674457]  ? irq_thread_fn+0x20/0x60
+[78724.674460]  ? irq_thread+0xdc/0x1a0
+[78724.674462]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[78724.674465]  ? irq_thread_check_affinity+0xd0/0xd0
+[78724.674467]  ? kthread+0x189/0x1b0
+[78724.674469]  ? set_kthread_struct+0x40/0x40
+[78724.674471]  ? ret_from_fork+0x22/0x30
+[78839.747607] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[78839.747612] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[78839.747672]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[78839.747702] Preemption disabled at:
+[78839.747703] [<0000000000000000>] 0x0
+[78839.747708] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[78839.747711] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[78839.747712] Call Trace:
+[78839.747716]  dump_stack_lvl+0x46/0x5a
+[78839.747722]  __schedule_bug.cold+0x82/0x90
+[78839.747727]  __schedule+0x1199/0x1580
+[78839.747730]  ? raw_spin_rq_unlock+0x18/0x60
+[78839.747735]  ? rt_mutex_setprio+0x1c3/0x4a0
+[78839.747737]  schedule_rtlock+0x1e/0x40
+[78839.747739]  rtlock_slowlock_locked+0x3bf/0xdc0
+[78839.747743]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[78839.748002]  ? _nv035290rm+0xc/0x20 [nvidia]
+[78839.748326]  rt_read_lock+0x68/0x90
+[78839.748328]  ep_poll_callback+0x31/0x220
+[78839.748332]  __wake_up_common+0x79/0x140
+[78839.748336]  __wake_up_common_lock+0x78/0xb0
+[78839.748339]  _nv035299rm+0x59/0x80 [nvidia]
+[78839.748654]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[78839.748969]  ? _nv027614rm+0x10/0x10 [nvidia]
+[78839.749217]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[78839.749466]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[78839.749872]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[78839.750273]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[78839.750657]  ? _nv029406rm+0x161/0x440 [nvidia]
+[78839.751049]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[78839.751343]  ? disable_irq_nosync+0x10/0x10
+[78839.751347]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[78839.751676]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[78839.751872]  ? irq_thread_fn+0x20/0x60
+[78839.751875]  ? irq_thread+0xdc/0x1a0
+[78839.751877]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[78839.751880]  ? irq_thread_check_affinity+0xd0/0xd0
+[78839.751882]  ? kthread+0x189/0x1b0
+[78839.751884]  ? set_kthread_struct+0x40/0x40
+[78839.751886]  ? ret_from_fork+0x22/0x30
+[78886.265336] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[78886.265342] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[78886.265385]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[78886.265414] Preemption disabled at:
+[78886.265414] [<0000000000000000>] 0x0
+[78886.265419] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[78886.265422] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[78886.265423] Call Trace:
+[78886.265427]  dump_stack_lvl+0x46/0x5a
+[78886.265433]  __schedule_bug.cold+0x82/0x90
+[78886.265438]  __schedule+0x1199/0x1580
+[78886.265442]  ? raw_spin_rq_unlock+0x18/0x60
+[78886.265446]  ? rt_mutex_setprio+0x1c3/0x4a0
+[78886.265449]  schedule_rtlock+0x1e/0x40
+[78886.265451]  rtlock_slowlock_locked+0x3bf/0xdc0
+[78886.265454]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[78886.265711]  ? _nv035290rm+0xc/0x20 [nvidia]
+[78886.266035]  rt_read_lock+0x68/0x90
+[78886.266037]  ep_poll_callback+0x31/0x220
+[78886.266042]  __wake_up_common+0x79/0x140
+[78886.266045]  __wake_up_common_lock+0x78/0xb0
+[78886.266048]  _nv035299rm+0x59/0x80 [nvidia]
+[78886.266350]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[78886.266649]  ? _nv027614rm+0x10/0x10 [nvidia]
+[78886.266898]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[78886.267147]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[78886.267537]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[78886.267928]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[78886.268312]  ? _nv029406rm+0x161/0x440 [nvidia]
+[78886.268696]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[78886.268990]  ? disable_irq_nosync+0x10/0x10
+[78886.268993]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[78886.269286]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[78886.269481]  ? irq_thread_fn+0x20/0x60
+[78886.269484]  ? irq_thread+0xdc/0x1a0
+[78886.269486]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[78886.269488]  ? irq_thread_check_affinity+0xd0/0xd0
+[78886.269491]  ? kthread+0x189/0x1b0
+[78886.269493]  ? set_kthread_struct+0x40/0x40
+[78886.269494]  ? ret_from_fork+0x22/0x30
+[79615.671350] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[79615.671356] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[79615.671406]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[79615.671434] Preemption disabled at:
+[79615.671435] [<0000000000000000>] 0x0
+[79615.671440] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[79615.671442] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[79615.671444] Call Trace:
+[79615.671448]  dump_stack_lvl+0x46/0x5a
+[79615.671454]  __schedule_bug.cold+0x82/0x90
+[79615.671459]  __schedule+0x1199/0x1580
+[79615.671462]  ? raw_spin_rq_unlock+0x18/0x60
+[79615.671466]  ? rt_mutex_setprio+0x1c3/0x4a0
+[79615.671469]  schedule_rtlock+0x1e/0x40
+[79615.671471]  rtlock_slowlock_locked+0x3bf/0xdc0
+[79615.671475]  rt_spin_lock+0x41/0x60
+[79615.671477]  __wake_up_common_lock+0x61/0xb0
+[79615.671480]  ep_poll_callback+0xfe/0x220
+[79615.671485]  __wake_up_common+0x79/0x140
+[79615.671487]  __wake_up_common_lock+0x78/0xb0
+[79615.671490]  _nv035299rm+0x59/0x80 [nvidia]
+[79615.671842]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[79615.672143]  ? _nv027614rm+0x10/0x10 [nvidia]
+[79615.672392]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[79615.672641]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[79615.673037]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[79615.673444]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[79615.673844]  ? _nv029406rm+0x161/0x440 [nvidia]
+[79615.674230]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[79615.674523]  ? disable_irq_nosync+0x10/0x10
+[79615.674527]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[79615.674820]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[79615.675015]  ? irq_thread_fn+0x20/0x60
+[79615.675017]  ? irq_thread+0xdc/0x1a0
+[79615.675020]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[79615.675022]  ? irq_thread_check_affinity+0xd0/0xd0
+[79615.675025]  ? kthread+0x189/0x1b0
+[79615.675026]  ? set_kthread_struct+0x40/0x40
+[79615.675028]  ? ret_from_fork+0x22/0x30
+[79749.448320] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[79749.448326] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[79749.448370]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[79749.448398] Preemption disabled at:
+[79749.448399] [<0000000000000000>] 0x0
+[79749.448404] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[79749.448407] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[79749.448408] Call Trace:
+[79749.448413]  dump_stack_lvl+0x46/0x5a
+[79749.448419]  __schedule_bug.cold+0x82/0x90
+[79749.448424]  __schedule+0x1199/0x1580
+[79749.448427]  ? push_rt_task.part.0+0x1e/0x320
+[79749.448432]  ? raw_spin_rq_unlock+0x18/0x60
+[79749.448435]  ? rt_mutex_setprio+0x1c3/0x4a0
+[79749.448437]  schedule_rtlock+0x1e/0x40
+[79749.448440]  rtlock_slowlock_locked+0x3bf/0xdc0
+[79749.448442]  ? preempt_count_add+0x68/0xa0
+[79749.448445]  rt_spin_lock+0x41/0x60
+[79749.448447]  ___slab_alloc.constprop.0+0xa6/0x640
+[79749.448452]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[79749.448710]  ? _nv011678rm+0x40/0x90 [nvidia]
+[79749.449073]  ? _nv039798rm+0x13/0x50 [nvidia]
+[79749.449397]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[79749.449729]  ? _nv040534rm+0x13/0x40 [nvidia]
+[79749.450068]  kmem_cache_alloc_trace+0x6c/0x1c0
+[79749.450072]  nv_post_event+0x95/0x140 [nvidia]
+[79749.450287]  _nv035299rm+0x59/0x80 [nvidia]
+[79749.450589]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[79749.450896]  ? _nv027614rm+0x10/0x10 [nvidia]
+[79749.451144]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[79749.451393]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[79749.451801]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[79749.452200]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[79749.452585]  ? _nv029406rm+0x161/0x440 [nvidia]
+[79749.452975]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[79749.453269]  ? disable_irq_nosync+0x10/0x10
+[79749.453273]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[79749.453588]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[79749.453817]  ? irq_thread_fn+0x20/0x60
+[79749.453821]  ? irq_thread+0xdc/0x1a0
+[79749.453825]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[79749.453828]  ? irq_thread_check_affinity+0xd0/0xd0
+[79749.453832]  ? kthread+0x189/0x1b0
+[79749.453835]  ? set_kthread_struct+0x40/0x40
+[79749.453838]  ? ret_from_fork+0x22/0x30
+[82629.932422] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[82629.932427] sas: ata9: end_device-8:0: cmd error handler
+[82629.932466] sas: ata9: end_device-8:0: dev error handler
+[82629.934089] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[82629.958069] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[82629.958072] sas: ata9: end_device-8:0: cmd error handler
+[82629.958111] sas: ata9: end_device-8:0: dev error handler
+[82629.959834] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[82629.988362] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[82629.988384] sas: ata9: end_device-8:0: cmd error handler
+[82629.988421] sas: ata9: end_device-8:0: dev error handler
+[82629.989965] sr 8:0:0:0: [sr0] tag#42 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=345s
+[82629.989970] sr 8:0:0:0: [sr0] tag#42 Sense Key : Not Ready [current] 
+[82629.989972] sr 8:0:0:0: [sr0] tag#42 Add. Sense: Medium not present - tray closed
+[82629.989975] sr 8:0:0:0: [sr0] tag#42 CDB: Read(10) 28 00 00 00 00 00 00 00 08 00
+[82629.989976] blk_update_request: I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 3 prio class 0
+[82629.990020] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[82629.990047] sr 8:0:0:0: [sr0] tag#109 unaligned transfer
+[82629.990050] blk_update_request: I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82629.990066] Buffer I/O error on dev sr0, logical block 0, async page read
+[82629.990081] sr 8:0:0:0: [sr0] tag#110 unaligned transfer
+[82629.990083] blk_update_request: I/O error, dev sr0, sector 1 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82629.990085] Buffer I/O error on dev sr0, logical block 1, async page read
+[82629.990095] sr 8:0:0:0: [sr0] tag#111 unaligned transfer
+[82629.990096] blk_update_request: I/O error, dev sr0, sector 2 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82629.990098] Buffer I/O error on dev sr0, logical block 2, async page read
+[82629.990107] sr 8:0:0:0: [sr0] tag#112 unaligned transfer
+[82629.990108] blk_update_request: I/O error, dev sr0, sector 3 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82629.990111] Buffer I/O error on dev sr0, logical block 3, async page read
+[82629.990120] sr 8:0:0:0: [sr0] tag#113 unaligned transfer
+[82629.990121] blk_update_request: I/O error, dev sr0, sector 4 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82629.990123] Buffer I/O error on dev sr0, logical block 4, async page read
+[82629.990132] sr 8:0:0:0: [sr0] tag#114 unaligned transfer
+[82629.990133] blk_update_request: I/O error, dev sr0, sector 5 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82629.990135] Buffer I/O error on dev sr0, logical block 5, async page read
+[82629.990144] sr 8:0:0:0: [sr0] tag#115 unaligned transfer
+[82629.990145] blk_update_request: I/O error, dev sr0, sector 6 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82629.990147] Buffer I/O error on dev sr0, logical block 6, async page read
+[82629.990156] sr 8:0:0:0: [sr0] tag#116 unaligned transfer
+[82629.990157] blk_update_request: I/O error, dev sr0, sector 7 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82629.990159] Buffer I/O error on dev sr0, logical block 7, async page read
+[82630.018103] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[82630.018107] sas: ata9: end_device-8:0: cmd error handler
+[82630.018143] sas: ata9: end_device-8:0: dev error handler
+[82630.019714] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[82953.478016] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[82953.478022] sas: ata9: end_device-8:0: cmd error handler
+[82953.478057] sas: ata9: end_device-8:0: dev error handler
+[82953.479680] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[82953.500055] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[82953.500059] sas: ata9: end_device-8:0: cmd error handler
+[82953.500079] sas: ata9: end_device-8:0: dev error handler
+[82953.501742] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[82953.531056] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[82953.531060] sas: ata9: end_device-8:0: cmd error handler
+[82953.531107] sas: ata9: end_device-8:0: dev error handler
+[82953.532778] sr 8:0:0:0: [sr0] tag#45 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=343s
+[82953.532789] sr 8:0:0:0: [sr0] tag#45 Sense Key : Not Ready [current] 
+[82953.532794] sr 8:0:0:0: [sr0] tag#45 Add. Sense: Medium not present - tray closed
+[82953.532800] sr 8:0:0:0: [sr0] tag#45 CDB: Read(10) 28 00 00 00 00 00 00 00 08 00
+[82953.532803] blk_update_request: I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 4 prio class 0
+[82953.532887] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[82953.532914] sr 8:0:0:0: [sr0] tag#46 unaligned transfer
+[82953.532917] blk_update_request: I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82953.532920] Buffer I/O error on dev sr0, logical block 0, async page read
+[82953.532924] sr 8:0:0:0: [sr0] tag#47 unaligned transfer
+[82953.532927] blk_update_request: I/O error, dev sr0, sector 1 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82953.532931] Buffer I/O error on dev sr0, logical block 1, async page read
+[82953.532940] sr 8:0:0:0: [sr0] tag#48 unaligned transfer
+[82953.532942] blk_update_request: I/O error, dev sr0, sector 2 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82953.532943] Buffer I/O error on dev sr0, logical block 2, async page read
+[82953.532951] sr 8:0:0:0: [sr0] tag#49 unaligned transfer
+[82953.532952] blk_update_request: I/O error, dev sr0, sector 3 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82953.532954] Buffer I/O error on dev sr0, logical block 3, async page read
+[82953.533041] sr 8:0:0:0: [sr0] tag#50 unaligned transfer
+[82953.533042] blk_update_request: I/O error, dev sr0, sector 4 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82953.533044] Buffer I/O error on dev sr0, logical block 4, async page read
+[82953.533052] sr 8:0:0:0: [sr0] tag#51 unaligned transfer
+[82953.533053] blk_update_request: I/O error, dev sr0, sector 5 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82953.533055] Buffer I/O error on dev sr0, logical block 5, async page read
+[82953.533062] sr 8:0:0:0: [sr0] tag#52 unaligned transfer
+[82953.533063] blk_update_request: I/O error, dev sr0, sector 6 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82953.533064] Buffer I/O error on dev sr0, logical block 6, async page read
+[82953.533072] sr 8:0:0:0: [sr0] tag#53 unaligned transfer
+[82953.533073] blk_update_request: I/O error, dev sr0, sector 7 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[82953.533074] Buffer I/O error on dev sr0, logical block 7, async page read
+[82953.564384] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[82953.564388] sas: ata9: end_device-8:0: cmd error handler
+[82953.564426] sas: ata9: end_device-8:0: dev error handler
+[82953.566078] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[83736.853529] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[83736.853534] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[83736.853578]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[83736.853608] Preemption disabled at:
+[83736.853608] [<0000000000000000>] 0x0
+[83736.853613] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[83736.853615] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[83736.853617] Call Trace:
+[83736.853621]  dump_stack_lvl+0x46/0x5a
+[83736.853627]  __schedule_bug.cold+0x82/0x90
+[83736.853631]  __schedule+0x1199/0x1580
+[83736.853634]  ? push_rt_task.part.0+0x1e/0x320
+[83736.853640]  ? raw_spin_rq_unlock+0x18/0x60
+[83736.853643]  ? rt_mutex_setprio+0x1c3/0x4a0
+[83736.853645]  schedule_rtlock+0x1e/0x40
+[83736.853648]  rtlock_slowlock_locked+0x3bf/0xdc0
+[83736.853651]  rt_spin_lock+0x41/0x60
+[83736.853653]  ___slab_alloc.constprop.0+0xa6/0x640
+[83736.853658]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[83736.853919]  ? _nv011678rm+0x40/0x90 [nvidia]
+[83736.854273]  ? _nv039798rm+0x13/0x50 [nvidia]
+[83736.854621]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[83736.854943]  ? _nv040534rm+0x13/0x40 [nvidia]
+[83736.855269]  kmem_cache_alloc_trace+0x6c/0x1c0
+[83736.855272]  nv_post_event+0x95/0x140 [nvidia]
+[83736.855478]  _nv035299rm+0x59/0x80 [nvidia]
+[83736.855779]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[83736.856084]  ? _nv027614rm+0x10/0x10 [nvidia]
+[83736.856364]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[83736.856644]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[83736.857050]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[83736.857456]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[83736.857855]  ? _nv029406rm+0x161/0x440 [nvidia]
+[83736.858254]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[83736.858553]  ? disable_irq_nosync+0x10/0x10
+[83736.858558]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[83736.858857]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[83736.859102]  ? irq_thread_fn+0x20/0x60
+[83736.859104]  ? irq_thread+0xdc/0x1a0
+[83736.859107]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[83736.859110]  ? irq_thread_check_affinity+0xd0/0xd0
+[83736.859112]  ? kthread+0x189/0x1b0
+[83736.859114]  ? set_kthread_struct+0x40/0x40
+[83736.859116]  ? ret_from_fork+0x22/0x30
+[84546.278972] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[84546.278978] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[84546.279021]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[84546.279049] Preemption disabled at:
+[84546.279050] [<0000000000000000>] 0x0
+[84546.279055] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[84546.279058] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[84546.279059] Call Trace:
+[84546.279063]  dump_stack_lvl+0x46/0x5a
+[84546.279070]  __schedule_bug.cold+0x82/0x90
+[84546.279074]  __schedule+0x1199/0x1580
+[84546.279078]  ? raw_spin_rq_unlock+0x18/0x60
+[84546.279082]  ? rt_mutex_setprio+0x1c3/0x4a0
+[84546.279084]  schedule_rtlock+0x1e/0x40
+[84546.279087]  rtlock_slowlock_locked+0x3bf/0xdc0
+[84546.279090]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[84546.279346]  rt_spin_lock+0x41/0x60
+[84546.279348]  __wake_up_common_lock+0x61/0xb0
+[84546.279352]  ep_poll_callback+0xfe/0x220
+[84546.279357]  __wake_up_common+0x79/0x140
+[84546.279359]  __wake_up_common_lock+0x78/0xb0
+[84546.279362]  _nv035299rm+0x59/0x80 [nvidia]
+[84546.279665]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[84546.280038]  ? _nv027614rm+0x10/0x10 [nvidia]
+[84546.280404]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[84546.280654]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[84546.281045]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[84546.281440]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[84546.281825]  ? _nv029406rm+0x161/0x440 [nvidia]
+[84546.282212]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[84546.282505]  ? disable_irq_nosync+0x10/0x10
+[84546.282510]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[84546.282803]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[84546.282997]  ? irq_thread_fn+0x20/0x60
+[84546.283000]  ? irq_thread+0xdc/0x1a0
+[84546.283002]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[84546.283005]  ? irq_thread_check_affinity+0xd0/0xd0
+[84546.283007]  ? kthread+0x189/0x1b0
+[84546.283009]  ? set_kthread_struct+0x40/0x40
+[84546.283011]  ? ret_from_fork+0x22/0x30
+[84546.398882] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[84546.398888] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[84546.398930]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[84546.398959] Preemption disabled at:
+[84546.398959] [<0000000000000000>] 0x0
+[84546.398965] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[84546.398968] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[84546.398969] Call Trace:
+[84546.398973]  dump_stack_lvl+0x46/0x5a
+[84546.398980]  __schedule_bug.cold+0x82/0x90
+[84546.398984]  __schedule+0x1199/0x1580
+[84546.398988]  ? raw_spin_rq_unlock+0x18/0x60
+[84546.398993]  ? rt_mutex_setprio+0x1c3/0x4a0
+[84546.398995]  schedule_rtlock+0x1e/0x40
+[84546.398998]  rtlock_slowlock_locked+0x3bf/0xdc0
+[84546.399001]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[84546.399254]  ? _nv035290rm+0xc/0x20 [nvidia]
+[84546.399578]  rt_read_lock+0x68/0x90
+[84546.399581]  ep_poll_callback+0x31/0x220
+[84546.399585]  __wake_up_common+0x79/0x140
+[84546.399589]  __wake_up_common_lock+0x78/0xb0
+[84546.399592]  _nv035299rm+0x59/0x80 [nvidia]
+[84546.399895]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[84546.400195]  ? _nv027614rm+0x10/0x10 [nvidia]
+[84546.400443]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[84546.400692]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[84546.401082]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[84546.401472]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[84546.401881]  ? _nv029406rm+0x161/0x440 [nvidia]
+[84546.402284]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[84546.402578]  ? disable_irq_nosync+0x10/0x10
+[84546.402584]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[84546.402877]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[84546.403072]  ? irq_thread_fn+0x20/0x60
+[84546.403075]  ? irq_thread+0xdc/0x1a0
+[84546.403077]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[84546.403079]  ? irq_thread_check_affinity+0xd0/0xd0
+[84546.403082]  ? kthread+0x189/0x1b0
+[84546.403084]  ? set_kthread_struct+0x40/0x40
+[84546.403086]  ? ret_from_fork+0x22/0x30
+[86262.066237] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[86262.066242] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[86262.066284]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[86262.066312] Preemption disabled at:
+[86262.066313] [<0000000000000000>] 0x0
+[86262.066318] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[86262.066320] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[86262.066322] Call Trace:
+[86262.066326]  dump_stack_lvl+0x46/0x5a
+[86262.066332]  __schedule_bug.cold+0x82/0x90
+[86262.066337]  __schedule+0x1199/0x1580
+[86262.066340]  ? push_rt_task.part.0+0x1e/0x320
+[86262.066345]  ? raw_spin_rq_unlock+0x18/0x60
+[86262.066349]  ? rt_mutex_setprio+0x1c3/0x4a0
+[86262.066351]  schedule_rtlock+0x1e/0x40
+[86262.066353]  rtlock_slowlock_locked+0x3bf/0xdc0
+[86262.066357]  ? _nv035290rm+0xc/0x20 [nvidia]
+[86262.066727]  ? _nv009835rm+0xf9/0x1a0 [nvidia]
+[86262.067112]  ? preempt_count_add+0x68/0xa0
+[86262.067116]  rt_spin_lock+0x41/0x60
+[86262.067118]  ___slab_alloc.constprop.0+0xa6/0x640
+[86262.067122]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[86262.067341]  ? _nv011678rm+0x40/0x90 [nvidia]
+[86262.067666]  ? _nv039798rm+0x13/0x50 [nvidia]
+[86262.068000]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[86262.068322]  ? _nv040534rm+0x13/0x40 [nvidia]
+[86262.068673]  kmem_cache_alloc_trace+0x6c/0x1c0
+[86262.068677]  nv_post_event+0x95/0x140 [nvidia]
+[86262.068875]  _nv035299rm+0x59/0x80 [nvidia]
+[86262.069177]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[86262.069476]  ? _nv027614rm+0x10/0x10 [nvidia]
+[86262.069725]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[86262.069973]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[86262.070364]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[86262.070782]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[86262.071195]  ? _nv029406rm+0x161/0x440 [nvidia]
+[86262.071648]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[86262.071964]  ? disable_irq_nosync+0x10/0x10
+[86262.071968]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[86262.072262]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[86262.072457]  ? irq_thread_fn+0x20/0x60
+[86262.072460]  ? irq_thread+0xdc/0x1a0
+[86262.072462]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[86262.072464]  ? irq_thread_check_affinity+0xd0/0xd0
+[86262.072467]  ? kthread+0x189/0x1b0
+[86262.072469]  ? set_kthread_struct+0x40/0x40
+[86262.072470]  ? ret_from_fork+0x22/0x30
+[88796.138601] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[88796.138607] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[88796.138648]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[88796.138677] Preemption disabled at:
+[88796.138678] [<0000000000000000>] 0x0
+[88796.138683] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[88796.138685] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[88796.138687] Call Trace:
+[88796.138691]  dump_stack_lvl+0x46/0x5a
+[88796.138697]  __schedule_bug.cold+0x82/0x90
+[88796.138702]  __schedule+0x1199/0x1580
+[88796.138705]  ? raw_spin_rq_unlock+0x18/0x60
+[88796.138710]  ? rt_mutex_setprio+0x1c3/0x4a0
+[88796.138713]  schedule_rtlock+0x1e/0x40
+[88796.138715]  rtlock_slowlock_locked+0x3bf/0xdc0
+[88796.138718]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[88796.138973]  rt_spin_lock+0x41/0x60
+[88796.138976]  __wake_up_common_lock+0x61/0xb0
+[88796.138980]  ep_poll_callback+0xfe/0x220
+[88796.138984]  __wake_up_common+0x79/0x140
+[88796.138987]  __wake_up_common_lock+0x78/0xb0
+[88796.138990]  _nv035299rm+0x59/0x80 [nvidia]
+[88796.139293]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[88796.139594]  ? _nv027614rm+0x10/0x10 [nvidia]
+[88796.139843]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[88796.140092]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[88796.140482]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[88796.140887]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[88796.141285]  ? _nv029406rm+0x161/0x440 [nvidia]
+[88796.141726]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[88796.142045]  ? disable_irq_nosync+0x10/0x10
+[88796.142050]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[88796.142343]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[88796.142538]  ? irq_thread_fn+0x20/0x60
+[88796.142541]  ? irq_thread+0xdc/0x1a0
+[88796.142543]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[88796.142545]  ? irq_thread_check_affinity+0xd0/0xd0
+[88796.142548]  ? kthread+0x189/0x1b0
+[88796.142550]  ? set_kthread_struct+0x40/0x40
+[88796.142552]  ? ret_from_fork+0x22/0x30
+[89812.401480] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[89812.401485] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[89812.401537]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[89812.401566] Preemption disabled at:
+[89812.401567] [<0000000000000000>] 0x0
+[89812.401572] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[89812.401574] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[89812.401576] Call Trace:
+[89812.401580]  dump_stack_lvl+0x46/0x5a
+[89812.401586]  __schedule_bug.cold+0x82/0x90
+[89812.401591]  __schedule+0x1199/0x1580
+[89812.401594]  ? push_rt_task.part.0+0x1e/0x320
+[89812.401599]  ? raw_spin_rq_unlock+0x18/0x60
+[89812.401602]  ? rt_mutex_setprio+0x1c3/0x4a0
+[89812.401605]  schedule_rtlock+0x1e/0x40
+[89812.401607]  rtlock_slowlock_locked+0x3bf/0xdc0
+[89812.401611]  rt_spin_lock+0x41/0x60
+[89812.401613]  ___slab_alloc.constprop.0+0xa6/0x640
+[89812.401617]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[89812.401874]  ? _nv011678rm+0x40/0x90 [nvidia]
+[89812.402198]  ? _nv039798rm+0x13/0x50 [nvidia]
+[89812.402521]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[89812.402842]  ? _nv040534rm+0x13/0x40 [nvidia]
+[89812.403168]  kmem_cache_alloc_trace+0x6c/0x1c0
+[89812.403171]  nv_post_event+0x95/0x140 [nvidia]
+[89812.403368]  _nv035299rm+0x59/0x80 [nvidia]
+[89812.403670]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[89812.403969]  ? _nv027614rm+0x10/0x10 [nvidia]
+[89812.404218]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[89812.404467]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[89812.404886]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[89812.405277]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[89812.405662]  ? _nv029406rm+0x161/0x440 [nvidia]
+[89812.406047]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[89812.406340]  ? disable_irq_nosync+0x10/0x10
+[89812.406344]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[89812.406644]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[89812.406839]  ? irq_thread_fn+0x20/0x60
+[89812.406841]  ? irq_thread+0xdc/0x1a0
+[89812.406844]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[89812.406846]  ? irq_thread_check_affinity+0xd0/0xd0
+[89812.406849]  ? kthread+0x189/0x1b0
+[89812.406851]  ? set_kthread_struct+0x40/0x40
+[89812.406852]  ? ret_from_fork+0x22/0x30
+[89820.319326] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[89820.319336] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[89820.319379]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[89820.319408] Preemption disabled at:
+[89820.319408] [<0000000000000000>] 0x0
+[89820.319414] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[89820.319416] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[89820.319418] Call Trace:
+[89820.319422]  dump_stack_lvl+0x46/0x5a
+[89820.319428]  __schedule_bug.cold+0x82/0x90
+[89820.319433]  __schedule+0x1199/0x1580
+[89820.319436]  ? push_rt_task.part.0+0x1e/0x320
+[89820.319441]  ? raw_spin_rq_unlock+0x18/0x60
+[89820.319445]  ? rt_mutex_setprio+0x1c3/0x4a0
+[89820.319447]  schedule_rtlock+0x1e/0x40
+[89820.319449]  rtlock_slowlock_locked+0x3bf/0xdc0
+[89820.319452]  ? preempt_count_add+0x68/0xa0
+[89820.319455]  rt_spin_lock+0x41/0x60
+[89820.319457]  ___slab_alloc.constprop.0+0xa6/0x640
+[89820.319462]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[89820.319722]  ? _nv011678rm+0x40/0x90 [nvidia]
+[89820.320046]  ? _nv039798rm+0x13/0x50 [nvidia]
+[89820.320368]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[89820.320714]  ? _nv040534rm+0x13/0x40 [nvidia]
+[89820.321059]  kmem_cache_alloc_trace+0x6c/0x1c0
+[89820.321062]  nv_post_event+0x95/0x140 [nvidia]
+[89820.321266]  _nv035299rm+0x59/0x80 [nvidia]
+[89820.321569]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[89820.321883]  ? _nv027614rm+0x10/0x10 [nvidia]
+[89820.322132]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[89820.322388]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[89820.322779]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[89820.323168]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[89820.323558]  ? _nv029406rm+0x161/0x440 [nvidia]
+[89820.323942]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[89820.324237]  ? disable_irq_nosync+0x10/0x10
+[89820.324242]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[89820.324536]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[89820.324744]  ? irq_thread_fn+0x20/0x60
+[89820.324748]  ? irq_thread+0xdc/0x1a0
+[89820.324750]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[89820.324753]  ? irq_thread_check_affinity+0xd0/0xd0
+[89820.324755]  ? kthread+0x189/0x1b0
+[89820.324757]  ? set_kthread_struct+0x40/0x40
+[89820.324759]  ? ret_from_fork+0x22/0x30
+[89824.819207] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[89824.819214] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[89824.819267]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[89824.819303] Preemption disabled at:
+[89824.819303] [<0000000000000000>] 0x0
+[89824.819321] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[89824.819323] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[89824.819325] Call Trace:
+[89824.819328]  dump_stack_lvl+0x46/0x5a
+[89824.819335]  __schedule_bug.cold+0x82/0x90
+[89824.819340]  __schedule+0x1199/0x1580
+[89824.819343]  ? push_rt_task.part.0+0x1e/0x320
+[89824.819348]  ? raw_spin_rq_unlock+0x18/0x60
+[89824.819351]  ? rt_mutex_setprio+0x1c3/0x4a0
+[89824.819353]  schedule_rtlock+0x1e/0x40
+[89824.819356]  rtlock_slowlock_locked+0x3bf/0xdc0
+[89824.819359]  ? preempt_count_add+0x68/0xa0
+[89824.819362]  rt_spin_lock+0x41/0x60
+[89824.819364]  ___slab_alloc.constprop.0+0xa6/0x640
+[89824.819369]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[89824.819700]  ? _nv011678rm+0x40/0x90 [nvidia]
+[89824.820132]  ? _nv039798rm+0x13/0x50 [nvidia]
+[89824.820578]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[89824.820900]  ? _nv040534rm+0x13/0x40 [nvidia]
+[89824.821293]  kmem_cache_alloc_trace+0x6c/0x1c0
+[89824.821297]  nv_post_event+0x95/0x140 [nvidia]
+[89824.821559]  _nv035299rm+0x59/0x80 [nvidia]
+[89824.821961]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[89824.822382]  ? _nv027614rm+0x10/0x10 [nvidia]
+[89824.822731]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[89824.823063]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[89824.823584]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[89824.824104]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[89824.824627]  ? _nv029406rm+0x161/0x440 [nvidia]
+[89824.825140]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[89824.825532]  ? disable_irq_nosync+0x10/0x10
+[89824.825537]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[89824.825944]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[89824.826191]  ? irq_thread_fn+0x20/0x60
+[89824.826194]  ? irq_thread+0xdc/0x1a0
+[89824.826196]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[89824.826199]  ? irq_thread_check_affinity+0xd0/0xd0
+[89824.826201]  ? kthread+0x189/0x1b0
+[89824.826203]  ? set_kthread_struct+0x40/0x40
+[89824.826205]  ? ret_from_fork+0x22/0x30
+[90167.652920] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[90167.652925] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[90167.652967]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[90167.652999] Preemption disabled at:
+[90167.653000] [<0000000000000000>] 0x0
+[90167.653006] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[90167.653010] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[90167.653012] Call Trace:
+[90167.653016]  dump_stack_lvl+0x46/0x5a
+[90167.653023]  __schedule_bug.cold+0x82/0x90
+[90167.653027]  __schedule+0x1199/0x1580
+[90167.653031]  ? push_rt_task.part.0+0x1e/0x320
+[90167.653036]  ? raw_spin_rq_unlock+0x18/0x60
+[90167.653040]  ? rt_mutex_setprio+0x1c3/0x4a0
+[90167.653042]  schedule_rtlock+0x1e/0x40
+[90167.653045]  rtlock_slowlock_locked+0x3bf/0xdc0
+[90167.653048]  rt_spin_lock+0x41/0x60
+[90167.653050]  ___slab_alloc.constprop.0+0xa6/0x640
+[90167.653055]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[90167.653325]  ? _nv011678rm+0x40/0x90 [nvidia]
+[90167.653655]  ? _nv039798rm+0x13/0x50 [nvidia]
+[90167.653988]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[90167.654310]  ? _nv040534rm+0x13/0x40 [nvidia]
+[90167.654637]  kmem_cache_alloc_trace+0x6c/0x1c0
+[90167.654640]  nv_post_event+0x95/0x140 [nvidia]
+[90167.654836]  _nv035299rm+0x59/0x80 [nvidia]
+[90167.655145]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[90167.655452]  ? _nv027614rm+0x10/0x10 [nvidia]
+[90167.655700]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[90167.655949]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[90167.656338]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[90167.656727]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[90167.657112]  ? _nv029406rm+0x161/0x440 [nvidia]
+[90167.657498]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[90167.657846]  ? disable_irq_nosync+0x10/0x10
+[90167.657852]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[90167.658151]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[90167.658355]  ? irq_thread_fn+0x20/0x60
+[90167.658358]  ? irq_thread+0xdc/0x1a0
+[90167.658360]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[90167.658363]  ? irq_thread_check_affinity+0xd0/0xd0
+[90167.658365]  ? kthread+0x189/0x1b0
+[90167.658368]  ? set_kthread_struct+0x40/0x40
+[90167.658369]  ? ret_from_fork+0x22/0x30
+[90465.308445] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[90465.308450] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[90465.308493]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[90465.308522] Preemption disabled at:
+[90465.308522] [<0000000000000000>] 0x0
+[90465.308527] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[90465.308529] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[90465.308531] Call Trace:
+[90465.308535]  dump_stack_lvl+0x46/0x5a
+[90465.308541]  __schedule_bug.cold+0x82/0x90
+[90465.308546]  __schedule+0x1199/0x1580
+[90465.308549]  ? push_rt_task.part.0+0x1e/0x320
+[90465.308554]  ? raw_spin_rq_unlock+0x18/0x60
+[90465.308558]  ? rt_mutex_setprio+0x1c3/0x4a0
+[90465.308560]  schedule_rtlock+0x1e/0x40
+[90465.308563]  rtlock_slowlock_locked+0x3bf/0xdc0
+[90465.308566]  rt_spin_lock+0x41/0x60
+[90465.308568]  ___slab_alloc.constprop.0+0xa6/0x640
+[90465.308573]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[90465.308839]  ? _nv011678rm+0x40/0x90 [nvidia]
+[90465.309175]  ? _nv039798rm+0x13/0x50 [nvidia]
+[90465.309499]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[90465.309831]  ? _nv040534rm+0x13/0x40 [nvidia]
+[90465.310158]  kmem_cache_alloc_trace+0x6c/0x1c0
+[90465.310161]  nv_post_event+0x95/0x140 [nvidia]
+[90465.310358]  _nv035299rm+0x59/0x80 [nvidia]
+[90465.310660]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[90465.310959]  ? _nv027614rm+0x10/0x10 [nvidia]
+[90465.311209]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[90465.311458]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[90465.311854]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[90465.312245]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[90465.312630]  ? _nv029406rm+0x161/0x440 [nvidia]
+[90465.313060]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[90465.313354]  ? disable_irq_nosync+0x10/0x10
+[90465.313359]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[90465.313652]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[90465.313846]  ? irq_thread_fn+0x20/0x60
+[90465.313849]  ? irq_thread+0xdc/0x1a0
+[90465.313851]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[90465.313854]  ? irq_thread_check_affinity+0xd0/0xd0
+[90465.313856]  ? kthread+0x189/0x1b0
+[90465.313859]  ? set_kthread_struct+0x40/0x40
+[90465.313860]  ? ret_from_fork+0x22/0x30
+[90610.524758] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[90610.524765] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[90610.524837]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[90610.524886] Preemption disabled at:
+[90610.524887] [<0000000000000000>] 0x0
+[90610.524894] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[90610.524897] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[90610.524899] Call Trace:
+[90610.524905]  dump_stack_lvl+0x46/0x5a
+[90610.524912]  __schedule_bug.cold+0x82/0x90
+[90610.524919]  __schedule+0x1199/0x1580
+[90610.524923]  ? push_rt_task.part.0+0x1e/0x320
+[90610.524930]  ? raw_spin_rq_unlock+0x18/0x60
+[90610.524935]  ? rt_mutex_setprio+0x1c3/0x4a0
+[90610.524939]  schedule_rtlock+0x1e/0x40
+[90610.524942]  rtlock_slowlock_locked+0x3bf/0xdc0
+[90610.524947]  ? _nv035290rm+0xc/0x20 [nvidia]
+[90610.525345]  ? _nv009835rm+0xf9/0x1a0 [nvidia]
+[90610.525731]  ? preempt_count_add+0x68/0xa0
+[90610.525734]  rt_spin_lock+0x41/0x60
+[90610.525737]  ___slab_alloc.constprop.0+0xa6/0x640
+[90610.525741]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[90610.525991]  ? _nv011678rm+0x40/0x90 [nvidia]
+[90610.526330]  ? _nv039798rm+0x13/0x50 [nvidia]
+[90610.526654]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[90610.526983]  ? _nv040534rm+0x13/0x40 [nvidia]
+[90610.527309]  kmem_cache_alloc_trace+0x6c/0x1c0
+[90610.527312]  nv_post_event+0x95/0x140 [nvidia]
+[90610.527510]  _nv035299rm+0x59/0x80 [nvidia]
+[90610.527811]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[90610.528111]  ? _nv027614rm+0x10/0x10 [nvidia]
+[90610.528359]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[90610.528609]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[90610.529000]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[90610.529410]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[90610.529818]  ? _nv029406rm+0x161/0x440 [nvidia]
+[90610.530246]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[90610.530549]  ? disable_irq_nosync+0x10/0x10
+[90610.530554]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[90610.530859]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[90610.531060]  ? irq_thread_fn+0x20/0x60
+[90610.531063]  ? irq_thread+0xdc/0x1a0
+[90610.531065]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[90610.531068]  ? irq_thread_check_affinity+0xd0/0xd0
+[90610.531070]  ? kthread+0x189/0x1b0
+[90610.531072]  ? set_kthread_struct+0x40/0x40
+[90610.531074]  ? ret_from_fork+0x22/0x30
+[90652.603908] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[90652.603915] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[90652.603977]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[90652.604020] Preemption disabled at:
+[90652.604021] [<0000000000000000>] 0x0
+[90652.604027] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[90652.604030] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[90652.604032] Call Trace:
+[90652.604037]  dump_stack_lvl+0x46/0x5a
+[90652.604044]  __schedule_bug.cold+0x82/0x90
+[90652.604050]  __schedule+0x1199/0x1580
+[90652.604054]  ? push_rt_task.part.0+0x1e/0x320
+[90652.604061]  ? raw_spin_rq_unlock+0x18/0x60
+[90652.604065]  ? rt_mutex_setprio+0x1c3/0x4a0
+[90652.604068]  schedule_rtlock+0x1e/0x40
+[90652.604071]  rtlock_slowlock_locked+0x3bf/0xdc0
+[90652.604077]  rt_spin_lock+0x41/0x60
+[90652.604081]  ___slab_alloc.constprop.0+0xa6/0x640
+[90652.604086]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[90652.604352]  ? _nv011678rm+0x40/0x90 [nvidia]
+[90652.604683]  ? _nv039798rm+0x13/0x50 [nvidia]
+[90652.605013]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[90652.605357]  ? _nv040534rm+0x13/0x40 [nvidia]
+[90652.605685]  kmem_cache_alloc_trace+0x6c/0x1c0
+[90652.605688]  nv_post_event+0x95/0x140 [nvidia]
+[90652.605886]  _nv035299rm+0x59/0x80 [nvidia]
+[90652.606198]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[90652.606497]  ? _nv027614rm+0x10/0x10 [nvidia]
+[90652.606746]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[90652.606994]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[90652.607385]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[90652.607774]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[90652.608166]  ? _nv029406rm+0x161/0x440 [nvidia]
+[90652.608551]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[90652.608876]  ? disable_irq_nosync+0x10/0x10
+[90652.608882]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[90652.609209]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[90652.609403]  ? irq_thread_fn+0x20/0x60
+[90652.609406]  ? irq_thread+0xdc/0x1a0
+[90652.609408]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[90652.609411]  ? irq_thread_check_affinity+0xd0/0xd0
+[90652.609413]  ? kthread+0x189/0x1b0
+[90652.609415]  ? set_kthread_struct+0x40/0x40
+[90652.609417]  ? ret_from_fork+0x22/0x30
+[90669.863896] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[90669.863902] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[90669.863944]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[90669.863972] Preemption disabled at:
+[90669.863973] [<0000000000000000>] 0x0
+[90669.863978] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[90669.863980] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[90669.863981] Call Trace:
+[90669.863986]  dump_stack_lvl+0x46/0x5a
+[90669.863992]  __schedule_bug.cold+0x82/0x90
+[90669.863997]  __schedule+0x1199/0x1580
+[90669.864000]  ? push_rt_task.part.0+0x1e/0x320
+[90669.864005]  ? raw_spin_rq_unlock+0x18/0x60
+[90669.864009]  ? rt_mutex_setprio+0x1c3/0x4a0
+[90669.864011]  schedule_rtlock+0x1e/0x40
+[90669.864013]  rtlock_slowlock_locked+0x3bf/0xdc0
+[90669.864016]  ? preempt_count_add+0x68/0xa0
+[90669.864019]  rt_spin_lock+0x41/0x60
+[90669.864021]  ___slab_alloc.constprop.0+0xa6/0x640
+[90669.864026]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[90669.864284]  ? _nv011678rm+0x40/0x90 [nvidia]
+[90669.864609]  ? _nv039798rm+0x13/0x50 [nvidia]
+[90669.864933]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[90669.865256]  ? _nv040534rm+0x13/0x40 [nvidia]
+[90669.865583]  kmem_cache_alloc_trace+0x6c/0x1c0
+[90669.865586]  nv_post_event+0x95/0x140 [nvidia]
+[90669.865783]  _nv035299rm+0x59/0x80 [nvidia]
+[90669.866086]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[90669.866398]  ? _nv027614rm+0x10/0x10 [nvidia]
+[90669.866648]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[90669.866897]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[90669.867288]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[90669.867679]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[90669.868067]  ? _nv029406rm+0x161/0x440 [nvidia]
+[90669.868453]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[90669.868747]  ? disable_irq_nosync+0x10/0x10
+[90669.868752]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[90669.869046]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[90669.869242]  ? irq_thread_fn+0x20/0x60
+[90669.869245]  ? irq_thread+0xdc/0x1a0
+[90669.869247]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[90669.869250]  ? irq_thread_check_affinity+0xd0/0xd0
+[90669.869252]  ? kthread+0x189/0x1b0
+[90669.869254]  ? set_kthread_struct+0x40/0x40
+[90669.869256]  ? ret_from_fork+0x22/0x30
+[90674.803535] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[90674.803541] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[90674.803584]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[90674.803612] Preemption disabled at:
+[90674.803613] [<0000000000000000>] 0x0
+[90674.803618] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[90674.803620] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[90674.803622] Call Trace:
+[90674.803626]  dump_stack_lvl+0x46/0x5a
+[90674.803632]  __schedule_bug.cold+0x82/0x90
+[90674.803637]  __schedule+0x1199/0x1580
+[90674.803640]  ? push_rt_task.part.0+0x1e/0x320
+[90674.803645]  ? raw_spin_rq_unlock+0x18/0x60
+[90674.803649]  ? rt_mutex_setprio+0x1c3/0x4a0
+[90674.803651]  schedule_rtlock+0x1e/0x40
+[90674.803653]  rtlock_slowlock_locked+0x3bf/0xdc0
+[90674.803657]  rt_spin_lock+0x41/0x60
+[90674.803659]  ___slab_alloc.constprop.0+0xa6/0x640
+[90674.803664]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[90674.803924]  ? _nv011678rm+0x40/0x90 [nvidia]
+[90674.804261]  ? _nv039798rm+0x13/0x50 [nvidia]
+[90674.804585]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[90674.804907]  ? _nv040534rm+0x13/0x40 [nvidia]
+[90674.805233]  kmem_cache_alloc_trace+0x6c/0x1c0
+[90674.805236]  nv_post_event+0x95/0x140 [nvidia]
+[90674.805433]  _nv035299rm+0x59/0x80 [nvidia]
+[90674.805734]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[90674.806034]  ? _nv027614rm+0x10/0x10 [nvidia]
+[90674.806283]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[90674.806532]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[90674.806922]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[90674.807312]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[90674.807697]  ? _nv029406rm+0x161/0x440 [nvidia]
+[90674.808083]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[90674.808389]  ? disable_irq_nosync+0x10/0x10
+[90674.808393]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[90674.808697]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[90674.808891]  ? irq_thread_fn+0x20/0x60
+[90674.808894]  ? irq_thread+0xdc/0x1a0
+[90674.808896]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[90674.808899]  ? irq_thread_check_affinity+0xd0/0xd0
+[90674.808901]  ? kthread+0x189/0x1b0
+[90674.808904]  ? set_kthread_struct+0x40/0x40
+[90674.808905]  ? ret_from_fork+0x22/0x30
+[90937.298816] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000003
+[90937.298821] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[90937.298865]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[90937.298893] Preemption disabled at:
+[90937.298894] [<0000000000000000>] 0x0
+[90937.298899] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[90937.298901] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[90937.298902] Call Trace:
+[90937.298906]  dump_stack_lvl+0x46/0x5a
+[90937.298913]  __schedule_bug.cold+0x82/0x90
+[90937.298917]  __schedule+0x1199/0x1580
+[90937.298920]  ? push_rt_task.part.0+0x1e/0x320
+[90937.298925]  ? raw_spin_rq_unlock+0x18/0x60
+[90937.298929]  ? rt_mutex_setprio+0x1c3/0x4a0
+[90937.298931]  schedule_rtlock+0x1e/0x40
+[90937.298934]  rtlock_slowlock_locked+0x3bf/0xdc0
+[90937.298936]  ? sugov_exit+0xa0/0xa0
+[90937.298938]  ? update_load_avg+0x662/0x6a0
+[90937.298941]  rt_spin_lock+0x41/0x60
+[90937.298943]  ___slab_alloc.constprop.0+0xa6/0x640
+[90937.298948]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[90937.299205]  ? _nv011678rm+0x40/0x90 [nvidia]
+[90937.299529]  ? _nv039798rm+0x13/0x50 [nvidia]
+[90937.299853]  ? _nv035978rm+0x19/0xb0 [nvidia]
+[90937.300174]  ? _nv040534rm+0x13/0x40 [nvidia]
+[90937.300500]  kmem_cache_alloc_trace+0x6c/0x1c0
+[90937.300503]  nv_post_event+0x95/0x140 [nvidia]
+[90937.300711]  _nv035299rm+0x59/0x80 [nvidia]
+[90937.301013]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[90937.301313]  ? _nv027614rm+0x10/0x10 [nvidia]
+[90937.301562]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[90937.301811]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[90937.302201]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[90937.302592]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[90937.302990]  ? _nv029406rm+0x161/0x440 [nvidia]
+[90937.303389]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[90937.303693]  ? disable_irq_nosync+0x10/0x10
+[90937.303698]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[90937.303993]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[90937.304188]  ? irq_thread_fn+0x20/0x60
+[90937.304190]  ? irq_thread+0xdc/0x1a0
+[90937.304192]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[90937.304195]  ? irq_thread_check_affinity+0xd0/0xd0
+[90937.304197]  ? kthread+0x189/0x1b0
+[90937.304199]  ? set_kthread_struct+0x40/0x40
+[90937.304201]  ? ret_from_fork+0x22/0x30
+[91098.256181] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[91098.256191] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[91098.256253]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[91098.256295] Preemption disabled at:
+[91098.256296] [<0000000000000000>] 0x0
+[91098.256302] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[91098.256306] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[91098.256308] Call Trace:
+[91098.256313]  dump_stack_lvl+0x46/0x5a
+[91098.256321]  __schedule_bug.cold+0x82/0x90
+[91098.256327]  __schedule+0x1199/0x1580
+[91098.256332]  ? raw_spin_rq_unlock+0x18/0x60
+[91098.256337]  ? rt_mutex_setprio+0x1c3/0x4a0
+[91098.256341]  schedule_rtlock+0x1e/0x40
+[91098.256344]  rtlock_slowlock_locked+0x3bf/0xdc0
+[91098.256349]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[91098.256686]  rt_spin_lock+0x41/0x60
+[91098.256690]  __wake_up_common_lock+0x61/0xb0
+[91098.256695]  ep_poll_callback+0xfe/0x220
+[91098.256701]  __wake_up_common+0x79/0x140
+[91098.256705]  __wake_up_common_lock+0x78/0xb0
+[91098.256709]  _nv035299rm+0x59/0x80 [nvidia]
+[91098.257105]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[91098.257500]  ? _nv027614rm+0x10/0x10 [nvidia]
+[91098.257836]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[91098.258171]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[91098.258674]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[91098.259184]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[91098.259697]  ? _nv029406rm+0x161/0x440 [nvidia]
+[91098.260207]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[91098.260595]  ? disable_irq_nosync+0x10/0x10
+[91098.260602]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[91098.260996]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[91098.261269]  ? irq_thread_fn+0x20/0x60
+[91098.261273]  ? irq_thread+0xdc/0x1a0
+[91098.261276]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[91098.261281]  ? irq_thread_check_affinity+0xd0/0xd0
+[91098.261285]  ? kthread+0x189/0x1b0
+[91098.261287]  ? set_kthread_struct+0x40/0x40
+[91098.261289]  ? ret_from_fork+0x22/0x30
+[91977.680667] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[91977.680672] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[91977.680715]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[91977.680743] Preemption disabled at:
+[91977.680744] [<0000000000000000>] 0x0
+[91977.680749] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[91977.680751] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[91977.680753] Call Trace:
+[91977.680757]  dump_stack_lvl+0x46/0x5a
+[91977.680763]  __schedule_bug.cold+0x82/0x90
+[91977.680767]  __schedule+0x1199/0x1580
+[91977.680771]  ? raw_spin_rq_unlock+0x18/0x60
+[91977.680775]  ? rt_mutex_setprio+0x1c3/0x4a0
+[91977.680778]  schedule_rtlock+0x1e/0x40
+[91977.680780]  rtlock_slowlock_locked+0x3bf/0xdc0
+[91977.680782]  ? ___slab_alloc.constprop.0+0x10e/0x640
+[91977.680787]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[91977.681038]  rt_spin_lock+0x41/0x60
+[91977.681040]  __wake_up_common_lock+0x61/0xb0
+[91977.681044]  _nv035299rm+0x59/0x80 [nvidia]
+[91977.681348]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[91977.681648]  ? _nv027614rm+0x10/0x10 [nvidia]
+[91977.681897]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[91977.682146]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[91977.682537]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[91977.682927]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[91977.683312]  ? _nv029406rm+0x161/0x440 [nvidia]
+[91977.683697]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[91977.683998]  ? disable_irq_nosync+0x10/0x10
+[91977.684003]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[91977.684296]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[91977.684491]  ? irq_thread_fn+0x20/0x60
+[91977.684493]  ? irq_thread+0xdc/0x1a0
+[91977.684495]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[91977.684498]  ? irq_thread_check_affinity+0xd0/0xd0
+[91977.684501]  ? kthread+0x189/0x1b0
+[91977.684502]  ? set_kthread_struct+0x40/0x40
+[91977.684504]  ? ret_from_fork+0x22/0x30
+[92656.648252] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[92656.648259] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[92656.648300]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[92656.648329] Preemption disabled at:
+[92656.648329] [<0000000000000000>] 0x0
+[92656.648334] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[92656.648337] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[92656.648338] Call Trace:
+[92656.648342]  dump_stack_lvl+0x46/0x5a
+[92656.648348]  __schedule_bug.cold+0x82/0x90
+[92656.648353]  __schedule+0x1199/0x1580
+[92656.648357]  ? raw_spin_rq_unlock+0x18/0x60
+[92656.648361]  ? rt_mutex_setprio+0x1c3/0x4a0
+[92656.648364]  schedule_rtlock+0x1e/0x40
+[92656.648366]  rtlock_slowlock_locked+0x3bf/0xdc0
+[92656.648369]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[92656.648666]  rt_spin_lock+0x41/0x60
+[92656.648669]  __wake_up_common_lock+0x61/0xb0
+[92656.648673]  ep_poll_callback+0xfe/0x220
+[92656.648677]  __wake_up_common+0x79/0x140
+[92656.648680]  __wake_up_common_lock+0x78/0xb0
+[92656.648682]  _nv035299rm+0x59/0x80 [nvidia]
+[92656.648987]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[92656.649292]  ? _nv027614rm+0x10/0x10 [nvidia]
+[92656.649572]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[92656.649852]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[92656.650259]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[92656.650666]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[92656.651067]  ? _nv029406rm+0x161/0x440 [nvidia]
+[92656.651463]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[92656.651757]  ? disable_irq_nosync+0x10/0x10
+[92656.651761]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[92656.652062]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[92656.652257]  ? irq_thread_fn+0x20/0x60
+[92656.652259]  ? irq_thread+0xdc/0x1a0
+[92656.652262]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[92656.652264]  ? irq_thread_check_affinity+0xd0/0xd0
+[92656.652267]  ? kthread+0x189/0x1b0
+[92656.652269]  ? set_kthread_struct+0x40/0x40
+[92656.652270]  ? ret_from_fork+0x22/0x30
+[92816.945762] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[92816.945768] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[92816.945811]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[92816.945840] Preemption disabled at:
+[92816.945840] [<0000000000000000>] 0x0
+[92816.945845] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[92816.945847] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[92816.945849] Call Trace:
+[92816.945853]  dump_stack_lvl+0x46/0x5a
+[92816.945859]  __schedule_bug.cold+0x82/0x90
+[92816.945864]  __schedule+0x1199/0x1580
+[92816.945867]  ? raw_spin_rq_unlock+0x18/0x60
+[92816.945871]  ? rt_mutex_setprio+0x1c3/0x4a0
+[92816.945874]  schedule_rtlock+0x1e/0x40
+[92816.945876]  rtlock_slowlock_locked+0x3bf/0xdc0
+[92816.945879]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[92816.946134]  ? preempt_count_add+0x68/0xa0
+[92816.946137]  rt_read_lock+0x68/0x90
+[92816.946140]  ep_poll_callback+0x31/0x220
+[92816.946144]  __wake_up_common+0x79/0x140
+[92816.946147]  __wake_up_common_lock+0x78/0xb0
+[92816.946150]  _nv035299rm+0x59/0x80 [nvidia]
+[92816.946463]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[92816.946763]  ? _nv027614rm+0x10/0x10 [nvidia]
+[92816.947012]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[92816.947261]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[92816.947651]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[92816.948040]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[92816.948425]  ? _nv029406rm+0x161/0x440 [nvidia]
+[92816.948913]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[92816.949361]  ? disable_irq_nosync+0x10/0x10
+[92816.949372]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[92816.949818]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[92816.950021]  ? irq_thread_fn+0x20/0x60
+[92816.950024]  ? irq_thread+0xdc/0x1a0
+[92816.950026]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[92816.950029]  ? irq_thread_check_affinity+0xd0/0xd0
+[92816.950031]  ? kthread+0x189/0x1b0
+[92816.950033]  ? set_kthread_struct+0x40/0x40
+[92816.950035]  ? ret_from_fork+0x22/0x30
+[92990.520767] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[92990.520773] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[92990.520815]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[92990.520843] Preemption disabled at:
+[92990.520844] [<0000000000000000>] 0x0
+[92990.520849] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[92990.520851] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[92990.520853] Call Trace:
+[92990.520857]  dump_stack_lvl+0x46/0x5a
+[92990.520863]  __schedule_bug.cold+0x82/0x90
+[92990.520867]  __schedule+0x1199/0x1580
+[92990.520871]  ? raw_spin_rq_unlock+0x18/0x60
+[92990.520875]  ? rt_mutex_setprio+0x1c3/0x4a0
+[92990.520878]  schedule_rtlock+0x1e/0x40
+[92990.520880]  rtlock_slowlock_locked+0x3bf/0xdc0
+[92990.520883]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[92990.521144]  ? preempt_count_add+0x68/0xa0
+[92990.521147]  rt_read_lock+0x68/0x90
+[92990.521149]  ep_poll_callback+0x31/0x220
+[92990.521154]  __wake_up_common+0x79/0x140
+[92990.521157]  __wake_up_common_lock+0x78/0xb0
+[92990.521160]  _nv035299rm+0x59/0x80 [nvidia]
+[92990.521471]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[92990.521772]  ? _nv027614rm+0x10/0x10 [nvidia]
+[92990.522021]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[92990.522270]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[92990.522667]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[92990.523074]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[92990.523475]  ? _nv029406rm+0x161/0x440 [nvidia]
+[92990.523874]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[92990.524173]  ? disable_irq_nosync+0x10/0x10
+[92990.524177]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[92990.524471]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[92990.524665]  ? irq_thread_fn+0x20/0x60
+[92990.524668]  ? irq_thread+0xdc/0x1a0
+[92990.524670]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[92990.524673]  ? irq_thread_check_affinity+0xd0/0xd0
+[92990.524675]  ? kthread+0x189/0x1b0
+[92990.524677]  ? set_kthread_struct+0x40/0x40
+[92990.524679]  ? ret_from_fork+0x22/0x30
+[93039.499512] BUG: scheduling while atomic: irq/45-s-nvidia/1646/0x00000002
+[93039.499518] Modules linked in: nvidia_uvm(POE) hidp rfcomm snd_seq_dummy snd_hrtimer snd_seq snd_seq_device xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat overlay nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables libcrc32c nfnetlink bridge stp llc qrtr ns cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) joydev uas cfg80211 mousedev btusb btrtl btbcm btintel bluetooth ecdh_generic ecc vfat fat hp_wmi sparse_keymap platform_profile rfkill snd_hda_codec_realtek iTCO_wdt mei_hdcp intel_pmc_bxt mei_wdt iTCO_vendor_support intel_rapl_msr wmi_bmof snd_hda_codec_generic intel_rapl_common sb_edac x86_pkg_temp_thermal ledtrig_audio intel_powerclamp snd_hda_codec_hdmi coretemp snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi crct10dif_pclmul crc32_pclmul snd_hda_codec ghash_clmulni_intel aesni_intel snd_hda_core snd_hwdep crypto_simd cryptd pktcdvd snd_pcm rapl intel_cstate snd_timer i2c_i801 intel_uncore snd mei_me
+[93039.499567]  mei tpm_infineon psmouse soundcore i2c_smbus e1000e pcspkr lpc_ich tpm_tis tpm_tis_core tpm mac_hid wmi rng_core vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput nvidia_drm(POE) nvidia_modeset(POE) drm_kms_helper cec syscopyarea sysfillrect sysimgblt fb_sys_fops nvidia(POE) squashfs loop drm ipmi_devintf ipmi_msghandler sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 sr_mod cdrom usb_storage usbhid serio_raw atkbd libps2 crc32c_intel isci firewire_ohci libsas firewire_core i8042 ata_generic crc_itu_t xhci_pci scsi_transport_sas pata_acpi serio
+[93039.499607] Preemption disabled at:
+[93039.499607] [<0000000000000000>] 0x0
+[93039.499613] CPU: 0 PID: 1646 Comm: irq/45-s-nvidia Tainted: P        W  OE     5.15.2-1-rt19-MANJARO #1
+[93039.499615] Hardware name: Hewlett-Packard HP Z420 Workstation/1589, BIOS J61 v03.96 10/29/2019
+[93039.499616] Call Trace:
+[93039.499620]  dump_stack_lvl+0x46/0x5a
+[93039.499626]  __schedule_bug.cold+0x82/0x90
+[93039.499631]  __schedule+0x1199/0x1580
+[93039.499634]  ? raw_spin_rq_unlock+0x18/0x60
+[93039.499639]  ? rt_mutex_setprio+0x1c3/0x4a0
+[93039.499641]  schedule_rtlock+0x1e/0x40
+[93039.499644]  rtlock_slowlock_locked+0x3bf/0xdc0
+[93039.499647]  ? os_acquire_spinlock+0xe/0x20 [nvidia]
+[93039.499907]  rt_spin_lock+0x41/0x60
+[93039.499909]  __wake_up_common_lock+0x61/0xb0
+[93039.499913]  ep_poll_callback+0xfe/0x220
+[93039.499917]  __wake_up_common+0x79/0x140
+[93039.499920]  __wake_up_common_lock+0x78/0xb0
+[93039.499922]  _nv035299rm+0x59/0x80 [nvidia]
+[93039.500234]  ? _nv033190rm+0xab/0xc0 [nvidia]
+[93039.500534]  ? _nv027614rm+0x10/0x10 [nvidia]
+[93039.500783]  ? _nv031415rm+0xf4/0x120 [nvidia]
+[93039.501032]  ? _nv024560rm+0xaf3/0x12b0 [nvidia]
+[93039.501433]  ? _nv024560rm+0xb12/0x12b0 [nvidia]
+[93039.501824]  ? _nv029398rm+0x138/0xd90 [nvidia]
+[93039.502221]  ? _nv029406rm+0x161/0x440 [nvidia]
+[93039.502606]  ? _nv000725rm+0xb1/0x250 [nvidia]
+[93039.502900]  ? disable_irq_nosync+0x10/0x10
+[93039.502905]  ? rm_isr_bh+0x1c/0x60 [nvidia]
+[93039.503198]  ? nvidia_isr_kthread_bh+0x1b/0x40 [nvidia]
+[93039.503393]  ? irq_thread_fn+0x20/0x60
+[93039.503395]  ? irq_thread+0xdc/0x1a0
+[93039.503398]  ? irq_finalize_oneshot.part.0+0xe0/0xe0
+[93039.503400]  ? irq_thread_check_affinity+0xd0/0xd0
+[93039.503403]  ? kthread+0x189/0x1b0
+[93039.503405]  ? set_kthread_struct+0x40/0x40
+[93039.503406]  ? ret_from_fork+0x22/0x30
+[93707.758807] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[93707.793456] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[93707.793460] sas: ata9: end_device-8:0: cmd error handler
+[93707.793497] sas: ata9: end_device-8:0: dev error handler
+[93707.795173] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[93707.817004] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[93707.817007] sas: ata9: end_device-8:0: cmd error handler
+[93707.817042] sas: ata9: end_device-8:0: dev error handler
+[93707.818682] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[93707.838405] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[93707.838409] sas: ata9: end_device-8:0: cmd error handler
+[93707.838443] sas: ata9: end_device-8:0: dev error handler
+[93707.840035] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[93707.863429] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[93707.863433] sas: ata9: end_device-8:0: cmd error handler
+[93707.863480] sas: ata9: end_device-8:0: dev error handler
+[93707.865147] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[93707.890394] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[93707.890399] sas: ata9: end_device-8:0: cmd error handler
+[93707.890452] sas: ata9: end_device-8:0: dev error handler
+[93707.892020] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[93707.922347] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[93707.922353] sas: ata9: end_device-8:0: cmd error handler
+[93707.922426] sas: ata9: end_device-8:0: dev error handler
+[93707.923978] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[93707.950404] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[93707.950407] sas: ata9: end_device-8:0: cmd error handler
+[93707.950419] sas: ata9: end_device-8:0: dev error handler
+[93707.952033] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
+[93707.978387] sas: Enter sas_scsi_recover_host busy: 1 failed: 1
+[93707.978391] sas: ata9: end_device-8:0: cmd error handler
+[93707.978442] sas: ata9: end_device-8:0: dev error handler
+[93707.980040] sas: --- Exit sas_scsi_recover_host: busy: 0 failed: 1 tries: 1
