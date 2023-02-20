@@ -1,0 +1,1490 @@
+[151124.853529]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151124.853550] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151124.853554] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151124.853556] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151124.853612] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151124.853615] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151124.853618] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151124.853621] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151124.853623] RBP: ffff9f8b86fd1e00 R08: ffff9f8d1e350038 R09: 0000000000000080
+[151124.853625] R10: 0000000000000000 R11: 000000000000015e R12: 0000000000000000
+[151124.853627] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151124.853630] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151124.853632] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151124.853635] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151124.853638] Call Trace:
+[151124.853640]  <TASK>
+[151124.853641]  ? __iommu_map+0x15e/0x2a0
+[151124.853650]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151124.853664]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151124.853678]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151124.853692]  ? __napi_poll+0x160/0x160
+[151124.853696]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151124.853701]  __napi_poll+0x2c/0x160
+[151124.853705]  napi_threaded_poll+0x148/0x160
+[151124.853710]  kthread+0xe7/0x110
+[151124.853713]  ? kthread_complete_and_exit+0x20/0x20
+[151124.853717]  ret_from_fork+0x22/0x30
+[151124.853724]  </TASK>
+[151124.853726] ---[ end trace 0000000000000000 ]---
+[151124.886283] ------------[ cut here ]------------
+[151124.886291] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151124.886374] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151124.886457]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151124.886558]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151124.886587] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151124.886592] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151124.886596] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151124.886655] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151124.886660] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151124.886664] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151124.886667] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151124.886669] RBP: ffff9f8b86fd1e00 R08: ffff9f8e4a3c7838 R09: 0000000000000080
+[151124.886671] R10: 0000000000000000 R11: 000000000000015f R12: 0000000000000000
+[151124.886674] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151124.886677] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151124.886680] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151124.886682] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151124.886686] Call Trace:
+[151124.886691]  <TASK>
+[151124.886695]  ? __iommu_map+0x15e/0x2a0
+[151124.886709]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151124.886726]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151124.886740]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151124.886755]  ? __napi_poll+0x160/0x160
+[151124.886761]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151124.886768]  __napi_poll+0x2c/0x160
+[151124.886773]  napi_threaded_poll+0x148/0x160
+[151124.886778]  kthread+0xe7/0x110
+[151124.886784]  ? kthread_complete_and_exit+0x20/0x20
+[151124.886788]  ret_from_fork+0x22/0x30
+[151124.886798]  </TASK>
+[151124.886800] ---[ end trace 0000000000000000 ]---
+[151124.931835] ------------[ cut here ]------------
+[151124.931842] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151124.931925] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151124.932007]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151124.932129]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151124.932157] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151124.932163] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151124.932166] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151124.932226] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151124.932230] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151124.932234] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151124.932237] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151124.932240] RBP: ffff9f8b86fd1e00 R08: ffff9f8e4a3c7038 R09: 0000000000000080
+[151124.932242] R10: 0000000000000000 R11: 0000000000000160 R12: 0000000000000000
+[151124.932245] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151124.932248] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151124.932251] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151124.932254] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151124.932257] Call Trace:
+[151124.932262]  <TASK>
+[151124.932266]  ? __iommu_map+0x15e/0x2a0
+[151124.932279]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151124.932297]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151124.932310]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151124.932325]  ? __napi_poll+0x160/0x160
+[151124.932332]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151124.932339]  __napi_poll+0x2c/0x160
+[151124.932344]  napi_threaded_poll+0x148/0x160
+[151124.932349]  kthread+0xe7/0x110
+[151124.932356]  ? kthread_complete_and_exit+0x20/0x20
+[151124.932360]  ret_from_fork+0x22/0x30
+[151124.932369]  </TASK>
+[151124.932371] ---[ end trace 0000000000000000 ]---
+[151124.948931] ------------[ cut here ]------------
+[151124.948939] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151124.949022] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151124.949106]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151124.949208]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151124.949237] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151124.949243] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151124.949246] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151124.949306] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151124.949310] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151124.949314] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151124.949317] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151124.949319] RBP: ffff9f8b86fd1e00 R08: ffff9f8e4a3c6838 R09: 0000000000000080
+[151124.949322] R10: 0000000000000000 R11: 0000000000000161 R12: 0000000000000000
+[151124.949324] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151124.949328] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151124.949331] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151124.949333] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151124.949337] Call Trace:
+[151124.949341]  <TASK>
+[151124.949346]  ? __iommu_map+0x15e/0x2a0
+[151124.949359]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151124.949377]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151124.949391]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151124.949406]  ? __napi_poll+0x160/0x160
+[151124.949414]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151124.949420]  __napi_poll+0x2c/0x160
+[151124.949425]  napi_threaded_poll+0x148/0x160
+[151124.949430]  kthread+0xe7/0x110
+[151124.949437]  ? kthread_complete_and_exit+0x20/0x20
+[151124.949441]  ret_from_fork+0x22/0x30
+[151124.949450]  </TASK>
+[151124.949452] ---[ end trace 0000000000000000 ]---
+[151125.071222] ------------[ cut here ]------------
+[151125.071229] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.071312] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151125.071396]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151125.071498]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151125.071527] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151125.071532] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151125.071535] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.071596] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151125.071600] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151125.071604] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151125.071607] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151125.071609] RBP: ffff9f8b86fd1e00 R08: ffff9f8e4a3c6038 R09: 0000000000000080
+[151125.071612] R10: 0000000000000000 R11: 0000000000000162 R12: 0000000000000000
+[151125.071614] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151125.071617] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151125.071620] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151125.071623] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151125.071626] Call Trace:
+[151125.071631]  <TASK>
+[151125.071635]  ? __iommu_map+0x15e/0x2a0
+[151125.071649]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151125.071667]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151125.071681]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151125.071696]  ? __napi_poll+0x160/0x160
+[151125.071703]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151125.071710]  __napi_poll+0x2c/0x160
+[151125.071715]  napi_threaded_poll+0x148/0x160
+[151125.071720]  kthread+0xe7/0x110
+[151125.071726]  ? kthread_complete_and_exit+0x20/0x20
+[151125.071731]  ret_from_fork+0x22/0x30
+[151125.071740]  </TASK>
+[151125.071742] ---[ end trace 0000000000000000 ]---
+[151125.266656] ------------[ cut here ]------------
+[151125.266664] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.266746] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151125.266830]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151125.266932]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151125.266960] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151125.266966] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151125.266969] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.267029] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151125.267033] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151125.267037] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151125.267040] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151125.267042] RBP: ffff9f8b86fd1e00 R08: ffff9f8e4a3c5838 R09: 0000000000000080
+[151125.267044] R10: 0000000000000000 R11: 0000000000000164 R12: 0000000000000000
+[151125.267047] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151125.267050] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151125.267053] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151125.267055] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151125.267059] Call Trace:
+[151125.267064]  <TASK>
+[151125.267068]  ? __iommu_map+0x15e/0x2a0
+[151125.267082]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151125.267100]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151125.267114]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151125.267129]  ? __napi_poll+0x160/0x160
+[151125.267135]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151125.267142]  __napi_poll+0x2c/0x160
+[151125.267147]  napi_threaded_poll+0x148/0x160
+[151125.267152]  kthread+0xe7/0x110
+[151125.267159]  ? kthread_complete_and_exit+0x20/0x20
+[151125.267163]  ret_from_fork+0x22/0x30
+[151125.267173]  </TASK>
+[151125.267175] ---[ end trace 0000000000000000 ]---
+[151125.267199] ------------[ cut here ]------------
+[151125.267200] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.267260] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151125.267331]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151125.267406]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151125.267427] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151125.267431] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151125.267433] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.267490] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151125.267493] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151125.267496] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151125.267498] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151125.267500] RBP: ffff9f8b86fd0200 R08: ffff9f8e4a3c5038 R09: 0000000000000080
+[151125.267503] R10: 0000000000000000 R11: 0000000000000164 R12: 0000000000000000
+[151125.267505] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151125.267507] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151125.267510] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151125.267512] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151125.267515] Call Trace:
+[151125.267517]  <TASK>
+[151125.267519]  ? __iommu_map+0x15e/0x2a0
+[151125.267528]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151125.267542]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151125.267555]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151125.267569]  ? __napi_poll+0x160/0x160
+[151125.267573]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151125.267579]  __napi_poll+0x2c/0x160
+[151125.267583]  napi_threaded_poll+0x148/0x160
+[151125.267587]  kthread+0xe7/0x110
+[151125.267589]  ? kthread_complete_and_exit+0x20/0x20
+[151125.267592]  ret_from_fork+0x22/0x30
+[151125.267597]  </TASK>
+[151125.267598] ---[ end trace 0000000000000000 ]---
+[151125.280828] ------------[ cut here ]------------
+[151125.280836] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.280920] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151125.281002]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151125.281112]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151125.281137] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151125.281142] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151125.281145] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.281205] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151125.281209] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151125.281213] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151125.281216] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151125.281218] RBP: ffff9f8b86fd0200 R08: ffff9f8e4a3c4838 R09: 0000000000000080
+[151125.281221] R10: 0000000000000000 R11: 0000000000000165 R12: 0000000000000000
+[151125.281223] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151125.281226] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151125.281229] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151125.281232] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151125.281235] Call Trace:
+[151125.281239]  <TASK>
+[151125.281243]  ? __iommu_map+0x15e/0x2a0
+[151125.281256]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151125.281273]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151125.281287]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151125.281301]  ? __napi_poll+0x160/0x160
+[151125.281307]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151125.281314]  __napi_poll+0x2c/0x160
+[151125.281319]  napi_threaded_poll+0x148/0x160
+[151125.281324]  kthread+0xe7/0x110
+[151125.281330]  ? kthread_complete_and_exit+0x20/0x20
+[151125.281334]  ret_from_fork+0x22/0x30
+[151125.281344]  </TASK>
+[151125.281345] ---[ end trace 0000000000000000 ]---
+[151125.346270] ------------[ cut here ]------------
+[151125.346277] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.346361] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151125.346444]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151125.346546]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151125.346575] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151125.346580] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151125.346583] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.346643] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151125.346647] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151125.346651] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151125.346654] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151125.346657] RBP: ffff9f8b86fd0200 R08: ffff9f8e4a3c4038 R09: 0000000000000080
+[151125.346659] R10: 0000000000000000 R11: 0000000000000166 R12: 0000000000000000
+[151125.346661] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151125.346664] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151125.346668] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151125.346670] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151125.346674] Call Trace:
+[151125.346679]  <TASK>
+[151125.346683]  ? __iommu_map+0x15e/0x2a0
+[151125.346697]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151125.346715]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151125.346728]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151125.346738]  ? __napi_poll+0x160/0x160
+[151125.346743]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151125.346747]  __napi_poll+0x2c/0x160
+[151125.346749]  napi_threaded_poll+0x148/0x160
+[151125.346751]  kthread+0xe7/0x110
+[151125.346755]  ? kthread_complete_and_exit+0x20/0x20
+[151125.346756]  ret_from_fork+0x22/0x30
+[151125.346762]  </TASK>
+[151125.346762] ---[ end trace 0000000000000000 ]---
+[151125.391052] ------------[ cut here ]------------
+[151125.391060] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.391143] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151125.391226]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151125.391327]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151125.391355] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151125.391361] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151125.391364] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151125.391424] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151125.391428] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151125.391432] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151125.391435] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151125.391438] RBP: ffff9f8b86fd0200 R08: ffff9f8e4a3c3838 R09: 0000000000000080
+[151125.391440] R10: 0000000000000000 R11: 0000000000000167 R12: 0000000000000000
+[151125.391442] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151125.391445] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151125.391448] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151125.391451] CR2: 000036380034f020 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151125.391455] Call Trace:
+[151125.391460]  <TASK>
+[151125.391464]  ? __iommu_map+0x15e/0x2a0
+[151125.391477]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151125.391495]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151125.391509]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151125.391524]  ? __napi_poll+0x160/0x160
+[151125.391531]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151125.391537]  __napi_poll+0x2c/0x160
+[151125.391542]  napi_threaded_poll+0x148/0x160
+[151125.391548]  kthread+0xe7/0x110
+[151125.391554]  ? kthread_complete_and_exit+0x20/0x20
+[151125.391558]  ret_from_fork+0x22/0x30
+[151125.391568]  </TASK>
+[151125.391569] ---[ end trace 0000000000000000 ]---
+[151127.010587] ------------[ cut here ]------------
+[151127.010595] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151127.010676] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151127.010759]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151127.010860]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151127.010888] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151127.010894] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151127.010897] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151127.010957] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151127.010961] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151127.010964] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151127.010966] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151127.010968] RBP: ffff9f8b86fd0300 R08: ffff9f8e4a3c3038 R09: 0000000000000080
+[151127.010970] R10: 0000000000000000 R11: 0000000000000169 R12: 0000000000000000
+[151127.010972] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151127.010974] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151127.010977] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151127.010979] CR2: 00003815041e2018 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151127.010982] Call Trace:
+[151127.010986]  <TASK>
+[151127.010990]  ? __iommu_map+0x15e/0x2a0
+[151127.011002]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151127.011015]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151127.011026]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151127.011038]  ? __napi_poll+0x160/0x160
+[151127.011044]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151127.011050]  __napi_poll+0x2c/0x160
+[151127.011054]  napi_threaded_poll+0x148/0x160
+[151127.011058]  kthread+0xe7/0x110
+[151127.011063]  ? kthread_complete_and_exit+0x20/0x20
+[151127.011067]  ret_from_fork+0x22/0x30
+[151127.011075]  </TASK>
+[151127.011076] ---[ end trace 0000000000000000 ]---
+[151127.011094] ------------[ cut here ]------------
+[151127.011095] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151127.011142] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151127.011196]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151127.011255]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151127.011270] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151127.011274] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151127.011275] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151127.011319] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151127.011322] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151127.011324] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151127.011326] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151127.011328] RBP: ffff9f8b86fd1500 R08: ffff9f8e4a3c2838 R09: 0000000000000080
+[151127.011329] R10: 0000000000000000 R11: 0000000000000169 R12: 0000000000000000
+[151127.011331] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151127.011333] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151127.011335] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151127.011337] CR2: 00003815041e2018 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151127.011339] Call Trace:
+[151127.011340]  <TASK>
+[151127.011342]  ? __iommu_map+0x15e/0x2a0
+[151127.011348]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151127.011359]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151127.011370]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151127.011381]  ? __napi_poll+0x160/0x160
+[151127.011384]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151127.011388]  __napi_poll+0x2c/0x160
+[151127.011391]  napi_threaded_poll+0x148/0x160
+[151127.011394]  kthread+0xe7/0x110
+[151127.011397]  ? kthread_complete_and_exit+0x20/0x20
+[151127.011400]  ret_from_fork+0x22/0x30
+[151127.011406]  </TASK>
+[151127.011407] ---[ end trace 0000000000000000 ]---
+[151128.049294] ------------[ cut here ]------------
+[151128.049302] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151128.049384] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151128.049467]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151128.049568]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151128.049597] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151128.049602] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151128.049606] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151128.049664] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151128.049668] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151128.049673] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151128.049676] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151128.049678] RBP: ffff9f8b86fd1500 R08: ffff9f8e4a3c2038 R09: 0000000000000080
+[151128.049680] R10: 0000000000000000 R11: 000000000000016b R12: 0000000000000000
+[151128.049682] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151128.049685] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151128.049689] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151128.049691] CR2: 00003815041e2018 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151128.049695] Call Trace:
+[151128.049700]  <TASK>
+[151128.049704]  ? __iommu_map+0x15e/0x2a0
+[151128.049718]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151128.049736]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151128.049749]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151128.049764]  ? __napi_poll+0x160/0x160
+[151128.049771]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151128.049778]  __napi_poll+0x2c/0x160
+[151128.049783]  napi_threaded_poll+0x148/0x160
+[151128.049788]  kthread+0xe7/0x110
+[151128.049794]  ? kthread_complete_and_exit+0x20/0x20
+[151128.049798]  ret_from_fork+0x22/0x30
+[151128.049808]  </TASK>
+[151128.049810] ---[ end trace 0000000000000000 ]---
+[151128.049833] ------------[ cut here ]------------
+[151128.049834] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151128.049894] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151128.049943]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151128.049969]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151128.049976] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151128.049977] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151128.049978] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151128.049997] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151128.049999] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151128.050000] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151128.050000] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151128.050001] RBP: ffff9f8b86fd0300 R08: ffff9f8e4a3c1838 R09: 0000000000000080
+[151128.050002] R10: 0000000000000000 R11: 000000000000016b R12: 0000000000000000
+[151128.050003] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151128.050003] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151128.050004] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151128.050005] CR2: 00003815041e2018 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151128.050006] Call Trace:
+[151128.050007]  <TASK>
+[151128.050007]  ? __iommu_map+0x15e/0x2a0
+[151128.050010]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151128.050015]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151128.050020]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151128.050025]  ? __napi_poll+0x160/0x160
+[151128.050026]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151128.050028]  __napi_poll+0x2c/0x160
+[151128.050030]  napi_threaded_poll+0x148/0x160
+[151128.050031]  kthread+0xe7/0x110
+[151128.050032]  ? kthread_complete_and_exit+0x20/0x20
+[151128.050034]  ret_from_fork+0x22/0x30
+[151128.050036]  </TASK>
+[151128.050036] ---[ end trace 0000000000000000 ]---
+[151128.163389] ------------[ cut here ]------------
+[151128.163396] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151128.163480] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151128.163564]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151128.163666]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151128.163694] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151128.163699] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151128.163702] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151128.163762] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151128.163766] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151128.163770] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151128.163773] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151128.163775] RBP: ffff9f8b86fd0300 R08: ffff9f8e4a3c1038 R09: 0000000000000080
+[151128.163778] R10: 0000000000000000 R11: 000000000000016c R12: 0000000000000000
+[151128.163780] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151128.163783] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151128.163787] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151128.163789] CR2: 00003815041e2018 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151128.163793] Call Trace:
+[151128.163798]  <TASK>
+[151128.163802]  ? __iommu_map+0x15e/0x2a0
+[151128.163816]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151128.163833]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151128.163847]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151128.163863]  ? __napi_poll+0x160/0x160
+[151128.163870]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151128.163877]  __napi_poll+0x2c/0x160
+[151128.163882]  napi_threaded_poll+0x148/0x160
+[151128.163887]  kthread+0xe7/0x110
+[151128.163893]  ? kthread_complete_and_exit+0x20/0x20
+[151128.163897]  ret_from_fork+0x22/0x30
+[151128.163907]  </TASK>
+[151128.163908] ---[ end trace 0000000000000000 ]---
+[151129.461208] ------------[ cut here ]------------
+[151129.461214] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151129.461293] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151129.461371]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151129.461464]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151129.461490] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151129.461495] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151129.461498] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151129.461557] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151129.461561] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151129.461565] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151129.461568] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151129.461570] RBP: ffff9f8b86fd0700 R08: ffff9f8e4a3c0838 R09: 0000000000000080
+[151129.461572] R10: 0000000000000000 R11: 000000000000016d R12: 0000000000000000
+[151129.461575] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151129.461578] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151129.461581] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151129.461584] CR2: 000036380073cc00 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151129.461587] Call Trace:
+[151129.461591]  <TASK>
+[151129.461595]  ? __iommu_map+0x15e/0x2a0
+[151129.461608]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151129.461624]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151129.461638]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151129.461653]  ? __napi_poll+0x160/0x160
+[151129.461658]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151129.461666]  __napi_poll+0x2c/0x160
+[151129.461670]  napi_threaded_poll+0x148/0x160
+[151129.461675]  kthread+0xe7/0x110
+[151129.461681]  ? kthread_complete_and_exit+0x20/0x20
+[151129.461685]  ret_from_fork+0x22/0x30
+[151129.461694]  </TASK>
+[151129.461695] ---[ end trace 0000000000000000 ]---
+[151129.541819] ------------[ cut here ]------------
+[151129.541825] WARNING: CPU: 5 PID: 676 at net/mac80211/rx.c:4947 ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151129.541968] Modules linked in: ccm(E) hidp(E) vmw_vsock_vmci_transport(E) vsock(E) vmw_vmci(E) rfcomm(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) nfnetlink(E) bnep(E) intel_rapl_msr(E) intel_rapl_common(E) edac_mce_amd(E) btusb(E) btrtl(E) btbcm(E) btintel(E) btmtk(E) kvm_amd(E) uinput(E) bluetooth(E) kvm(E) irqbypass(E) jitterentropy_rng(E) ghash_clmulni_intel(E) sha512_ssse3(E) sha512_generic(E) binfmt_misc(E) snd_ctl_led(E) ctr(E) snd_hda_codec_realtek(E) drbg(E) snd_hda_codec_generic(E) ansi_cprng(E) mt7921e(E) mt7921_common(E) nls_ascii(E) aesni_intel(E) mt76_connac_lib(E) snd_hda_codec_hdmi(E) nls_cp437(E) ecdh_generic(E) mt76(E) vfat(E) crypto_simd(E) gspca_vc032x(E) ecc(E) sg(E) fat(E) libaes(E) cryptd(E) uvcvideo(E) gspca_main(E) snd_hda_intel(E) snd_usb_audio(E) mac80211(E) snd_intel_dspcfg(E) videobuf2_vmalloc(E) snd_usbmidi_lib(E) joydev(E) snd_intel_sdw_acpi(E) videobuf2_memops(E) libarc4(E) videobuf2_v4l2(E) snd_rawmidi(E) videobuf2_common(E) snd_seq_device(E)
+[151129.542051]  snd_hda_codec(E) snd_pci_acp5x(E) videodev(E) snd_hda_core(E) snd_rn_pci_acp3x(E) snd_hwdep(E) snd_acp_config(E) sp5100_tco(E) snd_soc_acpi(E) mc(E) snd_pcm(E) thinkpad_acpi(E) wmi_bmof(E) serio_raw(E) efi_pstore(E) pcspkr(E) snd_pci_acp3x(E) ccp(E) snd_timer(E) watchdog(E) nvram(E) k10temp(E) tpm_crb(E) cfg80211(E) platform_profile(E) ledtrig_audio(E) ucsi_acpi(E) typec_ucsi(E) snd(E) soundcore(E) roles(E) typec(E) rfkill(E) squashfs(E) ac(E) tpm_tis(E) tpm_tis_core(E) tpm(E) acpi_cpufreq(E) rng_core(E) evdev(E) loop(E) parport_pc(E) ppdev(E) lp(E) parport(E) fuse(E) configfs(E) efivarfs(E) ip_tables(E) x_tables(E) autofs4(E) hid_logitech_hidpp(E) hid_logitech_dj(E) sd_mod(E) uas(E) usb_storage(E) scsi_mod(E) scsi_common(E) wacom(E) hid_generic(E) usbhid(E) hid(E) amdgpu(E) gpu_sched(E) i2c_algo_bit(E) r8169(E) nvme(E) drm_display_helper(E) realtek(E) mdio_devres(E) cec(E) nvme_core(E) of_mdio(E) drm_ttm_helper(E) t10_pi(E) ttm(E) drm_kms_helper(E) crc64_rocksoft(E)
+[151129.542151]  fixed_phy(E) crc32_pclmul(E) crc64(E) xhci_pci(E) crc32c_intel(E) fwnode_mdio(E) crc_t10dif(E) psmouse(E) drm(E) xhci_hcd(E) crct10dif_generic(E) i2c_piix4(E) libphy(E) crct10dif_pclmul(E) crct10dif_common(E) wmi(E) battery(E) video(E) i2c_scmi(E) button(E)
+[151129.542179] CPU: 5 PID: 676 Comm: napi/phy0-8196 Tainted: G        W   E     5.19.10-titanide #1
+[151129.542185] Hardware name: LENOVO 20YHS01S00/20YHS01S00, BIOS R1OET28W (1.07 ) 07/15/2021
+[151129.542188] RIP: 0010:ieee80211_rx_list+0x574/0xc00 [mac80211]
+[151129.542247] Code: 00 00 65 48 2b 04 25 28 00 00 00 0f 85 5e 06 00 00 48 89 ef 48 81 c4 a0 00 00 00 5b 5d 41 5c 41 5d 41 5e 41 5f e9 4c 01 5b f5 <0f> 0b e9 6b fc ff ff 8b 83 f0 15 00 00 85 c0 0f 84 33 fe ff ff e9
+[151129.542251] RSP: 0018:ffffb7fd810f3c50 EFLAGS: 00010246
+[151129.542255] RAX: 0000000000000000 RBX: ffff9f8b88a308c0 RCX: ffff9f8b88a321d0
+[151129.542258] RDX: ffff9f8b88a303a0 RSI: 0000000000000000 RDI: ffff9f8b88a308c0
+[151129.542261] RBP: ffff9f8b86fd0700 R08: ffff9f8e4a3c0038 R09: 0000000000000080
+[151129.542263] R10: 0000000000000000 R11: 000000000000016e R12: 0000000000000000
+[151129.542265] R13: 0000000000000000 R14: ffff9f8b88a33ae8 R15: ffffb7fd810f3d50
+[151129.542268] FS:  0000000000000000(0000) GS:ffff9f8e5ef40000(0000) knlGS:0000000000000000
+[151129.542272] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[151129.542274] CR2: 000036380073cc00 CR3: 000000035720a000 CR4: 0000000000350ee0
+[151129.542278] Call Trace:
+[151129.542282]  <TASK>
+[151129.542287]  ? __iommu_map+0x15e/0x2a0
+[151129.542300]  mt76_rx_complete+0x1cd/0x290 [mt76]
+[151129.542318]  mt76_rx_poll_complete+0x325/0x540 [mt76]
+[151129.542331]  mt76_dma_rx_poll+0x2bf/0x4e0 [mt76]
+[151129.542346]  ? __napi_poll+0x160/0x160
+[151129.542353]  mt7921_poll_rx+0x4a/0xe0 [mt7921e]
+[151129.542360]  __napi_poll+0x2c/0x160
+[151129.542365]  napi_threaded_poll+0x148/0x160
+[151129.542370]  kthread+0xe7/0x110
+[151129.542377]  ? kthread_complete_and_exit+0x20/0x20
+[151129.542381]  ret_from_fork+0x22/0x30
+[151129.542390]  </TASK>
+[151129.542392] ---[ end trace 0000000000000000 ]---
+[151151.398781] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[151151.429652] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[151151.431955] wlp3s0: authenticated
+[151151.435257] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[151151.437879] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=2)
+[151151.614438] wlp3s0: associated
+[151151.701950] wlp3s0: Limiting TX power to 40 (40 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[151151.725953] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[158093.256598] Bluetooth: hci0: ACL packet for unknown connection handle 3837
+[158110.535439] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[158111.400402] PM: suspend entry (deep)
+[158111.404802] Filesystems sync: 0.004 seconds
+[158111.530642] Freezing user space processes ... (elapsed 0.123 seconds) done.
+[158111.653813] OOM killer disabled.
+[158111.653815] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[158111.655351] printk: Suspending console(s) (use no_console_suspend to debug)
+[158111.676585] queueing ieee80211 work while going to suspend
+[158112.003489] [drm:dc_dmub_srv_wait_idle [amdgpu]] *ERROR* Error waiting for DMUB idle: status=3
+[158112.053233] [drm] free PSP TMR buffer
+[158112.067010] ACPI Error: No handler for Region [ECSI] (000000009be05108) [EmbeddedControl] (20220331/evregion-130)
+[158112.067021] ACPI Error: Region EmbeddedControl (ID=3) has no handler (20220331/exfldio-261)
+[158112.067029] ACPI Error: Aborting method \_SB.UBTC.ECRD due to previous error (AE_NOT_EXIST) (20220331/psparse-529)
+[158112.067042] ACPI Error: Aborting method \_SB.UBTC.NTFY due to previous error (AE_NOT_EXIST) (20220331/psparse-529)
+[158112.067055] ACPI Error: Aborting method \_SB.PCI0.LPC0.EC0._Q4F due to previous error (AE_NOT_EXIST) (20220331/psparse-529)
+[158112.082907] ACPI: EC: interrupt blocked
+[158112.103009] ACPI Error: No handler for Region [ECSI] (000000009be05108) [EmbeddedControl] (20220331/evregion-130)
+[158112.103019] ACPI Error: Region EmbeddedControl (ID=3) has no handler (20220331/exfldio-261)
+[158112.103026] ACPI Error: Aborting method \_SB.UBTC.ECRD due to previous error (AE_NOT_EXIST) (20220331/psparse-529)
+[158112.103037] ACPI Error: Aborting method \_SB.UBTC.NTFY due to previous error (AE_NOT_EXIST) (20220331/psparse-529)
+[158112.103045] ACPI Error: Aborting method \_SB.PCI0.LPC0.EC0._Q4F due to previous error (AE_NOT_EXIST) (20220331/psparse-529)
+[158112.123443] ACPI: PM: Preparing to enter system sleep state S3
+[158112.124502] ACPI: EC: event blocked
+[158112.124504] ACPI: EC: EC stopped
+[158112.124505] ACPI: PM: Saving platform NVS memory
+[158112.124971] Disabling non-boot CPUs ...
+[158112.128082] smpboot: CPU 1 is now offline
+[158112.132028] smpboot: CPU 2 is now offline
+[158112.135986] smpboot: CPU 3 is now offline
+[158112.139553] smpboot: CPU 4 is now offline
+[158112.143666] smpboot: CPU 5 is now offline
+[158112.146770] smpboot: CPU 6 is now offline
+[158112.150309] smpboot: CPU 7 is now offline
+[158112.153107] smpboot: CPU 8 is now offline
+[158112.156346] smpboot: CPU 9 is now offline
+[158112.159513] smpboot: CPU 10 is now offline
+[158112.160467] Spectre V2 : Update user space SMT mitigation: STIBP off
+[158112.161853] smpboot: CPU 11 is now offline
+[158112.163749] ACPI: PM: Low-level resume complete
+[158112.163775] ACPI: EC: EC started
+[158112.163775] ACPI: PM: Restoring platform NVS memory
+[158112.164079] LVT offset 0 assigned for vector 0x400
+[158112.165265] Enabling non-boot CPUs ...
+[158112.165312] x86: Booting SMP configuration:
+[158112.165312] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[158112.165474] microcode: CPU1: patch_level=0x08608103
+[158112.167668] ACPI: \_SB_.PLTF.C001: Found 3 idle states
+[158112.167968] Spectre V2 : Update user space SMT mitigation: STIBP always-on
+[158112.167977] CPU1 is up
+[158112.168040] smpboot: Booting Node 0 Processor 2 APIC 0x2
+[158112.168260] microcode: CPU2: patch_level=0x08608103
+[158112.170473] ACPI: \_SB_.PLTF.C002: Found 3 idle states
+[158112.170786] CPU2 is up
+[158112.170814] smpboot: Booting Node 0 Processor 3 APIC 0x3
+[158112.171007] microcode: CPU3: patch_level=0x08608103
+[158112.173290] ACPI: \_SB_.PLTF.C003: Found 3 idle states
+[158112.173663] CPU3 is up
+[158112.173690] smpboot: Booting Node 0 Processor 4 APIC 0x4
+[158112.174135] microcode: CPU4: patch_level=0x08608103
+[158112.176412] ACPI: \_SB_.PLTF.C004: Found 3 idle states
+[158112.176942] CPU4 is up
+[158112.176971] smpboot: Booting Node 0 Processor 5 APIC 0x5
+[158112.177199] microcode: CPU5: patch_level=0x08608103
+[158112.179420] ACPI: \_SB_.PLTF.C005: Found 3 idle states
+[158112.179924] CPU5 is up
+[158112.179945] smpboot: Booting Node 0 Processor 6 APIC 0x8
+[158112.180363] microcode: CPU6: patch_level=0x08608103
+[158112.182581] ACPI: \_SB_.PLTF.C006: Found 3 idle states
+[158112.183158] CPU6 is up
+[158112.183182] smpboot: Booting Node 0 Processor 7 APIC 0x9
+[158112.183457] microcode: CPU7: patch_level=0x08608103
+[158112.185679] ACPI: \_SB_.PLTF.C007: Found 3 idle states
+[158112.186466] CPU7 is up
+[158112.186487] smpboot: Booting Node 0 Processor 8 APIC 0xa
+[158112.186849] microcode: CPU8: patch_level=0x08608103
+[158112.189114] ACPI: \_SB_.PLTF.C008: Found 3 idle states
+[158112.190059] CPU8 is up
+[158112.190080] smpboot: Booting Node 0 Processor 9 APIC 0xb
+[158112.190341] microcode: CPU9: patch_level=0x08608103
+[158112.192567] ACPI: \_SB_.PLTF.C009: Found 3 idle states
+[158112.193577] CPU9 is up
+[158112.193600] smpboot: Booting Node 0 Processor 10 APIC 0xc
+[158112.193976] microcode: CPU10: patch_level=0x08608103
+[158112.196225] ACPI: \_SB_.PLTF.C00A: Found 3 idle states
+[158112.197312] CPU10 is up
+[158112.197333] smpboot: Booting Node 0 Processor 11 APIC 0xd
+[158112.197621] microcode: CPU11: patch_level=0x08608103
+[158112.199878] ACPI: \_SB_.PLTF.C00B: Found 3 idle states
+[158112.201004] CPU11 is up
+[158112.202042] ACPI: PM: Waking up from system sleep state S3
+[158112.223309] ACPI: EC: interrupt unblocked
+[158112.225401] ACPI: EC: event unblocked
+[158112.225508] pci 0000:00:00.2: can't derive routing for PCI INT A
+[158112.225512] pci 0000:00:00.2: PCI INT A: no GSI
+[158112.225572] [drm] PCIE GART of 1024M enabled.
+[158112.225574] [drm] PTB located at 0x000000F400900000
+[158112.225590] [drm] PSP is resuming...
+[158112.240787] nvme nvme0: Shutdown timeout set to 8 seconds
+[158112.245474] [drm] reserve 0x400000 from 0xf43f800000 for PSP TMR
+[158112.300688] nvme nvme0: 12/0/0 default/read/poll queues
+[158112.362880] amdgpu 0000:04:00.0: amdgpu: RAS: optional ras ta ucode is not available
+[158112.374241] amdgpu 0000:04:00.0: amdgpu: RAP: optional rap ta ucode is not available
+[158112.374244] amdgpu 0000:04:00.0: amdgpu: SECUREDISPLAY: securedisplay ta ucode is not available
+[158112.374249] amdgpu 0000:04:00.0: amdgpu: SMU is resuming...
+[158112.374294] amdgpu 0000:04:00.0: amdgpu: dpm has been disabled
+[158112.375347] amdgpu 0000:04:00.0: amdgpu: SMU is resumed successfully!
+[158112.375938] [drm] DMUB hardware initialized: version=0x0101001F
+[158112.493095] usb 3-4: reset high-speed USB device number 3 using xhci_hcd
+[158112.493680] usb 1-3: reset high-speed USB device number 3 using xhci_hcd
+[158112.768270] usb 3-3: reset high-speed USB device number 2 using xhci_hcd
+[158113.075521] [drm] kiq ring mec 2 pipe 1 q 0
+[158113.078950] [drm] VCN decode and encode initialized successfully(under DPG Mode).
+[158113.079001] [drm] JPEG decode initialized successfully.
+[158113.079014] amdgpu 0000:04:00.0: amdgpu: ring gfx uses VM inv eng 0 on hub 0
+[158113.079016] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+[158113.079018] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+[158113.079019] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+[158113.079020] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+[158113.079021] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+[158113.079021] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+[158113.079022] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+[158113.079023] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+[158113.079024] amdgpu 0000:04:00.0: amdgpu: ring kiq_2.1.0 uses VM inv eng 11 on hub 0
+[158113.079025] amdgpu 0000:04:00.0: amdgpu: ring sdma0 uses VM inv eng 0 on hub 1
+[158113.079026] amdgpu 0000:04:00.0: amdgpu: ring vcn_dec uses VM inv eng 1 on hub 1
+[158113.079027] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc0 uses VM inv eng 4 on hub 1
+[158113.079028] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc1 uses VM inv eng 5 on hub 1
+[158113.079029] amdgpu 0000:04:00.0: amdgpu: ring jpeg_dec uses VM inv eng 6 on hub 1
+[158113.268269] mt7921e 0000:03:00.0: Message 00020007 (seq 15) timeout
+[158113.268285] mt7921e 0000:03:00.0: PM: dpm_run_callback(): pci_pm_resume+0x0/0xe0 returns -110
+[158113.268300] mt7921e 0000:03:00.0: PM: failed to resume async: error -110
+[158113.268307] mt7921e 0000:03:00.0: chip reset
+[158113.352258] mt7921e 0000:03:00.0: HW/SW Version: 0x8a108a10, Build Time: 20220608210839a
+
+[158113.613660] mt7921e 0000:03:00.0: WM Firmware Version: ____010000, Build Time: 20220608210922
+[158114.942469] wlp3s0: Driver requested disconnection from AP XX:XX:XX:XX:XX:XX
+[158115.166469] OOM killer enabled.
+[158115.166472] Restarting tasks ... 
+[158115.168782] pci_bus 0000:01: Allocating resources
+[158115.169061] pci_bus 0000:02: Allocating resources
+[158115.169071] pci_bus 0000:03: Allocating resources
+[158115.169777] done.
+[158115.171417] PM: suspend exit
+[158115.188547] pci_bus 0000:04: Allocating resources
+[158115.196062] usb 1-4: USB disconnect, device number 43
+[158115.336120] Generic FE-GE Realtek PHY r8169-0-200:00: attached PHY driver (mii_bus:phy_addr=r8169-0-200:00, irq=MAC)
+[158115.532153] r8169 0000:02:00.0 enp2s0: Link is Down
+[158117.660801] Bluetooth: hci0: Device setup in 2434061 usecs
+[158118.301322] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[158167.780584] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[158217.747448] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[158268.266624] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[158341.725860] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[158341.725877] wlp3s0: bad VHT capabilities, disabling VHT
+[158341.887972] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[158341.891696] wlp3s0: authenticated
+[158341.892333] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[158341.899304] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1421 status=0 aid=18)
+[158341.934299] wlp3s0: associated
+[158341.941251] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[164658.897162] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[164659.642216] PM: hibernation: hibernation entry
+[164659.646900] Filesystems sync: 0.003 seconds
+[164659.646905] Freezing user space processes ... (elapsed 0.030 seconds) done.
+[164659.677761] OOM killer disabled.
+[164659.678089] PM: hibernation: Marking nosave pages: [mem 0x00000000-0x00000fff]
+[164659.678096] PM: hibernation: Marking nosave pages: [mem 0x0009f000-0x000fffff]
+[164659.678101] PM: hibernation: Marking nosave pages: [mem 0x09c00000-0x09da0fff]
+[164659.678111] PM: hibernation: Marking nosave pages: [mem 0x09f00000-0x09f0efff]
+[164659.678113] PM: hibernation: Marking nosave pages: [mem 0xc11fb000-0xc11fdfff]
+[164659.678116] PM: hibernation: Marking nosave pages: [mem 0xc141a000-0xc14aafff]
+[164659.678121] PM: hibernation: Marking nosave pages: [mem 0xc3235000-0xc3235fff]
+[164659.678123] PM: hibernation: Marking nosave pages: [mem 0xc4b7e000-0xcc1fdfff]
+[164659.678646] PM: hibernation: Marking nosave pages: [mem 0xce000000-0xffffffff]
+[164659.679844] PM: hibernation: Basic memory bitmaps created
+[164659.686512] PM: hibernation: Preallocating image memory
+[164664.489045] PM: hibernation: Allocated 1417511 pages for snapshot
+[164664.489052] PM: hibernation: Allocated 5670044 kbytes in 4.80 seconds (1181.25 MB/s)
+[164664.489054] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[164664.490738] printk: Suspending console(s) (use no_console_suspend to debug)
+[164664.517857] queueing ieee80211 work while going to suspend
+[164664.860621] [drm:dc_dmub_srv_wait_idle [amdgpu]] *ERROR* Error waiting for DMUB idle: status=3
+[164665.091260] [drm] free PSP TMR buffer
+[164665.119473] amdgpu 0000:04:00.0: amdgpu: MODE2 reset
+[164665.121416] ACPI: EC: interrupt blocked
+[164665.121983] ACPI: PM: Preparing to enter system sleep state S4
+[164665.235422] ACPI: EC: event blocked
+[164665.235425] ACPI: EC: EC stopped
+[164665.235426] ACPI: PM: Saving platform NVS memory
+[164665.250377] Disabling non-boot CPUs ...
+[164665.253835] smpboot: CPU 1 is now offline
+[164665.257633] smpboot: CPU 2 is now offline
+[164665.260913] smpboot: CPU 3 is now offline
+[164665.264767] smpboot: CPU 4 is now offline
+[164665.267949] smpboot: CPU 5 is now offline
+[164665.271088] smpboot: CPU 6 is now offline
+[164665.273579] smpboot: CPU 7 is now offline
+[164665.275928] smpboot: CPU 8 is now offline
+[164665.278011] smpboot: CPU 9 is now offline
+[164665.280436] smpboot: CPU 10 is now offline
+[164665.281091] Spectre V2 : Update user space SMT mitigation: STIBP off
+[164665.282611] smpboot: CPU 11 is now offline
+[164665.283385] PM: hibernation: Creating image:
+[164665.468259] PM: hibernation: Need to copy 1549360 pages
+[164665.468264] PM: hibernation: Normal pages needed: 1549360 + 1024, available pages: 2335903
+[164665.283698] ACPI: PM: Restoring platform NVS memory
+[164665.287547] ACPI: EC: EC started
+[164665.287723] LVT offset 0 assigned for vector 0x400
+[164665.288243] Enabling non-boot CPUs ...
+[164665.288306] x86: Booting SMP configuration:
+[164665.288306] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[164665.288593] microcode: CPU1: patch_level=0x08608103
+[164665.291925] ACPI: \_SB_.PLTF.C001: Found 3 idle states
+[164665.292174] Spectre V2 : Update user space SMT mitigation: STIBP always-on
+[164665.292183] CPU1 is up
+[164665.292219] smpboot: Booting Node 0 Processor 2 APIC 0x2
+[164665.292398] microcode: CPU2: patch_level=0x08608103
+[164665.294605] ACPI: \_SB_.PLTF.C002: Found 3 idle states
+[164665.294855] CPU2 is up
+[164665.294875] smpboot: Booting Node 0 Processor 3 APIC 0x3
+[164665.295029] microcode: CPU3: patch_level=0x08608103
+[164665.297295] ACPI: \_SB_.PLTF.C003: Found 3 idle states
+[164665.297736] CPU3 is up
+[164665.297760] smpboot: Booting Node 0 Processor 4 APIC 0x4
+[164665.298193] microcode: CPU4: patch_level=0x08608103
+[164665.300424] ACPI: \_SB_.PLTF.C004: Found 3 idle states
+[164665.300812] CPU4 is up
+[164665.300832] smpboot: Booting Node 0 Processor 5 APIC 0x5
+[164665.300953] microcode: CPU5: patch_level=0x08608103
+[164665.303133] ACPI: \_SB_.PLTF.C005: Found 3 idle states
+[164665.303598] CPU5 is up
+[164665.303621] smpboot: Booting Node 0 Processor 6 APIC 0x8
+[164665.303795] microcode: CPU6: patch_level=0x08608103
+[164665.306022] ACPI: \_SB_.PLTF.C006: Found 3 idle states
+[164665.306471] CPU6 is up
+[164665.306490] smpboot: Booting Node 0 Processor 7 APIC 0x9
+[164665.306660] microcode: CPU7: patch_level=0x08608103
+[164665.308885] ACPI: \_SB_.PLTF.C007: Found 3 idle states
+[164665.309455] CPU7 is up
+[164665.309474] smpboot: Booting Node 0 Processor 8 APIC 0xa
+[164665.309700] microcode: CPU8: patch_level=0x08608103
+[164665.311913] ACPI: \_SB_.PLTF.C008: Found 3 idle states
+[164665.312469] CPU8 is up
+[164665.312490] smpboot: Booting Node 0 Processor 9 APIC 0xb
+[164665.312658] microcode: CPU9: patch_level=0x08608103
+[164665.314865] ACPI: \_SB_.PLTF.C009: Found 3 idle states
+[164665.315563] CPU9 is up
+[164665.315582] smpboot: Booting Node 0 Processor 10 APIC 0xc
+[164665.315816] microcode: CPU10: patch_level=0x08608103
+[164665.318035] ACPI: \_SB_.PLTF.C00A: Found 3 idle states
+[164665.318750] CPU10 is up
+[164665.318770] smpboot: Booting Node 0 Processor 11 APIC 0xd
+[164665.318942] microcode: CPU11: patch_level=0x08608103
+[164665.321171] ACPI: \_SB_.PLTF.C00B: Found 3 idle states
+[164665.321995] CPU11 is up
+[164665.326732] ACPI: PM: Waking up from system sleep state S4
+[164665.351261] ACPI: EC: interrupt unblocked
+[164665.481902] ACPI: EC: event unblocked
+[164665.482169] pci 0000:00:00.2: can't derive routing for PCI INT A
+[164665.482176] pci 0000:00:00.2: PCI INT A: no GSI
+[164665.482195] usb usb1: root hub lost power or was reset
+[164665.482198] usb usb2: root hub lost power or was reset
+[164665.482224] usb usb3: root hub lost power or was reset
+[164665.482230] usb usb4: root hub lost power or was reset
+[164665.482395] [drm] PCIE GART of 1024M enabled.
+[164665.482401] [drm] PTB located at 0x000000F400900000
+[164665.482417] [drm] PSP is resuming...
+[164665.499650] nvme nvme0: Shutdown timeout set to 8 seconds
+[164665.502299] [drm] reserve 0x400000 from 0xf43f800000 for PSP TMR
+[164665.557132] nvme nvme0: 12/0/0 default/read/poll queues
+[164665.766862] usb 1-3: reset high-speed USB device number 3 using xhci_hcd
+[164665.778752] usb 3-4: reset high-speed USB device number 3 using xhci_hcd
+[164665.784984] amdgpu 0000:04:00.0: amdgpu: RAS: optional ras ta ucode is not available
+[164665.794475] amdgpu 0000:04:00.0: amdgpu: RAP: optional rap ta ucode is not available
+[164665.794479] amdgpu 0000:04:00.0: amdgpu: SECUREDISPLAY: securedisplay ta ucode is not available
+[164665.794484] amdgpu 0000:04:00.0: amdgpu: SMU is resuming...
+[164665.794922] amdgpu 0000:04:00.0: amdgpu: dpm has been disabled
+[164665.795117] amdgpu 0000:04:00.0: amdgpu: SMU is resumed successfully!
+[164665.795710] [drm] DMUB hardware initialized: version=0x0101001F
+[164666.054918] usb 3-3: reset high-speed USB device number 2 using xhci_hcd
+[164666.195264] [drm] kiq ring mec 2 pipe 1 q 0
+[164666.209977] [drm] VCN decode and encode initialized successfully(under DPG Mode).
+[164666.210031] [drm] JPEG decode initialized successfully.
+[164666.210044] amdgpu 0000:04:00.0: amdgpu: ring gfx uses VM inv eng 0 on hub 0
+[164666.210046] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+[164666.210048] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+[164666.210048] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+[164666.210049] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+[164666.210050] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+[164666.210051] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+[164666.210052] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+[164666.210052] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+[164666.210053] amdgpu 0000:04:00.0: amdgpu: ring kiq_2.1.0 uses VM inv eng 11 on hub 0
+[164666.210054] amdgpu 0000:04:00.0: amdgpu: ring sdma0 uses VM inv eng 0 on hub 1
+[164666.210055] amdgpu 0000:04:00.0: amdgpu: ring vcn_dec uses VM inv eng 1 on hub 1
+[164666.210056] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc0 uses VM inv eng 4 on hub 1
+[164666.210057] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc1 uses VM inv eng 5 on hub 1
+[164666.210058] amdgpu 0000:04:00.0: amdgpu: ring jpeg_dec uses VM inv eng 6 on hub 1
+[164666.530717] mt7921e 0000:03:00.0: Message 00020007 (seq 14) timeout
+[164666.530729] mt7921e 0000:03:00.0: PM: dpm_run_callback(): pci_pm_restore+0x0/0xe0 returns -110
+[164666.530742] mt7921e 0000:03:00.0: PM: failed to restore async: error -110
+[164666.530747] mt7921e 0000:03:00.0: chip reset
+[164666.614317] mt7921e 0000:03:00.0: HW/SW Version: 0x8a108a10, Build Time: 20220608210839a
+
+[164666.874831] mt7921e 0000:03:00.0: WM Firmware Version: ____010000, Build Time: 20220608210922
+[164667.820295] wlp3s0: Driver requested disconnection from AP XX:XX:XX:XX:XX:XX
+[164667.907757] PM: hibernation: Basic memory bitmaps freed
+[164667.907765] OOM killer enabled.
+[164667.907767] Restarting tasks ... 
+[164667.908034] pci_bus 0000:01: Allocating resources
+[164667.908217] pci_bus 0000:02: Allocating resources
+[164667.908235] pci_bus 0000:03: Allocating resources
+[164667.909044] pci_bus 0000:04: Allocating resources
+[164667.911338] done.
+[164667.912215] PM: hibernation: hibernation exit
+[164668.170870] Generic FE-GE Realtek PHY r8169-0-200:00: attached PHY driver (mii_bus:phy_addr=r8169-0-200:00, irq=MAC)
+[164668.359966] r8169 0000:02:00.0 enp2s0: Link is Down
+[164670.370089] Bluetooth: hci0: Device setup in 2404322 usecs
+[164674.546482] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[164674.577669] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[164674.579974] wlp3s0: authenticated
+[164674.583245] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[164674.585786] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=2)
+[164675.117145] wlp3s0: associated
+[164675.186451] wlp3s0: Limiting TX power to 40 (40 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[164675.674099] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[168537.143417] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[168642.565394] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[168642.596225] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[168642.598552] wlp3s0: authenticated
+[168642.600753] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[168642.603332] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=2)
+[168642.634821] wlp3s0: associated
+[168642.723637] wlp3s0: Limiting TX power to 40 (40 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[168642.739527] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[168892.459315] [drm:dc_dmub_srv_wait_idle [amdgpu]] *ERROR* Error waiting for DMUB idle: status=3
+[168944.548603] [drm:dc_dmub_srv_wait_idle [amdgpu]] *ERROR* Error waiting for DMUB idle: status=3
+[169489.358799] wlp3s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[169493.506680] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[169493.537808] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[169493.540651] wlp3s0: authenticated
+[169493.543592] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[169493.548376] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=2)
+[169493.583755] wlp3s0: associated
+[169493.683000] wlp3s0: Limiting TX power to 40 (40 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[169554.927020] wlp3s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[169559.091821] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[169559.122973] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[169559.132940] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 2/3)
+[169559.142852] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 3/3)
+[169559.153269] wlp3s0: authentication with XX:XX:XX:XX:XX:XX timed out
+[169563.631730] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[169563.663015] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[169563.665652] wlp3s0: authenticated
+[169563.668676] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[169563.671453] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=1)
+[169563.708987] wlp3s0: associated
+[169563.821704] wlp3s0: Limiting TX power to 40 (40 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[169593.837866] wlp3s0: deauthenticated from XX:XX:XX:XX:XX:XX (Reason: 7=CLASS3_FRAME_FROM_NONASSOC_STA)
+[169594.269750] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[169594.300911] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[169594.304138] wlp3s0: authenticated
+[169594.309397] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[169594.312277] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=1)
+[169594.350141] wlp3s0: associated
+[169594.354567] wlp3s0: Limiting TX power to 40 (40 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[169598.873975] wlp3s0: deauthenticated from XX:XX:XX:XX:XX:XX (Reason: 3=DEAUTH_LEAVING)
+[169602.915153] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[169602.946557] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[169602.949011] wlp3s0: authenticated
+[169602.949304] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[169602.951871] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=1)
+[169602.988123] wlp3s0: associated
+[169603.143157] wlp3s0: Limiting TX power to 40 (40 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[169765.863405] wlp3s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[170624.640401] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[170624.671604] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[170624.673904] wlp3s0: authenticated
+[170624.677820] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[170624.680387] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=1)
+[170624.712241] wlp3s0: associated
+[170624.809143] wlp3s0: Limiting TX power to 40 (40 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[170624.809244] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[170748.415988] wlp3s0: Connection to AP XX:XX:XX:XX:XX:XX lost
+[185871.059828] PM: hibernation: hibernation entry
+[185871.080068] Filesystems sync: 0.018 seconds
+[185871.080081] Freezing user space processes ... (elapsed 0.002 seconds) done.
+[185871.082311] OOM killer disabled.
+[185871.082544] PM: hibernation: Marking nosave pages: [mem 0x00000000-0x00000fff]
+[185871.082549] PM: hibernation: Marking nosave pages: [mem 0x0009f000-0x000fffff]
+[185871.082552] PM: hibernation: Marking nosave pages: [mem 0x09c00000-0x09da0fff]
+[185871.082560] PM: hibernation: Marking nosave pages: [mem 0x09f00000-0x09f0efff]
+[185871.082562] PM: hibernation: Marking nosave pages: [mem 0xc11fb000-0xc11fdfff]
+[185871.082564] PM: hibernation: Marking nosave pages: [mem 0xc141a000-0xc14aafff]
+[185871.082568] PM: hibernation: Marking nosave pages: [mem 0xc3235000-0xc3235fff]
+[185871.082570] PM: hibernation: Marking nosave pages: [mem 0xc4b7e000-0xcc1fdfff]
+[185871.082977] PM: hibernation: Marking nosave pages: [mem 0xce000000-0xffffffff]
+[185871.084024] PM: hibernation: Basic memory bitmaps created
+[185871.084026] PM: hibernation: Preallocating image memory
+[185872.642643] PM: hibernation: Allocated 1454896 pages for snapshot
+[185872.642652] PM: hibernation: Allocated 5819584 kbytes in 1.55 seconds (3754.57 MB/s)
+[185872.642655] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[185872.644382] printk: Suspending console(s) (use no_console_suspend to debug)
+[185872.672083] queueing ieee80211 work while going to suspend
+[185872.922849] [drm] free PSP TMR buffer
+[185872.951186] amdgpu 0000:04:00.0: amdgpu: MODE2 reset
+[185873.062588] ACPI: EC: interrupt blocked
+[185873.063342] Disabling non-boot CPUs ...
+[185873.066153] smpboot: CPU 1 is now offline
+[185873.070436] smpboot: CPU 2 is now offline
+[185873.074559] smpboot: CPU 3 is now offline
+[185873.077822] smpboot: CPU 4 is now offline
+[185873.080974] smpboot: CPU 5 is now offline
+[185873.084149] smpboot: CPU 6 is now offline
+[185873.088065] smpboot: CPU 7 is now offline
+[185873.091094] smpboot: CPU 8 is now offline
+[185873.093723] smpboot: CPU 9 is now offline
+[185873.097009] smpboot: CPU 10 is now offline
+[185873.098168] Spectre V2 : Update user space SMT mitigation: STIBP off
+[185873.099623] smpboot: CPU 11 is now offline
+[185873.101131] PM: hibernation: Creating image:
+[185873.260892] PM: hibernation: Need to copy 1430514 pages
+[185873.260897] PM: hibernation: Normal pages needed: 1430514 + 1024, available pages: 2454756
+[185885.670121] PM: hibernation: Image created (1430514 pages copied)
+[185873.101480] LVT offset 0 assigned for vector 0x400
+[185873.101982] Enabling non-boot CPUs ...
+[185873.102035] x86: Booting SMP configuration:
+[185873.102036] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[185873.102213] microcode: CPU1: patch_level=0x08608103
+[185873.105094] ACPI: \_SB_.PLTF.C001: Found 3 idle states
+[185873.105322] Spectre V2 : Update user space SMT mitigation: STIBP always-on
+[185873.105329] CPU1 is up
+[185873.105363] smpboot: Booting Node 0 Processor 2 APIC 0x2
+[185873.105543] microcode: CPU2: patch_level=0x08608103
+[185873.107904] ACPI: \_SB_.PLTF.C002: Found 3 idle states
+[185873.108287] CPU2 is up
+[185873.108307] smpboot: Booting Node 0 Processor 3 APIC 0x3
+[185873.108471] microcode: CPU3: patch_level=0x08608103
+[185873.110699] ACPI: \_SB_.PLTF.C003: Found 3 idle states
+[185873.111117] CPU3 is up
+[185873.111141] smpboot: Booting Node 0 Processor 4 APIC 0x4
+[185873.111646] microcode: CPU4: patch_level=0x08608103
+[185873.113950] ACPI: \_SB_.PLTF.C004: Found 3 idle states
+[185873.114495] CPU4 is up
+[185873.114519] smpboot: Booting Node 0 Processor 5 APIC 0x5
+[185873.114697] microcode: CPU5: patch_level=0x08608103
+[185873.116908] ACPI: \_SB_.PLTF.C005: Found 3 idle states
+[185873.117333] CPU5 is up
+[185873.117354] smpboot: Booting Node 0 Processor 6 APIC 0x8
+[185873.117597] microcode: CPU6: patch_level=0x08608103
+[185873.119926] ACPI: \_SB_.PLTF.C006: Found 3 idle states
+[185873.120733] CPU6 is up
+[185873.120753] smpboot: Booting Node 0 Processor 7 APIC 0x9
+[185873.120910] microcode: CPU7: patch_level=0x08608103
+[185873.123117] ACPI: \_SB_.PLTF.C007: Found 3 idle states
+[185873.123697] CPU7 is up
+[185873.123717] smpboot: Booting Node 0 Processor 8 APIC 0xa
+[185873.123942] microcode: CPU8: patch_level=0x08608103
+[185873.126152] ACPI: \_SB_.PLTF.C008: Found 3 idle states
+[185873.126726] CPU8 is up
+[185873.126746] smpboot: Booting Node 0 Processor 9 APIC 0xb
+[185873.126915] microcode: CPU9: patch_level=0x08608103
+[185873.129134] ACPI: \_SB_.PLTF.C009: Found 3 idle states
+[185873.129821] CPU9 is up
+[185873.129841] smpboot: Booting Node 0 Processor 10 APIC 0xc
+[185873.130072] microcode: CPU10: patch_level=0x08608103
+[185873.132279] ACPI: \_SB_.PLTF.C00A: Found 3 idle states
+[185873.132956] CPU10 is up
+[185873.132977] smpboot: Booting Node 0 Processor 11 APIC 0xd
+[185873.133153] microcode: CPU11: patch_level=0x08608103
+[185873.135355] ACPI: \_SB_.PLTF.C00B: Found 3 idle states
+[185873.136163] CPU11 is up
+[185873.137164] ACPI: EC: interrupt unblocked
+[185873.169321] [drm] PCIE GART of 1024M enabled.
+[185873.169325] [drm] PTB located at 0x000000F400900000
+[185873.169332] pci 0000:00:00.2: can't derive routing for PCI INT A
+[185873.169337] pci 0000:00:00.2: PCI INT A: no GSI
+[185873.169338] [drm] PSP is resuming...
+[185873.189222] [drm] reserve 0x400000 from 0xf43f800000 for PSP TMR
+[185873.195097] nvme nvme0: Shutdown timeout set to 8 seconds
+[185873.251160] nvme nvme0: 12/0/0 default/read/poll queues
+[185873.474302] amdgpu 0000:04:00.0: amdgpu: RAS: optional ras ta ucode is not available
+[185873.483793] amdgpu 0000:04:00.0: amdgpu: RAP: optional rap ta ucode is not available
+[185873.483796] amdgpu 0000:04:00.0: amdgpu: SECUREDISPLAY: securedisplay ta ucode is not available
+[185873.483802] amdgpu 0000:04:00.0: amdgpu: SMU is resuming...
+[185873.484341] amdgpu 0000:04:00.0: amdgpu: dpm has been disabled
+[185873.484533] amdgpu 0000:04:00.0: amdgpu: SMU is resumed successfully!
+[185873.485225] [drm] DMUB hardware initialized: version=0x0101001F
+[185873.780129] [drm] kiq ring mec 2 pipe 1 q 0
+[185873.794185] [drm] VCN decode and encode initialized successfully(under DPG Mode).
+[185873.794236] [drm] JPEG decode initialized successfully.
+[185873.794248] amdgpu 0000:04:00.0: amdgpu: ring gfx uses VM inv eng 0 on hub 0
+[185873.794251] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+[185873.794252] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+[185873.794253] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+[185873.794254] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+[185873.794255] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+[185873.794255] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+[185873.794256] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+[185873.794257] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+[185873.794258] amdgpu 0000:04:00.0: amdgpu: ring kiq_2.1.0 uses VM inv eng 11 on hub 0
+[185873.794259] amdgpu 0000:04:00.0: amdgpu: ring sdma0 uses VM inv eng 0 on hub 1
+[185873.794260] amdgpu 0000:04:00.0: amdgpu: ring vcn_dec uses VM inv eng 1 on hub 1
+[185873.794261] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc0 uses VM inv eng 4 on hub 1
+[185873.794262] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc1 uses VM inv eng 5 on hub 1
+[185873.794263] amdgpu 0000:04:00.0: amdgpu: ring jpeg_dec uses VM inv eng 6 on hub 1
+[185873.809123] PM: Using 3 thread(s) for compression
+[185873.809129] PM: Compressing and saving image data (1433308 pages)...
+[185873.809144] PM: Image saving progress:   0%
+[185874.290017] PM: Image saving progress:  10%
+[185874.750608] PM: Image saving progress:  20%
+[185875.131937] PM: Image saving progress:  30%
+[185875.528256] PM: Image saving progress:  40%
+[185876.023223] PM: Image saving progress:  50%
+[185876.469464] PM: Image saving progress:  60%
+[185876.939029] PM: Image saving progress:  70%
+[185877.391774] PM: Image saving progress:  80%
+[185877.831747] PM: Image saving progress:  90%
+[185878.236973] PM: Image saving progress: 100%
+[185878.237041] PM: Image saving done
+[185878.237042] PM: hibernation: Wrote 5733232 kbytes in 4.42 seconds (1297.11 MB/s)
+[185878.237159] PM: S|
+[185878.357221] printk: Suspending console(s) (use no_console_suspend to debug)
+[185878.382018] queueing ieee80211 work while going to suspend
+[185878.434175] [drm] free PSP TMR buffer
+[185878.586996] ACPI: EC: interrupt blocked
+[185878.626583] ACPI: PM: Preparing to enter system sleep state S3
+[185878.627592] ACPI: EC: event blocked
+[185878.627594] ACPI: EC: EC stopped
+[185878.627595] ACPI: PM: Saving platform NVS memory
+[185878.628133] Disabling non-boot CPUs ...
+[185878.630999] smpboot: CPU 1 is now offline
+[185878.634496] smpboot: CPU 2 is now offline
+[185878.637829] smpboot: CPU 3 is now offline
+[185878.640949] smpboot: CPU 4 is now offline
+[185878.643677] smpboot: CPU 5 is now offline
+[185878.647024] smpboot: CPU 6 is now offline
+[185878.649810] smpboot: CPU 7 is now offline
+[185878.652081] smpboot: CPU 8 is now offline
+[185878.654789] smpboot: CPU 9 is now offline
+[185878.656883] smpboot: CPU 10 is now offline
+[185878.657649] Spectre V2 : Update user space SMT mitigation: STIBP off
+[185878.660058] smpboot: CPU 11 is now offline
+[185878.660817] ACPI: PM: Low-level resume complete
+[185878.660842] ACPI: EC: EC started
+[185878.660843] ACPI: PM: Restoring platform NVS memory
+[185878.661162] LVT offset 0 assigned for vector 0x400
+[185878.661647] Enabling non-boot CPUs ...
+[185878.661697] x86: Booting SMP configuration:
+[185878.661697] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[185878.661836] microcode: CPU1: patch_level=0x08608103
+[185878.664140] ACPI: \_SB_.PLTF.C001: Found 3 idle states
+[185878.664373] Spectre V2 : Update user space SMT mitigation: STIBP always-on
+[185878.664380] CPU1 is up
+[185878.664419] smpboot: Booting Node 0 Processor 2 APIC 0x2
+[185878.664628] microcode: CPU2: patch_level=0x08608103
+[185878.666885] ACPI: \_SB_.PLTF.C002: Found 3 idle states
+[185878.667224] CPU2 is up
+[185878.667245] smpboot: Booting Node 0 Processor 3 APIC 0x3
+[185878.667383] microcode: CPU3: patch_level=0x08608103
+[185878.669627] ACPI: \_SB_.PLTF.C003: Found 3 idle states
+[185878.669998] CPU3 is up
+[185878.670018] smpboot: Booting Node 0 Processor 4 APIC 0x4
+[185878.670465] microcode: CPU4: patch_level=0x08608103
+[185878.672744] ACPI: \_SB_.PLTF.C004: Found 3 idle states
+[185878.673240] CPU4 is up
+[185878.673260] smpboot: Booting Node 0 Processor 5 APIC 0x5
+[185878.673407] microcode: CPU5: patch_level=0x08608103
+[185878.675643] ACPI: \_SB_.PLTF.C005: Found 3 idle states
+[185878.676186] CPU5 is up
+[185878.676205] smpboot: Booting Node 0 Processor 6 APIC 0x8
+[185878.676623] microcode: CPU6: patch_level=0x08608103
+[185878.678850] ACPI: \_SB_.PLTF.C006: Found 3 idle states
+[185878.679460] CPU6 is up
+[185878.679480] smpboot: Booting Node 0 Processor 7 APIC 0x9
+[185878.679744] microcode: CPU7: patch_level=0x08608103
+[185878.681995] ACPI: \_SB_.PLTF.C007: Found 3 idle states
+[185878.682727] CPU7 is up
+[185878.682747] smpboot: Booting Node 0 Processor 8 APIC 0xa
+[185878.683109] microcode: CPU8: patch_level=0x08608103
+[185878.685353] ACPI: \_SB_.PLTF.C008: Found 3 idle states
+[185878.686231] CPU8 is up
+[185878.686251] smpboot: Booting Node 0 Processor 9 APIC 0xb
+[185878.686525] microcode: CPU9: patch_level=0x08608103
+[185878.688783] ACPI: \_SB_.PLTF.C009: Found 3 idle states
+[185878.689643] CPU9 is up
+[185878.689664] smpboot: Booting Node 0 Processor 10 APIC 0xc
+[185878.690033] microcode: CPU10: patch_level=0x08608103
+[185878.692284] ACPI: \_SB_.PLTF.C00A: Found 3 idle states
+[185878.693224] CPU10 is up
+[185878.693243] smpboot: Booting Node 0 Processor 11 APIC 0xd
+[185878.693519] microcode: CPU11: patch_level=0x08608103
+[185878.695786] ACPI: \_SB_.PLTF.C00B: Found 3 idle states
+[185878.696807] CPU11 is up
+[185878.698074] ACPI: PM: Waking up from system sleep state S3
+[185878.719902] ACPI: EC: interrupt unblocked
+[185878.721306] ACPI: EC: event unblocked
+[185878.721350] pci 0000:00:00.2: can't derive routing for PCI INT A
+[185878.721352] pci 0000:00:00.2: PCI INT A: no GSI
+[185878.721734] [drm] PCIE GART of 1024M enabled.
+[185878.721737] [drm] PTB located at 0x000000F400900000
+[185878.721753] [drm] PSP is resuming...
+[185878.735736] nvme nvme0: Shutdown timeout set to 8 seconds
+[185878.741754] [drm] reserve 0x400000 from 0xf43f800000 for PSP TMR
+[185878.795058] nvme nvme0: 12/0/0 default/read/poll queues
+[185878.851949] amdgpu 0000:04:00.0: amdgpu: RAS: optional ras ta ucode is not available
+[185878.862266] amdgpu 0000:04:00.0: amdgpu: RAP: optional rap ta ucode is not available
+[185878.862268] amdgpu 0000:04:00.0: amdgpu: SECUREDISPLAY: securedisplay ta ucode is not available
+[185878.862272] amdgpu 0000:04:00.0: amdgpu: SMU is resuming...
+[185878.862313] amdgpu 0000:04:00.0: amdgpu: dpm has been disabled
+[185878.863981] amdgpu 0000:04:00.0: amdgpu: SMU is resumed successfully!
+[185878.864661] [drm] DMUB hardware initialized: version=0x0101001F
+[185878.869376] [drm] DP Alt mode state on HPD: 1
+[185878.989023] usb 3-4: reset high-speed USB device number 3 using xhci_hcd
+[185878.989690] usb 1-3: reset high-speed USB device number 3 using xhci_hcd
+[185879.112188] [drm] kiq ring mec 2 pipe 1 q 0
+[185879.115350] [drm] VCN decode and encode initialized successfully(under DPG Mode).
+[185879.115651] [drm] JPEG decode initialized successfully.
+[185879.115662] amdgpu 0000:04:00.0: amdgpu: ring gfx uses VM inv eng 0 on hub 0
+[185879.115665] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+[185879.115667] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+[185879.115669] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+[185879.115670] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+[185879.115672] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+[185879.115673] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+[185879.115674] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+[185879.115676] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+[185879.115678] amdgpu 0000:04:00.0: amdgpu: ring kiq_2.1.0 uses VM inv eng 11 on hub 0
+[185879.115679] amdgpu 0000:04:00.0: amdgpu: ring sdma0 uses VM inv eng 0 on hub 1
+[185879.115681] amdgpu 0000:04:00.0: amdgpu: ring vcn_dec uses VM inv eng 1 on hub 1
+[185879.115682] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc0 uses VM inv eng 4 on hub 1
+[185879.115684] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc1 uses VM inv eng 5 on hub 1
+[185879.115685] amdgpu 0000:04:00.0: amdgpu: ring jpeg_dec uses VM inv eng 6 on hub 1
+[185879.263623] usb 3-3: reset high-speed USB device number 2 using xhci_hcd
+[185879.751470] mt7921e 0000:03:00.0: Message 00020007 (seq 15) timeout
+[185879.751485] mt7921e 0000:03:00.0: PM: dpm_run_callback(): pci_pm_resume+0x0/0xe0 returns -110
+[185879.751499] mt7921e 0000:03:00.0: PM: failed to resume async: error -110
+[185879.751506] mt7921e 0000:03:00.0: chip reset
+[185879.835339] mt7921e 0000:03:00.0: HW/SW Version: 0x8a108a10, Build Time: 20220608210839a
+
+[185880.096471] mt7921e 0000:03:00.0: WM Firmware Version: ____010000, Build Time: 20220608210922
+[185881.424750] wlp3s0: Driver requested disconnection from AP XX:XX:XX:XX:XX:XX
+[185881.615712] PM: hibernation: Basic memory bitmaps freed
+[185881.615720] OOM killer enabled.
+[185881.615721] Restarting tasks ... 
+[185881.617932] pci_bus 0000:01: Allocating resources
+[185881.618114] pci_bus 0000:02: Allocating resources
+[185881.618124] pci_bus 0000:03: Allocating resources
+[185881.621146] pci_bus 0000:04: Allocating resources
+[185881.622262] done.
+[185881.626647] PM: hibernation: hibernation exit
+[185881.723326] Generic FE-GE Realtek PHY r8169-0-200:00: attached PHY driver (mii_bus:phy_addr=r8169-0-200:00, irq=MAC)
+[185881.747309] usb 1-1: new high-speed USB device number 44 using xhci_hcd
+[185881.908751] usb 1-1: New USB device found, idVendor=17ef, idProduct=7229, bcdDevice= 4.a4
+[185881.908761] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[185881.908764] usb 1-1: Product: USB2.0 Hub             
+[185881.908767] usb 1-1: Manufacturer: VIA Labs, Inc.         
+[185881.910985] r8169 0000:02:00.0 enp2s0: Link is Down
+[185881.954053] hub 1-1:1.0: USB hub found
+[185881.954933] hub 1-1:1.0: 5 ports detected
+[185882.049138] usb 2-1: new SuperSpeed USB device number 6 using xhci_hcd
+[185882.271308] usb 1-4: new high-speed USB device number 45 using xhci_hcd
+[185882.421013] usb 1-4: New USB device found, idVendor=1a40, idProduct=0101, bcdDevice= 1.11
+[185882.421022] usb 1-4: New USB device strings: Mfr=0, Product=1, SerialNumber=...
+[185882.421025] usb 1-4: Product: USB 2.0 Hub
+[185882.465908] hub 1-4:1.0: USB hub found
+[185882.466147] hub 1-4:1.0: 4 ports detected
+[185882.773881] usb 2-1: New USB device found, idVendor=17ef, idProduct=722a, bcdDevice= 4.a4
+[185882.773891] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[185882.773895] usb 2-1: Product: USB3.0 Hub             
+[185882.773897] usb 2-1: Manufacturer: VIA Labs, Inc.         
+[185882.802160] hub 2-1:1.0: USB hub found
+[185882.802685] hub 2-1:1.0: 4 ports detected
+[185882.875297] usb 1-4.1: new full-speed USB device number 46 using xhci_hcd
+[185883.111722] usb 1-4.1: New USB device found, idVendor=056a, idProduct=0374, bcdDevice= 1.11
+[185883.111733] usb 1-4.1: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[185883.111738] usb 1-4.1: Product: Intuos S
+[185883.111740] usb 1-4.1: Manufacturer: Wacom Co.,Ltd.
+[185883.111743] usb 1-4.1: SerialNumber: ...
+[185883.199006] input: Wacom Intuos S Pen as /devices/pci0000:00/0000:00:08.1/0000:04:00.3/usb1/1-4/1-4.1/1-4.1:1.0/0003:056A:0374.0040/input/input91
+[185883.199435] input: Wacom Intuos S Pad as /devices/pci0000:00/0000:00:08.1/0000:04:00.3/usb1/1-4/1-4.1/1-4.1:1.0/0003:056A:0374.0040/input/input93
+[185883.227506] usb 1-1.1: new high-speed USB device number 47 using xhci_hcd
+[185883.259652] wacom 0003:056A:0374.0040: hidraw0: USB HID v1.10 Device [Wacom Co.,Ltd. Intuos S] on usb-0000:04:00.3-4.1/input0
+[185883.555325] usb 1-4.4: new high-speed USB device number 48 using xhci_hcd
+[185883.759395] usb 1-4.4: New USB device found, idVendor=0781, idProduct=5583, bcdDevice= 1.00
+[185883.759404] usb 1-4.4: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[185883.759408] usb 1-4.4: Product:  SanDisk 3.2Gen1
+[185883.759411] usb 1-4.4: Manufacturer:  USB
+[185883.759413] usb 1-4.4: SerialNumber: ...
+[185883.760464] usb-storage 1-4.4:1.0: USB Mass Storage device detected
+[185883.760675] scsi host0: usb-storage 1-4.4:1.0
+[185883.946894] usb 1-1.1: New USB device found, idVendor=046d, idProduct=0892, bcdDevice= 0.19
+[185883.946904] usb 1-1.1: New USB device strings: Mfr=0, Product=2, SerialNumber=...
+[185883.946907] usb 1-1.1: Product: HD Pro Webcam C920
+[185883.946910] usb 1-1.1: SerialNumber: ...
+[185884.002067] usb 1-1.1: Found UVC 1.00 device HD Pro Webcam C920 (046d:0892)
+[185884.012189] input: HD Pro Webcam C920 as /devices/pci0000:00/0000:00:08.1/0000:04:00.3/usb1/1-1/1-1.1/1-1.1:1.0/input/input94
+[185884.097457] Bluetooth: hci0: Device setup in 2524547 usecs
+[185884.777075] scsi 0:0:0:0: Direct-Access      USB      SanDisk 3.2Gen1 1.00 PQ: 0 ANSI: 6
+[185884.777617] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[185884.777855] sd 0:0:0:0: [sda] 240353280 512-byte logical blocks: (123 GB/115 GiB)
+[185884.778431] sd 0:0:0:0: [sda] Write Protect is off
+[185884.778433] sd 0:0:0:0: [sda] Mode Sense: 43 00 00 00
+[185884.778944] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+[185884.790102]  sda: sda1
+[185884.790509] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[185885.039554] usb 1-1.2: new full-speed USB device number 49 using xhci_hcd
+[185885.170255] r8169 0000:02:00.0 enp2s0: Link is Up - 1Gbps/Full - flow control rx/tx
+[185885.170278] IPv6: ADDRCONF(NETDEV_CHANGE): enp2s0: link becomes ready
+[185885.215927] usb 1-1.2: New USB device found, idVendor=046d, idProduct=c52b, bcdDevice=24.11
+[185885.215940] usb 1-1.2: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[185885.215945] usb 1-1.2: Product: USB Receiver
+[185885.215948] usb 1-1.2: Manufacturer: Logitech
+[185885.332271] logitech-djreceiver 0003:046D:C52B.0043: hiddev0,hidraw1: USB HID v1.11 Device [Logitech USB Receiver] on usb-0000:04:00.3-1.2/input2
+[185885.466170] input: Logitech K780 as /devices/pci0000:00/0000:00:08.1/0000:04:00.3/usb1/1-1/1-1.2/1-1.2:1.2/0003:046D:C52B.0043/0003:046D:405B.0044/input/input95
+[185885.466516] logitech-hidpp-device 0003:046D:405B.0044: input,hidraw2: USB HID v1.11 Keyboard [Logitech K780] on usb-0000:04:00.3-1.2/input2:1
+[185885.494135] logitech-hidpp-device 0003:046D:4082.0045: HID++ 4.5 device connected.
+[185885.583567] usb 1-1.4: new high-speed USB device number 50 using xhci_hcd
+[185885.832036] input: Logitech MX Master 3 as /devices/pci0000:00/0000:00:08.1/0000:04:00.3/usb1/1-1/1-1.2/1-1.2:1.2/0003:046D:C52B.0043/0003:046D:4082.0045/input/input96
+[185885.832439] logitech-hidpp-device 0003:046D:4082.0045: input,hidraw3: USB HID v1.11 Keyboard [Logitech MX Master 3] on usb-0000:04:00.3-1.2/input2:2
+[185885.840371] input: Logitech MX Keys as /devices/pci0000:00/0000:00:08.1/0000:04:00.3/usb1/1-1/1-1.2/1-1.2:1.2/0003:046D:C52B.0043/0003:046D:408A.0046/input/input97
+[185885.840780] logitech-hidpp-device 0003:046D:408A.0046: input,hidraw4: USB HID v1.11 Keyboard [Logitech MX Keys] on usb-0000:04:00.3-1.2/input2:3
+[185886.228526] usb 1-1.4: New USB device found, idVendor=046d, idProduct=0ab7, bcdDevice= 0.20
+[185886.228538] usb 1-1.4: New USB device strings: Mfr=3, Product=1, SerialNumber=...
+[185886.228542] usb 1-1.4: Product: Blue Microphones
+[185886.228546] usb 1-1.4: Manufacturer: Generic
+[185886.228548] usb 1-1.4: SerialNumber: ...
+[185886.865475] input: Generic Blue Microphones Consumer Control as /devices/pci0000:00/0000:00:08.1/0000:04:00.3/usb1/1-1/1-1.4/1-1.4:1.3/0003:046D:0AB7.0047/input/input98
+[185886.923999] input: Generic Blue Microphones as /devices/pci0000:00/0000:00:08.1/0000:04:00.3/usb1/1-1/1-1.4/1-1.4:1.3/0003:046D:0AB7.0047/input/input99
+[185886.924389] hid-generic 0003:046D:0AB7.0047: input,hiddev1,hidraw5: USB HID v1.11 Device [Generic Blue Microphones] on usb-0000:04:00.3-1.4/input3
+[185887.147386] usb 1-1.5: new high-speed USB device number 51 using xhci_hcd
+[185887.250673] usb 1-1.5: New USB device found, idVendor=17ef, idProduct=722c, bcdDevice= 0.01
+[185887.250681] usb 1-1.5: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[185887.250684] usb 1-1.5: Product: Lenovo USB-C 7-in-1 Hub
+[185887.250686] usb 1-1.5: Manufacturer: VIA Labs, Inc.         
+[185887.250688] usb 1-1.5: SerialNumber: ...
+[185922.196229] logitech-hidpp-device 0003:046D:408A.0046: HID++ 4.5 device connected.
+[185935.329857] wlp3s0: authenticate with XX:XX:XX:XX:XX:XX
+[185935.329880] wlp3s0: Invalid HE elem, Disable HE
+[185935.506114] wlp3s0: send auth to XX:XX:XX:XX:XX:XX (try 1/3)
+[185935.514114] wlp3s0: authenticated
+[185935.516190] wlp3s0: associate with XX:XX:XX:XX:XX:XX (try 1/3)
+[185935.527343] wlp3s0: RX AssocResp from XX:XX:XX:XX:XX:XX (capab=0x1011 status=0 aid=3)
+[185935.556300] wlp3s0: associated
+[185935.595866] wlp3s0: Limiting TX power to 30 (30 - 0) dBm as advertised by XX:XX:XX:XX:XX:XX
+[185935.627338] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[186001.543351] wlp3s0: deauthenticating from XX:XX:XX:XX:XX:XX by local choice (Reason: 3=DEAUTH_LEAVING)
+[186183.362036] usb 1-1.1: reset high-speed USB device number 47 using xhci_hcd
+[186308.722339] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.724185] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.725122] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.727855] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=3528320, period=705664
+[186308.730527] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=4194304, period=131072
+[186308.734283] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.735496] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.736303] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.738374] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=3528320, period=705664
+[186308.740888] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=4194304, period=131072
+[186308.743120] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.743979] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.744583] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.746297] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=3528320, period=705664
+[186308.748949] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=4194304, period=131072
+[186308.751222] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.751937] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.752649] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[186308.754624] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=3528320, period=705664
+[186308.757185] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=4194304, period=131072
+[187884.875687] [drm:dc_dmub_srv_wait_idle [amdgpu]] *ERROR* Error waiting for DMUB idle: status=3
+[187926.359479] [drm:dc_dmub_srv_wait_idle [amdgpu]] *ERROR* Error waiting for DMUB idle: status=3
+[202661.446766] logitech-hidpp-device 0003:046D:4082.0045: Couldn't get wheel multiplier (error -110)
+[234937.707381] r8169 0000:02:00.0 enp2s0: Link is Up - 1Gbps/Full - flow control rx/tx
+[234937.742531] r8169 0000:02:00.0 enp2s0: Link is Down
+[234947.602232] PM: suspend entry (deep)
+[234947.604955] Filesystems sync: 0.002 seconds
+[234947.733183] Freezing user space processes ... (elapsed 0.002 seconds) done.
+[234947.735985] OOM killer disabled.
+[234947.735986] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[234947.737476] printk: Suspending console(s) (use no_console_suspend to debug)
+[234947.759525] queueing ieee80211 work while going to suspend
+[234947.947235] [drm] free PSP TMR buffer
+[234947.998677] ACPI: EC: interrupt blocked
+[234948.037872] ACPI: PM: Preparing to enter system sleep state S3
+[234948.038925] ACPI: EC: event blocked
+[234948.038928] ACPI: EC: EC stopped
+[234948.038929] ACPI: PM: Saving platform NVS memory
+[234948.039317] Disabling non-boot CPUs ...
+[234948.042416] smpboot: CPU 1 is now offline
+[234948.045733] smpboot: CPU 2 is now offline
+[234948.048361] smpboot: CPU 3 is now offline
+[234948.051053] smpboot: CPU 4 is now offline
+[234948.053511] smpboot: CPU 5 is now offline
+[234948.056573] smpboot: CPU 6 is now offline
+[234948.059032] smpboot: CPU 7 is now offline
+[234948.062354] smpboot: CPU 8 is now offline
+[234948.064357] smpboot: CPU 9 is now offline
+[234948.066659] smpboot: CPU 10 is now offline
+[234948.067281] Spectre V2 : Update user space SMT mitigation: STIBP off
+[234948.068704] smpboot: CPU 11 is now offline
+[234948.069481] ACPI: PM: Low-level resume complete
+[234948.069507] ACPI: EC: EC started
+[234948.069508] ACPI: PM: Restoring platform NVS memory
+[234948.069828] LVT offset 0 assigned for vector 0x400
+[234948.070341] Enabling non-boot CPUs ...
+[234948.070388] x86: Booting SMP configuration:
+[234948.070388] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[234948.070571] microcode: CPU1: patch_level=0x08608103
+[234948.073243] ACPI: \_SB_.PLTF.C001: Found 3 idle states
+[234948.073605] Spectre V2 : Update user space SMT mitigation: STIBP always-on
+[234948.073622] CPU1 is up
+[234948.073670] smpboot: Booting Node 0 Processor 2 APIC 0x2
+[234948.073957] microcode: CPU2: patch_level=0x08608103
+[234948.076235] ACPI: \_SB_.PLTF.C002: Found 3 idle states
+[234948.076687] CPU2 is up
+[234948.076706] smpboot: Booting Node 0 Processor 3 APIC 0x3
+[234948.076849] microcode: CPU3: patch_level=0x08608103
+[234948.079065] ACPI: \_SB_.PLTF.C003: Found 3 idle states
+[234948.079546] CPU3 is up
+[234948.079572] smpboot: Booting Node 0 Processor 4 APIC 0x4
+[234948.080088] microcode: CPU4: patch_level=0x08608103
+[234948.082362] ACPI: \_SB_.PLTF.C004: Found 3 idle states
+[234948.083025] CPU4 is up
+[234948.083049] smpboot: Booting Node 0 Processor 5 APIC 0x5
+[234948.083282] microcode: CPU5: patch_level=0x08608103
+[234948.085518] ACPI: \_SB_.PLTF.C005: Found 3 idle states
+[234948.086061] CPU5 is up
+[234948.086080] smpboot: Booting Node 0 Processor 6 APIC 0x8
+[234948.086533] microcode: CPU6: patch_level=0x08608103
+[234948.088746] ACPI: \_SB_.PLTF.C006: Found 3 idle states
+[234948.089330] CPU6 is up
+[234948.089350] smpboot: Booting Node 0 Processor 7 APIC 0x9
+[234948.089609] microcode: CPU7: patch_level=0x08608103
+[234948.091837] ACPI: \_SB_.PLTF.C007: Found 3 idle states
+[234948.092612] CPU7 is up
+[234948.092632] smpboot: Booting Node 0 Processor 8 APIC 0xa
+[234948.092999] microcode: CPU8: patch_level=0x08608103
+[234948.095233] ACPI: \_SB_.PLTF.C008: Found 3 idle states
+[234948.095998] CPU8 is up
+[234948.096018] smpboot: Booting Node 0 Processor 9 APIC 0xb
+[234948.096274] microcode: CPU9: patch_level=0x08608103
+[234948.098532] ACPI: \_SB_.PLTF.C009: Found 3 idle states
+[234948.099476] CPU9 is up
+[234948.099496] smpboot: Booting Node 0 Processor 10 APIC 0xc
+[234948.099868] microcode: CPU10: patch_level=0x08608103
+[234948.102102] ACPI: \_SB_.PLTF.C00A: Found 3 idle states
+[234948.103231] CPU10 is up
+[234948.103251] smpboot: Booting Node 0 Processor 11 APIC 0xd
+[234948.103489] microcode: CPU11: patch_level=0x08608103
+[234948.105729] ACPI: \_SB_.PLTF.C00B: Found 3 idle states
+[234948.106832] CPU11 is up
+[234948.107891] ACPI: PM: Waking up from system sleep state S3
+[234948.130576] ACPI: EC: interrupt unblocked
+[234948.132068] ACPI: EC: event unblocked
+[234948.132181] pci 0000:00:00.2: can't derive routing for PCI INT A
+[234948.132184] pci 0000:00:00.2: PCI INT A: no GSI
+[234948.132275] [drm] PCIE GART of 1024M enabled.
+[234948.132278] [drm] PTB located at 0x000000F400900000
+[234948.132292] [drm] PSP is resuming...
+[234948.147805] nvme nvme0: Shutdown timeout set to 8 seconds
+[234948.152180] [drm] reserve 0x400000 from 0xf43f800000 for PSP TMR
+[234948.206651] nvme nvme0: 12/0/0 default/read/poll queues
+[234948.262018] amdgpu 0000:04:00.0: amdgpu: RAS: optional ras ta ucode is not available
+[234948.272406] amdgpu 0000:04:00.0: amdgpu: RAP: optional rap ta ucode is not available
+[234948.272408] amdgpu 0000:04:00.0: amdgpu: SECUREDISPLAY: securedisplay ta ucode is not available
+[234948.272412] amdgpu 0000:04:00.0: amdgpu: SMU is resuming...
+[234948.272664] amdgpu 0000:04:00.0: amdgpu: dpm has been disabled
+[234948.273801] amdgpu 0000:04:00.0: amdgpu: SMU is resumed successfully!
+[234948.274377] [drm] DMUB hardware initialized: version=0x0101001F
+[234948.281167] [drm] DP Alt mode state on HPD: 1
+[234948.398825] usb 3-3: reset high-speed USB device number 2 using xhci_hcd
+[234948.452595] usb 1-3: reset high-speed USB device number 3 using xhci_hcd
+[234948.665904] [drm] kiq ring mec 2 pipe 1 q 0
+[234948.669396] [drm] VCN decode and encode initialized successfully(under DPG Mode).
+[234948.669486] [drm] JPEG decode initialized successfully.
+[234948.669496] amdgpu 0000:04:00.0: amdgpu: ring gfx uses VM inv eng 0 on hub 0
+[234948.669498] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+[234948.669499] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+[234948.669500] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+[234948.669501] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+[234948.669502] amdgpu 0000:04:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+[234948.669503] amdgpu 0000:04:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+[234948.669503] amdgpu 0000:04:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+[234948.669504] amdgpu 0000:04:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+[234948.669505] amdgpu 0000:04:00.0: amdgpu: ring kiq_2.1.0 uses VM inv eng 11 on hub 0
+[234948.669506] amdgpu 0000:04:00.0: amdgpu: ring sdma0 uses VM inv eng 0 on hub 1
+[234948.669507] amdgpu 0000:04:00.0: amdgpu: ring vcn_dec uses VM inv eng 1 on hub 1
+[234948.669508] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc0 uses VM inv eng 4 on hub 1
+[234948.669508] amdgpu 0000:04:00.0: amdgpu: ring vcn_enc1 uses VM inv eng 5 on hub 1
+[234948.669509] amdgpu 0000:04:00.0: amdgpu: ring jpeg_dec uses VM inv eng 6 on hub 1
+[234948.678664] usb 1-1.5: reset high-speed USB device number 51 using xhci_hcd
+[234948.679499] usb 3-4: reset high-speed USB device number 3 using xhci_hcd
+[234948.781218] usb 1-1.5: PM: dpm_run_callback(): usb_dev_resume+0x0/0x10 returns -5
+[234948.781224] usb 1-1.5: PM: failed to resume async: error -5
+[234949.166665] mt7921e 0000:03:00.0: Message 00020007 (seq 2) timeout
+[234949.166681] mt7921e 0000:03:00.0: PM: dpm_run_callback(): pci_pm_resume+0x0/0xe0 returns -110
+[234949.166696] mt7921e 0000:03:00.0: PM: failed to resume async: error -110
+[234949.166703] mt7921e 0000:03:00.0: chip reset
+[234949.250651] mt7921e 0000:03:00.0: HW/SW Version: 0x8a108a10, Build Time: 20220608210839a
+
+[234949.512083] mt7921e 0000:03:00.0: WM Firmware Version: ____010000, Build Time: 20220608210922
+[234950.833476] wlp3s0: Driver requested disconnection from AP XX:XX:XX:XX:XX:XX
+[234950.919471] OOM killer enabled.
+[234950.919475] Restarting tasks ... 
+[234950.919898] pci_bus 0000:01: Allocating resources
+[234950.920140] pci_bus 0000:02: Allocating resources
+[234950.920154] pci_bus 0000:03: Allocating resources
+[234950.920642] pci_bus 0000:04: Allocating resources
+[234950.921514] usb 1-1.5: USB disconnect, device number 51
+[234950.926599] done.
+[234950.928058] PM: suspend exit
+[234951.046410] usb 1-1.5: new high-speed USB device number 52 using xhci_hcd
+[234951.074438] Generic FE-GE Realtek PHY r8169-0-200:00: attached PHY driver (mii_bus:phy_addr=r8169-0-200:00, irq=MAC)
+[234951.161937] usb 1-1.5: New USB device found, idVendor=17ef, idProduct=722c, bcdDevice= 0.01
+[234951.161943] usb 1-1.5: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[234951.161945] usb 1-1.5: Product: Lenovo USB-C 7-in-1 Hub
+[234951.161947] usb 1-1.5: Manufacturer: VIA Labs, Inc.         
+[234951.161948] usb 1-1.5: SerialNumber: ...
+[234951.259124] r8169 0000:02:00.0 enp2s0: Link is Down
+[234953.382050] Bluetooth: hci0: Device setup in 2404584 usecs
+[234954.541592] r8169 0000:02:00.0 enp2s0: Link is Up - 1Gbps/Full - flow control rx/tx
+[234954.541617] IPv6: ADDRCONF(NETDEV_CHANGE): enp2s0: link becomes ready
+[238841.698859] snd_hda_intel 0000:04:00.1: Too many BDL entries: buffer=1411328, period=705664
+[242453.837397] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[242454.202305] r8169 0000:02:00.0: invalid VPD tag 0x00 (size 0) at offset 0; assume missing optional EEPROM
