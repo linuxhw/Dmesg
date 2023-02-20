@@ -1,0 +1,68 @@
+[72195.587359] nouveau 0000:01:00.0: fb: trapped read at 0100797000 on channel -1 [1fed0000 unknown] engine 06 [BAR] client 08 [PFIFO_READ] subclient 01 [IN] reason 00000002 [PAGE_NOT_PRESENT]
+[72268.643051] ------------[ cut here ]------------
+[72268.643059] Trying to vfree() nonexistent vm area (00000000abaa325c)
+[72268.643076] WARNING: CPU: 1 PID: 1754 at mm/vmalloc.c:2550 __vunmap+0x1f5/0x200
+[72268.643086] Modules linked in: isofs nls_iso8859_1 nouveau snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi mxm_wmi snd_hda_intel drm_ttm_helper snd_intel_dspcfg snd_intel_sdw_acpi ttm snd_hda_codec snd_hda_core drm_kms_helper snd_hwdep snd_pcm cec snd_seq_midi rc_core snd_seq_midi_event i2c_algo_bit snd_rawmidi rtl818x_pci fb_sys_fops syscopyarea snd_seq mac80211 sysfillrect sysimgblt video snd_seq_device cfg80211 snd_timer wmi snd input_leds joydev soundcore eeprom_93cx6 libarc4 coretemp at24 mac_hid serio_raw sch_fq_codel msr parport_pc ppdev lp parport drm ip_tables x_tables autofs4 ums_realtek uas usb_storage hid_generic usbhid hid r8169 i2c_i801 psmouse realtek i2c_smbus pata_acpi lpc_ich
+[72268.643182] CPU: 1 PID: 1754 Comm: Xorg Not tainted 5.13.0-27-generic #29~20.04.1-Ubuntu
+[72268.643187] Hardware name: Compaq-Presario VC774AA-ABD CQ5109DE/Boston, BIOS 5.24 06/19/2009
+[72268.643190] RIP: 0010:__vunmap+0x1f5/0x200
+[72268.643195] Code: ff e8 3f cd ff ff eb bf 48 89 fe 48 c7 c7 90 4d 1e 9a e8 f2 4a 8e 00 0f 0b eb b4 4c 89 ee 48 c7 c7 b8 4d 1e 9a e8 df 4a 8e 00 <0f> 0b eb a1 0f 1f 80 00 00 00 00 0f 1f 44 00 00 55 48 89 e5 53 31
+[72268.643199] RSP: 0018:ffffbaef41fd3768 EFLAGS: 00010286
+[72268.643203] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[72268.643206] RDX: 0000000000000027 RSI: 000000010001cea0 RDI: ffff9338cbc989c8
+[72268.643209] RBP: ffffbaef41fd3790 R08: ffff9338cbc989c0 R09: ffffbaef41fd3540
+[72268.643212] R10: 00000000018b22d0 R11: 00000000018b23b0 R12: 0000000000000000
+[72268.643215] R13: ffff9338891c7000 R14: 0000000000000000 R15: ffffbaef41fd3868
+[72268.643218] FS:  00007f0dbdb92a40(0000) GS:ffff9338cbc80000(0000) knlGS:0000000000000000
+[72268.643222] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[72268.643226] CR2: 00007f21e38c8008 CR3: 0000000006962000 CR4: 00000000000406e0
+[72268.643229] Call Trace:
+[72268.643235]  vunmap+0x30/0x40
+[72268.643241]  nvkm_umem_unmap+0x4e/0x70 [nouveau]
+[72268.643389]  nvkm_object_unmap+0x1a/0x30 [nouveau]
+[72268.643480]  nvkm_ioctl_unmap+0x2e/0x40 [nouveau]
+[72268.643570]  nvkm_ioctl+0xf0/0x190 [nouveau]
+[72268.643661]  nvkm_client_ioctl+0x12/0x20 [nouveau]
+[72268.643803]  nvif_object_ioctl+0x4f/0x60 [nouveau]
+[72268.643889]  nvif_object_unmap_handle+0x48/0x60 [nouveau]
+[72268.643976]  nouveau_ttm_io_mem_free_locked.isra.0+0x32/0x40 [nouveau]
+[72268.644159]  nouveau_ttm_io_mem_free+0x32/0x50 [nouveau]
+[72268.644302]  ttm_mem_io_free+0x30/0x50 [ttm]
+[72268.644316]  ttm_bo_unmap_virtual+0x30/0x60 [ttm]
+[72268.644325]  ttm_bo_handle_move_mem+0x54/0x140 [ttm]
+[72268.644335]  ttm_bo_evict+0x13c/0x190 [ttm]
+[72268.644346]  ttm_mem_evict_first+0x10d/0x3c0 [ttm]
+[72268.644356]  ttm_bo_mem_space+0x31c/0x340 [ttm]
+[72268.644366]  ttm_bo_validate+0xfb/0x160 [ttm]
+[72268.644378]  ttm_bo_init_reserved+0x24f/0x2d0 [ttm]
+[72268.644387]  ttm_bo_init+0x5e/0xe0 [ttm]
+[72268.644397]  ? nouveau_bo_del_io_reserve_lru+0x60/0x60 [nouveau]
+[72268.644539]  nouveau_bo_init+0x95/0xb0 [nouveau]
+[72268.644681]  ? nouveau_bo_del_io_reserve_lru+0x60/0x60 [nouveau]
+[72268.644799]  nouveau_gem_new+0x7d/0xe0 [nouveau]
+[72268.644888]  ? nouveau_gem_new+0xe0/0xe0 [nouveau]
+[72268.644978]  nouveau_gem_ioctl_new+0x5b/0x100 [nouveau]
+[72268.645068]  ? nouveau_gem_new+0xe0/0xe0 [nouveau]
+[72268.645158]  drm_ioctl_kernel+0xae/0xf0 [drm]
+[72268.645213]  drm_ioctl+0x257/0x410 [drm]
+[72268.645240]  ? nouveau_gem_new+0xe0/0xe0 [nouveau]
+[72268.645332]  nouveau_drm_ioctl+0x66/0xc0 [nouveau]
+[72268.645422]  __x64_sys_ioctl+0x91/0xc0
+[72268.645428]  do_syscall_64+0x61/0xb0
+[72268.645433]  ? exit_to_user_mode_prepare+0x9b/0x1c0
+[72268.645438]  ? irqentry_exit_to_user_mode+0x9/0x20
+[72268.645441]  ? irqentry_exit+0x19/0x30
+[72268.645443]  ? sysvec_reschedule_ipi+0x7e/0xf0
+[72268.645445]  ? asm_sysvec_reschedule_ipi+0xa/0x20
+[72268.645450]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[72268.645453] RIP: 0033:0x7f0dbdef250b
+[72268.645456] Code: 0f 1e fa 48 8b 05 85 39 0d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 55 39 0d 00 f7 d8 64 89 01 48
+[72268.645459] RSP: 002b:00007ffdf15df658 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[72268.645462] RAX: ffffffffffffffda RBX: 00007ffdf15df6b0 RCX: 00007f0dbdef250b
+[72268.645464] RDX: 00007ffdf15df6b0 RSI: 00000000c0306480 RDI: 000000000000000e
+[72268.645466] RBP: 00000000c0306480 R08: 0000000000000000 R09: 000055b259ef201c
+[72268.645468] R10: 000055b259ef2010 R11: 0000000000000246 R12: 00007ffdf15df6b0
+[72268.645470] R13: 000000000000000e R14: 000055b259fa9360 R15: 0000000000001000
+[72268.645474] ---[ end trace 918987d5b98cc63b ]---
+[72283.724841] [TTM] Buffer eviction failed
+[72391.233452] nouveau 0000:01:00.0: fb: trapped read at 0100bcb000 on channel -1 [1fed0000 unknown] engine 06 [BAR] client 08 [PFIFO_READ] subclient 01 [IN] reason 00000002 [PAGE_NOT_PRESENT]
