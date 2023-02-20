@@ -1,0 +1,872 @@
+[   22.823797]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.823816] CPU: 4 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.823818] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.823818] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.823876] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 38 e5 54 df 48 89 da 48 c7 c7 ae e0 80 c0 48 89 c6 e8 a1 3a 94 df <0f> 0b eb aa e8 9d ee 99 df 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   22.823877] RSP: 0018:ffffaea7c1a379b0 EFLAGS: 00010086
+[   22.823878] RAX: 0000000000000000 RBX: ffff9f2fc174e0d0 RCX: 0000000000000027
+[   22.823879] RDX: ffff9f36cf721668 RSI: 0000000000000001 RDI: ffff9f36cf721660
+[   22.823880] RBP: ffff9f2fc02410d8 R08: 0000000000000000 R09: ffffaea7c1a37838
+[   22.823881] R10: 0000000000000003 R11: ffffffffa12bd158 R12: 0000000000000246
+[   22.823881] R13: 000000054a63ebbf R14: ffff9f2fc3cd7908 R15: ffff9f2fc5474100
+[   22.823882] FS:  00007f83cff8a080(0000) GS:ffff9f36cf700000(0000) knlGS:0000000000000000
+[   22.823883] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.823884] CR2: 000055cfb870fc38 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.823885] Call Trace:
+[   22.823886]  <TASK>
+[   22.823887]  nv50_instobj_release+0x34/0xc0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.823950]  nvkm_instobj_load+0x50/0xb0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824010]  nvkm_instmem_init+0x66/0x80 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824069]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824126]  ? ktime_get+0x3f/0xa0
+[   22.824128]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824195]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824261]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824317]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824374]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824439]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824502]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.824504]  __rpm_callback+0x44/0x170
+[   22.824506]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.824508]  rpm_callback+0x5d/0x70
+[   22.824509]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.824511]  rpm_resume+0x5e3/0x830
+[   22.824512]  ? kernfs_add_one+0xec/0x120
+[   22.824515]  __pm_runtime_resume+0x4b/0x80
+[   22.824517]  pm_runtime_get_suppliers+0x58/0x80
+[   22.824519]  __driver_probe_device+0x49/0x170
+[   22.824521]  driver_probe_device+0x1f/0x90
+[   22.824523]  __driver_attach+0xd5/0x1d0
+[   22.824525]  ? __device_attach_driver+0x110/0x110
+[   22.824527]  bus_for_each_dev+0x8b/0xd0
+[   22.824529]  bus_add_driver+0x1b2/0x200
+[   22.824531]  driver_register+0x8d/0xe0
+[   22.824533]  ? 0xffffffffc0a88000
+[   22.824536]  do_one_initcall+0x5d/0x220
+[   22.824539]  do_init_module+0x4a/0x1e0
+[   22.824542]  __do_sys_init_module+0x17f/0x1b0
+[   22.824545]  do_syscall_64+0x5f/0x90
+[   22.824547]  ? exc_page_fault+0x74/0x170
+[   22.824549]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.824551] RIP: 0033:0x7f83d0a97eae
+[   22.824553] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.824554] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.824555] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.824556] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.824557] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.824558] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.824559] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.824561]  </TASK>
+[   22.824562] ---[ end trace 0000000000000000 ]---
+[   22.824582] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.824673] ------------[ cut here ]------------
+[   22.824674] nouveau 0000:01:00.0: timeout
+[   22.824684] WARNING: CPU: 4 PID: 638 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.824747] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.824777]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.824794] CPU: 4 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.824796] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.824796] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.824853] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 38 e5 54 df 48 89 da 48 c7 c7 ae e0 80 c0 48 89 c6 e8 a1 3a 94 df <0f> 0b eb aa e8 9d ee 99 df 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   22.824855] RSP: 0018:ffffaea7c1a379b0 EFLAGS: 00010086
+[   22.824856] RAX: 0000000000000000 RBX: ffff9f2fc174e0d0 RCX: 0000000000000027
+[   22.824856] RDX: ffff9f36cf721668 RSI: 0000000000000001 RDI: ffff9f36cf721660
+[   22.824857] RBP: ffff9f2fc02410d8 R08: 0000000000000000 R09: ffffaea7c1a37838
+[   22.824858] R10: 0000000000000003 R11: ffffffffa12bd770 R12: 0000000000000246
+[   22.824859] R13: 000000054a63ebbf R14: ffff9f2fc3cd7908 R15: ffff9f2fc5474100
+[   22.824860] FS:  00007f83cff8a080(0000) GS:ffff9f36cf700000(0000) knlGS:0000000000000000
+[   22.824861] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.824862] CR2: 000055cfb870fc38 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.824862] Call Trace:
+[   22.824863]  <TASK>
+[   22.824865]  nv50_instobj_release+0x34/0xc0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824928]  nvkm_instobj_load+0x50/0xb0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.824988]  nvkm_instmem_init+0x66/0x80 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825046]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825103]  ? ktime_get+0x3f/0xa0
+[   22.825105]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825172]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825237]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825294]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825350]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825416]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825479]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.825480]  __rpm_callback+0x44/0x170
+[   22.825482]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.825484]  rpm_callback+0x5d/0x70
+[   22.825485]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.825487]  rpm_resume+0x5e3/0x830
+[   22.825489]  ? kernfs_add_one+0xec/0x120
+[   22.825491]  __pm_runtime_resume+0x4b/0x80
+[   22.825493]  pm_runtime_get_suppliers+0x58/0x80
+[   22.825495]  __driver_probe_device+0x49/0x170
+[   22.825497]  driver_probe_device+0x1f/0x90
+[   22.825499]  __driver_attach+0xd5/0x1d0
+[   22.825501]  ? __device_attach_driver+0x110/0x110
+[   22.825503]  bus_for_each_dev+0x8b/0xd0
+[   22.825505]  bus_add_driver+0x1b2/0x200
+[   22.825507]  driver_register+0x8d/0xe0
+[   22.825509]  ? 0xffffffffc0a88000
+[   22.825512]  do_one_initcall+0x5d/0x220
+[   22.825515]  do_init_module+0x4a/0x1e0
+[   22.825517]  __do_sys_init_module+0x17f/0x1b0
+[   22.825520]  do_syscall_64+0x5f/0x90
+[   22.825523]  ? exc_page_fault+0x74/0x170
+[   22.825524]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.825526] RIP: 0033:0x7f83d0a97eae
+[   22.825528] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.825529] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.825531] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.825531] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.825532] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.825533] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.825534] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.825536]  </TASK>
+[   22.825536] ---[ end trace 0000000000000000 ]---
+[   22.825558] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.825644] ------------[ cut here ]------------
+[   22.825645] nouveau 0000:01:00.0: timeout
+[   22.825654] WARNING: CPU: 4 PID: 638 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.825713] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.825744]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.825761] CPU: 4 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.825762] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.825763] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.825820] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 38 e5 54 df 48 89 da 48 c7 c7 ae e0 80 c0 48 89 c6 e8 a1 3a 94 df <0f> 0b eb aa e8 9d ee 99 df 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   22.825821] RSP: 0018:ffffaea7c1a379b0 EFLAGS: 00010086
+[   22.825822] RAX: 0000000000000000 RBX: ffff9f2fc174e0d0 RCX: 0000000000000027
+[   22.825823] RDX: ffff9f36cf721668 RSI: 0000000000000001 RDI: ffff9f36cf721660
+[   22.825824] RBP: ffff9f2fc02410d8 R08: 0000000000000000 R09: ffffaea7c1a37838
+[   22.825824] R10: 0000000000000003 R11: ffffffffa12bdd88 R12: 0000000000000246
+[   22.825825] R13: 000000054a63ebbf R14: ffff9f2fc3cd7908 R15: ffff9f2fc5474100
+[   22.825826] FS:  00007f83cff8a080(0000) GS:ffff9f36cf700000(0000) knlGS:0000000000000000
+[   22.825827] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.825828] CR2: 000055cfb870fc38 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.825829] Call Trace:
+[   22.825830]  <TASK>
+[   22.825831]  nv50_instobj_release+0x34/0xc0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825894]  nvkm_instobj_load+0x50/0xb0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.825953]  nvkm_instmem_init+0x66/0x80 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826011]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826068]  ? ktime_get+0x3f/0xa0
+[   22.826070]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826137]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826201]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826258]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826314]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826379]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826442]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.826444]  __rpm_callback+0x44/0x170
+[   22.826445]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.826447]  rpm_callback+0x5d/0x70
+[   22.826449]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.826450]  rpm_resume+0x5e3/0x830
+[   22.826452]  ? kernfs_add_one+0xec/0x120
+[   22.826455]  __pm_runtime_resume+0x4b/0x80
+[   22.826457]  pm_runtime_get_suppliers+0x58/0x80
+[   22.826459]  __driver_probe_device+0x49/0x170
+[   22.826461]  driver_probe_device+0x1f/0x90
+[   22.826463]  __driver_attach+0xd5/0x1d0
+[   22.826465]  ? __device_attach_driver+0x110/0x110
+[   22.826466]  bus_for_each_dev+0x8b/0xd0
+[   22.826468]  bus_add_driver+0x1b2/0x200
+[   22.826471]  driver_register+0x8d/0xe0
+[   22.826472]  ? 0xffffffffc0a88000
+[   22.826475]  do_one_initcall+0x5d/0x220
+[   22.826478]  do_init_module+0x4a/0x1e0
+[   22.826480]  __do_sys_init_module+0x17f/0x1b0
+[   22.826483]  do_syscall_64+0x5f/0x90
+[   22.826486]  ? exc_page_fault+0x74/0x170
+[   22.826487]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.826489] RIP: 0033:0x7f83d0a97eae
+[   22.826491] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.826492] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.826494] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.826495] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.826495] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.826496] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.826497] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.826499]  </TASK>
+[   22.826500] ---[ end trace 0000000000000000 ]---
+[   22.826530] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.826614] ------------[ cut here ]------------
+[   22.826615] nouveau 0000:01:00.0: timeout
+[   22.826625] WARNING: CPU: 4 PID: 638 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.826683] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.826712]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.826730] CPU: 4 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.826732] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.826733] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.826794] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 38 e5 54 df 48 89 da 48 c7 c7 ae e0 80 c0 48 89 c6 e8 a1 3a 94 df <0f> 0b eb aa e8 9d ee 99 df 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   22.826795] RSP: 0018:ffffaea7c1a379b0 EFLAGS: 00010086
+[   22.826796] RAX: 0000000000000000 RBX: ffff9f2fc174e0d0 RCX: 0000000000000027
+[   22.826797] RDX: ffff9f36cf721668 RSI: 0000000000000001 RDI: ffff9f36cf721660
+[   22.826798] RBP: ffff9f2fc02410d8 R08: 0000000000000000 R09: ffffaea7c1a37838
+[   22.826799] R10: 0000000000000003 R11: ffffffffa12be3a0 R12: 0000000000000246
+[   22.826800] R13: 000000054a63ebbf R14: ffff9f2fc3cd7908 R15: ffff9f2fc5474100
+[   22.826800] FS:  00007f83cff8a080(0000) GS:ffff9f36cf700000(0000) knlGS:0000000000000000
+[   22.826802] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.826802] CR2: 000055cfb870fc38 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.826803] Call Trace:
+[   22.826804]  <TASK>
+[   22.826805]  nv50_instobj_release+0x34/0xc0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826868]  nvkm_instobj_load+0x50/0xb0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826928]  nvkm_instmem_init+0x66/0x80 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.826987]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827043]  ? ktime_get+0x3f/0xa0
+[   22.827046]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827113]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827177]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827234]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827290]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827356]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827419]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.827421]  __rpm_callback+0x44/0x170
+[   22.827423]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.827425]  rpm_callback+0x5d/0x70
+[   22.827426]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.827428]  rpm_resume+0x5e3/0x830
+[   22.827429]  ? kernfs_add_one+0xec/0x120
+[   22.827432]  __pm_runtime_resume+0x4b/0x80
+[   22.827434]  pm_runtime_get_suppliers+0x58/0x80
+[   22.827436]  __driver_probe_device+0x49/0x170
+[   22.827438]  driver_probe_device+0x1f/0x90
+[   22.827440]  __driver_attach+0xd5/0x1d0
+[   22.827442]  ? __device_attach_driver+0x110/0x110
+[   22.827444]  bus_for_each_dev+0x8b/0xd0
+[   22.827446]  bus_add_driver+0x1b2/0x200
+[   22.827448]  driver_register+0x8d/0xe0
+[   22.827450]  ? 0xffffffffc0a88000
+[   22.827453]  do_one_initcall+0x5d/0x220
+[   22.827455]  do_init_module+0x4a/0x1e0
+[   22.827457]  __do_sys_init_module+0x17f/0x1b0
+[   22.827461]  do_syscall_64+0x5f/0x90
+[   22.827463]  ? exc_page_fault+0x74/0x170
+[   22.827464]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.827466] RIP: 0033:0x7f83d0a97eae
+[   22.827468] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.827469] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.827471] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.827471] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.827472] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.827473] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.827474] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.827476]  </TASK>
+[   22.827477] ---[ end trace 0000000000000000 ]---
+[   22.827497] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.827577] ------------[ cut here ]------------
+[   22.827578] nouveau 0000:01:00.0: timeout
+[   22.827587] WARNING: CPU: 4 PID: 638 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.827646] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.827676]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.827693] CPU: 4 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.827694] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.827695] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.827753] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 38 e5 54 df 48 89 da 48 c7 c7 ae e0 80 c0 48 89 c6 e8 a1 3a 94 df <0f> 0b eb aa e8 9d ee 99 df 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   22.827754] RSP: 0018:ffffaea7c1a379b0 EFLAGS: 00010086
+[   22.827756] RAX: 0000000000000000 RBX: ffff9f2fc174e0d0 RCX: 0000000000000027
+[   22.827756] RDX: ffff9f36cf721668 RSI: 0000000000000001 RDI: ffff9f36cf721660
+[   22.827757] RBP: ffff9f2fc02410d8 R08: 0000000000000000 R09: ffffaea7c1a37838
+[   22.827757] R10: 0000000000000003 R11: ffffffffa12be9b8 R12: 0000000000000246
+[   22.827758] R13: 000000054a63ebbf R14: ffff9f2fc3cd7908 R15: ffff9f2fc5474100
+[   22.827759] FS:  00007f83cff8a080(0000) GS:ffff9f36cf700000(0000) knlGS:0000000000000000
+[   22.827760] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.827761] CR2: 000055cfb870fc38 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.827762] Call Trace:
+[   22.827763]  <TASK>
+[   22.827764]  nv50_instobj_release+0x34/0xc0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827828]  nvkm_instobj_load+0x50/0xb0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827888]  nvkm_instmem_init+0x66/0x80 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.827947]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828003]  ? ktime_get+0x3f/0xa0
+[   22.828006]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828073]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828137]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828194]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828251]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828316]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828379]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.828381]  __rpm_callback+0x44/0x170
+[   22.828383]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.828384]  rpm_callback+0x5d/0x70
+[   22.828386]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.828388]  rpm_resume+0x5e3/0x830
+[   22.828389]  ? kernfs_add_one+0xec/0x120
+[   22.828392]  __pm_runtime_resume+0x4b/0x80
+[   22.828394]  pm_runtime_get_suppliers+0x58/0x80
+[   22.828396]  __driver_probe_device+0x49/0x170
+[   22.828398]  driver_probe_device+0x1f/0x90
+[   22.828401]  __driver_attach+0xd5/0x1d0
+[   22.828403]  ? __device_attach_driver+0x110/0x110
+[   22.828404]  bus_for_each_dev+0x8b/0xd0
+[   22.828406]  bus_add_driver+0x1b2/0x200
+[   22.828408]  driver_register+0x8d/0xe0
+[   22.828410]  ? 0xffffffffc0a88000
+[   22.828414]  do_one_initcall+0x5d/0x220
+[   22.828417]  do_init_module+0x4a/0x1e0
+[   22.828419]  __do_sys_init_module+0x17f/0x1b0
+[   22.828422]  do_syscall_64+0x5f/0x90
+[   22.828424]  ? exc_page_fault+0x74/0x170
+[   22.828426]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.828428] RIP: 0033:0x7f83d0a97eae
+[   22.828430] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.828431] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.828432] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.828433] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.828434] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.828435] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.828435] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.828437]  </TASK>
+[   22.828438] ---[ end trace 0000000000000000 ]---
+[   22.828459] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.828546] ------------[ cut here ]------------
+[   22.828547] nouveau 0000:01:00.0: timeout
+[   22.828556] WARNING: CPU: 4 PID: 638 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.828615] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.828644]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.828661] CPU: 4 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.828663] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.828664] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.828721] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 38 e5 54 df 48 89 da 48 c7 c7 ae e0 80 c0 48 89 c6 e8 a1 3a 94 df <0f> 0b eb aa e8 9d ee 99 df 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   22.828723] RSP: 0018:ffffaea7c1a379b0 EFLAGS: 00010086
+[   22.828724] RAX: 0000000000000000 RBX: ffff9f2fc174e0d0 RCX: 0000000000000027
+[   22.828725] RDX: ffff9f36cf721668 RSI: 0000000000000001 RDI: ffff9f36cf721660
+[   22.828726] RBP: ffff9f2fc02410d8 R08: 0000000000000000 R09: ffffaea7c1a37838
+[   22.828727] R10: 0000000000000003 R11: ffffffffa12befd0 R12: 0000000000000246
+[   22.828728] R13: 000000054a63ebbf R14: ffff9f2fc3cd7908 R15: ffff9f2fc5474100
+[   22.828729] FS:  00007f83cff8a080(0000) GS:ffff9f36cf700000(0000) knlGS:0000000000000000
+[   22.828730] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.828731] CR2: 000055cfb870fc38 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.828732] Call Trace:
+[   22.828733]  <TASK>
+[   22.828734]  nv50_instobj_release+0x34/0xc0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828799]  nvkm_instobj_load+0x50/0xb0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828859]  nvkm_instmem_init+0x66/0x80 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828918]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.828974]  ? ktime_get+0x3f/0xa0
+[   22.828977]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829044]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829108]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829165]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829222]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829287]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829350]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.829352]  __rpm_callback+0x44/0x170
+[   22.829354]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.829356]  rpm_callback+0x5d/0x70
+[   22.829357]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.829359]  rpm_resume+0x5e3/0x830
+[   22.829361]  ? kernfs_add_one+0xec/0x120
+[   22.829363]  __pm_runtime_resume+0x4b/0x80
+[   22.829365]  pm_runtime_get_suppliers+0x58/0x80
+[   22.829367]  __driver_probe_device+0x49/0x170
+[   22.829369]  driver_probe_device+0x1f/0x90
+[   22.829371]  __driver_attach+0xd5/0x1d0
+[   22.829373]  ? __device_attach_driver+0x110/0x110
+[   22.829375]  bus_for_each_dev+0x8b/0xd0
+[   22.829377]  bus_add_driver+0x1b2/0x200
+[   22.829379]  driver_register+0x8d/0xe0
+[   22.829381]  ? 0xffffffffc0a88000
+[   22.829384]  do_one_initcall+0x5d/0x220
+[   22.829387]  do_init_module+0x4a/0x1e0
+[   22.829390]  __do_sys_init_module+0x17f/0x1b0
+[   22.829393]  do_syscall_64+0x5f/0x90
+[   22.829395]  ? exc_page_fault+0x74/0x170
+[   22.829397]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.829399] RIP: 0033:0x7f83d0a97eae
+[   22.829401] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.829402] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.829403] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.829404] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.829405] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.829406] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.829406] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.829408]  </TASK>
+[   22.829409] ---[ end trace 0000000000000000 ]---
+[   22.829430] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.829516] ------------[ cut here ]------------
+[   22.829516] nouveau 0000:01:00.0: timeout
+[   22.829526] WARNING: CPU: 4 PID: 638 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.829586] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.829616]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.829635] CPU: 4 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.829637] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.829638] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.829695] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 38 e5 54 df 48 89 da 48 c7 c7 ae e0 80 c0 48 89 c6 e8 a1 3a 94 df <0f> 0b eb aa e8 9d ee 99 df 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   22.829696] RSP: 0018:ffffaea7c1a379b0 EFLAGS: 00010086
+[   22.829697] RAX: 0000000000000000 RBX: ffff9f2fc174e0d0 RCX: 0000000000000027
+[   22.829698] RDX: ffff9f36cf721668 RSI: 0000000000000001 RDI: ffff9f36cf721660
+[   22.829699] RBP: ffff9f2fc02410d8 R08: 0000000000000000 R09: ffffaea7c1a37838
+[   22.829699] R10: 0000000000000003 R11: ffffffffa12bf5e8 R12: 0000000000000246
+[   22.829700] R13: 000000054a63ebbf R14: ffff9f2fc3cd7908 R15: ffff9f2fc5474100
+[   22.829701] FS:  00007f83cff8a080(0000) GS:ffff9f36cf700000(0000) knlGS:0000000000000000
+[   22.829702] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.829703] CR2: 000055cfb870fc38 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.829704] Call Trace:
+[   22.829705]  <TASK>
+[   22.829706]  nv50_instobj_release+0x34/0xc0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829773]  nvkm_instobj_load+0x50/0xb0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829833]  nvkm_instmem_init+0x66/0x80 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829840]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829840]  ? ktime_get+0x3f/0xa0
+[   22.829840]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829840]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829840]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829840]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829840]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829840]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.829840]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.829840]  __rpm_callback+0x44/0x170
+[   22.829840]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.829840]  rpm_callback+0x5d/0x70
+[   22.829840]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.829840]  rpm_resume+0x5e3/0x830
+[   22.829840]  ? kernfs_add_one+0xec/0x120
+[   22.829840]  __pm_runtime_resume+0x4b/0x80
+[   22.829840]  pm_runtime_get_suppliers+0x58/0x80
+[   22.829840]  __driver_probe_device+0x49/0x170
+[   22.829840]  driver_probe_device+0x1f/0x90
+[   22.829840]  __driver_attach+0xd5/0x1d0
+[   22.829840]  ? __device_attach_driver+0x110/0x110
+[   22.829840]  bus_for_each_dev+0x8b/0xd0
+[   22.829840]  bus_add_driver+0x1b2/0x200
+[   22.829840]  driver_register+0x8d/0xe0
+[   22.829840]  ? 0xffffffffc0a88000
+[   22.829840]  do_one_initcall+0x5d/0x220
+[   22.829840]  do_init_module+0x4a/0x1e0
+[   22.829840]  __do_sys_init_module+0x17f/0x1b0
+[   22.829840]  do_syscall_64+0x5f/0x90
+[   22.829840]  ? exc_page_fault+0x74/0x170
+[   22.829840]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.829840] RIP: 0033:0x7f83d0a97eae
+[   22.829840] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.829840] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.829840] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.829840] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.829840] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.829840] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.829840] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.829840]  </TASK>
+[   22.829840] ---[ end trace 0000000000000000 ]---
+[   22.830409] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.830496] ------------[ cut here ]------------
+[   22.830496] nouveau 0000:01:00.0: timeout
+[   22.830506] WARNING: CPU: 4 PID: 638 at drivers/gpu/drm/nouveau/nvkm/subdev/bar/g84.c:35 g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.830566] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.830595]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.830611] CPU: 4 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.830613] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.830614] RIP: 0010:g84_bar_flush+0xfa/0x110 [nouveau]
+[   22.830671] Code: 8b 40 10 48 8b 78 10 48 8b 5f 50 48 85 db 75 03 48 8b 1f e8 38 e5 54 df 48 89 da 48 c7 c7 ae e0 80 c0 48 89 c6 e8 a1 3a 94 df <0f> 0b eb aa e8 9d ee 99 df 66 66 2e 0f 1f 84 00 00 00 00 00 66 90
+[   22.830672] RSP: 0018:ffffaea7c1a379b0 EFLAGS: 00010086
+[   22.830673] RAX: 0000000000000000 RBX: ffff9f2fc174e0d0 RCX: 0000000000000027
+[   22.830674] RDX: ffff9f36cf721668 RSI: 0000000000000001 RDI: ffff9f36cf721660
+[   22.830675] RBP: ffff9f2fc02410d8 R08: 0000000000000000 R09: ffffaea7c1a37838
+[   22.830676] R10: 0000000000000003 R11: ffffffffa12bfc00 R12: 0000000000000246
+[   22.830677] R13: 000000054a63ebbf R14: ffff9f2fc3cd7908 R15: ffff9f2fc5474100
+[   22.830678] FS:  00007f83cff8a080(0000) GS:ffff9f36cf700000(0000) knlGS:0000000000000000
+[   22.830679] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.830680] CR2: 000055cfb870fc38 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.830680] Call Trace:
+[   22.830681]  <TASK>
+[   22.830683]  nv50_instobj_release+0x34/0xc0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.830748]  nvkm_instobj_load+0x50/0xb0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.830810]  nvkm_instmem_init+0x66/0x80 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.830868]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.830925]  ? ktime_get+0x3f/0xa0
+[   22.830927]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.830994]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.831058]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.831115]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.831172]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.831237]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.831300]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.831302]  __rpm_callback+0x44/0x170
+[   22.831304]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.831305]  rpm_callback+0x5d/0x70
+[   22.831307]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.831308]  rpm_resume+0x5e3/0x830
+[   22.831310]  ? kernfs_add_one+0xec/0x120
+[   22.831313]  __pm_runtime_resume+0x4b/0x80
+[   22.831315]  pm_runtime_get_suppliers+0x58/0x80
+[   22.831317]  __driver_probe_device+0x49/0x170
+[   22.831319]  driver_probe_device+0x1f/0x90
+[   22.831321]  __driver_attach+0xd5/0x1d0
+[   22.831323]  ? __device_attach_driver+0x110/0x110
+[   22.831325]  bus_for_each_dev+0x8b/0xd0
+[   22.831327]  bus_add_driver+0x1b2/0x200
+[   22.831329]  driver_register+0x8d/0xe0
+[   22.831331]  ? 0xffffffffc0a88000
+[   22.831333]  do_one_initcall+0x5d/0x220
+[   22.831336]  do_init_module+0x4a/0x1e0
+[   22.831338]  __do_sys_init_module+0x17f/0x1b0
+[   22.831341]  do_syscall_64+0x5f/0x90
+[   22.831344]  ? exc_page_fault+0x74/0x170
+[   22.831345]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.831347] RIP: 0033:0x7f83d0a97eae
+[   22.831349] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.831350] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.831352] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.831352] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.831353] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.831354] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.831355] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.831357]  </TASK>
+[   22.831357] ---[ end trace 0000000000000000 ]---
+[   22.831425] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.831542] ------------[ cut here ]------------
+[   22.831543] nouveau 0000:01:00.0: timeout
+[   22.831562] WARNING: CPU: 5 PID: 638 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:276 falcon_v1_wait_idle+0xde/0xf0 [nouveau]
+[   22.831633] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.831667]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.831690] CPU: 5 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.831692] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.831693] RIP: 0010:falcon_v1_wait_idle+0xde/0xf0 [nouveau]
+[   22.831761] Code: 8b 40 10 48 8b 78 10 48 8b 6f 50 48 85 ed 75 03 48 8b 2f e8 b4 3c 55 df 48 89 ea 48 c7 c7 4c dd 80 c0 48 89 c6 e8 1d 92 94 df <0f> 0b eb a9 e8 19 46 9a df 66 0f 1f 84 00 00 00 00 00 f3 0f 1e fa
+[   22.831763] RSP: 0018:ffffaea7c1a37998 EFLAGS: 00010286
+[   22.831764] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000027
+[   22.831765] RDX: ffff9f36cf761668 RSI: 0000000000000001 RDI: ffff9f36cf761660
+[   22.831766] RBP: ffff9f2fc174e0d0 R08: 0000000000000000 R09: ffffaea7c1a37820
+[   22.831767] R10: 0000000000000003 R11: ffffffffa12c0218 R12: ffff9f2fc0fe7000
+[   22.831768] R13: ffff9f2fd77cbc08 R14: ffff9f2fd7798100 R15: ffff9f2fd7798000
+[   22.831769] FS:  00007f83cff8a080(0000) GS:ffff9f36cf740000(0000) knlGS:0000000000000000
+[   22.831770] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.831771] CR2: 000056437bf7db20 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.831772] Call Trace:
+[   22.831774]  <TASK>
+[   22.831776]  nvkm_falcon_disable+0x3a/0x60 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.831850]  nvkm_falcon_reset+0x2b/0x40 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.831921]  gp102_fb_vpr_scrub+0xbc/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.831995]  nvkm_fb_init+0x10b/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.832067]  ? ktime_get+0x3f/0xa0
+[   22.832070]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.832138]  ? ktime_get+0x3f/0xa0
+[   22.832141]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.832221]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.832298]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.832366]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.832434]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.832512]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.832588]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.832590]  __rpm_callback+0x44/0x170
+[   22.832592]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.832594]  rpm_callback+0x5d/0x70
+[   22.832596]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.832597]  rpm_resume+0x5e3/0x830
+[   22.832599]  ? kernfs_add_one+0xec/0x120
+[   22.832603]  __pm_runtime_resume+0x4b/0x80
+[   22.832605]  pm_runtime_get_suppliers+0x58/0x80
+[   22.832607]  __driver_probe_device+0x49/0x170
+[   22.832609]  driver_probe_device+0x1f/0x90
+[   22.832612]  __driver_attach+0xd5/0x1d0
+[   22.832614]  ? __device_attach_driver+0x110/0x110
+[   22.832616]  bus_for_each_dev+0x8b/0xd0
+[   22.832618]  bus_add_driver+0x1b2/0x200
+[   22.832621]  driver_register+0x8d/0xe0
+[   22.832623]  ? 0xffffffffc0a88000
+[   22.832629]  do_one_initcall+0x5d/0x220
+[   22.832633]  do_init_module+0x4a/0x1e0
+[   22.832636]  __do_sys_init_module+0x17f/0x1b0
+[   22.832639]  do_syscall_64+0x5f/0x90
+[   22.832642]  ? exc_page_fault+0x74/0x170
+[   22.832644]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.832647] RIP: 0033:0x7f83d0a97eae
+[   22.832649] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.832650] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.832652] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.832653] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.832654] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.832655] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.832656] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.832659]  </TASK>
+[   22.832659] ---[ end trace 0000000000000000 ]---
+[   22.832681] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.832954] ------------[ cut here ]------------
+[   22.832955] nouveau 0000:01:00.0: timeout
+[   22.832967] WARNING: CPU: 5 PID: 638 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:289 nvkm_falcon_v1_enable+0x124/0x130 [nouveau]
+[   22.833035] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.833070]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.833091] CPU: 5 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.833093] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.833094] RIP: 0010:nvkm_falcon_v1_enable+0x124/0x130 [nouveau]
+[   22.833161] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 9e 31 55 df 4c 89 e2 48 c7 c7 4c dd 80 c0 48 89 c6 e8 07 87 94 df <0f> 0b e9 66 ff ff ff e8 00 3b 9a df f3 0f 1e fa 0f 1f 44 00 00 53
+[   22.833163] RSP: 0018:ffffaea7c1a379a0 EFLAGS: 00010282
+[   22.833164] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000027
+[   22.833165] RDX: ffff9f36cf761668 RSI: 0000000000000001 RDI: ffff9f36cf761660
+[   22.833166] RBP: ffff9f2fd744d098 R08: 0000000000000000 R09: ffffaea7c1a37828
+[   22.833167] R10: 0000000000000003 R11: ffffffffa12c0860 R12: ffff9f2fc174e0d0
+[   22.833168] R13: ffff9f2fd77cbc08 R14: ffff9f2fd7798100 R15: ffff9f2fd7798000
+[   22.833169] FS:  00007f83cff8a080(0000) GS:ffff9f36cf740000(0000) knlGS:0000000000000000
+[   22.833170] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.833171] CR2: 000056437bf7db20 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.833172] Call Trace:
+[   22.833173]  <TASK>
+[   22.833175]  nvkm_falcon_enable+0x3a/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833242]  gp102_fb_vpr_scrub+0xbc/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833316]  nvkm_fb_init+0x10b/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833382]  ? ktime_get+0x3f/0xa0
+[   22.833384]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833441]  ? ktime_get+0x3f/0xa0
+[   22.833443]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833510]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833574]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833631]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833687]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833756]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.833818]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.833820]  __rpm_callback+0x44/0x170
+[   22.833822]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.833823]  rpm_callback+0x5d/0x70
+[   22.833825]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.833826]  rpm_resume+0x5e3/0x830
+[   22.833828]  ? kernfs_add_one+0xec/0x120
+[   22.833831]  __pm_runtime_resume+0x4b/0x80
+[   22.833833]  pm_runtime_get_suppliers+0x58/0x80
+[   22.833835]  __driver_probe_device+0x49/0x170
+[   22.833837]  driver_probe_device+0x1f/0x90
+[   22.833839]  __driver_attach+0xd5/0x1d0
+[   22.833841]  ? __device_attach_driver+0x110/0x110
+[   22.833843]  bus_for_each_dev+0x8b/0xd0
+[   22.833845]  bus_add_driver+0x1b2/0x200
+[   22.833847]  driver_register+0x8d/0xe0
+[   22.833849]  ? 0xffffffffc0a88000
+[   22.833853]  do_one_initcall+0x5d/0x220
+[   22.833856]  do_init_module+0x4a/0x1e0
+[   22.833859]  __do_sys_init_module+0x17f/0x1b0
+[   22.833862]  do_syscall_64+0x5f/0x90
+[   22.833865]  ? exc_page_fault+0x74/0x170
+[   22.833866]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.833868] RIP: 0033:0x7f83d0a97eae
+[   22.833870] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.833871] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.833873] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.833874] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.833874] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.833875] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.833876] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.833878]  </TASK>
+[   22.833879] ---[ end trace 0000000000000000 ]---
+[   22.833880] nouveau 0000:01:00.0: fb: Falcon mem scrubbing timeout
+[   22.834234] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.834482] ------------[ cut here ]------------
+[   22.834484] nouveau 0000:01:00.0: timeout
+[   22.834515] WARNING: CPU: 6 PID: 638 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:276 falcon_v1_wait_idle+0xde/0xf0 [nouveau]
+[   22.834648] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.834715]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.834746] CPU: 6 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.834748] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.834749] RIP: 0010:falcon_v1_wait_idle+0xde/0xf0 [nouveau]
+[   22.834809] Code: 8b 40 10 48 8b 78 10 48 8b 6f 50 48 85 ed 75 03 48 8b 2f e8 b4 3c 55 df 48 89 ea 48 c7 c7 4c dd 80 c0 48 89 c6 e8 1d 92 94 df <0f> 0b eb a9 e8 19 46 9a df 66 0f 1f 84 00 00 00 00 00 f3 0f 1e fa
+[   22.834811] RSP: 0018:ffffaea7c1a37998 EFLAGS: 00010286
+[   22.834812] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000027
+[   22.834813] RDX: ffff9f36cf7a1668 RSI: 0000000000000001 RDI: ffff9f36cf7a1660
+[   22.834814] RBP: ffff9f2fc174e0d0 R08: 0000000000000000 R09: ffffaea7c1a37820
+[   22.834815] R10: 0000000000000003 R11: ffffffffa12c0ea8 R12: ffff9f2fc0fe7000
+[   22.834816] R13: ffff9f2fd77cbc08 R14: ffff9f2fd7798100 R15: ffff9f2fd7798000
+[   22.834817] FS:  00007f83cff8a080(0000) GS:ffff9f36cf780000(0000) knlGS:0000000000000000
+[   22.834818] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.834819] CR2: 000055e7d0e68288 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.834820] Call Trace:
+[   22.834821]  <TASK>
+[   22.834823]  nvkm_falcon_disable+0x3a/0x60 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.834889]  nvkm_falcon_reset+0x2b/0x40 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.834945]  gp102_fb_vpr_scrub+0x162/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.835008]  nvkm_fb_init+0x10b/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.835067]  ? ktime_get+0x3f/0xa0
+[   22.835070]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.835127]  ? ktime_get+0x3f/0xa0
+[   22.835129]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.835199]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.835264]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.835320]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.835377]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.835445]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.835508]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.835510]  __rpm_callback+0x44/0x170
+[   22.835512]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.835514]  rpm_callback+0x5d/0x70
+[   22.835515]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.835517]  rpm_resume+0x5e3/0x830
+[   22.835519]  ? kernfs_add_one+0xec/0x120
+[   22.835521]  __pm_runtime_resume+0x4b/0x80
+[   22.835523]  pm_runtime_get_suppliers+0x58/0x80
+[   22.835526]  __driver_probe_device+0x49/0x170
+[   22.835528]  driver_probe_device+0x1f/0x90
+[   22.835530]  __driver_attach+0xd5/0x1d0
+[   22.835532]  ? __device_attach_driver+0x110/0x110
+[   22.835534]  bus_for_each_dev+0x8b/0xd0
+[   22.835536]  bus_add_driver+0x1b2/0x200
+[   22.835538]  driver_register+0x8d/0xe0
+[   22.835540]  ? 0xffffffffc0a88000
+[   22.835545]  do_one_initcall+0x5d/0x220
+[   22.835549]  do_init_module+0x4a/0x1e0
+[   22.835551]  __do_sys_init_module+0x17f/0x1b0
+[   22.835554]  do_syscall_64+0x5f/0x90
+[   22.835557]  ? exc_page_fault+0x74/0x170
+[   22.835559]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.835561] RIP: 0033:0x7f83d0a97eae
+[   22.835563] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.835565] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.835566] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.835567] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.835568] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.835569] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.835570] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.835572]  </TASK>
+[   22.835572] ---[ end trace 0000000000000000 ]---
+[   22.835594] nouveau 0000:01:00.0: timer: stalled at ffffffffffffffff
+[   22.836206] ------------[ cut here ]------------
+[   22.836207] nouveau 0000:01:00.0: timeout
+[   22.836239] WARNING: CPU: 2 PID: 638 at drivers/gpu/drm/nouveau/nvkm/falcon/v1.c:289 nvkm_falcon_v1_enable+0x124/0x130 [nouveau]
+[   22.836306] Modules linked in: ccm algif_aead cbc des_generic libdes ecb algif_skcipher snd_sof_amd_rembrandt cmac snd_sof_amd_renoir joydev snd_sof_amd_acp md4 snd_sof_pci algif_hash snd_sof bnep af_alg snd_sof_utils snd_soc_core snd_compress ac97_bus intel_rapl_msr iwlmvm snd_pcm_dmaengine intel_rapl_common hid_multitouch snd_pci_ps mac80211 snd_rpl_pci_acp6x snd_acp_pci btusb snd_pci_acp6x snd_hda_intel(+) btrtl wl(POE) snd_intel_dspcfg edac_mce_amd libarc4 snd_pci_acp5x snd_intel_sdw_acpi btbcm asus_nb_wmi btintel snd_rn_pci_acp3x kvm_amd snd_hda_codec btmtk asus_wmi snd_acp_config iwlwifi ledtrig_audio snd_hda_core bluetooth snd_soc_acpi sparse_keymap snd_hwdep sp5100_tco kvm irqbypass crct10dif_pclmul polyval_clmulni polyval_generic snd_pcm gf128mul ghash_clmulni_intel ecdh_generic snd_timer rapl platform_profile ucsi_acpi wmi_bmof cfg80211 pcspkr crc16 i2c_piix4 k10temp snd_pci_acp3x snd typec_ucsi rfkill typec soundcore ccp i2c_hid_acpi roles i2c_hid asus_wireless acpi_cpufreq
+[   22.836339]  mousedev mac_hid pkcs8_key_parser crypto_user fuse bpf_preload ip_tables x_tables overlay squashfs loop isofs cdrom dm_mod hid_logitech_hidpp hid_logitech_dj uas usb_storage usbhid amdgpu nouveau serio_raw gpu_sched mxm_wmi atkbd drm_buddy r8169 libps2 drm_ttm_helper crc32_pclmul crc32c_intel sha512_ssse3 vivaldi_fmap ttm aesni_intel realtek nvme crypto_simd mdio_devres nvme_core drm_display_helper cryptd xhci_pci i8042 libphy nvme_common video xhci_pci_renesas cec serio wmi
+[   22.836358] CPU: 2 PID: 638 Comm: systemd-udevd Tainted: P        W  OE      6.1.1-arch1-1 #1 9bd09188b430be630e611f984454e4f3c489be77
+[   22.836360] Hardware name: ASUSTeK COMPUTER INC. ASUS TUF Gaming A15 FA506II_FA506II/FA506II, BIOS FA506II.316 03/12/2021
+[   22.836361] RIP: 0010:nvkm_falcon_v1_enable+0x124/0x130 [nouveau]
+[   22.836419] Code: 8b 40 10 48 8b 78 10 4c 8b 67 50 4d 85 e4 75 03 4c 8b 27 e8 9e 31 55 df 4c 89 e2 48 c7 c7 4c dd 80 c0 48 89 c6 e8 07 87 94 df <0f> 0b e9 66 ff ff ff e8 00 3b 9a df f3 0f 1e fa 0f 1f 44 00 00 53
+[   22.836420] RSP: 0018:ffffaea7c1a379a0 EFLAGS: 00010282
+[   22.836421] RAX: 0000000000000000 RBX: ffffffffffffff92 RCX: 0000000000000027
+[   22.836422] RDX: ffff9f36cf6a1668 RSI: 0000000000000001 RDI: ffff9f36cf6a1660
+[   22.836423] RBP: ffff9f2fd744d098 R08: 0000000000000000 R09: ffffaea7c1a37828
+[   22.836424] R10: 0000000000000003 R11: ffffffffa12c14f0 R12: ffff9f2fc174e0d0
+[   22.836425] R13: ffff9f2fd77cbc08 R14: ffff9f2fd7798100 R15: ffff9f2fd7798000
+[   22.836426] FS:  00007f83cff8a080(0000) GS:ffff9f36cf680000(0000) knlGS:0000000000000000
+[   22.836427] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   22.836428] CR2: 000055cfb8716d48 CR3: 00000001190e2000 CR4: 0000000000350ee0
+[   22.836430] Call Trace:
+[   22.836431]  <TASK>
+[   22.836433]  nvkm_falcon_enable+0x3a/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.836491]  gp102_fb_vpr_scrub+0x162/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.836554]  nvkm_fb_init+0x10b/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.836614]  ? ktime_get+0x3f/0xa0
+[   22.836616]  nvkm_subdev_init+0x9a/0xe0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.836673]  ? ktime_get+0x3f/0xa0
+[   22.836675]  nvkm_device_init+0x11e/0x1b0 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.836747]  nvkm_udevice_init+0x49/0x70 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.836814]  nvkm_object_init+0x41/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.836871]  nvkm_object_init+0x76/0x120 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.836928]  nouveau_do_resume+0x30/0x140 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.836996]  nouveau_pmops_runtime_resume+0x81/0x160 [nouveau 785f32c1c772814231e81ad1326f58bae2b39110]
+[   22.837060]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.837062]  __rpm_callback+0x44/0x170
+[   22.837064]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.837066]  rpm_callback+0x5d/0x70
+[   22.837067]  ? pci_pm_restore_noirq+0xc0/0xc0
+[   22.837069]  rpm_resume+0x5e3/0x830
+[   22.837071]  ? kernfs_add_one+0xec/0x120
+[   22.837073]  __pm_runtime_resume+0x4b/0x80
+[   22.837075]  pm_runtime_get_suppliers+0x58/0x80
+[   22.837077]  __driver_probe_device+0x49/0x170
+[   22.837080]  driver_probe_device+0x1f/0x90
+[   22.837082]  __driver_attach+0xd5/0x1d0
+[   22.837084]  ? __device_attach_driver+0x110/0x110
+[   22.837086]  bus_for_each_dev+0x8b/0xd0
+[   22.837088]  bus_add_driver+0x1b2/0x200
+[   22.837090]  driver_register+0x8d/0xe0
+[   22.837092]  ? 0xffffffffc0a88000
+[   22.837097]  do_one_initcall+0x5d/0x220
+[   22.837100]  do_init_module+0x4a/0x1e0
+[   22.837103]  __do_sys_init_module+0x17f/0x1b0
+[   22.837106]  do_syscall_64+0x5f/0x90
+[   22.837109]  ? exc_page_fault+0x74/0x170
+[   22.837111]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   22.837113] RIP: 0033:0x7f83d0a97eae
+[   22.837116] Code: 48 8b 0d dd ee 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 af 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d aa ee 0c 00 f7 d8 64 89 01 48
+[   22.837117] RSP: 002b:00007ffeca3a0608 EFLAGS: 00000246 ORIG_RAX: 00000000000000af
+[   22.837118] RAX: ffffffffffffffda RBX: 0000555ed6ca29e0 RCX: 00007f83d0a97eae
+[   22.837119] RDX: 00007f83d0be3343 RSI: 0000000000022157 RDI: 0000555ed6f5df00
+[   22.837120] RBP: 00007f83d0be3343 R08: 27d4eb2f165667c5 R09: 85ebca77c2b2ae63
+[   22.837121] R10: 00000000000092b1 R11: 0000000000000246 R12: 0000000000020000
+[   22.837122] R13: 0000555ed6c4fd00 R14: 0000555ed6ca29e0 R15: 0000555ed6d47830
+[   22.837124]  </TASK>
+[   22.837125] ---[ end trace 0000000000000000 ]---
+[   22.837126] nouveau 0000:01:00.0: fb: Falcon mem scrubbing timeout
+[   22.837268] nouveau 0000:01:00.0: fb: VPR still locked after scrub!
+[   22.837360] nouveau 0000:01:00.0: fb: init failed, -5
+[   22.837578] nouveau 0000:01:00.0: init failed with -5
+[   22.837668] nouveau: DRM-master:00000000:00000080: init failed with -5
+[   22.837764] nouveau: DRM-master:00000000:00000000: init failed with -5
+[   22.837863] nouveau 0000:01:00.0: DRM: Client resume failed with error: -5
+[   22.837963] nouveau 0000:01:00.0: DRM: resume failed with: -5
+[   22.838206] snd_hda_intel 0000:01:00.1: Unable to change power state from D3cold to D0, device inaccessible
+[   22.838698] snd_hda_intel 0000:01:00.1: Disabling MSI
+[   22.838710] snd_hda_intel 0000:01:00.1: Handle vga_switcheroo audio client
+[   22.838721] snd_hda_intel 0000:01:00.1: VGA controller is disabled
+[   22.838722] snd_hda_intel 0000:01:00.1: Delaying initialization
+[   22.838877] snd_hda_intel 0000:05:00.1: enabling device (0000 -> 0002)
+[   22.838934] snd_hda_intel 0000:05:00.1: Handle vga_switcheroo audio client
+[   22.838984] snd_hda_intel 0000:05:00.6: enabling device (0000 -> 0002)
+[   22.847854] snd_hda_intel 0000:05:00.1: bound 0000:05:00.0 (ops amdgpu_dm_audio_component_bind_ops [amdgpu])
+[   22.848721] input: HD-Audio Generic HDMI/DP,pcm=3 as /devices/pci0000:00/0000:00:08.1/0000:05:00.1/sound/card1/input24
+[   22.848774] input: HD-Audio Generic HDMI/DP,pcm=7 as /devices/pci0000:00/0000:00:08.1/0000:05:00.1/sound/card1/input25
+[   22.848807] input: HD-Audio Generic HDMI/DP,pcm=8 as /devices/pci0000:00/0000:00:08.1/0000:05:00.1/sound/card1/input26
+[   22.848843] input: HD-Audio Generic HDMI/DP,pcm=9 as /devices/pci0000:00/0000:00:08.1/0000:05:00.1/sound/card1/input27
+[   22.848873] input: HD-Audio Generic HDMI/DP,pcm=10 as /devices/pci0000:00/0000:00:08.1/0000:05:00.1/sound/card1/input28
+[   22.848903] input: HD-Audio Generic HDMI/DP,pcm=11 as /devices/pci0000:00/0000:00:08.1/0000:05:00.1/sound/card1/input29
+[   22.861941] snd_hda_codec_realtek hdaudioC2D0: autoconfig for ALC256: line_outs=1 (0x14/0x0/0x0/0x0/0x0) type:speaker
+[   22.861946] snd_hda_codec_realtek hdaudioC2D0:    speaker_outs=0 (0x0/0x0/0x0/0x0/0x0)
+[   22.861948] snd_hda_codec_realtek hdaudioC2D0:    hp_outs=1 (0x21/0x0/0x0/0x0/0x0)
+[   22.861949] snd_hda_codec_realtek hdaudioC2D0:    mono: mono_out=0x0
+[   22.861950] snd_hda_codec_realtek hdaudioC2D0:    inputs:
+[   22.861950] snd_hda_codec_realtek hdaudioC2D0:      Headset Mic=0x19
+[   22.861951] snd_hda_codec_realtek hdaudioC2D0:      Internal Mic=0x12
+[   22.907008] input: HD-Audio Generic Headphone as /devices/pci0000:00/0000:00:08.1/0000:05:00.6/sound/card2/input30
+[   24.829600] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[   24.860862] nouveau 0000:01:00.0: vgaarb: changed VGA decodes: olddecodes=io+mem,decodes=none:owns=none
+[   24.860866] amdgpu 0000:05:00.0: vgaarb: changed VGA decodes: olddecodes=io+mem,decodes=none:owns=none
+[   27.573081] /dev/sdb1: Can't open blockdev
+[   27.602963] rfkill: input handler disabled
+[   28.192563] Bluetooth: RFCOMM TTY layer initialized
+[   28.192570] Bluetooth: RFCOMM socket layer initialized
+[   28.192573] Bluetooth: RFCOMM ver 1.11
+[  153.675059] logitech-hidpp-device 0003:046D:4074.0004: HID++ 4.2 device connected.
+[  163.825714] wlan0: authenticate with XXX
+[  163.831060] wlan0: send auth to XXX (try 1/3)
+[  163.990398] wlan0: authenticate with XXX
+[  163.990998] wlan0: send auth to XXX (try 1/3)
+[  164.098926] wlan0: authenticated
+[  164.099568] wlan0: associate with XXX (try 1/3)
+[  164.139392] wlan0: RX AssocResp from XXX (capab=0x1931 status=0 aid=11)
+[  164.145980] wlan0: associated
+[  164.217841] wlan0: Limiting TX power to 30 (30 - 0) dBm as advertised by XXX
+[  164.354512] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[  225.723038] systemd-journald[571]: Time jumped backwards, rotating.
+[  225.733477] systemd-journald[571]: Time jumped backwards, rotating.
+[  241.760094] systemd-gpt-auto-generator[2765]: EFI loader partition unknown, exiting.
+[  241.760099] systemd-gpt-auto-generator[2765]: (The boot loader did not set EFI variable LoaderDevicePartUUID.)
+[  249.530956] systemd-journald[571]: Time jumped backwards, rotating.
+[  252.296167] systemd-journald[571]: Time jumped backwards, rotating.
+[  252.320221] systemd-journald[571]: Time jumped backwards, rotating.
+[  254.206304] systemd-journald[571]: Time jumped backwards, rotating.
+[  254.228904] systemd-journald[571]: Time jumped backwards, rotating.
+[  273.052261] systemd-journald[571]: Time jumped backwards, rotating.
+[  273.064130] systemd-journald[571]: Time jumped backwards, rotating.
+[  285.177455] systemd-journald[571]: Time jumped backwards, rotating.
+[  295.226748] systemd-gpt-auto-generator[2898]: EFI loader partition unknown, exiting.
+[  295.226758] systemd-gpt-auto-generator[2898]: (The boot loader did not set EFI variable LoaderDevicePartUUID.)
+[  298.163204] systemd-journald[571]: Time jumped backwards, rotating.
+[  300.989590] systemd-gpt-auto-generator[2927]: EFI loader partition unknown, exiting.
+[  300.989595] systemd-gpt-auto-generator[2927]: (The boot loader did not set EFI variable LoaderDevicePartUUID.)
+[  421.033120] ntfs3: Max link count 4000
+[  421.033123] ntfs3: Enabled Linux POSIX ACLs support
+[  421.033123] ntfs3: Read-only LZX/Xpress compression included
+[  421.033493] ntfs3: Unknown parameter 'windows_names'
+[  584.407187] wlan0: deauthenticating from XXX by local choice (Reason: 3=DEAUTH_LEAVING)
+[  589.434557] wlan0: authenticate with XXX
+[  589.438784] wlan0: send auth to XXX (try 1/3)
+[  589.583505] wlan0: authenticate with XXX
+[  589.583827] wlan0: send auth to XXX (try 1/3)
+[  589.700678] wlan0: authenticated
+[  589.702856] wlan0: associate with XXX (try 1/3)
+[  589.741301] wlan0: RX AssocResp from XXX (capab=0x1931 status=0 aid=11)
+[  589.745684] wlan0: associated
+[  589.787543] wlan0: Limiting TX power to 30 (30 - 0) dBm as advertised by XXX
+[  589.974054] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[  607.708220] systemd-journald[571]: Time jumped backwards, rotating.
+[  607.720839] systemd-journald[571]: Time jumped backwards, rotating.
+[  624.266631] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[  851.959746] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[ 2080.666072] pcieport 0000:00:01.1: Data Link Layer Link Active not set in 1000 msec
+[ 2080.766872] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[ 2080.791885] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[ 2080.791913] sd 2:0:0:0: Attached scsi generic sg1 type 0
