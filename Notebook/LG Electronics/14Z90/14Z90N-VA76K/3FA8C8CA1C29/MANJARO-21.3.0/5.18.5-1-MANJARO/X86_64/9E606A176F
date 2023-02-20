@@ -1,0 +1,1265 @@
+[24007.546824] perf: interrupt took too long (3320 > 3207), lowering kernel.perf_event_max_sample_rate to 60000
+[79123.987956] perf: interrupt took too long (4186 > 4150), lowering kernel.perf_event_max_sample_rate to 47700
+[135691.197827] ------------[ cut here ]------------
+[135691.197832] NETDEV WATCHDOG: enp0s13f0u1u3 (r8152): transmit queue 0 timed out
+[135691.197849] WARNING: CPU: 1 PID: 0 at net/sched/sch_generic.c:529 dev_watchdog+0x208/0x210
+[135691.197860] Modules linked in: rfcomm ccm r8153_ecm cdc_ether usbnet cmac algif_hash algif_skcipher r8152 af_alg mii bnep snd_sof_pci_intel_icl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence uvcvideo snd_sof_intel_hda btusb btrtl snd_sof_pci videobuf2_vmalloc snd_sof_xtensa_dsp btbcm videobuf2_memops snd_sof btintel videobuf2_v4l2 btmtk videobuf2_common snd_sof_utils snd_soc_hdac_hda bluetooth qrtr snd_hda_ext_core videodev snd_hda_codec_hdmi snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling mc ecdh_generic snd_hda_codec_conexant soundwire_bus x86_pkg_temp_thermal snd_hda_codec_generic intel_powerclamp coretemp ledtrig_audio snd_soc_core joydev kvm_intel snd_compress iTCO_wdt mousedev intel_pmc_bxt ee1004 spi_nor iTCO_vendor_support ac97_bus kvm mtd hid_multitouch snd_pcm_dmaengine irqbypass snd_hda_intel intel_wmi_thunderbolt wmi_bmof crct10dif_pclmul mei_hdcp mei_pxp spi_pxa2xx_platform snd_intel_dspcfg crc32_pclmul ghash_clmulni_intel
+[135691.197965]  dw_dmac 8250_dw snd_intel_sdw_acpi intel_rapl_msr aesni_intel iwlmvm snd_hda_codec crypto_simd cryptd snd_hda_core rapl snd_hwdep intel_cstate snd_pcm mac80211 intel_uncore snd_timer snd i2c_i801 spi_intel_pci pcspkr spi_intel i2c_smbus soundcore libarc4 lg_laptop i2c_hid_acpi vfat iwlwifi i2c_hid fat sparse_keymap wmi iwlmei int3403_thermal tpm_crb tpm_tis mac_hid cfg80211 tpm_tis_core mei_me rfkill processor_thermal_device_pci_legacy processor_thermal_device tpm processor_thermal_rfim processor_thermal_mbox rng_core intel_lpss_pci processor_thermal_rapl int3400_thermal intel_lpss acpi_thermal_rel thunderbolt intel_rapl_common idma64 acpi_pad mei int340x_thermal_zone intel_soc_dts_iosf uinput dm_multipath dm_mod ipmi_devintf ipmi_msghandler sg fuse crypto_user bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 serio_raw atkbd usbhid libps2 vivaldi_fmap nvme i8042 crc32c_intel xhci_pci nvme_core xhci_pci_renesas serio i915 intel_gtt drm_buddy video
+[135691.198055]  drm_dp_helper ttm
+[135691.198059] CPU: 1 PID: 0 Comm: swapper/1 Not tainted 5.18.5-1-MANJARO #1 f3ee4d7d020bb789451220f23826e89d72fc8675
+[135691.198065] Hardware name: LG Electronics                   14Z90N-VA76K/14Z90N, BIOS C2ZE0180 X64 06/04/2020
+[135691.198067] RIP: 0010:dev_watchdog+0x208/0x210
+[135691.198072] Code: ff e9 40 ff ff ff 48 89 df c6 05 76 32 40 01 01 e8 ad 8d f9 ff 44 89 e9 48 89 de 48 c7 c7 a0 47 f7 9f 48 89 c2 e8 a4 19 19 00 <0f> 0b e9 22 ff ff ff 90 f3 0f 1e fa 0f 1f 44 00 00 41 54 55 53 48
+[135691.198075] RSP: 0018:ffff9d13c01b8e90 EFLAGS: 00010282
+[135691.198079] RAX: 0000000000000000 RBX: ffff8c5585820000 RCX: 0000000000000027
+[135691.198082] RDX: ffff8c5922a616a8 RSI: 0000000000000001 RDI: ffff8c5922a616a0
+[135691.198084] RBP: ffff8c55858204c8 R08: 0000000000000000 R09: ffff9d13c01b8ca0
+[135691.198086] R10: 0000000000000003 R11: ffffffffa06caa08 R12: ffff8c558582041c
+[135691.198088] R13: 0000000000000000 R14: ffffffff9f3c7f00 R15: ffff8c55858204c8
+[135691.198091] FS:  0000000000000000(0000) GS:ffff8c5922a40000(0000) knlGS:0000000000000000
+[135691.198093] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[135691.198096] CR2: 00007f0484b37100 CR3: 00000001452dc006 CR4: 0000000000770ee0
+[135691.198099] PKRU: 55555554
+[135691.198101] Call Trace:
+[135691.198104]  <IRQ>
+[135691.198108]  ? pfifo_fast_reset+0x130/0x130
+[135691.198112]  call_timer_fn+0x24/0x130
+[135691.198118]  __run_timers+0x219/0x2a0
+[135691.198122]  run_timer_softirq+0x1d/0x40
+[135691.198126]  __do_softirq+0xd0/0x2c6
+[135691.198134]  ? sched_clock_cpu+0xd/0xb0
+[135691.198140]  __irq_exit_rcu+0x8b/0xc0
+[135691.198145]  sysvec_apic_timer_interrupt+0x72/0x90
+[135691.198150]  </IRQ>
+[135691.198151]  <TASK>
+[135691.198153]  asm_sysvec_apic_timer_interrupt+0x16/0x20
+[135691.198158] RIP: 0010:cpuidle_enter_state+0xdc/0x380
+[135691.198162] Code: 00 00 31 ff e8 55 54 80 ff 45 84 ff 74 16 9c 58 0f 1f 40 00 f6 c4 02 0f 85 8f 02 00 00 31 ff e8 0a 29 86 ff fb 0f 1f 44 00 00 <45> 85 f6 0f 88 22 01 00 00 49 63 ce 48 8d 04 49 48 8d 04 81 49 8d
+[135691.198165] RSP: 0018:ffff9d13c014be90 EFLAGS: 00000246
+[135691.198168] RAX: ffff8c5922a72cc0 RBX: 0000000000000002 RCX: 0000000000000000
+[135691.198170] RDX: 00007b6911a51f1f RSI: fffffffd69678db8 RDI: 0000000000000000
+[135691.198173] RBP: ffff8c5922a7e100 R08: 0000000000000000 R09: 0000000055785785
+[135691.198175] R10: 0000000000000018 R11: 0000000000001152 R12: ffffffffa074bea0
+[135691.198177] R13: 00007b6911a51f1f R14: 0000000000000002 R15: 0000000000000000
+[135691.198182]  cpuidle_enter+0x2d/0x40
+[135691.198186]  do_idle+0x1ba/0x220
+[135691.198189]  cpu_startup_entry+0x1d/0x20
+[135691.198193]  start_secondary+0x11c/0x140
+[135691.198197]  secondary_startup_64_no_verify+0xd5/0xdb
+[135691.198205]  </TASK>
+[135691.198206] ---[ end trace 0000000000000000 ]---
+[135691.198212] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135696.104431] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135696.184554] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx status -2
+[135696.184711] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx status -2
+[135696.184743] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx status -2
+[135696.184870] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx status -2
+[135701.224315] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135706.130960] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135711.250694] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135716.157310] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135721.063933] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135726.183821] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135731.090391] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135736.210292] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135741.116876] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135746.240121] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135751.143336] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135756.049913] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135761.169808] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135766.079720] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135771.196237] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135776.102860] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135781.222784] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135786.129351] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135791.249206] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135796.155703] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135801.062369] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135806.182295] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135811.088845] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135816.208750] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135821.115303] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135826.235219] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135831.141774] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135836.048345] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135841.168244] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135846.074776] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135851.194658] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135856.101379] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135861.221188] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135866.127770] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135871.247675] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135876.154257] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135881.060815] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135886.180623] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135891.087234] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135896.207200] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135901.113757] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135902.607066] INFO: task NetworkManager:590 blocked for more than 122 seconds.
+[135902.607076]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.607079] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.607081] task:NetworkManager  state:D stack:    0 pid:  590 ppid:     1 flags:0x00000002
+[135902.607088] Call Trace:
+[135902.607090]  <TASK>
+[135902.607094]  __schedule+0x37c/0x11f0
+[135902.607105]  ? cpumask_next_and+0x23/0x30
+[135902.607113]  schedule+0x4f/0xb0
+[135902.607118]  schedule_preempt_disabled+0x15/0x20
+[135902.607122]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.607129]  nl80211_prepare_wdev_dump+0x86/0x210 [cfg80211 649b4912a86c852564b34341403be2642b0ec9df]
+[135902.607190]  nl80211_dump_station+0x80/0x280 [cfg80211 649b4912a86c852564b34341403be2642b0ec9df]
+[135902.607245]  netlink_dump+0x120/0x310
+[135902.607252]  __netlink_dump_start+0x1ba/0x2f0
+[135902.607257]  genl_family_rcv_msg_dumpit+0xc5/0x140
+[135902.607262]  ? genl_family_rcv_msg_doit+0x160/0x160
+[135902.607266]  ? nl80211_send_station+0xf50/0xf50 [cfg80211 649b4912a86c852564b34341403be2642b0ec9df]
+[135902.607313]  ? genl_family_rcv_msg_dumpit+0x140/0x140
+[135902.607318]  genl_rcv_msg+0x15e/0x1e0
+[135902.607322]  ? nl80211_dump_station+0x280/0x280 [cfg80211 649b4912a86c852564b34341403be2642b0ec9df]
+[135902.607370]  ? nl80211_send_station+0xf50/0xf50 [cfg80211 649b4912a86c852564b34341403be2642b0ec9df]
+[135902.607415]  ? genl_get_cmd+0xd0/0xd0
+[135902.607419]  netlink_rcv_skb+0x52/0x100
+[135902.607424]  genl_rcv+0x28/0x40
+[135902.607428]  netlink_unicast+0x240/0x390
+[135902.607432]  netlink_sendmsg+0x254/0x4b0
+[135902.607437]  sock_sendmsg+0x5d/0x70
+[135902.607441]  ____sys_sendmsg+0x264/0x2a0
+[135902.607444]  ? import_iovec+0x1b/0x20
+[135902.607449]  ___sys_sendmsg+0x96/0xd0
+[135902.607456]  __sys_sendmsg+0x7a/0xd0
+[135902.607460]  do_syscall_64+0x5c/0x90
+[135902.607467]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.607470]  ? do_syscall_64+0x6b/0x90
+[135902.607474]  ? do_syscall_64+0x6b/0x90
+[135902.607479]  ? do_syscall_64+0x6b/0x90
+[135902.607483]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.607489] RIP: 0033:0x7ffab371374d
+[135902.607493] RSP: 002b:00007ffebdbbe1a0 EFLAGS: 00000293 ORIG_RAX: 000000000000002e
+[135902.607497] RAX: ffffffffffffffda RBX: 00005569c7c49240 RCX: 00007ffab371374d
+[135902.607499] RDX: 0000000000000000 RSI: 00007ffebdbbe1e0 RDI: 000000000000000b
+[135902.607501] RBP: 00005569c7c49240 R08: 0000000000000000 R09: 00005569c7d821a0
+[135902.607503] R10: 00007ffab37fdc60 R11: 0000000000000293 R12: 00007ffebdbbe270
+[135902.607506] R13: 00005569c7d59f40 R14: 00007ffebdbbe4a4 R15: 0000000000000000
+[135902.607509]  </TASK>
+[135902.607519] INFO: task Qt bearer threa:957 blocked for more than 122 seconds.
+[135902.607522]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.607525] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.607526] task:Qt bearer threa state:D stack:    0 pid:  957 ppid:   910 flags:0x00004002
+[135902.607531] Call Trace:
+[135902.607532]  <TASK>
+[135902.607534]  __schedule+0x37c/0x11f0
+[135902.607540]  ? enqueue_task_fair+0x8f/0x680
+[135902.607546]  ? psi_task_change+0x22/0x110
+[135902.607550]  schedule+0x4f/0xb0
+[135902.607555]  schedule_preempt_disabled+0x15/0x20
+[135902.607558]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.607562]  netlink_dump+0x40/0x310
+[135902.607566]  __netlink_dump_start+0x1ba/0x2f0
+[135902.607570]  ? rtnl_fill_ifinfo+0x1300/0x1300
+[135902.607576]  rtnetlink_rcv_msg+0x264/0x370
+[135902.607582]  ? rtnl_fill_ifinfo+0x1300/0x1300
+[135902.607587]  ? rtnl_calcit.isra.0+0x140/0x140
+[135902.607591]  netlink_rcv_skb+0x52/0x100
+[135902.607596]  netlink_unicast+0x240/0x390
+[135902.607600]  netlink_sendmsg+0x254/0x4b0
+[135902.607605]  sock_sendmsg+0x5d/0x70
+[135902.607608]  __sys_sendto+0x117/0x160
+[135902.607613]  __x64_sys_sendto+0x24/0x30
+[135902.607617]  do_syscall_64+0x5c/0x90
+[135902.607622]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.607625]  ? do_syscall_64+0x6b/0x90
+[135902.607630]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.607633]  ? do_syscall_64+0x6b/0x90
+[135902.607637]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.607641]  ? do_syscall_64+0x6b/0x90
+[135902.607645]  ? do_syscall_64+0x6b/0x90
+[135902.607649]  ? do_syscall_64+0x6b/0x90
+[135902.607653]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.607657] RIP: 0033:0x7fd5a8f136ac
+[135902.607660] RSP: 002b:00007fd58fec2e70 EFLAGS: 00000246 ORIG_RAX: 000000000000002c
+[135902.607662] RAX: ffffffffffffffda RBX: 0000000000000014 RCX: 00007fd5a8f136ac
+[135902.607664] RDX: 0000000000000020 RSI: 00007fd58fec2f20 RDI: 0000000000000014
+[135902.607666] RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+[135902.607668] R10: 0000000000000000 R11: 0000000000000246 R12: 00007fd58fec2ef0
+[135902.607669] R13: 00005613d33506e0 R14: 0000000000000001 R15: 00007fd58fec2fe0
+[135902.607673]  </TASK>
+[135902.607690] INFO: task Qt bearer threa:2260 blocked for more than 122 seconds.
+[135902.607693]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.607695] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.607705] task:Qt bearer threa state:D stack:    0 pid: 2260 ppid:   910 flags:0x00000002
+[135902.607709] Call Trace:
+[135902.607710]  <TASK>
+[135902.607711]  __schedule+0x37c/0x11f0
+[135902.607716]  ? skb_queue_tail+0x1f/0x50
+[135902.607722]  schedule+0x4f/0xb0
+[135902.607727]  schedule_preempt_disabled+0x15/0x20
+[135902.607730]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.607733]  netlink_dump+0x40/0x310
+[135902.607738]  netlink_recvmsg+0x27d/0x450
+[135902.607742]  __sys_recvfrom+0x1bc/0x1e0
+[135902.607748]  __x64_sys_recvfrom+0x24/0x30
+[135902.607752]  do_syscall_64+0x5c/0x90
+[135902.607757]  ? switch_fpu_return+0x4d/0xd0
+[135902.607760]  ? exit_to_user_mode_prepare+0x77/0x140
+[135902.607765]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.607769]  ? do_syscall_64+0x6b/0x90
+[135902.607773]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.607776]  ? do_syscall_64+0x6b/0x90
+[135902.607781]  ? do_syscall_64+0x6b/0x90
+[135902.607785]  ? do_syscall_64+0x6b/0x90
+[135902.607789]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.607793] RIP: 0033:0x7fc43171347c
+[135902.607795] RSP: 002b:00007fc424b8fe70 EFLAGS: 00000246 ORIG_RAX: 000000000000002d
+[135902.607797] RAX: ffffffffffffffda RBX: 0000000000000012 RCX: 00007fc43171347c
+[135902.607799] RDX: 0000000000002000 RSI: 00007fc4100190c8 RDI: 0000000000000012
+[135902.607801] RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+[135902.607802] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000010
+[135902.607804] R13: 0000561cc49178b0 R14: 0000000000000001 R15: 00007fc424b8ffe0
+[135902.607807]  </TASK>
+[135902.607808] INFO: task Qt bearer threa:1080 blocked for more than 122 seconds.
+[135902.607811]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.607813] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.607814] task:Qt bearer threa state:D stack:    0 pid: 1080 ppid:   910 flags:0x00000002
+[135902.607817] Call Trace:
+[135902.607818]  <TASK>
+[135902.607819]  __schedule+0x37c/0x11f0
+[135902.607826]  schedule+0x4f/0xb0
+[135902.607830]  schedule_preempt_disabled+0x15/0x20
+[135902.607833]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.607836]  netlink_dump+0x40/0x310
+[135902.607840]  netlink_recvmsg+0x27d/0x450
+[135902.607845]  __sys_recvfrom+0x1bc/0x1e0
+[135902.607851]  __x64_sys_recvfrom+0x24/0x30
+[135902.607854]  do_syscall_64+0x5c/0x90
+[135902.607859]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.607862]  ? do_syscall_64+0x6b/0x90
+[135902.607866]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.607869]  ? do_syscall_64+0x6b/0x90
+[135902.607873]  ? do_syscall_64+0x6b/0x90
+[135902.607877]  ? do_syscall_64+0x6b/0x90
+[135902.607882]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.607886] RIP: 0033:0x7f30fef1347c
+[135902.607887] RSP: 002b:00007f30f33fdc30 EFLAGS: 00000246 ORIG_RAX: 000000000000002d
+[135902.607889] RAX: ffffffffffffffda RBX: 0000000000000011 RCX: 00007f30fef1347c
+[135902.607891] RDX: 0000000000002000 RSI: 00007f30e801a018 RDI: 0000000000000011
+[135902.607892] RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+[135902.607894] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000010
+[135902.607895] R13: 00005607406ae440 R14: 0000000000000001 R15: 00007f30f33fdda0
+[135902.607898]  </TASK>
+[135902.607902] INFO: task packagekitd:1072 blocked for more than 122 seconds.
+[135902.607905]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.607906] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.607908] task:packagekitd     state:D stack:    0 pid: 1072 ppid:     1 flags:0x00000002
+[135902.607911] Call Trace:
+[135902.607912]  <TASK>
+[135902.607914]  __schedule+0x37c/0x11f0
+[135902.607920]  schedule+0x4f/0xb0
+[135902.607924]  schedule_preempt_disabled+0x15/0x20
+[135902.607927]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.607930]  __netlink_dump_start+0xc5/0x2f0
+[135902.607934]  ? validate_linkmsg+0x130/0x130
+[135902.607939]  rtnetlink_rcv_msg+0x264/0x370
+[135902.607944]  ? validate_linkmsg+0x130/0x130
+[135902.607949]  ? rtnl_calcit.isra.0+0x140/0x140
+[135902.607953]  netlink_rcv_skb+0x52/0x100
+[135902.607958]  netlink_unicast+0x240/0x390
+[135902.607962]  netlink_sendmsg+0x254/0x4b0
+[135902.607966]  sock_sendmsg+0x5d/0x70
+[135902.607969]  __sys_sendto+0x117/0x160
+[135902.607975]  __x64_sys_sendto+0x24/0x30
+[135902.607978]  do_syscall_64+0x5c/0x90
+[135902.607983]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.607986]  ? do_syscall_64+0x6b/0x90
+[135902.607990]  ? do_syscall_64+0x6b/0x90
+[135902.607994]  ? do_syscall_64+0x6b/0x90
+[135902.607998]  ? do_syscall_64+0x6b/0x90
+[135902.608003]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.608006] RIP: 0033:0x7ff213d136ac
+[135902.608008] RSP: 002b:00007fff6de6f5d0 EFLAGS: 00000246 ORIG_RAX: 000000000000002c
+[135902.608010] RAX: ffffffffffffffda RBX: 00005653044df130 RCX: 00007ff213d136ac
+[135902.608012] RDX: 0000000000000014 RSI: 00007fff6de6f650 RDI: 0000000000000005
+[135902.608014] RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+[135902.608015] R10: 0000000000004000 R11: 0000000000000246 R12: 0000000000000014
+[135902.608017] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[135902.608020]  </TASK>
+[135902.608118] INFO: task DNS Res~er #840:103096 blocked for more than 122 seconds.
+[135902.608121]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.608123] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.608124] task:DNS Res~er #840 state:D stack:    0 pid:103096 ppid:   971 flags:0x00004002
+[135902.608127] Call Trace:
+[135902.608128]  <TASK>
+[135902.608130]  __schedule+0x37c/0x11f0
+[135902.608137]  schedule+0x4f/0xb0
+[135902.608141]  schedule_preempt_disabled+0x15/0x20
+[135902.608144]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.608147]  ? update_load_avg+0x7e/0x730
+[135902.608151]  __netlink_dump_start+0xc5/0x2f0
+[135902.608155]  ? validate_linkmsg+0x130/0x130
+[135902.608159]  rtnetlink_rcv_msg+0x264/0x370
+[135902.608164]  ? validate_linkmsg+0x130/0x130
+[135902.608169]  ? rtnl_calcit.isra.0+0x140/0x140
+[135902.608173]  netlink_rcv_skb+0x52/0x100
+[135902.608178]  netlink_unicast+0x240/0x390
+[135902.608182]  netlink_sendmsg+0x254/0x4b0
+[135902.608186]  sock_sendmsg+0x5d/0x70
+[135902.608189]  __sys_sendto+0x117/0x160
+[135902.608195]  __x64_sys_sendto+0x24/0x30
+[135902.608198]  do_syscall_64+0x5c/0x90
+[135902.608202]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608205]  ? do_syscall_64+0x6b/0x90
+[135902.608210]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608213]  ? do_syscall_64+0x6b/0x90
+[135902.608217]  ? do_syscall_64+0x6b/0x90
+[135902.608221]  ? exc_page_fault+0x74/0x170
+[135902.608224]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.608228] RIP: 0033:0x7f04c1513814
+[135902.608230] RSP: 002b:00007f0465dfcea0 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+[135902.608232] RAX: ffffffffffffffda RBX: 00007f0465dfdf64 RCX: 00007f04c1513814
+[135902.608234] RDX: 0000000000000014 RSI: 00007f0465dfdfc0 RDI: 0000000000000047
+[135902.608235] RBP: 0000000000000000 R08: 00007f0465dfdf64 R09: 000000000000000c
+[135902.608237] R10: 0000000000000000 R11: 0000000000000293 R12: 00007f0465dfdfc0
+[135902.608239] R13: 00007f0465dfe0a8 R14: 00007f0465dfdf80 R15: 0000000000000047
+[135902.608242]  </TASK>
+[135902.608246] INFO: task xdg-desktop-por:1146 blocked for more than 122 seconds.
+[135902.608248]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.608250] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.608251] task:xdg-desktop-por state:D stack:    0 pid: 1146 ppid:   877 flags:0x00000002
+[135902.608254] Call Trace:
+[135902.608255]  <TASK>
+[135902.608256]  __schedule+0x37c/0x11f0
+[135902.608262]  ? do_sys_poll+0x391/0x610
+[135902.608268]  schedule+0x4f/0xb0
+[135902.608273]  schedule_preempt_disabled+0x15/0x20
+[135902.608275]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.608279]  __netlink_dump_start+0xc5/0x2f0
+[135902.608283]  ? validate_linkmsg+0x130/0x130
+[135902.608287]  rtnetlink_rcv_msg+0x264/0x370
+[135902.608292]  ? validate_linkmsg+0x130/0x130
+[135902.608296]  ? rtnl_calcit.isra.0+0x140/0x140
+[135902.608301]  netlink_rcv_skb+0x52/0x100
+[135902.608305]  netlink_unicast+0x240/0x390
+[135902.608309]  netlink_sendmsg+0x254/0x4b0
+[135902.608314]  sock_sendmsg+0x5d/0x70
+[135902.608317]  __sys_sendto+0x117/0x160
+[135902.608322]  __x64_sys_sendto+0x24/0x30
+[135902.608325]  do_syscall_64+0x5c/0x90
+[135902.608330]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608333]  ? do_syscall_64+0x6b/0x90
+[135902.608337]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608340]  ? do_syscall_64+0x6b/0x90
+[135902.608345]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.608349] RIP: 0033:0x7f3b2b9136ac
+[135902.608350] RSP: 002b:00007fffd5faff30 EFLAGS: 00000246 ORIG_RAX: 000000000000002c
+[135902.608352] RAX: ffffffffffffffda RBX: 0000564c6f0e8280 RCX: 00007f3b2b9136ac
+[135902.608354] RDX: 0000000000000014 RSI: 00007fffd5faffb0 RDI: 0000000000000008
+[135902.608356] RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+[135902.608357] R10: 0000000000004000 R11: 0000000000000246 R12: 0000000000000014
+[135902.608358] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[135902.608362]  </TASK>
+[135902.608383] INFO: task pool-matray:103151 blocked for more than 122 seconds.
+[135902.608385]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.608387] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.608388] task:pool-matray     state:D stack:    0 pid:103151 ppid:   910 flags:0x00000002
+[135902.608391] Call Trace:
+[135902.608392]  <TASK>
+[135902.608393]  __schedule+0x37c/0x11f0
+[135902.608400]  schedule+0x4f/0xb0
+[135902.608405]  schedule_preempt_disabled+0x15/0x20
+[135902.608407]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.608411]  __netlink_dump_start+0xc5/0x2f0
+[135902.608415]  ? validate_linkmsg+0x130/0x130
+[135902.608419]  rtnetlink_rcv_msg+0x264/0x370
+[135902.608423]  ? validate_linkmsg+0x130/0x130
+[135902.608428]  ? rtnl_calcit.isra.0+0x140/0x140
+[135902.608432]  netlink_rcv_skb+0x52/0x100
+[135902.608437]  netlink_unicast+0x240/0x390
+[135902.608441]  netlink_sendmsg+0x254/0x4b0
+[135902.608445]  sock_sendmsg+0x5d/0x70
+[135902.608448]  __sys_sendto+0x117/0x160
+[135902.608454]  __x64_sys_sendto+0x24/0x30
+[135902.608457]  do_syscall_64+0x5c/0x90
+[135902.608462]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608465]  ? do_syscall_64+0x6b/0x90
+[135902.608469]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608472]  ? do_syscall_64+0x6b/0x90
+[135902.608477]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608480]  ? do_syscall_64+0x6b/0x90
+[135902.608484]  ? do_syscall_64+0x6b/0x90
+[135902.608488]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608491]  ? do_syscall_64+0x6b/0x90
+[135902.608496]  ? do_syscall_64+0x6b/0x90
+[135902.608500]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.608504] RIP: 0033:0x7fa36d313814
+[135902.608506] RSP: 002b:00007fa362ffb3b0 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+[135902.608508] RAX: ffffffffffffffda RBX: 00007fa362ffc474 RCX: 00007fa36d313814
+[135902.608509] RDX: 0000000000000014 RSI: 00007fa362ffc4d0 RDI: 000000000000000c
+[135902.608511] RBP: 0000000000000000 R08: 00007fa362ffc474 R09: 000000000000000c
+[135902.608512] R10: 0000000000000000 R11: 0000000000000293 R12: 00007fa362ffc4d0
+[135902.608513] R13: 00007fa362ffc5b8 R14: 00007fa362ffc490 R15: 000000000000000c
+[135902.608517]  </TASK>
+[135902.608760] INFO: task ThreadPoolForeg:32254 blocked for more than 122 seconds.
+[135902.608762]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.608764] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.608766] task:ThreadPoolForeg state:D stack:    0 pid:32254 ppid:     1 flags:0x00000002
+[135902.608768] Call Trace:
+[135902.608770]  <TASK>
+[135902.608771]  __schedule+0x37c/0x11f0
+[135902.608777]  ? check_preempt_curr+0x3d/0x80
+[135902.608782]  ? ttwu_do_wakeup+0x17/0x160
+[135902.608788]  schedule+0x4f/0xb0
+[135902.608792]  schedule_preempt_disabled+0x15/0x20
+[135902.608795]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.608798]  ? __alloc_file+0x23/0xd0
+[135902.608801]  ? kmem_cache_alloc+0x16a/0x300
+[135902.608808]  wext_handle_ioctl+0xad/0x190
+[135902.608813]  ? alloc_empty_file+0x63/0xb0
+[135902.608816]  sock_ioctl+0x1d3/0x330
+[135902.608819]  ? alloc_file_pseudo+0xaf/0x110
+[135902.608823]  __x64_sys_ioctl+0x8e/0xc0
+[135902.608828]  do_syscall_64+0x5c/0x90
+[135902.608832]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608836]  ? do_syscall_64+0x6b/0x90
+[135902.608840]  ? exit_to_user_mode_prepare+0x77/0x140
+[135902.608844]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608847]  ? do_syscall_64+0x6b/0x90
+[135902.608852]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608855]  ? do_syscall_64+0x6b/0x90
+[135902.608859]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.608863] RIP: 0033:0x7f39de7077af
+[135902.608865] RSP: 002b:00007f39cd9f9730 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[135902.608867] RAX: ffffffffffffffda RBX: 000000000000006a RCX: 00007f39de7077af
+[135902.608869] RDX: 00007f39cd9f9800 RSI: 0000000000008b01 RDI: 000000000000006a
+[135902.608871] RBP: 00007f39cd9f9840 R08: 0000000000000005 R09: 0033663032733070
+[135902.608872] R10: 0000000000000011 R11: 0000000000000246 R12: 00007f39cd9f98d0
+[135902.608874] R13: 00007f39cd9f9a20 R14: 00007f39cd9f9940 R15: 00007f39cd9f9800
+[135902.608877]  </TASK>
+[135902.608883] INFO: task ThreadPoolForeg:34478 blocked for more than 122 seconds.
+[135902.608885]       Tainted: G        W         5.18.5-1-MANJARO #1
+[135902.608887] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[135902.608888] task:ThreadPoolForeg state:D stack:    0 pid:34478 ppid: 29791 flags:0x00000002
+[135902.608892] Call Trace:
+[135902.608893]  <TASK>
+[135902.608894]  __schedule+0x37c/0x11f0
+[135902.608899]  ? find_busiest_group+0x41/0x340
+[135902.608904]  schedule+0x4f/0xb0
+[135902.608909]  schedule_preempt_disabled+0x15/0x20
+[135902.608912]  __mutex_lock.constprop.0+0x2d0/0x480
+[135902.608917]  rtl8152_get_link_ksettings+0x5a/0x180 [r8152 42beb2678f1ff98f1f0e5841f3dd7d32fae23b06]
+[135902.608929]  ethtool_get_settings+0xa5/0x1e0
+[135902.608936]  dev_ethtool+0xd36/0x3060
+[135902.608939]  ? try_to_wake_up+0x68/0x550
+[135902.608944]  ? refill_stock+0x1a/0x30
+[135902.608948]  ? wake_up_q+0x4e/0x90
+[135902.608953]  ? __mutex_unlock_slowpath.constprop.0+0x83/0x100
+[135902.608957]  ? __rtnl_unlock+0x28/0x50
+[135902.608962]  dev_ioctl+0x157/0x520
+[135902.608966]  sock_do_ioctl+0xd7/0x120
+[135902.608970]  sock_ioctl+0xee/0x330
+[135902.608974]  __x64_sys_ioctl+0x8e/0xc0
+[135902.608978]  do_syscall_64+0x5c/0x90
+[135902.608983]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608986]  ? do_syscall_64+0x6b/0x90
+[135902.608990]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.608993]  ? do_syscall_64+0x6b/0x90
+[135902.608998]  ? syscall_exit_to_user_mode+0x26/0x50
+[135902.609001]  ? do_syscall_64+0x6b/0x90
+[135902.609005]  ? do_syscall_64+0x6b/0x90
+[135902.609009]  ? do_syscall_64+0x6b/0x90
+[135902.609014]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[135902.609018] RIP: 0033:0x7f5b865077af
+[135902.609019] RSP: 002b:00007f5b761fb730 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[135902.609022] RAX: ffffffffffffffda RBX: 00007f5b761fb7a0 RCX: 00007f5b865077af
+[135902.609023] RDX: 00007f5b761fb7a0 RSI: 0000000000008946 RDI: 0000000000000017
+[135902.609025] RBP: 00007f5b761fb840 R08: 0000000000000001 R09: 0033753175306633
+[135902.609026] R10: 0000000000000011 R11: 0000000000000246 R12: 0000064000263c78
+[135902.609028] R13: 00007f5b761fba20 R14: 00007f5b761fb940 R15: 00007f5b761fb800
+[135902.609031]  </TASK>
+[135906.233645] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135911.140219] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135916.046884] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135921.166687] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135926.073290] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135931.193082] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135936.099740] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135941.219587] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135946.126235] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135951.246118] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135956.152683] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135961.059315] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135966.179163] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135971.085722] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135976.205634] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135981.112201] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135986.232124] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135991.138658] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[135996.045276] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136001.165112] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136006.071686] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136011.191575] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136016.098192] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136021.218076] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136026.124672] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136031.244550] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136036.151122] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136041.057705] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136046.177604] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136051.084180] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136056.204070] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136061.110629] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136066.230541] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136071.137111] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136076.043674] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136081.163543] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136086.070148] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136091.190078] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136096.096627] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136101.216524] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136106.123088] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136111.242997] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136116.149577] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136121.056060] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136126.176031] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136131.082528] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136136.202491] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136141.108994] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136146.228977] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136151.135588] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136156.042136] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136161.162032] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136166.068610] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136171.191802] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136176.095081] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136181.214994] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136186.121545] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136191.241444] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136196.148026] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136201.054496] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136206.174510] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136211.081058] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136212.974412] hub 2-1:1.0: hub_ext_port_status failed (err = -110)
+[136213.987734] usb 2-1-port3: cannot reset (err = -110)
+[136215.000926] usb 2-1-port3: cannot reset (err = -110)
+[136216.014365] usb 2-1-port3: cannot reset (err = -110)
+[136216.200971] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136217.027682] usb 2-1-port3: cannot reset (err = -110)
+[136218.040986] usb 2-1-port3: cannot reset (err = -110)
+[136218.040997] usb 2-1-port3: Cannot enable. Maybe the USB cable is bad?
+[136219.054380] usb 2-1-port3: cannot disable (err = -110)
+[136221.107533] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136224.124153] hub 2-1:1.0: hub_ext_port_status failed (err = -110)
+[136225.134183] usb 2-1-port3: cannot reset (err = -110)
+[136226.147497] usb 2-1-port3: cannot reset (err = -110)
+[136226.227439] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136227.160803] usb 2-1-port3: cannot reset (err = -110)
+[136228.174176] usb 2-1-port3: cannot reset (err = -110)
+[136229.187431] usb 2-1-port3: cannot reset (err = -110)
+[136229.187443] usb 2-1-port3: Cannot enable. Maybe the USB cable is bad?
+[136230.200680] usb 2-1-port3: cannot disable (err = -110)
+[136231.134002] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136235.267320] hub 2-1:1.0: hub_ext_port_status failed (err = -110)
+[136236.040575] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136236.280666] usb 2-1-port3: cannot reset (err = -110)
+[136237.293972] usb 2-1-port3: cannot reset (err = -110)
+[136238.307253] usb 2-1-port3: cannot reset (err = -110)
+[136239.320555] usb 2-1-port3: cannot reset (err = -110)
+[136240.333903] usb 2-1-port3: cannot reset (err = -110)
+[136240.333913] usb 2-1-port3: Cannot enable. Maybe the USB cable is bad?
+[136241.160447] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136241.347186] usb 2-1-port3: cannot disable (err = -110)
+[136246.067044] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136246.413758] hub 2-1:1.0: hub_ext_port_status failed (err = -110)
+[136247.427087] usb 2-1-port3: cannot reset (err = -110)
+[136248.440385] usb 2-1-port3: cannot reset (err = -110)
+[136249.453713] usb 2-1-port3: cannot reset (err = -110)
+[136250.467028] usb 2-1-port3: cannot reset (err = -110)
+[136251.186949] r8152 2-1.3:1.0 enp0s13f0u1u3: Tx timeout
+[136251.480364] usb 2-1-port3: cannot reset (err = -110)
+[136251.480375] usb 2-1-port3: Cannot enable. Maybe the USB cable is bad?
+[136252.493668] usb 2-1-port3: cannot disable (err = -110)
+[136253.506956] usb 2-1-port3: cannot disable (err = -110)
+[136253.506973] r8152 2-1.3:1.0 enp0s13f0u1u3: Get ether addr fail
+[136258.573565] hub 2-1:1.0: hub_ext_port_status failed (err = -110)
+[140619.894191] systemd-journald[280]: Data hash table of /var/log/journal/XXX/system.journal has a fill level at 75.0 (68267 of 91022 items, 33554432 file size, 491 bytes per hash table item), suggesting rotation.
+[140619.894195] systemd-journald[280]: /var/log/journal/XXX/system.journal: Journal header limits reached or header out-of-date, rotating.
+[142638.518923] wlp0s20f3: deauthenticating from XXX by local choice (Reason: 3=DEAUTH_LEAVING)
+[142640.297697] wlp0s20f3: authenticate with XXX
+[142640.297707] wlp0s20f3: Invalid HE elem, Disable HE
+[142640.302997] wlp0s20f3: send auth to XXX (try 1/3)
+[142640.336382] wlp0s20f3: authenticated
+[142640.339660] wlp0s20f3: associate with XXX (try 1/3)
+[142640.342883] wlp0s20f3: RX AssocResp from XXX (capab=0xc11 status=0 aid=4)
+[142640.349758] wlp0s20f3: associated
+[142640.403877] wlp0s20f3: Limiting TX power to 30 (30 - 0) dBm as advertised by XXX
+[142640.404199] IPv6: ADDRCONF(NETDEV_CHANGE): wlp0s20f3: link becomes ready
+[152138.948487] wlp0s20f3: Connection to AP XXX lost
+[152141.199747] wlp0s20f3: authenticate with XXX
+[152141.199770] wlp0s20f3: Invalid HE elem, Disable HE
+[152141.205507] wlp0s20f3: send auth to XXX (try 1/3)
+[152141.233337] wlp0s20f3: authenticated
+[152141.235045] wlp0s20f3: associate with XXX (try 1/3)
+[152141.238063] wlp0s20f3: RX AssocResp from XXX (capab=0x931 status=0 aid=1)
+[152141.243352] wlp0s20f3: associated
+[152141.271091] wlp0s20f3: Limiting TX power to 20 (20 - 0) dBm as advertised by XXX
+[190307.120435] ksystemstats invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=200
+[190307.120443] CPU: 1 PID: 1095 Comm: ksystemstats Tainted: G        W         5.18.5-1-MANJARO #1 f3ee4d7d020bb789451220f23826e89d72fc8675
+[190307.120447] Hardware name: LG Electronics                   14Z90N-VA76K/14Z90N, BIOS C2ZE0180 X64 06/04/2020
+[190307.120449] Call Trace:
+[190307.120451]  <TASK>
+[190307.120453]  dump_stack_lvl+0x48/0x5d
+[190307.120458]  dump_header+0x4a/0x1fc
+[190307.120462]  oom_kill_process.cold+0xb/0x10
+[190307.120465]  out_of_memory+0x27e/0x520
+[190307.120469]  __alloc_pages_slowpath.constprop.0+0xc38/0xcf0
+[190307.120474]  __alloc_pages+0x1ff/0x230
+[190307.120477]  folio_alloc+0x1b/0x50
+[190307.120479]  __filemap_get_folio+0x1b5/0x350
+[190307.120482]  filemap_fault+0x140/0x910
+[190307.120485]  ? filemap_map_pages+0x16b/0x7a0
+[190307.120488]  __do_fault+0x33/0x110
+[190307.120492]  __handle_mm_fault+0xd79/0x14c0
+[190307.120496]  handle_mm_fault+0xb2/0x280
+[190307.120498]  do_user_addr_fault+0x1be/0x680
+[190307.120503]  exc_page_fault+0x74/0x170
+[190307.120506]  ? asm_exc_page_fault+0xc/0x30
+[190307.120510]  asm_exc_page_fault+0x22/0x30
+[190307.120513] RIP: 0033:0x7ff324e35719
+[190307.120520] Code: Unable to access opcode bytes at RIP 0x7ff324e356ef.
+[190307.120521] RSP: 002b:00007ffc8a281d50 EFLAGS: 00010286
+[190307.120524] RAX: 0000000000000000 RBX: 0000556a02a889a0 RCX: 000000000000004f
+[190307.120526] RDX: 0000000000000018 RSI: 00007ff324b749e0 RDI: 00007ff324e488a8
+[190307.120527] RBP: 00007ffc8a281e00 R08: 00007ff31c0504d0 R09: 0000000000000007
+[190307.120529] R10: 0000000000000007 R11: c4f16c92ed7b66e5 R12: 00007ffc8a281df8
+[190307.120530] R13: 0000000000000004 R14: 00007ff31c07d038 R15: 0000556a02a889a0
+[190307.120534]  </TASK>
+[190307.120535] Mem-Info:
+[190307.120536] active_anon:4879 inactive_anon:3157771 isolated_anon:0
+                 active_file:441 inactive_file:592 isolated_file:17
+                 unevictable:621971 dirty:0 writeback:0
+                 slab_reclaimable:21713 slab_unreclaimable:56358
+                 mapped:63228 shmem:694854 pagetables:37562 bounce:0
+                 kernel_misc_reclaimable:0
+                 free:51096 free_pcp:1384 free_cma:0
+[190307.120541] Node 0 active_anon:19516kB inactive_anon:12631084kB active_file:1764kB inactive_file:2368kB unevictable:2487884kB isolated(anon):0kB isolated(file):68kB mapped:252912kB dirty:0kB writeback:0kB shmem:2779416kB shmem_thp: 1394688kB shmem_pmdmapped: 0kB anon_thp: 1300480kB writeback_tmp:0kB kernel_stack:65568kB pagetables:150248kB all_unreclaimable? no
+[190307.120546] Node 0 DMA free:13312kB boost:0kB min:64kB low:80kB high:96kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[190307.120551] lowmem_reserve[]: 0 755 15580 15580 15580
+[190307.120555] Node 0 DMA32 free:62504kB boost:0kB min:3272kB low:4088kB high:4904kB reserved_highatomic:0KB active_anon:28kB inactive_anon:517292kB active_file:0kB inactive_file:0kB unevictable:199456kB writepending:0kB present:857392kB managed:791496kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:0kB free_cma:0kB
+[190307.120560] lowmem_reserve[]: 0 0 14825 14825 14825
+[190307.120564] Node 0 Normal free:128568kB boost:69632kB min:133876kB low:149936kB high:165996kB reserved_highatomic:2048KB active_anon:19488kB inactive_anon:12113792kB active_file:2564kB inactive_file:2280kB unevictable:2288332kB writepending:0kB present:15511552kB managed:15188132kB mlocked:584kB bounce:0kB free_pcp:5288kB local_pcp:616kB free_cma:0kB
+[190307.120569] lowmem_reserve[]: 0 0 0 0 0
+[190307.120572] Node 0 DMA: 0*4kB 0*8kB 0*16kB 0*32kB 0*64kB 0*128kB 0*256kB 0*512kB 1*1024kB (U) 2*2048kB (UM) 2*4096kB (M) = 13312kB
+[190307.120583] Node 0 DMA32: 1039*4kB (UME) 391*8kB (UME) 214*16kB (UME) 170*32kB (UME) 89*64kB (UM) 34*128kB (UME) 48*256kB (UME) 25*512kB (UME) 9*1024kB (UME) 1*2048kB (M) 0*4096kB = 62548kB
+[190307.120597] Node 0 Normal: 31426*4kB (UMEH) 574*8kB (MEH) 5*16kB (H) 4*32kB (H) 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 130504kB
+[190307.120608] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[190307.120610] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[190307.120611] 695892 total pagecache pages
+[190307.120612] 0 pages in swap cache
+[190307.120613] Swap cache stats: add 0, delete 0, find 0/0
+[190307.120614] Free swap  = 0kB
+[190307.120615] Total swap = 0kB
+[190307.120616] 4096234 pages RAM
+[190307.120617] 0 pages HighMem/MovableOnly
+[190307.120617] 97487 pages reserved
+[190307.120618] 0 pages cma reserved
+[190307.120619] 0 pages hwpoisoned
+[190307.120619] Tasks state (memory values in pages):
+[190307.120620] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[190307.120630] [    280]     0   280    14233      352   131072        0          -250 systemd-journal
+[190307.120635] [    281]     0   281     8418      875    94208        0         -1000 systemd-udevd
+[190307.120639] [    423]   976   423    22440      237    77824        0             0 systemd-timesyn
+[190307.120643] [    582]   972   582     2160      104    57344        0             0 avahi-daemon
+[190307.120646] [    583]     0   583     1717      204    53248        0             0 crond
+[190307.120648] [    584]    81   584     2853      711    65536        0          -900 dbus-daemon
+[190307.120651] [    585]   102   585   729005     2205   253952        0             0 polkitd
+[190307.120653] [    586]     0   586    12217      284    94208        0             0 systemd-logind
+[190307.120656] [    587]   972   587     2160      104    57344        0             0 avahi-daemon
+[190307.120658] [    590]     0   590    83026     1434   139264        0             0 NetworkManager
+[190307.120661] [    670]     0   670    35400      949   147456        0             0 sddm
+[190307.120663] [    671]     0   671    78967      502   110592        0             0 ModemManager
+[190307.120666] [    708]     0   708   431289    30077  1097728        0             0 Xorg
+[190307.120668] [    717]     0   717     3886      338    65536        0             0 wpa_supplicant
+[190307.120670] [    720]     0   720     2892      161    65536        0             0 bluetoothd
+[190307.120672] [    826]     0   826    98250     1068   122880        0             0 udisksd
+[190307.120674] [    836]     0   836    58270      917    86016        0             0 upowerd
+[190307.120677] [    851]     0   851    21859      802   159744        0             0 smbd
+[190307.120679] [    853]     0   853    21345      785   155648        0             0 smbd-notifyd
+[190307.120681] [    854]     0   854    21343      785   126976        0             0 cleanupd
+[190307.120683] [    875]     0   875    16278      453   122880        0             0 sddm-helper
+[190307.120685] [    877]  1000   877     4809      799    77824        0           100 systemd
+[190307.120687] [    879]  1000   879    42621      851    94208        0           100 (sd-pam)
+[190307.120689] [    891]  1000   891    71007     1610   258048        0             0 kwalletd5
+[190307.120691] [    892]  1000   892    48856     1746   225280        0             0 startplasma-x11
+[190307.120694] [    897]  1000   897     2651      649    57344        0           200 dbus-daemon
+[190307.120696] [    910]  1000   910    48802     1685   233472        0             0 plasma_session
+[190307.120698] [    914]  1000   914      641       25    36864        0             0 start_kdeinit
+[190307.120700] [    915]  1000   915    29411     1107   212992        0             0 kdeinit5
+[190307.120702] [    916]  1000   916    70513     1525   253952        0             0 klauncher
+[190307.120704] [    927]  1000   927   290807     3408   401408        0             0 kded5
+[190307.120706] [    930]  1000   930   471709    11406   708608        0             0 kwin_x11
+[190307.120708] [    934]  1000   934    38776      672    65536        0           200 dconf-service
+[190307.120710] [    970]  1000   970    70909     1908   249856        0           200 kglobalaccel5
+[190307.120712] [    971]  1000   971    71921     2044   270336        0             0 ksmserver
+[190307.120714] [    976]  1000   976   123825     2175   274432        0             0 org_kde_powerde
+[190307.120716] [    977]  1000   977    71519     1652   253952        0             0 kaccess
+[190307.120718] [    979]  1000   979   320582     6271   548864        0             0 polkit-kde-auth
+[190307.120720] [    980]  1000   980 67186931     1888   348160        0             0 baloo_file
+[190307.120722] [    982]  1000   982  1334808    62454  1765376        0             0 plasmashell
+[190307.120724] [    985]  1000   985    56961      857   155648        0             0 xembedsniproxy
+[190307.120726] [    998]  1000   998   136470     2227   245760        0           200 kactivitymanage
+[190307.120728] [   1000]  1000  1000   135806     1955   315392        0             0 DiscoverNotifie
+[190307.120731] [   1001]  1000  1001   178680     4555   323584        0             0 kdeconnectd
+[190307.120733] [   1003]  1000  1003    57221      853   167936        0             0 gmenudbusmenupr
+[190307.120735] [   1009]  1000  1009  1109502     3649   344064        0           200 pulseaudio
+[190307.120737] [   1016]   133  1016    38510       83    61440        0             0 rtkit-daemon
+[190307.120739] [   1034]  1000  1034    55317     1431   151552        0           200 kscreen_backend
+[190307.120741] [   1045]  1000  1045    60080      813   110592        0           200 gvfsd
+[190307.120743] [   1056]  1000  1056    94775      720    98304        0           200 gvfsd-fuse
+[190307.120745] [   1072]     0  1072   113794    40718   446464        0             0 packagekitd
+[190307.120747] [   1087]  1000  1087   117832     2441   311296        0             0 msm_kde_notifie
+[190307.120749] [   1090]  1000  1090   421660    16509   802816        0             0 octopi-notifier
+[190307.120752] [   1095]  1000  1095    61592     1674   192512        0           200 ksystemstats
+[190307.120754] [   1100]  1000  1100   110813     2437   294912        0             0 pamac-tray-plas
+[190307.120756] [   1119]  1000  1119  4215052   320422 11243520        0             0 firefox
+[190307.120758] [   1134]  1000  1134    76965      733    94208        0           200 at-spi-bus-laun
+[190307.120760] [   1140]  1000  1140     2184      201    57344        0           200 dbus-daemon
+[190307.120762] [   1143]  1000  1143    59141      742    90112        0           200 gsettings-helpe
+[190307.120764] [   1145]  1000  1145    40255      256    77824        0           200 at-spi2-registr
+[190307.120766] [   1146]  1000  1146   155223     2106   151552        0           200 xdg-desktop-por
+[190307.120768] [   1163]  1000  1163   133146      693   126976        0           200 xdg-document-po
+[190307.120770] [   1166]  1000  1166    57954      617    81920        0           200 xdg-permission-
+[190307.120772] [   1173]  1000  1173      667       22    45056        0           200 fusermount3
+[190307.120774] [   1176]  1000  1176   315046     6257   417792        0           200 xdg-desktop-por
+[190307.120776] [   1260]  1000  1260    70789     2094   249856        0           200 xdg-desktop-por
+[190307.120778] [   1265]  1000  1265   484073    13453   712704        0             0 konsole
+[190307.120780] [   1284]  1000  1284    95148     1942   184320        0           200 xdg-desktop-por
+[190307.120782] [   1305]  1000  1305     9357      377    73728        0           200 pipewire
+[190307.120784] [   1306]  1000  1306     4520      285    65536        0           200 pipewire-media-
+[190307.120786] [   1319]  1000  1319    59563      706   102400        0           200 gnome-keyring-d
+[190307.120788] [   1320]  1000  1320    59625     1285    98304        0           200 gnome-keyring-d
+[190307.120790] [   1360]  1000  1360     3213     1108    61440        0             0 zsh
+[190307.120792] [   1369]  1000  1369     3190     1090    65536        0             0 zsh
+[190307.120794] [   1375]  1000  1375     3279     1178    65536        0             0 zsh
+[190307.120796] [   1417]  1000  1417     3279     1179    73728        0             0 zsh
+[190307.120798] [   1427]  1000  1427     2691      602    57344        0             0 zsh
+[190307.120800] [   1434]  1000  1434     2691      602    61440        0             0 zsh
+[190307.120802] [   1455]  1000  1455     2692      602    57344        0             0 zsh
+[190307.120804] [   1458]  1000  1458     3003      895    61440        0             0 zsh
+[190307.120806] [   1460]  1000  1460    34485      601   122880        0             0 gitstatusd
+[190307.120808] [   1479]  1000  1479     2999      894    61440        0             0 zsh
+[190307.120810] [   1484]  1000  1484     3003      895    65536        0             0 zsh
+[190307.120812] [   1485]  1000  1485    34485      601   118784        0             0 gitstatusd
+[190307.120815] [   1488]  1000  1488     2999      894    65536        0             0 zsh
+[190307.120816] [   1511]  1000  1511     2692      603    65536        0             0 zsh
+[190307.120818] [   1518]  1000  1518     3004      895    61440        0             0 zsh
+[190307.120820] [   1519]  1000  1519    34485      603   118784        0             0 gitstatusd
+[190307.120822] [   1520]  1000  1520     3000      894    61440        0             0 zsh
+[190307.120824] [   1547]  1000  1547    34485      601   114688        0             0 gitstatusd
+[190307.120826] [   1548]  1000  1548     3004      896    65536        0             0 zsh
+[190307.120828] [   1566]  1000  1566     3000      895    65536        0             0 zsh
+[190307.120830] [   1661]  1000  1661   240932     1811   245760        0             0 zeitgeist-datah
+[190307.120832] [   1690]  1000  1690    95803      839   110592        0           200 zeitgeist-daemo
+[190307.120834] [   1695]  1000  1695    99169     4195   212992        0             0 matray
+[190307.120837] [   1706]  1000  1706    58776      637    94208        0             0 agent
+[190307.120839] [   1707]  1000  1707    59526      948    94208        0           200 zeitgeist-fts
+[190307.120841] [   1760]  1000  1760    64333     2904   368640        0             0 Socket Process
+[190307.120843] [   1880]     0  1880   180264    13685   315392        0             0 pamac-daemon
+[190307.120845] [   1959]  1000  1959 10253765    85366  3518464        0             0 WebExtensions
+[190307.140856] [   2032]  1000  2032   633149     8924   856064        0             0 Privileged Cont
+[190307.140861] [   2109]  1000  2109   653148    29590  1376256        0             0 Isolated Web Co
+[190307.140864] [   2206]  1000  2206    82837     7719   212992        0             0 fcitx
+[190307.140866] [   2211]  1000  2211     2356      261    57344        0             0 dbus-daemon
+[190307.140868] [   2216]  1000  2216     1648       68    53248        0             0 fcitx-dbus-watc
+[190307.140870] [   2276]  1000  2276    39681      671    86016        0           200 gvfsd-metadata
+[190307.140873] [   2821]  1000  2821   532754     8782   655360        0             0 audacious
+[190307.140875] [   9204]  1000  9204    21661      554   159744        0             0 kioslave5
+[190307.140877] [   9705]  1000  9705 218904093    92472  3833856        0             0 Isolated Web Co
+[190307.140880] [  14790]  1000 14790    88858     1524   147456        0           200 gvfs-udisks2-vo
+[190307.140883] [  14795]  1000 14795    79086     1247   110592        0           200 gvfs-afc-volume
+[190307.140885] [  14800]  1000 14800    58568      753    90112        0           200 gvfs-gphoto2-vo
+[190307.140888] [  14804]  1000 14804    58060      670    86016        0           200 gvfs-mtp-volume
+[190307.140891] [  23579]  1000 23579   698802    61947  1556480        0             0 Isolated Web Co
+[190307.140894] [  23616]  1000 23616   144978    13846   692224        0             0 RDD Process
+[190307.140897] [  23621]  1000 23621   118667     4656   507904        0             0 Utility Process
+[190307.140900] [  23649]  1000 23649   648824    19327  1019904        0             0 Isolated Web Co
+[190307.140902] [  23693]  1000 23693   707912    56103  1572864        0             0 Isolated Web Co
+[190307.140905] [  23734]  1000 23734   692116    15440   962560        0             0 Isolated Web Co
+[190307.140908] [  23777]  1000 23777   635263    16099   880640        0             0 Isolated Web Co
+[190307.140910] [  23815]  1000 23815   720826    26914  1388544        0             0 Isolated Web Co
+[190307.140913] [  23927]  1000 23927   672500    42708  1257472        0             0 Isolated Web Co
+[190307.140915] [  23931]  1000 23931   639767    11502   983040        0             0 Isolated Web Co
+[190307.140918] [  24025]  1000 24025   644264    16385  1208320        0             0 Isolated Web Co
+[190307.140920] [  24028]  1000 24028   619940     5971   647168        0             0 Isolated Web Co
+[190307.140923] [  24129]  1000 24129   695902    48236  1708032        0             0 Isolated Web Co
+[190307.140925] [  24236]  1000 24236   627516    10231   765952        0             0 Isolated Web Co
+[190307.140928] [  24294]  1000 24294   628417    10575   794624        0             0 Isolated Web Co
+[190307.140931] [  24406]  1000 24406   687926    51058  1396736        0             0 Isolated Web Co
+[190307.140933] [  24448]  1000 24448   671055    18839  1241088        0             0 Isolated Web Co
+[190307.140936] [  24569]  1000 24569   690154    46722  1691648        0             0 Isolated Web Co
+[190307.140938] [  24676]  1000 24676   626109    10156   737280        0             0 Isolated Web Co
+[190307.140940] [  24728]  1000 24728   635433    15389   888832        0             0 Isolated Web Co
+[190307.140942] [  24787]  1000 24787   626835    11174   765952        0             0 Isolated Web Co
+[190307.140944] [  24923]  1000 24923   686004    40120  1601536        0             0 Isolated Web Co
+[190307.140946] [  24996]  1000 24996   629251    11243   786432        0             0 Isolated Web Co
+[190307.140948] [  25035]  1000 25035   677545    38904  1507328        0             0 Isolated Web Co
+[190307.140951] [  25108]  1000 25108   641650    21360   962560        0             0 Isolated Web Co
+[190307.140953] [  25145]  1000 25145   626630     9555   782336        0             0 Isolated Web Co
+[190307.140955] [  25225]  1000 25225   642532    22346   942080        0             0 Isolated Web Co
+[190307.140957] [  25392]  1000 25392   665469    25719  1331200        0             0 Isolated Web Co
+[190307.140960] [  25478]  1000 25478   633089    11369   888832        0             0 Isolated Web Co
+[190307.140962] [  25866]  1000 25866   488879    17352   757760        0             0 kate
+[190307.140964] [  26940]  1000 26940     3119      253    69632        0             0 ssh
+[190307.140967] [  28495]  1000 28495   455308    12187   720896        0             0 dolphin
+[190307.140969] [  28530]  1000 28530   356931     5251   552960        0           200 kiod5
+[190307.140971] [  28582]  1000 28582    72549     1675   258048        0             0 kate
+[190307.140973] [  28659]  1000 28659     3426     1163    77824        0             0 zsh
+[190307.140975] [  28665]  1000 28665     2691      601    61440        0             0 zsh
+[190307.140977] [  28673]  1000 28673     3004      897    61440        0             0 zsh
+[190307.140979] [  28674]  1000 28674     3000      896    61440        0             0 zsh
+[190307.140982] [  28676]  1000 28676    34485      602   118784        0             0 gitstatusd
+[190307.140984] [  29741]  1000 29741    40549     1127   167936        0           200 kio-fuse
+[190307.140987] [  29761]  1000 29761  5493610    18373   970752        0             0 code-oss
+[190307.140989] [  29764]  1000 29764  4313507     2935   536576        0             0 electron
+[190307.140991] [  29765]  1000 29765  4313507     2935   536576        0             0 electron
+[190307.140993] [  29767]  1000 29767  4313507     2933   278528        0             0 electron
+[190307.140995] [  29780]  1000 29780  4198096      582    69632        0             0 chrome_crashpad
+[190307.140998] [  29793]  1000 29793  4422065     9832  1085440        0           200 electron
+[190307.141000] [  29816]  1000 29816  4328089     3662   585728        0             0 electron
+[190307.141002] [  29839]  1000 29839  9073796    31298  1400832        0             0 electron
+[190307.141004] [  29861]  1000 29861  5382615    15585   806912        0             0 electron
+[190307.141006] [  29873]  1000 29873  7504610    14329  1032192        0             0 electron
+[190307.141008] [  29891]  1000 29891  5380490     5501   655360        0             0 electron
+[190307.141010] [  29915]  1000 29915  5380541     5645   651264        0             0 electron
+[190307.141012] [  30291]  1000 30291   656342    17640  1134592        0             0 Isolated Web Co
+[190307.141015] [  30337]  1000 30337   639679    15455   991232        0             0 Isolated Web Co
+[190307.141017] [  32480]  1000 32480    72546     1676   262144        0             0 kate
+[190307.141019] [  35502]  1000 35502     8888     2178   106496        0           200 python3
+[190307.141021] [  35507]  1000 35507 67180069     2403  2887680        0           200 baloorunner
+[190307.141024] [  35517]  1000 35517     2295       60    53248        0             0 logger
+[190307.141026] [  35532]  1000 35532 27049311   176446  3940352        0             0 WebKitWebProces
+[190307.141028] [  39104]  1000 39104  5372294     5606   622592        0             0 electron
+[190307.141030] [  39155]  1000 39155    14844      252   102400        0             0 kdesud
+[190307.141035] [  40829]  1000 40829   630193    11305   811008        0             0 Isolated Web Co
+[190307.141037] [  41459]  1000 41459   634944    13555   860160        0             0 Isolated Web Co
+[190307.141039] [  41497]  1000 41497   631190    10717   811008        0             0 Isolated Web Co
+[190307.141041] [  41545]  1000 41545   685955    12216   950272        0             0 Isolated Web Co
+[190307.141044] [  41624]  1000 41624  5409705    32124  1069056        0             0 signal-desktop
+[190307.141046] [  41628]  1000 41628  4258202     2305   376832        0             0 signal-desktop
+[190307.141048] [  41629]  1000 41629  4258199     2256   372736        0             0 signal-desktop
+[190307.141050] [  41631]  1000 41631  4258199     2286   212992        0             0 signal-desktop
+[190307.141052] [  41717]  1000 41717  4430961    17788  1458176        0           200 signal-desktop
+[190307.141055] [  41719]  1000 41719  4274622     2884   442368        0             0 signal-desktop
+[190307.141056] [  41759]  1000 41759  6529227    58128  1773568        0             0 signal-desktop
+[190307.141059] [  41788]  1000 41788  4336798     2936   454656        0             0 signal-desktop
+[190307.141061] [  42129]  1000 42129   632345    13790   827392        0             0 Isolated Web Co
+[190307.141063] [  42169]  1000 42169   626416     8681   729088        0             0 Isolated Web Co
+[190307.141065] [  42306]  1000 42306   627929     9655   786432        0             0 Isolated Web Co
+[190307.141067] [  42511]  1000 42511   684294    11598   892928        0             0 Isolated Web Co
+[190307.141069] [  42549]  1000 42549   642034    23370  1171456        0             0 Isolated Web Co
+[190307.141071] [  43108]  1000 43108   654452    17129  1110016        0             0 Isolated Web Co
+[190307.141073] [  47436]  1000 47436   628504    11138   806912        0             0 Isolated Web Co
+[190307.141076] [  47517]  1000 47517   631581    12414   831488        0             0 Isolated Web Co
+[190307.141078] [  47701]  1000 47701   646232    16136  1011712        0             0 Isolated Web Co
+[190307.141081] [  47840]  1000 47840   640238    13105   917504        0             0 Isolated Web Co
+[190307.141083] [  47886]  1000 47886   650938    20827  1171456        0             0 Isolated Web Co
+[190307.141085] [  48149]  1000 48149   636775    17846  1011712        0             0 Isolated Web Co
+[190307.141087] [  48192]  1000 48192 23806192    43493  1908736        0             0 Isolated Web Co
+[190307.141089] [ 118100]  1000 118100 26087187     8420   552960        0             0 whatsapp-for-li
+[190307.141092] [ 118101]  1000 118101     2295       60    53248        0             0 logger
+[190307.141094] [ 118111]  1000 118111 26162278    11280   638976        0             0 WebKitNetworkPr
+[190307.141096] [ 118116]  1000 118116 26780108    98108  3338240        0             0 WebKitWebProces
+[190307.141099] [ 120118]  1000 120118     3205      327    73728        0             0 ssh
+[190307.141101] [ 122870]  1000 122870   627748     9854   774144        0             0 Isolated Web Co
+[190307.141103] [ 122942]  1000 122942   679878    26508  1376256        0             0 Isolated Web Co
+[190307.141105] [ 124387]  1000 124387   628898    11547   806912        0             0 Isolated Web Co
+[190307.141107] [ 124467]  1000 124467   628793    11216   798720        0             0 Isolated Web Co
+[190307.141109] [ 124656]  1000 124656   620200     4980   659456        0             0 Isolated Web Co
+[190307.141112] [ 126665]  1000 126665   488949    16474   860160        0             0 kate
+[190307.141114] [ 127302]  1000 127302     3217     1111    69632        0             0 zsh
+[190307.141116] [ 127308]  1000 127308     2691      602    65536        0             0 zsh
+[190307.141118] [ 127316]  1000 127316     3004      897    65536        0             0 zsh
+[190307.141120] [ 127317]  1000 127317     3000      896    65536        0             0 zsh
+[190307.141122] [ 127319]  1000 127319    34485      602   118784        0             0 gitstatusd
+[190307.141125] [ 130158]  1000 130158     3214     1109    69632        0             0 zsh
+[190307.141127] [ 130164]  1000 130164     2692      603    61440        0             0 zsh
+[190307.141129] [ 130172]  1000 130172     3005      897    61440        0             0 zsh
+[190307.141131] [ 130173]  1000 130173     3001      896    61440        0             0 zsh
+[190307.141133] [ 130175]  1000 130175    34485      601   122880        0             0 gitstatusd
+[190307.141135] [ 136177]  1000 136177   647416    20564  1040384        0             0 Isolated Web Co
+[190307.141137] [ 136333]  1000 136333   623782     5298   708608        0             0 Isolated Web Co
+[190307.141140] [ 136517]  1000 136517   643468    18116   950272        0             0 Isolated Web Co
+[190307.141142] [ 136558]  1000 136558   668305    26454  1748992        0             0 Isolated Web Co
+[190307.141144] [ 136602]  1000 136602   646419    20489  1044480        0             0 Isolated Web Co
+[190307.141146] [ 136663]  1000 136663   630212     9881   790528        0             0 Isolated Web Co
+[190307.141149] [ 136707]  1000 136707   640202    15267   917504        0             0 Isolated Web Co
+[190307.141151] [ 136796]  1000 136796   643713    13821   925696        0             0 Isolated Web Co
+[190307.141153] [ 136836]  1000 136836   629881    11750   811008        0             0 Isolated Web Co
+[190307.141155] [ 137198]  1000 137198   655175    19795  1216512        0             0 Isolated Web Co
+[190307.141157] [ 137427]  1000 137427   638584    16488   872448        0             0 Isolated Web Co
+[190307.141159] [ 140337]  1000 140337   650778    24639  1150976        0             0 Isolated Web Co
+[190307.141162] [ 140344]  1000 140344   632438    11478   806912        0             0 Isolated Web Co
+[190307.141164] [ 140434]  1000 140434   724718    18169  1286144        0             0 Isolated Web Co
+[190307.141166] [ 141512]  1000 141512     3217     1111    61440        0             0 zsh
+[190307.141168] [ 141518]  1000 141518     2690      601    57344        0             0 zsh
+[190307.141170] [ 141526]  1000 141526     3004      897    57344        0             0 zsh
+[190307.141173] [ 141528]  1000 141528     3000      896    57344        0             0 zsh
+[190307.141174] [ 141529]  1000 141529    34485      601   114688        0             0 gitstatusd
+[190307.141176] [ 141700]  1000 141700   638444    15287   897024        0             0 Isolated Web Co
+[190307.141178] [ 141743]  1000 141743   631226     9686   819200        0             0 Isolated Web Co
+[190307.141181] [ 142940]  1000 142940   424970   149634  1667072        0             0 pamac-manager
+[190307.141183] [ 152301]  1000 152301   636908    13972   864256        0             0 Isolated Web Co
+[190307.141186] [ 213071]  1000 213071   647152    14952   983040        0             0 Isolated Web Co
+[190307.141188] [ 213115]  1000 213115   635892    14311   868352        0             0 Isolated Web Co
+[190307.141191] [ 214512]  1000 214512     3118      251    57344        0             0 ssh
+[190307.141193] [ 214810]  1000 214810     3260      379    61440        0             0 ssh
+[190307.141195] [ 215910]  1000 215910    78634      833   114688        0           200 gvfsd-trash
+[190307.141198] [ 215930]  1000 215930    78663     1374   114688        0           200 gvfsd-network
+[190307.141200] [ 215944]  1000 215944    79152     1330   114688        0           200 gvfsd-dnssd
+[190307.141203] [ 216002]  1000 216002   680375    20747  1335296        0             0 Isolated Web Co
+[190307.141205] [ 216241]  1000 216241    21813      581   155648        0             0 kioslave5
+[190307.141207] [ 216302]  1000 216302   642290    17397  1048576        0             0 Isolated Web Co
+[190307.141210] [ 216599]  1000 216599   645049    21804  1056768        0             0 Isolated Web Co
+[190307.141212] [ 216721]  1000 216721   625295     7598   712704        0             0 Isolated Web Co
+[190307.141220] [ 217343]  1000 217343   833389    20822  1265664        0             0 DesktopEditors
+[190307.141222] [ 217346]  1000 217346    83413     2552   450560        0             0 editors_helper
+[190307.141224] [ 217360]  1000 217360   169970    14971   684032        0             0 editors_helper
+[190307.141227] [ 217378]  1000 217378   230882     3704   532480        0             0 editors_helper
+[190307.141229] [ 217389]  1000 217389   427623    14428  1429504        0           300 editors_helper
+[190307.141231] [ 217722]  1000 217722   629823    10005   749568        0             0 Isolated Web Co
+[190307.141234] [ 217839]  1000 217839   647382    25231  1060864        0             0 Isolated Web Co
+[190307.141236] [ 217965]  1000 217965   640733    18986   905216        0             0 Isolated Web Co
+[190307.141238] [ 218074]  1000 218074   638291    15209   864256        0             0 Isolated Web Co
+[190307.141240] [ 218296]  1000 218296   641687    16952   937984        0             0 Isolated Web Co
+[190307.141242] [ 218419]  1000 218419   656303    29767   983040        0             0 Isolated Web Co
+[190307.141244] [ 218586]     0 218586     3821      192    69632        0             0 systemd-hostnam
+[190307.141246] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-XXXX.slice/user@1000.service/app.slice/app-org.onlyoffice.desktopeditors-XXX.scope,task=editors_helper,pid=217389,uid=1000
+[190307.141304] Out of memory: Killed process 217389 (editors_helper) total-vm:1710492kB, anon-rss:35864kB, file-rss:0kB, shmem-rss:21848kB, UID:1000 pgtables:1396kB oom_score_adj:300
+[190318.049990] gvfs-afc-volume invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=200
+[190318.050001] CPU: 4 PID: 14796 Comm: gvfs-afc-volume Tainted: G        W         5.18.5-1-MANJARO #1 f3ee4d7d020bb789451220f23826e89d72fc8675
+[190318.050005] Hardware name: LG Electronics                   14Z90N-VA76K/14Z90N, BIOS C2ZE0180 X64 06/04/2020
+[190318.050007] Call Trace:
+[190318.050010]  <TASK>
+[190318.050013]  dump_stack_lvl+0x48/0x5d
+[190318.050019]  dump_header+0x4a/0x1fc
+[190318.050024]  oom_kill_process.cold+0xb/0x10
+[190318.050028]  out_of_memory+0x27e/0x520
+[190318.050033]  __alloc_pages_slowpath.constprop.0+0xc38/0xcf0
+[190318.050038]  __alloc_pages+0x1ff/0x230
+[190318.050042]  folio_alloc+0x1b/0x50
+[190318.050045]  __filemap_get_folio+0x1b5/0x350
+[190318.050049]  filemap_fault+0x140/0x910
+[190318.050051]  ? filemap_map_pages+0x16b/0x7a0
+[190318.050055]  __do_fault+0x33/0x110
+[190318.050059]  __handle_mm_fault+0xd79/0x14c0
+[190318.050063]  handle_mm_fault+0xb2/0x280
+[190318.050066]  do_user_addr_fault+0x1be/0x680
+[190318.050071]  exc_page_fault+0x74/0x170
+[190318.050073]  ? asm_exc_page_fault+0xc/0x30
+[190318.050076]  asm_exc_page_fault+0x22/0x30
+[190318.050079] RIP: 0033:0x7ff77af212d0
+[190318.050085] Code: Unable to access opcode bytes at RIP 0x7ff77af212a6.
+[190318.050086] RSP: 002b:00007ff779ff6aa8 EFLAGS: 00010246
+[190318.050089] RAX: 0000000000000000 RBX: 0000000000000010 RCX: 0000000000000000
+[190318.050091] RDX: 0000000000000000 RSI: 00007ff779ff6ad0 RDI: 0000000000000004
+[190318.050092] RBP: 00007ff779ff6ad0 R08: 00007ff779ff6a60 R09: 00007ff779ff6a70
+[190318.050093] R10: 0000000000000000 R11: 0000000000000293 R12: 00007ff779ff6ac0
+[190318.050094] R13: 0000000000000004 R14: 0000000000000005 R15: 0000000000000004
+[190318.050097]  </TASK>
+[190318.050098] Mem-Info:
+[190318.050099] active_anon:4879 inactive_anon:3147011 isolated_anon:0
+                 active_file:963 inactive_file:836 isolated_file:3
+                 unevictable:636243 dirty:0 writeback:0
+                 slab_reclaimable:21714 slab_unreclaimable:56290
+                 mapped:63362 shmem:708100 pagetables:37272 bounce:0
+                 kernel_misc_reclaimable:0
+                 free:47406 free_pcp:1645 free_cma:0
+[190318.050104] Node 0 active_anon:19516kB inactive_anon:12588044kB active_file:3852kB inactive_file:3344kB unevictable:2544972kB isolated(anon):0kB isolated(file):12kB mapped:253448kB dirty:0kB writeback:0kB shmem:2832400kB shmem_thp: 1394688kB shmem_pmdmapped: 0kB anon_thp: 1298432kB writeback_tmp:0kB kernel_stack:65136kB pagetables:149088kB all_unreclaimable? no
+[190318.050109] Node 0 DMA free:13312kB boost:0kB min:64kB low:80kB high:96kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[190318.050115] lowmem_reserve[]: 0 755 15580 15580 15580
+[190318.050118] Node 0 DMA32 free:62356kB boost:0kB min:3272kB low:4088kB high:4904kB reserved_highatomic:0KB active_anon:28kB inactive_anon:517212kB active_file:4kB inactive_file:4kB unevictable:199508kB writepending:0kB present:857392kB managed:791496kB mlocked:0kB bounce:0kB free_pcp:500kB local_pcp:0kB free_cma:0kB
+[190318.050124] lowmem_reserve[]: 0 0 14825 14825 14825
+[190318.050127] Node 0 Normal free:113956kB boost:59392kB min:123636kB low:139696kB high:155756kB reserved_highatomic:2048KB active_anon:19488kB inactive_anon:12070832kB active_file:4428kB inactive_file:3912kB unevictable:2345464kB writepending:0kB present:15511552kB managed:15188132kB mlocked:584kB bounce:0kB free_pcp:6084kB local_pcp:984kB free_cma:0kB
+[190318.050133] lowmem_reserve[]: 0 0 0 0 0
+[190318.050136] Node 0 DMA: 0*4kB 0*8kB 0*16kB 0*32kB 0*64kB 0*128kB 0*256kB 0*512kB 1*1024kB (U) 2*2048kB (UM) 2*4096kB (M) = 13312kB
+[190318.050147] Node 0 DMA32: 993*4kB (UM) 397*8kB (UME) 213*16kB (UM) 170*32kB (UM) 89*64kB (UM) 34*128kB (UME) 48*256kB (UME) 25*512kB (UME) 9*1024kB (UME) 1*2048kB (M) 0*4096kB = 62396kB
+[190318.050161] Node 0 Normal: 28823*4kB (UMEH) 18*8kB (H) 5*16kB (H) 4*32kB (H) 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 115644kB
+[190318.050172] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[190318.050174] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[190318.050175] 709789 total pagecache pages
+[190318.050176] 0 pages in swap cache
+[190318.050177] Swap cache stats: add 0, delete 0, find 0/0
+[190318.050178] Free swap  = 0kB
+[190318.050179] Total swap = 0kB
+[190318.050180] 4096234 pages RAM
+[190318.050180] 0 pages HighMem/MovableOnly
+[190318.050181] 97487 pages reserved
+[190318.050182] 0 pages cma reserved
+[190318.050182] 0 pages hwpoisoned
+[190318.050183] Tasks state (memory values in pages):
+[190318.050184] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[190318.050195] [    280]     0   280    14233      352   131072        0          -250 systemd-journal
+[190318.050198] [    281]     0   281     8418      875    94208        0         -1000 systemd-udevd
+[190318.050203] [    423]   976   423    22440      237    77824        0             0 systemd-timesyn
+[190318.050206] [    582]   972   582     2160      104    57344        0             0 avahi-daemon
+[190318.050208] [    583]     0   583     1717      204    53248        0             0 crond
+[190318.050211] [    584]    81   584     2853      711    65536        0          -900 dbus-daemon
+[190318.050213] [    585]   102   585   729005     2205   253952        0             0 polkitd
+[190318.050215] [    586]     0   586    12217      284    94208        0             0 systemd-logind
+[190318.050218] [    587]   972   587     2160      104    57344        0             0 avahi-daemon
+[190318.050220] [    590]     0   590    83026     1434   139264        0             0 NetworkManager
+[190318.050222] [    670]     0   670    35400      949   147456        0             0 sddm
+[190318.050224] [    671]     0   671    78967      502   110592        0             0 ModemManager
+[190318.050226] [    708]     0   708   431289    30077  1097728        0             0 Xorg
+[190318.050229] [    717]     0   717     3886      338    65536        0             0 wpa_supplicant
+[190318.050232] [    720]     0   720     2892      161    65536        0             0 bluetoothd
+[190318.050234] [    826]     0   826    98250     1068   122880        0             0 udisksd
+[190318.050237] [    836]     0   836    58270      917    86016        0             0 upowerd
+[190318.050239] [    851]     0   851    21859      802   159744        0             0 smbd
+[190318.050243] [    853]     0   853    21345      785   155648        0             0 smbd-notifyd
+[190318.050245] [    854]     0   854    21343      785   126976        0             0 cleanupd
+[190318.050247] [    875]     0   875    16278      453   122880        0             0 sddm-helper
+[190318.050250] [    877]  1000   877     4809      799    77824        0           100 systemd
+[190318.050253] [    879]  1000   879    42621      851    94208        0           100 (sd-pam)
+[190318.050255] [    891]  1000   891    71007     1610   258048        0             0 kwalletd5
+[190318.050259] [    892]  1000   892    48856     1746   225280        0             0 startplasma-x11
+[190318.050262] [    897]  1000   897     2651      649    57344        0           200 dbus-daemon
+[190318.050264] [    910]  1000   910    48802     1685   233472        0             0 plasma_session
+[190318.050266] [    914]  1000   914      641       25    36864        0             0 start_kdeinit
+[190318.050269] [    915]  1000   915    29411     1107   212992        0             0 kdeinit5
+[190318.050272] [    916]  1000   916    70513     1532   253952        0             0 klauncher
+[190318.050275] [    927]  1000   927   290807     3409   401408        0             0 kded5
+[190318.050277] [    930]  1000   930   471709    11406   708608        0             0 kwin_x11
+[190318.050279] [    934]  1000   934    38776      672    65536        0           200 dconf-service
+[190318.050281] [    970]  1000   970    70909     1908   249856        0           200 kglobalaccel5
+[190318.050283] [    971]  1000   971    71921     2044   270336        0             0 ksmserver
+[190318.050285] [    976]  1000   976   123825     2187   274432        0             0 org_kde_powerde
+[190318.050287] [    977]  1000   977    71519     1652   253952        0             0 kaccess
+[190318.050289] [    979]  1000   979   320582     6271   548864        0             0 polkit-kde-auth
+[190318.050291] [    980]  1000   980 67186931     1888   348160        0             0 baloo_file
+[190318.050294] [    982]  1000   982  1334808    62454  1765376        0             0 plasmashell
+[190318.050296] [    985]  1000   985    56961      857   155648        0             0 xembedsniproxy
+[190318.050298] [    998]  1000   998   136470     2238   245760        0           200 kactivitymanage
+[190318.050301] [   1000]  1000  1000   135806     1968   315392        0             0 DiscoverNotifie
+[190318.050303] [   1001]  1000  1001   178680     4555   323584        0             0 kdeconnectd
+[190318.050305] [   1003]  1000  1003    57221      864   167936        0             0 gmenudbusmenupr
+[190318.050313] [   1009]  1000  1009  1109502     3649   344064        0           200 pulseaudio
+[190318.050315] [   1016]   133  1016    38510       83    61440        0             0 rtkit-daemon
+[190318.050317] [   1034]  1000  1034    55317     1431   151552        0           200 kscreen_backend
+[190318.050320] [   1045]  1000  1045    60080      813   110592        0           200 gvfsd
+[190318.050322] [   1056]  1000  1056    94775      720    98304        0           200 gvfsd-fuse
+[190318.050324] [   1072]     0  1072   113794    40718   446464        0             0 packagekitd
+[190318.050326] [   1087]  1000  1087   117832     2441   311296        0             0 msm_kde_notifie
+[190318.050328] [   1090]  1000  1090   421660    16509   802816        0             0 octopi-notifier
+[190318.050330] [   1095]  1000  1095    61592     1674   192512        0           200 ksystemstats
+[190318.050333] [   1100]  1000  1100   110813     2437   294912        0             0 pamac-tray-plas
+[190318.050335] [   1119]  1000  1119  4230412   320422 11366400        0             0 firefox
+[190318.050337] [   1134]  1000  1134    76965      733    94208        0           200 at-spi-bus-laun
+[190318.050339] [   1140]  1000  1140     2184      201    57344        0           200 dbus-daemon
+[190318.050342] [   1143]  1000  1143    59141      742    90112        0           200 gsettings-helpe
+[190318.050344] [   1145]  1000  1145    40255      256    77824        0           200 at-spi2-registr
+[190318.050346] [   1146]  1000  1146   155223     2109   151552        0           200 xdg-desktop-por
+[190318.050348] [   1163]  1000  1163   133146      693   126976        0           200 xdg-document-po
+[190318.050350] [   1166]  1000  1166    57954      617    81920        0           200 xdg-permission-
+[190318.050353] [   1173]  1000  1173      667       22    45056        0           200 fusermount3
+[190318.050355] [   1176]  1000  1176   315046     6257   417792        0           200 xdg-desktop-por
+[190318.050357] [   1260]  1000  1260    70789     2094   249856        0           200 xdg-desktop-por
+[190318.050359] [   1265]  1000  1265   484073    13453   712704        0             0 konsole
+[190318.050361] [   1284]  1000  1284    95148     1942   184320        0           200 xdg-desktop-por
+[190318.050363] [   1305]  1000  1305     9357      377    73728        0           200 pipewire
+[190318.050366] [   1306]  1000  1306     4520      285    65536        0           200 pipewire-media-
+[190318.050368] [   1319]  1000  1319    59563      706   102400        0           200 gnome-keyring-d
+[190318.050370] [   1320]  1000  1320    59625     1285    98304        0           200 gnome-keyring-d
+[190318.050372] [   1360]  1000  1360     3213     1108    61440        0             0 zsh
+[190318.050374] [   1369]  1000  1369     3190     1090    65536        0             0 zsh
+[190318.050376] [   1375]  1000  1375     3279     1178    65536        0             0 zsh
+[190318.050378] [   1417]  1000  1417     3279     1200    73728        0             0 zsh
+[190318.050380] [   1427]  1000  1427     2691      602    57344        0             0 zsh
+[190318.050383] [   1434]  1000  1434     2691      602    61440        0             0 zsh
+[190318.050385] [   1455]  1000  1455     2692      602    57344        0             0 zsh
+[190318.050386] [   1458]  1000  1458     3003      895    61440        0             0 zsh
+[190318.050388] [   1460]  1000  1460    34485      601   122880        0             0 gitstatusd
+[190318.050391] [   1479]  1000  1479     2999      894    61440        0             0 zsh
+[190318.050393] [   1484]  1000  1484     3003      895    65536        0             0 zsh
+[190318.050395] [   1485]  1000  1485    34485      601   118784        0             0 gitstatusd
+[190318.050397] [   1488]  1000  1488     2999      894    65536        0             0 zsh
+[190318.050399] [   1511]  1000  1511     2692      603    65536        0             0 zsh
+[190318.050401] [   1518]  1000  1518     3004      895    61440        0             0 zsh
+[190318.050402] [   1519]  1000  1519    34485      603   118784        0             0 gitstatusd
+[190318.050405] [   1520]  1000  1520     3000      894    61440        0             0 zsh
+[190318.050406] [   1547]  1000  1547    34485      601   114688        0             0 gitstatusd
+[190318.050408] [   1548]  1000  1548     3004      896    65536        0             0 zsh
+[190318.050410] [   1566]  1000  1566     3000      895    65536        0             0 zsh
+[190318.050412] [   1661]  1000  1661   240932     1811   245760        0             0 zeitgeist-datah
+[190318.050414] [   1690]  1000  1690    95803      839   110592        0           200 zeitgeist-daemo
+[190318.050416] [   1695]  1000  1695    99169     4195   212992        0             0 matray
+[190318.050419] [   1706]  1000  1706    58776      637    94208        0             0 agent
+[190318.050422] [   1707]  1000  1707    59526      948    94208        0           200 zeitgeist-fts
+[190318.050424] [   1760]  1000  1760    64333     2904   368640        0             0 Socket Process
+[190318.050426] [   1880]     0  1880   180264    13685   315392        0             0 pamac-daemon
+[190318.050429] [   1959]  1000  1959 10253765    85348  3518464        0             0 WebExtensions
+[190318.050431] [   2032]  1000  2032   633145     8950   856064        0             0 Privileged Cont
+[190318.050433] [   2109]  1000  2109   653148    29590  1376256        0             0 Isolated Web Co
+[190318.050435] [   2206]  1000  2206    82837     7719   212992        0             0 fcitx
+[190318.050437] [   2211]  1000  2211     2356      261    57344        0             0 dbus-daemon
+[190318.050439] [   2216]  1000  2216     1648       68    53248        0             0 fcitx-dbus-watc
+[190318.050441] [   2276]  1000  2276    39681      671    86016        0           200 gvfsd-metadata
+[190318.050444] [   2821]  1000  2821   532754     8784   655360        0             0 audacious
+[190318.050446] [   9204]  1000  9204    21661      554   159744        0             0 kioslave5
+[190318.050448] [   9705]  1000  9705 218904093    92489  3833856        0             0 Isolated Web Co
+[190318.050450] [  14790]  1000 14790    88858     1524   147456        0           200 gvfs-udisks2-vo
+[190318.050453] [  14795]  1000 14795    79086     1247   110592        0           200 gvfs-afc-volume
+[190318.050455] [  14800]  1000 14800    58568      753    90112        0           200 gvfs-gphoto2-vo
+[190318.050457] [  14804]  1000 14804    58060      670    86016        0           200 gvfs-mtp-volume
+[190318.050459] [  23579]  1000 23579   698798    61994  1556480        0             0 Isolated Web Co
+[190318.050462] [  23616]  1000 23616   144978    13846   692224        0             0 RDD Process
+[190318.050464] [  23621]  1000 23621   118667     4656   507904        0             0 Utility Process
+[190318.050466] [  23649]  1000 23649   648824    19327  1019904        0             0 Isolated Web Co
+[190318.050468] [  23693]  1000 23693   707908    56107  1572864        0             0 Isolated Web Co
+[190318.050470] [  23734]  1000 23734   692116    15440   962560        0             0 Isolated Web Co
+[190318.050472] [  23777]  1000 23777   635263    16099   880640        0             0 Isolated Web Co
+[190318.050474] [  23815]  1000 23815   720822    26914  1388544        0             0 Isolated Web Co
+[190318.050476] [  23927]  1000 23927   672500    42708  1257472        0             0 Isolated Web Co
+[190318.050478] [  23931]  1000 23931   639767    11502   983040        0             0 Isolated Web Co
+[190318.050481] [  24025]  1000 24025   644260    16421  1208320        0             0 Isolated Web Co
+[190318.050482] [  24028]  1000 24028   619940     5971   647168        0             0 Isolated Web Co
+[190318.050484] [  24129]  1000 24129   695902    48236  1708032        0             0 Isolated Web Co
+[190318.050486] [  24236]  1000 24236   627516    10231   765952        0             0 Isolated Web Co
+[190318.050489] [  24294]  1000 24294   628417    10575   794624        0             0 Isolated Web Co
+[190318.050490] [  24406]  1000 24406   687922    51104  1396736        0             0 Isolated Web Co
+[190318.050492] [  24448]  1000 24448   671055    18851  1241088        0             0 Isolated Web Co
+[190318.050494] [  24569]  1000 24569   690146    46790  1691648        0             0 Isolated Web Co
+[190318.050497] [  24676]  1000 24676   626109    10156   737280        0             0 Isolated Web Co
+[190318.050500] [  24728]  1000 24728   635433    15389   888832        0             0 Isolated Web Co
+[190318.050502] [  24787]  1000 24787   626835    11174   765952        0             0 Isolated Web Co
+[190318.050505] [  24923]  1000 24923   686000    40123  1601536        0             0 Isolated Web Co
+[190318.050508] [  24996]  1000 24996   629251    11243   786432        0             0 Isolated Web Co
+[190318.050510] [  25035]  1000 25035   677541    38905  1507328        0             0 Isolated Web Co
+[190318.050513] [  25108]  1000 25108   641650    21360   962560        0             0 Isolated Web Co
+[190318.050515] [  25145]  1000 25145   626630     9555   782336        0             0 Isolated Web Co
+[190318.050518] [  25225]  1000 25225   642532    22346   942080        0             0 Isolated Web Co
+[190318.050520] [  25392]  1000 25392   665469    25722  1331200        0             0 Isolated Web Co
+[190318.050523] [  25478]  1000 25478   633089    11369   888832        0             0 Isolated Web Co
+[190318.050526] [  25866]  1000 25866   488879    17352   757760        0             0 kate
+[190318.050528] [  26940]  1000 26940     3119      253    69632        0             0 ssh
+[190318.050530] [  28495]  1000 28495   455308    12190   720896        0             0 dolphin
+[190318.050533] [  28530]  1000 28530   356931     5258   552960        0           200 kiod5
+[190318.050535] [  28582]  1000 28582    72549     1675   258048        0             0 kate
+[190318.050538] [  28659]  1000 28659     3426     1163    77824        0             0 zsh
+[190318.050540] [  28665]  1000 28665     2691      601    61440        0             0 zsh
+[190318.050542] [  28673]  1000 28673     3004      897    61440        0             0 zsh
+[190318.050544] [  28674]  1000 28674     3000      896    61440        0             0 zsh
+[190318.050546] [  28676]  1000 28676    34485      602   118784        0             0 gitstatusd
+[190318.050548] [  29741]  1000 29741    40549     1127   167936        0           200 kio-fuse
+[190318.050550] [  29761]  1000 29761  5493610    18373   970752        0             0 code-oss
+[190318.050553] [  29764]  1000 29764  4313507     2935   536576        0             0 electron
+[190318.050555] [  29765]  1000 29765  4313507     2935   536576        0             0 electron
+[190318.050557] [  29767]  1000 29767  4313507     2933   278528        0             0 electron
+[190318.050559] [  29780]  1000 29780  4198096      582    69632        0             0 chrome_crashpad
+[190318.050561] [  29793]  1000 29793  4422065     9832  1085440        0           200 electron
+[190318.050563] [  29816]  1000 29816  4328089     3662   585728        0             0 electron
+[190318.050565] [  29839]  1000 29839  9073796    31298  1400832        0             0 electron
+[190318.050567] [  29861]  1000 29861  5382615    15585   806912        0             0 electron
+[190318.050569] [  29873]  1000 29873  7504610    14332  1032192        0             0 electron
+[190318.050571] [  29891]  1000 29891  5380490     5502   655360        0             0 electron
+[190318.050573] [  29915]  1000 29915  5380541     5645   651264        0             0 electron
+[190318.050575] [  30291]  1000 30291   656338    17674  1134592        0             0 Isolated Web Co
+[190318.050578] [  30337]  1000 30337   639675    15473   991232        0             0 Isolated Web Co
+[190318.050580] [  32480]  1000 32480    72546     1676   262144        0             0 kate
+[190318.050582] [  35502]  1000 35502     8888     2178   106496        0           200 python3
+[190318.050584] [  35507]  1000 35507 67180069     2403  2887680        0           200 baloorunner
+[190318.050586] [  35517]  1000 35517     2295       60    53248        0             0 logger
+[190318.050589] [  35532]  1000 35532 27049311   176446  3940352        0             0 WebKitWebProces
+[190318.050591] [  39104]  1000 39104  5372294     5606   622592        0             0 electron
+[190318.050594] [  39155]  1000 39155    14844      252   102400        0             0 kdesud
+[190318.050596] [  40829]  1000 40829   630189    11305   811008        0             0 Isolated Web Co
+[190318.050598] [  41459]  1000 41459   634944    13555   860160        0             0 Isolated Web Co
+[190318.050600] [  41497]  1000 41497   631190    10717   811008        0             0 Isolated Web Co
+[190318.050602] [  41545]  1000 41545   685955    12216   950272        0             0 Isolated Web Co
+[190318.050604] [  41624]  1000 41624  5409705    32127  1069056        0             0 signal-desktop
+[190318.050606] [  41628]  1000 41628  4258202     2305   376832        0             0 signal-desktop
+[190318.050608] [  41629]  1000 41629  4258199     2256   372736        0             0 signal-desktop
+[190318.050610] [  41631]  1000 41631  4258199     2286   212992        0             0 signal-desktop
+[190318.050612] [  41717]  1000 41717  4430961    17788  1458176        0           200 signal-desktop
+[190318.050614] [  41719]  1000 41719  4274622     2884   442368        0             0 signal-desktop
+[190318.050616] [  41759]  1000 41759  6529227    58130  1773568        0             0 signal-desktop
+[190318.050618] [  41788]  1000 41788  4336798     2936   454656        0             0 signal-desktop
+[190318.050620] [  42129]  1000 42129   632345    13790   827392        0             0 Isolated Web Co
+[190318.050622] [  42169]  1000 42169   626416     8681   729088        0             0 Isolated Web Co
+[190318.050625] [  42306]  1000 42306   627929     9655   786432        0             0 Isolated Web Co
+[190318.050627] [  42511]  1000 42511   684294    11598   892928        0             0 Isolated Web Co
+[190318.050629] [  42549]  1000 42549   642034    23370  1171456        0             0 Isolated Web Co
+[190318.050631] [  43108]  1000 43108   654452    17140  1110016        0             0 Isolated Web Co
+[190318.050634] [  47436]  1000 47436   628504    11138   806912        0             0 Isolated Web Co
+[190318.050636] [  47517]  1000 47517   631581    12414   831488        0             0 Isolated Web Co
+[190318.050639] [  47701]  1000 47701   646232    16136  1011712        0             0 Isolated Web Co
+[190318.050642] [  47840]  1000 47840   640238    13105   917504        0             0 Isolated Web Co
+[190318.050644] [  47886]  1000 47886   650934    20859  1171456        0             0 Isolated Web Co
+[190318.050647] [  48149]  1000 48149   636775    17846  1011712        0             0 Isolated Web Co
+[190318.050649] [  48192]  1000 48192 23806192    43518  1908736        0             0 Isolated Web Co
+[190318.067373] [ 118100]  1000 118100 26087187     8422   552960        0             0 whatsapp-for-li
+[190318.067379] [ 118101]  1000 118101     2295       60    53248        0             0 logger
+[190318.067382] [ 118111]  1000 118111 26162278    11281   638976        0             0 WebKitNetworkPr
+[190318.067384] [ 118116]  1000 118116 26780097    96230  3338240        0             0 WebKitWebProces
+[190318.067386] [ 120118]  1000 120118     3205      327    73728        0             0 ssh
+[190318.067389] [ 122870]  1000 122870   627748     9854   774144        0             0 Isolated Web Co
+[190318.067391] [ 122942]  1000 122942   679882    26741  1376256        0             0 Isolated Web Co
+[190318.067394] [ 124387]  1000 124387   628898    11547   806912        0             0 Isolated Web Co
+[190318.067396] [ 124467]  1000 124467   628793    11216   798720        0             0 Isolated Web Co
+[190318.067398] [ 124656]  1000 124656   620200     4980   659456        0             0 Isolated Web Co
+[190318.067401] [ 126665]  1000 126665   488949    16474   860160        0             0 kate
+[190318.067403] [ 127302]  1000 127302     3217     1111    69632        0             0 zsh
+[190318.067405] [ 127308]  1000 127308     2691      602    65536        0             0 zsh
+[190318.067408] [ 127316]  1000 127316     3004      897    65536        0             0 zsh
+[190318.067410] [ 127317]  1000 127317     3000      896    65536        0             0 zsh
+[190318.067412] [ 127319]  1000 127319    34485      602   118784        0             0 gitstatusd
+[190318.067415] [ 130158]  1000 130158     3214     1109    69632        0             0 zsh
+[190318.067418] [ 130164]  1000 130164     2692      603    61440        0             0 zsh
+[190318.067420] [ 130172]  1000 130172     3005      897    61440        0             0 zsh
+[190318.067422] [ 130173]  1000 130173     3001      896    61440        0             0 zsh
+[190318.067424] [ 130175]  1000 130175    34485      601   122880        0             0 gitstatusd
+[190318.067426] [ 136177]  1000 136177   647416    20564  1040384        0             0 Isolated Web Co
+[190318.067429] [ 136333]  1000 136333   623782     5298   708608        0             0 Isolated Web Co
+[190318.067431] [ 136517]  1000 136517   643468    18116   950272        0             0 Isolated Web Co
+[190318.067434] [ 136558]  1000 136558   668301    26467  1748992        0             0 Isolated Web Co
+[190318.067436] [ 136602]  1000 136602   646419    20489  1044480        0             0 Isolated Web Co
+[190318.067438] [ 136663]  1000 136663   630212     9881   790528        0             0 Isolated Web Co
+[190318.067440] [ 136707]  1000 136707   640202    15267   917504        0             0 Isolated Web Co
+[190318.067442] [ 136796]  1000 136796   643713    13821   925696        0             0 Isolated Web Co
+[190318.067445] [ 136836]  1000 136836   629881    11750   811008        0             0 Isolated Web Co
+[190318.067447] [ 137198]  1000 137198   655175    19795  1216512        0             0 Isolated Web Co
+[190318.067449] [ 137427]  1000 137427   638584    15450   872448        0             0 Isolated Web Co
+[190318.067451] [ 140337]  1000 140337   650778    24639  1150976        0             0 Isolated Web Co
+[190318.067453] [ 140344]  1000 140344   632438    11478   806912        0             0 Isolated Web Co
+[190318.067456] [ 140434]  1000 140434   724718    18252  1286144        0             0 Isolated Web Co
+[190318.067458] [ 141512]  1000 141512     3217     1178    61440        0             0 zsh
+[190318.067460] [ 141518]  1000 141518     2690      601    57344        0             0 zsh
+[190318.067462] [ 141526]  1000 141526     3004      897    57344        0             0 zsh
+[190318.067465] [ 141528]  1000 141528     3000      896    57344        0             0 zsh
+[190318.067467] [ 141529]  1000 141529    34485      601   114688        0             0 gitstatusd
+[190318.067469] [ 141700]  1000 141700   638444    15287   897024        0             0 Isolated Web Co
+[190318.067471] [ 141743]  1000 141743   631226     9686   819200        0             0 Isolated Web Co
+[190318.067474] [ 142940]  1000 142940   424970   149634  1667072        0             0 pamac-manager
+[190318.067476] [ 152301]  1000 152301   636908    13972   864256        0             0 Isolated Web Co
+[190318.067479] [ 213071]  1000 213071   647152    14958   983040        0             0 Isolated Web Co
+[190318.067481] [ 213115]  1000 213115   635892    14357   868352        0             0 Isolated Web Co
+[190318.067484] [ 214512]  1000 214512     3118      251    57344        0             0 ssh
+[190318.067486] [ 214810]  1000 214810     3260      379    61440        0             0 ssh
+[190318.067489] [ 215910]  1000 215910    78634      833   114688        0           200 gvfsd-trash
+[190318.067491] [ 215930]  1000 215930    78663     1374   114688        0           200 gvfsd-network
+[190318.067494] [ 215944]  1000 215944    79152     1361   114688        0           200 gvfsd-dnssd
+[190318.067497] [ 216002]  1000 216002   680371    20777  1335296        0             0 Isolated Web Co
+[190318.067500] [ 216241]  1000 216241    21813      581   155648        0             0 kioslave5
+[190318.067502] [ 216302]  1000 216302   642290    17439  1048576        0             0 Isolated Web Co
+[190318.067505] [ 216599]  1000 216599   645049    21811  1056768        0             0 Isolated Web Co
+[190318.067507] [ 216721]  1000 216721   625295     7598   712704        0             0 Isolated Web Co
+[190318.067510] [ 217343]  1000 217343   832364    20824  1261568        0             0 DesktopEditors
+[190318.067512] [ 217346]  1000 217346    83413     2562   450560        0             0 editors_helper
+[190318.067514] [ 217360]  1000 217360   169970    15015   684032        0             0 editors_helper
+[190318.067516] [ 217378]  1000 217378   230882     3747   532480        0             0 editors_helper
+[190318.067519] [ 217722]  1000 217722   629819    10053   749568        0             0 Isolated Web Co
+[190318.067522] [ 217839]  1000 217839   647378    25233  1060864        0             0 Isolated Web Co
+[190318.067524] [ 217965]  1000 217965   640733    18986   905216        0             0 Isolated Web Co
+[190318.067526] [ 218074]  1000 218074   638291    15209   864256        0             0 Isolated Web Co
+[190318.067528] [ 218296]  1000 218296   641687    16674   937984        0             0 Isolated Web Co
+[190318.067531] [ 218419]  1000 218419   656307    29817   983040        0             0 Isolated Web Co
+[190318.067533] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-XXXX.slice/user@1000.service/app.slice/app-signal\x2ddesktop-XXX.scope,task=signal-desktop,pid=41717,uid=1000
+[190318.067592] Out of memory: Killed process 41717 (signal-desktop) total-vm:17723844kB, anon-rss:54608kB, file-rss:0kB, shmem-rss:16544kB, UID:1000 pgtables:1424kB oom_score_adj:200
+[201357.459546] st: Version 20160209, fixed bufsize 32768, s/g segs 256
