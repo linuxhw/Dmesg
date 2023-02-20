@@ -1,0 +1,1291 @@
+[163538.680143] APFS (41g): unable to read container object map
+[163538.680147] APFS (41g): unable to read container object map
+[163538.689139] APFS (41g): unable to read container object map
+[163547.747825] ------------[ cut here ]------------
+[163547.747828] Display power well on
+[163547.747870] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163547.747955] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163547.747994]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163547.748039]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163547.748049] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163547.748052] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163547.748053] Workqueue: pm pm_runtime_work
+[163547.748058] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163547.748121] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163547.748122] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163547.748124] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163547.748125] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163547.748126] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163547.748127] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163547.748128] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163547.748129] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163547.748130] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163547.748131] CR2: 0000071807e2a000 CR3: 0000000347810002 CR4: 00000000001706e0
+[163547.748132] Call Trace:
+[163547.748134]  <TASK>
+[163547.748137]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163547.748183]  pci_pm_runtime_suspend+0x60/0x190
+[163547.748187]  ? pci_dev_put+0x20/0x20
+[163547.748189]  ? pci_dev_put+0x20/0x20
+[163547.748190]  __rpm_callback+0x44/0x170
+[163547.748192]  ? pci_dev_put+0x20/0x20
+[163547.748194]  rpm_suspend+0x43d/0x970
+[163547.748196]  ? __schedule+0xb4b/0x1350
+[163547.748199]  pm_runtime_work+0x98/0xb0
+[163547.748201]  process_one_work+0x258/0x410
+[163547.748205]  worker_thread+0x55/0x4d0
+[163547.748207]  ? process_one_work+0x410/0x410
+[163547.748209]  kthread+0xde/0x110
+[163547.748211]  ? kthread_complete_and_exit+0x20/0x20
+[163547.748213]  ret_from_fork+0x22/0x30
+[163547.748218]  </TASK>
+[163547.748218] ---[ end trace 0000000000000000 ]---
+[163548.681372] APFS (41g): unable to read container object map
+[163548.681386] APFS (41g): unable to read container object map
+[163548.681392] APFS (41g): unable to read container object map
+[163548.681398] APFS (41g): unable to read container object map
+[163548.681404] APFS (41g): unable to read container object map
+[163548.681410] APFS (41g): unable to read container object map
+[163548.690712] APFS (41g): unable to read container object map
+[163558.681814] APFS (41g): unable to read container object map
+[163558.681833] APFS (41g): unable to read container object map
+[163558.681840] APFS (41g): unable to read container object map
+[163558.681847] APFS (41g): unable to read container object map
+[163558.681855] APFS (41g): unable to read container object map
+[163558.681862] APFS (41g): unable to read container object map
+[163558.690697] APFS (41g): unable to read container object map
+[163568.680545] APFS (41g): unable to read container object map
+[163568.680554] APFS (41g): unable to read container object map
+[163568.680557] APFS (41g): unable to read container object map
+[163568.680560] APFS (41g): unable to read container object map
+[163568.680563] APFS (41g): unable to read container object map
+[163568.680566] APFS (41g): unable to read container object map
+[163568.689392] APFS (41g): unable to read container object map
+[163570.390514] ------------[ cut here ]------------
+[163570.390522] Display power well on
+[163570.390658] WARNING: CPU: 2 PID: 226139 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163570.391041] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163570.391204]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163570.391378]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163570.391416] CPU: 2 PID: 226139 Comm: kworker/2:1 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163570.391427] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163570.391432] Workqueue: pm pm_runtime_work
+[163570.391447] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163570.391764] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163570.391769] RSP: 0018:ffffb4c34a83fd08 EFLAGS: 00010286
+[163570.391776] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163570.391781] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163570.391785] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163570.391789] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163570.391794] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163570.391799] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163570.391804] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163570.391809] CR2: 00003cc8008d0000 CR3: 0000000347810005 CR4: 00000000001706e0
+[163570.391815] Call Trace:
+[163570.391821]  <TASK>
+[163570.391830]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163570.392014]  pci_pm_runtime_suspend+0x60/0x190
+[163570.392028]  ? pci_dev_put+0x20/0x20
+[163570.392030]  ? pci_dev_put+0x20/0x20
+[163570.392032]  __rpm_callback+0x44/0x170
+[163570.392034]  ? pci_dev_put+0x20/0x20
+[163570.392035]  rpm_suspend+0x43d/0x970
+[163570.392037]  ? __schedule+0xb4b/0x1350
+[163570.392040]  pm_runtime_work+0x98/0xb0
+[163570.392042]  process_one_work+0x258/0x410
+[163570.392055]  worker_thread+0x55/0x4d0
+[163570.392058]  ? process_one_work+0x410/0x410
+[163570.392059]  kthread+0xde/0x110
+[163570.392061]  ? kthread_complete_and_exit+0x20/0x20
+[163570.392063]  ret_from_fork+0x22/0x30
+[163570.392067]  </TASK>
+[163570.392067] ---[ end trace 0000000000000000 ]---
+[163578.680700] APFS (41g): unable to read container object map
+[163578.680708] APFS (41g): unable to read container object map
+[163578.680711] APFS (41g): unable to read container object map
+[163578.680714] APFS (41g): unable to read container object map
+[163578.680717] APFS (41g): unable to read container object map
+[163578.680720] APFS (41g): unable to read container object map
+[163578.689581] APFS (41g): unable to read container object map
+[163588.680856] APFS (41g): unable to read container object map
+[163588.680864] APFS (41g): unable to read container object map
+[163588.680867] APFS (41g): unable to read container object map
+[163588.680870] APFS (41g): unable to read container object map
+[163588.680874] APFS (41g): unable to read container object map
+[163588.680877] APFS (41g): unable to read container object map
+[163588.690098] APFS (41g): unable to read container object map
+[163592.923364] ------------[ cut here ]------------
+[163592.923367] Display power well on
+[163592.923409] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163592.923498] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163592.923536]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163592.923581]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163592.923590] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163592.923593] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163592.923594] Workqueue: pm pm_runtime_work
+[163592.923599] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163592.923663] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163592.923664] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163592.923665] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163592.923667] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163592.923667] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163592.923668] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163592.923669] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163592.923670] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163592.923671] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163592.923672] CR2: 000012640a0fd000 CR3: 0000000347810003 CR4: 00000000001706e0
+[163592.923674] Call Trace:
+[163592.923676]  <TASK>
+[163592.923679]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163592.923725]  pci_pm_runtime_suspend+0x60/0x190
+[163592.923729]  ? pci_dev_put+0x20/0x20
+[163592.923731]  ? pci_dev_put+0x20/0x20
+[163592.923733]  __rpm_callback+0x44/0x170
+[163592.923735]  ? pci_dev_put+0x20/0x20
+[163592.923737]  rpm_suspend+0x43d/0x970
+[163592.923739]  ? __schedule+0xb4b/0x1350
+[163592.923742]  pm_runtime_work+0x98/0xb0
+[163592.923744]  process_one_work+0x258/0x410
+[163592.923748]  worker_thread+0x55/0x4d0
+[163592.923750]  ? process_one_work+0x410/0x410
+[163592.923752]  kthread+0xde/0x110
+[163592.923754]  ? kthread_complete_and_exit+0x20/0x20
+[163592.923756]  ret_from_fork+0x22/0x30
+[163592.923760]  </TASK>
+[163592.923761] ---[ end trace 0000000000000000 ]---
+[163598.681426] APFS (41g): unable to read container object map
+[163598.681438] APFS (41g): unable to read container object map
+[163598.681444] APFS (41g): unable to read container object map
+[163598.681449] APFS (41g): unable to read container object map
+[163598.681454] APFS (41g): unable to read container object map
+[163598.681460] APFS (41g): unable to read container object map
+[163598.690857] APFS (41g): unable to read container object map
+[163608.682116] APFS (41g): unable to read container object map
+[163608.682131] APFS (41g): unable to read container object map
+[163608.682139] APFS (41g): unable to read container object map
+[163608.682145] APFS (41g): unable to read container object map
+[163608.682152] APFS (41g): unable to read container object map
+[163608.682159] APFS (41g): unable to read container object map
+[163608.691674] APFS (41g): unable to read container object map
+[163615.448098] ------------[ cut here ]------------
+[163615.448101] Display power well on
+[163615.448146] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163615.448232] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163615.448271]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163615.448317]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163615.448327] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163615.448330] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163615.448331] Workqueue: pm pm_runtime_work
+[163615.448336] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163615.448400] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163615.448401] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163615.448402] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163615.448403] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163615.448404] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163615.448405] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163615.448406] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163615.448407] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163615.448408] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163615.448409] CR2: 00007e8802bb4000 CR3: 0000000347810006 CR4: 00000000001706e0
+[163615.448410] Call Trace:
+[163615.448413]  <TASK>
+[163615.448415]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163615.448462]  pci_pm_runtime_suspend+0x60/0x190
+[163615.448466]  ? pci_dev_put+0x20/0x20
+[163615.448468]  ? pci_dev_put+0x20/0x20
+[163615.448469]  __rpm_callback+0x44/0x170
+[163615.448472]  ? pci_dev_put+0x20/0x20
+[163615.448473]  rpm_suspend+0x43d/0x970
+[163615.448475]  ? __schedule+0xb4b/0x1350
+[163615.448479]  pm_runtime_work+0x98/0xb0
+[163615.448481]  process_one_work+0x258/0x410
+[163615.448485]  worker_thread+0x55/0x4d0
+[163615.448487]  ? process_one_work+0x410/0x410
+[163615.448488]  kthread+0xde/0x110
+[163615.448491]  ? kthread_complete_and_exit+0x20/0x20
+[163615.448492]  ret_from_fork+0x22/0x30
+[163615.448497]  </TASK>
+[163615.448497] ---[ end trace 0000000000000000 ]---
+[163618.682791] APFS (41g): unable to read container object map
+[163618.682808] APFS (41g): unable to read container object map
+[163618.682816] APFS (41g): unable to read container object map
+[163618.682823] APFS (41g): unable to read container object map
+[163618.682830] APFS (41g): unable to read container object map
+[163618.682837] APFS (41g): unable to read container object map
+[163618.692377] APFS (41g): unable to read container object map
+[163628.683868] APFS (41g): unable to read container object map
+[163628.683889] APFS (41g): unable to read container object map
+[163628.683898] APFS (41g): unable to read container object map
+[163628.683907] APFS (41g): unable to read container object map
+[163628.683916] APFS (41g): unable to read container object map
+[163628.683925] APFS (41g): unable to read container object map
+[163628.693034] APFS (41g): unable to read container object map
+[163637.953013] ------------[ cut here ]------------
+[163637.953059] Display power well on
+[163637.953122] WARNING: CPU: 2 PID: 226139 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163637.953277] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163637.953313]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163637.953355]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163637.953364] CPU: 2 PID: 226139 Comm: kworker/2:1 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163637.953367] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163637.953368] Workqueue: pm pm_runtime_work
+[163637.953372] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163637.953436] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163637.953437] RSP: 0018:ffffb4c34a83fd08 EFLAGS: 00010286
+[163637.953439] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163637.953440] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163637.953440] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163637.953441] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163637.953442] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163637.953443] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163637.953444] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163637.953445] CR2: 00007f516b8016a8 CR3: 0000000347810004 CR4: 00000000001706e0
+[163637.953447] Call Trace:
+[163637.953448]  <TASK>
+[163637.953450]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163637.953497]  pci_pm_runtime_suspend+0x60/0x190
+[163637.953501]  ? pci_dev_put+0x20/0x20
+[163637.953502]  ? pci_dev_put+0x20/0x20
+[163637.953504]  __rpm_callback+0x44/0x170
+[163637.953506]  ? pci_dev_put+0x20/0x20
+[163637.953508]  rpm_suspend+0x43d/0x970
+[163637.953510]  ? __schedule+0xb4b/0x1350
+[163637.953513]  pm_runtime_work+0x98/0xb0
+[163637.953516]  process_one_work+0x258/0x410
+[163637.953519]  worker_thread+0x55/0x4d0
+[163637.953521]  ? process_one_work+0x410/0x410
+[163637.953523]  kthread+0xde/0x110
+[163637.953525]  ? kthread_complete_and_exit+0x20/0x20
+[163637.953527]  ret_from_fork+0x22/0x30
+[163637.953531]  </TASK>
+[163637.953532] ---[ end trace 0000000000000000 ]---
+[163638.680740] APFS (41g): unable to read container object map
+[163638.680749] APFS (41g): unable to read container object map
+[163638.680752] APFS (41g): unable to read container object map
+[163638.680755] APFS (41g): unable to read container object map
+[163638.680758] APFS (41g): unable to read container object map
+[163638.680762] APFS (41g): unable to read container object map
+[163638.689086] APFS (41g): unable to read container object map
+[163648.681490] APFS (41g): unable to read container object map
+[163648.681498] APFS (41g): unable to read container object map
+[163648.681502] APFS (41g): unable to read container object map
+[163648.681505] APFS (41g): unable to read container object map
+[163648.681508] APFS (41g): unable to read container object map
+[163648.681511] APFS (41g): unable to read container object map
+[163648.690389] APFS (41g): unable to read container object map
+[163658.682501] APFS (41g): unable to read container object map
+[163658.682513] APFS (41g): unable to read container object map
+[163658.682518] APFS (41g): unable to read container object map
+[163658.682523] APFS (41g): unable to read container object map
+[163658.682529] APFS (41g): unable to read container object map
+[163658.682534] APFS (41g): unable to read container object map
+[163658.690666] APFS (41g): unable to read container object map
+[163660.509339] ------------[ cut here ]------------
+[163660.509343] Display power well on
+[163660.509431] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163660.509532] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163660.509593]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163660.509636]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163660.509655] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163660.509658] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163660.509659] Workqueue: pm pm_runtime_work
+[163660.509664] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163660.509731] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163660.509732] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163660.509734] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163660.509735] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163660.509735] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163660.509736] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163660.509737] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163660.509738] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163660.509739] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163660.509740] CR2: 00007f4a75cbbe40 CR3: 0000000347810006 CR4: 00000000001706e0
+[163660.509741] Call Trace:
+[163660.509743]  <TASK>
+[163660.509746]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163660.509785]  pci_pm_runtime_suspend+0x60/0x190
+[163660.509798]  ? pci_dev_put+0x20/0x20
+[163660.509800]  ? pci_dev_put+0x20/0x20
+[163660.509801]  __rpm_callback+0x44/0x170
+[163660.509804]  ? pci_dev_put+0x20/0x20
+[163660.509806]  rpm_suspend+0x43d/0x970
+[163660.509808]  ? __schedule+0xb4b/0x1350
+[163660.509822]  pm_runtime_work+0x98/0xb0
+[163660.509823]  process_one_work+0x258/0x410
+[163660.509827]  worker_thread+0x55/0x4d0
+[163660.509830]  ? process_one_work+0x410/0x410
+[163660.509833]  kthread+0xde/0x110
+[163660.509835]  ? kthread_complete_and_exit+0x20/0x20
+[163660.509837]  ret_from_fork+0x22/0x30
+[163660.509840]  </TASK>
+[163660.509841] ---[ end trace 0000000000000000 ]---
+[163668.688511] APFS (41g): unable to read container object map
+[163668.688529] APFS (41g): unable to read container object map
+[163668.688536] APFS (41g): unable to read container object map
+[163668.688543] APFS (41g): unable to read container object map
+[163668.688549] APFS (41g): unable to read container object map
+[163668.688555] APFS (41g): unable to read container object map
+[163668.701112] APFS (41g): unable to read container object map
+[163678.682093] APFS (41g): unable to read container object map
+[163678.682107] APFS (41g): unable to read container object map
+[163678.682112] APFS (41g): unable to read container object map
+[163678.682118] APFS (41g): unable to read container object map
+[163678.682123] APFS (41g): unable to read container object map
+[163678.682129] APFS (41g): unable to read container object map
+[163678.691780] APFS (41g): unable to read container object map
+[163683.038648] ------------[ cut here ]------------
+[163683.038653] Display power well on
+[163683.038715] WARNING: CPU: 2 PID: 226139 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163683.038840] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163683.038899]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163683.038966]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163683.038981] CPU: 2 PID: 226139 Comm: kworker/2:1 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163683.038984] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163683.038986] Workqueue: pm pm_runtime_work
+[163683.038991] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163683.039075] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163683.039077] RSP: 0000:ffffb4c34a83fd08 EFLAGS: 00010286
+[163683.039079] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163683.039081] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163683.039082] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163683.039084] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163683.039085] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163683.039086] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163683.039088] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163683.039089] CR2: 00007f379d258000 CR3: 000000036ceb8001 CR4: 00000000001706e0
+[163683.039091] Call Trace:
+[163683.039094]  <TASK>
+[163683.039098]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163683.039164]  pci_pm_runtime_suspend+0x60/0x190
+[163683.039168]  ? pci_dev_put+0x20/0x20
+[163683.039170]  ? pci_dev_put+0x20/0x20
+[163683.039172]  __rpm_callback+0x44/0x170
+[163683.039175]  ? pci_dev_put+0x20/0x20
+[163683.039177]  rpm_suspend+0x43d/0x970
+[163683.039180]  ? __schedule+0xb4b/0x1350
+[163683.039184]  pm_runtime_work+0x98/0xb0
+[163683.039187]  process_one_work+0x258/0x410
+[163683.039191]  worker_thread+0x55/0x4d0
+[163683.039194]  ? process_one_work+0x410/0x410
+[163683.039196]  kthread+0xde/0x110
+[163683.039199]  ? kthread_complete_and_exit+0x20/0x20
+[163683.039201]  ret_from_fork+0x22/0x30
+[163683.039206]  </TASK>
+[163683.039207] ---[ end trace 0000000000000000 ]---
+[163688.682460] APFS (41g): unable to read container object map
+[163688.682475] APFS (41g): unable to read container object map
+[163688.682481] APFS (41g): unable to read container object map
+[163688.682486] APFS (41g): unable to read container object map
+[163688.682492] APFS (41g): unable to read container object map
+[163688.682498] APFS (41g): unable to read container object map
+[163688.691465] APFS (41g): unable to read container object map
+[163698.681768] APFS (41g): unable to read container object map
+[163698.681779] APFS (41g): unable to read container object map
+[163698.681782] APFS (41g): unable to read container object map
+[163698.681793] APFS (41g): unable to read container object map
+[163698.681797] APFS (41g): unable to read container object map
+[163698.681801] APFS (41g): unable to read container object map
+[163698.694197] APFS (41g): unable to read container object map
+[163705.559598] ------------[ cut here ]------------
+[163705.559601] Display power well on
+[163705.559646] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163705.559733] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163705.559772]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163705.559820]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163705.559830] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163705.559833] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163705.559835] Workqueue: pm pm_runtime_work
+[163705.559839] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163705.559914] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163705.559915] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163705.559917] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163705.559935] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163705.559936] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163705.559937] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163705.559938] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163705.559939] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163705.559940] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163705.559941] CR2: 000000c000e75000 CR3: 0000000347810004 CR4: 00000000001706e0
+[163705.559943] Call Trace:
+[163705.559946]  <TASK>
+[163705.559949]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163705.559995]  pci_pm_runtime_suspend+0x60/0x190
+[163705.559999]  ? pci_dev_put+0x20/0x20
+[163705.560002]  ? pci_dev_put+0x20/0x20
+[163705.560004]  __rpm_callback+0x44/0x170
+[163705.560007]  ? pci_dev_put+0x20/0x20
+[163705.560009]  rpm_suspend+0x43d/0x970
+[163705.560032]  ? __schedule+0xb4b/0x1350
+[163705.560048]  pm_runtime_work+0x98/0xb0
+[163705.560060]  process_one_work+0x258/0x410
+[163705.560076]  worker_thread+0x55/0x4d0
+[163705.560088]  ? process_one_work+0x410/0x410
+[163705.560098]  kthread+0xde/0x110
+[163705.560110]  ? kthread_complete_and_exit+0x20/0x20
+[163705.560124]  ret_from_fork+0x22/0x30
+[163705.560143]  </TASK>
+[163705.560146] ---[ end trace 0000000000000000 ]---
+[163708.684900] APFS (41g): unable to read container object map
+[163708.684924] APFS (41g): unable to read container object map
+[163708.684946] APFS (41g): unable to read container object map
+[163708.684973] APFS (41g): unable to read container object map
+[163708.684977] APFS (41g): unable to read container object map
+[163708.684980] APFS (41g): unable to read container object map
+[163708.693707] APFS (41g): unable to read container object map
+[163718.682310] APFS (41g): unable to read container object map
+[163718.682319] APFS (41g): unable to read container object map
+[163718.682322] APFS (41g): unable to read container object map
+[163718.682325] APFS (41g): unable to read container object map
+[163718.682328] APFS (41g): unable to read container object map
+[163718.682331] APFS (41g): unable to read container object map
+[163718.690693] APFS (41g): unable to read container object map
+[163727.819794] ------------[ cut here ]------------
+[163727.819797] Display power well on
+[163727.819840] WARNING: CPU: 2 PID: 226139 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163727.819926] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163727.819963]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163727.820009]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163727.820019] CPU: 2 PID: 226139 Comm: kworker/2:1 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163727.820022] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163727.820023] Workqueue: pm pm_runtime_work
+[163727.820028] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163727.820091] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163727.820092] RSP: 0018:ffffb4c34a83fd08 EFLAGS: 00010286
+[163727.820094] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163727.820095] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163727.820095] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163727.820096] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163727.820097] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163727.820098] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163727.820099] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163727.820100] CR2: 00003cc800641000 CR3: 0000000347810001 CR4: 00000000001706e0
+[163727.820101] Call Trace:
+[163727.820104]  <TASK>
+[163727.820106]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163727.820152]  pci_pm_runtime_suspend+0x60/0x190
+[163727.820156]  ? pci_dev_put+0x20/0x20
+[163727.820158]  ? pci_dev_put+0x20/0x20
+[163727.820159]  __rpm_callback+0x44/0x170
+[163727.820162]  ? pci_dev_put+0x20/0x20
+[163727.820163]  rpm_suspend+0x43d/0x970
+[163727.820165]  ? __schedule+0xb4b/0x1350
+[163727.820168]  pm_runtime_work+0x98/0xb0
+[163727.820171]  process_one_work+0x258/0x410
+[163727.820174]  worker_thread+0x55/0x4d0
+[163727.820176]  ? process_one_work+0x410/0x410
+[163727.820178]  kthread+0xde/0x110
+[163727.820181]  ? kthread_complete_and_exit+0x20/0x20
+[163727.820182]  ret_from_fork+0x22/0x30
+[163727.820187]  </TASK>
+[163727.820187] ---[ end trace 0000000000000000 ]---
+[163728.683363] APFS (41g): unable to read container object map
+[163728.683371] APFS (41g): unable to read container object map
+[163728.683374] APFS (41g): unable to read container object map
+[163728.683377] APFS (41g): unable to read container object map
+[163728.683380] APFS (41g): unable to read container object map
+[163728.683383] APFS (41g): unable to read container object map
+[163728.691954] APFS (41g): unable to read container object map
+[163738.685903] APFS (41g): unable to read container object map
+[163738.685916] APFS (41g): unable to read container object map
+[163738.685922] APFS (41g): unable to read container object map
+[163738.685928] APFS (41g): unable to read container object map
+[163738.685934] APFS (41g): unable to read container object map
+[163738.685939] APFS (41g): unable to read container object map
+[163738.694805] APFS (41g): unable to read container object map
+[163748.683233] APFS (41g): unable to read container object map
+[163748.683246] APFS (41g): unable to read container object map
+[163748.683252] APFS (41g): unable to read container object map
+[163748.683257] APFS (41g): unable to read container object map
+[163748.683263] APFS (41g): unable to read container object map
+[163748.683269] APFS (41g): unable to read container object map
+[163748.693702] APFS (41g): unable to read container object map
+[163750.536696] ------------[ cut here ]------------
+[163750.536699] Display power well on
+[163750.536744] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163750.536832] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163750.536872]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163750.536918]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163750.536927] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163750.536930] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163750.536931] Workqueue: pm pm_runtime_work
+[163750.536936] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163750.536999] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163750.537001] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163750.537002] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163750.537004] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163750.537004] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163750.537005] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163750.537006] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163750.537007] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163750.537008] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163750.537009] CR2: 00003cc800641000 CR3: 0000000347810006 CR4: 00000000001706e0
+[163750.537011] Call Trace:
+[163750.537013]  <TASK>
+[163750.537016]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163750.537062]  pci_pm_runtime_suspend+0x60/0x190
+[163750.537066]  ? pci_dev_put+0x20/0x20
+[163750.537068]  ? pci_dev_put+0x20/0x20
+[163750.537069]  __rpm_callback+0x44/0x170
+[163750.537072]  ? pci_dev_put+0x20/0x20
+[163750.537073]  rpm_suspend+0x43d/0x970
+[163750.537075]  ? __schedule+0xb4b/0x1350
+[163750.537079]  pm_runtime_work+0x98/0xb0
+[163750.537081]  process_one_work+0x258/0x410
+[163750.537085]  worker_thread+0x55/0x4d0
+[163750.537087]  ? process_one_work+0x410/0x410
+[163750.537088]  kthread+0xde/0x110
+[163750.537091]  ? kthread_complete_and_exit+0x20/0x20
+[163750.537093]  ret_from_fork+0x22/0x30
+[163750.537097]  </TASK>
+[163750.537098] ---[ end trace 0000000000000000 ]---
+[163758.683287] APFS (41g): unable to read container object map
+[163758.683300] APFS (41g): unable to read container object map
+[163758.683306] APFS (41g): unable to read container object map
+[163758.683312] APFS (41g): unable to read container object map
+[163758.683318] APFS (41g): unable to read container object map
+[163758.683323] APFS (41g): unable to read container object map
+[163758.693092] APFS (41g): unable to read container object map
+[163768.683408] APFS (41g): unable to read container object map
+[163768.683421] APFS (41g): unable to read container object map
+[163768.683427] APFS (41g): unable to read container object map
+[163768.683432] APFS (41g): unable to read container object map
+[163768.683438] APFS (41g): unable to read container object map
+[163768.683444] APFS (41g): unable to read container object map
+[163768.694059] APFS (41g): unable to read container object map
+[163772.513012] ------------[ cut here ]------------
+[163772.513015] Display power well on
+[163772.513056] WARNING: CPU: 2 PID: 226139 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163772.513144] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163772.513183]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163772.513227]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163772.513238] CPU: 2 PID: 226139 Comm: kworker/2:1 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163772.513241] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163772.513242] Workqueue: pm pm_runtime_work
+[163772.513246] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163772.513309] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163772.513311] RSP: 0018:ffffb4c34a83fd08 EFLAGS: 00010286
+[163772.513312] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163772.513314] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163772.513314] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163772.513315] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163772.513316] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163772.513317] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163772.513318] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163772.513319] CR2: 000055641822e000 CR3: 0000000347810005 CR4: 00000000001706e0
+[163772.513320] Call Trace:
+[163772.513323]  <TASK>
+[163772.513325]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163772.513371]  pci_pm_runtime_suspend+0x60/0x190
+[163772.513375]  ? pci_dev_put+0x20/0x20
+[163772.513377]  ? pci_dev_put+0x20/0x20
+[163772.513379]  __rpm_callback+0x44/0x170
+[163772.513381]  ? pci_dev_put+0x20/0x20
+[163772.513382]  rpm_suspend+0x43d/0x970
+[163772.513384]  ? __schedule+0xb4b/0x1350
+[163772.513388]  pm_runtime_work+0x98/0xb0
+[163772.513390]  process_one_work+0x258/0x410
+[163772.513393]  worker_thread+0x55/0x4d0
+[163772.513396]  ? process_one_work+0x410/0x410
+[163772.513397]  kthread+0xde/0x110
+[163772.513400]  ? kthread_complete_and_exit+0x20/0x20
+[163772.513402]  ret_from_fork+0x22/0x30
+[163772.513406]  </TASK>
+[163772.513407] ---[ end trace 0000000000000000 ]---
+[163778.683639] APFS (41g): unable to read container object map
+[163778.683652] APFS (41g): unable to read container object map
+[163778.683658] APFS (41g): unable to read container object map
+[163778.683663] APFS (41g): unable to read container object map
+[163778.683669] APFS (41g): unable to read container object map
+[163778.683675] APFS (41g): unable to read container object map
+[163778.693035] APFS (41g): unable to read container object map
+[163788.683860] APFS (41g): unable to read container object map
+[163788.683873] APFS (41g): unable to read container object map
+[163788.683879] APFS (41g): unable to read container object map
+[163788.683884] APFS (41g): unable to read container object map
+[163788.683890] APFS (41g): unable to read container object map
+[163788.683897] APFS (41g): unable to read container object map
+[163788.693036] APFS (41g): unable to read container object map
+[163795.150973] ------------[ cut here ]------------
+[163795.150982] Display power well on
+[163795.151114] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163795.151502] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163795.151668]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163795.151846]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163795.151886] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163795.151897] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163795.151902] Workqueue: pm pm_runtime_work
+[163795.151917] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163795.152246] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163795.152254] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163795.152288] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163795.152290] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163795.152291] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163795.152292] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163795.152294] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163795.152295] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163795.152307] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163795.152308] CR2: 00007fb9621f9000 CR3: 0000000347810006 CR4: 00000000001706e0
+[163795.152309] Call Trace:
+[163795.152312]  <TASK>
+[163795.152315]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163795.152364]  pci_pm_runtime_suspend+0x60/0x190
+[163795.152367]  ? pci_dev_put+0x20/0x20
+[163795.152369]  ? pci_dev_put+0x20/0x20
+[163795.152371]  __rpm_callback+0x44/0x170
+[163795.152373]  ? pci_dev_put+0x20/0x20
+[163795.152374]  rpm_suspend+0x43d/0x970
+[163795.152376]  ? __schedule+0xb4b/0x1350
+[163795.152379]  pm_runtime_work+0x98/0xb0
+[163795.152381]  process_one_work+0x258/0x410
+[163795.152385]  worker_thread+0x55/0x4d0
+[163795.152387]  ? process_one_work+0x410/0x410
+[163795.152388]  kthread+0xde/0x110
+[163795.152391]  ? kthread_complete_and_exit+0x20/0x20
+[163795.152392]  ret_from_fork+0x22/0x30
+[163795.152396]  </TASK>
+[163795.152397] ---[ end trace 0000000000000000 ]---
+[163798.683902] APFS (41g): unable to read container object map
+[163798.683915] APFS (41g): unable to read container object map
+[163798.683921] APFS (41g): unable to read container object map
+[163798.683926] APFS (41g): unable to read container object map
+[163798.683932] APFS (41g): unable to read container object map
+[163798.683937] APFS (41g): unable to read container object map
+[163798.693235] APFS (41g): unable to read container object map
+[163808.684804] APFS (41g): unable to read container object map
+[163808.684818] APFS (41g): unable to read container object map
+[163808.684823] APFS (41g): unable to read container object map
+[163808.684829] APFS (41g): unable to read container object map
+[163808.684835] APFS (41g): unable to read container object map
+[163808.684840] APFS (41g): unable to read container object map
+[163808.694361] APFS (41g): unable to read container object map
+[163815.777649] ------------[ cut here ]------------
+[163815.777652] Display power well on
+[163815.777694] WARNING: CPU: 2 PID: 226139 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163815.777777] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163815.777818]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163815.777864]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163815.777875] CPU: 2 PID: 226139 Comm: kworker/2:1 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163815.777878] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163815.777879] Workqueue: pm pm_runtime_work
+[163815.777884] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163815.777947] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163815.777949] RSP: 0018:ffffb4c34a83fd08 EFLAGS: 00010286
+[163815.777950] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163815.777951] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163815.777952] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163815.777953] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163815.777954] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163815.777955] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163815.777956] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163815.777957] CR2: 00007f51967fab68 CR3: 0000000347810003 CR4: 00000000001706e0
+[163815.777958] Call Trace:
+[163815.777960]  <TASK>
+[163815.777963]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163815.778010]  pci_pm_runtime_suspend+0x60/0x190
+[163815.778014]  ? pci_dev_put+0x20/0x20
+[163815.778016]  ? pci_dev_put+0x20/0x20
+[163815.778017]  __rpm_callback+0x44/0x170
+[163815.778020]  ? pci_dev_put+0x20/0x20
+[163815.778021]  rpm_suspend+0x43d/0x970
+[163815.778023]  ? __schedule+0xb4b/0x1350
+[163815.778026]  pm_runtime_work+0x98/0xb0
+[163815.778028]  process_one_work+0x258/0x410
+[163815.778032]  worker_thread+0x55/0x4d0
+[163815.778034]  ? process_one_work+0x410/0x410
+[163815.778036]  kthread+0xde/0x110
+[163815.778038]  ? kthread_complete_and_exit+0x20/0x20
+[163815.778040]  ret_from_fork+0x22/0x30
+[163815.778044]  </TASK>
+[163815.778045] ---[ end trace 0000000000000000 ]---
+[163818.684254] APFS (41g): unable to read container object map
+[163818.684267] APFS (41g): unable to read container object map
+[163818.684273] APFS (41g): unable to read container object map
+[163818.684278] APFS (41g): unable to read container object map
+[163818.684284] APFS (41g): unable to read container object map
+[163818.684290] APFS (41g): unable to read container object map
+[163818.697633] APFS (41g): unable to read container object map
+[163828.684338] APFS (41g): unable to read container object map
+[163828.684351] APFS (41g): unable to read container object map
+[163828.684357] APFS (41g): unable to read container object map
+[163828.684362] APFS (41g): unable to read container object map
+[163828.684368] APFS (41g): unable to read container object map
+[163828.684374] APFS (41g): unable to read container object map
+[163828.694328] APFS (41g): unable to read container object map
+[163838.684511] APFS (41g): unable to read container object map
+[163838.684523] APFS (41g): unable to read container object map
+[163838.684529] APFS (41g): unable to read container object map
+[163838.684533] APFS (41g): unable to read container object map
+[163838.684539] APFS (41g): unable to read container object map
+[163838.684544] APFS (41g): unable to read container object map
+[163838.688898] ------------[ cut here ]------------
+[163838.688900] Display power well on
+[163838.688983] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163838.689074] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163838.689129]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163838.689189]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163838.689202] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163838.689205] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163838.689206] Workqueue: pm pm_runtime_work
+[163838.689211] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163838.689297] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163838.689299] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163838.689300] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163838.689301] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163838.689302] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163838.689303] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163838.689304] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163838.689304] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163838.689306] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163838.689306] CR2: 00007fe729572000 CR3: 0000000347810006 CR4: 00000000001706e0
+[163838.689308] Call Trace:
+[163838.689310]  <TASK>
+[163838.689312]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163838.689363]  pci_pm_runtime_suspend+0x60/0x190
+[163838.689366]  ? pci_dev_put+0x20/0x20
+[163838.689368]  ? pci_dev_put+0x20/0x20
+[163838.689370]  __rpm_callback+0x44/0x170
+[163838.689372]  ? pci_dev_put+0x20/0x20
+[163838.689374]  rpm_suspend+0x43d/0x970
+[163838.689376]  ? __schedule+0xb4b/0x1350
+[163838.689379]  pm_runtime_work+0x98/0xb0
+[163838.689381]  process_one_work+0x258/0x410
+[163838.689385]  worker_thread+0x55/0x4d0
+[163838.689387]  ? process_one_work+0x410/0x410
+[163838.689390]  kthread+0xde/0x110
+[163838.689392]  ? kthread_complete_and_exit+0x20/0x20
+[163838.689393]  ret_from_fork+0x22/0x30
+[163838.689397]  </TASK>
+[163838.689398] ---[ end trace 0000000000000000 ]---
+[163838.694513] APFS (41g): unable to read container object map
+[163848.685463] APFS (41g): unable to read container object map
+[163848.685477] APFS (41g): unable to read container object map
+[163848.685484] APFS (41g): unable to read container object map
+[163848.685489] APFS (41g): unable to read container object map
+[163848.685495] APFS (41g): unable to read container object map
+[163848.685501] APFS (41g): unable to read container object map
+[163848.695519] APFS (41g): unable to read container object map
+[163858.685909] APFS (41g): unable to read container object map
+[163858.685927] APFS (41g): unable to read container object map
+[163858.685935] APFS (41g): unable to read container object map
+[163858.685942] APFS (41g): unable to read container object map
+[163858.685950] APFS (41g): unable to read container object map
+[163858.685957] APFS (41g): unable to read container object map
+[163858.696472] APFS (41g): unable to read container object map
+[163861.207640] ------------[ cut here ]------------
+[163861.207643] Display power well on
+[163861.207685] WARNING: CPU: 2 PID: 226139 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163861.207771] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163861.207807]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163861.207850]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163861.207859] CPU: 2 PID: 226139 Comm: kworker/2:1 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163861.207862] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163861.207863] Workqueue: pm pm_runtime_work
+[163861.207867] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163861.207929] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163861.207930] RSP: 0018:ffffb4c34a83fd08 EFLAGS: 00010286
+[163861.207932] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163861.207933] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163861.207934] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163861.207935] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163861.207936] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163861.207937] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163861.207938] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163861.207939] CR2: 00007f5a85a4e890 CR3: 0000000347810005 CR4: 00000000001706e0
+[163861.207940] Call Trace:
+[163861.207942]  <TASK>
+[163861.207945]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163861.207991]  pci_pm_runtime_suspend+0x60/0x190
+[163861.207996]  ? pci_dev_put+0x20/0x20
+[163861.207997]  ? pci_dev_put+0x20/0x20
+[163861.207999]  __rpm_callback+0x44/0x170
+[163861.208001]  ? pci_dev_put+0x20/0x20
+[163861.208003]  rpm_suspend+0x43d/0x970
+[163861.208004]  ? __schedule+0xb4b/0x1350
+[163861.208008]  pm_runtime_work+0x98/0xb0
+[163861.208010]  process_one_work+0x258/0x410
+[163861.208014]  worker_thread+0x55/0x4d0
+[163861.208016]  ? process_one_work+0x410/0x410
+[163861.208018]  kthread+0xde/0x110
+[163861.208020]  ? kthread_complete_and_exit+0x20/0x20
+[163861.208022]  ret_from_fork+0x22/0x30
+[163861.208026]  </TASK>
+[163861.208027] ---[ end trace 0000000000000000 ]---
+[163868.684182] APFS (41g): unable to read container object map
+[163868.684190] APFS (41g): unable to read container object map
+[163868.684194] APFS (41g): unable to read container object map
+[163868.684197] APFS (41g): unable to read container object map
+[163868.684200] APFS (41g): unable to read container object map
+[163868.684203] APFS (41g): unable to read container object map
+[163868.693497] APFS (41g): unable to read container object map
+[163878.686791] APFS (41g): unable to read container object map
+[163878.686800] APFS (41g): unable to read container object map
+[163878.686803] APFS (41g): unable to read container object map
+[163878.686806] APFS (41g): unable to read container object map
+[163878.686810] APFS (41g): unable to read container object map
+[163878.686813] APFS (41g): unable to read container object map
+[163878.695024] APFS (41g): unable to read container object map
+[163883.675816] ------------[ cut here ]------------
+[163883.675819] Display power well on
+[163883.675860] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163883.675949] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163883.675987]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163883.676032]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163883.676042] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163883.676045] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163883.676046] Workqueue: pm pm_runtime_work
+[163883.676051] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163883.676114] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163883.676116] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163883.676117] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163883.676118] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163883.676119] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163883.676120] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163883.676121] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163883.676122] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163883.676123] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163883.676124] CR2: 00007ff633261584 CR3: 0000000347810005 CR4: 00000000001706e0
+[163883.676125] Call Trace:
+[163883.676128]  <TASK>
+[163883.676130]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163883.676176]  pci_pm_runtime_suspend+0x60/0x190
+[163883.676180]  ? pci_dev_put+0x20/0x20
+[163883.676182]  ? pci_dev_put+0x20/0x20
+[163883.676184]  __rpm_callback+0x44/0x170
+[163883.676186]  ? pci_dev_put+0x20/0x20
+[163883.676187]  rpm_suspend+0x43d/0x970
+[163883.676189]  ? __schedule+0xb4b/0x1350
+[163883.676193]  pm_runtime_work+0x98/0xb0
+[163883.676195]  process_one_work+0x258/0x410
+[163883.676199]  worker_thread+0x55/0x4d0
+[163883.676201]  ? process_one_work+0x410/0x410
+[163883.676203]  kthread+0xde/0x110
+[163883.676205]  ? kthread_complete_and_exit+0x20/0x20
+[163883.676207]  ret_from_fork+0x22/0x30
+[163883.676211]  </TASK>
+[163883.676212] ---[ end trace 0000000000000000 ]---
+[163888.685119] APFS (41g): unable to read container object map
+[163888.685127] APFS (41g): unable to read container object map
+[163888.685130] APFS (41g): unable to read container object map
+[163888.685133] APFS (41g): unable to read container object map
+[163888.685137] APFS (41g): unable to read container object map
+[163888.685140] APFS (41g): unable to read container object map
+[163888.693970] APFS (41g): unable to read container object map
+[163898.685365] APFS (41g): unable to read container object map
+[163898.685380] APFS (41g): unable to read container object map
+[163898.685385] APFS (41g): unable to read container object map
+[163898.685390] APFS (41g): unable to read container object map
+[163898.685396] APFS (41g): unable to read container object map
+[163898.685402] APFS (41g): unable to read container object map
+[163898.694348] APFS (41g): unable to read container object map
+[163906.269213] ------------[ cut here ]------------
+[163906.269216] Display power well on
+[163906.269277] WARNING: CPU: 2 PID: 226139 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163906.269360] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163906.269408]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163906.269471]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163906.269491] CPU: 2 PID: 226139 Comm: kworker/2:1 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163906.269494] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163906.269495] Workqueue: pm pm_runtime_work
+[163906.269499] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163906.269612] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163906.269614] RSP: 0018:ffffb4c34a83fd08 EFLAGS: 00010286
+[163906.269615] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163906.269616] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163906.269617] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163906.269618] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163906.269619] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163906.269620] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163906.269631] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163906.269632] CR2: 00007f5a85ae7d28 CR3: 0000000347810002 CR4: 00000000001706e0
+[163906.269633] Call Trace:
+[163906.269635]  <TASK>
+[163906.269637]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163906.269718]  pci_pm_runtime_suspend+0x60/0x190
+[163906.269722]  ? pci_dev_put+0x20/0x20
+[163906.269723]  ? pci_dev_put+0x20/0x20
+[163906.269725]  __rpm_callback+0x44/0x170
+[163906.269727]  ? pci_dev_put+0x20/0x20
+[163906.269729]  rpm_suspend+0x43d/0x970
+[163906.269731]  ? __schedule+0xb4b/0x1350
+[163906.269734]  pm_runtime_work+0x98/0xb0
+[163906.269736]  process_one_work+0x258/0x410
+[163906.269739]  worker_thread+0x55/0x4d0
+[163906.269741]  ? process_one_work+0x410/0x410
+[163906.269742]  kthread+0xde/0x110
+[163906.269745]  ? kthread_complete_and_exit+0x20/0x20
+[163906.269746]  ret_from_fork+0x22/0x30
+[163906.269750]  </TASK>
+[163906.269751] ---[ end trace 0000000000000000 ]---
+[163908.685569] APFS (41g): unable to read container object map
+[163908.685582] APFS (41g): unable to read container object map
+[163908.685588] APFS (41g): unable to read container object map
+[163908.685593] APFS (41g): unable to read container object map
+[163908.685599] APFS (41g): unable to read container object map
+[163908.685604] APFS (41g): unable to read container object map
+[163908.694542] APFS (41g): unable to read container object map
+[163918.685650] APFS (41g): unable to read container object map
+[163918.685663] APFS (41g): unable to read container object map
+[163918.685669] APFS (41g): unable to read container object map
+[163918.685674] APFS (41g): unable to read container object map
+[163918.685680] APFS (41g): unable to read container object map
+[163918.685686] APFS (41g): unable to read container object map
+[163918.695187] APFS (41g): unable to read container object map
+[163928.685909] APFS (41g): unable to read container object map
+[163928.685922] APFS (41g): unable to read container object map
+[163928.685928] APFS (41g): unable to read container object map
+[163928.685933] APFS (41g): unable to read container object map
+[163928.685939] APFS (41g): unable to read container object map
+[163928.685944] APFS (41g): unable to read container object map
+[163928.695607] APFS (41g): unable to read container object map
+[163928.778427] ------------[ cut here ]------------
+[163928.778430] Display power well on
+[163928.778472] WARNING: CPU: 2 PID: 198587 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163928.778559] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163928.778597]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163928.778642]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163928.778653] CPU: 2 PID: 198587 Comm: kworker/2:2 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163928.778656] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163928.778657] Workqueue: pm pm_runtime_work
+[163928.778662] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163928.778726] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163928.778727] RSP: 0018:ffffb4c34a723d08 EFLAGS: 00010286
+[163928.778728] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163928.778729] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163928.778730] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163928.778731] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163928.778732] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163928.778733] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163928.778734] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163928.778735] CR2: 000000c000cf1000 CR3: 0000000347810003 CR4: 00000000001706e0
+[163928.778737] Call Trace:
+[163928.778739]  <TASK>
+[163928.778741]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163928.778787]  pci_pm_runtime_suspend+0x60/0x190
+[163928.778792]  ? pci_dev_put+0x20/0x20
+[163928.778794]  ? pci_dev_put+0x20/0x20
+[163928.778795]  __rpm_callback+0x44/0x170
+[163928.778797]  ? pci_dev_put+0x20/0x20
+[163928.778799]  rpm_suspend+0x43d/0x970
+[163928.778801]  ? __schedule+0xb4b/0x1350
+[163928.778804]  pm_runtime_work+0x98/0xb0
+[163928.778806]  process_one_work+0x258/0x410
+[163928.778810]  worker_thread+0x55/0x4d0
+[163928.778812]  ? process_one_work+0x410/0x410
+[163928.778814]  kthread+0xde/0x110
+[163928.778816]  ? kthread_complete_and_exit+0x20/0x20
+[163928.778818]  ret_from_fork+0x22/0x30
+[163928.778822]  </TASK>
+[163928.778823] ---[ end trace 0000000000000000 ]---
+[163938.686094] APFS (41g): unable to read container object map
+[163938.686108] APFS (41g): unable to read container object map
+[163938.686114] APFS (41g): unable to read container object map
+[163938.686119] APFS (41g): unable to read container object map
+[163938.686125] APFS (41g): unable to read container object map
+[163938.686131] APFS (41g): unable to read container object map
+[163938.696212] APFS (41g): unable to read container object map
+[163948.686084] APFS (41g): unable to read container object map
+[163948.686097] APFS (41g): unable to read container object map
+[163948.686102] APFS (41g): unable to read container object map
+[163948.686108] APFS (41g): unable to read container object map
+[163948.686113] APFS (41g): unable to read container object map
+[163948.686119] APFS (41g): unable to read container object map
+[163948.695345] APFS (41g): unable to read container object map
+[163951.329893] ------------[ cut here ]------------
+[163951.329896] Display power well on
+[163951.329940] WARNING: CPU: 2 PID: 226139 at drivers/gpu/drm/i915/display/intel_display_power.c:1157 hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163951.330027] Modules linked in: tls f2fs apfs(OE) crc32_generic lz4hc_compress xt_MASQUERADE xt_mark rfcomm snd_seq_dummy snd_hrtimer snd_seq uvcvideo ax88179_178a usbnet mii cmac algif_hash algif_skcipher af_alg bnep 88x2bu(OE) btusb btrtl btbcm btintel btmtk mousedev snd_usb_audio bluetooth usbhid cfg80211 snd_usbmidi_lib snd_rawmidi snd_seq_device ecdh_generic xt_CHECKSUM ipt_REJECT nf_reject_ipv4 xt_tcpudp nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge rpcrdma stp llc rdma_cm iw_cm ib_cm ib_core uas usb_storage tun overlay ir_rc5_decoder rc_hauppauge ntfs3(OE) nilfs2 lgdt3305 cx25840 intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal cx23885 vfat intel_powerclamp fat coretemp altera_ci tda18271 altera_stapl kvm_intel m88ds3103 cx2341x tveeprom videobuf2_dvb kvm ext4 dvb_core irqbypass crct10dif_pclmul videobuf2_vmalloc squashfs spi_nor crc32_pclmul snd_hda_codec_realtek crc16 videobuf2_dma_sg polyval_clmulni
+[163951.330066]  snd_hda_codec_generic videobuf2_memops mbcache polyval_generic xfs loop jfs reiserfs jbd2 amdgpu ledtrig_audio snd_hda_codec_hdmi mtd hp_wmi videobuf2_v4l2 gf128mul snd_hda_intel at24 ghash_clmulni_intel sparse_keymap videobuf2_common iTCO_wdt i915 mei_wdt platform_profile snd_intel_dspcfg mei_pxp intel_pmc_bxt spi_intel_platform aesni_intel iTCO_vendor_support spi_intel wmi_bmof rfkill snd_intel_sdw_acpi crypto_simd mei_hdcp r8125(OE) videodev gpu_sched cryptd snd_hda_codec rapl mc snd_hda_core drm_ttm_helper drm_buddy r8169 intel_cstate snd_hwdep i2c_mux tpm_infineon realtek i2c_i801 ttm intel_uncore mdio_devres i2c_smbus snd_pcm tpm_tis psmouse pcspkr mei_me drm_display_helper snd_timer libphy lpc_ich tpm_tis_core e1000e mei cec snd soundcore intel_gtt wmi tpm rng_core video mac_hid nfsd vboxnetflt(OE) vboxnetadp(OE) auth_rpcgss nfs_acl vboxdrv(OE) lockd pkcs8_key_parser dm_multipath grace dm_mod sg crypto_user sunrpc fuse bpf_preload ip_tables x_tables btrfs
+[163951.330111]  blake2b_generic libcrc32c crc32c_generic xor raid6_pq serio_raw atkbd libps2 vivaldi_fmap nvme sr_mod nvme_core cdrom xhci_pci nvme_common xhci_pci_renesas i8042 serio crc32c_intel
+[163951.330122] CPU: 2 PID: 226139 Comm: kworker/2:1 Tainted: G        W  OE      6.0.8-zen1-1-zen #1 dfc4367aa4aa390b77cfa213bcf0dc008c171c2e
+[163951.330124] Hardware name: Hewlett-Packard HP EliteDesk 800 G1 TWR/18E4, BIOS L01 v02.71 05/09/2017
+[163951.330126] Workqueue: pm pm_runtime_work
+[163951.330130] RIP: 0010:hsw_enable_pc8+0x68d/0x6d0 [i915]
+[163951.330194] Code: ff e8 df 75 7c db 0f 0b e9 ca fa ff ff e8 d3 75 7c db 0f 0b e9 9d fa ff ff e8 c7 75 7c db 0f 0b e9 70 fa ff ff e8 bb 75 7c db <0f> 0b e9 43 fa ff ff e8 af 75 7c db 0f 0b e9 7a fb ff ff e8 a3 75
+[163951.330195] RSP: 0018:ffffb4c34a83fd08 EFLAGS: 00010286
+[163951.330197] RAX: 0000000000000000 RBX: ffff9ee71ded02c8 RCX: 0000000000000027
+[163951.330198] RDX: ffff9eee0faa1668 RSI: 0000000000000001 RDI: ffff9eee0faa1660
+[163951.330198] RBP: ffff9ee71ded0000 R08: 0000000000000001 R09: 00000000ffffffea
+[163951.330199] R10: ffffffff9de5b6a0 R11: 0000000000000003 R12: ffff9ee71ded07e0
+[163951.330200] R13: ffff9ee71ded02d8 R14: ffff9ee71ded2220 R15: ffff9ee71ded2370
+[163951.330201] FS:  0000000000000000(0000) GS:ffff9eee0fa80000(0000) knlGS:0000000000000000
+[163951.330202] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[163951.330203] CR2: 00007ff633261584 CR3: 000000056febe002 CR4: 00000000001706e0
+[163951.330205] Call Trace:
+[163951.330207]  <TASK>
+[163951.330210]  intel_runtime_suspend+0x8b/0x190 [i915 0eb4fc2ec4f85c5bfbec389f7a0465b68894bcd1]
+[163951.330256]  pci_pm_runtime_suspend+0x60/0x190
+[163951.330260]  ? pci_dev_put+0x20/0x20
+[163951.330262]  ? pci_dev_put+0x20/0x20
+[163951.330264]  __rpm_callback+0x44/0x170
+[163951.330266]  ? pci_dev_put+0x20/0x20
+[163951.330267]  rpm_suspend+0x43d/0x970
+[163951.330269]  ? __schedule+0xb4b/0x1350
+[163951.330273]  pm_runtime_work+0x98/0xb0
+[163951.330275]  process_one_work+0x258/0x410
+[163951.330279]  worker_thread+0x55/0x4d0
+[163951.330281]  ? process_one_work+0x410/0x410
+[163951.330282]  kthread+0xde/0x110
+[163951.330285]  ? kthread_complete_and_exit+0x20/0x20
+[163951.330287]  ret_from_fork+0x22/0x30
+[163951.330291]  </TASK>
+[163951.330292] ---[ end trace 0000000000000000 ]---
+[163958.686257] APFS (41g): unable to read container object map
+[163958.686270] APFS (41g): unable to read container object map
+[163958.686276] APFS (41g): unable to read container object map
+[163958.686281] APFS (41g): unable to read container object map
+[163958.686287] APFS (41g): unable to read container object map
+[163958.686293] APFS (41g): unable to read container object map
+[163958.695531] APFS (41g): unable to read container object map
+[163968.687052] APFS (41g): unable to read container object map
+[163968.687065] APFS (41g): unable to read container object map
+[163968.687071] APFS (41g): unable to read container object map
+[163968.687076] APFS (41g): unable to read container object map
+[163968.687082] APFS (41g): unable to read container object map
+[163968.687088] APFS (41g): unable to read container object map
+[163968.696556] APFS (41g): unable to read container object map
+[163978.686545] APFS (41g): unable to read container object map
+[163978.686559] APFS (41g): unable to read container object map
+[163978.686565] APFS (41g): unable to read container object map
+[163978.686570] APFS (41g): unable to read container object map
+[163978.686576] APFS (41g): unable to read container object map
+[163978.686582] APFS (41g): unable to read container object map
+[163978.696741] APFS (41g): unable to read container object map
+[163988.686761] APFS (41g): unable to read container object map
+[163988.686774] APFS (41g): unable to read container object map
+[163988.686781] APFS (41g): unable to read container object map
+[163988.686786] APFS (41g): unable to read container object map
+[163988.686792] APFS (41g): unable to read container object map
+[163988.686798] APFS (41g): unable to read container object map
+[163988.696781] APFS (41g): unable to read container object map
+[163998.688363] APFS (41g): unable to read container object map
+[163998.688376] APFS (41g): unable to read container object map
+[163998.688382] APFS (41g): unable to read container object map
+[163998.688387] APFS (41g): unable to read container object map
+[163998.688393] APFS (41g): unable to read container object map
+[163998.688399] APFS (41g): unable to read container object map
+[163998.699914] APFS (41g): unable to read container object map
+[164008.687963] APFS (41g): unable to read container object map
+[164008.687976] APFS (41g): unable to read container object map
+[164008.687982] APFS (41g): unable to read container object map
+[164008.687987] APFS (41g): unable to read container object map
+[164008.687994] APFS (41g): unable to read container object map
+[164008.687999] APFS (41g): unable to read container object map
+[164008.700589] APFS (41g): unable to read container object map
+[164018.688738] APFS (41g): unable to read container object map
+[164018.688759] APFS (41g): unable to read container object map
+[164018.688769] APFS (41g): unable to read container object map
+[164018.688778] APFS (41g): unable to read container object map
+[164018.688789] APFS (41g): unable to read container object map
+[164018.688799] APFS (41g): unable to read container object map
+[164018.698878] APFS (41g): unable to read container object map
+[164028.688743] APFS (41g): unable to read container object map
+[164028.688768] APFS (41g): unable to read container object map
+[164028.688781] APFS (41g): unable to read container object map
+[164028.688793] APFS (41g): unable to read container object map
+[164028.688805] APFS (41g): unable to read container object map
+[164028.688817] APFS (41g): unable to read container object map
+[164028.698955] APFS (41g): unable to read container object map
+[164038.686730] APFS (41g): unable to read container object map
+[164038.686740] APFS (41g): unable to read container object map
+[164038.686743] APFS (41g): unable to read container object map
+[164038.686746] APFS (41g): unable to read container object map
+[164038.686749] APFS (41g): unable to read container object map
+[164038.686752] APFS (41g): unable to read container object map
+[164038.695768] APFS (41g): unable to read container object map
+[164048.688540] APFS (41g): unable to read container object map
+[164048.688549] APFS (41g): unable to read container object map
+[164048.688552] APFS (41g): unable to read container object map
+[164048.688555] APFS (41g): unable to read container object map
+[164048.688558] APFS (41g): unable to read container object map
+[164048.688562] APFS (41g): unable to read container object map
+[164048.700276] APFS (41g): unable to read container object map
+[164058.687705] APFS (41g): unable to read container object map
+[164058.687714] APFS (41g): unable to read container object map
+[164058.687717] APFS (41g): unable to read container object map
+[164058.687720] APFS (41g): unable to read container object map
+[164058.687723] APFS (41g): unable to read container object map
+[164058.687726] APFS (41g): unable to read container object map
+[164058.698935] APFS (41g): unable to read container object map
+[164068.690636] APFS (41g): unable to read container object map
+[164068.690644] APFS (41g): unable to read container object map
+[164068.690648] APFS (41g): unable to read container object map
+[164068.690650] APFS (41g): unable to read container object map
+[164068.690654] APFS (41g): unable to read container object map
+[164068.690656] APFS (41g): unable to read container object map
+[164068.702599] APFS (41g): unable to read container object map
+[164078.687694] APFS (41g): unable to read container object map
+[164078.687702] APFS (41g): unable to read container object map
+[164078.687706] APFS (41g): unable to read container object map
+[164078.687709] APFS (41g): unable to read container object map
+[164078.687712] APFS (41g): unable to read container object map
+[164078.687715] APFS (41g): unable to read container object map
+[164078.698562] APFS (41g): unable to read container object map
+[164088.688138] APFS (41g): unable to read container object map
+[164088.688147] APFS (41g): unable to read container object map
+[164088.688150] APFS (41g): unable to read container object map
+[164088.688153] APFS (41g): unable to read container object map
+[164088.688156] APFS (41g): unable to read container object map
+[164088.688159] APFS (41g): unable to read container object map
+[164088.698983] APFS (41g): unable to read container object map
+[164098.688904] APFS (41g): unable to read container object map
+[164098.688913] APFS (41g): unable to read container object map
+[164098.688916] APFS (41g): unable to read container object map
+[164098.688918] APFS (41g): unable to read container object map
+[164098.688922] APFS (41g): unable to read container object map
+[164098.688925] APFS (41g): unable to read container object map
+[164098.700270] APFS (41g): unable to read container object map
+[164108.688419] APFS (41g): unable to read container object map
+[164108.688428] APFS (41g): unable to read container object map
+[164108.688431] APFS (41g): unable to read container object map
+[164108.688434] APFS (41g): unable to read container object map
+[164108.688438] APFS (41g): unable to read container object map
+[164108.688442] APFS (41g): unable to read container object map
+[164108.698356] APFS (41g): unable to read container object map
+[164118.715603] APFS (41g): unable to read container object map
+[164118.715612] APFS (41g): unable to read container object map
+[164118.715615] APFS (41g): unable to read container object map
+[164118.715618] APFS (41g): unable to read container object map
+[164118.715621] APFS (41g): unable to read container object map
+[164118.715624] APFS (41g): unable to read container object map
+[164118.728138] APFS (41g): unable to read container object map
+[164128.688816] APFS (41g): unable to read container object map
+[164128.688824] APFS (41g): unable to read container object map
+[164128.688828] APFS (41g): unable to read container object map
+[164128.688831] APFS (41g): unable to read container object map
+[164128.688834] APFS (41g): unable to read container object map
+[164128.688837] APFS (41g): unable to read container object map
+[164128.699858] APFS (41g): unable to read container object map
+[164131.538902] i915 0000:00:02.0: [drm] *ERROR* Unclaimed access detected prior to suspending
+[164138.689465] APFS (41g): unable to read container object map
+[164138.689478] APFS (41g): unable to read container object map
+[164138.689484] APFS (41g): unable to read container object map
+[164138.689489] APFS (41g): unable to read container object map
+[164138.689494] APFS (41g): unable to read container object map
+[164138.689499] APFS (41g): unable to read container object map
+[164138.698594] APFS (41g): unable to read container object map
+[164148.688295] APFS (41g): unable to read container object map
+[164148.688303] APFS (41g): unable to read container object map
+[164148.688307] APFS (41g): unable to read container object map
+[164148.688310] APFS (41g): unable to read container object map
+[164148.688313] APFS (41g): unable to read container object map
+[164148.688317] APFS (41g): unable to read container object map
+[164148.700250] APFS (41g): unable to read container object map
+[164158.689473] APFS (41g): unable to read container object map
+[164158.689492] APFS (41g): unable to read container object map
+[164158.689500] APFS (41g): unable to read container object map
+[164158.689507] APFS (41g): unable to read container object map
+[164158.689516] APFS (41g): unable to read container object map
+[164158.689524] APFS (41g): unable to read container object map
+[164158.698669] APFS (41g): unable to read container object map
+[164168.688663] APFS (41g): unable to read container object map
+[164168.688671] APFS (41g): unable to read container object map
+[164168.688674] APFS (41g): unable to read container object map
+[164168.688678] APFS (41g): unable to read container object map
+[164168.688681] APFS (41g): unable to read container object map
+[164168.688684] APFS (41g): unable to read container object map
+[164168.697199] APFS (41g): unable to read container object map
+[164178.689433] APFS (41g): unable to read container object map
+[164178.689441] APFS (41g): unable to read container object map
+[164178.689444] APFS (41g): unable to read container object map
+[164178.689447] APFS (41g): unable to read container object map
+[164178.689450] APFS (41g): unable to read container object map
+[164178.689453] APFS (41g): unable to read container object map
+[164178.699497] APFS (41g): unable to read container object map
+[164188.689694] APFS (41g): unable to read container object map
+[164188.689714] APFS (41g): unable to read container object map
+[164188.689717] APFS (41g): unable to read container object map
+[164188.689720] APFS (41g): unable to read container object map
+[164188.689723] APFS (41g): unable to read container object map
+[164188.689726] APFS (41g): unable to read container object map
+[164188.697923] APFS (41g): unable to read container object map
+[164198.690432] APFS (41g): unable to read container object map
+[164198.690446] APFS (41g): unable to read container object map
+[164198.690451] APFS (41g): unable to read container object map
+[164198.690457] APFS (41g): unable to read container object map
+[164198.690462] APFS (41g): unable to read container object map
+[164198.690468] APFS (41g): unable to read container object map
+[164198.700127] APFS (41g): unable to read container object map
+[164208.689827] APFS (41g): unable to read container object map
+[164208.689836] APFS (41g): unable to read container object map
+[164208.689839] APFS (41g): unable to read container object map
+[164208.689842] APFS (41g): unable to read container object map
+[164208.689845] APFS (41g): unable to read container object map
+[164208.689848] APFS (41g): unable to read container object map
+[164208.699895] APFS (41g): unable to read container object map
+[164218.692612] APFS (41g): unable to read container object map
+[164218.692620] APFS (41g): unable to read container object map
+[164218.692623] APFS (41g): unable to read container object map
+[164218.692626] APFS (41g): unable to read container object map
+[164218.692629] APFS (41g): unable to read container object map
+[164218.692632] APFS (41g): unable to read container object map
+[164218.701407] APFS (41g): unable to read container object map
+[164228.690715] APFS (41g): unable to read container object map
+[164228.690724] APFS (41g): unable to read container object map
+[164228.690727] APFS (41g): unable to read container object map
+[164228.690730] APFS (41g): unable to read container object map
+[164228.690733] APFS (41g): unable to read container object map
+[164228.690736] APFS (41g): unable to read container object map
+[164228.699367] APFS (41g): unable to read container object map
+[164238.690417] APFS (41g): unable to read container object map
+[164238.690426] APFS (41g): unable to read container object map
+[164238.690429] APFS (41g): unable to read container object map
+[164238.690432] APFS (41g): unable to read container object map
+[164238.690435] APFS (41g): unable to read container object map
+[164238.690438] APFS (41g): unable to read container object map
+[164238.699368] APFS (41g): unable to read container object map
+[164248.690506] APFS (41g): unable to read container object map
+[164248.690515] APFS (41g): unable to read container object map
+[164248.690518] APFS (41g): unable to read container object map
+[164248.690521] APFS (41g): unable to read container object map
+[164248.690524] APFS (41g): unable to read container object map
+[164248.690527] APFS (41g): unable to read container object map
+[164248.701536] APFS (41g): unable to read container object map
+[164258.690656] APFS (41g): unable to read container object map
+[164258.690669] APFS (41g): unable to read container object map
+[164258.690674] APFS (41g): unable to read container object map
+[164258.690679] APFS (41g): unable to read container object map
+[164258.690685] APFS (41g): unable to read container object map
+[164258.690690] APFS (41g): unable to read container object map
+[164258.700217] APFS (41g): unable to read container object map
+[164268.690922] APFS (41g): unable to read container object map
+[164268.690937] APFS (41g): unable to read container object map
+[164268.690944] APFS (41g): unable to read container object map
+[164268.690949] APFS (41g): unable to read container object map
+[164268.690956] APFS (41g): unable to read container object map
+[164268.690961] APFS (41g): unable to read container object map
+[164268.699697] APFS (41g): unable to read container object map
+[164278.691034] APFS (41g): unable to read container object map
+[164278.691047] APFS (41g): unable to read container object map
+[164278.691053] APFS (41g): unable to read container object map
+[164278.691058] APFS (41g): unable to read container object map
+[164278.691064] APFS (41g): unable to read container object map
+[164278.691070] APFS (41g): unable to read container object map
+[164278.700629] APFS (41g): unable to read container object map
+[164288.691052] APFS (41g): unable to read container object map
+[164288.691060] APFS (41g): unable to read container object map
+[164288.691064] APFS (41g): unable to read container object map
+[164288.691066] APFS (41g): unable to read container object map
+[164288.691070] APFS (41g): unable to read container object map
+[164288.691073] APFS (41g): unable to read container object map
+[164288.701689] APFS (41g): unable to read container object map
+[164298.691218] APFS (41g): unable to read container object map
+[164298.691227] APFS (41g): unable to read container object map
+[164298.691230] APFS (41g): unable to read container object map
+[164298.691233] APFS (41g): unable to read container object map
+[164298.691236] APFS (41g): unable to read container object map
+[164298.691240] APFS (41g): unable to read container object map
+[164298.702707] APFS (41g): unable to read container object map
+[164308.690647] APFS (41g): unable to read container object map
+[164308.690655] APFS (41g): unable to read container object map
+[164308.690659] APFS (41g): unable to read container object map
+[164308.690662] APFS (41g): unable to read container object map
+[164308.690665] APFS (41g): unable to read container object map
+[164308.690668] APFS (41g): unable to read container object map
+[164308.700768] APFS (41g): unable to read container object map
+[164318.692981] APFS (41g): unable to read container object map
+[164318.692989] APFS (41g): unable to read container object map
+[164318.692992] APFS (41g): unable to read container object map
+[164318.692996] APFS (41g): unable to read container object map
+[164318.692999] APFS (41g): unable to read container object map
+[164318.693002] APFS (41g): unable to read container object map
+[164318.702728] APFS (41g): unable to read container object map
