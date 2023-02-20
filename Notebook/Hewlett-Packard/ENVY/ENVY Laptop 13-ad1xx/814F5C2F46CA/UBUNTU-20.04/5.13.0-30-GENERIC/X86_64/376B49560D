@@ -1,0 +1,65 @@
+[13878.954934] Non-volatile memory driver v1.3
+[13879.340023] nouveau 0000:01:00.0: Enabling HDA controller
+[13881.455671] ------------[ cut here ]------------
+[13881.455675] nouveau 0000:01:00.0: timeout
+[13881.455706] WARNING: CPU: 2 PID: 17491 at drivers/gpu/drm/nouveau/nvkm/subdev/pmu/base.c:107 nvkm_pmu_reset+0x151/0x170 [nouveau]
+[13881.455809] Modules linked in: nvram ccm rfcomm cmac algif_hash algif_skcipher af_alg bnep snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_soc_skl snd_soc_hdac_hda snd_hda_ext_core snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match snd_soc_acpi snd_soc_core snd_compress ac97_bus snd_pcm_dmaengine snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_hwdep btusb btrtl btbcm btintel mei_hdcp snd_pcm bluetooth intel_rapl_msr ecdh_generic ecc iwlmvm snd_seq_midi intel_tcc_cooling snd_seq_midi_event mac80211 x86_pkg_temp_thermal nouveau intel_powerclamp snd_rawmidi i915 libarc4 coretemp snd_seq crct10dif_pclmul ghash_clmulni_intel snd_seq_device aesni_intel joydev snd_timer crypto_simd mxm_wmi drm_ttm_helper cryptd ttm iwlwifi rapl snd intel_cstate drm_kms_helper cec input_leds rc_core wmi_bmof hp_wmi processor_thermal_device i2c_algo_bit processor_thermal_rfim uvcvideo cfg80211 platform_profile mei_me fb_sys_fops
+[13881.455862]  processor_thermal_mbox sparse_keymap intel_wmi_thunderbolt syscopyarea serio_raw processor_thermal_rapl usbhid hid_multitouch intel_rapl_common sysfillrect mei soundcore intel_xhci_usb_role_switch intel_soc_dts_iosf sysimgblt intel_pch_thermal int3403_thermal int340x_thermal_zone int3400_thermal hp_accel lis3lv02d acpi_thermal_rel acpi_pad hp_wireless mac_hid rmi_smbus rmi_core videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev mc sch_fq_codel msr parport_pc ppdev lp drm parport ip_tables x_tables autofs4 hid_generic alcor crc32_pclmul psmouse nvme nvme_core i2c_i801 i2c_smbus alcor_pci intel_lpss_pci i2c_hid_acpi ahci i2c_hid xhci_pci intel_lpss libahci idma64 xhci_pci_renesas hid wmi video
+[13881.455907] CPU: 2 PID: 17491 Comm: hwinfo Tainted: G        W         5.13.0-30-generic #33~20.04.1-Ubuntu
+[13881.455910] Hardware name: HP HP ENVY Laptop 13-ad1xx/83A9, BIOS F.12 07/26/2017
+[13881.455912] RIP: 0010:nvkm_pmu_reset+0x151/0x170 [nouveau]
+[13881.455996] Code: 45 b8 48 8b 40 10 48 8b 78 10 4c 8b 6f 50 4d 85 ed 74 1e e8 c1 6e fd c6 4c 89 ea 48 c7 c7 41 c5 ec c0 48 89 c6 e8 ca 48 3e c7 <0f> 0b e9 4e ff ff ff 4c 8b 2f eb dd 4c 8b 27 eb a5 e8 c9 01 44 c7
+[13881.455999] RSP: 0018:ffffa94706e079a0 EFLAGS: 00010286
+[13881.456001] RAX: 0000000000000000 RBX: ffff9d098f35b400 RCX: 0000000000000027
+[13881.456003] RDX: 0000000000000027 RSI: 0000000100003628 RDI: ffff9d0ce1d209c8
+[13881.456005] RBP: ffffa94706e079e8 R08: ffff9d0ce1d209c0 R09: ffffa94706e07778
+[13881.456006] R10: 00000000003ce600 R11: 00000000003ce6d8 R12: ffff9d098f346400
+[13881.456008] R13: ffff9d09816671a0 R14: ffff9d098f35b708 R15: 0000000000000000
+[13881.456009] FS:  00007fc0f9981bc0(0000) GS:ffff9d0ce1d00000(0000) knlGS:0000000000000000
+[13881.456011] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[13881.456013] CR2: 000002f8e0e59000 CR3: 00000001526be002 CR4: 00000000003706e0
+[13881.456015] Call Trace:
+[13881.456016]  <TASK>
+[13881.456019]  nvkm_pmu_init+0x1b/0x40 [nouveau]
+[13881.456100]  nvkm_subdev_init+0x99/0xd0 [nouveau]
+[13881.456155]  ? ktime_get+0x3e/0xa0
+[13881.456160]  nvkm_device_init+0x12b/0x1b0 [nouveau]
+[13881.456246]  nvkm_udevice_init+0x48/0x60 [nouveau]
+[13881.456330]  nvkm_object_init+0x43/0x110 [nouveau]
+[13881.456386]  nvkm_object_init+0x74/0x110 [nouveau]
+[13881.456441]  nvkm_object_init+0x74/0x110 [nouveau]
+[13881.456496]  nvkm_client_resume+0xe/0x10 [nouveau]
+[13881.456587]  nvif_client_resume+0x1d/0x20 [nouveau]
+[13881.456641]  nouveau_do_resume+0x2f/0xc0 [nouveau]
+[13881.456730]  nouveau_pmops_runtime_resume+0x86/0x150 [nouveau]
+[13881.456818]  pci_pm_runtime_resume+0x74/0x90
+[13881.456824]  ? pci_pm_default_resume+0x30/0x30
+[13881.456832]  __rpm_callback+0xd0/0x150
+[13881.456837]  ? pci_pm_default_resume+0x30/0x30
+[13881.456842]  rpm_callback+0x24/0x80
+[13881.456844]  ? pci_pm_default_resume+0x30/0x30
+[13881.456849]  rpm_resume+0x54d/0x760
+[13881.456855]  __pm_runtime_resume+0x52/0x80
+[13881.456861]  pci_config_pm_runtime_get+0x53/0x60
+[13881.456865]  pci_read_config+0x93/0x270
+[13881.456869]  ? __cond_resched+0x19/0x30
+[13881.456875]  sysfs_kf_bin_read+0x63/0x70
+[13881.456880]  kernfs_fop_read_iter+0xb9/0x1b0
+[13881.456883]  new_sync_read+0x110/0x1a0
+[13881.456888]  vfs_read+0xfe/0x190
+[13881.456892]  ksys_read+0x67/0xe0
+[13881.456896]  __x64_sys_read+0x1a/0x20
+[13881.456899]  do_syscall_64+0x61/0xb0
+[13881.456903]  ? do_syscall_64+0x6e/0xb0
+[13881.456906]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[13881.456910] RIP: 0033:0x7fc0f9ac4142
+[13881.456913] Code: c0 e9 c2 fe ff ff 50 48 8d 3d 3a ca 0a 00 e8 f5 19 02 00 0f 1f 44 00 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 0f 05 <48> 3d 00 f0 ff ff 77 56 c3 0f 1f 44 00 00 48 83 ec 28 48 89 54 24
+[13881.456915] RSP: 002b:00007ffe2f7c8b28 EFLAGS: 00000246 ORIG_RAX: 0000000000000000
+[13881.456918] RAX: ffffffffffffffda RBX: 000055cee623dc00 RCX: 00007fc0f9ac4142
+[13881.456919] RDX: 0000000000000040 RSI: 000055cee623dc10 RDI: 0000000000000004
+[13881.456920] RBP: 00007ffe2f7c8ba8 R08: 000055cee61f4380 R09: 00007ffe2f7b8980
+[13881.456922] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000004
+[13881.456923] R13: 000055cee623ce00 R14: 000055cee5fcd2a0 R15: 000055cee6238710
+[13881.456925]  </TASK>
+[13881.456927] ---[ end trace e0c3e2ed373c02be ]---
+[13881.597992] st: Version 20160209, fixed bufsize 32768, s/g segs 256
