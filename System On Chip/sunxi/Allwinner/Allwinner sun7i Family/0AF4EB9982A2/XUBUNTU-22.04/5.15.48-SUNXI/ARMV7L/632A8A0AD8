@@ -1,0 +1,34 @@
+[  437.425534] usb 3-1: new high-speed USB device number 2 using ehci-platform
+[  437.585179] usb 3-1: config 1 interface 0 altsetting 1 bulk endpoint 0x83 has invalid maxpacket 256
+[  437.588790] usb 3-1: New USB device found, idVendor=1b71, idProduct=3002, bcdDevice= 1.00
+[  437.588819] usb 3-1: New USB device strings: Mfr=3, Product=4, SerialNumber=...
+[  437.588832] usb 3-1: Product: usbtv007
+[  437.588842] usb 3-1: Manufacturer: fushicai
+[  437.588851] usb 3-1: SerialNumber: ...
+[  437.737220] usbtv 3-1:1.0: Fushicai USBTV007 Audio-Video Grabber
+[  437.737467] usbcore: registered new interface driver usbtv
+[  438.306040] ------------[ cut here ]------------
+[  438.306077] WARNING: CPU: 1 PID: 118 at drivers/usb/core/urb.c:412 usb_submit_urb+0x38f/0x498
+[  438.306121] usb 3-1: BOGUS control dir, pipe 80000280 doesn't match bRequestType 40
+[  438.306132] Modules linked in: usbtv videobuf2_vmalloc rfkill joydev input_leds hid_microsoft ff_memless lima evdev axp20x_adc gpu_sched sun4i_gpadc_iio sun4i_ts sunxi_cir sunxi_cedrus(C) v4l2_mem2mem videobuf2_dma_contig videobuf2_memops videobuf2_v4l2 videobuf2_common zram display_connector uio_pdrv_genirq cpufreq_dt uio binfmt_misc sch_fq_codel ramoops reed_solomon pstore_blk pstore_zone ip_tables x_tables autofs4 axp20x_usb_power industrialio pinctrl_axp209 sun4i_gpadc sunxi phy_generic realtek
+[  438.306353] CPU: 1 PID: 118 Comm: kworker/1:16 Tainted: G         C        5.15.48-sunxi #22.05.3
+[  438.306368] Hardware name: Allwinner sun7i (A20) Family
+[  438.306378] Workqueue: events snd_usbtv_trigger [usbtv]
+[  438.306421] [<c010cd2d>] (unwind_backtrace) from [<c01095fd>] (show_stack+0x11/0x14)
+[  438.306454] [<c01095fd>] (show_stack) from [<c09dcf31>] (dump_stack_lvl+0x2b/0x34)
+[  438.306481] [<c09dcf31>] (dump_stack_lvl) from [<c011c3f9>] (__warn+0xad/0xc0)
+[  438.306506] [<c011c3f9>] (__warn) from [<c09d6ae3>] (warn_slowpath_fmt+0x5f/0x7c)
+[  438.306528] [<c09d6ae3>] (warn_slowpath_fmt) from [<c072fd7b>] (usb_submit_urb+0x38f/0x498)
+[  438.306551] [<c072fd7b>] (usb_submit_urb) from [<c07305d9>] (usb_start_wait_urb+0x49/0x100)
+[  438.306570] [<c07305d9>] (usb_start_wait_urb) from [<c073071f>] (usb_control_msg+0x8f/0xcc)
+[  438.306589] [<c073071f>] (usb_control_msg) from [<bf9191ad>] (usbtv_set_regs+0x5d/0x70 [usbtv])
+[  438.306640] [<bf9191ad>] (usbtv_set_regs [usbtv]) from [<bf91a271>] (snd_usbtv_trigger+0x81/0xd4 [usbtv])
+[  438.306675] [<bf91a271>] (snd_usbtv_trigger [usbtv]) from [<c0130c5f>] (process_one_work+0x18f/0x3e8)
+[  438.306706] [<c0130c5f>] (process_one_work) from [<c0130fbb>] (worker_thread+0x103/0x400)
+[  438.306723] [<c0130fbb>] (worker_thread) from [<c0136967>] (kthread+0x117/0x12c)
+[  438.306746] [<c0136967>] (kthread) from [<c0100139>] (ret_from_fork+0x11/0x38)
+[  438.306767] Exception stack(0xc15cbfb0 to 0xc15cbff8)
+[  438.306779] bfa0:                                     00000000 00000000 00000000 00000000
+[  438.306792] bfc0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+[  438.306803] bfe0: 00000000 00000000 00000000 00000000 00000013 00000000
+[  438.306813] ---[ end trace d2cbbf4ee32e96be ]---
