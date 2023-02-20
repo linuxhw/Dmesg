@@ -1,0 +1,1783 @@
+[18302.896132] ------------[ cut here ]------------
+[18302.896137] failed to read DBI register, addr=0x0719
+[18302.896180] WARNING: CPU: 3 PID: 17979 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18302.896195] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18302.896265]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18302.896344]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18302.896375] CPU: 3 PID: 17979 Comm: kworker/u16:0 Tainted: G           OE     5.15.13-051513-generic #202201050731
+[18302.896381] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18302.896383] Workqueue: phy0 rtw_watch_dog_work [rtw88_core]
+[18302.896399] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18302.896406] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18302.896410] RSP: 0018:ffffa338862f7d80 EFLAGS: 00010282
+[18302.896414] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18302.896417] RDX: ffff9801a3ae09c8 RSI: 0000000000000001 RDI: ffff9801a3ae09c0
+[18302.896419] RBP: ffffa338862f7d98 R08: 0000000000000003 R09: 00000000006d0938
+[18302.896421] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18302.896424] R13: ffffa338862f7daf R14: ffff97ff0c7a2020 R15: 0000000000000000
+[18302.896426] FS:  0000000000000000(0000) GS:ffff9801a3ac0000(0000) knlGS:0000000000000000
+[18302.896429] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18302.896432] CR2: 000024a2e913b000 CR3: 00000002262ce003 CR4: 0000000000770ee0
+[18302.896435] PKRU: 55555554
+[18302.896436] Call Trace:
+[18302.896439]  <TASK>
+[18302.896443]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18302.896450]  rtw_leave_lps_core+0x3e/0x170 [rtw88_core]
+[18302.896471]  rtw_leave_lps+0x4a/0x80 [rtw88_core]
+[18302.896489]  rtw_watch_dog_work+0x1c1/0x250 [rtw88_core]
+[18302.896502]  process_one_work+0x228/0x3d0
+[18302.896511]  worker_thread+0x53/0x410
+[18302.896517]  kthread+0x11b/0x140
+[18302.896521]  ? process_one_work+0x3d0/0x3d0
+[18302.896527]  ? set_kthread_struct+0x50/0x50
+[18302.896532]  ret_from_fork+0x1f/0x30
+[18302.896540]  </TASK>
+[18302.896541] ---[ end trace 19db84aab23391bd ]---
+[18302.896546] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18302.899647] rtw_8821ce 0000:01:00.0: failed to send h2c command
+[18303.051878] rtw_8821ce 0000:01:00.0: firmware failed to leave lps state
+[18303.054989] rtw_8821ce 0000:01:00.0: failed to send h2c command
+[18303.653572] rtw_8821ce 0000:01:00.0: failed to send h2c command
+[18303.656694] rtw_8821ce 0000:01:00.0: failed to send h2c command
+[18303.659806] rtw_8821ce 0000:01:00.0: failed to send h2c command
+[18303.660076] ------------[ cut here ]------------
+[18303.660077] failed to read DBI register, addr=0x0719
+[18303.660102] WARNING: CPU: 1 PID: 17979 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18303.660109] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18303.660139]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18303.660174]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18303.660188] CPU: 1 PID: 17979 Comm: kworker/u16:0 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18303.660191] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18303.660192] Workqueue: phy0 rtw_watch_dog_work [rtw88_core]
+[18303.660200] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18303.660202] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18303.660204] RSP: 0018:ffffa338862f7da0 EFLAGS: 00010286
+[18303.660206] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18303.660207] RDX: ffff9801a3a609c8 RSI: 0000000000000001 RDI: ffff9801a3a609c0
+[18303.660208] RBP: ffffa338862f7db8 R08: 0000000000000003 R09: 00000000006d1bf0
+[18303.660208] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18303.660209] R13: ffffa338862f7dcf R14: ffff97ff0c7a2020 R15: 0000000000000001
+[18303.660210] FS:  0000000000000000(0000) GS:ffff9801a3a40000(0000) knlGS:0000000000000000
+[18303.660212] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18303.660213] CR2: 0000342ac25c06e8 CR3: 0000000107f20006 CR4: 0000000000770ee0
+[18303.660214] PKRU: 55555554
+[18303.660215] Call Trace:
+[18303.660216]  <TASK>
+[18303.660218]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18303.660221]  rtw_enter_lps+0x9d/0x140 [rtw88_core]
+[18303.660229]  rtw_watch_dog_work+0x232/0x250 [rtw88_core]
+[18303.660234]  process_one_work+0x228/0x3d0
+[18303.660238]  worker_thread+0x53/0x410
+[18303.660240]  kthread+0x11b/0x140
+[18303.660242]  ? process_one_work+0x3d0/0x3d0
+[18303.660244]  ? set_kthread_struct+0x50/0x50
+[18303.660246]  ret_from_fork+0x1f/0x30
+[18303.660250]  </TASK>
+[18303.660250] ---[ end trace 19db84aab23391be ]---
+[18303.660252] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18303.920164] ------------[ cut here ]------------
+[18303.920170] failed to read DBI register, addr=0x0719
+[18303.920212] WARNING: CPU: 5 PID: 17979 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18303.920227] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18303.920297]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18303.920375]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18303.920406] CPU: 5 PID: 17979 Comm: kworker/u16:0 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18303.920412] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18303.920415] Workqueue: phy0 ieee80211_beacon_connection_loss_work [mac80211]
+[18303.920511] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18303.920518] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18303.920522] RSP: 0018:ffffa338862f7cf8 EFLAGS: 00010282
+[18303.920526] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18303.920528] RDX: ffff9801a3b609c8 RSI: 0000000000000001 RDI: ffff9801a3b609c0
+[18303.920531] RBP: ffffa338862f7d10 R08: 0000000000000003 R09: 00000000006d2ce8
+[18303.920533] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18303.920535] R13: ffffa338862f7d27 R14: ffff97ff0c7a68c8 R15: ffff97ff00051000
+[18303.920538] FS:  0000000000000000(0000) GS:ffff9801a3b40000(0000) knlGS:0000000000000000
+[18303.920541] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18303.920543] CR2: 00000d87095b2000 CR3: 00000001107aa004 CR4: 0000000000770ee0
+[18303.920546] PKRU: 55555554
+[18303.920548] Call Trace:
+[18303.920550]  <TASK>
+[18303.920555]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18303.920562]  rtw_leave_lps_core+0x3e/0x170 [rtw88_core]
+[18303.920583]  rtw_leave_lps+0x4a/0x80 [rtw88_core]
+[18303.920601]  rtw_ops_config+0xc6/0xe0 [rtw88_core]
+[18303.920614]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18303.920657]  ieee80211_recalc_ps.part.0+0x10c/0x180 [mac80211]
+[18303.920729]  ieee80211_mgd_probe_ap.part.0+0xc5/0x180 [mac80211]
+[18303.920791]  ieee80211_beacon_connection_loss_work+0x48/0xa0 [mac80211]
+[18303.920848]  process_one_work+0x228/0x3d0
+[18303.920857]  worker_thread+0x53/0x410
+[18303.920862]  kthread+0x11b/0x140
+[18303.920866]  ? process_one_work+0x3d0/0x3d0
+[18303.920871]  ? set_kthread_struct+0x50/0x50
+[18303.920876]  ret_from_fork+0x1f/0x30
+[18303.920883]  </TASK>
+[18303.920884] ---[ end trace 19db84aab23391bf ]---
+[18303.920889] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18303.923908] rtw_8821ce 0000:01:00.0: failed to send h2c command
+[18304.063885] rtw_8821ce 0000:01:00.0: firmware failed to leave lps state
+[18304.066900] rtw_8821ce 0000:01:00.0: failed to send h2c command
+[18304.691965] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18304.692039] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18304.692101] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18304.692164] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18304.692226] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18304.692289] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18304.695419] rtw_8821ce 0000:01:00.0: failed to send h2c command
+[18304.695429] rtw_8821ce 0000:01:00.0: sta XX:XX:XX:XX:XX:XX with macid 0 left
+[18304.695742] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18304.695804] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18304.695897] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18304.695960] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18304.696023] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18304.696085] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18306.696255] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18306.696519] ------------[ cut here ]------------
+[18306.696520] failed to read DBI register, addr=0x0719
+[18306.696546] WARNING: CPU: 1 PID: 17979 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18306.696553] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18306.696587]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18306.696625]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18306.696641] CPU: 1 PID: 17979 Comm: kworker/u16:0 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18306.696644] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18306.696645] Workqueue: phy0 ieee80211_iface_work [mac80211]
+[18306.696681] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18306.696684] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18306.696686] RSP: 0018:ffffa338862f7b90 EFLAGS: 00010286
+[18306.696687] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18306.696689] RDX: ffff9801a3a609c8 RSI: 0000000000000001 RDI: ffff9801a3a609c0
+[18306.696690] RBP: ffffa338862f7ba8 R08: 0000000000000003 R09: 00000000006d4cf0
+[18306.696691] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18306.696692] R13: ffffa338862f7bbf R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18306.696693] FS:  0000000000000000(0000) GS:ffff9801a3a40000(0000) knlGS:0000000000000000
+[18306.696694] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18306.696696] CR2: 00007f3bef2621d5 CR3: 00000002262ce006 CR4: 0000000000770ee0
+[18306.696697] PKRU: 55555554
+[18306.696698] Call Trace:
+[18306.696699]  <TASK>
+[18306.696701]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18306.696705]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18306.696712]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18306.696720]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18306.696726]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18306.696744]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18306.696769]  ieee80211_del_chanctx+0xb4/0x190 [mac80211]
+[18306.696800]  ieee80211_free_chanctx+0x99/0xc0 [mac80211]
+[18306.696828]  __ieee80211_vif_release_channel+0xf6/0x140 [mac80211]
+[18306.696853]  ieee80211_vif_release_channel+0x3e/0x60 [mac80211]
+[18306.696877]  ieee80211_set_disassoc+0x321/0x540 [mac80211]
+[18306.696907]  ieee80211_sta_connection_lost+0x3b/0xb0 [mac80211]
+[18306.696937]  ieee80211_sta_work+0x54d/0x6c0 [mac80211]
+[18306.696964]  ? psi_task_switch+0xc3/0x210
+[18306.696967]  ieee80211_iface_work+0x147/0x180 [mac80211]
+[18306.696990]  process_one_work+0x228/0x3d0
+[18306.696994]  worker_thread+0x53/0x410
+[18306.696996]  kthread+0x11b/0x140
+[18306.696998]  ? process_one_work+0x3d0/0x3d0
+[18306.697000]  ? set_kthread_struct+0x50/0x50
+[18306.697002]  ret_from_fork+0x1f/0x30
+[18306.697006]  </TASK>
+[18306.697007] ---[ end trace 19db84aab23391c0 ]---
+[18306.697008] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18306.697107] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18306.697166] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18306.697224] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18306.697281] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18306.697339] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18306.697397] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18306.797603] ------------[ cut here ]------------
+[18306.797608] failed to read DBI register, addr=0x0719
+[18306.797650] WARNING: CPU: 2 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18306.797665] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18306.797731]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18306.797806]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18306.797836] CPU: 2 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18306.797841] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18306.797843] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18306.797849] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18306.797853] RSP: 0018:ffffa33880ee36f0 EFLAGS: 00010286
+[18306.797857] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18306.797860] RDX: ffff9801a3aa09c8 RSI: 0000000000000001 RDI: ffff9801a3aa09c0
+[18306.797862] RBP: ffffa33880ee3708 R08: 0000000000000003 R09: 00000000006d6238
+[18306.797864] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18306.797866] R13: ffffa33880ee371f R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18306.797868] FS:  00007f033031c1c0(0000) GS:ffff9801a3a80000(0000) knlGS:0000000000000000
+[18306.797871] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18306.797874] CR2: 00005606d002e178 CR3: 000000010a63a004 CR4: 0000000000770ee0
+[18306.797876] PKRU: 55555554
+[18306.797878] Call Trace:
+[18306.797880]  <TASK>
+[18306.797884]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18306.797890]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18306.797898]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18306.797921]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18306.797935]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18306.797982]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18306.798038]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18306.798086]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18306.798134]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18306.798190]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18306.798239]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18306.798279]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18306.798331]  genl_family_rcv_msg_doit+0xe4/0x150
+[18306.798338]  genl_rcv_msg+0xe2/0x1e0
+[18306.798342]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18306.798388]  ? genl_get_cmd+0xd0/0xd0
+[18306.798392]  netlink_rcv_skb+0x53/0x100
+[18306.798396]  genl_rcv+0x29/0x40
+[18306.798399]  netlink_unicast+0x21a/0x330
+[18306.798402]  netlink_sendmsg+0x25e/0x4d0
+[18306.798406]  sock_sendmsg+0x62/0x70
+[18306.798412]  ____sys_sendmsg+0x24e/0x290
+[18306.798416]  ? import_iovec+0x31/0x40
+[18306.798422]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18306.798427]  ___sys_sendmsg+0x81/0xc0
+[18306.798432]  ? _copy_to_user+0x20/0x30
+[18306.798435]  ? sock_getsockopt+0x110/0xd80
+[18306.798439]  ? _copy_to_user+0x20/0x30
+[18306.798442]  ? sock_getsockopt+0x110/0xd80
+[18306.798445]  ? __cond_resched+0x1a/0x50
+[18306.798449]  ? aa_sk_perm+0x43/0x1b0
+[18306.798453]  ? unix_ioctl+0x164/0x1e0
+[18306.798458]  ? _copy_from_user+0x2e/0x60
+[18306.798461]  __sys_sendmsg+0x62/0xb0
+[18306.798466]  ? profile_init+0x80/0x140
+[18306.798472]  __x64_sys_sendmsg+0x1d/0x20
+[18306.798477]  do_syscall_64+0x59/0xc0
+[18306.798481]  ? __sys_setsockopt+0xea/0x1e0
+[18306.798486]  ? exit_to_user_mode_prepare+0x37/0xb0
+[18306.798492]  ? syscall_exit_to_user_mode+0x27/0x50
+[18306.798496]  ? __x64_sys_setsockopt+0x1f/0x30
+[18306.798500]  ? do_syscall_64+0x69/0xc0
+[18306.798503]  ? syscall_exit_to_user_mode+0x27/0x50
+[18306.798508]  ? __x64_sys_getsockopt+0x1f/0x30
+[18306.798512]  ? do_syscall_64+0x69/0xc0
+[18306.798515]  ? __x64_sys_getsockopt+0x1f/0x30
+[18306.798519]  ? do_syscall_64+0x69/0xc0
+[18306.798522]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18306.798527] RIP: 0033:0x7f03307763c7
+[18306.798531] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18306.798534] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18306.798538] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18306.798540] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18306.798542] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18306.798543] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d0021280
+[18306.798545] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001d880
+[18306.798549]  </TASK>
+[18306.798551] ---[ end trace 19db84aab23391c1 ]---
+[18306.798556] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18308.798675] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18308.798684] rtw_8821ce 0000:01:00.0: mac power on failed
+[18308.798686] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18308.798688] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18308.798886] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18308.798889] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18308.798963] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18308.799020] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18308.799076] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18308.799133] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18308.799189] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18308.799245] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18308.799308] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18308.799364] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18308.799421] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18308.799477] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18308.799534] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18308.799590] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18312.664125] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18312.664203] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18312.664274] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18312.664337] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18312.664400] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18312.664464] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18314.664549] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18314.664813] ------------[ cut here ]------------
+[18314.664816] failed to read DBI register, addr=0x0719
+[18314.664852] WARNING: CPU: 0 PID: 19537 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18314.664860] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18314.664912]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18314.664950]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18314.664966] CPU: 0 PID: 19537 Comm: kworker/u16:1 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18314.664969] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18314.664971] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18314.665019] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18314.665022] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18314.665023] RSP: 0018:ffffa338850ebcd8 EFLAGS: 00010286
+[18314.665025] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18314.665026] RDX: ffff9801a3a209c8 RSI: 0000000000000001 RDI: ffff9801a3a209c0
+[18314.665027] RBP: ffffa338850ebcf0 R08: 0000000000000003 R09: 00000000006d8c60
+[18314.665028] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18314.665029] R13: ffffa338850ebd07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18314.665030] FS:  0000000000000000(0000) GS:ffff9801a3a00000(0000) knlGS:0000000000000000
+[18314.665032] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18314.665033] CR2: 00000d8709560000 CR3: 0000000107f20003 CR4: 0000000000770ef0
+[18314.665034] PKRU: 55555554
+[18314.665035] Call Trace:
+[18314.665036]  <TASK>
+[18314.665039]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18314.665042]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18314.665051]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18314.665059]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18314.665064]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18314.665082]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18314.665107]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18314.665127]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18314.665148]  ? finish_task_switch.isra.0+0xa6/0x270
+[18314.665153]  process_one_work+0x228/0x3d0
+[18314.665156]  worker_thread+0x53/0x410
+[18314.665158]  kthread+0x11b/0x140
+[18314.665160]  ? process_one_work+0x3d0/0x3d0
+[18314.665162]  ? set_kthread_struct+0x50/0x50
+[18314.665165]  ret_from_fork+0x1f/0x30
+[18314.665169]  </TASK>
+[18314.665169] ---[ end trace 19db84aab23391c2 ]---
+[18314.665171] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18317.668420] ------------[ cut here ]------------
+[18317.668422] failed to read DBI register, addr=0x0719
+[18317.668445] WARNING: CPU: 3 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18317.668451] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18317.668478]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18317.668513]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18317.668525] CPU: 3 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18317.668527] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18317.668528] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18317.668531] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18317.668532] RSP: 0018:ffffa33880ee3720 EFLAGS: 00010282
+[18317.668533] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18317.668534] RDX: ffff9801a3ae09c8 RSI: 0000000000000001 RDI: ffff9801a3ae09c0
+[18317.668535] RBP: ffffa33880ee3738 R08: 0000000000000003 R09: 00000000006da770
+[18317.668536] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18317.668537] R13: ffffa33880ee374f R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18317.668537] FS:  00007f033031c1c0(0000) GS:ffff9801a3ac0000(0000) knlGS:0000000000000000
+[18317.668538] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18317.668539] CR2: 00007fc261fc00a8 CR3: 000000010a63a001 CR4: 0000000000770ee0
+[18317.668540] PKRU: 55555554
+[18317.668541] Call Trace:
+[18317.668542]  <TASK>
+[18317.668544]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18317.668546]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18317.668549]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18317.668557]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18317.668562]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18317.668584]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18317.668604]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18317.668621]  ? free_unref_page+0xc5/0x150
+[18317.668624]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18317.668641]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18317.668661]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18317.668698]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18317.668714]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18317.668732]  genl_family_rcv_msg_doit+0xe4/0x150
+[18317.668735]  genl_rcv_msg+0xe2/0x1e0
+[18317.668736]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18317.668752]  ? genl_get_cmd+0xd0/0xd0
+[18317.668753]  netlink_rcv_skb+0x53/0x100
+[18317.668754]  genl_rcv+0x29/0x40
+[18317.668755]  netlink_unicast+0x21a/0x330
+[18317.668756]  netlink_sendmsg+0x25e/0x4d0
+[18317.668758]  sock_sendmsg+0x62/0x70
+[18317.668763]  ____sys_sendmsg+0x24e/0x290
+[18317.668765]  ? import_iovec+0x31/0x40
+[18317.668767]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18317.668769]  ___sys_sendmsg+0x81/0xc0
+[18317.668771]  ? sock_do_ioctl+0x42/0x100
+[18317.668772]  ? __cond_resched+0x1a/0x50
+[18317.668774]  ? aa_sk_perm+0x43/0x1b0
+[18317.668775]  ? _copy_from_user+0x2e/0x60
+[18317.668777]  ? netlink_setsockopt+0x33e/0x440
+[18317.668778]  __sys_sendmsg+0x62/0xb0
+[18317.668779]  ? aa_sk_perm+0x43/0x1b0
+[18317.668780]  __x64_sys_sendmsg+0x1d/0x20
+[18317.668782]  do_syscall_64+0x59/0xc0
+[18317.668784]  ? __sys_setsockopt+0xea/0x1e0
+[18317.668785]  ? exit_to_user_mode_prepare+0x37/0xb0
+[18317.668788]  ? syscall_exit_to_user_mode+0x27/0x50
+[18317.668789]  ? __x64_sys_setsockopt+0x1f/0x30
+[18317.668790]  ? do_syscall_64+0x69/0xc0
+[18317.668791]  ? sysvec_apic_timer_interrupt+0x4e/0x90
+[18317.668793]  ? asm_sysvec_apic_timer_interrupt+0xa/0x20
+[18317.668794]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18317.668796] RIP: 0033:0x7f03307763c7
+[18317.668797] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18317.668798] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18317.668799] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18317.668800] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18317.668801] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18317.668804] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d001f2d0
+[18317.668805] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001e140
+[18317.668810]  </TASK>
+[18317.668810] ---[ end trace 19db84aab23391c3 ]---
+[18317.668813] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18319.668935] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18319.668944] rtw_8821ce 0000:01:00.0: mac power on failed
+[18319.668946] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18319.668949] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18319.669042] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18319.669045] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18319.669125] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18319.669184] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18319.669241] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18319.669298] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18319.669355] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18319.669411] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18319.669474] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18319.669534] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18319.669592] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18319.669650] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18319.669706] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18319.669763] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18323.564345] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18323.564423] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18323.564486] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18323.564550] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18323.564614] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18323.564677] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18325.564807] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18325.565077] ------------[ cut here ]------------
+[18325.565078] failed to read DBI register, addr=0x0719
+[18325.565106] WARNING: CPU: 2 PID: 19537 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18325.565113] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18325.565146]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18325.565183]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18325.565199] CPU: 2 PID: 19537 Comm: kworker/u16:1 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18325.565201] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18325.565203] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18325.565233] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18325.565237] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18325.565238] RSP: 0018:ffffa338850ebcd8 EFLAGS: 00010286
+[18325.565240] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18325.565241] RDX: ffff9801a3aa09c8 RSI: 0000000000000001 RDI: ffff9801a3aa09c0
+[18325.565242] RBP: ffffa338850ebcf0 R08: 0000000000000003 R09: 00000000006dd9a8
+[18325.565243] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18325.565244] R13: ffffa338850ebd07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18325.565245] FS:  0000000000000000(0000) GS:ffff9801a3a80000(0000) knlGS:0000000000000000
+[18325.565246] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18325.565247] CR2: 00007fc2a96aebc8 CR3: 00000001107aa002 CR4: 0000000000770ee0
+[18325.565248] PKRU: 55555554
+[18325.565250] Call Trace:
+[18325.565251]  <TASK>
+[18325.565253]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18325.565256]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18325.565264]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18325.565272]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18325.565278]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18325.565296]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18325.565320]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18325.565340]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18325.565360]  ? finish_task_switch.isra.0+0xa6/0x270
+[18325.565364]  process_one_work+0x228/0x3d0
+[18325.565368]  worker_thread+0x53/0x410
+[18325.565370]  kthread+0x11b/0x140
+[18325.565372]  ? process_one_work+0x3d0/0x3d0
+[18325.565374]  ? set_kthread_struct+0x50/0x50
+[18325.565376]  ret_from_fork+0x1f/0x30
+[18325.565379]  </TASK>
+[18325.565380] ---[ end trace 19db84aab23391c4 ]---
+[18325.565382] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18325.565764] ------------[ cut here ]------------
+[18325.565765] failed to read DBI register, addr=0x0719
+[18325.565785] WARNING: CPU: 7 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18325.565788] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18325.565811]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18325.565839]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18325.565851] CPU: 7 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18325.565852] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18325.565853] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18325.565855] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18325.565856] RSP: 0018:ffffa33880ee3720 EFLAGS: 00010282
+[18325.565857] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18325.565858] RDX: ffff9801a3be09c8 RSI: 0000000000000001 RDI: ffff9801a3be09c0
+[18325.565858] RBP: ffffa33880ee3738 R08: 0000000000000003 R09: 00000000006debf0
+[18325.565859] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18325.565860] R13: ffffa33880ee374f R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18325.565860] FS:  00007f033031c1c0(0000) GS:ffff9801a3bc0000(0000) knlGS:0000000000000000
+[18325.565861] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18325.565862] CR2: 00000495e2a93007 CR3: 000000010a63a001 CR4: 0000000000770ee0
+[18325.565863] PKRU: 55555554
+[18325.565863] Call Trace:
+[18325.565864]  <TASK>
+[18325.565865]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18325.565867]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18325.565870]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18325.565877]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18325.565881]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18325.565896]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18325.565913]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18325.565928]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18325.565942]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18325.565959]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18325.565981]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18325.565994]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18325.566010]  genl_family_rcv_msg_doit+0xe4/0x150
+[18325.566013]  genl_rcv_msg+0xe2/0x1e0
+[18325.566014]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18325.566028]  ? genl_get_cmd+0xd0/0xd0
+[18325.566029]  netlink_rcv_skb+0x53/0x100
+[18325.566031]  genl_rcv+0x29/0x40
+[18325.566032]  netlink_unicast+0x21a/0x330
+[18325.566033]  netlink_sendmsg+0x25e/0x4d0
+[18325.566034]  sock_sendmsg+0x62/0x70
+[18325.566036]  ____sys_sendmsg+0x24e/0x290
+[18325.566037]  ? import_iovec+0x31/0x40
+[18325.566040]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18325.566042]  ___sys_sendmsg+0x81/0xc0
+[18325.566043]  ? unix_ioctl+0x164/0x1e0
+[18325.566046]  ? __check_object_size.part.0+0x3a/0x150
+[18325.566049]  ? unix_ioctl+0x164/0x1e0
+[18325.566050]  ? __cond_resched+0x1a/0x50
+[18325.566051]  ? aa_sk_perm+0x43/0x1b0
+[18325.566053]  ? __check_object_size.part.0+0x3a/0x150
+[18325.566054]  ? _copy_from_user+0x2e/0x60
+[18325.566056]  ? netlink_setsockopt+0x33e/0x440
+[18325.566057]  __sys_sendmsg+0x62/0xb0
+[18325.566058]  __x64_sys_sendmsg+0x1d/0x20
+[18325.566060]  do_syscall_64+0x59/0xc0
+[18325.566062]  ? do_syscall_64+0x69/0xc0
+[18325.566063]  ? __sys_getsockopt+0x19b/0x1d0
+[18325.566064]  ? exit_to_user_mode_prepare+0x37/0xb0
+[18325.566066]  ? syscall_exit_to_user_mode+0x27/0x50
+[18325.566068]  ? __x64_sys_getsockopt+0x1f/0x30
+[18325.566070]  ? do_syscall_64+0x69/0xc0
+[18325.566071]  ? sysvec_apic_timer_interrupt+0x4e/0x90
+[18325.566072]  ? asm_sysvec_apic_timer_interrupt+0xa/0x20
+[18325.566073]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18325.566075] RIP: 0033:0x7f03307763c7
+[18325.566077] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18325.566077] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18325.566079] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18325.566079] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18325.566080] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18325.566081] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d0018fe0
+[18325.566081] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001d880
+[18325.566083]  </TASK>
+[18325.566084] ---[ end trace 19db84aab23391c5 ]---
+[18325.566085] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18327.566203] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18327.566213] rtw_8821ce 0000:01:00.0: mac power on failed
+[18327.566216] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18327.566217] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18327.566307] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18327.566309] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18327.566388] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18327.566446] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18327.566503] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18327.566559] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18327.566616] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18327.566673] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18327.566736] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18327.566796] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18327.566853] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18327.566909] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18327.566966] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18327.567023] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18331.452357] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18331.452448] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18331.452513] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18331.452578] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18331.452643] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18331.452707] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18333.452802] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18333.453073] ------------[ cut here ]------------
+[18333.453075] failed to read DBI register, addr=0x0719
+[18333.453099] WARNING: CPU: 2 PID: 19537 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18333.453107] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18333.453137]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18333.453172]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18333.453187] CPU: 2 PID: 19537 Comm: kworker/u16:1 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18333.453189] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18333.453191] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18333.453220] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18333.453223] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18333.453225] RSP: 0018:ffffa338850ebcd8 EFLAGS: 00010286
+[18333.453226] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18333.453228] RDX: ffff9801a3aa09c8 RSI: 0000000000000001 RDI: ffff9801a3aa09c0
+[18333.453229] RBP: ffffa338850ebcf0 R08: 0000000000000003 R09: 00000000006e15d8
+[18333.453229] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18333.453230] R13: ffffa338850ebd07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18333.453231] FS:  0000000000000000(0000) GS:ffff9801a3a80000(0000) knlGS:0000000000000000
+[18333.453232] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18333.453234] CR2: 00007fc2737d91a8 CR3: 00000001f0410001 CR4: 0000000000770ee0
+[18333.453235] PKRU: 55555554
+[18333.453235] Call Trace:
+[18333.453237]  <TASK>
+[18333.453239]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18333.453242]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18333.453251]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18333.453258]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18333.453264]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18333.453281]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18333.453305]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18333.453326]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18333.453345]  ? finish_task_switch.isra.0+0xa6/0x270
+[18333.453349]  process_one_work+0x228/0x3d0
+[18333.453352]  worker_thread+0x53/0x410
+[18333.453355]  kthread+0x11b/0x140
+[18333.453356]  ? process_one_work+0x3d0/0x3d0
+[18333.453358]  ? set_kthread_struct+0x50/0x50
+[18333.453360]  ret_from_fork+0x1f/0x30
+[18333.453364]  </TASK>
+[18333.453365] ---[ end trace 19db84aab23391c6 ]---
+[18333.453366] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18333.453680] ------------[ cut here ]------------
+[18333.453681] failed to read DBI register, addr=0x0719
+[18333.453703] WARNING: CPU: 7 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18333.453709] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18333.453736]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18333.453767]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18333.453780] CPU: 7 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18333.453782] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18333.453783] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18333.453785] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18333.453786] RSP: 0018:ffffa33880ee3740 EFLAGS: 00010286
+[18333.453788] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18333.453789] RDX: ffff9801a3be09c8 RSI: 0000000000000001 RDI: ffff9801a3be09c0
+[18333.453790] RBP: ffffa33880ee3758 R08: 0000000000000003 R09: 00000000006e2820
+[18333.453790] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18333.453791] R13: ffffa33880ee376f R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18333.453792] FS:  00007f033031c1c0(0000) GS:ffff9801a3bc0000(0000) knlGS:0000000000000000
+[18333.453793] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18333.453794] CR2: 00007fc2c321b000 CR3: 000000010a63a002 CR4: 0000000000770ee0
+[18333.453795] PKRU: 55555554
+[18333.453796] Call Trace:
+[18333.453796]  <TASK>
+[18333.453798]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18333.453800]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18333.453804]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18333.453812]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18333.453817]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18333.453843]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18333.453865]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18333.453884]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18333.453902]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18333.453923]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18333.453949]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18333.453966]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18333.453985]  genl_family_rcv_msg_doit+0xe4/0x150
+[18333.453989]  genl_rcv_msg+0xe2/0x1e0
+[18333.453990]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18333.454007]  ? genl_get_cmd+0xd0/0xd0
+[18333.454009]  netlink_rcv_skb+0x53/0x100
+[18333.454010]  genl_rcv+0x29/0x40
+[18333.454011]  netlink_unicast+0x21a/0x330
+[18333.454013]  netlink_sendmsg+0x25e/0x4d0
+[18333.454014]  sock_sendmsg+0x62/0x70
+[18333.454016]  ____sys_sendmsg+0x24e/0x290
+[18333.454018]  ? import_iovec+0x31/0x40
+[18333.454021]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18333.454023]  ___sys_sendmsg+0x81/0xc0
+[18333.454025]  ? __check_object_size.part.0+0x3a/0x150
+[18333.454027]  ? _copy_to_user+0x20/0x30
+[18333.454029]  ? sock_getsockopt+0x110/0xd80
+[18333.454030]  ? __cond_resched+0x1a/0x50
+[18333.454031]  ? aa_sk_perm+0x43/0x1b0
+[18333.454033]  ? sock_do_ioctl+0x42/0x100
+[18333.454034]  ? unix_ioctl+0x164/0x1e0
+[18333.454037]  ? __cond_resched+0x1a/0x50
+[18333.454038]  ? aa_sk_perm+0x43/0x1b0
+[18333.454039]  ? _copy_from_user+0x2e/0x60
+[18333.454040]  __sys_sendmsg+0x62/0xb0
+[18333.454042]  ? __x64_sys_setsockopt+0x1f/0x30
+[18333.454044]  __x64_sys_sendmsg+0x1d/0x20
+[18333.454046]  do_syscall_64+0x59/0xc0
+[18333.454047]  ? do_syscall_64+0x69/0xc0
+[18333.454048]  ? syscall_exit_to_user_mode+0x27/0x50
+[18333.454051]  ? do_syscall_64+0x69/0xc0
+[18333.454052]  ? exit_to_user_mode_prepare+0x37/0xb0
+[18333.454054]  ? syscall_exit_to_user_mode+0x27/0x50
+[18333.454056]  ? do_syscall_64+0x69/0xc0
+[18333.454057]  ? asm_sysvec_apic_timer_interrupt+0xa/0x20
+[18333.454058]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18333.454060] RIP: 0033:0x7f03307763c7
+[18333.454062] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18333.454063] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18333.454065] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18333.454065] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18333.454066] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18333.454067] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d0020510
+[18333.454068] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001e140
+[18333.454069]  </TASK>
+[18333.454070] ---[ end trace 19db84aab23391c7 ]---
+[18333.454072] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18335.454167] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18335.454184] rtw_8821ce 0000:01:00.0: mac power on failed
+[18335.454186] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18335.454188] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18335.454315] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18335.454318] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18335.454392] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18335.454448] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18335.454505] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18335.454561] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18335.454618] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18335.454675] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18335.454737] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18335.454794] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18335.454851] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18335.454907] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18335.454963] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18335.455020] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18339.344356] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18339.344436] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18339.344501] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18339.344565] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18339.344628] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18339.344691] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18341.344834] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18341.345100] ------------[ cut here ]------------
+[18341.345101] failed to read DBI register, addr=0x0719
+[18341.345125] WARNING: CPU: 6 PID: 19537 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18341.345132] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18341.345162]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18341.345196]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18341.345210] CPU: 6 PID: 19537 Comm: kworker/u16:1 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18341.345213] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18341.345214] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18341.345243] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18341.345245] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18341.345247] RSP: 0018:ffffa338850ebcd8 EFLAGS: 00010286
+[18341.345249] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18341.345250] RDX: ffff9801a3ba09c8 RSI: 0000000000000001 RDI: ffff9801a3ba09c0
+[18341.345251] RBP: ffffa338850ebcf0 R08: 0000000000000003 R09: 00000000006e5af8
+[18341.345251] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18341.345252] R13: ffffa338850ebd07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18341.345253] FS:  0000000000000000(0000) GS:ffff9801a3b80000(0000) knlGS:0000000000000000
+[18341.345254] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18341.345255] CR2: 00007fad3abef000 CR3: 00000001f0410002 CR4: 0000000000770ee0
+[18341.345256] PKRU: 55555554
+[18341.345257] Call Trace:
+[18341.345259]  <TASK>
+[18341.345260]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18341.345263]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18341.345271]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18341.345279]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18341.345284]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18341.345301]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18341.345324]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18341.345343]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18341.345363]  ? finish_task_switch.isra.0+0xa6/0x270
+[18341.345368]  process_one_work+0x228/0x3d0
+[18341.345382]  worker_thread+0x53/0x410
+[18341.345384]  kthread+0x11b/0x140
+[18341.345386]  ? process_one_work+0x3d0/0x3d0
+[18341.345388]  ? set_kthread_struct+0x50/0x50
+[18341.345390]  ret_from_fork+0x1f/0x30
+[18341.345394]  </TASK>
+[18341.345394] ---[ end trace 19db84aab23391c8 ]---
+[18341.345396] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18348.050781] ------------[ cut here ]------------
+[18348.050787] failed to read DBI register, addr=0x0719
+[18348.050834] WARNING: CPU: 2 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18348.050851] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18348.050929]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18348.051018]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18348.051054] CPU: 2 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18348.051060] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18348.051063] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18348.051071] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18348.051074] RSP: 0018:ffffa33880ee3770 EFLAGS: 00010282
+[18348.051079] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18348.051082] RDX: ffff9801a3aa09c8 RSI: 0000000000000001 RDI: ffff9801a3aa09c0
+[18348.051085] RBP: ffffa33880ee3788 R08: 0000000000000003 R09: 00000000006e75e8
+[18348.051087] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18348.051090] R13: ffffa33880ee379f R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18348.051093] FS:  00007f033031c1c0(0000) GS:ffff9801a3a80000(0000) knlGS:0000000000000000
+[18348.051097] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18348.051099] CR2: 00000495e39d2008 CR3: 000000010a63a005 CR4: 0000000000770ee0
+[18348.051102] PKRU: 55555554
+[18348.051104] Call Trace:
+[18348.051107]  <TASK>
+[18348.051112]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18348.051119]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18348.051128]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18348.051152]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18348.051167]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18348.051223]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18348.051289]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18348.051344]  ? packet_poll+0xee/0x160
+[18348.051351]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18348.051407]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18348.051473]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18348.051530]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18348.051580]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18348.051639]  genl_family_rcv_msg_doit+0xe4/0x150
+[18348.051654]  genl_rcv_msg+0xe2/0x1e0
+[18348.051657]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18348.051706]  ? genl_get_cmd+0xd0/0xd0
+[18348.051710]  netlink_rcv_skb+0x53/0x100
+[18348.051714]  genl_rcv+0x29/0x40
+[18348.051717]  netlink_unicast+0x21a/0x330
+[18348.051721]  netlink_sendmsg+0x25e/0x4d0
+[18348.051725]  sock_sendmsg+0x62/0x70
+[18348.051732]  ____sys_sendmsg+0x24e/0x290
+[18348.051736]  ? import_iovec+0x31/0x40
+[18348.051743]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18348.051748]  ? __check_object_size.part.0+0x3a/0x150
+[18348.051756]  ___sys_sendmsg+0x81/0xc0
+[18348.051761]  ? sock_ioctl+0xef/0x310
+[18348.051766]  ? sock_do_ioctl+0x42/0x100
+[18348.051770]  ? __cond_resched+0x1a/0x50
+[18348.051774]  ? aa_sk_perm+0x43/0x1b0
+[18348.051779]  ? exit_to_user_mode_prepare+0x37/0xb0
+[18348.051786]  __sys_sendmsg+0x62/0xb0
+[18348.051791]  __x64_sys_sendmsg+0x1d/0x20
+[18348.051796]  do_syscall_64+0x59/0xc0
+[18348.051801]  ? syscall_exit_to_user_mode+0x27/0x50
+[18348.051806]  ? __x64_sys_setsockopt+0x1f/0x30
+[18348.051810]  ? do_syscall_64+0x69/0xc0
+[18348.051813]  ? do_syscall_64+0x69/0xc0
+[18348.051816]  ? asm_sysvec_apic_timer_interrupt+0xa/0x20
+[18348.051820]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18348.051826] RIP: 0033:0x7f03307763c7
+[18348.051830] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18348.051833] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18348.051838] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18348.051840] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18348.051842] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18348.051844] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d0018fe0
+[18348.051846] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001d880
+[18348.051850]  </TASK>
+[18348.051852] ---[ end trace 19db84aab23391c9 ]---
+[18348.051857] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18350.051947] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18350.051968] rtw_8821ce 0000:01:00.0: mac power on failed
+[18350.051970] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18350.051974] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18350.052066] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18350.052068] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18350.052151] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18350.052210] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18350.052314] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18350.052373] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18350.052430] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18350.052487] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18350.052565] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18350.052623] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18350.052680] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18350.052738] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18350.052805] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18350.052863] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18353.936595] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18353.936668] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18353.936735] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18353.936802] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18353.936869] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18353.936935] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18355.937047] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18355.937313] ------------[ cut here ]------------
+[18355.937314] failed to read DBI register, addr=0x0719
+[18355.937340] WARNING: CPU: 6 PID: 17444 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18355.937348] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18355.937380]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18355.937418]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18355.937433] CPU: 6 PID: 17444 Comm: kworker/u16:2 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18355.937435] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18355.937437] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18355.937468] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18355.937471] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18355.937472] RSP: 0018:ffffa338845dfcd8 EFLAGS: 00010286
+[18355.937474] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18355.937475] RDX: ffff9801a3ba09c8 RSI: 0000000000000001 RDI: ffff9801a3ba09c0
+[18355.937476] RBP: ffffa338845dfcf0 R08: 0000000000000003 R09: 00000000006e9f00
+[18355.937477] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18355.937478] R13: ffffa338845dfd07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18355.937479] FS:  0000000000000000(0000) GS:ffff9801a3b80000(0000) knlGS:0000000000000000
+[18355.937480] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18355.937481] CR2: 00000495e3009100 CR3: 00000002262ce001 CR4: 0000000000770ee0
+[18355.937482] PKRU: 55555554
+[18355.937483] Call Trace:
+[18355.937485]  <TASK>
+[18355.937487]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18355.937490]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18355.937499]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18355.937507]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18355.937512]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18355.937529]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18355.937553]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18355.937574]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18355.937594]  ? finish_task_switch.isra.0+0xa6/0x270
+[18355.937598]  process_one_work+0x228/0x3d0
+[18355.937601]  worker_thread+0x53/0x410
+[18355.937604]  kthread+0x11b/0x140
+[18355.937606]  ? process_one_work+0x3d0/0x3d0
+[18355.937608]  ? set_kthread_struct+0x50/0x50
+[18355.937610]  ret_from_fork+0x1f/0x30
+[18355.937614]  </TASK>
+[18355.937614] ---[ end trace 19db84aab23391ca ]---
+[18355.937616] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18362.042899] ------------[ cut here ]------------
+[18362.042904] failed to read DBI register, addr=0x0719
+[18362.042950] WARNING: CPU: 0 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18362.042965] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18362.043043]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18362.043129]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18362.043165] CPU: 0 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18362.043170] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18362.043173] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18362.043180] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18362.043184] RSP: 0018:ffffa33880ee3780 EFLAGS: 00010282
+[18362.043189] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18362.043192] RDX: ffff9801a3a209c8 RSI: 0000000000000001 RDI: ffff9801a3a209c0
+[18362.043194] RBP: ffffa33880ee3798 R08: 0000000000000003 R09: 00000000006eb4e0
+[18362.043197] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18362.043199] R13: ffffa33880ee37af R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18362.043203] FS:  00007f033031c1c0(0000) GS:ffff9801a3a00000(0000) knlGS:0000000000000000
+[18362.043206] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18362.043209] CR2: 000055aaf7c9ff90 CR3: 000000010a63a001 CR4: 0000000000770ef0
+[18362.043212] PKRU: 55555554
+[18362.043214] Call Trace:
+[18362.043216]  <TASK>
+[18362.043221]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18362.043227]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18362.043237]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18362.043260]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18362.043276]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18362.043330]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18362.043397]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18362.043452]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18362.043508]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18362.043573]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18362.043631]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18362.043682]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18362.043744]  genl_family_rcv_msg_doit+0xe4/0x150
+[18362.043752]  genl_rcv_msg+0xe2/0x1e0
+[18362.043756]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18362.043811]  ? genl_get_cmd+0xd0/0xd0
+[18362.043815]  netlink_rcv_skb+0x53/0x100
+[18362.043820]  genl_rcv+0x29/0x40
+[18362.043823]  netlink_unicast+0x21a/0x330
+[18362.043828]  netlink_sendmsg+0x25e/0x4d0
+[18362.043832]  sock_sendmsg+0x62/0x70
+[18362.043839]  ____sys_sendmsg+0x24e/0x290
+[18362.043843]  ? import_iovec+0x31/0x40
+[18362.043851]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18362.043857]  ___sys_sendmsg+0x81/0xc0
+[18362.043863]  ? _copy_to_user+0x20/0x30
+[18362.043867]  ? sock_getsockopt+0x110/0xd80
+[18362.043870]  ? sock_do_ioctl+0x42/0x100
+[18362.043875]  ? unix_ioctl+0x164/0x1e0
+[18362.043881]  ? sock_do_ioctl+0x42/0x100
+[18362.043885]  ? __cond_resched+0x1a/0x50
+[18362.043890]  ? aa_sk_perm+0x43/0x1b0
+[18362.043894]  ? _copy_from_user+0x2e/0x60
+[18362.043897]  ? netlink_setsockopt+0x33e/0x440
+[18362.043901]  ? __sys_setsockopt+0xea/0x1e0
+[18362.043907]  __sys_sendmsg+0x62/0xb0
+[18362.043913]  __x64_sys_sendmsg+0x1d/0x20
+[18362.043919]  do_syscall_64+0x59/0xc0
+[18362.043923]  ? do_syscall_64+0x69/0xc0
+[18362.043927]  ? do_syscall_64+0x69/0xc0
+[18362.043930]  ? do_syscall_64+0x69/0xc0
+[18362.043933]  ? asm_sysvec_apic_timer_interrupt+0xa/0x20
+[18362.043937]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18362.043944] RIP: 0033:0x7f03307763c7
+[18362.043948] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18362.043951] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18362.043956] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18362.043958] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18362.043960] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18362.043963] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d0022e40
+[18362.043965] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001e140
+[18362.043970]  </TASK>
+[18362.043971] ---[ end trace 19db84aab23391cb ]---
+[18362.043978] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18364.044089] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18364.044098] rtw_8821ce 0000:01:00.0: mac power on failed
+[18364.044100] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18364.044102] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18364.044197] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18364.044200] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18364.044280] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18364.044345] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18364.044425] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18364.044482] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18364.044540] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18364.044597] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18364.044709] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18364.044768] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18364.044825] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18364.044883] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18364.044941] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18364.045028] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18367.892754] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18367.892833] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18367.892899] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18367.892964] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18367.893031] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18367.893096] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18369.893178] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18369.893448] ------------[ cut here ]------------
+[18369.893450] failed to read DBI register, addr=0x0719
+[18369.893477] WARNING: CPU: 5 PID: 17444 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18369.893484] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18369.893517]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18369.893554]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18369.893569] CPU: 5 PID: 17444 Comm: kworker/u16:2 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18369.893572] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18369.893574] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18369.893605] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18369.893608] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18369.893609] RSP: 0018:ffffa338845dfcd8 EFLAGS: 00010286
+[18369.893611] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18369.893612] RDX: ffff9801a3b609c8 RSI: 0000000000000001 RDI: ffff9801a3b609c0
+[18369.893613] RBP: ffffa338845dfcf0 R08: 0000000000000003 R09: 00000000006ed560
+[18369.893614] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18369.893615] R13: ffffa338845dfd07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18369.893616] FS:  0000000000000000(0000) GS:ffff9801a3b40000(0000) knlGS:0000000000000000
+[18369.893617] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18369.893618] CR2: 00007f2bc114a8b6 CR3: 00000001f0410004 CR4: 0000000000770ee0
+[18369.893620] PKRU: 55555554
+[18369.893621] Call Trace:
+[18369.893622]  <TASK>
+[18369.893624]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18369.893627]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18369.893635]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18369.893643]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18369.893648]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18369.893666]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18369.893690]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18369.893710]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18369.893730]  ? finish_task_switch.isra.0+0xa6/0x270
+[18369.893734]  process_one_work+0x228/0x3d0
+[18369.893738]  worker_thread+0x53/0x410
+[18369.893740]  kthread+0x11b/0x140
+[18369.893742]  ? process_one_work+0x3d0/0x3d0
+[18369.893744]  ? set_kthread_struct+0x50/0x50
+[18369.893746]  ret_from_fork+0x1f/0x30
+[18369.893750]  </TASK>
+[18369.893751] ---[ end trace 19db84aab23391cc ]---
+[18369.893753] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18369.894199] ------------[ cut here ]------------
+[18369.894201] failed to read DBI register, addr=0x0719
+[18369.894216] WARNING: CPU: 3 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18369.894220] Modules linked in: rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel ecc joydev
+[18369.894241]  snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad sch_fq_codel msr
+[18369.894265]  parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18369.894274] CPU: 3 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18369.894276] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18369.894277] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18369.894279] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18369.894280] RSP: 0018:ffffa33880ee36c0 EFLAGS: 00010282
+[18369.894281] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18369.894282] RDX: ffff9801a3ae09c8 RSI: 0000000000000001 RDI: ffff9801a3ae09c0
+[18369.894282] RBP: ffffa33880ee36d8 R08: 0000000000000003 R09: 00000000006ee7a8
+[18369.894283] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18369.894284] R13: ffffa33880ee36ef R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18369.894284] FS:  00007f033031c1c0(0000) GS:ffff9801a3ac0000(0000) knlGS:0000000000000000
+[18369.894285] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18369.894286] CR2: 00000ee9cd1094f0 CR3: 000000010a63a001 CR4: 0000000000770ee0
+[18369.894287] PKRU: 55555554
+[18369.894287] Call Trace:
+[18369.894288]  <TASK>
+[18369.894289]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18369.894291]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18369.894294]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18369.894300]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18369.894304]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18369.894318]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18369.894342]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18369.894359]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18369.894376]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18369.894394]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18369.894421]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18369.894436]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18369.894453]  genl_family_rcv_msg_doit+0xe4/0x150
+[18369.894458]  genl_rcv_msg+0xe2/0x1e0
+[18369.894459]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18369.894475]  ? genl_get_cmd+0xd0/0xd0
+[18369.894476]  netlink_rcv_skb+0x53/0x100
+[18369.894478]  genl_rcv+0x29/0x40
+[18369.894479]  netlink_unicast+0x21a/0x330
+[18369.894480]  netlink_sendmsg+0x25e/0x4d0
+[18369.894481]  sock_sendmsg+0x62/0x70
+[18369.894484]  ____sys_sendmsg+0x24e/0x290
+[18369.894485]  ? import_iovec+0x31/0x40
+[18369.894489]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18369.894490]  ? ____sys_sendmsg+0x24e/0x290
+[18369.894492]  ___sys_sendmsg+0x81/0xc0
+[18369.894493]  ? _copy_to_user+0x20/0x30
+[18369.894495]  ? sock_getsockopt+0x110/0xd80
+[18369.894496]  ? unix_ioctl+0x164/0x1e0
+[18369.894499]  ? __check_object_size.part.0+0x3a/0x150
+[18369.894501]  ? unix_ioctl+0x164/0x1e0
+[18369.894502]  ? __cond_resched+0x1a/0x50
+[18369.894504]  ? __cond_resched+0x1a/0x50
+[18369.894505]  ? aa_sk_perm+0x43/0x1b0
+[18369.894507]  __sys_sendmsg+0x62/0xb0
+[18369.894509]  __x64_sys_sendmsg+0x1d/0x20
+[18369.894510]  do_syscall_64+0x59/0xc0
+[18369.894512]  ? exit_to_user_mode_prepare+0x37/0xb0
+[18369.894515]  ? syscall_exit_to_user_mode+0x27/0x50
+[18369.894516]  ? do_syscall_64+0x69/0xc0
+[18369.894517]  ? exit_to_user_mode_prepare+0x37/0xb0
+[18369.894519]  ? syscall_exit_to_user_mode+0x27/0x50
+[18369.894520]  ? __x64_sys_getsockopt+0x1f/0x30
+[18369.894522]  ? do_syscall_64+0x69/0xc0
+[18369.894523]  ? do_syscall_64+0x69/0xc0
+[18369.894524]  ? syscall_exit_to_user_mode+0x27/0x50
+[18369.894525]  ? __x64_sys_recvmsg+0x1d/0x20
+[18369.894527]  ? do_syscall_64+0x69/0xc0
+[18369.894528]  ? do_syscall_64+0x69/0xc0
+[18369.894528]  ? do_syscall_64+0x69/0xc0
+[18369.894529]  ? asm_sysvec_apic_timer_interrupt+0xa/0x20
+[18369.894531]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18369.894533] RIP: 0033:0x7f03307763c7
+[18369.894535] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18369.894536] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18369.894537] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18369.894538] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18369.894539] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18369.894539] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d0018fe0
+[18369.894540] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001d880
+[18369.894542]  </TASK>
+[18369.894542] ---[ end trace 19db84aab23391cd ]---
+[18369.894544] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18371.894616] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18371.894625] rtw_8821ce 0000:01:00.0: mac power on failed
+[18371.894627] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18371.894629] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18371.894722] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18371.894725] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18371.894805] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18371.894863] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18371.894921] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18371.894979] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18371.895037] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18371.895097] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18371.895161] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18371.895219] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18371.895277] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18371.895334] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18371.895392] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18371.895450] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18374.760575] usb 1-2: new full-speed USB device number 5 using xhci_hcd
+[18374.909797] usb 1-2: New USB device found, idVendor=0fe6, idProduct=9700, bcdDevice= 1.01
+[18374.909807] usb 1-2: New USB device strings: Mfr=0, Product=2, SerialNumber=...
+[18374.909811] usb 1-2: Product: USB 2.0 10/100M Ethernet Adaptor
+[18374.960681] dm9601 1-2:1.0 eth0: register 'dm9601' at usb-0000:00:14.0-2, Davicom DM96xx USB 10/100 Ethernet, XX:XX:XX:XX:XX:XX
+[18374.960772] usbcore: registered new interface driver dm9601
+[18374.964251] usbcore: registered new interface driver sr9700
+[18374.975699] dm9601 1-2:1.0 enx00e04c534458: renamed from eth0
+[18375.083561] dm9601 1-2:1.0 enx00e04c534458: link up, 100Mbps, full-duplex, lpa 0xFFFF
+[18375.768763] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18375.768835] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18375.768900] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18375.768963] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18375.769025] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18375.769086] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18376.889931] dm9601 1-2:1.0 enx00e04c534458: link up, 100Mbps, full-duplex, lpa 0xFFFF
+[18376.979185] dm9601 1-2:1.0 enx00e04c534458: link up, 100Mbps, full-duplex, lpa 0xFFFF
+[18377.769173] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18377.769511] ------------[ cut here ]------------
+[18377.769513] failed to read DBI register, addr=0x0719
+[18377.769540] WARNING: CPU: 5 PID: 19537 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18377.769548] Modules linked in: sr9700 dm9601 usbnet mii rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel
+[18377.769582]  ecc joydev snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad
+[18377.769619]  sch_fq_codel msr parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18377.769635] CPU: 5 PID: 19537 Comm: kworker/u16:1 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18377.769637] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18377.769639] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18377.769669] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18377.769672] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18377.769673] RSP: 0018:ffffa338850ebcd8 EFLAGS: 00010286
+[18377.769675] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18377.769676] RDX: ffff9801a3b609c8 RSI: 0000000000000001 RDI: ffff9801a3b609c0
+[18377.769678] RBP: ffffa338850ebcf0 R08: 0000000000000003 R09: 00000000006f0d40
+[18377.769678] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18377.769679] R13: ffffa338850ebd07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18377.769680] FS:  0000000000000000(0000) GS:ffff9801a3b40000(0000) knlGS:0000000000000000
+[18377.769682] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18377.769683] CR2: 00007fae63a5f920 CR3: 00000001f0410003 CR4: 0000000000770ee0
+[18377.769684] PKRU: 55555554
+[18377.769685] Call Trace:
+[18377.769686]  <TASK>
+[18377.769688]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18377.769691]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18377.769700]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18377.769708]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18377.769713]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18377.769730]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18377.769751]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18377.769768]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18377.769785]  ? finish_task_switch.isra.0+0xa6/0x270
+[18377.769789]  process_one_work+0x228/0x3d0
+[18377.769792]  worker_thread+0x53/0x410
+[18377.769794]  kthread+0x11b/0x140
+[18377.769796]  ? process_one_work+0x3d0/0x3d0
+[18377.769797]  ? set_kthread_struct+0x50/0x50
+[18377.769799]  ret_from_fork+0x1f/0x30
+[18377.769803]  </TASK>
+[18377.769804] ---[ end trace 19db84aab23391ce ]---
+[18377.769805] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18377.769876] IPv6: ADDRCONF(NETDEV_CHANGE): enx00e04c534458: link becomes ready
+[18382.044377] ------------[ cut here ]------------
+[18382.044382] failed to read DBI register, addr=0x0719
+[18382.044427] WARNING: CPU: 1 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18382.044443] Modules linked in: sr9700 dm9601 usbnet mii rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel
+[18382.044550]  ecc joydev snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad
+[18382.044633]  sch_fq_codel msr parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18382.044668] CPU: 1 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18382.044674] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18382.044677] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18382.044684] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18382.044688] RSP: 0018:ffffa33880ee3790 EFLAGS: 00010286
+[18382.044692] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18382.044695] RDX: ffff9801a3a609c8 RSI: 0000000000000001 RDI: ffff9801a3a609c0
+[18382.044698] RBP: ffffa33880ee37a8 R08: 0000000000000003 R09: 00000000006f2998
+[18382.044700] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18382.044702] R13: ffffa33880ee37bf R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18382.044704] FS:  00007f033031c1c0(0000) GS:ffff9801a3a40000(0000) knlGS:0000000000000000
+[18382.044707] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18382.044710] CR2: 000055871fb28018 CR3: 000000010a63a006 CR4: 0000000000770ee0
+[18382.044713] PKRU: 55555554
+[18382.044715] Call Trace:
+[18382.044717]  <TASK>
+[18382.044721]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18382.044727]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18382.044736]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18382.044758]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18382.044773]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18382.044824]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18382.044885]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18382.044937]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18382.044986]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18382.045046]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18382.045098]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18382.045145]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18382.045201]  genl_family_rcv_msg_doit+0xe4/0x150
+[18382.045209]  genl_rcv_msg+0xe2/0x1e0
+[18382.045213]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18382.045262]  ? genl_get_cmd+0xd0/0xd0
+[18382.045266]  netlink_rcv_skb+0x53/0x100
+[18382.045270]  genl_rcv+0x29/0x40
+[18382.045274]  netlink_unicast+0x21a/0x330
+[18382.045278]  netlink_sendmsg+0x25e/0x4d0
+[18382.045282]  sock_sendmsg+0x62/0x70
+[18382.045288]  ____sys_sendmsg+0x24e/0x290
+[18382.045291]  ? import_iovec+0x31/0x40
+[18382.045298]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18382.045304]  ___sys_sendmsg+0x81/0xc0
+[18382.045309]  ? unix_ioctl+0x164/0x1e0
+[18382.045315]  ? sock_getsockopt+0x110/0xd80
+[18382.045318]  ? sock_getsockopt+0x110/0xd80
+[18382.045321]  ? __cond_resched+0x1a/0x50
+[18382.045326]  ? aa_sk_perm+0x43/0x1b0
+[18382.045329]  ? sock_do_ioctl+0x42/0x100
+[18382.045333]  ? _copy_from_user+0x2e/0x60
+[18382.045337]  ? netlink_setsockopt+0x33e/0x440
+[18382.045341]  ? __sys_setsockopt+0xea/0x1e0
+[18382.045346]  ? exit_to_user_mode_prepare+0x37/0xb0
+[18382.045362]  __sys_sendmsg+0x62/0xb0
+[18382.045368]  __x64_sys_sendmsg+0x1d/0x20
+[18382.045373]  do_syscall_64+0x59/0xc0
+[18382.045377]  ? do_syscall_64+0x69/0xc0
+[18382.045380]  ? do_syscall_64+0x69/0xc0
+[18382.045383]  ? do_syscall_64+0x69/0xc0
+[18382.045386]  ? asm_sysvec_apic_timer_interrupt+0xa/0x20
+[18382.045390]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18382.045396] RIP: 0033:0x7f03307763c7
+[18382.045400] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18382.045403] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18382.045408] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18382.045410] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18382.045412] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18382.045414] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d0020510
+[18382.045416] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001e140
+[18382.045420]  </TASK>
+[18382.045422] ---[ end trace 19db84aab23391cf ]---
+[18382.045427] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18384.045545] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18384.045563] rtw_8821ce 0000:01:00.0: mac power on failed
+[18384.045566] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18384.045567] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18384.045660] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18384.045663] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18384.045741] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18384.045802] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18384.045863] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18384.045921] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18384.045978] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18384.046036] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18384.046101] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18384.046160] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18384.046216] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18384.046273] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18384.046329] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18384.046385] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18387.892837] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18387.892912] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18387.892978] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18387.893041] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18387.893104] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18387.893168] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18389.893314] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18389.893651] ------------[ cut here ]------------
+[18389.893653] failed to read DBI register, addr=0x0719
+[18389.893687] WARNING: CPU: 2 PID: 17979 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18389.893694] Modules linked in: sr9700 dm9601 usbnet mii rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel
+[18389.893728]  ecc joydev snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad
+[18389.893766]  sch_fq_codel msr parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18389.893782] CPU: 2 PID: 17979 Comm: kworker/u16:0 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18389.893785] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18389.893786] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18389.893818] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18389.893821] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18389.893822] RSP: 0018:ffffa338862f7cd8 EFLAGS: 00010286
+[18389.893824] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18389.893825] RDX: ffff9801a3aa09c8 RSI: 0000000000000001 RDI: ffff9801a3aa09c0
+[18389.893826] RBP: ffffa338862f7cf0 R08: 0000000000000003 R09: 00000000006f4a30
+[18389.893827] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18389.893828] R13: ffffa338862f7d07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18389.893829] FS:  0000000000000000(0000) GS:ffff9801a3a80000(0000) knlGS:0000000000000000
+[18389.893830] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18389.893831] CR2: 00003e2c00daf100 CR3: 00000001f0410003 CR4: 0000000000770ee0
+[18389.893833] PKRU: 55555554
+[18389.893834] Call Trace:
+[18389.893835]  <TASK>
+[18389.893837]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18389.893840]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18389.893848]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18389.893856]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18389.893862]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18389.893879]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18389.893903]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18389.893923]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18389.893943]  ? finish_task_switch.isra.0+0xa6/0x270
+[18389.893947]  process_one_work+0x228/0x3d0
+[18389.893951]  worker_thread+0x53/0x410
+[18389.893953]  kthread+0x11b/0x140
+[18389.893955]  ? process_one_work+0x3d0/0x3d0
+[18389.893957]  ? set_kthread_struct+0x50/0x50
+[18389.893959]  ret_from_fork+0x1f/0x30
+[18389.893964]  </TASK>
+[18389.893964] ---[ end trace 19db84aab23391d0 ]---
+[18389.893966] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18390.444069] usb 1-2: unexpected tiny rx frame
+[18390.590465] usb 1-2: unexpected tiny rx frame
+[18411.043421] ------------[ cut here ]------------
+[18411.043425] failed to read DBI register, addr=0x0719
+[18411.043466] WARNING: CPU: 7 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18411.043485] Modules linked in: sr9700 dm9601 usbnet mii rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel
+[18411.043556]  ecc joydev snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad
+[18411.043632]  sch_fq_codel msr parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18411.043665] CPU: 7 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18411.043671] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18411.043673] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18411.043679] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18411.043683] RSP: 0018:ffffa33880ee3780 EFLAGS: 00010282
+[18411.043687] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18411.043690] RDX: ffff9801a3be09c8 RSI: 0000000000000001 RDI: ffff9801a3be09c0
+[18411.043692] RBP: ffffa33880ee3798 R08: 0000000000000003 R09: 00000000006f5e30
+[18411.043694] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18411.043696] R13: ffffa33880ee37af R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18411.043699] FS:  00007f033031c1c0(0000) GS:ffff9801a3bc0000(0000) knlGS:0000000000000000
+[18411.043702] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18411.043705] CR2: 00003e2c0c551e80 CR3: 000000010a63a002 CR4: 0000000000770ee0
+[18411.043708] PKRU: 55555554
+[18411.043709] Call Trace:
+[18411.043712]  <TASK>
+[18411.043716]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18411.043722]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18411.043731]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18411.043752]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18411.043766]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18411.043816]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18411.043876]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18411.043928]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18411.043978]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18411.044038]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18411.044090]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18411.044136]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18411.044192]  genl_family_rcv_msg_doit+0xe4/0x150
+[18411.044200]  genl_rcv_msg+0xe2/0x1e0
+[18411.044203]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18411.044254]  ? genl_get_cmd+0xd0/0xd0
+[18411.044258]  netlink_rcv_skb+0x53/0x100
+[18411.044262]  genl_rcv+0x29/0x40
+[18411.044265]  netlink_unicast+0x21a/0x330
+[18411.044269]  netlink_sendmsg+0x25e/0x4d0
+[18411.044273]  sock_sendmsg+0x62/0x70
+[18411.044279]  ____sys_sendmsg+0x24e/0x290
+[18411.044283]  ? import_iovec+0x31/0x40
+[18411.044290]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18411.044295]  ___sys_sendmsg+0x81/0xc0
+[18411.044300]  ? _copy_to_user+0x20/0x30
+[18411.044304]  ? sock_getsockopt+0x110/0xd80
+[18411.044308]  ? _copy_to_user+0x20/0x30
+[18411.044310]  ? sock_getsockopt+0x110/0xd80
+[18411.044314]  ? sock_ioctl+0xef/0x310
+[18411.044318]  ? unix_ioctl+0x164/0x1e0
+[18411.044324]  ? sock_do_ioctl+0x42/0x100
+[18411.044328]  ? aa_sk_perm+0x43/0x1b0
+[18411.044331]  ? __cond_resched+0x1a/0x50
+[18411.044335]  ? aa_sk_perm+0x43/0x1b0
+[18411.044338]  ? __cond_resched+0x1a/0x50
+[18411.044342]  __sys_sendmsg+0x62/0xb0
+[18411.044347]  __x64_sys_sendmsg+0x1d/0x20
+[18411.044352]  do_syscall_64+0x59/0xc0
+[18411.044358]  ? do_syscall_64+0x69/0xc0
+[18411.044363]  ? do_syscall_64+0x69/0xc0
+[18411.044367]  ? do_syscall_64+0x69/0xc0
+[18411.044371]  ? asm_sysvec_apic_timer_interrupt+0xa/0x20
+[18411.044377]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18411.044383] RIP: 0033:0x7f03307763c7
+[18411.044387] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18411.044390] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18411.044394] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18411.044396] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18411.044398] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18411.044400] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d0023110
+[18411.044403] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001d880
+[18411.044407]  </TASK>
+[18411.044409] ---[ end trace 19db84aab23391d1 ]---
+[18411.044414] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18413.044517] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18413.044536] rtw_8821ce 0000:01:00.0: mac power on failed
+[18413.044539] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18413.044541] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18413.044653] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18413.044656] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18413.044733] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18413.044817] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18413.044876] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18413.044935] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18413.044993] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18413.045051] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18413.045117] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18413.045175] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18413.045232] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18413.045283] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18413.045335] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18413.045405] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18416.909032] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18416.909104] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18416.909164] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18416.909224] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18416.909285] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18416.909346] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18418.909494] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18418.909855] ------------[ cut here ]------------
+[18418.909856] failed to read DBI register, addr=0x0719
+[18418.909884] WARNING: CPU: 4 PID: 19537 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18418.909891] Modules linked in: sr9700 dm9601 usbnet mii rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel
+[18418.909922]  ecc joydev snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad
+[18418.909956]  sch_fq_codel msr parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18418.909971] CPU: 4 PID: 19537 Comm: kworker/u16:1 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18418.909974] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18418.909975] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18418.910003] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18418.910006] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18418.910007] RSP: 0018:ffffa338850ebcd8 EFLAGS: 00010286
+[18418.910009] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18418.910010] RDX: ffff9801a3b209c8 RSI: 0000000000000001 RDI: ffff9801a3b209c0
+[18418.910011] RBP: ffffa338850ebcf0 R08: 0000000000000003 R09: 00000000006f7ff0
+[18418.910012] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18418.910013] R13: ffffa338850ebd07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18418.910013] FS:  0000000000000000(0000) GS:ffff9801a3b00000(0000) knlGS:0000000000000000
+[18418.910015] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18418.910015] CR2: 00001dc202ccc030 CR3: 0000000226232001 CR4: 0000000000770ee0
+[18418.910017] PKRU: 55555554
+[18418.910017] Call Trace:
+[18418.910019]  <TASK>
+[18418.910021]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18418.910024]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18418.910031]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18418.910038]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18418.910043]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18418.910059]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18418.910080]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18418.910098]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18418.910115]  ? finish_task_switch.isra.0+0xa6/0x270
+[18418.910120]  process_one_work+0x228/0x3d0
+[18418.910123]  worker_thread+0x53/0x410
+[18418.910125]  kthread+0x11b/0x140
+[18418.910127]  ? process_one_work+0x3d0/0x3d0
+[18418.910129]  ? set_kthread_struct+0x50/0x50
+[18418.910131]  ret_from_fork+0x1f/0x30
+[18418.910134]  </TASK>
+[18418.910134] ---[ end trace 19db84aab23391d2 ]---
+[18418.910136] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18419.336698] usb 1-2: unexpected tiny rx frame
+[18419.863863] usb 1-2: unexpected tiny rx frame
+[18422.805319] usb 1-2: unexpected tiny rx frame
+[18422.857857] usb 1-2: unexpected tiny rx frame
+[18453.046268] ------------[ cut here ]------------
+[18453.046272] failed to read DBI register, addr=0x0719
+[18453.046314] WARNING: CPU: 5 PID: 912 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18453.046328] Modules linked in: sr9700 dm9601 usbnet mii rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel
+[18453.046399]  ecc joydev snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad
+[18453.046475]  sch_fq_codel msr parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18453.046508] CPU: 5 PID: 912 Comm: wpa_supplicant Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18453.046513] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18453.046516] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18453.046522] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18453.046526] RSP: 0018:ffffa33880ee3780 EFLAGS: 00010282
+[18453.046530] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18453.046532] RDX: ffff9801a3b609c8 RSI: 0000000000000001 RDI: ffff9801a3b609c0
+[18453.046535] RBP: ffffa33880ee3798 R08: 0000000000000003 R09: 00000000006f9fc8
+[18453.046537] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18453.046539] R13: ffffa33880ee37af R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18453.046542] FS:  00007f033031c1c0(0000) GS:ffff9801a3b40000(0000) knlGS:0000000000000000
+[18453.046545] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18453.046547] CR2: 00001d0a06232000 CR3: 000000010a63a001 CR4: 0000000000770ee0
+[18453.046550] PKRU: 55555554
+[18453.046552] Call Trace:
+[18453.046554]  <TASK>
+[18453.046558]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18453.046564]  ? _raw_spin_unlock_bh+0x1e/0x20
+[18453.046572]  rtw_leave_ips+0x1c/0x80 [rtw88_core]
+[18453.046594]  rtw_ops_config+0xa3/0xe0 [rtw88_core]
+[18453.046608]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18453.046678]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18453.046742]  __ieee80211_start_scan+0x220/0x650 [mac80211]
+[18453.046794]  ieee80211_request_scan+0x30/0x50 [mac80211]
+[18453.046845]  ieee80211_scan+0x62/0xf0 [mac80211]
+[18453.046904]  rdev_scan+0x2a/0xb0 [cfg80211]
+[18453.046957]  cfg80211_scan+0xf2/0x110 [cfg80211]
+[18453.047003]  nl80211_trigger_scan+0x47a/0x920 [cfg80211]
+[18453.047058]  genl_family_rcv_msg_doit+0xe4/0x150
+[18453.047066]  genl_rcv_msg+0xe2/0x1e0
+[18453.047069]  ? nl80211_send_scan_start+0xa0/0xa0 [cfg80211]
+[18453.047120]  ? genl_get_cmd+0xd0/0xd0
+[18453.047124]  netlink_rcv_skb+0x53/0x100
+[18453.047128]  genl_rcv+0x29/0x40
+[18453.047131]  netlink_unicast+0x21a/0x330
+[18453.047135]  netlink_sendmsg+0x25e/0x4d0
+[18453.047139]  sock_sendmsg+0x62/0x70
+[18453.047145]  ____sys_sendmsg+0x24e/0x290
+[18453.047149]  ? import_iovec+0x31/0x40
+[18453.047156]  ? sendmsg_copy_msghdr+0x7b/0xa0
+[18453.047161]  ___sys_sendmsg+0x81/0xc0
+[18453.047166]  ? sock_do_ioctl+0x42/0x100
+[18453.047171]  ? aa_sk_perm+0x43/0x1b0
+[18453.047175]  ? sock_ioctl+0xef/0x310
+[18453.047179]  ? __cond_resched+0x1a/0x50
+[18453.047184]  ? __cond_resched+0x1a/0x50
+[18453.047187]  ? aa_sk_perm+0x43/0x1b0
+[18453.047190]  ? _copy_from_user+0x2e/0x60
+[18453.047194]  __sys_sendmsg+0x62/0xb0
+[18453.047199]  ? __x64_sys_setsockopt+0x1f/0x30
+[18453.047205]  __x64_sys_sendmsg+0x1d/0x20
+[18453.047209]  do_syscall_64+0x59/0xc0
+[18453.047219]  ? __x64_sys_getsockopt+0x1f/0x30
+[18453.047224]  ? do_syscall_64+0x69/0xc0
+[18453.047227]  ? do_syscall_64+0x69/0xc0
+[18453.047230]  ? do_syscall_64+0x69/0xc0
+[18453.047233]  ? asm_sysvec_apic_timer_interrupt+0xa/0x20
+[18453.047236]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[18453.047242] RIP: 0033:0x7f03307763c7
+[18453.047247] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+[18453.047250] RSP: 002b:00007ffe6e3bf518 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[18453.047254] RAX: ffffffffffffffda RBX: 00005606cffea650 RCX: 00007f03307763c7
+[18453.047256] RDX: 0000000000000000 RSI: 00007ffe6e3bf550 RDI: 0000000000000006
+[18453.047259] RBP: 00005606cffea560 R08: 0000000000000004 R09: 00007f0330864c60
+[18453.047260] R10: 00007ffe6e3bf620 R11: 0000000000000246 R12: 00005606d001ff30
+[18453.047263] R13: 00007ffe6e3bf550 R14: 00007ffe6e3bf620 R15: 00005606d001e140
+[18453.047267]  </TASK>
+[18453.047269] ---[ end trace 19db84aab23391d3 ]---
+[18453.047274] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18455.047420] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18455.047428] rtw_8821ce 0000:01:00.0: mac power on failed
+[18455.047430] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18455.047431] rtw_8821ce 0000:01:00.0: leave idle state failed
+[18455.047524] rtw_8821ce 0000:01:00.0: failed to leave ips state
+[18455.047526] rtw_8821ce 0000:01:00.0: failed to leave idle state
+[18455.047603] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18455.047661] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18455.047720] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18455.047777] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18455.047834] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18455.047891] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18455.047955] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18455.048012] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18455.048069] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18455.048126] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18455.048183] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18455.048240] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18458.921445] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[0]
+[18458.921527] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[1]
+[18458.921592] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[2]
+[18458.921655] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[3]
+[18458.921717] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[5]
+[18458.921778] rtw_8821ce 0000:01:00.0: timed out to flush pci tx ring[6]
+[18460.921929] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18460.922296] ------------[ cut here ]------------
+[18460.922297] failed to read DBI register, addr=0x0719
+[18460.922325] WARNING: CPU: 0 PID: 17444 at drivers/net/wireless/realtek/rtw88/pci.c:1305 rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18460.922332] Modules linked in: sr9700 dm9601 usbnet mii rfcomm ccm xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo nft_counter xt_addrtype nft_compat nf_tables libcrc32c nfnetlink br_netfilter bridge stp llc vboxnetadp(OE) vboxnetflt(OE) vboxdrv(OE) cmac algif_hash algif_skcipher af_alg overlay bnep nls_iso8859_1 snd_ctl_led snd_soc_skl_hda_dsp snd_soc_intel_hda_dsp_common snd_soc_hdac_hdmi snd_hda_codec_hdmi snd_hda_codec_realtek snd_hda_codec_generic snd_soc_dmic snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_soc_hdac_hda snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi intel_tcc_cooling x86_pkg_temp_thermal soundwire_bus btusb ledtrig_audio btrtl intel_powerclamp snd_soc_core btbcm btintel snd_compress bluetooth ac97_bus snd_pcm_dmaengine mei_hdcp ecdh_generic snd_hda_intel
+[18460.922363]  ecc joydev snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr rtw88_8821ce snd_hda_codec rtw88_8821c snd_hda_core snd_hwdep rtw88_pci coretemp snd_pcm rtw88_core kvm_intel snd_seq_midi i915 mac80211 snd_seq_midi_event kvm uvcvideo snd_rawmidi videobuf2_vmalloc videobuf2_memops snd_seq videobuf2_v4l2 snd_seq_device videobuf2_common crct10dif_pclmul ghash_clmulni_intel snd_timer ttm cfg80211 videodev drm_kms_helper snd aesni_intel mc usbhid cec crypto_simd hp_wmi input_leds cryptd platform_profile processor_thermal_device_pci_legacy sparse_keymap rc_core libarc4 wmi_bmof serio_raw efi_pstore processor_thermal_device soundcore intel_cstate hid_multitouch ee1004 i2c_algo_bit processor_thermal_rfim fb_sys_fops mei_me processor_thermal_mbox processor_thermal_rapl mei syscopyarea intel_rapl_common sysfillrect pmt_telemetry pmt_class sysimgblt intel_soc_dts_iosf igen6_edac mac_hid int3403_thermal int340x_thermal_zone wireless_hotkey int3400_thermal acpi_thermal_rel acpi_pad
+[18460.922398]  sch_fq_codel msr parport_pc ppdev drm lp parport ip_tables x_tables autofs4 hid_generic nvme ahci nvme_core libahci crc32_pclmul intel_lpss_pci xhci_pci intel_lpss i2c_i801 i2c_smbus xhci_pci_renesas idma64 i2c_hid_acpi vmd intel_pmt i2c_hid wmi hid video pinctrl_tigerlake
+[18460.922414] CPU: 0 PID: 17444 Comm: kworker/u16:2 Tainted: G        W  OE     5.15.13-051513-generic #202201050731
+[18460.922417] Hardware name: HP HP Laptop 17-cn0xxx/883C, BIOS F.04 04/01/2021
+[18460.922418] Workqueue: phy0 ieee80211_scan_work [mac80211]
+[18460.922458] RIP: 0010:rtw_dbi_read8.constprop.0+0xaa/0xc0 [rtw88_pci]
+[18460.922460] Code: 03 00 00 48 8b 40 58 ff d0 0f 1f 00 5b 41 5c 41 88 45 00 31 c0 41 5d 5d c3 be 19 07 00 00 48 c7 c7 50 68 84 c0 e8 90 6a 25 d0 <0f> 0b b8 fb ff ff ff 5b 41 5c 41 5d 5d c3 0f 1f 84 00 00 00 00 00
+[18460.922461] RSP: 0018:ffffa338845dfcd8 EFLAGS: 00010286
+[18460.922463] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000027
+[18460.922464] RDX: ffff9801a3a209c8 RSI: 0000000000000001 RDI: ffff9801a3a209c0
+[18460.922465] RBP: ffffa338845dfcf0 R08: 0000000000000003 R09: 00000000006fc258
+[18460.922466] R10: 0000000000ffff10 R11: 000000000000000f R12: ffff97ff0c7a2020
+[18460.922467] R13: ffffa338845dfd07 R14: ffff97ff0c7a68c8 R15: 0000000000000000
+[18460.922467] FS:  0000000000000000(0000) GS:ffff9801a3a00000(0000) knlGS:0000000000000000
+[18460.922468] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[18460.922469] CR2: 00001dc20190a020 CR3: 00000001f0410005 CR4: 0000000000770ef0
+[18460.922470] PKRU: 55555554
+[18460.922471] Call Trace:
+[18460.922472]  <TASK>
+[18460.922475]  rtw_pci_link_ps+0x6d/0xa0 [rtw88_pci]
+[18460.922477]  ? rtw_mac_power_off+0x10/0x20 [rtw88_core]
+[18460.922484]  rtw_enter_ips+0x3b/0x50 [rtw88_core]
+[18460.922491]  rtw_ops_config+0xd3/0xe0 [rtw88_core]
+[18460.922495]  ieee80211_hw_config+0x85/0x100 [mac80211]
+[18460.922509]  ieee80211_recalc_idle+0x29/0x30 [mac80211]
+[18460.922529]  __ieee80211_scan_completed+0x10d/0x350 [mac80211]
+[18460.922545]  ieee80211_scan_work+0x14b/0x5b0 [mac80211]
+[18460.922561]  ? finish_task_switch.isra.0+0xa6/0x270
+[18460.922566]  process_one_work+0x228/0x3d0
+[18460.922570]  worker_thread+0x53/0x410
+[18460.922571]  kthread+0x11b/0x140
+[18460.922573]  ? process_one_work+0x3d0/0x3d0
+[18460.922575]  ? set_kthread_struct+0x50/0x50
+[18460.922576]  ret_from_fork+0x1f/0x30
+[18460.922580]  </TASK>
+[18460.922580] ---[ end trace 19db84aab23391d4 ]---
+[18460.922582] rtw_8821ce 0000:01:00.0: failed to read ASPM, ret=-5
+[18503.456185] rtw_8821ce 0000:01:00.0: stop vif XX:XX:XX:XX:XX:XX on port 0
+[18505.456312] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18514.362330] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18514.362339] rtw_8821ce 0000:01:00.0: mac power on failed
+[18514.362341] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18516.373509] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18516.373518] rtw_8821ce 0000:01:00.0: mac power on failed
+[18516.373521] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18518.373887] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18518.373904] rtw_8821ce 0000:01:00.0: mac power on failed
+[18518.373907] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18531.046925] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18531.046933] rtw_8821ce 0000:01:00.0: mac power on failed
+[18531.046935] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18533.047275] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18533.047282] rtw_8821ce 0000:01:00.0: mac power on failed
+[18533.047283] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18545.043890] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18545.043898] rtw_8821ce 0000:01:00.0: mac power on failed
+[18545.043900] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18547.044204] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18547.044211] rtw_8821ce 0000:01:00.0: mac power on failed
+[18547.044213] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18559.051669] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18559.051687] rtw_8821ce 0000:01:00.0: mac power on failed
+[18559.051689] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18561.051998] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18561.052007] rtw_8821ce 0000:01:00.0: mac power on failed
+[18561.052009] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18561.933479] usb 1-2: unexpected tiny rx frame
+[18564.192983] usb 1-2: unexpected tiny rx frame
+[18573.053990] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18573.053999] rtw_8821ce 0000:01:00.0: mac power on failed
+[18573.054001] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18575.054527] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18575.054536] rtw_8821ce 0000:01:00.0: mac power on failed
+[18575.054539] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18587.047903] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18587.047912] rtw_8821ce 0000:01:00.0: mac power on failed
+[18587.047915] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18589.048227] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18589.048235] rtw_8821ce 0000:01:00.0: mac power on failed
+[18589.048237] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18608.571784] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18608.571792] rtw_8821ce 0000:01:00.0: mac power on failed
+[18608.571794] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18610.581827] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18610.581835] rtw_8821ce 0000:01:00.0: mac power on failed
+[18610.581837] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18612.582166] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18612.582174] rtw_8821ce 0000:01:00.0: mac power on failed
+[18612.582176] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18625.044010] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18625.044019] rtw_8821ce 0000:01:00.0: mac power on failed
+[18625.044020] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18627.044404] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18627.044412] rtw_8821ce 0000:01:00.0: mac power on failed
+[18627.044413] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18639.052130] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18639.052139] rtw_8821ce 0000:01:00.0: mac power on failed
+[18639.052141] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18641.052508] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18641.052516] rtw_8821ce 0000:01:00.0: mac power on failed
+[18641.052518] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18653.052360] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18653.052376] rtw_8821ce 0000:01:00.0: mac power on failed
+[18653.052380] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18655.052963] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18655.052971] rtw_8821ce 0000:01:00.0: mac power on failed
+[18655.052974] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18669.076659] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18669.076668] rtw_8821ce 0000:01:00.0: mac power on failed
+[18669.076670] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18671.076928] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18671.076937] rtw_8821ce 0000:01:00.0: mac power on failed
+[18671.076939] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18673.077107] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[18673.077115] rtw_8821ce 0000:01:00.0: mac power on failed
+[18673.077117] rtw_8821ce 0000:01:00.0: failed to power on mac
+[18738.991190] usb 1-2: unexpected tiny rx frame
+[19034.060024] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19034.060032] rtw_8821ce 0000:01:00.0: mac power on failed
+[19034.060034] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19036.075884] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19036.075894] rtw_8821ce 0000:01:00.0: mac power on failed
+[19036.075897] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19038.076303] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19038.076311] rtw_8821ce 0000:01:00.0: mac power on failed
+[19038.076313] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19050.049928] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19050.049945] rtw_8821ce 0000:01:00.0: mac power on failed
+[19050.049947] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19052.050264] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19052.050272] rtw_8821ce 0000:01:00.0: mac power on failed
+[19052.050274] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19064.048323] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19064.048331] rtw_8821ce 0000:01:00.0: mac power on failed
+[19064.048333] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19066.048690] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19066.048697] rtw_8821ce 0000:01:00.0: mac power on failed
+[19066.048699] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19078.055832] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19078.055840] rtw_8821ce 0000:01:00.0: mac power on failed
+[19078.055843] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19080.056255] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19080.056264] rtw_8821ce 0000:01:00.0: mac power on failed
+[19080.056265] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19092.057974] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19092.057982] rtw_8821ce 0000:01:00.0: mac power on failed
+[19092.057984] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19094.058342] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19094.058351] rtw_8821ce 0000:01:00.0: mac power on failed
+[19094.058353] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19106.052742] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19106.052750] rtw_8821ce 0000:01:00.0: mac power on failed
+[19106.052753] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19108.053193] rtw_8821ce 0000:01:00.0: failed to poll offset=0x5 mask=0x2 value=0x0
+[19108.053201] rtw_8821ce 0000:01:00.0: mac power on failed
+[19108.053202] rtw_8821ce 0000:01:00.0: failed to power on mac
+[19208.801859] usb 1-2: unexpected tiny rx frame
+[19232.138400] usb 1-2: unexpected tiny rx frame
+[19429.310464] usb 1-2: unexpected tiny rx frame
+[19467.416407] usb 1-2: unexpected tiny rx frame
+[19518.655081] usb 1-2: unexpected tiny rx frame
+[19522.380454] usb 1-2: unexpected tiny rx frame
+[19636.672875] usb 1-2: unexpected tiny rx frame
+[19718.148070] usb 1-2: unexpected tiny rx frame
+[19718.752071] usb 1-2: unexpected tiny rx frame
+[19718.801710] usb 1-2: unexpected tiny rx frame
+[19719.047956] usb 1-2: unexpected tiny rx frame
+[19774.074480] usb 1-2: unexpected tiny rx frame
+[19774.114072] usb 1-2: unexpected tiny rx frame
+[19774.226457] usb 1-2: unexpected tiny rx frame
+[19774.247407] usb 1-2: unexpected tiny rx frame
+[19774.367818] usb 1-2: unexpected tiny rx frame
+[21475.621397] perf: interrupt took too long (4010 > 3945), lowering kernel.perf_event_max_sample_rate to 49750
+[21778.251463] usb 1-2: unexpected tiny rx frame
+[21835.419119] Non-volatile memory driver v1.3
+[21835.594502] st: Version 20160209, fixed bufsize 32768, s/g segs 256
