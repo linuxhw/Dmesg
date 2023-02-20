@@ -1,0 +1,686 @@
+[   86.497814] ================================================================================
+[   86.497820] UBSAN: shift-out-of-bounds in /build/linux-hwe-5.15-wvjqoD/linux-hwe-5.15-5.15.0/drivers/net/wireless/intel/iwlegacy/4965-rs.c:671:18
+[   86.497824] shift exponent -1 is negative
+[   86.497827] CPU: 1 PID: 246 Comm: systemd-journal Not tainted 5.15.0-41-generic #44~20.04.1-Ubuntu
+[   86.497832] Hardware name: TOSHIBA Satellite Pro P200/ISRAA, BIOS V1.80 09/27/2007
+[   86.497834] Call Trace:
+[   86.497837]  <IRQ>
+[   86.497841]  dump_stack_lvl+0x4a/0x5f
+[   86.497850]  dump_stack+0x10/0x12
+[   86.497853]  ubsan_epilogue+0x9/0x45
+[   86.497857]  __ubsan_handle_shift_out_of_bounds.cold+0x61/0x10e
+[   86.497861]  ? update_load_avg+0x7c/0x640
+[   86.497867]  il4965_rs_get_adjacent_rate.constprop.0.cold+0x17/0xa4 [iwl4965]
+[   86.497879]  il4965_rs_get_best_rate+0xd3/0x150 [iwl4965]
+[   86.497887]  il4965_rs_switch_to_siso+0xb1/0x100 [iwl4965]
+[   86.497896]  il4965_rs_rate_scale_perform+0x113a/0x1cc0 [iwl4965]
+[   86.497905]  il4965_rs_tx_status+0x41f/0x6b0 [iwl4965]
+[   86.497916]  rate_control_tx_status+0xa9/0xb0 [mac80211]
+[   86.498014]  ieee80211_tx_status_ext+0x215/0x660 [mac80211]
+[   86.498066]  ieee80211_tx_status+0x74/0xa0 [mac80211]
+[   86.498117]  ieee80211_tasklet_handler+0xa2/0xd0 [mac80211]
+[   86.498167]  tasklet_action_common.isra.0+0xc0/0xf0
+[   86.498172]  tasklet_action+0x22/0x30
+[   86.498175]  __do_softirq+0xdd/0x2ea
+[   86.498179]  irq_exit_rcu+0x79/0xa0
+[   86.498182]  common_interrupt+0x8a/0xa0
+[   86.498186]  </IRQ>
+[   86.498188]  <TASK>
+[   86.498189]  asm_common_interrupt+0x1e/0x40
+[   86.498192] RIP: 0010:hook_ptrace_access_check+0x6/0x20
+[   86.498199] Code: 00 00 00 00 0f 1f 44 00 00 55 65 48 8b 34 25 c0 fb 01 00 48 89 e5 e8 e9 fe ff ff 5d c3 0f 1f 80 00 00 00 00 0f 1f 44 00 00 55 <48> 89 fe 65 48 8b 3c 25 c0 fb 01 00 48 89 e5 e8 c6 fe ff ff 5d c3
+[   86.498203] RSP: 0018:ffff9c1800257ac0 EFLAGS: 00000282
+[   86.498207] RAX: ffffffff8b5878c0 RBX: ffffffff8c70bd20 RCX: 0000000000000000
+[   86.498209] RDX: 0000000000000940 RSI: 0000000000000009 RDI: ffff8d008183af80
+[   86.498212] RBP: ffff9c1800257ae8 R08: 0000000000000000 R09: ffffffff8ce81360
+[   86.498214] R10: 00746e6572727563 R11: 0000000000000007 R12: 0000000000000009
+[   86.498216] R13: ffff8d008183af80 R14: 0000000000000009 R15: 0000000000000000
+[   86.498219]  ? hook_ptrace_traceme+0x20/0x20
+[   86.498224]  ? security_ptrace_access_check+0x2f/0x50
+[   86.498228]  __ptrace_may_access+0xd8/0x150
+[   86.498232]  ptrace_may_access+0x2f/0x50
+[   86.498236]  mm_access+0x65/0xa0
+[   86.498240]  proc_mem_open+0x37/0x90
+[   86.498244]  ? proc_mem_open+0x90/0x90
+[   86.498247]  proc_pid_attr_open+0x22/0x40
+[   86.498250]  do_dentry_open+0x159/0x380
+[   86.498255]  vfs_open+0x2d/0x30
+[   86.498258]  path_openat+0xb48/0x1150
+[   86.498263]  do_filp_open+0xb2/0x120
+[   86.498267]  ? __check_object_size+0x13f/0x150
+[   86.498271]  do_sys_openat2+0x245/0x320
+[   86.498274]  do_sys_open+0x46/0x80
+[   86.498278]  __x64_sys_openat+0x20/0x30
+[   86.498282]  do_syscall_64+0x5c/0xc0
+[   86.498285]  ? do_sys_openat2+0x1d3/0x320
+[   86.498288]  ? exit_to_user_mode_prepare+0x3d/0x1c0
+[   86.498292]  ? syscall_exit_to_user_mode+0x27/0x50
+[   86.498296]  ? __x64_sys_openat+0x20/0x30
+[   86.498299]  ? do_syscall_64+0x69/0xc0
+[   86.498302]  ? do_syscall_64+0x69/0xc0
+[   86.498304]  ? do_syscall_64+0x69/0xc0
+[   86.498307]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[   86.498312] RIP: 0033:0x7fb5ee79cdb4
+[   86.498316] Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 46 68 f8 ff 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 32 44 89 c7 89 44 24 0c e8 78 68 f8 ff 8b 44
+[   86.498319] RSP: 002b:00007ffd7d115330 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+[   86.498323] RAX: ffffffffffffffda RBX: 00007fb5ee42a3ae RCX: 00007fb5ee79cdb4
+[   86.498325] RDX: 0000000000080000 RSI: 00005590238beb10 RDI: 00000000ffffff9c
+[   86.498328] RBP: 00005590238beb10 R08: 0000000000000000 R09: 00007fb5ee7f7450
+[   86.498330] R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000080000
+[   86.498333] R13: 00007ffd7d115440 R14: 0000000000000000 R15: 0000000000000000
+[   86.498336]  </TASK>
+[   86.498356] ================================================================================
+[   98.452994] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[   98.453001] Bluetooth: BNEP filters: protocol multicast
+[   98.453007] Bluetooth: BNEP socket layer initialized
+[  118.836279] rfkill: input handler disabled
+[  137.638355] rfkill: input handler enabled
+[  150.240345] rfkill: input handler disabled
+[  200.494614] sr 0:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=8s
+[  200.494627] sr 0:0:0:0: [sr0] tag#0 Sense Key : Medium Error [current] 
+[  200.494633] sr 0:0:0:0: [sr0] tag#0 Add. Sense: Unrecovered read error
+[  200.494641] sr 0:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 1f bf d0 00 00 02 00
+[  200.494645] blk_update_request: I/O error, dev sr0, sector 8322880 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 0
+[  209.018619] sr 0:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=8s
+[  209.018633] sr 0:0:0:0: [sr0] tag#0 Sense Key : Medium Error [current] 
+[  209.018639] sr 0:0:0:0: [sr0] tag#0 Add. Sense: Unrecovered read error
+[  209.018646] sr 0:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 1f bf d0 00 00 02 00
+[  209.018650] blk_update_request: I/O error, dev sr0, sector 8322880 op 0x0:(READ) flags 0x0 phys_seg 2 prio class 0
+[  209.018664] Buffer I/O error on dev sr0, logical block 2080720, async page read
+[  209.018673] Buffer I/O error on dev sr0, logical block 2080721, async page read
+[  650.946067] perf: interrupt took too long (2523 > 2500), lowering kernel.perf_event_max_sample_rate to 79250
+[  672.430165] CE: hpet increased min_delta_ns to 20115 nsec
+[ 1033.994526] perf: interrupt took too long (3155 > 3153), lowering kernel.perf_event_max_sample_rate to 63250
+[ 1356.047874] perf: interrupt took too long (3952 > 3943), lowering kernel.perf_event_max_sample_rate to 50500
+[ 1909.310314] perf: interrupt took too long (4943 > 4940), lowering kernel.perf_event_max_sample_rate to 40250
+[ 5428.029807] wlp5s0: deauthenticating from XXX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 5433.162460] PM: suspend entry (deep)
+[ 5437.334659] ata3.00: exception Emask 0x0 SAct 0x218020 SErr 0x0 action 0x0
+[ 5437.334677] ata3.00: irq_stat 0x40000008
+[ 5437.334685] ata3.00: failed command: READ FPDMA QUEUED
+[ 5437.334691] ata3.00: cmd 60/08:28:68:97:58/00:00:0a:00:00/40 tag 5 ncq dma 4096 in
+[ 5437.334691]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 5437.334708] ata3.00: status: { DRDY ERR }
+[ 5437.334715] ata3.00: error: { UNC }
+[ 5437.336624] ata3.00: configured for UDMA/100
+[ 5437.336650] sd 2:0:0:0: [sda] tag#5 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 5437.336661] sd 2:0:0:0: [sda] tag#5 Sense Key : Medium Error [current] 
+[ 5437.336665] sd 2:0:0:0: [sda] tag#5 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 5437.336669] sd 2:0:0:0: [sda] tag#5 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 5437.336671] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 0
+[ 5437.336702] ata3: EH complete
+[ 5441.450690] ata3.00: exception Emask 0x0 SAct 0x800000 SErr 0x0 action 0x0
+[ 5441.450708] ata3.00: irq_stat 0x40000008
+[ 5441.450716] ata3.00: failed command: READ FPDMA QUEUED
+[ 5441.450722] ata3.00: cmd 60/08:b8:68:97:58/00:00:0a:00:00/40 tag 23 ncq dma 4096 in
+[ 5441.450722]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 5441.450740] ata3.00: status: { DRDY ERR }
+[ 5441.450747] ata3.00: error: { UNC }
+[ 5441.452748] ata3.00: configured for UDMA/100
+[ 5441.452764] sd 2:0:0:0: [sda] tag#23 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 5441.452768] sd 2:0:0:0: [sda] tag#23 Sense Key : Medium Error [current] 
+[ 5441.452772] sd 2:0:0:0: [sda] tag#23 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 5441.452777] sd 2:0:0:0: [sda] tag#23 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 5441.452779] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 5441.452823] ata3: EH complete
+[ 5445.542686] ata3.00: exception Emask 0x0 SAct 0x2000080 SErr 0x0 action 0x0
+[ 5445.542703] ata3.00: irq_stat 0x40000008
+[ 5445.542711] ata3.00: failed command: READ FPDMA QUEUED
+[ 5445.542717] ata3.00: cmd 60/08:38:68:97:58/00:00:0a:00:00/40 tag 7 ncq dma 4096 in
+[ 5445.542717]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 5445.542734] ata3.00: status: { DRDY ERR }
+[ 5445.542741] ata3.00: error: { UNC }
+[ 5445.544521] ata3.00: configured for UDMA/100
+[ 5445.544547] sd 2:0:0:0: [sda] tag#7 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 5445.544555] sd 2:0:0:0: [sda] tag#7 Sense Key : Medium Error [current] 
+[ 5445.544561] sd 2:0:0:0: [sda] tag#7 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 5445.544568] sd 2:0:0:0: [sda] tag#7 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 5445.544572] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 5445.544614] ata3: EH complete
+[ 5449.822656] ata3.00: exception Emask 0x0 SAct 0x20000000 SErr 0x0 action 0x0
+[ 5449.822673] ata3.00: irq_stat 0x40000008
+[ 5449.822682] ata3.00: failed command: READ FPDMA QUEUED
+[ 5449.822688] ata3.00: cmd 60/08:e8:68:97:58/00:00:0a:00:00/40 tag 29 ncq dma 4096 in
+[ 5449.822688]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 5449.822706] ata3.00: status: { DRDY ERR }
+[ 5449.822713] ata3.00: error: { UNC }
+[ 5449.824495] ata3.00: configured for UDMA/100
+[ 5449.824519] sd 2:0:0:0: [sda] tag#29 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 5449.824527] sd 2:0:0:0: [sda] tag#29 Sense Key : Medium Error [current] 
+[ 5449.824534] sd 2:0:0:0: [sda] tag#29 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 5449.824541] sd 2:0:0:0: [sda] tag#29 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 5449.824545] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 5449.824584] ata3: EH complete
+[ 5453.962661] ata3.00: exception Emask 0x0 SAct 0x400000 SErr 0x0 action 0x0
+[ 5453.962677] ata3.00: irq_stat 0x40000008
+[ 5453.962686] ata3.00: failed command: READ FPDMA QUEUED
+[ 5453.962691] ata3.00: cmd 60/08:b0:68:97:58/00:00:0a:00:00/40 tag 22 ncq dma 4096 in
+[ 5453.962691]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 5453.962709] ata3.00: status: { DRDY ERR }
+[ 5453.962716] ata3.00: error: { UNC }
+[ 5453.964595] ata3.00: configured for UDMA/100
+[ 5453.964618] sd 2:0:0:0: [sda] tag#22 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 5453.964626] sd 2:0:0:0: [sda] tag#22 Sense Key : Medium Error [current] 
+[ 5453.964632] sd 2:0:0:0: [sda] tag#22 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 5453.964643] sd 2:0:0:0: [sda] tag#22 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 5453.964650] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 5453.964679] ata3: EH complete
+[ 5455.236421] Filesystems sync: 22.073 seconds
+[ 5455.370157] rfkill: input handler enabled
+[ 5455.463223] Freezing user space processes ... (elapsed 0.015 seconds) done.
+[ 5455.478274] OOM killer disabled.
+[ 5455.478277] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[ 5455.479654] printk: Suspending console(s) (use no_console_suspend to debug)
+[ 5455.496124] sd 2:0:0:0: [sda] Synchronizing SCSI cache
+[ 5455.582070] sd 2:0:0:0: [sda] Stopping disk
+[ 5456.635505] ACPI: EC: interrupt blocked
+[ 5456.722632] ACPI: PM: Preparing to enter system sleep state S3
+[ 5456.722881] ACPI: EC: event blocked
+[ 5456.722883] ACPI: EC: EC stopped
+[ 5456.722885] ACPI: PM: Saving platform NVS memory
+[ 5456.722987] Disabling non-boot CPUs ...
+[ 5456.724631] smpboot: CPU 1 is now offline
+[ 5456.724708] ACPI: PM: Low-level resume complete
+[ 5456.724708] ACPI: EC: EC started
+[ 5456.724708] ACPI: PM: Restoring platform NVS memory
+[ 5456.724708] Enabling non-boot CPUs ...
+[ 5456.724708] x86: Booting SMP configuration:
+[ 5456.724708] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[ 5456.733384] CPU1 is up
+[ 5456.735392] ACPI: PM: Waking up from system sleep state S3
+[ 5456.742813] ACPI: EC: interrupt unblocked
+[ 5456.766849] usb usb3: root hub lost power or was reset
+[ 5456.767156] usb usb4: root hub lost power or was reset
+[ 5456.767427] ACPI: EC: event unblocked
+[ 5456.769111] usb usb5: root hub lost power or was reset
+[ 5456.769222] usb usb6: root hub lost power or was reset
+[ 5456.769325] usb usb7: root hub lost power or was reset
+[ 5456.769740] sd 2:0:0:0: [sda] Starting disk
+[ 5456.774293] [drm] PCIE GART of 512M enabled (table at 0x0000000000142000).
+[ 5456.774321] radeon 0000:01:00.0: WB enabled
+[ 5456.774326] radeon 0000:01:00.0: fence driver on ring 0 use gpu addr 0x0000000010000c00
+[ 5456.774780] radeon 0000:01:00.0: fence driver on ring 5 use gpu addr 0x00000000000521d0
+[ 5456.774914] debugfs: File 'radeon_ring_gfx' in directory '0' already present!
+[ 5456.806165] [drm] ring test on 0 succeeded in 1 usecs
+[ 5456.806169] debugfs: File 'radeon_ring_uvd' in directory '0' already present!
+[ 5456.981003] [drm] ring test on 5 succeeded in 1 usecs
+[ 5456.981014] [drm] UVD initialized successfully.
+[ 5456.981042] [drm] ib test on ring 0 succeeded in 0 usecs
+[ 5457.084893] ata4: SATA link down (SStatus 4 SControl 300)
+[ 5457.084918] ata5: SATA link down (SStatus 4 SControl 300)
+[ 5457.502189] firewire_core 0000:0c:04.1: rediscovered device fw0
+[ 5457.558467] ata1.00: ACPI cmd ef/XXX (SET FEATURES) filtered out
+[ 5457.558473] ata1.00: ACPI cmd ef/XXX (SET FEATURES) filtered out
+[ 5457.630172] [drm] ib test on ring 5 succeeded
+[ 5459.026133] ata3: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
+[ 5459.027107] ata3.00: unexpected _GTF length (8)
+[ 5459.028370] ata3.00: unexpected _GTF length (8)
+[ 5459.028585] ata3.00: configured for UDMA/100
+[ 5459.234743] OOM killer enabled.
+[ 5459.234745] Restarting tasks ... done.
+[ 5459.244600] video LNXVIDEO:00: Restoring backlight state
+[ 5459.254438] PM: suspend exit
+[ 5459.368619] rfkill: input handler disabled
+[ 5459.905586] RTL8201CP Ethernet r8169-0-400:00: attached PHY driver (mii_bus:phy_addr=r8169-0-400:00, irq=MAC)
+[ 5459.968269] r8169 0000:04:00.0 enp4s0: Link is Down
+[ 5462.660300] wlp5s0: authenticate with XXX
+[ 5462.660425] wlp5s0: send auth to XXX (try 1/3)
+[ 5462.662343] wlp5s0: authenticated
+[ 5462.666080] wlp5s0: associate with XXX (try 1/3)
+[ 5462.671600] wlp5s0: RX AssocResp from XXX (capab=0x1011 status=0 aid=7)
+[ 5462.700750] wlp5s0: associated
+[ 5462.745098] IPv6: ADDRCONF(NETDEV_CHANGE): wlp5s0: link becomes ready
+[ 8588.419581] wlp5s0: deauthenticating from XXX by local choice (Reason: 3=DEAUTH_LEAVING)
+[ 8598.366672] ata3.00: exception Emask 0x0 SAct 0x40100000 SErr 0x0 action 0x0
+[ 8598.366689] ata3.00: irq_stat 0x40000008
+[ 8598.366698] ata3.00: failed command: READ FPDMA QUEUED
+[ 8598.366704] ata3.00: cmd 60/08:a0:68:97:58/00:00:0a:00:00/40 tag 20 ncq dma 4096 in
+[ 8598.366704]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 8598.366722] ata3.00: status: { DRDY ERR }
+[ 8598.366729] ata3.00: error: { UNC }
+[ 8598.368647] ata3.00: configured for UDMA/100
+[ 8598.368671] sd 2:0:0:0: [sda] tag#20 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 8598.368683] sd 2:0:0:0: [sda] tag#20 Sense Key : Medium Error [current] 
+[ 8598.368686] sd 2:0:0:0: [sda] tag#20 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 8598.368691] sd 2:0:0:0: [sda] tag#20 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 8598.368693] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 0
+[ 8598.368722] ata3: EH complete
+[ 8602.442711] ata3.00: exception Emask 0x0 SAct 0x2 SErr 0x0 action 0x0
+[ 8602.442730] ata3.00: irq_stat 0x40000008
+[ 8602.442738] ata3.00: failed command: READ FPDMA QUEUED
+[ 8602.442744] ata3.00: cmd 60/08:08:68:97:58/00:00:0a:00:00/40 tag 1 ncq dma 4096 in
+[ 8602.442744]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 8602.442762] ata3.00: status: { DRDY ERR }
+[ 8602.442768] ata3.00: error: { UNC }
+[ 8602.444783] ata3.00: configured for UDMA/100
+[ 8602.444798] sd 2:0:0:0: [sda] tag#1 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 8602.444802] sd 2:0:0:0: [sda] tag#1 Sense Key : Medium Error [current] 
+[ 8602.444806] sd 2:0:0:0: [sda] tag#1 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 8602.444810] sd 2:0:0:0: [sda] tag#1 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 8602.444812] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 8602.444857] ata3: EH complete
+[ 8606.510722] ata3.00: exception Emask 0x0 SAct 0xfc008 SErr 0x0 action 0x0
+[ 8606.510740] ata3.00: irq_stat 0x40000008
+[ 8606.510749] ata3.00: failed command: READ FPDMA QUEUED
+[ 8606.510754] ata3.00: cmd 60/08:70:68:97:58/00:00:0a:00:00/40 tag 14 ncq dma 4096 in
+[ 8606.510754]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 8606.510772] ata3.00: status: { DRDY ERR }
+[ 8606.510779] ata3.00: error: { UNC }
+[ 8606.512771] ata3.00: configured for UDMA/100
+[ 8606.512796] sd 2:0:0:0: [sda] tag#14 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 8606.512801] sd 2:0:0:0: [sda] tag#14 Sense Key : Medium Error [current] 
+[ 8606.512804] sd 2:0:0:0: [sda] tag#14 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 8606.512809] sd 2:0:0:0: [sda] tag#14 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 8606.512811] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 8606.512836] ata3: EH complete
+[ 8610.822709] ata3.00: exception Emask 0x0 SAct 0xf80 SErr 0x0 action 0x0
+[ 8610.822726] ata3.00: irq_stat 0x40000008
+[ 8610.822735] ata3.00: failed command: READ FPDMA QUEUED
+[ 8610.822741] ata3.00: cmd 60/08:38:68:97:58/00:00:0a:00:00/40 tag 7 ncq dma 4096 in
+[ 8610.822741]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 8610.822758] ata3.00: status: { DRDY ERR }
+[ 8610.822764] ata3.00: error: { UNC }
+[ 8610.824697] ata3.00: configured for UDMA/100
+[ 8610.824722] sd 2:0:0:0: [sda] tag#7 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 8610.824733] sd 2:0:0:0: [sda] tag#7 Sense Key : Medium Error [current] 
+[ 8610.824737] sd 2:0:0:0: [sda] tag#7 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 8610.824741] sd 2:0:0:0: [sda] tag#7 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 8610.824743] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 8610.824774] ata3: EH complete
+[ 8614.926695] ata3.00: exception Emask 0x0 SAct 0x148000 SErr 0x0 action 0x0
+[ 8614.926712] ata3.00: irq_stat 0x40000008
+[ 8614.926721] ata3.00: failed command: READ FPDMA QUEUED
+[ 8614.926727] ata3.00: cmd 60/08:90:68:97:58/00:00:0a:00:00/40 tag 18 ncq dma 4096 in
+[ 8614.926727]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 8614.926745] ata3.00: status: { DRDY ERR }
+[ 8614.926752] ata3.00: error: { UNC }
+[ 8614.928607] ata3.00: configured for UDMA/100
+[ 8614.928644] sd 2:0:0:0: [sda] tag#18 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 8614.928655] sd 2:0:0:0: [sda] tag#18 Sense Key : Medium Error [current] 
+[ 8614.928658] sd 2:0:0:0: [sda] tag#18 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 8614.928663] sd 2:0:0:0: [sda] tag#18 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[ 8614.928665] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 8614.928685] ata3: EH complete
+[ 8614.952945] PM: suspend entry (deep)
+[ 8616.374992] Filesystems sync: 1.422 seconds
+[ 8616.526310] rfkill: input handler enabled
+[ 8616.593110] Freezing user space processes ... (elapsed 0.025 seconds) done.
+[ 8616.618280] OOM killer disabled.
+[ 8616.618283] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[ 8616.619709] printk: Suspending console(s) (use no_console_suspend to debug)
+[ 8616.630167] sd 2:0:0:0: [sda] Synchronizing SCSI cache
+[ 8616.637828] sd 2:0:0:0: [sda] Stopping disk
+[ 8617.975605] ACPI: EC: interrupt blocked
+[ 8618.070629] ACPI: PM: Preparing to enter system sleep state S3
+[ 8618.070877] ACPI: EC: event blocked
+[ 8618.070879] ACPI: EC: EC stopped
+[ 8618.070881] ACPI: PM: Saving platform NVS memory
+[ 8618.070979] Disabling non-boot CPUs ...
+[ 8618.072601] smpboot: CPU 1 is now offline
+[ 8618.074358] ACPI: PM: Low-level resume complete
+[ 8618.074358] ACPI: EC: EC started
+[ 8618.074358] ACPI: PM: Restoring platform NVS memory
+[ 8618.074358] Enabling non-boot CPUs ...
+[ 8618.074358] x86: Booting SMP configuration:
+[ 8618.074358] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[ 8618.082562] CPU1 is up
+[ 8618.084487] ACPI: PM: Waking up from system sleep state S3
+[ 8618.092411] ACPI: EC: interrupt unblocked
+[ 8618.111744] usb usb3: root hub lost power or was reset
+[ 8618.113038] usb usb4: root hub lost power or was reset
+[ 8618.113060] ACPI: EC: event unblocked
+[ 8618.114403] usb usb5: root hub lost power or was reset
+[ 8618.114519] usb usb6: root hub lost power or was reset
+[ 8618.114605] usb usb7: root hub lost power or was reset
+[ 8618.114900] sd 2:0:0:0: [sda] Starting disk
+[ 8618.118071] [drm] PCIE GART of 512M enabled (table at 0x0000000000142000).
+[ 8618.118114] radeon 0000:01:00.0: WB enabled
+[ 8618.118118] radeon 0000:01:00.0: fence driver on ring 0 use gpu addr 0x0000000010000c00
+[ 8618.118589] radeon 0000:01:00.0: fence driver on ring 5 use gpu addr 0x00000000000521d0
+[ 8618.118713] debugfs: File 'radeon_ring_gfx' in directory '0' already present!
+[ 8618.149840] [drm] ring test on 0 succeeded in 1 usecs
+[ 8618.149843] debugfs: File 'radeon_ring_uvd' in directory '0' already present!
+[ 8618.324487] [drm] ring test on 5 succeeded in 1 usecs
+[ 8618.324494] [drm] UVD initialized successfully.
+[ 8618.324521] [drm] ib test on ring 0 succeeded in 0 usecs
+[ 8618.426703] ata4: SATA link down (SStatus 4 SControl 300)
+[ 8618.426734] ata5: SATA link down (SStatus 4 SControl 300)
+[ 8618.686104] firewire_core 0000:0c:04.1: rediscovered device fw0
+[ 8618.914460] ata1.00: ACPI cmd ef/XXX (SET FEATURES) filtered out
+[ 8618.914465] ata1.00: ACPI cmd ef/XXX (SET FEATURES) filtered out
+[ 8618.974131] [drm] ib test on ring 5 succeeded
+[ 8620.366159] ata3: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
+[ 8620.367161] ata3.00: unexpected _GTF length (8)
+[ 8620.368452] ata3.00: unexpected _GTF length (8)
+[ 8620.368695] ata3.00: configured for UDMA/100
+[ 8620.546727] OOM killer enabled.
+[ 8620.546730] Restarting tasks ... done.
+[ 8620.559887] video LNXVIDEO:00: Restoring backlight state
+[ 8620.562926] PM: suspend exit
+[ 8620.710184] rfkill: input handler disabled
+[ 8621.305347] RTL8201CP Ethernet r8169-0-400:00: attached PHY driver (mii_bus:phy_addr=r8169-0-400:00, irq=MAC)
+[ 8621.367586] r8169 0000:04:00.0 enp4s0: Link is Down
+[ 8624.117272] wlp5s0: authenticate with XXX
+[ 8624.117399] wlp5s0: send auth to XXX (try 1/3)
+[ 8624.125641] wlp5s0: authenticated
+[ 8624.126064] wlp5s0: associate with XXX (try 1/3)
+[ 8624.130176] wlp5s0: RX AssocResp from XXX (capab=0x1011 status=0 aid=7)
+[ 8624.159047] wlp5s0: associated
+[ 8624.209060] IPv6: ADDRCONF(NETDEV_CHANGE): wlp5s0: link becomes ready
+[ 8756.898644] ata3.00: exception Emask 0x0 SAct 0x18000800 SErr 0x0 action 0x0
+[ 8756.898662] ata3.00: irq_stat 0x40000008
+[ 8756.898671] ata3.00: failed command: READ FPDMA QUEUED
+[ 8756.898677] ata3.00: cmd 60/00:d8:d8:49:44/01:00:0a:00:00/40 tag 27 ncq dma 131072 in
+[ 8756.898677]          res 41/40:00:21:4a:44/00:01:0a:00:00/6a Emask 0x409 (media error) <F>
+[ 8756.898695] ata3.00: status: { DRDY ERR }
+[ 8756.898702] ata3.00: error: { UNC }
+[ 8756.900518] ata3.00: configured for UDMA/100
+[ 8756.900561] sd 2:0:0:0: [sda] tag#27 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=5s
+[ 8756.900565] sd 2:0:0:0: [sda] tag#27 Sense Key : Medium Error [current] 
+[ 8756.900568] sd 2:0:0:0: [sda] tag#27 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 8756.900573] sd 2:0:0:0: [sda] tag#27 CDB: Read(10) 28 00 0a 44 49 d8 00 01 00 00
+[ 8756.900575] blk_update_request: I/O error, dev sda, sector 172247585 op 0x0:(READ) flags 0x80700 phys_seg 23 prio class 0
+[ 8756.900612] ata3: EH complete
+[ 8801.650681] ata3.00: exception Emask 0x0 SAct 0x30000 SErr 0x0 action 0x0
+[ 8801.650699] ata3.00: irq_stat 0x40000008
+[ 8801.650707] ata3.00: failed command: READ FPDMA QUEUED
+[ 8801.650713] ata3.00: cmd 60/20:80:c8:bd:d5/00:00:0c:00:00/40 tag 16 ncq dma 16384 in
+[ 8801.650713]          res 41/40:20:d8:bd:d5/00:00:0c:00:00/6c Emask 0x409 (media error) <F>
+[ 8801.650731] ata3.00: status: { DRDY ERR }
+[ 8801.650738] ata3.00: error: { UNC }
+[ 8801.652503] ata3.00: configured for UDMA/100
+[ 8801.652528] sd 2:0:0:0: [sda] tag#16 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 8801.652542] sd 2:0:0:0: [sda] tag#16 Sense Key : Medium Error [current] 
+[ 8801.652546] sd 2:0:0:0: [sda] tag#16 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 8801.652550] sd 2:0:0:0: [sda] tag#16 CDB: Read(10) 28 00 0c d5 bd c8 00 00 20 00
+[ 8801.652552] blk_update_request: I/O error, dev sda, sector 215334360 op 0x0:(READ) flags 0x80700 phys_seg 2 prio class 0
+[ 8801.652586] ata3: EH complete
+[ 8809.886663] ata3.00: exception Emask 0x0 SAct 0x100 SErr 0x0 action 0x0
+[ 8809.886681] ata3.00: irq_stat 0x40000008
+[ 8809.886690] ata3.00: failed command: READ FPDMA QUEUED
+[ 8809.886695] ata3.00: cmd 60/08:40:d8:bd:d5/00:00:0c:00:00/40 tag 8 ncq dma 4096 in
+[ 8809.886695]          res 41/40:08:d8:bd:d5/00:00:0c:00:00/6c Emask 0x409 (media error) <F>
+[ 8809.886713] ata3.00: status: { DRDY ERR }
+[ 8809.886720] ata3.00: error: { UNC }
+[ 8809.888645] ata3.00: configured for UDMA/100
+[ 8809.888671] sd 2:0:0:0: [sda] tag#8 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 8809.888684] sd 2:0:0:0: [sda] tag#8 Sense Key : Medium Error [current] 
+[ 8809.888687] sd 2:0:0:0: [sda] tag#8 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 8809.888692] sd 2:0:0:0: [sda] tag#8 CDB: Read(10) 28 00 0c d5 bd d8 00 00 08 00
+[ 8809.888694] blk_update_request: I/O error, dev sda, sector 215334360 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 8809.888718] ata3: EH complete
+[ 8814.254679] ata3.00: exception Emask 0x0 SAct 0x200 SErr 0x0 action 0x0
+[ 8814.254698] ata3.00: irq_stat 0x40000008
+[ 8814.254706] ata3.00: failed command: READ FPDMA QUEUED
+[ 8814.254712] ata3.00: cmd 60/08:48:d8:bd:d5/00:00:0c:00:00/40 tag 9 ncq dma 4096 in
+[ 8814.254712]          res 41/40:08:d8:bd:d5/00:00:0c:00:00/6c Emask 0x409 (media error) <F>
+[ 8814.254730] ata3.00: status: { DRDY ERR }
+[ 8814.254736] ata3.00: error: { UNC }
+[ 8814.256536] ata3.00: configured for UDMA/100
+[ 8814.256561] sd 2:0:0:0: [sda] tag#9 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[ 8814.256569] sd 2:0:0:0: [sda] tag#9 Sense Key : Medium Error [current] 
+[ 8814.256575] sd 2:0:0:0: [sda] tag#9 Add. Sense: Unrecovered read error - auto reallocate failed
+[ 8814.256583] sd 2:0:0:0: [sda] tag#9 CDB: Read(10) 28 00 0c d5 bd d8 00 00 08 00
+[ 8814.256587] blk_update_request: I/O error, dev sda, sector 215334360 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[ 8814.256662] ata3: EH complete
+[13319.696389] iwl4965 0000:05:00.0: Received BA when not expected
+[18747.418138] perf: interrupt took too long (6197 > 6178), lowering kernel.perf_event_max_sample_rate to 32250
+[20301.768580] wlp5s0: deauthenticating from XXX by local choice (Reason: 3=DEAUTH_LEAVING)
+[20311.662709] ata3.00: exception Emask 0x0 SAct 0x80000023 SErr 0x0 action 0x0
+[20311.662728] ata3.00: irq_stat 0x40000008
+[20311.662736] ata3.00: failed command: READ FPDMA QUEUED
+[20311.662742] ata3.00: cmd 60/08:08:68:97:58/00:00:0a:00:00/40 tag 1 ncq dma 4096 in
+[20311.662742]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[20311.662760] ata3.00: status: { DRDY ERR }
+[20311.662766] ata3.00: error: { UNC }
+[20311.664614] ata3.00: configured for UDMA/100
+[20311.664645] sd 2:0:0:0: [sda] tag#1 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[20311.664653] sd 2:0:0:0: [sda] tag#1 Sense Key : Medium Error [current] 
+[20311.664660] sd 2:0:0:0: [sda] tag#1 Add. Sense: Unrecovered read error - auto reallocate failed
+[20311.664667] sd 2:0:0:0: [sda] tag#1 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[20311.664671] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 0
+[20311.664704] ata3: EH complete
+[20315.746652] ata3.00: exception Emask 0x0 SAct 0x4004 SErr 0x0 action 0x0
+[20315.746671] ata3.00: irq_stat 0x40000008
+[20315.746679] ata3.00: failed command: READ FPDMA QUEUED
+[20315.746685] ata3.00: cmd 60/08:10:68:97:58/00:00:0a:00:00/40 tag 2 ncq dma 4096 in
+[20315.746685]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[20315.746703] ata3.00: status: { DRDY ERR }
+[20315.746709] ata3.00: error: { UNC }
+[20315.748668] ata3.00: configured for UDMA/100
+[20315.748684] sd 2:0:0:0: [sda] tag#2 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[20315.748688] sd 2:0:0:0: [sda] tag#2 Sense Key : Medium Error [current] 
+[20315.748691] sd 2:0:0:0: [sda] tag#2 Add. Sense: Unrecovered read error - auto reallocate failed
+[20315.748695] sd 2:0:0:0: [sda] tag#2 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[20315.748698] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[20315.748725] ata3: EH complete
+[20319.890686] ata3.00: exception Emask 0x0 SAct 0x7404 SErr 0x0 action 0x0
+[20319.890704] ata3.00: irq_stat 0x40000008
+[20319.890712] ata3.00: failed command: READ FPDMA QUEUED
+[20319.890718] ata3.00: cmd 60/08:10:68:97:58/00:00:0a:00:00/40 tag 2 ncq dma 4096 in
+[20319.890718]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[20319.890736] ata3.00: status: { DRDY ERR }
+[20319.890743] ata3.00: error: { UNC }
+[20319.892677] ata3.00: configured for UDMA/100
+[20319.892705] sd 2:0:0:0: [sda] tag#2 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[20319.892713] sd 2:0:0:0: [sda] tag#2 Sense Key : Medium Error [current] 
+[20319.892719] sd 2:0:0:0: [sda] tag#2 Add. Sense: Unrecovered read error - auto reallocate failed
+[20319.892726] sd 2:0:0:0: [sda] tag#2 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[20319.892730] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[20319.892776] ata3: EH complete
+[20325.138691] ata3.00: exception Emask 0x0 SAct 0x800 SErr 0x0 action 0x0
+[20325.138709] ata3.00: irq_stat 0x40000008
+[20325.138718] ata3.00: failed command: READ FPDMA QUEUED
+[20325.138723] ata3.00: cmd 60/08:58:68:97:58/00:00:0a:00:00/40 tag 11 ncq dma 4096 in
+[20325.138723]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[20325.138741] ata3.00: status: { DRDY ERR }
+[20325.138748] ata3.00: error: { UNC }
+[20325.140529] ata3.00: configured for UDMA/100
+[20325.140554] sd 2:0:0:0: [sda] tag#11 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[20325.140562] sd 2:0:0:0: [sda] tag#11 Sense Key : Medium Error [current] 
+[20325.140569] sd 2:0:0:0: [sda] tag#11 Add. Sense: Unrecovered read error - auto reallocate failed
+[20325.140577] sd 2:0:0:0: [sda] tag#11 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[20325.140580] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[20325.140622] ata3: EH complete
+[20329.290687] ata3.00: exception Emask 0x0 SAct 0x2000000 SErr 0x0 action 0x0
+[20329.290704] ata3.00: irq_stat 0x40000008
+[20329.290713] ata3.00: failed command: READ FPDMA QUEUED
+[20329.290719] ata3.00: cmd 60/08:c8:68:97:58/00:00:0a:00:00/40 tag 25 ncq dma 4096 in
+[20329.290719]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[20329.290737] ata3.00: status: { DRDY ERR }
+[20329.290743] ata3.00: error: { UNC }
+[20329.292617] ata3.00: configured for UDMA/100
+[20329.292639] sd 2:0:0:0: [sda] tag#25 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[20329.292647] sd 2:0:0:0: [sda] tag#25 Sense Key : Medium Error [current] 
+[20329.292658] sd 2:0:0:0: [sda] tag#25 Add. Sense: Unrecovered read error - auto reallocate failed
+[20329.292662] sd 2:0:0:0: [sda] tag#25 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[20329.292664] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[20329.292700] ata3: EH complete
+[20330.572998] PM: suspend entry (deep)
+[20331.216927] Filesystems sync: 0.643 seconds
+[20331.396177] rfkill: input handler enabled
+[20331.442882] Freezing user space processes ... (elapsed 0.039 seconds) done.
+[20331.482399] OOM killer disabled.
+[20331.482402] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[20331.483796] printk: Suspending console(s) (use no_console_suspend to debug)
+[20331.498640] sd 2:0:0:0: [sda] Synchronizing SCSI cache
+[20331.588410] sd 2:0:0:0: [sda] Stopping disk
+[20332.379372] ACPI: EC: interrupt blocked
+[20332.466497] ACPI: PM: Preparing to enter system sleep state S3
+[20332.466696] ACPI: EC: event blocked
+[20332.466698] ACPI: EC: EC stopped
+[20332.466699] ACPI: PM: Saving platform NVS memory
+[20332.466786] Disabling non-boot CPUs ...
+[20332.468334] smpboot: CPU 1 is now offline
+[20332.470052] ACPI: PM: Low-level resume complete
+[20332.470052] ACPI: EC: EC started
+[20332.470052] ACPI: PM: Restoring platform NVS memory
+[20332.470052] Enabling non-boot CPUs ...
+[20332.470052] x86: Booting SMP configuration:
+[20332.470052] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[20332.477812] CPU1 is up
+[20332.479817] ACPI: PM: Waking up from system sleep state S3
+[20332.488297] ACPI: EC: interrupt unblocked
+[20332.511307] usb usb3: root hub lost power or was reset
+[20332.511882] usb usb4: root hub lost power or was reset
+[20332.512288] ACPI: EC: event unblocked
+[20332.513039] sd 2:0:0:0: [sda] Starting disk
+[20332.513236] usb usb5: root hub lost power or was reset
+[20332.513602] usb usb7: root hub lost power or was reset
+[20332.513783] usb usb6: root hub lost power or was reset
+[20332.519044] [drm] PCIE GART of 512M enabled (table at 0x0000000000142000).
+[20332.519075] radeon 0000:01:00.0: WB enabled
+[20332.519078] radeon 0000:01:00.0: fence driver on ring 0 use gpu addr 0x0000000010000c00
+[20332.519531] radeon 0000:01:00.0: fence driver on ring 5 use gpu addr 0x00000000000521d0
+[20332.519665] debugfs: File 'radeon_ring_gfx' in directory '0' already present!
+[20332.550809] [drm] ring test on 0 succeeded in 1 usecs
+[20332.550813] debugfs: File 'radeon_ring_uvd' in directory '0' already present!
+[20332.725631] [drm] ring test on 5 succeeded in 1 usecs
+[20332.725639] [drm] UVD initialized successfully.
+[20332.725665] [drm] ib test on ring 0 succeeded in 0 usecs
+[20332.826165] ata4: SATA link down (SStatus 4 SControl 300)
+[20332.826196] ata5: SATA link down (SStatus 4 SControl 300)
+[20333.246122] firewire_core 0000:0c:04.1: rediscovered device fw0
+[20333.302411] ata1.00: ACPI cmd ef/XXX (SET FEATURES) filtered out
+[20333.302423] ata1.00: ACPI cmd ef/XXX (SET FEATURES) filtered out
+[20333.410078] [drm] ib test on ring 5 succeeded
+[20334.818134] ata3: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
+[20334.819094] ata3.00: unexpected _GTF length (8)
+[20334.820359] ata3.00: unexpected _GTF length (8)
+[20334.820565] ata3.00: configured for UDMA/100
+[20335.006736] OOM killer enabled.
+[20335.006738] Restarting tasks ... done.
+[20335.015704] video LNXVIDEO:00: Restoring backlight state
+[20335.023121] PM: suspend exit
+[20335.147734] rfkill: input handler disabled
+[20337.751623] RTL8201CP Ethernet r8169-0-400:00: attached PHY driver (mii_bus:phy_addr=r8169-0-400:00, irq=MAC)
+[20337.824300] r8169 0000:04:00.0 enp4s0: Link is Down
+[20340.470949] wlp5s0: authenticate with XXX
+[20340.471061] wlp5s0: send auth to XXX (try 1/3)
+[20340.473043] wlp5s0: authenticated
+[20340.478070] wlp5s0: associate with XXX (try 1/3)
+[20340.481870] wlp5s0: RX AssocResp from XXX (capab=0x1011 status=0 aid=11)
+[20340.510100] wlp5s0: associated
+[20343.922707] ata3.00: exception Emask 0x0 SAct 0x20e03ffc SErr 0x0 action 0x0
+[20343.922725] ata3.00: irq_stat 0x40000008
+[20343.922733] ata3.00: failed command: READ FPDMA QUEUED
+[20343.922738] ata3.00: cmd 60/20:10:c8:bd:d5/00:00:0c:00:00/40 tag 2 ncq dma 16384 in
+[20343.922738]          res 41/40:20:d8:bd:d5/00:00:0c:00:00/6c Emask 0x409 (media error) <F>
+[20343.922757] ata3.00: status: { DRDY ERR }
+[20343.922763] ata3.00: error: { UNC }
+[20343.924664] ata3.00: configured for UDMA/100
+[20343.924687] sd 2:0:0:0: [sda] tag#2 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[20343.924692] sd 2:0:0:0: [sda] tag#2 Sense Key : Medium Error [current] 
+[20343.924696] sd 2:0:0:0: [sda] tag#2 Add. Sense: Unrecovered read error - auto reallocate failed
+[20343.924700] sd 2:0:0:0: [sda] tag#2 CDB: Read(10) 28 00 0c d5 bd c8 00 00 20 00
+[20343.924703] blk_update_request: I/O error, dev sda, sector 215334360 op 0x0:(READ) flags 0x80700 phys_seg 2 prio class 0
+[20343.924749] ata3: EH complete
+[20347.936508] IPv6: ADDRCONF(NETDEV_CHANGE): wlp5s0: link becomes ready
+[20348.586386] wlp5s0: deauthenticated from XXX (Reason: 15=4WAY_HANDSHAKE_TIMEOUT)
+[20348.793212] wlp5s0: authenticate with XXX
+[20348.793315] wlp5s0: send auth to XXX (try 1/3)
+[20348.795057] wlp5s0: authenticated
+[20348.799285] wlp5s0: associate with XXX (try 1/3)
+[20348.819156] wlp5s0: RX AssocResp from XXX (capab=0xc11 status=0 aid=5)
+[20348.841662] wlp5s0: associated
+[20352.350656] ata3.00: exception Emask 0x0 SAct 0x200000 SErr 0x0 action 0x0
+[20352.350674] ata3.00: irq_stat 0x40000008
+[20352.350683] ata3.00: failed command: READ FPDMA QUEUED
+[20352.350688] ata3.00: cmd 60/08:a8:d8:bd:d5/00:00:0c:00:00/40 tag 21 ncq dma 4096 in
+[20352.350688]          res 41/40:08:d8:bd:d5/00:00:0c:00:00/6c Emask 0x409 (media error) <F>
+[20352.350707] ata3.00: status: { DRDY ERR }
+[20352.350714] ata3.00: error: { UNC }
+[20352.352529] ata3.00: configured for UDMA/100
+[20352.352554] sd 2:0:0:0: [sda] tag#21 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[20352.352568] sd 2:0:0:0: [sda] tag#21 Sense Key : Medium Error [current] 
+[20352.352571] sd 2:0:0:0: [sda] tag#21 Add. Sense: Unrecovered read error - auto reallocate failed
+[20352.352576] sd 2:0:0:0: [sda] tag#21 CDB: Read(10) 28 00 0c d5 bd d8 00 00 08 00
+[20352.352578] blk_update_request: I/O error, dev sda, sector 215334360 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[20352.352600] ata3: EH complete
+[20356.654687] ata3.00: exception Emask 0x0 SAct 0x740600 SErr 0x0 action 0x0
+[20356.654705] ata3.00: irq_stat 0x40000008
+[20356.654713] ata3.00: failed command: READ FPDMA QUEUED
+[20356.654719] ata3.00: cmd 60/08:48:d8:bd:d5/00:00:0c:00:00/40 tag 9 ncq dma 4096 in
+[20356.654719]          res 41/40:08:d8:bd:d5/00:00:0c:00:00/6c Emask 0x409 (media error) <F>
+[20356.654737] ata3.00: status: { DRDY ERR }
+[20356.654744] ata3.00: error: { UNC }
+[20356.656539] ata3.00: configured for UDMA/100
+[20356.656567] sd 2:0:0:0: [sda] tag#9 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[20356.656575] sd 2:0:0:0: [sda] tag#9 Sense Key : Medium Error [current] 
+[20356.656581] sd 2:0:0:0: [sda] tag#9 Add. Sense: Unrecovered read error - auto reallocate failed
+[20356.656589] sd 2:0:0:0: [sda] tag#9 CDB: Read(10) 28 00 0c d5 bd d8 00 00 08 00
+[20356.656593] blk_update_request: I/O error, dev sda, sector 215334360 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[20356.656638] ata3: EH complete
+[34820.267972] loop37: detected capacity change from 0 to 551952
+[45978.302699] ata3.00: exception Emask 0x0 SAct 0x1fe05e80 SErr 0x0 action 0x0
+[45978.302717] ata3.00: irq_stat 0x40000008
+[45978.302725] ata3.00: failed command: READ FPDMA QUEUED
+[45978.302731] ata3.00: cmd 60/08:48:68:97:58/00:00:0a:00:00/40 tag 9 ncq dma 4096 in
+[45978.302731]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[45978.302749] ata3.00: status: { DRDY ERR }
+[45978.302756] ata3.00: error: { UNC }
+[45978.304559] ata3.00: configured for UDMA/100
+[45978.304610] sd 2:0:0:0: [sda] tag#9 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[45978.304615] sd 2:0:0:0: [sda] tag#9 Sense Key : Medium Error [current] 
+[45978.304618] sd 2:0:0:0: [sda] tag#9 Add. Sense: Unrecovered read error - auto reallocate failed
+[45978.304622] sd 2:0:0:0: [sda] tag#9 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[45978.304624] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 0
+[45978.304669] ata3: EH complete
+[45982.338642] ata3.00: exception Emask 0x0 SAct 0x80fe003f SErr 0x0 action 0x0
+[45982.338661] ata3.00: irq_stat 0x40000008
+[45982.338670] ata3.00: failed command: READ FPDMA QUEUED
+[45982.338675] ata3.00: cmd 60/08:88:68:97:58/00:00:0a:00:00/40 tag 17 ncq dma 4096 in
+[45982.338675]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[45982.338694] ata3.00: status: { DRDY ERR }
+[45982.338700] ata3.00: error: { UNC }
+[45982.340489] ata3.00: configured for UDMA/100
+[45982.340560] sd 2:0:0:0: [sda] tag#17 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[45982.340566] sd 2:0:0:0: [sda] tag#17 Sense Key : Medium Error [current] 
+[45982.340569] sd 2:0:0:0: [sda] tag#17 Add. Sense: Unrecovered read error - auto reallocate failed
+[45982.340574] sd 2:0:0:0: [sda] tag#17 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[45982.340576] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[45982.340604] ata3: EH complete
+[45986.562659] ata3.00: exception Emask 0x0 SAct 0x100004 SErr 0x0 action 0x0
+[45986.562673] ata3.00: irq_stat 0x40000008
+[45986.562678] ata3.00: failed command: READ FPDMA QUEUED
+[45986.562681] ata3.00: cmd 60/08:a0:68:97:58/00:00:0a:00:00/40 tag 20 ncq dma 4096 in
+[45986.562681]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[45986.562691] ata3.00: status: { DRDY ERR }
+[45986.562695] ata3.00: error: { UNC }
+[45986.564482] ata3.00: configured for UDMA/100
+[45986.564520] sd 2:0:0:0: [sda] tag#20 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[45986.564525] sd 2:0:0:0: [sda] tag#20 Sense Key : Medium Error [current] 
+[45986.564529] sd 2:0:0:0: [sda] tag#20 Add. Sense: Unrecovered read error - auto reallocate failed
+[45986.564533] sd 2:0:0:0: [sda] tag#20 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[45986.564536] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[45986.564559] ata3: EH complete
+[45992.982655] ata3.00: exception Emask 0x0 SAct 0x6802000 SErr 0x0 action 0x0
+[45992.982674] ata3.00: irq_stat 0x40000008
+[45992.982682] ata3.00: failed command: READ FPDMA QUEUED
+[45992.982688] ata3.00: cmd 60/08:68:68:97:58/00:00:0a:00:00/40 tag 13 ncq dma 4096 in
+[45992.982688]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[45992.982707] ata3.00: status: { DRDY ERR }
+[45992.982713] ata3.00: error: { UNC }
+[45992.984620] ata3.00: configured for UDMA/100
+[45992.984647] sd 2:0:0:0: [sda] tag#13 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[45992.984656] sd 2:0:0:0: [sda] tag#13 Sense Key : Medium Error [current] 
+[45992.984662] sd 2:0:0:0: [sda] tag#13 Add. Sense: Unrecovered read error - auto reallocate failed
+[45992.984670] sd 2:0:0:0: [sda] tag#13 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[45992.984679] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[45992.984715] ata3: EH complete
+[45997.070695] ata3.00: exception Emask 0x0 SAct 0x80000001 SErr 0x0 action 0x0
+[45997.070715] ata3.00: irq_stat 0x40000008
+[45997.070724] ata3.00: failed command: READ FPDMA QUEUED
+[45997.070730] ata3.00: cmd 60/08:f8:68:97:58/00:00:0a:00:00/40 tag 31 ncq dma 4096 in
+[45997.070730]          res 41/40:08:68:97:58/00:00:0a:00:00/6a Emask 0x409 (media error) <F>
+[45997.070749] ata3.00: status: { DRDY ERR }
+[45997.070756] ata3.00: error: { UNC }
+[45997.072652] ata3.00: configured for UDMA/100
+[45997.072694] sd 2:0:0:0: [sda] tag#31 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=4s
+[45997.072699] sd 2:0:0:0: [sda] tag#31 Sense Key : Medium Error [current] 
+[45997.072702] sd 2:0:0:0: [sda] tag#31 Add. Sense: Unrecovered read error - auto reallocate failed
+[45997.072707] sd 2:0:0:0: [sda] tag#31 CDB: Read(10) 28 00 0a 58 97 68 00 00 08 00
+[45997.072709] blk_update_request: I/O error, dev sda, sector 173578088 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[45997.072736] ata3: EH complete
+[46243.376497] loop26: detected capacity change from 0 to 37776
+[46340.290222] loop38: detected capacity change from 0 to 357840
