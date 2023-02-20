@@ -1,0 +1,561 @@
+[242635.934143]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.934156] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.934157] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.934158] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934176] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.934177] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.934178] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.934179] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.934179] RBP: ffff8d4a85d33800 R08: 0000000000000000 R09: ffff8d4afbd8e040
+[242635.934180] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.934181] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.934182] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.934182] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.934183] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.934184] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.934185] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.934185] Call Trace:
+[242635.934186]  <IRQ>
+[242635.934187]  ? __unfreeze_partials+0x18d/0x230
+[242635.934189]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934208]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934223]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.934225]  __do_softirq+0xd0/0x2ca
+[242635.934227]  irq_exit_rcu+0x96/0xc0
+[242635.934228]  common_interrupt+0x80/0xa0
+[242635.934230]  </IRQ>
+[242635.934231]  <TASK>
+[242635.934231]  asm_common_interrupt+0x1e/0x40
+[242635.934233] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.934234] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.934235] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.934236] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.934237] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.934237] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.934238] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.934239] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.934240]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.934241]  cpuidle_enter+0x29/0x40
+[242635.934243]  do_idle+0x1cb/0x230
+[242635.934244]  cpu_startup_entry+0x19/0x20
+[242635.934246]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.934248]  </TASK>
+[242635.934248] ---[ end trace 46f8f7b7ff75994a ]---
+[242635.934257] ------------[ cut here ]------------
+[242635.934257] WARNING: CPU: 7 PID: 0 at net/mac80211/rx.c:4897 ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934276] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq rfcomm rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace sunrpc fscache netfs qrtr cmac algif_hash algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btusb videobuf2_common btrtl btbcm videodev btintel mousedev bluetooth ecdh_generic crc16 joydev dm_mod snd_usb_audio snd_usbmidi_lib snd_rawmidi snd_seq_device mc usbhid ses enclosure scsi_transport_sas usblp uas usb_storage vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp snd_hda_codec_realtek kvm_intel snd_hda_codec_generic intel_spi_platform intel_spi ledtrig_audio kvm spi_nor at24 iTCO_wdt intel_pmc_bxt snd_hda_codec_hdmi mtd iTCO_vendor_support rtl8188ee irqbypass rtl_pci crct10dif_pclmul crc32_pclmul rtlwifi snd_hda_intel ghash_clmulni_intel snd_intel_dspcfg aesni_intel snd_intel_sdw_acpi mac80211 crypto_simd snd_hda_codec r8169 cryptd libarc4 snd_hda_core rapl realtek snd_hwdep
+[242635.934302]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.934333] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.934334] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.934335] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934364] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.934364] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.934365] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.934366] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.934367] RBP: ffff8d4a85d33a00 R08: 0000000000000000 R09: ffff8d4acab3d040
+[242635.934367] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.934368] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.934369] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.934370] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.934370] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.934371] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.934372] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.934373] Call Trace:
+[242635.934373]  <IRQ>
+[242635.934374]  ? __unfreeze_partials+0x18d/0x230
+[242635.934376]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934395]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934410]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.934412]  __do_softirq+0xd0/0x2ca
+[242635.934414]  irq_exit_rcu+0x96/0xc0
+[242635.934416]  common_interrupt+0x80/0xa0
+[242635.934418]  </IRQ>
+[242635.934418]  <TASK>
+[242635.934419]  asm_common_interrupt+0x1e/0x40
+[242635.934420] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.934422] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.934422] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.934423] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.934424] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.934425] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.934425] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.934426] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.934427]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.934429]  cpuidle_enter+0x29/0x40
+[242635.934430]  do_idle+0x1cb/0x230
+[242635.934431]  cpu_startup_entry+0x19/0x20
+[242635.934433]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.934435]  </TASK>
+[242635.934435] ---[ end trace 46f8f7b7ff75994b ]---
+[242635.934444] ------------[ cut here ]------------
+[242635.934444] WARNING: CPU: 7 PID: 0 at net/mac80211/rx.c:4897 ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934463] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq rfcomm rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace sunrpc fscache netfs qrtr cmac algif_hash algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btusb videobuf2_common btrtl btbcm videodev btintel mousedev bluetooth ecdh_generic crc16 joydev dm_mod snd_usb_audio snd_usbmidi_lib snd_rawmidi snd_seq_device mc usbhid ses enclosure scsi_transport_sas usblp uas usb_storage vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp snd_hda_codec_realtek kvm_intel snd_hda_codec_generic intel_spi_platform intel_spi ledtrig_audio kvm spi_nor at24 iTCO_wdt intel_pmc_bxt snd_hda_codec_hdmi mtd iTCO_vendor_support rtl8188ee irqbypass rtl_pci crct10dif_pclmul crc32_pclmul rtlwifi snd_hda_intel ghash_clmulni_intel snd_intel_dspcfg aesni_intel snd_intel_sdw_acpi mac80211 crypto_simd snd_hda_codec r8169 cryptd libarc4 snd_hda_core rapl realtek snd_hwdep
+[242635.934489]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.934501] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.934503] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.934503] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934522] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.934523] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.934523] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.934524] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.934525] RBP: ffff8d4a85d32200 R08: 0000000000000000 R09: ffff8d4acab38440
+[242635.934525] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.934526] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.934527] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.934528] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.934528] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.934529] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.934530] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.934530] Call Trace:
+[242635.934531]  <IRQ>
+[242635.934532]  ? __unfreeze_partials+0x18d/0x230
+[242635.934534]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934553]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934568]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.934570]  __do_softirq+0xd0/0x2ca
+[242635.934572]  irq_exit_rcu+0x96/0xc0
+[242635.934573]  common_interrupt+0x80/0xa0
+[242635.934575]  </IRQ>
+[242635.934576]  <TASK>
+[242635.934576]  asm_common_interrupt+0x1e/0x40
+[242635.934578] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.934579] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.934580] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.934581] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.934582] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.934582] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.934583] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.934583] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.934585]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.934586]  cpuidle_enter+0x29/0x40
+[242635.934587]  do_idle+0x1cb/0x230
+[242635.934589]  cpu_startup_entry+0x19/0x20
+[242635.934590]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.934593]  </TASK>
+[242635.934593] ---[ end trace 46f8f7b7ff75994c ]---
+[242635.934601] ------------[ cut here ]------------
+[242635.934602] WARNING: CPU: 7 PID: 0 at net/mac80211/rx.c:4897 ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934621] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq rfcomm rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace sunrpc fscache netfs qrtr cmac algif_hash algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btusb videobuf2_common btrtl btbcm videodev btintel mousedev bluetooth ecdh_generic crc16 joydev dm_mod snd_usb_audio snd_usbmidi_lib snd_rawmidi snd_seq_device mc usbhid ses enclosure scsi_transport_sas usblp uas usb_storage vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp snd_hda_codec_realtek kvm_intel snd_hda_codec_generic intel_spi_platform intel_spi ledtrig_audio kvm spi_nor at24 iTCO_wdt intel_pmc_bxt snd_hda_codec_hdmi mtd iTCO_vendor_support rtl8188ee irqbypass rtl_pci crct10dif_pclmul crc32_pclmul rtlwifi snd_hda_intel ghash_clmulni_intel snd_intel_dspcfg aesni_intel snd_intel_sdw_acpi mac80211 crypto_simd snd_hda_codec r8169 cryptd libarc4 snd_hda_core rapl realtek snd_hwdep
+[242635.934647]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.934659] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.934660] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.934661] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934680] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.934680] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.934681] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.934682] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.934683] RBP: ffff8d4a85d33700 R08: 0000000000000000 R09: ffff8d4acab3e040
+[242635.934683] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.934684] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.934685] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.934685] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.934686] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.934687] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.934688] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.934688] Call Trace:
+[242635.934689]  <IRQ>
+[242635.934689]  ? __unfreeze_partials+0x18d/0x230
+[242635.934692]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934711]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934726]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.934728]  __do_softirq+0xd0/0x2ca
+[242635.934730]  irq_exit_rcu+0x96/0xc0
+[242635.934731]  common_interrupt+0x80/0xa0
+[242635.934733]  </IRQ>
+[242635.934734]  <TASK>
+[242635.934734]  asm_common_interrupt+0x1e/0x40
+[242635.934736] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.934737] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.934738] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.934739] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.934740] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.934740] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.934741] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.934742] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.934743]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.934744]  cpuidle_enter+0x29/0x40
+[242635.934746]  do_idle+0x1cb/0x230
+[242635.934747]  cpu_startup_entry+0x19/0x20
+[242635.934749]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.934751]  </TASK>
+[242635.934751] ---[ end trace 46f8f7b7ff75994d ]---
+[242635.934759] ------------[ cut here ]------------
+[242635.934760] WARNING: CPU: 7 PID: 0 at net/mac80211/rx.c:4897 ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934779] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq rfcomm rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace sunrpc fscache netfs qrtr cmac algif_hash algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btusb videobuf2_common btrtl btbcm videodev btintel mousedev bluetooth ecdh_generic crc16 joydev dm_mod snd_usb_audio snd_usbmidi_lib snd_rawmidi snd_seq_device mc usbhid ses enclosure scsi_transport_sas usblp uas usb_storage vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp snd_hda_codec_realtek kvm_intel snd_hda_codec_generic intel_spi_platform intel_spi ledtrig_audio kvm spi_nor at24 iTCO_wdt intel_pmc_bxt snd_hda_codec_hdmi mtd iTCO_vendor_support rtl8188ee irqbypass rtl_pci crct10dif_pclmul crc32_pclmul rtlwifi snd_hda_intel ghash_clmulni_intel snd_intel_dspcfg aesni_intel snd_intel_sdw_acpi mac80211 crypto_simd snd_hda_codec r8169 cryptd libarc4 snd_hda_core rapl realtek snd_hwdep
+[242635.934809]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.934821] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.934823] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.934823] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934843] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.934844] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.934846] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.934847] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.934848] RBP: ffff8d4a85d33600 R08: 0000000000000000 R09: ffff8d4acab38c40
+[242635.934850] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.934851] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.934852] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.934854] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.934855] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.934866] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.934867] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.934868] Call Trace:
+[242635.934869]  <IRQ>
+[242635.934870]  ? __unfreeze_partials+0x18d/0x230
+[242635.934872]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934902]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.934928]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.934939]  __do_softirq+0xd0/0x2ca
+[242635.934942]  irq_exit_rcu+0x96/0xc0
+[242635.934943]  common_interrupt+0x80/0xa0
+[242635.934945]  </IRQ>
+[242635.934945]  <TASK>
+[242635.934946]  asm_common_interrupt+0x1e/0x40
+[242635.934948] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.934949] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.934950] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.934951] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.934951] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.934952] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.934953] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.934953] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.934955]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.934956]  cpuidle_enter+0x29/0x40
+[242635.934957]  do_idle+0x1cb/0x230
+[242635.934959]  cpu_startup_entry+0x19/0x20
+[242635.934960]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.934962]  </TASK>
+[242635.934963] ---[ end trace 46f8f7b7ff75994e ]---
+[242635.934971] ------------[ cut here ]------------
+[242635.934971] WARNING: CPU: 7 PID: 0 at net/mac80211/rx.c:4897 ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.934991] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq rfcomm rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace sunrpc fscache netfs qrtr cmac algif_hash algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btusb videobuf2_common btrtl btbcm videodev btintel mousedev bluetooth ecdh_generic crc16 joydev dm_mod snd_usb_audio snd_usbmidi_lib snd_rawmidi snd_seq_device mc usbhid ses enclosure scsi_transport_sas usblp uas usb_storage vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp snd_hda_codec_realtek kvm_intel snd_hda_codec_generic intel_spi_platform intel_spi ledtrig_audio kvm spi_nor at24 iTCO_wdt intel_pmc_bxt snd_hda_codec_hdmi mtd iTCO_vendor_support rtl8188ee irqbypass rtl_pci crct10dif_pclmul crc32_pclmul rtlwifi snd_hda_intel ghash_clmulni_intel snd_intel_dspcfg aesni_intel snd_intel_sdw_acpi mac80211 crypto_simd snd_hda_codec r8169 cryptd libarc4 snd_hda_core rapl realtek snd_hwdep
+[242635.935016]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.935029] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.935030] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.935031] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.935049] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.935050] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.935051] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.935051] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.935052] RBP: ffff8d4a85d33c00 R08: 0000000000000000 R09: ffff8d4aa93bd840
+[242635.935053] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.935053] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.935054] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.935055] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.935056] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.935057] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.935057] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.935058] Call Trace:
+[242635.935059]  <IRQ>
+[242635.935059]  ? __unfreeze_partials+0x18d/0x230
+[242635.935061]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935080]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935123]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.935125]  __do_softirq+0xd0/0x2ca
+[242635.935128]  irq_exit_rcu+0x96/0xc0
+[242635.935129]  common_interrupt+0x80/0xa0
+[242635.935131]  </IRQ>
+[242635.935131]  <TASK>
+[242635.935132]  asm_common_interrupt+0x1e/0x40
+[242635.935134] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.935135] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.935136] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.935137] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.935137] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.935138] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.935139] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.935139] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.935141]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.935142]  cpuidle_enter+0x29/0x40
+[242635.935143]  do_idle+0x1cb/0x230
+[242635.935145]  cpu_startup_entry+0x19/0x20
+[242635.935146]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.935149]  </TASK>
+[242635.935149] ---[ end trace 46f8f7b7ff75994f ]---
+[242635.935157] ------------[ cut here ]------------
+[242635.935158] WARNING: CPU: 7 PID: 0 at net/mac80211/rx.c:4897 ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.935177] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq rfcomm rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace sunrpc fscache netfs qrtr cmac algif_hash algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btusb videobuf2_common btrtl btbcm videodev btintel mousedev bluetooth ecdh_generic crc16 joydev dm_mod snd_usb_audio snd_usbmidi_lib snd_rawmidi snd_seq_device mc usbhid ses enclosure scsi_transport_sas usblp uas usb_storage vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp snd_hda_codec_realtek kvm_intel snd_hda_codec_generic intel_spi_platform intel_spi ledtrig_audio kvm spi_nor at24 iTCO_wdt intel_pmc_bxt snd_hda_codec_hdmi mtd iTCO_vendor_support rtl8188ee irqbypass rtl_pci crct10dif_pclmul crc32_pclmul rtlwifi snd_hda_intel ghash_clmulni_intel snd_intel_dspcfg aesni_intel snd_intel_sdw_acpi mac80211 crypto_simd snd_hda_codec r8169 cryptd libarc4 snd_hda_core rapl realtek snd_hwdep
+[242635.935202]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.935215] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.935216] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.935217] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.935235] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.935236] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.935237] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.935238] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.935238] RBP: ffff8d4a8e3b7e00 R08: 0000000000000000 R09: ffff8d4aa93b8c40
+[242635.935239] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.935239] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.935240] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.935241] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.935242] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.935243] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.935243] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.935244] Call Trace:
+[242635.935244]  <IRQ>
+[242635.935245]  ? __unfreeze_partials+0x18d/0x230
+[242635.935247]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935266]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935282]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.935284]  __do_softirq+0xd0/0x2ca
+[242635.935286]  irq_exit_rcu+0x96/0xc0
+[242635.935287]  common_interrupt+0x80/0xa0
+[242635.935290]  </IRQ>
+[242635.935290]  <TASK>
+[242635.935291]  asm_common_interrupt+0x1e/0x40
+[242635.935292] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.935294] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.935295] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.935296] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.935297] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.935298] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.935298] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.935299] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.935300]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.935302]  cpuidle_enter+0x29/0x40
+[242635.935303]  do_idle+0x1cb/0x230
+[242635.935305]  cpu_startup_entry+0x19/0x20
+[242635.935307]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.935309]  </TASK>
+[242635.935310] ---[ end trace 46f8f7b7ff759950 ]---
+[242635.935319] ------------[ cut here ]------------
+[242635.935319] WARNING: CPU: 7 PID: 0 at net/mac80211/rx.c:4897 ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.935341] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq rfcomm rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace sunrpc fscache netfs qrtr cmac algif_hash algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btusb videobuf2_common btrtl btbcm videodev btintel mousedev bluetooth ecdh_generic crc16 joydev dm_mod snd_usb_audio snd_usbmidi_lib snd_rawmidi snd_seq_device mc usbhid ses enclosure scsi_transport_sas usblp uas usb_storage vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp snd_hda_codec_realtek kvm_intel snd_hda_codec_generic intel_spi_platform intel_spi ledtrig_audio kvm spi_nor at24 iTCO_wdt intel_pmc_bxt snd_hda_codec_hdmi mtd iTCO_vendor_support rtl8188ee irqbypass rtl_pci crct10dif_pclmul crc32_pclmul rtlwifi snd_hda_intel ghash_clmulni_intel snd_intel_dspcfg aesni_intel snd_intel_sdw_acpi mac80211 crypto_simd snd_hda_codec r8169 cryptd libarc4 snd_hda_core rapl realtek snd_hwdep
+[242635.935369]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.935383] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.935384] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.935385] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.935406] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.935407] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.935408] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.935409] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.935410] RBP: ffff8d4a8e3b6b00 R08: 0000000000000000 R09: ffff8d4a97f03040
+[242635.935410] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.935411] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.935412] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.935413] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.935414] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.935415] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.935415] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.935416] Call Trace:
+[242635.935417]  <IRQ>
+[242635.935417]  ? __unfreeze_partials+0x18d/0x230
+[242635.935420]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935463]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935479]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.935481]  __do_softirq+0xd0/0x2ca
+[242635.935483]  irq_exit_rcu+0x96/0xc0
+[242635.935484]  common_interrupt+0x80/0xa0
+[242635.935487]  </IRQ>
+[242635.935487]  <TASK>
+[242635.935488]  asm_common_interrupt+0x1e/0x40
+[242635.935489] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.935491] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.935492] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.935493] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.935494] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.935494] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.935495] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.935496] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.935497]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.935499]  cpuidle_enter+0x29/0x40
+[242635.935500]  do_idle+0x1cb/0x230
+[242635.935502]  cpu_startup_entry+0x19/0x20
+[242635.935503]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.935505]  </TASK>
+[242635.935506] ---[ end trace 46f8f7b7ff759951 ]---
+[242635.935514] ------------[ cut here ]------------
+[242635.935515] WARNING: CPU: 7 PID: 0 at net/mac80211/rx.c:4897 ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.935535] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq rfcomm rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace sunrpc fscache netfs qrtr cmac algif_hash algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btusb videobuf2_common btrtl btbcm videodev btintel mousedev bluetooth ecdh_generic crc16 joydev dm_mod snd_usb_audio snd_usbmidi_lib snd_rawmidi snd_seq_device mc usbhid ses enclosure scsi_transport_sas usblp uas usb_storage vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp snd_hda_codec_realtek kvm_intel snd_hda_codec_generic intel_spi_platform intel_spi ledtrig_audio kvm spi_nor at24 iTCO_wdt intel_pmc_bxt snd_hda_codec_hdmi mtd iTCO_vendor_support rtl8188ee irqbypass rtl_pci crct10dif_pclmul crc32_pclmul rtlwifi snd_hda_intel ghash_clmulni_intel snd_intel_dspcfg aesni_intel snd_intel_sdw_acpi mac80211 crypto_simd snd_hda_codec r8169 cryptd libarc4 snd_hda_core rapl realtek snd_hwdep
+[242635.935561]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.935574] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.935576] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.935576] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.935595] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.935596] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.935597] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.935598] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.935599] RBP: ffff8d4a8b951600 R08: 0000000000000000 R09: ffff8d4a97f06c40
+[242635.935599] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.935600] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.935601] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.935602] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.935602] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.935603] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.935604] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.935605] Call Trace:
+[242635.935605]  <IRQ>
+[242635.935606]  ? __unfreeze_partials+0x18d/0x230
+[242635.935608]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935632]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935656]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.935659]  __do_softirq+0xd0/0x2ca
+[242635.935661]  irq_exit_rcu+0x96/0xc0
+[242635.935663]  common_interrupt+0x80/0xa0
+[242635.935666]  </IRQ>
+[242635.935667]  <TASK>
+[242635.935667]  asm_common_interrupt+0x1e/0x40
+[242635.935670] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.935672] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.935673] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.935674] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.935675] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.935676] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.935677] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.935678] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.935680]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.935682]  cpuidle_enter+0x29/0x40
+[242635.935685]  do_idle+0x1cb/0x230
+[242635.935688]  cpu_startup_entry+0x19/0x20
+[242635.935690]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.935693]  </TASK>
+[242635.935694] ---[ end trace 46f8f7b7ff759952 ]---
+[242635.935703] ------------[ cut here ]------------
+[242635.935703] WARNING: CPU: 7 PID: 0 at net/mac80211/rx.c:4897 ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.935723] Modules linked in: snd_seq_dummy snd_hrtimer snd_seq rfcomm rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace sunrpc fscache netfs qrtr cmac algif_hash algif_skcipher af_alg bnep uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 btusb videobuf2_common btrtl btbcm videodev btintel mousedev bluetooth ecdh_generic crc16 joydev dm_mod snd_usb_audio snd_usbmidi_lib snd_rawmidi snd_seq_device mc usbhid ses enclosure scsi_transport_sas usblp uas usb_storage vfat fat intel_rapl_msr intel_rapl_common x86_pkg_temp_thermal intel_powerclamp coretemp snd_hda_codec_realtek kvm_intel snd_hda_codec_generic intel_spi_platform intel_spi ledtrig_audio kvm spi_nor at24 iTCO_wdt intel_pmc_bxt snd_hda_codec_hdmi mtd iTCO_vendor_support rtl8188ee irqbypass rtl_pci crct10dif_pclmul crc32_pclmul rtlwifi snd_hda_intel ghash_clmulni_intel snd_intel_dspcfg aesni_intel snd_intel_sdw_acpi mac80211 crypto_simd snd_hda_codec r8169 cryptd libarc4 snd_hda_core rapl realtek snd_hwdep
+[242635.935749]  intel_cstate cfg80211 mdio_devres i2c_i801 snd_pcm intel_uncore i2c_smbus libphy snd_timer rfkill snd soundcore video lpc_ich mac_hid vboxnetflt(OE) vboxnetadp(OE) vboxdrv(OE) uinput ipmi_devintf ipmi_msghandler crypto_user fuse zram bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq sr_mod cdrom xhci_pci xhci_pci_renesas nvidia_uvm(POE) crc32c_intel nvidia_drm(POE) nvidia_modeset(POE) nvidia(POE)
+[242635.935762] CPU: 7 PID: 0 Comm: swapper/7 Tainted: P        W  OE     5.16.5-zen1-1-zen #1 932365542d004819b8a87871075987a2406a7258
+[242635.935763] Hardware name: LENOVO 10181/, BIOS I1KT44AUS 11/14/2014
+[242635.935764] RIP: 0010:ieee80211_rx_list+0x5c8/0xc30 [mac80211]
+[242635.935783] Code: 8b 8b 08 06 00 00 85 c9 0f 85 2d 03 00 00 48 8b 84 24 90 00 00 00 65 48 2b 04 25 28 00 00 00 0f 85 2e 06 00 00 48 89 ef eb 85 <0f> 0b e9 91 fe ff ff e8 1c d1 eb ff 8b 14 24 41 8b 7f 74 4c 89 f1
+[242635.935784] RSP: 0018:ffff9bca802a0e20 EFLAGS: 00010246
+[242635.935785] RAX: 0000000000000000 RBX: ffff8d4a84820840 RCX: ffff8d4a848224b8
+[242635.935786] RDX: ffff8d4a84820300 RSI: 0000000000000000 RDI: ffff8d4a84820840
+[242635.935787] RBP: ffff8d4a8b950600 R08: 0000000000000000 R09: ffff8d4a97f01440
+[242635.935787] R10: 0000000000000000 R11: ffff9bca802a0ef0 R12: 0000000000000000
+[242635.935788] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[242635.935789] FS:  0000000000000000(0000) GS:ffff8d4d8ddc0000(0000) knlGS:0000000000000000
+[242635.935790] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[242635.935791] CR2: 000014db0953d000 CR3: 0000000293a10005 CR4: 00000000001706e0
+[242635.935792] DR0: 00000000021ec940 DR1: 0000000142d1b020 DR2: 0000000000de08b8
+[242635.935792] DR3: 0000000143103dc8 DR6: 00000000ffff0ff0 DR7: 0000000000000600
+[242635.935793] Call Trace:
+[242635.935794]  <IRQ>
+[242635.935795]  ? __unfreeze_partials+0x18d/0x230
+[242635.935797]  ieee80211_rx_napi+0x51/0xf0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935818]  ieee80211_tasklet_handler+0xc4/0xd0 [mac80211 5198afd72b1b81a6213c5b86d168bf5d5d64ac28]
+[242635.935835]  tasklet_action_common.constprop.0+0x141/0x190
+[242635.935837]  __do_softirq+0xd0/0x2ca
+[242635.935839]  irq_exit_rcu+0x96/0xc0
+[242635.935841]  common_interrupt+0x80/0xa0
+[242635.935843]  </IRQ>
+[242635.935844]  <TASK>
+[242635.935844]  asm_common_interrupt+0x1e/0x40
+[242635.935846] RIP: 0010:cpuidle_enter_state+0xda/0x7b0
+[242635.935848] Code: 31 ff e8 59 d2 67 ff 45 84 ff 74 17 9c 58 0f 1f 44 00 00 f6 c4 02 0f 85 57 05 00 00 31 ff e8 7d dc 6d ff fb 66 0f 1f 44 00 00 <45> 85 ed 0f 88 1f 01 00 00 49 63 f5 4c 89 f2 48 2b 14 24 48 8d 04
+[242635.935849] RSP: 0018:ffff9bca800f3ea8 EFLAGS: 00000246
+[242635.935850] RAX: 0000000000000000 RBX: ffff8d4d8ddfc100 RCX: 0000000000000000
+[242635.935851] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[242635.935851] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[242635.935852] R10: 0000000000000000 R11: 0000000000000000 R12: ffffffffa8949420
+[242635.935853] R13: 0000000000000003 R14: 0000dcad13b393db R15: 0000000000000000
+[242635.935854]  ? cpuidle_enter_state+0xb7/0x7b0
+[242635.935856]  cpuidle_enter+0x29/0x40
+[242635.935857]  do_idle+0x1cb/0x230
+[242635.935859]  cpu_startup_entry+0x19/0x20
+[242635.935860]  secondary_startup_64_no_verify+0xc2/0xcb
+[242635.935863]  </TASK>
+[242635.935863] ---[ end trace 46f8f7b7ff759953 ]---
+[242637.467701] systemd-journald[324]: /dev/kmsg buffer overrun, some messages lost.
+[242712.659959] traps: ThreadPoolForeg[3326385] trap invalid opcode ip:564194d4f5b2 sp:7f3045885cf0 error:0 in slack[5641937d4000+6a10000]
+[264903.311482] usb 4-6: USB disconnect, device number 4
+[265011.205890] usb 3-8: new full-speed USB device number 24 using xhci_hcd
+[265011.336099] usb 3-8: New USB device found, idVendor=1a86, idProduct=55d4, bcdDevice= 4.43
+[265011.336104] usb 3-8: New USB device strings: Mfr=0, Product=2, SerialNumber=...
+[265011.336105] usb 3-8: Product: USB Single Serial
+[265011.336106] usb 3-8: SerialNumber: ...
+[265011.435232] cdc_acm 3-8:1.0: ttyACM0: USB ACM device
+[265011.435259] usbcore: registered new interface driver cdc_acm
+[265011.435261] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[268118.151041] usb 3-8: USB disconnect, device number 24
+[268147.804141] usb 3-8: new full-speed USB device number 25 using xhci_hcd
+[268147.932710] usb 3-8: New USB device found, idVendor=1a86, idProduct=55d4, bcdDevice= 4.43
+[268147.932714] usb 3-8: New USB device strings: Mfr=0, Product=2, SerialNumber=...
+[268147.932715] usb 3-8: SerialNumber: ...
+[268147.935366] cdc_acm 3-8:1.0: ttyACM1: USB ACM device
+[268511.632506] usb 3-8: USB disconnect, device number 25
+[268919.559839] usb 3-8: new full-speed USB device number 26 using xhci_hcd
+[268919.687028] usb 3-8: New USB device found, idVendor=1a86, idProduct=55d4, bcdDevice= 4.43
+[268919.687032] usb 3-8: New USB device strings: Mfr=0, Product=2, SerialNumber=...
+[268919.687034] usb 3-8: Product: USB Single Serial
+[268919.687035] usb 3-8: SerialNumber: ...
+[268919.690540] cdc_acm 3-8:1.0: ttyACM2: USB ACM device
+[269453.705838] usb 3-8: USB disconnect, device number 26
+[270031.861121] nfs: server XXX.XXX.XXX.XXX not responding, timed out
+[270211.894203] nfs: server XXX.XXX.XXX.XXX not responding, timed out
+[270217.206225] nfs: server XXX.XXX.XXX.XXX not responding, timed out
+[275134.614841] usb 3-8: new full-speed USB device number 27 using xhci_hcd
+[275134.742410] usb 3-8: New USB device found, idVendor=10c4, idProduct=ea60, bcdDevice= 1.00
+[275134.742414] usb 3-8: New USB device strings: Mfr=1, Product=2, SerialNumber=...
+[275134.742415] usb 3-8: Product: CP2104 USB to UART Bridge Controller
+[275134.742426] usb 3-8: Manufacturer: Silicon Labs
+[275134.742427] usb 3-8: SerialNumber: ...
+[275134.831483] usbcore: registered new interface driver cp210x
+[275134.831496] usbserial: USB Serial support registered for cp210x
+[275134.831525] cp210x 3-8:1.0: cp210x converter detected
+[275134.832385] usb 3-8: cp210x converter now attached to ttyUSB0
+[275308.925184] usb 3-8: USB disconnect, device number 27
+[275308.925347] cp210x ttyUSB0: failed set request 0x7 status: -19
+[275308.925361] cp210x ttyUSB0: failed set request 0x12 status: -19
+[275308.925362] cp210x ttyUSB0: failed set request 0x0 status: -19
+[275308.925469] cp210x ttyUSB0: cp210x converter now disconnected from ttyUSB0
+[275308.925524] cp210x 3-8:1.0: device disconnected
+[275682.866066] sr 2:0:0:0: [sr0] tag#20 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[275682.866151] sr 2:0:0:0: [sr0] tag#20 Sense Key : Not Ready [current] 
+[275682.866155] sr 2:0:0:0: [sr0] tag#20 Add. Sense: Medium not present - tray closed
+[275682.866157] sr 2:0:0:0: [sr0] tag#20 CDB: Read(10) 28 00 00 00 00 00 00 00 08 00
+[275682.866159] I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 4 prio class 0
+[275682.866188] sr 2:0:0:0: [sr0] tag#21 unaligned transfer
+[275682.866192] I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[275682.866194] Buffer I/O error on dev sr0, logical block 0, async page read
+[275682.866201] sr 2:0:0:0: [sr0] tag#22 unaligned transfer
+[275682.866205] I/O error, dev sr0, sector 1 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[275682.866207] Buffer I/O error on dev sr0, logical block 1, async page read
+[275682.866219] sr 2:0:0:0: [sr0] tag#23 unaligned transfer
+[275682.866220] I/O error, dev sr0, sector 2 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[275682.866223] Buffer I/O error on dev sr0, logical block 2, async page read
+[275682.866232] sr 2:0:0:0: [sr0] tag#24 unaligned transfer
+[275682.866233] I/O error, dev sr0, sector 3 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[275682.866234] Buffer I/O error on dev sr0, logical block 3, async page read
+[275682.866244] sr 2:0:0:0: [sr0] tag#25 unaligned transfer
+[275682.866245] I/O error, dev sr0, sector 4 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[275682.866247] Buffer I/O error on dev sr0, logical block 4, async page read
+[275682.866256] sr 2:0:0:0: [sr0] tag#26 unaligned transfer
+[275682.866257] I/O error, dev sr0, sector 5 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[275682.866258] Buffer I/O error on dev sr0, logical block 5, async page read
+[275682.866267] sr 2:0:0:0: [sr0] tag#27 unaligned transfer
+[275682.866269] I/O error, dev sr0, sector 6 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[275682.866271] Buffer I/O error on dev sr0, logical block 6, async page read
+[275682.866279] sr 2:0:0:0: [sr0] tag#28 unaligned transfer
+[275682.866281] I/O error, dev sr0, sector 7 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[275682.866283] Buffer I/O error on dev sr0, logical block 7, async page read
+[276484.791922] sr 2:0:0:0: [sr0] tag#4 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=152s
+[276484.791927] sr 2:0:0:0: [sr0] tag#4 Sense Key : Not Ready [current] 
+[276484.791930] sr 2:0:0:0: [sr0] tag#4 Add. Sense: Medium not present - tray closed
+[276484.791932] sr 2:0:0:0: [sr0] tag#4 CDB: Read(10) 28 00 00 00 00 00 00 00 08 00
+[276484.791933] I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 4 prio class 0
+[276484.791969] sr 2:0:0:0: [sr0] tag#27 unaligned transfer
+[276484.791972] I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[276484.791975] Buffer I/O error on dev sr0, logical block 0, async page read
+[276484.791981] sr 2:0:0:0: [sr0] tag#28 unaligned transfer
+[276484.791983] I/O error, dev sr0, sector 1 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[276484.791984] Buffer I/O error on dev sr0, logical block 1, async page read
+[276484.791989] sr 2:0:0:0: [sr0] tag#29 unaligned transfer
+[276484.791991] I/O error, dev sr0, sector 2 op 0x0:(READ) flags 0x0 phys_seg 5 prio class 0
+[276484.791993] Buffer I/O error on dev sr0, logical block 2, async page read
+[276484.791994] Buffer I/O error on dev sr0, logical block 3, async page read
+[276484.791995] Buffer I/O error on dev sr0, logical block 4, async page read
+[276484.791996] Buffer I/O error on dev sr0, logical block 5, async page read
+[276484.791997] Buffer I/O error on dev sr0, logical block 6, async page read
+[276484.792001] sr 2:0:0:0: [sr0] tag#30 unaligned transfer
+[276484.792002] I/O error, dev sr0, sector 7 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[276484.792003] Buffer I/O error on dev sr0, logical block 7, async page read
+[334571.888265] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[334577.594236] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[334577.594301] sd 1:0:0:0: Attached scsi generic sg1 type 0
+[334577.594358] sr 2:0:0:0: Attached scsi generic sg2 type 5
+[334577.594380] sd 3:0:0:0: Attached scsi generic sg3 type 0
+[334577.594401] sd 8:0:0:0: Attached scsi generic sg4 type 0
+[334577.594419] sd 6:0:0:0: Attached scsi generic sg5 type 0
+[334577.594437] ses 6:0:0:1: Attached scsi generic sg6 type 13
+[334577.594458] sd 9:0:0:0: Attached scsi generic sg7 type 0
+[334577.594476] sd 10:0:0:0: Attached scsi generic sg8 type 0
