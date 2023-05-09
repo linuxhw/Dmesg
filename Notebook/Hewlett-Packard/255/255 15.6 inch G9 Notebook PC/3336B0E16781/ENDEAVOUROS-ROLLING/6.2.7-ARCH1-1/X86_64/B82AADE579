@@ -1,0 +1,1260 @@
+[   23.693243]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.693260]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.693278]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.693287]  process_one_work+0x1c8/0x3c0
+[   23.693291]  worker_thread+0x51/0x390
+[   23.693295]  ? __pfx_worker_thread+0x10/0x10
+[   23.693299]  kthread+0xde/0x110
+[   23.693301]  ? __pfx_kthread+0x10/0x10
+[   23.693303]  ret_from_fork+0x2c/0x50
+[   23.693309]  </TASK>
+[   23.693309] ---[ end trace 0000000000000000 ]---
+[   23.693520] ------------[ cut here ]------------
+[   23.693521] BUG?
+[   23.693539] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.693555] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.693602]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.693630] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.693632] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.693633] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.693641] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.693658] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.693659] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.693661] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.693662] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.693664] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.693665] R10: 0000000000000003 R11: ffffffffafac5f40 R12: 000000000000000d
+[   23.693667] R13: 00000000df7f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.693668] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.693670] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.693671] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.693672] PKRU: 55555554
+[   23.693673] Call Trace:
+[   23.693674]  <TASK>
+[   23.693675]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.693690]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.693703]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.693718]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.693732]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.693746]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.693763]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.693768]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.693785]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.693802]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.693819]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.693829]  process_one_work+0x1c8/0x3c0
+[   23.693833]  worker_thread+0x51/0x390
+[   23.693837]  ? __pfx_worker_thread+0x10/0x10
+[   23.693840]  kthread+0xde/0x110
+[   23.693842]  ? __pfx_kthread+0x10/0x10
+[   23.693845]  ret_from_fork+0x2c/0x50
+[   23.693850]  </TASK>
+[   23.693851] ---[ end trace 0000000000000000 ]---
+[   23.693852] ------------[ cut here ]------------
+[   23.693853] BUG?
+[   23.693865] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.693882] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.693930]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.693957] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.693959] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.693960] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.693969] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.693985] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.693987] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.693988] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.693990] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.693991] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.693993] R10: 0000000000000003 R11: ffffffffafac6318 R12: 000000000000000d
+[   23.693994] R13: 00000000df7f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.693995] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.693997] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.693998] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.694000] PKRU: 55555554
+[   23.694001] Call Trace:
+[   23.694001]  <TASK>
+[   23.694003]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694017]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694031]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694045]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694059]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694074]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694091]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.694096]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694112]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694129]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694147]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.694156]  process_one_work+0x1c8/0x3c0
+[   23.694160]  worker_thread+0x51/0x390
+[   23.694164]  ? __pfx_worker_thread+0x10/0x10
+[   23.694168]  kthread+0xde/0x110
+[   23.694170]  ? __pfx_kthread+0x10/0x10
+[   23.694172]  ret_from_fork+0x2c/0x50
+[   23.694178]  </TASK>
+[   23.694179] ---[ end trace 0000000000000000 ]---
+[   23.694387] ------------[ cut here ]------------
+[   23.694388] BUG?
+[   23.694400] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.694418] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.694466]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.694494] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.694496] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.694497] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.694506] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.694522] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.694524] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.694526] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.694527] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.694529] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.694530] R10: 0000000000000003 R11: ffffffffafac66f0 R12: 000000000000000d
+[   23.694532] R13: 00000000df8f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.694533] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.694535] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.694536] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.694538] PKRU: 55555554
+[   23.694538] Call Trace:
+[   23.694539]  <TASK>
+[   23.694540]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694555]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694569]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694584]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694598]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694613]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694631]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.694637]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694654]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694671]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694689]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.694699]  process_one_work+0x1c8/0x3c0
+[   23.694703]  worker_thread+0x51/0x390
+[   23.694707]  ? __pfx_worker_thread+0x10/0x10
+[   23.694710]  kthread+0xde/0x110
+[   23.694713]  ? __pfx_kthread+0x10/0x10
+[   23.694715]  ret_from_fork+0x2c/0x50
+[   23.694721]  </TASK>
+[   23.694722] ---[ end trace 0000000000000000 ]---
+[   23.694723] ------------[ cut here ]------------
+[   23.694723] BUG?
+[   23.694736] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.694753] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.694802]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.694829] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.694831] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.694832] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.694841] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.694858] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.694860] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.694861] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.694863] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.694864] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.694866] R10: 0000000000000003 R11: ffffffffafac6ac8 R12: 000000000000000d
+[   23.694867] R13: 00000000df8f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.694869] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.694870] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.694872] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.694873] PKRU: 55555554
+[   23.694874] Call Trace:
+[   23.694875]  <TASK>
+[   23.694876]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694890]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694905]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694919]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694934]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.694948]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694966]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.694971]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.694988]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695006]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695023]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.695033]  process_one_work+0x1c8/0x3c0
+[   23.695037]  worker_thread+0x51/0x390
+[   23.695041]  ? __pfx_worker_thread+0x10/0x10
+[   23.695044]  kthread+0xde/0x110
+[   23.695047]  ? __pfx_kthread+0x10/0x10
+[   23.695049]  ret_from_fork+0x2c/0x50
+[   23.695055]  </TASK>
+[   23.695056] ---[ end trace 0000000000000000 ]---
+[   23.695265] ------------[ cut here ]------------
+[   23.695266] BUG?
+[   23.695278] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.695296] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.695344]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.695372] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.695374] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.695375] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.695384] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.695438] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.695441] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.695443] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.695445] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.695447] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.695448] R10: 0000000000000003 R11: ffffffffafac6ea0 R12: 000000000000000d
+[   23.695449] R13: 00000000df9f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.695451] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.695452] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.695454] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.695455] PKRU: 55555554
+[   23.695456] Call Trace:
+[   23.695458]  <TASK>
+[   23.695461]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695482]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695496]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695511]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695525]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695540]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695557]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.695562]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695579]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695596]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695614]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.695623]  process_one_work+0x1c8/0x3c0
+[   23.695627]  worker_thread+0x51/0x390
+[   23.695631]  ? __pfx_worker_thread+0x10/0x10
+[   23.695635]  kthread+0xde/0x110
+[   23.695637]  ? __pfx_kthread+0x10/0x10
+[   23.695639]  ret_from_fork+0x2c/0x50
+[   23.695645]  </TASK>
+[   23.695646] ---[ end trace 0000000000000000 ]---
+[   23.695647] ------------[ cut here ]------------
+[   23.695647] BUG?
+[   23.695660] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.695677] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.695726]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.695760] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.695762] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.695763] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.695775] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.695792] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.695793] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.695795] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.695796] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.695798] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.695799] R10: 0000000000000003 R11: ffffffffafac7278 R12: 000000000000000d
+[   23.695800] R13: 00000000df9f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.695802] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.695803] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.695805] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.695806] PKRU: 55555554
+[   23.695807] Call Trace:
+[   23.695808]  <TASK>
+[   23.695809]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695823]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695837]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695851]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695865]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.695880]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695897]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.695902]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695918]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695936]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.695953]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.695963]  process_one_work+0x1c8/0x3c0
+[   23.695967]  worker_thread+0x51/0x390
+[   23.695971]  ? __pfx_worker_thread+0x10/0x10
+[   23.695974]  kthread+0xde/0x110
+[   23.695976]  ? __pfx_kthread+0x10/0x10
+[   23.695978]  ret_from_fork+0x2c/0x50
+[   23.695984]  </TASK>
+[   23.695985] ---[ end trace 0000000000000000 ]---
+[   23.696193] ------------[ cut here ]------------
+[   23.696194] BUG?
+[   23.696207] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.696224] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.696271]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.696308] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.696310] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.696311] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.696320] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.696336] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.696338] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.696339] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.696341] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.696343] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.696345] R10: 0000000000000003 R11: ffffffffafac7650 R12: 000000000000000d
+[   23.696347] R13: 00000000dfaf0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.696348] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.696351] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.696352] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.696354] PKRU: 55555554
+[   23.696355] Call Trace:
+[   23.696356]  <TASK>
+[   23.696357]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696377]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696390]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696405]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696419]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696433]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.696451]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.696456]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.696472]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.696489]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.696507]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.696516]  process_one_work+0x1c8/0x3c0
+[   23.696520]  worker_thread+0x51/0x390
+[   23.696524]  ? __pfx_worker_thread+0x10/0x10
+[   23.696528]  kthread+0xde/0x110
+[   23.696530]  ? __pfx_kthread+0x10/0x10
+[   23.696532]  ret_from_fork+0x2c/0x50
+[   23.696538]  </TASK>
+[   23.696539] ---[ end trace 0000000000000000 ]---
+[   23.696541] ------------[ cut here ]------------
+[   23.696541] BUG?
+[   23.696558] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.696575] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.696622]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.696649] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.696651] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.696653] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.696661] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.696678] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.696679] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.696681] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.696682] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.696684] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.696685] R10: 0000000000000003 R11: ffffffffafac7a28 R12: 000000000000000d
+[   23.696686] R13: 00000000dfaf0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.696688] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.696689] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.696691] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.696692] PKRU: 55555554
+[   23.696693] Call Trace:
+[   23.696694]  <TASK>
+[   23.696695]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696709]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696723]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696737]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696751]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.696766]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.696783]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.696788]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.696804]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.696821]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.696839]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.696848]  process_one_work+0x1c8/0x3c0
+[   23.696852]  worker_thread+0x51/0x390
+[   23.696856]  ? __pfx_worker_thread+0x10/0x10
+[   23.696860]  kthread+0xde/0x110
+[   23.696862]  ? __pfx_kthread+0x10/0x10
+[   23.696864]  ret_from_fork+0x2c/0x50
+[   23.696870]  </TASK>
+[   23.696871] ---[ end trace 0000000000000000 ]---
+[   23.697079] ------------[ cut here ]------------
+[   23.697080] BUG?
+[   23.697092] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.697109] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.697156]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.697183] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.697185] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.697187] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.697195] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.697212] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.697213] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.697215] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.697216] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.697218] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.697219] R10: 0000000000000003 R11: ffffffffafac7e00 R12: 000000000000000d
+[   23.697220] R13: 00000000dfbf0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.697222] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.697224] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.697225] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.697226] PKRU: 55555554
+[   23.697227] Call Trace:
+[   23.697228]  <TASK>
+[   23.697229]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697243]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697257]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697271]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697286]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697300]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.697317]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.697323]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.697340]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.697357]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.697375]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.697384]  process_one_work+0x1c8/0x3c0
+[   23.697388]  worker_thread+0x51/0x390
+[   23.697392]  ? __pfx_worker_thread+0x10/0x10
+[   23.697395]  kthread+0xde/0x110
+[   23.697398]  ? __pfx_kthread+0x10/0x10
+[   23.697400]  ret_from_fork+0x2c/0x50
+[   23.697406]  </TASK>
+[   23.697406] ---[ end trace 0000000000000000 ]---
+[   23.697407] ------------[ cut here ]------------
+[   23.697408] BUG?
+[   23.697420] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.697437] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.697484]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.697511] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.697513] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.697514] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.697523] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.697540] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.697541] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.697543] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.697544] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.697546] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.697547] R10: 0000000000000003 R11: ffffffffafac81d8 R12: 000000000000000d
+[   23.697548] R13: 00000000dfbf0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.697550] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.697552] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.697553] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.697554] PKRU: 55555554
+[   23.697555] Call Trace:
+[   23.697556]  <TASK>
+[   23.697557]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697572]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697585]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697600]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697614]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.697628]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.697645]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.697650]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.697667]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.697684]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.697702]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.697711]  process_one_work+0x1c8/0x3c0
+[   23.697715]  worker_thread+0x51/0x390
+[   23.697719]  ? __pfx_worker_thread+0x10/0x10
+[   23.697723]  kthread+0xde/0x110
+[   23.697725]  ? __pfx_kthread+0x10/0x10
+[   23.697727]  ret_from_fork+0x2c/0x50
+[   23.697733]  </TASK>
+[   23.697733] ---[ end trace 0000000000000000 ]---
+[   23.697942] ------------[ cut here ]------------
+[   23.697943] BUG?
+[   23.697955] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.697972] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.698019]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.698046] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.698048] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.698049] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.698058] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.698074] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.698076] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.698078] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.698079] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.698081] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.698082] R10: 0000000000000003 R11: ffffffffafac85b0 R12: 000000000000000d
+[   23.698083] R13: 00000000dfcf0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.698085] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.698086] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.698088] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.698089] PKRU: 55555554
+[   23.698090] Call Trace:
+[   23.698091]  <TASK>
+[   23.698092]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698106]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698120]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698134]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698148]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698163]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.698180]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.698185]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.698201]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.698219]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.698236]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.698246]  process_one_work+0x1c8/0x3c0
+[   23.698250]  worker_thread+0x51/0x390
+[   23.698254]  ? __pfx_worker_thread+0x10/0x10
+[   23.698257]  kthread+0xde/0x110
+[   23.698259]  ? __pfx_kthread+0x10/0x10
+[   23.698261]  ret_from_fork+0x2c/0x50
+[   23.698267]  </TASK>
+[   23.698268] ---[ end trace 0000000000000000 ]---
+[   23.698269] ------------[ cut here ]------------
+[   23.698270] BUG?
+[   23.698282] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.698299] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.698347]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.698375] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.698377] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.698378] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.698387] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.698404] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.698405] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.698407] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.698408] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.698410] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.698411] R10: 0000000000000003 R11: ffffffffafac8988 R12: 000000000000000d
+[   23.698412] R13: 00000000dfcf0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.698414] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.698416] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.698417] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.698419] PKRU: 55555554
+[   23.698420] Call Trace:
+[   23.698420]  <TASK>
+[   23.698422]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698436]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698450]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698465]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698480]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.698494]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.698512]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.698517]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.698534]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.698551]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.698569]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.698579]  process_one_work+0x1c8/0x3c0
+[   23.698583]  worker_thread+0x51/0x390
+[   23.698587]  ? __pfx_worker_thread+0x10/0x10
+[   23.698590]  kthread+0xde/0x110
+[   23.698593]  ? __pfx_kthread+0x10/0x10
+[   23.698595]  ret_from_fork+0x2c/0x50
+[   23.698601]  </TASK>
+[   23.698601] ---[ end trace 0000000000000000 ]---
+[   23.698850] ------------[ cut here ]------------
+[   23.698856] BUG?
+[   23.698869] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.698887] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.698934]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.698962] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.698964] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.698965] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.698974] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.698990] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.698991] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.698993] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.698995] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.698996] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.698998] R10: 0000000000000003 R11: ffffffffafac8d60 R12: 000000000000000d
+[   23.698999] R13: 00000000dfdf0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.699000] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.699002] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.699003] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.699005] PKRU: 55555554
+[   23.699006] Call Trace:
+[   23.699006]  <TASK>
+[   23.699008]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699022]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699036]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699050]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699064]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699079]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699096]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.699105]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699122]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699139]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699156]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.699166]  process_one_work+0x1c8/0x3c0
+[   23.699170]  worker_thread+0x51/0x390
+[   23.699174]  ? __pfx_worker_thread+0x10/0x10
+[   23.699177]  kthread+0xde/0x110
+[   23.699180]  ? __pfx_kthread+0x10/0x10
+[   23.699182]  ret_from_fork+0x2c/0x50
+[   23.699188]  </TASK>
+[   23.699188] ---[ end trace 0000000000000000 ]---
+[   23.699189] ------------[ cut here ]------------
+[   23.699190] BUG?
+[   23.699202] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.699220] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.699267]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.699294] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.699296] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.699297] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.699306] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.699322] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.699324] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.699326] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.699327] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.699329] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.699330] R10: 0000000000000003 R11: ffffffffafac9138 R12: 000000000000000d
+[   23.699331] R13: 00000000dfdf0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.699333] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.699335] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.699336] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.699337] PKRU: 55555554
+[   23.699338] Call Trace:
+[   23.699339]  <TASK>
+[   23.699340]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699354]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699368]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699382]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699397]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699411]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699428]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.699433]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699450]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699467]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699484]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.699494]  process_one_work+0x1c8/0x3c0
+[   23.699498]  worker_thread+0x51/0x390
+[   23.699502]  ? __pfx_worker_thread+0x10/0x10
+[   23.699505]  kthread+0xde/0x110
+[   23.699507]  ? __pfx_kthread+0x10/0x10
+[   23.699510]  ret_from_fork+0x2c/0x50
+[   23.699516]  </TASK>
+[   23.699516] ---[ end trace 0000000000000000 ]---
+[   23.699725] ------------[ cut here ]------------
+[   23.699725] BUG?
+[   23.699738] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.699755] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.699803]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.699830] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.699832] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.699833] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.699841] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.699858] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.699859] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.699861] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.699863] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.699864] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.699865] R10: 0000000000000003 R11: ffffffffafac9510 R12: 000000000000000d
+[   23.699867] R13: 00000000dfef0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.699868] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.699870] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.699871] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.699873] PKRU: 55555554
+[   23.699873] Call Trace:
+[   23.699874]  <TASK>
+[   23.699875]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699890]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699903]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699918]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699932]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.699946]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699963]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.699968]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.699985]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700002]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700020]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.700029]  process_one_work+0x1c8/0x3c0
+[   23.700033]  worker_thread+0x51/0x390
+[   23.700037]  ? __pfx_worker_thread+0x10/0x10
+[   23.700040]  kthread+0xde/0x110
+[   23.700043]  ? __pfx_kthread+0x10/0x10
+[   23.700045]  ret_from_fork+0x2c/0x50
+[   23.700051]  </TASK>
+[   23.700052] ---[ end trace 0000000000000000 ]---
+[   23.700053] ------------[ cut here ]------------
+[   23.700053] BUG?
+[   23.700066] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.700083] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.700130]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.700158] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.700160] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.700161] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.700170] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.700186] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.700187] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.700189] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.700191] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.700192] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.700193] R10: 0000000000000003 R11: ffffffffafac98e8 R12: 000000000000000d
+[   23.700195] R13: 00000000dfef0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.700196] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.700198] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.700199] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.700201] PKRU: 55555554
+[   23.700201] Call Trace:
+[   23.700202]  <TASK>
+[   23.700204]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700218]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700231]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700246]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700260]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700274]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700292]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.700296]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700313]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700330]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700348]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.700358]  process_one_work+0x1c8/0x3c0
+[   23.700362]  worker_thread+0x51/0x390
+[   23.700366]  ? __pfx_worker_thread+0x10/0x10
+[   23.700370]  kthread+0xde/0x110
+[   23.700372]  ? __pfx_kthread+0x10/0x10
+[   23.700375]  ret_from_fork+0x2c/0x50
+[   23.700380]  </TASK>
+[   23.700381] ---[ end trace 0000000000000000 ]---
+[   23.700591] ------------[ cut here ]------------
+[   23.700592] BUG?
+[   23.700606] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.700623] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.700672]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.700699] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.700701] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.700702] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.700711] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.700728] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.700730] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.700732] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.700733] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.700734] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.700736] R10: 0000000000000003 R11: ffffffffafab1cc0 R12: 000000000000000d
+[   23.700737] R13: 00000000dfff0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.700739] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.700740] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.700742] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.700743] PKRU: 55555554
+[   23.700744] Call Trace:
+[   23.700745]  <TASK>
+[   23.700746]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700761]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700775]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700789]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700804]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.700819]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700836]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.700841]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700858]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700876]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.700894]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.700903]  process_one_work+0x1c8/0x3c0
+[   23.700907]  worker_thread+0x51/0x390
+[   23.700912]  ? __pfx_worker_thread+0x10/0x10
+[   23.700915]  kthread+0xde/0x110
+[   23.700917]  ? __pfx_kthread+0x10/0x10
+[   23.700920]  ret_from_fork+0x2c/0x50
+[   23.700926]  </TASK>
+[   23.700926] ---[ end trace 0000000000000000 ]---
+[   23.700927] ------------[ cut here ]------------
+[   23.700928] BUG?
+[   23.700941] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.700959] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.701007]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.701034] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.701036] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.701037] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.701046] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.701063] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.701065] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.701066] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.701068] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.701069] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.701071] R10: 0000000000000003 R11: ffffffffafab2098 R12: 000000000000000d
+[   23.701072] R13: 00000000dfff0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.701074] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.701075] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.701077] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.701078] PKRU: 55555554
+[   23.701079] Call Trace:
+[   23.701080]  <TASK>
+[   23.701081]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701096]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701110]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701125]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701139]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701154]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.701171]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.701176]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.701193]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.701211]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.701229]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.701238]  process_one_work+0x1c8/0x3c0
+[   23.701242]  worker_thread+0x51/0x390
+[   23.701246]  ? __pfx_worker_thread+0x10/0x10
+[   23.701250]  kthread+0xde/0x110
+[   23.701252]  ? __pfx_kthread+0x10/0x10
+[   23.701254]  ret_from_fork+0x2c/0x50
+[   23.701260]  </TASK>
+[   23.701261] ---[ end trace 0000000000000000 ]---
+[   23.701474] ------------[ cut here ]------------
+[   23.701474] BUG?
+[   23.701487] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.701504] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.701552]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.701582] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.701583] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.701585] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.701593] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.701610] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.701611] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.701613] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.701614] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.701616] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.701617] R10: 0000000000000003 R11: ffffffffafab2470 R12: 000000000000000e
+[   23.701618] R13: 00000000e00f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.701620] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.701621] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.701623] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.701624] PKRU: 55555554
+[   23.701625] Call Trace:
+[   23.701626]  <TASK>
+[   23.701627]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701642]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701655]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701670]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701684]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701698]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.701715]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.701720]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.701737]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.701754]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.701771]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.701781]  process_one_work+0x1c8/0x3c0
+[   23.701785]  worker_thread+0x51/0x390
+[   23.701789]  ? __pfx_worker_thread+0x10/0x10
+[   23.701792]  kthread+0xde/0x110
+[   23.701794]  ? __pfx_kthread+0x10/0x10
+[   23.701797]  ret_from_fork+0x2c/0x50
+[   23.701802]  </TASK>
+[   23.701803] ---[ end trace 0000000000000000 ]---
+[   23.701804] ------------[ cut here ]------------
+[   23.701805] BUG?
+[   23.701817] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.701834] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.701881]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.701908] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.701910] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.701912] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.701920] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.701937] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.701938] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.701940] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.701941] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.701943] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.701944] R10: 0000000000000003 R11: ffffffffafab2848 R12: 000000000000000e
+[   23.701945] R13: 00000000e00f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.701947] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.701948] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.701950] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.701951] PKRU: 55555554
+[   23.701952] Call Trace:
+[   23.701953]  <TASK>
+[   23.701954]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701968]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701982]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.701996]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702011]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702025]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702042]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.702047]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702064]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702135]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702153]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.702163]  process_one_work+0x1c8/0x3c0
+[   23.702168]  worker_thread+0x51/0x390
+[   23.702172]  ? __pfx_worker_thread+0x10/0x10
+[   23.702175]  kthread+0xde/0x110
+[   23.702179]  ? __pfx_kthread+0x10/0x10
+[   23.702181]  ret_from_fork+0x2c/0x50
+[   23.702189]  </TASK>
+[   23.702191] ---[ end trace 0000000000000000 ]---
+[   23.702401] ------------[ cut here ]------------
+[   23.702402] BUG?
+[   23.702415] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.702432] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.702480]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.702508] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.702510] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.702511] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.702520] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.702536] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.702537] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.702539] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.702540] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.702542] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.702543] R10: 0000000000000003 R11: ffffffffafab2c20 R12: 000000000000000e
+[   23.702545] R13: 00000000e01f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.702546] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.702548] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.702549] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.702550] PKRU: 55555554
+[   23.702551] Call Trace:
+[   23.702552]  <TASK>
+[   23.702553]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702568]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702582]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702596]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702610]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702624]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702642]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.702647]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702664]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702681]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702699]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.702708]  process_one_work+0x1c8/0x3c0
+[   23.702712]  worker_thread+0x51/0x390
+[   23.702716]  ? __pfx_worker_thread+0x10/0x10
+[   23.702720]  kthread+0xde/0x110
+[   23.702722]  ? __pfx_kthread+0x10/0x10
+[   23.702724]  ret_from_fork+0x2c/0x50
+[   23.702730]  </TASK>
+[   23.702731] ---[ end trace 0000000000000000 ]---
+[   23.702732] ------------[ cut here ]------------
+[   23.702732] BUG?
+[   23.702745] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.702762] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.702810]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.702837] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.702839] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.702840] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.702849] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.702865] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.702867] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.702868] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.702870] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.702871] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.702872] R10: 0000000000000003 R11: ffffffffafab2ff8 R12: 000000000000000e
+[   23.702874] R13: 00000000e01f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.702875] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.702877] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.702878] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.702880] PKRU: 55555554
+[   23.702881] Call Trace:
+[   23.702881]  <TASK>
+[   23.702883]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702897]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702911]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702925]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702939]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.702953]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702971]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.702976]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.702992]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703010]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703027]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.703036]  process_one_work+0x1c8/0x3c0
+[   23.703041]  worker_thread+0x51/0x390
+[   23.703045]  ? __pfx_worker_thread+0x10/0x10
+[   23.703048]  kthread+0xde/0x110
+[   23.703050]  ? __pfx_kthread+0x10/0x10
+[   23.703052]  ret_from_fork+0x2c/0x50
+[   23.703058]  </TASK>
+[   23.703059] ---[ end trace 0000000000000000 ]---
+[   23.703267] ------------[ cut here ]------------
+[   23.703268] BUG?
+[   23.703281] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.703298] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.703345]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.703373] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.703375] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.703376] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.703384] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.703401] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.703402] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.703404] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.703405] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.703407] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.703408] R10: 0000000000000003 R11: ffffffffafab33d0 R12: 000000000000000e
+[   23.703410] R13: 00000000e02f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.703411] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.703413] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.703414] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.703416] PKRU: 55555554
+[   23.703416] Call Trace:
+[   23.703417]  <TASK>
+[   23.703419]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703433]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703447]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703461]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703475]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703489]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703507]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.703512]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703528]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703545]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703563]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.703573]  process_one_work+0x1c8/0x3c0
+[   23.703577]  worker_thread+0x51/0x390
+[   23.703581]  ? __pfx_worker_thread+0x10/0x10
+[   23.703584]  kthread+0xde/0x110
+[   23.703586]  ? __pfx_kthread+0x10/0x10
+[   23.703588]  ret_from_fork+0x2c/0x50
+[   23.703594]  </TASK>
+[   23.703595] ---[ end trace 0000000000000000 ]---
+[   23.703596] ------------[ cut here ]------------
+[   23.703596] BUG?
+[   23.703609] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.703627] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.703674]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.703701] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.703703] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.703704] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.703713] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.703729] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.703730] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.703732] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.703734] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.703735] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.703736] R10: 0000000000000003 R11: ffffffffafab37a8 R12: 000000000000000e
+[   23.703738] R13: 00000000e02f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.703739] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.703741] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.703742] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.703744] PKRU: 55555554
+[   23.703744] Call Trace:
+[   23.703745]  <TASK>
+[   23.703746]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703761]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703775]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703789]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703803]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.703817]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703835]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.703840]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703856]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703873]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.703891]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.703900]  process_one_work+0x1c8/0x3c0
+[   23.703905]  worker_thread+0x51/0x390
+[   23.703909]  ? __pfx_worker_thread+0x10/0x10
+[   23.703912]  kthread+0xde/0x110
+[   23.703914]  ? __pfx_kthread+0x10/0x10
+[   23.703916]  ret_from_fork+0x2c/0x50
+[   23.703922]  </TASK>
+[   23.703923] ---[ end trace 0000000000000000 ]---
+[   23.704131] ------------[ cut here ]------------
+[   23.704132] BUG?
+[   23.704144] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.704161] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.704209]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.704241] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.704243] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.704244] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.704253] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.704269] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.704271] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.704272] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.704274] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.704275] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.704277] R10: 0000000000000003 R11: ffffffffafab3b80 R12: 000000000000000e
+[   23.704278] R13: 00000000e03f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.704279] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.704281] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.704282] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.704284] PKRU: 55555554
+[   23.704285] Call Trace:
+[   23.704286]  <TASK>
+[   23.704287]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704301]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704315]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704329]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704343]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704358]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.704376]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.704381]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.704398]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.704416]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.704434]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.704443]  process_one_work+0x1c8/0x3c0
+[   23.704448]  worker_thread+0x51/0x390
+[   23.704452]  ? __pfx_worker_thread+0x10/0x10
+[   23.704455]  kthread+0xde/0x110
+[   23.704457]  ? __pfx_kthread+0x10/0x10
+[   23.704460]  ret_from_fork+0x2c/0x50
+[   23.704466]  </TASK>
+[   23.704466] ---[ end trace 0000000000000000 ]---
+[   23.704467] ------------[ cut here ]------------
+[   23.704468] BUG?
+[   23.704480] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.704498] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.704546]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.704574] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.704576] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.704577] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.704586] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.704602] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.704604] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.704606] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.704607] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.704608] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.704610] R10: 0000000000000003 R11: ffffffffafab3f58 R12: 000000000000000e
+[   23.704611] R13: 00000000e03f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.704613] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.704614] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.704616] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.704617] PKRU: 55555554
+[   23.704618] Call Trace:
+[   23.704619]  <TASK>
+[   23.704620]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704635]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704649]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704663]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704678]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.704693]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.704710]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.704715]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.704732]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.704749]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.704767]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.704777]  process_one_work+0x1c8/0x3c0
+[   23.704781]  worker_thread+0x51/0x390
+[   23.704785]  ? __pfx_worker_thread+0x10/0x10
+[   23.704788]  kthread+0xde/0x110
+[   23.704791]  ? __pfx_kthread+0x10/0x10
+[   23.704793]  ret_from_fork+0x2c/0x50
+[   23.704799]  </TASK>
+[   23.704800] ---[ end trace 0000000000000000 ]---
+[   23.705012] ------------[ cut here ]------------
+[   23.705013] BUG?
+[   23.705026] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.705043] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.705091]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.705119] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.705121] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.705122] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.705131] RIP: 0010:azx_single_send_cmd+0xd9/0x1a0 [snd_hda_codec]
+[   23.705148] Code: 8b 45 20 48 83 c0 64 8b 00 42 89 84 a5 b4 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec <0f> 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec 0f 0b 45 31 e4 e9 2f ff
+[   23.705149] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.705151] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.705152] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.705154] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.705155] R10: 0000000000000003 R11: ffffffffafab4330 R12: 000000000000000e
+[   23.705156] R13: 00000000e04f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.705158] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.705160] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.705161] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.705163] PKRU: 55555554
+[   23.705163] Call Trace:
+[   23.705164]  <TASK>
+[   23.705166]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705180]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705194]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705209]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705223]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705238]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.705256]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.705261]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.705278]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.705295]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.705313]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.705323]  process_one_work+0x1c8/0x3c0
+[   23.705327]  worker_thread+0x51/0x390
+[   23.705331]  ? __pfx_worker_thread+0x10/0x10
+[   23.705334]  kthread+0xde/0x110
+[   23.705337]  ? __pfx_kthread+0x10/0x10
+[   23.705339]  ret_from_fork+0x2c/0x50
+[   23.705345]  </TASK>
+[   23.705345] ---[ end trace 0000000000000000 ]---
+[   23.705346] ------------[ cut here ]------------
+[   23.705347] BUG?
+[   23.705360] WARNING: CPU: 11 PID: 86 at sound/pci/hda/hda_controller.c:756 azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.705377] Modules linked in: ccm btusb btrtl uvcvideo btbcm btintel videobuf2_vmalloc btmtk videobuf2_memops rtw89_8852be videobuf2_v4l2 bluetooth snd_soc_dmic rtw89_8852b snd_acp3x_rn snd_acp3x_pdm_dma videodev snd_sof_amd_rembrandt rtw89_pci videobuf2_common ecdh_generic snd_sof_amd_renoir vfat mc crc16 fat rtw89_core snd_sof_amd_acp snd_sof_pci amdgpu mac80211 snd_sof_xtensa_dsp snd_sof snd_sof_utils libarc4 intel_rapl_msr snd_hda_codec_hdmi intel_rapl_common snd_soc_core snd_hda_intel edac_mce_amd snd_compress snd_intel_dspcfg ac97_bus snd_intel_sdw_acpi snd_pcm_dmaengine snd_pci_ps snd_hda_codec kvm_amd drm_buddy snd_rpl_pci_acp6x gpu_sched snd_hda_core hp_wmi snd_acp_pci cfg80211 drm_ttm_helper sparse_keymap snd_hwdep snd_pci_acp6x r8169 snd_pci_acp5x platform_profile kvm ttm snd_rn_pci_acp3x snd_pcm realtek snd_acp_config snd_timer mdio_devres irqbypass drm_display_helper snd_soc_acpi snd rapl pcspkr wmi_bmof rfkill libphy k10temp soundcore cec snd_pci_acp3x i2c_piix4
+[   23.705466]  wireless_hotkey acpi_cpufreq acpi_tad joydev mousedev mac_hid fuse loop dm_mod ip_tables x_tables nvme serio_raw atkbd crct10dif_pclmul libps2 crc32_pclmul nvme_core hid_multitouch polyval_clmulni polyval_generic gf128mul ghash_clmulni_intel vivaldi_fmap sha512_ssse3 aesni_intel crypto_simd cryptd ccp xhci_pci sp5100_tco i8042 nvme_common xhci_pci_renesas video i2c_hid_acpi serio i2c_hid wmi btrfs blake2b_generic xor raid6_pq libcrc32c crc32c_generic crc32c_intel pkcs8_key_parser crypto_user
+[   23.705495] CPU: 11 PID: 86 Comm: kworker/11:0 Tainted: G        W          6.2.7-arch1-1 #1 d0ef1d2ba4aa7f22be04df39dde66a4c3cc73dc4
+[   23.705497] Hardware name: HP HP 255 15.6 inch G9 Notebook PC/8A1B, BIOS F.07 08/23/2022
+[   23.705498] Workqueue: events azx_probe_work [snd_hda_intel]
+[   23.705507] RIP: 0010:azx_single_send_cmd+0xe7/0x1a0 [snd_hda_codec]
+[   23.705524] Code: 03 00 00 31 c0 5b 5d 41 5c 41 5d c3 cc cc cc cc 48 c7 c7 66 1d d4 c0 e8 37 70 f7 ec 0f 0b 48 c7 c7 66 1d d4 c0 e8 29 70 f7 ec <0f> 0b 45 31 e4 e9 2f ff ff ff 48 c7 c7 f0 f7 d3 c0 e8 f3 69 00 ed
+[   23.705525] RSP: 0018:ffffb89bc042fbc0 EFLAGS: 00010282
+[   23.705527] RAX: 0000000000000000 RBX: ffff98af436aa028 RCX: 0000000000000027
+[   23.705528] RDX: ffff98b23e8e1648 RSI: 0000000000000001 RDI: ffff98b23e8e1640
+[   23.705530] RBP: ffff98af436aa028 R08: 0000000000000000 R09: ffffb89bc042fa50
+[   23.705531] R10: 0000000000000003 R11: ffffffffafab4708 R12: 000000000000000e
+[   23.705532] R13: 00000000e04f0005 R14: 0000000000000001 R15: ffff98af436aa028
+[   23.705534] FS:  0000000000000000(0000) GS:ffff98b23e8c0000(0000) knlGS:0000000000000000
+[   23.705536] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   23.705537] CR2: 00005613e4486fc8 CR3: 0000000157610000 CR4: 0000000000750ee0
+[   23.705538] PKRU: 55555554
+[   23.705539] Call Trace:
+[   23.705541]  <TASK>
+[   23.705544]  snd_hdac_bus_exec_verb_unlocked+0x8b/0x1b0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705558]  snd_hdac_bus_exec_verb+0x3b/0x60 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705572]  hda_reg_read+0x95/0x230 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705586]  __snd_hdac_regmap_read_raw+0x84/0xe0 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705600]  snd_hdac_device_init+0x239/0x460 [snd_hda_core 8c082f453e592b8bd647f6f6567b86fc534d5db2]
+[   23.705615]  snd_hda_codec_device_init+0xef/0x2b0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.705632]  ? __pfx_autoremove_wake_function+0x10/0x10
+[   23.705638]  snd_hda_codec_new+0x31/0x90 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.705654]  ? azx_get_response+0x81/0x180 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.705671]  azx_probe_codecs+0x16f/0x2c0 [snd_hda_codec 869e0ee8e062045128799529ff71f76769faf246]
+[   23.705689]  azx_probe_continue+0x76a/0x970 [snd_hda_intel 7003286ecc7abc57814b40fea701c896923382d2]
+[   23.705698]  process_one_work+0x1c8/0x3c0
+[   23.705702]  worker_thread+0x51/0x390
+[   23.705706]  ? __pfx_worker_thread+0x10/0x10
+[   23.705710]  kthread+0xde/0x110
+[   23.705712]  ? __pfx_kthread+0x10/0x10
+[   23.705714]  ret_from_fork+0x2c/0x50
+[   23.705720]  </TASK>
+[   23.705721] ---[ end trace 0000000000000000 ]---
+[   23.705930] hdaudio hdaudioC1D0: no AFG or MFG node found
+[   23.705938] snd_hda_intel 0000:04:00.6: no codecs initialized
+[  109.347029] rtw89_8852be 0000:01:00.0: FW status = 0x91001100
+[  109.347041] rtw89_8852be 0000:01:00.0: FW BADADDR = 0x22
+[  109.347046] rtw89_8852be 0000:01:00.0: FW EPC/RA = 0x0
+[  109.347050] rtw89_8852be 0000:01:00.0: FW MISC = 0xb8900635
+[  109.347054] rtw89_8852be 0000:01:00.0: R_AX_HALT_C2H = 0x1000
+[  109.347058] rtw89_8852be 0000:01:00.0: R_AX_SER_DBG_INFO = 0x1000000
+[  109.347066] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0d3
+[  109.347081] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0e7
+[  109.347096] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0ff
+[  109.347110] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a10f
+[  109.347125] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0f3
+[  109.347139] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0e9
+[  109.347153] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0ef
+[  109.347168] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0e5
+[  109.347182] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0eb
+[  109.347197] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0db
+[  109.347211] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0e7
+[  109.347226] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0d7
+[  109.347240] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb8989fff
+[  109.347255] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a00d
+[  109.347269] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0e3
+[  109.347282] rtw89_8852be 0000:01:00.0: --->
+               err=0x1000
+[  109.347285] rtw89_8852be 0000:01:00.0: R_AX_SER_DBG_INFO =0x01000000
+[  109.347291] rtw89_8852be 0000:01:00.0: R_AX_DMAC_ERR_ISR=0x00000040
+[  109.347295] rtw89_8852be 0000:01:00.0: R_AX_DMAC_ERR_IMR=0x00000000
+[  109.347299] rtw89_8852be 0000:01:00.0: R_AX_WDE_ERR_FLAG_CFG=0x00000000
+[  109.347302] rtw89_8852be 0000:01:00.0: R_AX_PLE_ERR_FLAG_CFG=0x83190000
+[  109.347306] rtw89_8852be 0000:01:00.0: R_AX_WDE_ERR_IMR=0xffffffff
+[  109.347310] rtw89_8852be 0000:01:00.0: R_AX_WDE_ERR_ISR=0x00000000
+[  109.347313] rtw89_8852be 0000:01:00.0: R_AX_PLE_ERR_IMR=0xffffffdf
+[  109.347316] rtw89_8852be 0000:01:00.0: R_AX_PLE_ERR_FLAG_ISR=0x02000000
+[  109.347320] rtw89_8852be 0000:01:00.0: R_AX_WD_CPUQ_OP_0=0x00000000
+[  109.347323] rtw89_8852be 0000:01:00.0: R_AX_WD_CPUQ_OP_1=0x00000000
+[  109.347326] rtw89_8852be 0000:01:00.0: R_AX_WD_CPUQ_OP_2=0x00000000
+[  109.347329] rtw89_8852be 0000:01:00.0: R_AX_WD_CPUQ_OP_STATUS=0x00000000
+[  109.347333] rtw89_8852be 0000:01:00.0: R_AX_PL_CPUQ_OP_0=0x00000000
+[  109.347336] rtw89_8852be 0000:01:00.0: R_AX_PL_CPUQ_OP_1=0x00000000
+[  109.347340] rtw89_8852be 0000:01:00.0: R_AX_PL_CPUQ_OP_2=0x00000000
+[  109.347343] rtw89_8852be 0000:01:00.0: R_AX_PL_CPUQ_OP_STATUS=0x00000000
+[  109.347346] rtw89_8852be 0000:01:00.0: R_AX_RXDMA_PKT_INFO_0=0x80008082
+[  109.347350] rtw89_8852be 0000:01:00.0: R_AX_RXDMA_PKT_INFO_1=0x80008000
+[  109.347353] rtw89_8852be 0000:01:00.0: R_AX_RXDMA_PKT_INFO_2=0x807a80b7
+[  109.347361] rtw89_8852be 0000:01:00.0: R_AX_CMAC_ERR_ISR [0]=0x00000000
+[  109.347365] rtw89_8852be 0000:01:00.0: R_AX_CMAC_FUNC_EN [0]=0xf000803f
+[  109.347369] rtw89_8852be 0000:01:00.0: R_AX_CK_EN [0]=0xffffffff
+[  109.347372] rtw89_8852be 0000:01:00.0: R_AX_CMAC_ERR_IMR [0]=0x00000000
+[  109.347376] rtw89_8852be 0000:01:00.0: R_AX_RPQ_RXBD_IDX =0x00ac00ac
+[  109.347380] rtw89_8852be 0000:01:00.0: R_AX_DBG_ERR_FLAG=0x00000000
+[  109.347383] rtw89_8852be 0000:01:00.0: R_AX_LBC_WATCHDOG=0x00000081
+[  109.347384] rtw89_8852be 0000:01:00.0: <---
+[  109.347386] rtw89_8852be 0000:01:00.0: SER catches error: 0x1000
+[  109.347657] rtw89_8852be 0000:01:00.0: FW status = 0x91001100
+[  109.347662] rtw89_8852be 0000:01:00.0: FW BADADDR = 0x22
+[  109.347665] rtw89_8852be 0000:01:00.0: FW EPC/RA = 0x0
+[  109.347669] rtw89_8852be 0000:01:00.0: FW MISC = 0xb8900635
+[  109.347672] rtw89_8852be 0000:01:00.0: R_AX_HALT_C2H = 0x1001
+[  109.347676] rtw89_8852be 0000:01:00.0: R_AX_SER_DBG_INFO = 0x1000000
+[  109.347683] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a011
+[  109.347698] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a105
+[  109.347712] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a003
+[  109.347727] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a037
+[  109.347741] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a015
+[  109.347755] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a009
+[  109.347770] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0f5
+[  109.347784] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0ff
+[  109.347798] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0ff
+[  109.347813] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a01f
+[  109.347827] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a033
+[  109.347841] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0ef
+[  109.347855] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb8989ff9
+[  109.347869] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a021
+[  109.347883] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb898a0e1
+[  109.347896] rtw89_8852be 0000:01:00.0: SER catches error: 0x1001
+[  109.348083] rtw89_8852be 0000:01:00.0: FW status = 0x91008100
+[  109.348087] rtw89_8852be 0000:01:00.0: FW BADADDR = 0x22
+[  109.348090] rtw89_8852be 0000:01:00.0: FW EPC/RA = 0x0
+[  109.348094] rtw89_8852be 0000:01:00.0: FW MISC = 0xb898828b
+[  109.348097] rtw89_8852be 0000:01:00.0: R_AX_HALT_C2H = 0x1002
+[  109.348100] rtw89_8852be 0000:01:00.0: R_AX_SER_DBG_INFO = 0xf1000000
+[  109.348107] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb89a3a85
+[  109.348121] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb8920587
+[  109.348135] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb89a904d
+[  109.348149] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb89a3a53
+[  109.348164] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb8935f35
+[  109.348178] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb89a904b
+[  109.348192] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb89a8def
+[  109.348206] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb8935f35
+[  109.348221] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb89a9033
+[  109.348235] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb89a8dc5
+[  109.348249] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb89347f7
+[  109.348263] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb8937653
+[  109.348278] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb8934903
+[  109.348292] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb8935e29
+[  109.348306] rtw89_8852be 0000:01:00.0: [ERR]fw PC = 0xb89acaa3
+[  109.348318] rtw89_8852be 0000:01:00.0: SER catches error: 0x1002
+[  109.397699] rtw89_8852be 0000:01:00.0: c2h class 1 func 3 not support
+[  109.466241] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[  109.829211] r8169 0000:02:00.0 eno1: Link is Down
