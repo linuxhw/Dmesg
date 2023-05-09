@@ -1,0 +1,1013 @@
+[   15.601123]  bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[   15.601149] Unloaded tainted modules: binder_linux(OE):2
+[   15.601152] CPU: 0 PID: 1271 Comm: systemd-user-ru Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[   15.601156] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[   15.601157] RIP: 0010:__list_add_valid+0x83/0xa0
+[   15.601161] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[   15.601163] RSP: 0018:ffffbdbd01817d18 EFLAGS: 00010286
+[   15.601165] RAX: 0000000000000000 RBX: ffff9dba1b4c9c30 RCX: 0000000000000027
+[   15.601167] RDX: ffff9dbd3f421668 RSI: 0000000000000001 RDI: ffff9dbd3f421660
+[   15.601168] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd01817b90
+[   15.601169] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba1b4c9c50
+[   15.601170] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[   15.601172] FS:  00007f52f8a9be80(0000) GS:ffff9dbd3f400000(0000) knlGS:0000000000000000
+[   15.601174] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   15.601176] CR2: 00007f52f92c2468 CR3: 000000011b42c001 CR4: 00000000000606f0
+[   15.601177] Call Trace:
+[   15.601180]  <TASK>
+[   15.601181]  register_shrinker_prepared+0x39/0x70
+[   15.601187]  sget_fc+0x1a0/0x330
+[   15.601191]  ? shmem_put_link+0x30/0x30
+[   15.601194]  get_tree_nodev+0x27/0xa0
+[   15.601197]  vfs_get_tree+0x29/0xc0
+[   15.601199]  path_mount+0x46e/0xa90
+[   15.601203]  __x64_sys_mount+0x11a/0x150
+[   15.601206]  do_syscall_64+0x5f/0x90
+[   15.601209]  ? syscall_exit_to_user_mode+0x1b/0x40
+[   15.601213]  ? do_syscall_64+0x6b/0x90
+[   15.601214]  ? handle_mm_fault+0xdf/0x2d0
+[   15.601219]  ? do_user_addr_fault+0x1e0/0x6a0
+[   15.601223]  ? exc_page_fault+0x74/0x170
+[   15.601225]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   15.601228] RIP: 0033:0x7f52f9521fde
+[   15.601242] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[   15.601244] RSP: 002b:00007ffc0e0bfe78 EFLAGS: 00000206 ORIG_RAX: 00000000000000a5
+[   15.601246] RAX: ffffffffffffffda RBX: 00005623cc987511 RCX: 00007f52f9521fde
+[   15.601248] RDX: 00005623cc987511 RSI: 00007ffc0e0bfe80 RDI: 00005623cc987511
+[   15.601249] RBP: 00005623cc987511 R08: 00005623cda32a10 R09: 0000000000000000
+[   15.601250] R10: 0000000000000006 R11: 0000000000000206 R12: 0000000000000006
+[   15.601252] R13: 00007ffc0e0bfe80 R14: 00005623cda32a10 R15: 00007ffc0e0bffc0
+[   15.601255]  </TASK>
+[   15.601256] ---[ end trace 0000000000000000 ]---
+[   16.722782] ------------[ cut here ]------------
+[   16.722787] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[   16.722798] WARNING: CPU: 6 PID: 1326 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[   16.722806] Modules linked in: cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE) video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE)
+[   16.722873]  bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[   16.722902] Unloaded tainted modules: binder_linux(OE):2
+[   16.722905] CPU: 6 PID: 1326 Comm: fusermount3 Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[   16.722909] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[   16.722911] RIP: 0010:__list_add_valid+0x83/0xa0
+[   16.722915] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[   16.722918] RSP: 0018:ffffbdbd01b13cc0 EFLAGS: 00010286
+[   16.722920] RAX: 0000000000000000 RBX: ffff9dba26af7c30 RCX: 0000000000000027
+[   16.722922] RDX: ffff9dbd3f5a1668 RSI: 0000000000000001 RDI: ffff9dbd3f5a1660
+[   16.722923] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd01b13b38
+[   16.722925] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba26af7c50
+[   16.722926] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[   16.722929] FS:  00007f7d20acf740(0000) GS:ffff9dbd3f580000(0000) knlGS:0000000000000000
+[   16.722931] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   16.722933] CR2: 00007f7d20cb3580 CR3: 0000000104878005 CR4: 00000000000606e0
+[   16.722935] Call Trace:
+[   16.722937]  <TASK>
+[   16.722939]  register_shrinker_prepared+0x39/0x70
+[   16.722945]  sget_fc+0x1a0/0x330
+[   16.722950]  ? fuse_fill_super_common+0x4a0/0x4a0 [fuse 8d8bdd1b759ae4e62838cbbb083202808201ae0b]
+[   16.722963]  get_tree_nodev+0x27/0xa0
+[   16.722966]  ? fget+0x7d/0xb0
+[   16.722970]  fuse_get_tree+0xc9/0x1b0 [fuse 8d8bdd1b759ae4e62838cbbb083202808201ae0b]
+[   16.722981]  vfs_get_tree+0x29/0xc0
+[   16.722984]  path_mount+0x46e/0xa90
+[   16.722987]  __x64_sys_mount+0x11a/0x150
+[   16.722990]  do_syscall_64+0x5f/0x90
+[   16.722994]  ? syscall_exit_to_user_mode+0x1b/0x40
+[   16.722998]  ? do_syscall_64+0x6b/0x90
+[   16.723000]  ? do_syscall_64+0x6b/0x90
+[   16.723002]  ? syscall_exit_to_user_mode+0x1b/0x40
+[   16.723005]  ? do_syscall_64+0x6b/0x90
+[   16.723007]  ? do_syscall_64+0x6b/0x90
+[   16.723009]  ? do_syscall_64+0x6b/0x90
+[   16.723011]  ? exc_page_fault+0x74/0x170
+[   16.723015]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   16.723017] RIP: 0033:0x7f7d20bdafde
+[   16.723031] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[   16.723033] RSP: 002b:00007ffd7d1556d8 EFLAGS: 00000202 ORIG_RAX: 00000000000000a5
+[   16.723036] RAX: ffffffffffffffda RBX: 0000000000000006 RCX: 00007f7d20bdafde
+[   16.723037] RDX: 000055ed6b91abb0 RSI: 000055ed6aa587d4 RDI: 000055ed6b91ab70
+[   16.723039] RBP: 000055ed6aa587d4 R08: 000055ed6b91a920 R09: 000055ed6b91a9d0
+[   16.723040] R10: 0000000000000006 R11: 0000000000000202 R12: 0000000000000009
+[   16.723042] R13: 0000000000000000 R14: 000055ed6b91ab70 R15: 000055ed6b91a9d0
+[   16.723046]  </TASK>
+[   16.723047] ---[ end trace 0000000000000000 ]---
+[   18.256987] ------------[ cut here ]------------
+[   18.256991] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[   18.257002] WARNING: CPU: 5 PID: 1557 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[   18.257009] Modules linked in: cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE) video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE)
+[   18.257068]  bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[   18.257110] Unloaded tainted modules: binder_linux(OE):2
+[   18.257115] CPU: 5 PID: 1557 Comm: (upowerd) Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[   18.257119] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[   18.257120] RIP: 0010:__list_add_valid+0x83/0xa0
+[   18.257124] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[   18.257126] RSP: 0018:ffffbdbd02187d38 EFLAGS: 00010282
+[   18.257128] RAX: 0000000000000000 RBX: ffff9dba1e22cc30 RCX: 0000000000000027
+[   18.257130] RDX: ffff9dbd3f561668 RSI: 0000000000000001 RDI: ffff9dbd3f561660
+[   18.257131] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd02187bb0
+[   18.257132] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba1e22cc50
+[   18.257133] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[   18.257135] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f540000(0000) knlGS:0000000000000000
+[   18.257137] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   18.257139] CR2: 000056410f11b018 CR3: 000000013124e006 CR4: 00000000000606e0
+[   18.257141] Call Trace:
+[   18.257143]  <TASK>
+[   18.257145]  register_shrinker_prepared+0x39/0x70
+[   18.257151]  sget_fc+0x1a0/0x330
+[   18.257154]  ? proc_reconfigure+0x50/0x50
+[   18.257158]  get_tree_nodev+0x27/0xa0
+[   18.257161]  vfs_get_tree+0x29/0xc0
+[   18.257164]  path_mount+0x46e/0xa90
+[   18.257168]  __x64_sys_mount+0x11a/0x150
+[   18.257170]  do_syscall_64+0x5f/0x90
+[   18.257174]  ? syscall_exit_to_user_mode+0x1b/0x40
+[   18.257177]  ? do_syscall_64+0x6b/0x90
+[   18.257179]  ? exit_to_user_mode_prepare+0x145/0x1d0
+[   18.257183]  ? syscall_exit_to_user_mode+0x1b/0x40
+[   18.257185]  ? do_syscall_64+0x6b/0x90
+[   18.257187]  ? syscall_exit_to_user_mode+0x1b/0x40
+[   18.257190]  ? do_syscall_64+0x6b/0x90
+[   18.257192]  ? do_syscall_64+0x6b/0x90
+[   18.257194]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   18.257196] RIP: 0033:0x7f81b4921fde
+[   18.257210] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[   18.257212] RSP: 002b:00007ffde03d2438 EFLAGS: 00000202 ORIG_RAX: 00000000000000a5
+[   18.257215] RAX: ffffffffffffffda RBX: 00007f81b4f751ef RCX: 00007f81b4921fde
+[   18.257216] RDX: 00007f81b4f751ef RSI: 00007ffde03d2440 RDI: 00007f81b4f751ef
+[   18.257217] RBP: 00007f81b4f751ef R08: 0000000000000000 R09: 0000000000000000
+[   18.257218] R10: 000000000000000e R11: 0000000000000202 R12: 000000000000000e
+[   18.257220] R13: 00007ffde03d2440 R14: 0000000000000000 R15: 000056410f0cb180
+[   18.257223]  </TASK>
+[   18.257224] ---[ end trace 0000000000000000 ]---
+[   18.459146] ------------[ cut here ]------------
+[   18.459152] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[   18.459166] WARNING: CPU: 2 PID: 1609 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[   18.459176] Modules linked in: cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE) video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE)
+[   18.459271]  bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[   18.459314] Unloaded tainted modules: binder_linux(OE):2
+[   18.459319] CPU: 2 PID: 1609 Comm: fusermount3 Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[   18.459324] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[   18.459326] RIP: 0010:__list_add_valid+0x83/0xa0
+[   18.459332] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[   18.459335] RSP: 0018:ffffbdbd02387d48 EFLAGS: 00010286
+[   18.459339] RAX: 0000000000000000 RBX: ffff9dba07bf5430 RCX: 0000000000000027
+[   18.459341] RDX: ffff9dbd3f4a1668 RSI: 0000000000000001 RDI: ffff9dbd3f4a1660
+[   18.459344] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd02387bc0
+[   18.459346] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba07bf5450
+[   18.459349] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[   18.459352] FS:  00007f28ccd5f740(0000) GS:ffff9dbd3f480000(0000) knlGS:0000000000000000
+[   18.459355] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   18.459358] CR2: 00007f28ccf43580 CR3: 0000000131246004 CR4: 00000000000606e0
+[   18.459361] Call Trace:
+[   18.459364]  <TASK>
+[   18.459366]  register_shrinker_prepared+0x39/0x70
+[   18.459374]  sget_fc+0x1a0/0x330
+[   18.459380]  ? fuse_fill_super_common+0x4a0/0x4a0 [fuse 8d8bdd1b759ae4e62838cbbb083202808201ae0b]
+[   18.459397]  get_tree_nodev+0x27/0xa0
+[   18.459401]  ? fget+0x7d/0xb0
+[   18.459406]  fuse_get_tree+0xc9/0x1b0 [fuse 8d8bdd1b759ae4e62838cbbb083202808201ae0b]
+[   18.459421]  vfs_get_tree+0x29/0xc0
+[   18.459425]  path_mount+0x46e/0xa90
+[   18.459431]  __x64_sys_mount+0x11a/0x150
+[   18.459436]  do_syscall_64+0x5f/0x90
+[   18.459441]  ? syscall_exit_to_user_mode+0x1b/0x40
+[   18.459446]  ? do_syscall_64+0x6b/0x90
+[   18.459449]  ? do_syscall_64+0x6b/0x90
+[   18.459452]  ? exc_page_fault+0x74/0x170
+[   18.459456]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   18.459460] RIP: 0033:0x7f28cce6afde
+[   18.459476] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[   18.459479] RSP: 002b:00007ffdc5ebfa08 EFLAGS: 00000206 ORIG_RAX: 00000000000000a5
+[   18.459483] RAX: ffffffffffffffda RBX: 0000000000000006 RCX: 00007f28cce6afde
+[   18.459485] RDX: 0000561288d70bf0 RSI: 000056128781c7d4 RDI: 0000561288d70bb0
+[   18.459488] RBP: 000056128781c7d4 R08: 0000561288d70920 R09: 0000561288d70a10
+[   18.459490] R10: 0000000000000006 R11: 0000000000000206 R12: 0000000000000009
+[   18.459492] R13: 0000561288d709f0 R14: 0000561288d70bb0 R15: 0000561288d70a10
+[   18.459498]  </TASK>
+[   18.459499] ---[ end trace 0000000000000000 ]---
+[   18.780604] Bluetooth: RFCOMM TTY layer initialized
+[   18.780615] Bluetooth: RFCOMM socket layer initialized
+[   18.780621] Bluetooth: RFCOMM ver 1.11
+[   24.640034] r8169 0000:04:00.0 enp4s0: Link is Up - 100Mbps/Full - flow control off
+[   24.640076] IPv6: ADDRCONF(NETDEV_CHANGE): enp4s0: link becomes ready
+[   25.748463] tun: Universal TUN/TAP device driver, 1.6
+[   31.044037] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+[   42.104392] ------------[ cut here ]------------
+[   42.104398] list_del corruption, ffff9dba1b769c50->next is NULL
+[   42.104411] WARNING: CPU: 3 PID: 960 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[   42.104423] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[   42.104505]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[   42.104557] Unloaded tainted modules: binder_linux(OE):2
+[   42.104562] CPU: 3 PID: 960 Comm: systemd-timedat Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[   42.104567] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[   42.104569] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[   42.104574] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[   42.104577] RSP: 0018:ffffbdbd0176bde0 EFLAGS: 00010282
+[   42.104580] RAX: 0000000000000000 RBX: ffff9dba1b769c30 RCX: 0000000000000027
+[   42.104582] RDX: ffff9dbd3f4e1668 RSI: 0000000000000001 RDI: ffff9dbd3f4e1660
+[   42.104584] RBP: ffffffff8a52f1a0 R08: 0000000000000000 R09: ffffbdbd0176bc58
+[   42.104586] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba1d5f297c
+[   42.104588] R13: ffff9dba00b9a901 R14: ffff9dba03124470 R15: ffff9dba1d5f2978
+[   42.104590] FS:  00007f9132fbee80(0000) GS:ffff9dbd3f4c0000(0000) knlGS:0000000000000000
+[   42.104593] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   42.104596] CR2: 00007f9133004a5c CR3: 00000003f8610006 CR4: 00000000000606e0
+[   42.104598] Call Trace:
+[   42.104601]  <TASK>
+[   42.104603]  unregister_shrinker+0x2e/0xc0
+[   42.104611]  deactivate_locked_super+0x27/0xa0
+[   42.104616]  cleanup_mnt+0xbd/0x150
+[   42.104621]  task_work_run+0x5d/0x90
+[   42.104625]  do_exit+0x35b/0xb00
+[   42.104631]  do_group_exit+0x31/0x80
+[   42.104635]  __x64_sys_exit_group+0x18/0x20
+[   42.104638]  do_syscall_64+0x5f/0x90
+[   42.104643]  ? syscall_exit_to_user_mode+0x1b/0x40
+[   42.104648]  ? exc_page_fault+0x74/0x170
+[   42.104652]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   42.104656] RIP: 0033:0x7f9133aeaf3d
+[   42.104676] Code: Unable to access opcode bytes at 0x7f9133aeaf13.
+[   42.104678] RSP: 002b:00007ffe2bba6558 EFLAGS: 00000206 ORIG_RAX: 00000000000000e7
+[   42.104681] RAX: ffffffffffffffda RBX: 00007f9133bf3108 RCX: 00007f9133aeaf3d
+[   42.104683] RDX: 00000000000000e7 RSI: fffffffffffffea8 RDI: 0000000000000000
+[   42.104685] RBP: 0000000000000000 R08: 00007ffe2bba64f8 R09: 0000000000000000
+[   42.104687] R10: 00007ffe2bba6270 R11: 0000000000000206 R12: 0000000000000000
+[   42.104689] R13: 00007f9133bf1660 R14: 0000000000000000 R15: 00007f9133bf3120
+[   42.104694]  </TASK>
+[   42.104695] ---[ end trace 0000000000000000 ]---
+[   44.988241] ------------[ cut here ]------------
+[   44.988247] list_del corruption, ffff9dba1b4c8450->next is NULL
+[   44.988262] WARNING: CPU: 6 PID: 930 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[   44.988274] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[   44.988378]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[   44.988447] Unloaded tainted modules: binder_linux(OE):2
+[   44.988453] CPU: 6 PID: 930 Comm: systemd-hostnam Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[   44.988459] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[   44.988461] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[   44.988468] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[   44.988472] RSP: 0018:ffffbdbd019c3d88 EFLAGS: 00010282
+[   44.988476] RAX: 0000000000000000 RBX: ffff9dba1b4c8430 RCX: 0000000000000027
+[   44.988479] RDX: ffff9dbd3f5a1668 RSI: 0000000000000001 RDI: ffff9dbd3f5a1660
+[   44.988482] RBP: ffffffff8a52f1a0 R08: 0000000000000000 R09: ffffbdbd019c3c00
+[   44.988485] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba052808fc
+[   44.988488] R13: ffff9dba0694ca01 R14: ffff9dba002784b0 R15: ffff9dba052808f8
+[   44.988491] FS:  00007fd71ce38e80(0000) GS:ffff9dbd3f580000(0000) knlGS:0000000000000000
+[   44.988495] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   44.988498] CR2: 00007fd71cf37ef4 CR3: 00000003f8610004 CR4: 00000000000606e0
+[   44.988502] Call Trace:
+[   44.988504]  <TASK>
+[   44.988506]  unregister_shrinker+0x2e/0xc0
+[   44.988513]  deactivate_locked_super+0x27/0xa0
+[   44.988519]  cleanup_mnt+0xbd/0x150
+[   44.988524]  task_work_run+0x5d/0x90
+[   44.988529]  do_exit+0x35b/0xb00
+[   44.988536]  do_group_exit+0x31/0x80
+[   44.988541]  __x64_sys_exit_group+0x18/0x20
+[   44.988545]  do_syscall_64+0x5f/0x90
+[   44.988550]  ? handle_mm_fault+0xdf/0x2d0
+[   44.988558]  ? do_user_addr_fault+0x1e0/0x6a0
+[   44.988563]  ? exc_page_fault+0x74/0x170
+[   44.988569]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   44.988574] RIP: 0033:0x7fd71d8eaf3d
+[   44.988591] Code: Unable to access opcode bytes at 0x7fd71d8eaf13.
+[   44.988593] RSP: 002b:00007fff61fe1268 EFLAGS: 00000202 ORIG_RAX: 00000000000000e7
+[   44.988598] RAX: ffffffffffffffda RBX: 00007fd71d9f3108 RCX: 00007fd71d8eaf3d
+[   44.988600] RDX: 00000000000000e7 RSI: fffffffffffffea8 RDI: 0000000000000000
+[   44.988602] RBP: 0000000000000000 R08: 00007fff61fe1208 R09: 0000000000000000
+[   44.988605] R10: 00007fff61fe0f80 R11: 0000000000000202 R12: 0000000000000000
+[   44.988607] R13: 00007fd71d9f1660 R14: 0000000000000000 R15: 00007fd71d9f3120
+[   44.988612]  </TASK>
+[   44.988614] ---[ end trace 0000000000000000 ]---
+[   44.988691] ------------[ cut here ]------------
+[   44.988693] list_del corruption, ffff9dba1b4cfc50->next is NULL
+[   44.988703] WARNING: CPU: 6 PID: 930 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[   44.988709] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[   44.988798]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[   44.988860] Unloaded tainted modules: binder_linux(OE):2
+[   44.988865] CPU: 6 PID: 930 Comm: systemd-hostnam Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[   44.988870] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[   44.988872] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[   44.988877] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[   44.988881] RSP: 0018:ffffbdbd019c3d88 EFLAGS: 00010282
+[   44.988884] RAX: 0000000000000000 RBX: ffff9dba1b4cfc30 RCX: 0000000000000027
+[   44.988887] RDX: ffff9dbd3f5a1668 RSI: 0000000000000001 RDI: ffff9dbd3f5a1660
+[   44.988889] RBP: ffffffff8a4fb8a0 R08: 0000000000000000 R09: ffffbdbd019c3c00
+[   44.988892] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba052808fc
+[   44.988894] R13: ffff9dba0694ca01 R14: ffff9dba002784b0 R15: ffff9dba052808f8
+[   44.988897] FS:  00007fd71ce38e80(0000) GS:ffff9dbd3f580000(0000) knlGS:0000000000000000
+[   44.988900] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   44.988903] CR2: 00007fd71cf37ef4 CR3: 00000003f8610004 CR4: 00000000000606e0
+[   44.988906] Call Trace:
+[   44.988908]  <TASK>
+[   44.988909]  unregister_shrinker+0x2e/0xc0
+[   44.988914]  deactivate_locked_super+0x27/0xa0
+[   44.988918]  cleanup_mnt+0xbd/0x150
+[   44.988923]  task_work_run+0x5d/0x90
+[   44.988927]  do_exit+0x35b/0xb00
+[   44.988932]  do_group_exit+0x31/0x80
+[   44.988936]  __x64_sys_exit_group+0x18/0x20
+[   44.988940]  do_syscall_64+0x5f/0x90
+[   44.988944]  ? handle_mm_fault+0xdf/0x2d0
+[   44.988950]  ? do_user_addr_fault+0x1e0/0x6a0
+[   44.988955]  ? exc_page_fault+0x74/0x170
+[   44.988960]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[   44.988964] RIP: 0033:0x7fd71d8eaf3d
+[   44.988972] Code: Unable to access opcode bytes at 0x7fd71d8eaf13.
+[   44.988973] RSP: 002b:00007fff61fe1268 EFLAGS: 00000202 ORIG_RAX: 00000000000000e7
+[   44.988977] RAX: ffffffffffffffda RBX: 00007fd71d9f3108 RCX: 00007fd71d8eaf3d
+[   44.988980] RDX: 00000000000000e7 RSI: fffffffffffffea8 RDI: 0000000000000000
+[   44.988982] RBP: 0000000000000000 R08: 00007fff61fe1208 R09: 0000000000000000
+[   44.988985] R10: 00007fff61fe0f80 R11: 0000000000000202 R12: 0000000000000000
+[   44.988987] R13: 00007fd71d9f1660 R14: 0000000000000000 R15: 00007fd71d9f3120
+[   44.988993]  </TASK>
+[   44.988994] ---[ end trace 0000000000000000 ]---
+[  912.624834] ------------[ cut here ]------------
+[  912.624840] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[  912.624855] WARNING: CPU: 5 PID: 9527 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[  912.624867] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[  912.624959]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[  912.625045] Unloaded tainted modules: binder_linux(OE):2
+[  912.625050] CPU: 5 PID: 9527 Comm: (sd-mkdcreds) Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[  912.625054] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[  912.625056] RIP: 0010:__list_add_valid+0x83/0xa0
+[  912.625062] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[  912.625064] RSP: 0018:ffffbdbd1146fda0 EFLAGS: 00010282
+[  912.625067] RAX: 0000000000000000 RBX: ffff9dba311a6430 RCX: 0000000000000027
+[  912.625079] RDX: ffff9dbd3f561668 RSI: 0000000000000001 RDI: ffff9dbd3f561660
+[  912.625081] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd1146fc18
+[  912.625083] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba311a6450
+[  912.625085] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[  912.625088] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f540000(0000) knlGS:0000000000000000
+[  912.625093] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  912.625097] CR2: 000056410f0fe970 CR3: 0000000169f0a001 CR4: 00000000000606e0
+[  912.625102] Call Trace:
+[  912.625106]  <TASK>
+[  912.625109]  register_shrinker_prepared+0x39/0x70
+[  912.625122]  sget_fc+0x1a0/0x330
+[  912.625130]  ? ramfs_symlink+0xc0/0xc0
+[  912.625139]  get_tree_nodev+0x27/0xa0
+[  912.625153]  vfs_get_tree+0x29/0xc0
+[  912.625157]  path_mount+0x46e/0xa90
+[  912.625161]  __x64_sys_mount+0x11a/0x150
+[  912.625173]  do_syscall_64+0x5f/0x90
+[  912.625179]  ? exc_page_fault+0x74/0x170
+[  912.625184]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[  912.625188] RIP: 0033:0x7f81b4921fde
+[  912.625211] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[  912.625216] RSP: 002b:00007ffde03d2868 EFLAGS: 00000202 ORIG_RAX: 00000000000000a5
+[  912.625223] RAX: ffffffffffffffda RBX: 00007f81b4f54316 RCX: 00007f81b4921fde
+[  912.625228] RDX: 00007f81b4f54316 RSI: 00007ffde03d2870 RDI: 00007f81b4f54316
+[  912.625232] RBP: 00007f81b4f54316 R08: 000056410f0c7b30 R09: 0000000000000000
+[  912.625236] R10: 000000000000000e R11: 0000000000000202 R12: 000000000000000e
+[  912.625240] R13: 00007ffde03d2870 R14: 000056410f0c7b30 R15: 00007f81b4f54483
+[  912.625249]  </TASK>
+[  912.625252] ---[ end trace 0000000000000000 ]---
+[  912.840700] ------------[ cut here ]------------
+[  912.840704] list_del corruption, ffff9dba311a6450->next is NULL
+[  912.840718] WARNING: CPU: 2 PID: 1 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[  912.840727] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[  912.840823]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[  912.840886] Unloaded tainted modules: binder_linux(OE):2
+[  912.840890] CPU: 2 PID: 1 Comm: systemd Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[  912.840893] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[  912.840894] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[  912.840899] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[  912.840901] RSP: 0018:ffffbdbd00033e38 EFLAGS: 00010282
+[  912.840903] RAX: 0000000000000000 RBX: ffff9dba311a6430 RCX: 0000000000000027
+[  912.840905] RDX: ffff9dbd3f4a1668 RSI: 0000000000000001 RDI: ffff9dbd3f4a1660
+[  912.840906] RBP: ffffffff8a52fae0 R08: 0000000000000000 R09: ffffbdbd00033cb0
+[  912.840907] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba0028297c
+[  912.840909] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  912.840910] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f480000(0000) knlGS:0000000000000000
+[  912.840912] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  912.840914] CR2: 00007f81b4dff0a0 CR3: 0000000107f70006 CR4: 00000000000606e0
+[  912.840916] Call Trace:
+[  912.840917]  <TASK>
+[  912.840919]  unregister_shrinker+0x2e/0xc0
+[  912.840924]  deactivate_locked_super+0x27/0xa0
+[  912.840928]  cleanup_mnt+0xbd/0x150
+[  912.840932]  task_work_run+0x5d/0x90
+[  912.840935]  exit_to_user_mode_prepare+0x1a7/0x1d0
+[  912.840938]  syscall_exit_to_user_mode+0x1b/0x40
+[  912.840943]  do_syscall_64+0x6b/0x90
+[  912.840945]  ? syscall_exit_to_user_mode+0x1b/0x40
+[  912.840948]  ? do_syscall_64+0x6b/0x90
+[  912.840950]  ? syscall_exit_to_user_mode+0x1b/0x40
+[  912.840952]  ? do_syscall_64+0x6b/0x90
+[  912.840954]  ? exc_page_fault+0x74/0x170
+[  912.840957]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[  912.840960] RIP: 0033:0x7f81b4921abb
+[  912.840977] Code: c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 8b 15 81 f2 0c 00 f7 d8
+[  912.840979] RSP: 002b:00007ffde03d3178 EFLAGS: 00000202 ORIG_RAX: 00000000000000a6
+[  912.840981] RAX: 0000000000000000 RBX: 000056410f058440 RCX: 00007f81b4921abb
+[  912.840982] RDX: 0000000000000028 RSI: 000000000000000a RDI: 000056410f058440
+[  912.840984] RBP: 000056410efa3228 R08: 000000000000feff R09: 0000000000000000
+[  912.840985] R10: 00007f81b498afb0 R11: 0000000000000202 R12: 0000000000000000
+[  912.840986] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000001
+[  912.840989]  </TASK>
+[  912.840990] ---[ end trace 0000000000000000 ]---
+[ 1216.112574] r8169 0000:04:00.0 enp4s0: Link is Down
+[ 1222.555869] RTL8211DN Gigabit Ethernet r8169-0-400:00: attached PHY driver (mii_bus:phy_addr=r8169-0-400:00, irq=MAC)
+[ 1222.842760] r8169 0000:04:00.0 enp4s0: Link is Down
+[ 1231.547635] r8169 0000:04:00.0 enp4s0: Link is Up - 100Mbps/Full - flow control off
+[ 1231.547679] IPv6: ADDRCONF(NETDEV_CHANGE): enp4s0: link becomes ready
+[ 8337.210507] ------------[ cut here ]------------
+[ 8337.210512] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[ 8337.210525] WARNING: CPU: 1 PID: 75271 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[ 8337.210534] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8337.210623]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8337.210682] Unloaded tainted modules: binder_linux(OE):2
+[ 8337.210687] CPU: 1 PID: 75271 Comm: (ostnamed) Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8337.210692] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8337.210694] RIP: 0010:__list_add_valid+0x83/0xa0
+[ 8337.210700] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[ 8337.210703] RSP: 0018:ffffbdbd02a4fd90 EFLAGS: 00010286
+[ 8337.210707] RAX: 0000000000000000 RBX: ffff9dbaf0c48c30 RCX: 0000000000000027
+[ 8337.210709] RDX: ffff9dbd3f461668 RSI: 0000000000000001 RDI: ffff9dbd3f461660
+[ 8337.210711] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd02a4fc08
+[ 8337.210714] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dbaf0c48c50
+[ 8337.210716] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[ 8337.210718] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f440000(0000) knlGS:0000000000000000
+[ 8337.210721] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8337.210724] CR2: 00007f81b49966a0 CR3: 00000001f22be004 CR4: 00000000000606e0
+[ 8337.210727] Call Trace:
+[ 8337.210730]  <TASK>
+[ 8337.210731]  register_shrinker_prepared+0x39/0x70
+[ 8337.210739]  sget_fc+0x1a0/0x330
+[ 8337.210744]  ? shmem_put_link+0x30/0x30
+[ 8337.210748]  get_tree_nodev+0x27/0xa0
+[ 8337.210753]  vfs_get_tree+0x29/0xc0
+[ 8337.210756]  path_mount+0x46e/0xa90
+[ 8337.210762]  __x64_sys_mount+0x11a/0x150
+[ 8337.210766]  do_syscall_64+0x5f/0x90
+[ 8337.210770]  ? exc_page_fault+0x74/0x170
+[ 8337.210775]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8337.210779] RIP: 0033:0x7f81b4921fde
+[ 8337.210797] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[ 8337.210799] RSP: 002b:00007ffde03d2338 EFLAGS: 00000202 ORIG_RAX: 00000000000000a5
+[ 8337.210803] RAX: ffffffffffffffda RBX: 00007f81b4f5431c RCX: 00007f81b4921fde
+[ 8337.210805] RDX: 00007f81b4f5431c RSI: 00007ffde03d2340 RDI: 00007f81b4f5431c
+[ 8337.210807] RBP: 00007f81b4f5431c R08: 000056410f109880 R09: 0000000000000000
+[ 8337.210809] R10: 000000000100000a R11: 0000000000000202 R12: 000000000100000a
+[ 8337.210812] R13: 00007ffde03d2340 R14: 000056410f109880 R15: 00007ffde03d2450
+[ 8337.210816]  </TASK>
+[ 8337.210818] ---[ end trace 0000000000000000 ]---
+[ 8337.218827] ------------[ cut here ]------------
+[ 8337.218831] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[ 8337.218845] WARNING: CPU: 1 PID: 75271 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[ 8337.218854] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8337.218947]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8337.219008] Unloaded tainted modules: binder_linux(OE):2
+[ 8337.219013] CPU: 1 PID: 75271 Comm: (ostnamed) Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8337.219018] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8337.219020] RIP: 0010:__list_add_valid+0x83/0xa0
+[ 8337.219025] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[ 8337.219028] RSP: 0018:ffffbdbd02a4fd60 EFLAGS: 00010286
+[ 8337.219032] RAX: 0000000000000000 RBX: ffff9dbaf0c4bc30 RCX: 0000000000000027
+[ 8337.219034] RDX: ffff9dbd3f461668 RSI: 0000000000000001 RDI: ffff9dbd3f461660
+[ 8337.219037] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd02a4fbd8
+[ 8337.219039] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dbaf0c4bc50
+[ 8337.219041] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[ 8337.219044] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f440000(0000) knlGS:0000000000000000
+[ 8337.219047] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8337.219049] CR2: 000056410f057ff8 CR3: 00000001f22be004 CR4: 00000000000606e0
+[ 8337.219052] Call Trace:
+[ 8337.219055]  <TASK>
+[ 8337.219057]  register_shrinker_prepared+0x39/0x70
+[ 8337.219065]  sget_fc+0x1a0/0x330
+[ 8337.219071]  ? proc_reconfigure+0x50/0x50
+[ 8337.219075]  get_tree_nodev+0x27/0xa0
+[ 8337.219080]  vfs_get_tree+0x29/0xc0
+[ 8337.219084]  path_mount+0x46e/0xa90
+[ 8337.219089]  __x64_sys_mount+0x11a/0x150
+[ 8337.219094]  do_syscall_64+0x5f/0x90
+[ 8337.219099]  ? syscall_exit_to_user_mode+0x1b/0x40
+[ 8337.219103]  ? do_syscall_64+0x6b/0x90
+[ 8337.219106]  ? do_syscall_64+0x6b/0x90
+[ 8337.219109]  ? syscall_exit_to_user_mode+0x1b/0x40
+[ 8337.219113]  ? do_syscall_64+0x6b/0x90
+[ 8337.219116]  ? do_syscall_64+0x6b/0x90
+[ 8337.219119]  ? do_syscall_64+0x6b/0x90
+[ 8337.219122]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8337.219126] RIP: 0033:0x7f81b4921fde
+[ 8337.219144] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[ 8337.219147] RSP: 002b:00007ffde03d2418 EFLAGS: 00000206 ORIG_RAX: 00000000000000a5
+[ 8337.219150] RAX: ffffffffffffffda RBX: 00007f81b4f751ef RCX: 00007f81b4921fde
+[ 8337.219152] RDX: 00007f81b4f751ef RSI: 00007ffde03d2420 RDI: 00007f81b4f751ef
+[ 8337.219154] RBP: 00007f81b4f751ef R08: 000056410f0be650 R09: 0000000000000000
+[ 8337.219156] R10: 000000000000000e R11: 0000000000000206 R12: 000000000000000e
+[ 8337.219158] R13: 00007ffde03d2420 R14: 000056410f0be650 R15: 000056410f08abd0
+[ 8337.219162]  </TASK>
+[ 8337.219164] ---[ end trace 0000000000000000 ]---
+[ 8367.318862] ------------[ cut here ]------------
+[ 8367.318867] list_del corruption, ffff9dbaf0c4bc50->next is NULL
+[ 8367.318877] WARNING: CPU: 5 PID: 75271 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[ 8367.318885] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8367.318943]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8367.318979] Unloaded tainted modules: binder_linux(OE):2
+[ 8367.318983] CPU: 5 PID: 75271 Comm: systemd-hostnam Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8367.318986] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8367.318988] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[ 8367.318992] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[ 8367.318994] RSP: 0018:ffffbdbd02a4fd28 EFLAGS: 00010282
+[ 8367.318996] RAX: 0000000000000000 RBX: ffff9dbaf0c4bc30 RCX: 0000000000000027
+[ 8367.318998] RDX: ffff9dbd3f561668 RSI: 0000000000000001 RDI: ffff9dbd3f561660
+[ 8367.319000] RBP: ffffffff8a52f1a0 R08: 0000000000000000 R09: ffffbdbd02a4fba0
+[ 8367.319001] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba800949fc
+[ 8367.319002] R13: ffff9dba50818801 R14: ffff9dba07e8c470 R15: ffff9dba800949f8
+[ 8367.319004] FS:  00007f6baf04fe80(0000) GS:ffff9dbd3f540000(0000) knlGS:0000000000000000
+[ 8367.319006] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8367.319008] CR2: 00007f6bae99cef4 CR3: 00000003f8610002 CR4: 00000000000606e0
+[ 8367.319010] Call Trace:
+[ 8367.319012]  <TASK>
+[ 8367.319013]  unregister_shrinker+0x2e/0xc0
+[ 8367.319019]  deactivate_locked_super+0x27/0xa0
+[ 8367.319023]  cleanup_mnt+0xbd/0x150
+[ 8367.319026]  task_work_run+0x5d/0x90
+[ 8367.319029]  do_exit+0x35b/0xb00
+[ 8367.319033]  do_group_exit+0x31/0x80
+[ 8367.319036]  __x64_sys_exit_group+0x18/0x20
+[ 8367.319038]  do_syscall_64+0x5f/0x90
+[ 8367.319042]  ? handle_mm_fault+0xdf/0x2d0
+[ 8367.319047]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 8367.319050]  ? syscall_exit_to_user_mode+0x1b/0x40
+[ 8367.319054]  ? exc_page_fault+0x74/0x170
+[ 8367.319057]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8367.319059] RIP: 0033:0x7f6baf2eaf3d
+[ 8367.319075] Code: Unable to access opcode bytes at 0x7f6baf2eaf13.
+[ 8367.319076] RSP: 002b:00007ffdeb15c568 EFLAGS: 00000202 ORIG_RAX: 00000000000000e7
+[ 8367.319078] RAX: ffffffffffffffda RBX: 00007f6baf3f3108 RCX: 00007f6baf2eaf3d
+[ 8367.319080] RDX: 00000000000000e7 RSI: fffffffffffffea8 RDI: 0000000000000000
+[ 8367.319081] RBP: 0000000000000000 R08: 00007ffdeb15c508 R09: 0000000000000000
+[ 8367.319082] R10: 00007ffdeb15c280 R11: 0000000000000202 R12: 0000000000000000
+[ 8367.319084] R13: 00007f6baf3f1660 R14: 0000000000000000 R15: 00007f6baf3f3120
+[ 8367.319087]  </TASK>
+[ 8367.319088] ---[ end trace 0000000000000000 ]---
+[ 8367.319142] ------------[ cut here ]------------
+[ 8367.319143] list_del corruption, ffff9dbaf0c48c50->next is NULL
+[ 8367.319148] WARNING: CPU: 5 PID: 75271 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[ 8367.319153] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8367.319196]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8367.319225] Unloaded tainted modules: binder_linux(OE):2
+[ 8367.319227] CPU: 5 PID: 75271 Comm: systemd-hostnam Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8367.319230] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8367.319231] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[ 8367.319234] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[ 8367.319236] RSP: 0018:ffffbdbd02a4fd28 EFLAGS: 00010282
+[ 8367.319238] RAX: 0000000000000000 RBX: ffff9dbaf0c48c30 RCX: 0000000000000027
+[ 8367.319239] RDX: ffff9dbd3f561668 RSI: 0000000000000001 RDI: ffff9dbd3f561660
+[ 8367.319240] RBP: ffffffff8a4fb8a0 R08: 0000000000000000 R09: ffffbdbd02a4fba0
+[ 8367.319242] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba800949fc
+[ 8367.319243] R13: ffff9dba50818801 R14: ffff9dba07e8c470 R15: ffff9dba800949f8
+[ 8367.319245] FS:  00007f6baf04fe80(0000) GS:ffff9dbd3f540000(0000) knlGS:0000000000000000
+[ 8367.319246] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8367.319248] CR2: 00007f6bae99cef4 CR3: 00000003f8610002 CR4: 00000000000606e0
+[ 8367.319250] Call Trace:
+[ 8367.319250]  <TASK>
+[ 8367.319251]  unregister_shrinker+0x2e/0xc0
+[ 8367.319254]  deactivate_locked_super+0x27/0xa0
+[ 8367.319256]  cleanup_mnt+0xbd/0x150
+[ 8367.319259]  task_work_run+0x5d/0x90
+[ 8367.319261]  do_exit+0x35b/0xb00
+[ 8367.319264]  do_group_exit+0x31/0x80
+[ 8367.319266]  __x64_sys_exit_group+0x18/0x20
+[ 8367.319269]  do_syscall_64+0x5f/0x90
+[ 8367.319271]  ? handle_mm_fault+0xdf/0x2d0
+[ 8367.319275]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 8367.319277]  ? syscall_exit_to_user_mode+0x1b/0x40
+[ 8367.319280]  ? exc_page_fault+0x74/0x170
+[ 8367.319283]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8367.319285] RIP: 0033:0x7f6baf2eaf3d
+[ 8367.319289] Code: Unable to access opcode bytes at 0x7f6baf2eaf13.
+[ 8367.319290] RSP: 002b:00007ffdeb15c568 EFLAGS: 00000202 ORIG_RAX: 00000000000000e7
+[ 8367.319292] RAX: ffffffffffffffda RBX: 00007f6baf3f3108 RCX: 00007f6baf2eaf3d
+[ 8367.319293] RDX: 00000000000000e7 RSI: fffffffffffffea8 RDI: 0000000000000000
+[ 8367.319294] RBP: 0000000000000000 R08: 00007ffdeb15c508 R09: 0000000000000000
+[ 8367.319296] R10: 00007ffdeb15c280 R11: 0000000000000202 R12: 0000000000000000
+[ 8367.319297] R13: 00007f6baf3f1660 R14: 0000000000000000 R15: 00007f6baf3f3120
+[ 8367.319300]  </TASK>
+[ 8367.319300] ---[ end trace 0000000000000000 ]---
+[ 8446.673750] ------------[ cut here ]------------
+[ 8446.673754] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[ 8446.673770] WARNING: CPU: 7 PID: 76276 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[ 8446.673780] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8446.673859]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8446.673914] Unloaded tainted modules: binder_linux(OE):2
+[ 8446.673919] CPU: 7 PID: 76276 Comm: (ogrotate) Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8446.673925] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8446.673927] RIP: 0010:__list_add_valid+0x83/0xa0
+[ 8446.673932] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[ 8446.673938] RSP: 0018:ffffbdbd08087d90 EFLAGS: 00010286
+[ 8446.673942] RAX: 0000000000000000 RBX: ffff9dbae3856430 RCX: 0000000000000027
+[ 8446.673944] RDX: ffff9dbd3f5e1668 RSI: 0000000000000001 RDI: ffff9dbd3f5e1660
+[ 8446.673947] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd08087c08
+[ 8446.673949] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dbae3856450
+[ 8446.673950] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[ 8446.673953] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f5c0000(0000) knlGS:0000000000000000
+[ 8446.673956] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8446.673958] CR2: 00007f81b49966a0 CR3: 00000001ef992004 CR4: 00000000000606e0
+[ 8446.673961] Call Trace:
+[ 8446.673964]  <TASK>
+[ 8446.673965]  register_shrinker_prepared+0x39/0x70
+[ 8446.673973]  sget_fc+0x1a0/0x330
+[ 8446.673978]  ? shmem_put_link+0x30/0x30
+[ 8446.673981]  get_tree_nodev+0x27/0xa0
+[ 8446.673985]  vfs_get_tree+0x29/0xc0
+[ 8446.673989]  path_mount+0x46e/0xa90
+[ 8446.673994]  __x64_sys_mount+0x11a/0x150
+[ 8446.673997]  do_syscall_64+0x5f/0x90
+[ 8446.674003]  ? exc_page_fault+0x74/0x170
+[ 8446.674007]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8446.674011] RIP: 0033:0x7f81b4921fde
+[ 8446.674030] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[ 8446.674033] RSP: 002b:00007ffde03d2358 EFLAGS: 00000202 ORIG_RAX: 00000000000000a5
+[ 8446.674036] RAX: ffffffffffffffda RBX: 00007f81b4f5431c RCX: 00007f81b4921fde
+[ 8446.674038] RDX: 00007f81b4f5431c RSI: 00007ffde03d2360 RDI: 00007f81b4f5431c
+[ 8446.674040] RBP: 00007f81b4f5431c R08: 000056410f125f20 R09: 0000000000000000
+[ 8446.674042] R10: 000000000100000a R11: 0000000000000202 R12: 000000000100000a
+[ 8446.674044] R13: 00007ffde03d2360 R14: 000056410f125f20 R15: 00007ffde03d2470
+[ 8446.674048]  </TASK>
+[ 8446.674049] ---[ end trace 0000000000000000 ]---
+[ 8446.677892] ------------[ cut here ]------------
+[ 8446.677895] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[ 8446.677909] WARNING: CPU: 3 PID: 76277 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[ 8446.677920] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8446.678022]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8446.678088] Unloaded tainted modules: binder_linux(OE):2
+[ 8446.678094] CPU: 3 PID: 76277 Comm: (sh) Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8446.678099] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8446.678103] RIP: 0010:__list_add_valid+0x83/0xa0
+[ 8446.678108] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[ 8446.678111] RSP: 0018:ffffbdbd080ffdc8 EFLAGS: 00010282
+[ 8446.678114] RAX: 0000000000000000 RBX: ffff9dbaf25fb430 RCX: 0000000000000027
+[ 8446.678117] RDX: ffff9dbd3f4e1668 RSI: 0000000000000001 RDI: ffff9dbd3f4e1660
+[ 8446.678119] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd080ffc40
+[ 8446.678121] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dbaf25fb450
+[ 8446.678124] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[ 8446.678127] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f4c0000(0000) knlGS:0000000000000000
+[ 8446.678131] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8446.678133] CR2: 00007f81b49966a0 CR3: 00000001d08f0004 CR4: 00000000000606e0
+[ 8446.678137] Call Trace:
+[ 8446.678140]  <TASK>
+[ 8446.678142]  register_shrinker_prepared+0x39/0x70
+[ 8446.678152]  sget_fc+0x1a0/0x330
+[ 8446.678159]  ? shmem_put_link+0x30/0x30
+[ 8446.678164]  get_tree_nodev+0x27/0xa0
+[ 8446.678169]  vfs_get_tree+0x29/0xc0
+[ 8446.678173]  path_mount+0x46e/0xa90
+[ 8446.678180]  __x64_sys_mount+0x11a/0x150
+[ 8446.678185]  do_syscall_64+0x5f/0x90
+[ 8446.678190]  ? exc_page_fault+0x74/0x170
+[ 8446.678196]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8446.678201] RIP: 0033:0x7f81b4921fde
+[ 8446.678222] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[ 8446.678225] RSP: 002b:00007ffde03d2358 EFLAGS: 00000202 ORIG_RAX: 00000000000000a5
+[ 8446.678230] RAX: ffffffffffffffda RBX: 00007f81b4f5431c RCX: 00007f81b4921fde
+[ 8446.678233] RDX: 00007f81b4f5431c RSI: 00007ffde03d2360 RDI: 00007f81b4f5431c
+[ 8446.678235] RBP: 00007f81b4f5431c R08: 000056410f126350 R09: 0000000000000000
+[ 8446.678238] R10: 000000000100000a R11: 0000000000000202 R12: 000000000100000a
+[ 8446.678241] R13: 00007ffde03d2360 R14: 000056410f126350 R15: 00007ffde03d2470
+[ 8446.678247]  </TASK>
+[ 8446.678249] ---[ end trace 0000000000000000 ]---
+[ 8446.681998] ------------[ cut here ]------------
+[ 8446.682003] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[ 8446.682017] WARNING: CPU: 1 PID: 76276 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[ 8446.682026] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8446.682124]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8446.682188] Unloaded tainted modules: binder_linux(OE):2
+[ 8446.682193] CPU: 1 PID: 76276 Comm: (ogrotate) Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8446.682199] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8446.682201] RIP: 0010:__list_add_valid+0x83/0xa0
+[ 8446.682206] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[ 8446.682209] RSP: 0018:ffffbdbd08087d30 EFLAGS: 00010286
+[ 8446.682213] RAX: 0000000000000000 RBX: ffff9dbaef80d430 RCX: 0000000000000027
+[ 8446.682215] RDX: ffff9dbd3f461668 RSI: 0000000000000001 RDI: ffff9dbd3f461660
+[ 8446.682218] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd08087ba8
+[ 8446.682220] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dbaef80d450
+[ 8446.682222] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[ 8446.682225] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f440000(0000) knlGS:0000000000000000
+[ 8446.682228] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8446.682231] CR2: 00005653a67bd248 CR3: 00000001ef992005 CR4: 00000000000606e0
+[ 8446.682233] Call Trace:
+[ 8446.682236]  <TASK>
+[ 8446.682238]  register_shrinker_prepared+0x39/0x70
+[ 8446.682247]  sget_fc+0x1a0/0x330
+[ 8446.682252]  ? proc_reconfigure+0x50/0x50
+[ 8446.682257]  get_tree_nodev+0x27/0xa0
+[ 8446.682261]  vfs_get_tree+0x29/0xc0
+[ 8446.682265]  path_mount+0x46e/0xa90
+[ 8446.682271]  __x64_sys_mount+0x11a/0x150
+[ 8446.682275]  do_syscall_64+0x5f/0x90
+[ 8446.682280]  ? kmem_cache_free+0x19/0x360
+[ 8446.682286]  ? do_sys_openat2+0x9b/0x170
+[ 8446.682292]  ? syscall_exit_to_user_mode+0x1b/0x40
+[ 8446.682296]  ? do_syscall_64+0x6b/0x90
+[ 8446.682299]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8446.682304] RIP: 0033:0x7f81b4921fde
+[ 8446.682321] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[ 8446.682324] RSP: 002b:00007ffde03d2438 EFLAGS: 00000202 ORIG_RAX: 00000000000000a5
+[ 8446.682328] RAX: ffffffffffffffda RBX: 00007f81b4f751ef RCX: 00007f81b4921fde
+[ 8446.682330] RDX: 00007f81b4f751ef RSI: 00007ffde03d2440 RDI: 00007f81b4f751ef
+[ 8446.682332] RBP: 00007f81b4f751ef R08: 0000000000000000 R09: 0000000000000000
+[ 8446.682334] R10: 000000000000000e R11: 0000000000000202 R12: 000000000000000e
+[ 8446.682336] R13: 00007ffde03d2440 R14: 0000000000000000 R15: 000056410f123550
+[ 8446.682342]  </TASK>
+[ 8446.682343] ---[ end trace 0000000000000000 ]---
+[ 8446.683296] ------------[ cut here ]------------
+[ 8446.683299] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[ 8446.683311] WARNING: CPU: 3 PID: 76277 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[ 8446.683318] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8446.683399]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8446.683456] Unloaded tainted modules: binder_linux(OE):2
+[ 8446.683461] CPU: 3 PID: 76277 Comm: (sh) Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8446.683466] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8446.683468] RIP: 0010:__list_add_valid+0x83/0xa0
+[ 8446.683474] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[ 8446.683477] RSP: 0018:ffffbdbd080ffd88 EFLAGS: 00010282
+[ 8446.683481] RAX: 0000000000000000 RBX: ffff9dbaf25fac30 RCX: 0000000000000027
+[ 8446.683483] RDX: ffff9dbd3f4e1668 RSI: 0000000000000001 RDI: ffff9dbd3f4e1660
+[ 8446.683486] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd080ffc00
+[ 8446.683488] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dbaf25fac50
+[ 8446.683491] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[ 8446.683494] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f4c0000(0000) knlGS:0000000000000000
+[ 8446.683497] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8446.683500] CR2: 000056410f12c018 CR3: 00000001d08f0004 CR4: 00000000000606e0
+[ 8446.683503] Call Trace:
+[ 8446.683505]  <TASK>
+[ 8446.683506]  register_shrinker_prepared+0x39/0x70
+[ 8446.683513]  sget_fc+0x1a0/0x330
+[ 8446.683518]  ? proc_reconfigure+0x50/0x50
+[ 8446.683523]  get_tree_nodev+0x27/0xa0
+[ 8446.683528]  vfs_get_tree+0x29/0xc0
+[ 8446.683532]  path_mount+0x46e/0xa90
+[ 8446.683537]  __x64_sys_mount+0x11a/0x150
+[ 8446.683542]  do_syscall_64+0x5f/0x90
+[ 8446.683547]  ? exit_to_user_mode_prepare+0x145/0x1d0
+[ 8446.683552]  ? syscall_exit_to_user_mode+0x1b/0x40
+[ 8446.683557]  ? do_syscall_64+0x6b/0x90
+[ 8446.683560]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8446.683564] RIP: 0033:0x7f81b4921fde
+[ 8446.683577] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[ 8446.683580] RSP: 002b:00007ffde03d2438 EFLAGS: 00000202 ORIG_RAX: 00000000000000a5
+[ 8446.683584] RAX: ffffffffffffffda RBX: 00007f81b4f751ef RCX: 00007f81b4921fde
+[ 8446.683587] RDX: 00007f81b4f751ef RSI: 00007ffde03d2440 RDI: 00007f81b4f751ef
+[ 8446.683589] RBP: 00007f81b4f751ef R08: 000056410f124a70 R09: 0000000000000000
+[ 8446.683591] R10: 000000000000000e R11: 0000000000000202 R12: 000000000000000e
+[ 8446.683594] R13: 00007ffde03d2440 R14: 000056410f124a70 R15: 000056410f1251f0
+[ 8446.683600]  </TASK>
+[ 8446.683601] ---[ end trace 0000000000000000 ]---
+[ 8446.763866] ------------[ cut here ]------------
+[ 8446.763871] list_add corruption. prev->next should be next (ffffffff8a4f6270), but was 8b48985d8b4cc8e6. (prev=ffffffffc0799460).
+[ 8446.763885] WARNING: CPU: 4 PID: 76288 at lib/list_debug.c:30 __list_add_valid+0x83/0xa0
+[ 8446.763895] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8446.764015]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8446.764074] Unloaded tainted modules: binder_linux(OE):2
+[ 8446.764079] CPU: 4 PID: 76288 Comm: (pkgfile) Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8446.764084] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8446.764085] RIP: 0010:__list_add_valid+0x83/0xa0
+[ 8446.764090] Code: eb e9 48 89 c1 48 c7 c7 b0 38 cf 89 e8 d6 aa b1 ff 0f 0b eb d6 48 89 d1 48 89 c6 4c 89 c2 48 c7 c7 00 39 cf 89 e8 bd aa b1 ff <0f> 0b eb bd 48 89 f2 48 89 c1 48 89 fe 48 c7 c7 50 39 cf 89 e8 a4
+[ 8446.764093] RSP: 0018:ffffbdbd0811fd50 EFLAGS: 00010282
+[ 8446.764096] RAX: 0000000000000000 RBX: ffff9dba9bb53c30 RCX: 0000000000000027
+[ 8446.764097] RDX: ffff9dbd3f521668 RSI: 0000000000000001 RDI: ffff9dbd3f521660
+[ 8446.764099] RBP: ffffffffc0799460 R08: 0000000000000000 R09: ffffbdbd0811fbc8
+[ 8446.764101] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba9bb53c50
+[ 8446.764102] R13: ffffffff8a44b920 R14: ffffffff8897f550 R15: 00000000ffffffff
+[ 8446.764105] FS:  00007f81b4472a40(0000) GS:ffff9dbd3f500000(0000) knlGS:0000000000000000
+[ 8446.764107] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8446.764109] CR2: 000056410ef8fa70 CR3: 00000001cb760005 CR4: 00000000000606e0
+[ 8446.764111] Call Trace:
+[ 8446.764113]  <TASK>
+[ 8446.764115]  register_shrinker_prepared+0x39/0x70
+[ 8446.764122]  sget_fc+0x1a0/0x330
+[ 8446.764127]  ? shmem_put_link+0x30/0x30
+[ 8446.764130]  get_tree_nodev+0x27/0xa0
+[ 8446.764134]  vfs_get_tree+0x29/0xc0
+[ 8446.764138]  path_mount+0x46e/0xa90
+[ 8446.764150]  __x64_sys_mount+0x11a/0x150
+[ 8446.764154]  do_syscall_64+0x5f/0x90
+[ 8446.764159]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 8446.764164]  ? exc_page_fault+0x74/0x170
+[ 8446.764169]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8446.764173] RIP: 0033:0x7f81b4921fde
+[ 8446.764192] Code: 48 8b 0d 95 ed 0c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 62 ed 0c 00 f7 d8 64 89 01 48
+[ 8446.764195] RSP: 002b:00007ffde03d2348 EFLAGS: 00000206 ORIG_RAX: 00000000000000a5
+[ 8446.764199] RAX: ffffffffffffffda RBX: 00007f81b4f5431c RCX: 00007f81b4921fde
+[ 8446.764201] RDX: 00007f81b4f5431c RSI: 00007ffde03d2350 RDI: 00007f81b4f5431c
+[ 8446.764203] RBP: 00007f81b4f5431c R08: 000056410f0d3420 R09: 0000000000000000
+[ 8446.764205] R10: 000000000100000a R11: 0000000000000206 R12: 000000000100000a
+[ 8446.764207] R13: 00007ffde03d2350 R14: 000056410f0d3420 R15: 00007ffde03d2460
+[ 8446.764213]  </TASK>
+[ 8446.764214] ---[ end trace 0000000000000000 ]---
+[ 8446.777837] ------------[ cut here ]------------
+[ 8446.777842] list_del corruption, ffff9dbaef80d450->next is NULL
+[ 8446.777852] WARNING: CPU: 3 PID: 76276 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[ 8446.777859] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8446.777922]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8446.777972] Unloaded tainted modules: binder_linux(OE):2
+[ 8446.777976] CPU: 3 PID: 76276 Comm: logrotate Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8446.777979] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8446.777981] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[ 8446.777985] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[ 8446.777987] RSP: 0018:ffffbdbd08087d88 EFLAGS: 00010282
+[ 8446.777989] RAX: 0000000000000000 RBX: ffff9dbaef80d430 RCX: 0000000000000027
+[ 8446.777991] RDX: ffff9dbd3f4e1668 RSI: 0000000000000001 RDI: ffff9dbd3f4e1660
+[ 8446.777992] RBP: ffffffff8a52f1a0 R08: 0000000000000000 R09: ffffbdbd08087c00
+[ 8446.777994] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba312008fc
+[ 8446.777995] R13: ffff9dba0544eb01 R14: ffff9dba07e8d130 R15: ffff9dba312008f8
+[ 8446.777997] FS:  00007fdd7617d740(0000) GS:ffff9dbd3f4c0000(0000) knlGS:0000000000000000
+[ 8446.777999] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8446.778000] CR2: 00007fdd7639c708 CR3: 00000003f8610001 CR4: 00000000000606e0
+[ 8446.778002] Call Trace:
+[ 8446.778005]  <TASK>
+[ 8446.778006]  unregister_shrinker+0x2e/0xc0
+[ 8446.778012]  deactivate_locked_super+0x27/0xa0
+[ 8446.778016]  cleanup_mnt+0xbd/0x150
+[ 8446.778019]  task_work_run+0x5d/0x90
+[ 8446.778022]  do_exit+0x35b/0xb00
+[ 8446.778026]  do_group_exit+0x31/0x80
+[ 8446.778029]  __x64_sys_exit_group+0x18/0x20
+[ 8446.778032]  do_syscall_64+0x5f/0x90
+[ 8446.778035]  ? handle_mm_fault+0xdf/0x2d0
+[ 8446.778040]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 8446.778043]  ? exit_to_user_mode_prepare+0x16f/0x1d0
+[ 8446.778046]  ? exc_page_fault+0x74/0x170
+[ 8446.778049]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8446.778052] RIP: 0033:0x7fdd76251f3d
+[ 8446.778068] Code: Unable to access opcode bytes at 0x7fdd76251f13.
+[ 8446.778070] RSP: 002b:00007ffeaeb385d8 EFLAGS: 00000202 ORIG_RAX: 00000000000000e7
+[ 8446.778072] RAX: ffffffffffffffda RBX: 00007fdd7635a108 RCX: 00007fdd76251f3d
+[ 8446.778073] RDX: 00000000000000e7 RSI: ffffffffffffff88 RDI: 0000000000000000
+[ 8446.778075] RBP: 0000000000000000 R08: 00007ffeaeb38580 R09: 00007ffeaeb384df
+[ 8446.778076] R10: 00007ffeaeb38430 R11: 0000000000000202 R12: 0000000000000000
+[ 8446.778077] R13: 00007fdd76358660 R14: 0000000000000000 R15: 00007fdd7635a120
+[ 8446.778081]  </TASK>
+[ 8446.778082] ---[ end trace 0000000000000000 ]---
+[ 8446.778125] ------------[ cut here ]------------
+[ 8446.778127] list_del corruption, ffff9dbae3856450->next is NULL
+[ 8446.778135] WARNING: CPU: 3 PID: 76276 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[ 8446.778142] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8446.778217]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8446.778260] Unloaded tainted modules: binder_linux(OE):2
+[ 8446.778263] CPU: 3 PID: 76276 Comm: logrotate Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8446.778265] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8446.778266] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[ 8446.778270] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[ 8446.778272] RSP: 0018:ffffbdbd08087d88 EFLAGS: 00010282
+[ 8446.778274] RAX: 0000000000000000 RBX: ffff9dbae3856430 RCX: 0000000000000027
+[ 8446.778275] RDX: ffff9dbd3f4e1668 RSI: 0000000000000001 RDI: ffff9dbd3f4e1660
+[ 8446.778276] RBP: ffffffff8a4fb8a0 R08: 0000000000000000 R09: ffffbdbd08087c00
+[ 8446.778278] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba312008fc
+[ 8446.778281] R13: ffff9dba0544eb01 R14: ffff9dba07e8d130 R15: ffff9dba312008f8
+[ 8446.778283] FS:  00007fdd7617d740(0000) GS:ffff9dbd3f4c0000(0000) knlGS:0000000000000000
+[ 8446.778286] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8446.778289] CR2: 00007fdd7639c708 CR3: 00000003f8610001 CR4: 00000000000606e0
+[ 8446.778292] Call Trace:
+[ 8446.778294]  <TASK>
+[ 8446.778295]  unregister_shrinker+0x2e/0xc0
+[ 8446.778300]  deactivate_locked_super+0x27/0xa0
+[ 8446.778304]  cleanup_mnt+0xbd/0x150
+[ 8446.778308]  task_work_run+0x5d/0x90
+[ 8446.778312]  do_exit+0x35b/0xb00
+[ 8446.778317]  do_group_exit+0x31/0x80
+[ 8446.778321]  __x64_sys_exit_group+0x18/0x20
+[ 8446.778325]  do_syscall_64+0x5f/0x90
+[ 8446.778328]  ? handle_mm_fault+0xdf/0x2d0
+[ 8446.778334]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 8446.778337]  ? exit_to_user_mode_prepare+0x16f/0x1d0
+[ 8446.778342]  ? exc_page_fault+0x74/0x170
+[ 8446.778346]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8446.778349] RIP: 0033:0x7fdd76251f3d
+[ 8446.778357] Code: Unable to access opcode bytes at 0x7fdd76251f13.
+[ 8446.778359] RSP: 002b:00007ffeaeb385d8 EFLAGS: 00000202 ORIG_RAX: 00000000000000e7
+[ 8446.778364] RAX: ffffffffffffffda RBX: 00007fdd7635a108 RCX: 00007fdd76251f3d
+[ 8446.778366] RDX: 00000000000000e7 RSI: ffffffffffffff88 RDI: 0000000000000000
+[ 8446.778369] RBP: 0000000000000000 R08: 00007ffeaeb38580 R09: 00007ffeaeb384df
+[ 8446.778371] R10: 00007ffeaeb38430 R11: 0000000000000202 R12: 0000000000000000
+[ 8446.778373] R13: 00007fdd76358660 R14: 0000000000000000 R15: 00007fdd7635a120
+[ 8446.778377]  </TASK>
+[ 8446.778378] ---[ end trace 0000000000000000 ]---
+[ 8446.816507] ------------[ cut here ]------------
+[ 8446.816511] list_del corruption, ffff9dbaf25fac50->next is NULL
+[ 8446.816520] WARNING: CPU: 2 PID: 76277 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[ 8446.816528] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8446.816585]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8446.816621] Unloaded tainted modules: binder_linux(OE):2
+[ 8446.816625] CPU: 2 PID: 76277 Comm: sh Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8446.816628] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8446.816629] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[ 8446.816633] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[ 8446.816635] RSP: 0018:ffffbdbd080ffdf8 EFLAGS: 00010282
+[ 8446.816637] RAX: 0000000000000000 RBX: ffff9dbaf25fac30 RCX: 0000000000000027
+[ 8446.816639] RDX: ffff9dbd3f4a1668 RSI: 0000000000000001 RDI: ffff9dbd3f4a1660
+[ 8446.816640] RBP: ffffffff8a52f1a0 R08: 0000000000000000 R09: ffffbdbd080ffc70
+[ 8446.816641] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba144f08fc
+[ 8446.816643] R13: ffff9dba57d01001 R14: ffff9dba00adccf0 R15: ffff9dba144f08f8
+[ 8446.816644] FS:  00007fab012b5fc0(0000) GS:ffff9dbd3f480000(0000) knlGS:0000000000000000
+[ 8446.816646] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8446.816648] CR2: 00007fab0130e16c CR3: 00000003f8610003 CR4: 00000000000606e0
+[ 8446.816650] Call Trace:
+[ 8446.816652]  <TASK>
+[ 8446.816654]  unregister_shrinker+0x2e/0xc0
+[ 8446.816659]  deactivate_locked_super+0x27/0xa0
+[ 8446.816663]  cleanup_mnt+0xbd/0x150
+[ 8446.816666]  task_work_run+0x5d/0x90
+[ 8446.816669]  do_exit+0x35b/0xb00
+[ 8446.816673]  do_group_exit+0x31/0x80
+[ 8446.816676]  __x64_sys_exit_group+0x18/0x20
+[ 8446.816678]  do_syscall_64+0x5f/0x90
+[ 8446.816682]  ? exc_page_fault+0x74/0x170
+[ 8446.816685]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8446.816688] RIP: 0033:0x7fab013fcf3d
+[ 8446.816703] Code: Unable to access opcode bytes at 0x7fab013fcf13.
+[ 8446.816704] RSP: 002b:00007ffdf849d048 EFLAGS: 00000206 ORIG_RAX: 00000000000000e7
+[ 8446.816706] RAX: ffffffffffffffda RBX: 00007fab01505108 RCX: 00007fab013fcf3d
+[ 8446.816708] RDX: 00000000000000e7 RSI: ffffffffffffff88 RDI: 0000000000000000
+[ 8446.816709] RBP: 0000000000000000 R08: 00007ffdf849cfe8 R09: 00007ffdf849cf5f
+[ 8446.816710] R10: 00007ffdf849cec0 R11: 0000000000000206 R12: 0000000000000000
+[ 8446.816712] R13: 00007fab01503660 R14: 0000000000000000 R15: 00007fab01505120
+[ 8446.816716]  </TASK>
+[ 8446.816716] ---[ end trace 0000000000000000 ]---
+[ 8446.816744] ------------[ cut here ]------------
+[ 8446.816745] list_del corruption, ffff9dbaf25fb450->next is NULL
+[ 8446.816750] WARNING: CPU: 2 PID: 76277 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[ 8446.816755] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8446.816798]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8446.816827] Unloaded tainted modules: binder_linux(OE):2
+[ 8446.816829] CPU: 2 PID: 76277 Comm: sh Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8446.816831] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8446.816832] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[ 8446.816835] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[ 8446.816837] RSP: 0018:ffffbdbd080ffdf8 EFLAGS: 00010282
+[ 8446.816839] RAX: 0000000000000000 RBX: ffff9dbaf25fb430 RCX: 0000000000000027
+[ 8446.816840] RDX: ffff9dbd3f4a1668 RSI: 0000000000000001 RDI: ffff9dbd3f4a1660
+[ 8446.816841] RBP: ffffffff8a4fb8a0 R08: 0000000000000000 R09: ffffbdbd080ffc70
+[ 8446.816843] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dba144f08fc
+[ 8446.816844] R13: ffff9dba57d01001 R14: ffff9dba00adccf0 R15: ffff9dba144f08f8
+[ 8446.816845] FS:  00007fab012b5fc0(0000) GS:ffff9dbd3f480000(0000) knlGS:0000000000000000
+[ 8446.816847] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8446.816848] CR2: 00007fab0130e16c CR3: 00000003f8610003 CR4: 00000000000606e0
+[ 8446.816850] Call Trace:
+[ 8446.816851]  <TASK>
+[ 8446.816852]  unregister_shrinker+0x2e/0xc0
+[ 8446.816854]  deactivate_locked_super+0x27/0xa0
+[ 8446.816857]  cleanup_mnt+0xbd/0x150
+[ 8446.816859]  task_work_run+0x5d/0x90
+[ 8446.816861]  do_exit+0x35b/0xb00
+[ 8446.816864]  do_group_exit+0x31/0x80
+[ 8446.816866]  __x64_sys_exit_group+0x18/0x20
+[ 8446.816868]  do_syscall_64+0x5f/0x90
+[ 8446.816871]  ? exc_page_fault+0x74/0x170
+[ 8446.816874]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8446.816875] RIP: 0033:0x7fab013fcf3d
+[ 8446.816879] Code: Unable to access opcode bytes at 0x7fab013fcf13.
+[ 8446.816880] RSP: 002b:00007ffdf849d048 EFLAGS: 00000206 ORIG_RAX: 00000000000000e7
+[ 8446.816882] RAX: ffffffffffffffda RBX: 00007fab01505108 RCX: 00007fab013fcf3d
+[ 8446.816883] RDX: 00000000000000e7 RSI: ffffffffffffff88 RDI: 0000000000000000
+[ 8446.816885] RBP: 0000000000000000 R08: 00007ffdf849cfe8 R09: 00007ffdf849cf5f
+[ 8446.816886] R10: 00007ffdf849cec0 R11: 0000000000000206 R12: 0000000000000000
+[ 8446.816887] R13: 00007fab01503660 R14: 0000000000000000 R15: 00007fab01505120
+[ 8446.816890]  </TASK>
+[ 8446.816891] ---[ end trace 0000000000000000 ]---
+[ 8455.707694] ------------[ cut here ]------------
+[ 8455.707701] list_del corruption, ffff9dba9bb53c50->next is NULL
+[ 8455.707714] WARNING: CPU: 1 PID: 76288 at lib/list_debug.c:49 __list_del_entry_valid+0x5d/0xe0
+[ 8455.707725] Modules linked in: ccm xt_REDIRECT xt_tcpudp nf_nat_pptp nf_conntrack_pptp iptable_filter iptable_nat xt_MASQUERADE nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 tun rfcomm cmac algif_hash algif_skcipher af_alg bnep ath3k btusb btrtl btbcm btintel btmtk bluetooth ecdh_generic crc16 qrtr squashfs joydev mousedev ath9k ath9k_common ath9k_hw intel_rapl_msr ath intel_rapl_common x86_pkg_temp_thermal mac80211 intel_powerclamp coretemp kvm_intel snd_hda_codec_realtek snd_hda_codec_generic mei_pxp snd_hda_codec_hdmi r8169 ledtrig_audio snd_hda_intel kvm snd_intel_dspcfg toshiba_acpi iTCO_wdt mei_hdcp snd_intel_sdw_acpi irqbypass vboxnetflt(OE) vboxnetadp(OE) libarc4 mei_me sparse_keymap intel_pmc_bxt snd_hda_codec vboxdrv(OE) realtek rapl uinput intel_cstate iTCO_vendor_support cfg80211 pcspkr mdio_devres psmouse industrialio snd_hda_core mei intel_uncore libphy lpc_ich nvidia_uvm(POE) toshiba_bluetooth rfkill snd_hwdep nvidia_drm(POE) nvidia_modeset(POE) mac_hid nvidia(POE)
+[ 8455.707813]  video wmi ipmi_devintf ipmi_msghandler snd_aloop snd_pcm snd_timer snd soundcore v4l2loopback_dc(OE) videodev mc sg crypto_user fuse loop ashmem_linux(OE) bpf_preload ip_tables x_tables btrfs blake2b_generic libcrc32c crc32c_generic xor raid6_pq dm_crypt cbc encrypted_keys trusted asn1_encoder tee dm_mod mmc_block crct10dif_pclmul crc32_pclmul serio_raw polyval_clmulni atkbd libps2 polyval_generic vivaldi_fmap gf128mul ghash_clmulni_intel sha512_ssse3 aesni_intel sdhci_pci crypto_simd cqhci cryptd sdhci sr_mod xhci_pci usbhid cdrom i8042 mmc_core xhci_pci_renesas serio crc32c_intel
+[ 8455.707865] Unloaded tainted modules: binder_linux(OE):2
+[ 8455.707869] CPU: 1 PID: 76288 Comm: pkgfile Tainted: P        W  OE      6.1.21-1-MANJARO #1 16a12678151c96e7778ce983035149e1b9d2909e
+[ 8455.707874] Hardware name: TOSHIBA QOSMIO F750/Portable PC, BIOS Version 2.00   11/10/2011
+[ 8455.707876] RIP: 0010:__list_del_entry_valid+0x5d/0xe0
+[ 8455.707883] Code: 48 8b 01 48 39 f8 75 67 48 8b 72 08 48 39 c6 75 74 b8 01 00 00 00 c3 cc cc cc cc 48 89 fe 48 c7 c7 88 39 cf 89 e8 43 aa b1 ff <0f> 0b 31 c0 c3 cc cc cc cc 48 89 fe 48 c7 c7 b0 39 cf 89 e8 2b aa
+[ 8455.707886] RSP: 0018:ffffbdbd0811fd58 EFLAGS: 00010286
+[ 8455.707889] RAX: 0000000000000000 RBX: ffff9dba9bb53c30 RCX: 0000000000000027
+[ 8455.707891] RDX: ffff9dbd3f461668 RSI: 0000000000000001 RDI: ffff9dbd3f461660
+[ 8455.707894] RBP: ffffffff8a4fb8a0 R08: 0000000000000000 R09: ffffbdbd0811fbd0
+[ 8455.707895] R10: 0000000000000003 R11: ffffffff8a4cc7e8 R12: ffff9dbad88d88fc
+[ 8455.707897] R13: ffff9dba081a0801 R14: ffff9dba06cad130 R15: ffff9dbad88d88f8
+[ 8455.707900] FS:  00007f6252c18d00(0000) GS:ffff9dbd3f440000(0000) knlGS:0000000000000000
+[ 8455.707903] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8455.707905] CR2: 00007f6252bb2708 CR3: 00000003f8610003 CR4: 00000000000606e0
+[ 8455.707908] Call Trace:
+[ 8455.707911]  <TASK>
+[ 8455.707912]  unregister_shrinker+0x2e/0xc0
+[ 8455.707920]  deactivate_locked_super+0x27/0xa0
+[ 8455.707925]  cleanup_mnt+0xbd/0x150
+[ 8455.707930]  task_work_run+0x5d/0x90
+[ 8455.707934]  do_exit+0x35b/0xb00
+[ 8455.707940]  do_group_exit+0x31/0x80
+[ 8455.707943]  __x64_sys_exit_group+0x18/0x20
+[ 8455.707947]  do_syscall_64+0x5f/0x90
+[ 8455.707952]  ? do_syscall_64+0x6b/0x90
+[ 8455.707955]  ? handle_mm_fault+0xdf/0x2d0
+[ 8455.707961]  ? do_user_addr_fault+0x1e0/0x6a0
+[ 8455.707965]  ? exc_page_fault+0x74/0x170
+[ 8455.707970]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[ 8455.707974] RIP: 0033:0x7f6253972f3d
+[ 8455.707994] Code: Unable to access opcode bytes at 0x7f6253972f13.
+[ 8455.707996] RSP: 002b:00007ffc237f67d8 EFLAGS: 00000202 ORIG_RAX: 00000000000000e7
+[ 8455.708000] RAX: ffffffffffffffda RBX: 00007f6253a7b108 RCX: 00007f6253972f3d
+[ 8455.708002] RDX: 00000000000000e7 RSI: ffffffffffffff88 RDI: 0000000000000000
+[ 8455.708004] RBP: 0000000000000000 R08: 0000000000000000 R09: 00007ffc237f65ff
+[ 8455.708007] R10: 00007ffc237f6470 R11: 0000000000000202 R12: 0000000000000000
+[ 8455.708009] R13: 00007f6253a79660 R14: 0000000000000000 R15: 00007f6253a7b120
+[ 8455.708015]  </TASK>
+[ 8455.708017] ---[ end trace 0000000000000000 ]---
+[ 8722.956726] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[ 8724.342034] r8169 0000:04:00.0: invalid VPD tag 0x00 (size 0) at offset 0; assume missing optional EEPROM
