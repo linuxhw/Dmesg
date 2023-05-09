@@ -1,0 +1,590 @@
+[255114.504008] dxvk-submit: page allocation failure: order:0, mode:0x144cd2(GFP_HIGHUSER|__GFP_RETRY_MAYFAIL|__GFP_COMP|__GFP_RECLAIMABLE), nodemask=(null),cpuset=/,mems_allowed=0
+[255114.504024] CPU: 7 PID: 245884 Comm: dxvk-submit Tainted: G        W         5.19.0-31-generic #32-Ubuntu
+[255114.504027] Hardware name: LENOVO 20QD001TUS/20QD001TUS, BIOS N2HET73W (1.56 ) 12/06/2022
+[255114.504028] Call Trace:
+[255114.504030]  <TASK>
+[255114.504033]  show_stack+0x4e/0x61
+[255114.504039]  dump_stack_lvl+0x4a/0x6f
+[255114.504042]  dump_stack+0x10/0x18
+[255114.504044]  warn_alloc+0x164/0x190
+[255114.504050]  __alloc_pages_slowpath.constprop.0+0x99f/0xa30
+[255114.504055]  __alloc_pages+0x31d/0x350
+[255114.504059]  __folio_alloc+0x1d/0x60
+[255114.504062]  ? policy_node+0x69/0x80
+[255114.504065]  vma_alloc_folio+0x8c/0x3a0
+[255114.504069]  shmem_alloc_folio+0x51/0xb0
+[255114.504074]  shmem_alloc_and_acct_folio+0x77/0x1c0
+[255114.504078]  shmem_getpage_gfp+0x477/0x930
+[255114.504083]  shmem_read_mapping_page_gfp+0x52/0x120
+[255114.504087]  shmem_sg_alloc_table+0x12b/0x290 [i915]
+[255114.504212]  shmem_get_pages+0xb4/0x330 [i915]
+[255114.504295]  ____i915_gem_object_get_pages+0x23/0x60 [i915]
+[255114.504374]  __i915_gem_object_get_pages+0x3e/0x50 [i915]
+[255114.504452]  i915_vma_get_pages+0xba/0x110 [i915]
+[255114.504537]  i915_vma_pin_ww+0xbd/0x5b0 [i915]
+[255114.504620]  ? dma_resv_list_alloc+0x2e/0x50
+[255114.504625]  eb_validate_vmas+0x1a5/0x420 [i915]
+[255114.504703]  i915_gem_do_execbuffer+0x4d4/0x1040 [i915]
+[255114.504788]  i915_gem_execbuffer2_ioctl+0x11a/0x280 [i915]
+[255114.504866]  ? i915_gem_do_execbuffer+0x1040/0x1040 [i915]
+[255114.504945]  drm_ioctl_kernel+0xd3/0x180 [drm]
+[255114.504980]  drm_ioctl+0x29d/0x4d0 [drm]
+[255114.505004]  ? i915_gem_do_execbuffer+0x1040/0x1040 [i915]
+[255114.505086]  i915_ioc32_compat_ioctl+0x6a/0xb0 [i915]
+[255114.505171]  __do_compat_sys_ioctl+0x17e/0x1b0
+[255114.505175]  __ia32_compat_sys_ioctl+0x17/0x30
+[255114.505178]  __do_fast_syscall_32+0x85/0xf0
+[255114.505182]  ? restore_fpregs_from_fpstate+0x47/0xf0
+[255114.505187]  ? switch_fpu_return+0x52/0xf0
+[255114.505190]  ? exit_to_user_mode_prepare+0x9b/0xb0
+[255114.505195]  ? irqentry_exit_to_user_mode+0x9/0x20
+[255114.505198]  do_fast_syscall_32+0x34/0x80
+[255114.505201]  do_SYSENTER_32+0x1f/0x30
+[255114.505203]  entry_SYSENTER_compat_after_hwframe+0x70/0x82
+[255114.505207] RIP: 0023:0xf7fc5549
+[255114.505210] Code: 03 74 c0 01 10 05 03 74 b8 01 10 06 03 74 b4 01 10 07 03 74 b0 01 10 08 03 74 d8 01 00 00 00 00 00 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 cc 90 90 90 8d b4 26 00 00 00 00 8d b4 26 00 00 00 00
+[255114.505213] RSP: 002b:00000000028be0d4 EFLAGS: 00000292 ORIG_RAX: 0000000000000036
+[255114.505216] RAX: ffffffffffffffda RBX: 0000000000000025 RCX: 0000000040406469
+[255114.505218] RDX: 00000000028be214 RSI: 00000000f7e26ff4 RDI: 0000000000000025
+[255114.505220] RBP: 00000000028be398 R08: 0000000000000000 R09: 0000000000000000
+[255114.505221] R10: 0000000000000000 R11: 0000000000000212 R12: 0000000000000000
+[255114.505223] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[255114.505227]  </TASK>
+[255114.505228] Mem-Info:
+[255114.505230] active_anon:445374 inactive_anon:1237263 isolated_anon:0
+                 active_file:94 inactive_file:505 isolated_file:18
+                 unevictable:81050 dirty:0 writeback:1
+                 slab_reclaimable:27753 slab_unreclaimable:56178
+                 mapped:125414 shmem:718346 pagetables:17857 bounce:0
+                 kernel_misc_reclaimable:0
+                 free:51744 free_pcp:668 free_cma:0
+[255114.505236] Node 0 active_anon:1781496kB inactive_anon:4949052kB active_file:376kB inactive_file:2020kB unevictable:324200kB isolated(anon):0kB isolated(file):72kB mapped:501656kB dirty:0kB writeback:4kB shmem:2873384kB shmem_thp: 741376kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:27664kB pagetables:71428kB all_unreclaimable? no
+[255114.505242] Node 0 DMA free:14336kB boost:0kB min:132kB low:164kB high:196kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[255114.505249] lowmem_reserve[]: 0 1573 7540 7540 7540
+[255114.505254] Node 0 DMA32 free:52552kB boost:16384kB min:30452kB low:33968kB high:37484kB reserved_highatomic:0KB active_anon:592780kB inactive_anon:966788kB active_file:0kB inactive_file:528kB unevictable:17448kB writepending:0kB present:1744044kB managed:1677872kB mlocked:4kB bounce:0kB free_pcp:56kB local_pcp:0kB free_cma:0kB
+[255114.505261] lowmem_reserve[]: 0 0 5967 5967 5967
+[255114.505266] Node 0 Normal free:140088kB boost:92160kB min:145536kB low:158880kB high:172224kB reserved_highatomic:2048KB active_anon:1188488kB inactive_anon:3982540kB active_file:0kB inactive_file:1396kB unevictable:306388kB writepending:4kB present:6299648kB managed:6118568kB mlocked:104kB bounce:0kB free_pcp:2616kB local_pcp:156kB free_cma:0kB
+[255114.505272] lowmem_reserve[]: 0 0 0 0 0
+[255114.505277] Node 0 DMA: 0*4kB 0*8kB 0*16kB 0*32kB 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 1*2048kB (M) 3*4096kB (M) = 14336kB
+[255114.505292] Node 0 DMA32: 10139*4kB (UME) 1149*8kB (UME) 208*16kB (UME) 10*32kB (UME) 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 53396kB
+[255114.505309] Node 0 Normal: 32992*4kB (MEH) 1028*8kB (MEH) 12*16kB (EH) 6*32kB (EH) 1*64kB (E) 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 140640kB
+[255114.505326] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[255114.505328] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[255114.505330] 733590 total pagecache pages
+[255114.505331] 14566 pages in swap cache
+[255114.505332] Swap cache stats: add 1738369, delete 1724024, find 1266091/1436963
+[255114.505334] Free swap  = 0kB
+[255114.505335] Total swap = 2097148kB
+[255114.505336] 2014921 pages RAM
+[255114.505337] 0 pages HighMem/MovableOnly
+[255114.505338] 61971 pages reserved
+[255114.505339] 0 pages hwpoisoned
+[255114.506595] steamwebhelper invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=300
+[255114.506601] CPU: 2 PID: 228150 Comm: steamwebhelper Tainted: G        W         5.19.0-31-generic #32-Ubuntu
+[255114.506604] Hardware name: LENOVO 20QD001TUS/20QD001TUS, BIOS N2HET73W (1.56 ) 12/06/2022
+[255114.506606] Call Trace:
+[255114.506607]  <TASK>
+[255114.506609]  show_stack+0x4e/0x61
+[255114.506612]  dump_stack_lvl+0x4a/0x6f
+[255114.506615]  dump_stack+0x10/0x18
+[255114.506616]  dump_header+0x53/0x246
+[255114.506620]  oom_kill_process.cold+0xb/0x10
+[255114.506623]  out_of_memory+0x101/0x2f0
+[255114.506626]  __alloc_pages_may_oom+0x112/0x1e0
+[255114.506631]  __alloc_pages_slowpath.constprop.0+0x4cf/0xa30
+[255114.506635]  __alloc_pages+0x31d/0x350
+[255114.506639]  alloc_pages+0x90/0x1c0
+[255114.506642]  folio_alloc+0x1d/0x60
+[255114.506645]  filemap_alloc_folio+0x8e/0xb0
+[255114.506649]  __filemap_get_folio+0x1c7/0x3c0
+[255114.506653]  filemap_fault+0x144/0x910
+[255114.506657]  __do_fault+0x39/0x120
+[255114.506661]  do_read_fault+0xf5/0x170
+[255114.506664]  do_fault+0xa6/0x300
+[255114.506667]  handle_pte_fault+0x117/0x240
+[255114.506671]  __handle_mm_fault+0x693/0x740
+[255114.506675]  handle_mm_fault+0xba/0x2a0
+[255114.506677]  do_user_addr_fault+0x1c1/0x680
+[255114.506682]  exc_page_fault+0x80/0x1b0
+[255114.506686]  asm_exc_page_fault+0x27/0x30
+[255114.506689] RIP: 0033:0x7fad101c5090
+[255114.506695] Code: Unable to access opcode bytes at RIP 0x7fad101c5066.
+[255114.506696] RSP: 002b:00007ffc2f3163e8 EFLAGS: 00010246
+[255114.506699] RAX: 0000000000000015 RBX: aaaaaaaaaaaaaaaa RCX: 0000000000000000
+[255114.506701] RDX: 0000000000000000 RSI: 000000001d2d57e4 RDI: 00007ffc2f316430
+[255114.506703] RBP: 00007ffc2f3164e0 R08: 0000000000000000 R09: 0000000000000000
+[255114.506704] R10: 0000000000000004 R11: 7fffffffffffffff R12: 8000000000000000
+[255114.506706] R13: 00007ffc2f316430 R14: 0000000000000000 R15: 0000000000000015
+[255114.506710]  </TASK>
+[255114.506718] Mem-Info:
+[255114.506719] active_anon:445374 inactive_anon:1241310 isolated_anon:0
+                 active_file:94 inactive_file:179 isolated_file:18
+                 unevictable:77003 dirty:0 writeback:1
+                 slab_reclaimable:27753 slab_unreclaimable:56178
+                 mapped:125414 shmem:718346 pagetables:17857 bounce:0
+                 kernel_misc_reclaimable:0
+                 free:51870 free_pcp:632 free_cma:0
+[255114.506725] Node 0 active_anon:1781496kB inactive_anon:4965240kB active_file:376kB inactive_file:716kB unevictable:308012kB isolated(anon):0kB isolated(file):72kB mapped:501656kB dirty:0kB writeback:4kB shmem:2873384kB shmem_thp: 741376kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:27664kB pagetables:71428kB all_unreclaimable? no
+[255114.506731] Node 0 DMA free:14336kB boost:0kB min:132kB low:164kB high:196kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[255114.506738] lowmem_reserve[]: 0 1573 7540 7540 7540
+[255114.506742] Node 0 DMA32 free:52552kB boost:16384kB min:30452kB low:33968kB high:37484kB reserved_highatomic:0KB active_anon:592780kB inactive_anon:972508kB active_file:0kB inactive_file:528kB unevictable:11728kB writepending:0kB present:1744044kB managed:1677872kB mlocked:4kB bounce:0kB free_pcp:4kB local_pcp:4kB free_cma:0kB
+[255114.506747] lowmem_reserve[]: 0 0 5967 5967 5967
+[255114.506751] Node 0 Normal free:140592kB boost:92160kB min:145536kB low:158880kB high:172224kB reserved_highatomic:2048KB active_anon:1188488kB inactive_anon:3992620kB active_file:0kB inactive_file:1396kB unevictable:296308kB writepending:4kB present:6299648kB managed:6118568kB mlocked:104kB bounce:0kB free_pcp:2524kB local_pcp:340kB free_cma:0kB
+[255114.506756] lowmem_reserve[]: 0 0 0 0 0
+[255114.506759] Node 0 DMA: 0*4kB 0*8kB 0*16kB 0*32kB 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 1*2048kB (M) 3*4096kB (M) = 14336kB
+[255114.506770] Node 0 DMA32: 10152*4kB (UME) 1149*8kB (UME) 208*16kB (UME) 10*32kB (UME) 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 53448kB
+[255114.506781] Node 0 Normal: 33154*4kB (UMEH) 1036*8kB (UMEH) 16*16kB (UEH) 6*32kB (EH) 1*64kB (E) 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 141416kB
+[255114.506793] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[255114.506795] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[255114.506796] 733590 total pagecache pages
+[255114.506797] 14566 pages in swap cache
+[255114.506798] Swap cache stats: add 1738369, delete 1724024, find 1266091/1436963
+[255114.506799] Free swap  = 0kB
+[255114.506800] Total swap = 2097148kB
+[255114.506801] 2014921 pages RAM
+[255114.506802] 0 pages HighMem/MovableOnly
+[255114.506803] 61971 pages reserved
+[255114.506804] 0 pages hwpoisoned
+[255114.506805] Tasks state (memory values in pages):
+[255114.506805] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[255114.506815] [    307]     0   307    64584      297   536576      203          -250 systemd-journal
+[255114.506820] [    335]     0   335     7046      131    77824      727         -1000 systemd-udevd
+[255114.506826] [    587]   108   587     4037      110    65536      139          -900 systemd-oomd
+[255114.506829] [    589]   104   589     4862      180    81920      280             0 systemd-resolve
+[255114.506832] [    590]   101   590    22375       81    77824      154             0 systemd-timesyn
+[255114.506835] [    632]     0   632    62005      154   102400      102             0 accounts-daemon
+[255114.506838] [    635]   114   635     2205      205    53248       59             0 avahi-daemon
+[255114.506841] [    636]     0   636     2677       91    57344       60             0 bluetoothd
+[255114.506844] [    638]     0   638     4505       35    61440       28             0 cron
+[255114.506847] [    640]   102   640     3009      602    65536      124          -900 dbus-daemon
+[255114.506850] [    646]     0   646    20692       60    61440       57             0 irqbalance
+[255114.506853] [    650]     0   650    62777      702   110592      332             0 polkitd
+[255114.506856] [    652]     0   652    62059      141   106496       90             0 power-profiles-
+[255114.506859] [    655]   103   655    55559      374    77824      148             0 rsyslogd
+[255114.506861] [    661]     0   661    61135       76    94208       75             0 switcheroo-cont
+[255114.506864] [    666]     0   666    12342      168    86016      171             0 systemd-logind
+[255114.506866] [    670]     0   670    98155      486   118784      265             0 udisksd
+[255114.506868] [    674]   114   674     2044       12    53248       80             0 avahi-daemon
+[255114.506871] [    715]     0   715    67407      670   151552      365             0 NetworkManager
+[255114.506873] [    716]     0   716     4374      331    77824      154             0 wpa_supplicant
+[255114.506875] [    719]     0   719    79303      319   122880      256             0 ModemManager
+[255114.506878] [    721]     0   721    62075      107   106496      116             0 boltd
+[255114.506880] [    758]     0   758    30101      221   135168     1819             0 unattended-upgr
+[255114.506883] [    786]     0   786    62319      183   102400      125             0 gdm3
+[255114.506886] [   1012]   116  1012    22069       49    57344       39             0 rtkit-daemon
+[255114.506890] [   1124]     0  1124    61745      602    98304       77             0 upowerd
+[255114.506893] [   1207]     0  1207   114016      887   225280     3998             0 packagekitd
+[255114.506896] [   1216]   124  1216    63367      334   110592      589             0 colord
+[255114.506898] [   1493]   113  1493     3117       50    65536       75             0 kerneloops
+[255114.506901] [   1495]   113  1495     3117       39    65536       85             0 kerneloops
+[255114.506904] [   1514]     0  1514    99601      387   126976      206             0 gdm-session-wor
+[255114.506906] [   1534]  1000  1534     4880      545    77824      207           100 systemd
+[255114.506909] [   1535]  1000  1535    42484      165    98304      958           100 (sd-pam)
+[255114.506912] [   1541]  1000  1541    32971      427   126976     2137           200 pipewire
+[255114.506914] [   1544]  1000  1544   102875     1531   278528      570           200 wireplumber
+[255114.506917] [   1553]  1000  1553    62733      217   118784      118           200 gnome-keyring-d
+[255114.506920] [   1555]  1000  1555     2893      637    65536       87           200 dbus-daemon
+[255114.506922] [   1569]  1000  1569    62219      176   114688       96           200 gvfsd
+[255114.506925] [   1570]  1000  1570   154668      139   147456       85           200 xdg-document-po
+[255114.506928] [   1576]  1000  1576    95077       26    98304      128           200 gvfsd-fuse
+[255114.506931] [   1579]  1000  1579    61057       90    98304       50           200 xdg-permission-
+[255114.506933] [   1590]  1000  1590      660        2    45056       20           200 fusermount3
+[255114.506937] [   1623]  1000  1623    81026      356   114688      143           200 gvfs-udisks2-vo
+[255114.506940] [   1628]  1000  1628    61167      153    98304       51           200 gvfs-mtp-volume
+[255114.506943] [   1632]  1000  1632    61407      173    94208       76           200 gvfs-gphoto2-vo
+[255114.506946] [   1638]  1000  1638    80867      167   118784      128           200 gvfs-afc-volume
+[255114.506949] [   1645]  1000  1645    61209      154    90112       61           200 gvfs-goa-volume
+[255114.506952] [   1649]  1000  1649   140628      164   262144     1510           200 goa-daemon
+[255114.506954] [   1664]  1000  1664    80930       75   114688      202           200 goa-identity-se
+[255114.506957] [   1689]  1000  1689    42616       66    86016       70             0 gdm-wayland-ses
+[255114.506960] [   1695]  1000  1695    58038       78   155648      352             0 gnome-session-b
+[255114.506963] [   1739]  1000  1739    22069       68    69632       86           200 gcr-ssh-agent
+[255114.506966] [   1740]  1000  1740    24986       63    86016       49           200 gnome-session-c
+[255114.506969] [   1742]  1000  1742     1894       53    53248      101           200 ssh-agent
+[255114.506972] [   1750]  1000  1750   150570      394   196608      418           200 gnome-session-b
+[255114.506975] [   1764]  1000  1764    77250       67    94208      119           200 at-spi-bus-laun
+[255114.506978] [   1769]  1000  1769  1580999   111131  3018752    50970           200 gnome-shell
+[255114.506981] [   1775]  1000  1775     2328      108    57344       68           200 dbus-daemon
+[255114.506985] [   1819]  1000  1819   145062      274   192512      439           200 gnome-shell-cal
+[255114.506988] [   1825]  1000  1825   261452      450   327680     1554           200 evolution-sourc
+[255114.506991] [   1834]  1000  1834    39130      169    65536       46           200 dconf-service
+[255114.506994] [   1839]  1000  1839   341309      435   282624      557           200 evolution-calen
+[255114.506997] [   1850]  1000  1850   272338      416   282624      602           200 evolution-addre
+[255114.506999] [   1864]  1000  1864   714646     4238   315392     4820           200 gjs
+[255114.507003] [   1866]  1000  1866    40514      161    77824       60           200 at-spi2-registr
+[255114.507006] [   1881]  1000  1881      684        0    49152       24           200 sh
+[255114.507009] [   1882]  1000  1882    79625      124    98304       53           200 gsd-a11y-settin
+[255114.507012] [   1884]  1000  1884    80789      694   118784      599           200 ibus-daemon
+[255114.507015] [   1885]  1000  1885    87441      593   167936      682           200 gsd-color
+[255114.507018] [   1887]  1000  1887    91364      156   147456      205           200 gsd-datetime
+[255114.507021] [   1888]  1000  1888    98468      198   110592       75           200 gsd-housekeepin
+[255114.507024] [   1890]  1000  1890    87172      540   167936      708           200 gsd-keyboard
+[255114.507027] [   1892]  1000  1892   283841      951   233472      621           200 gsd-media-keys
+[255114.507030] [   1893]  1000  1893   181183     1135   204800      766           200 gsd-power
+[255114.507033] [   1896]  1000  1896    64486      171   126976      230           200 gsd-print-notif
+[255114.507036] [   1897]  1000  1897    98051      154   118784       56           200 gsd-rfkill
+[255114.507039] [   1898]  1000  1898    61122      237    94208       61           200 gsd-screensaver
+[255114.507042] [   1900]  1000  1900   118565      368   143360      169           200 gsd-sharing
+[255114.507045] [   1902]  1000  1902    80101      177   110592       91           200 gsd-smartcard
+[255114.507048] [   1904]  1000  1904    81838      144   118784      154           200 gsd-sound
+[255114.507050] [   1905]  1000  1905    87323      656   172032      686           200 gsd-wacom
+[255114.507054] [   1963]  1000  1963     4627        8    57344       60           200 huiontablet.sh
+[255114.507056] [   1964]  1000  1964   201044      760   360448     2862           200 evolution-alarm
+[255114.507059] [   1973]  1000  1973    42886       78    86016       97           200 ibus-memconf
+[255114.507062] [   1978]  1000  1978    88967      862   184320     1910           200 ibus-extension-
+[255114.507066] [   1987]  1000  1987    57921      167    81920      215           200 gsd-disk-utilit
+[255114.507069] [   1988]  1000  1988    79796      258    98304       83           200 ibus-portal
+[255114.507072] [   2015]  1000  2015    87629      207   151552      308           200 gsd-printer
+[255114.507075] [   2021]  1000  2021   620293     5663   860160    43253           200 snap-store
+[255114.507078] [   2160]  1000  2160    42920      173    90112       81           200 ibus-engine-sim
+[255114.507081] [   2166]  1000  2166    19030      146   122880      271           200 snapd-desktop-i
+[255114.507084] [   2226]  1000  2226   190800      684   184320      280           200 xdg-desktop-por
+[255114.507087] [   2237]  1000  2237   714516      610   266240      727           200 gjs
+[255114.507090] [   2260]  1000  2260   169238      782   229376     1458           200 xdg-desktop-por
+[255114.507093] [   2274]  1000  2274    77203      644   184320     1234           200 snapd-desktop-i
+[255114.507096] [   2292]  1000  2292    89161      597   192512     1253           200 xdg-desktop-por
+[255114.507113] [   2340]  1000  2340    80779      283   106496       97           200 gvfsd-trash
+[255114.507116] [   2371]     0  2371   115197     1814   335872    12222             0 fwupd
+[255114.507119] [   2373]  1000  2373    42773      118    81920       42           200 gvfsd-metadata
+[255114.507122] [   2400]  1000  2400   184000     7419   536576     3281           200 huiontablet
+[255114.507125] [   2402]  1000  2402   243677     9670   815104     5521           200 Xwayland
+[255114.507127] [   2421]  1000  2421   263618      739   512000     4010           200 gsd-xsettings
+[255114.507130] [   2450]  1000  2450    50577     1135   147456      666           200 ibus-x11
+[255114.507133] [   2487]  1000  2487   177885     2175   327680     1053           200 tracker-miner-f
+[255114.507136] [   3114]  1000  3114   348546     1124   225280      441           200 snap
+[255114.507139] [   4238]  1000  4238   126524      814   204800     1188           200 update-notifier
+[255114.507142] [   5180]     0  5180   385120     2587   344064     2044          -900 snapd
+[255114.507145] [   5392]  1000  5392  1211920     2616   454656      534           200 pulseaudio
+[255114.507148] [   6759]     0  6759    11505      215   106496      305             0 cupsd
+[255114.507151] [   6760]     0  6760    44124      613   114688      668             0 cups-browsed
+[255114.507153] [ 127099]  1000 127099   181239      436   331776     3079           200 gnome-calendar
+[255114.507157] [ 127206]  1000 127206    23134       66    73728        8           200 gpg-agent
+[255114.507160] [ 160635]  1000 160635   267182      301   180224      149           200 gvfsd-network
+[255114.507163] [ 160651]  1000 160651    81214       96   126976      174           200 gvfsd-dnssd
+[255114.507167] [ 166639]  1000 166639 294660163     7711  1138688    20236           200 signal-desktop
+[255114.507170] [ 166643]  1000 166643  8448447      195   364544     1927           200 signal-desktop
+[255114.507173] [ 166644]  1000 166644  8448445       74   368640     2025           200 signal-desktop
+[255114.507176] [ 166681]  1000 166681  8548928     7931   872448     4925           200 signal-desktop
+[255114.507179] [ 166694]  1000 166694  8464868      248   442368     1962           200 signal-desktop
+[255114.507182] [ 166725]  1000 166725 296287716    42702  1810432    10993           200 signal-desktop
+[255114.507185] [ 166755]  1000 166755  8531169      446   454656     1825           200 signal-desktop
+[255114.507188] [ 166929]  1000 166929    63634      283   110592       28           200 gvfsd-http
+[255114.507191] [ 227760]  1000 227760     4693       60    61440       84           200 bash
+[255114.507194] [ 227908]  1000 227908   366169    21422  1282048     3463           200 steam
+[255114.507196] [ 227934]  1000 227934   181605    40510  1105920     2390           200 steamwebhelper
+[255114.507198] [ 227986]  1000 227986    59463      259   368640     2261           200 steamwebhelper
+[255114.507201] [ 227987]  1000 227987    59463      725   372736     1803           200 steamwebhelper
+[255114.507203] [ 227989]  1000 227989    59463      757   217088     1773           200 steamwebhelper
+[255114.507205] [ 228004]  1000 228004   217936    19711  1478656     8263           200 steamwebhelper
+[255114.507207] [ 228025]  1000 228025    80549     1886   462848     2341           200 steamwebhelper
+[255114.507210] [ 228109]  1000 228109  1168296     7787   942080     3289           300 steamwebhelper
+[255114.507212] [ 228150]  1000 228150  1164057    17991  1138688     2255           300 steamwebhelper
+[255114.507214] [ 228162]  1000 228162  1175438    25906  1155072     2512           300 steamwebhelper
+[255114.507217] [ 228209]  1000 228209  1165082    12306  1003520     3497           300 steamwebhelper
+[255114.507219] [ 234196]  1000 234196  9578533    10865   819200     2597           200 Discord
+[255114.507222] [ 234288]  1000 234288    53533      761   331776     1315           200 Discord
+[255114.507225] [ 234289]  1000 234289    53533     1199   335872      876           200 Discord
+[255114.507228] [ 234324]  1000 234324   159456     7655   991232     4788           200 Discord
+[255114.507231] [ 234335]  1000 234335    74385     3105   454656      663           200 Discord
+[255114.507234] [ 234379]  1000 234379 12812083    43389  1941504     8416           200 Discord
+[255114.507237] [ 234420]  1000 234420   132410      690   405504     1595           200 Discord
+[255114.507239] [ 238179]  1000 238179  1245907    94221  4231168    14987           200 firefox
+[255114.507242] [ 238342]  1000 238342    55845      115   294912     2164           200 Socket Process
+[255114.507245] [ 238375]  1000 238375   625301     9683   847872     2463           167 Privileged Cont
+[255114.507248] [ 238483]  1000 238483  4869348    12165   970752     7152           100 WebExtensions
+[255114.507251] [ 238668]  1000 238668   612501      924   598016     3994           100 Isolated Web Co
+[255114.507254] [ 238673]  1000 238673   752968    51928  1933312    23836           167 Isolated Web Co
+[255114.507257] [ 238779]  1000 238779   119100     9272   663552     2305           200 RDD Process
+[255114.507260] [ 238783]  1000 238783    56845      315   303104     1862           200 Utility Process
+[255114.507263] [ 238816]  1000 238816   775732    33570  2158592    12136           167 Isolated Web Co
+[255114.507266] [ 240305]  1000 240305   773259     6397   401408        0           200 gjs
+[255114.507270] [ 241133]  1000 241133   617706     3948   692224     3361           167 Isolated Web Co
+[255114.507273] [ 243136]  1000 243136   736168    60626  1912832     8076           100 Isolated Web Co
+[255114.507277] [ 244160]  1000 244160   833381   106179  3719168      949           133 Isolated Web Co
+[255114.507280] [ 244294]  1000 244294   660112     9200   929792        0           167 Isolated Web Co
+[255114.507283] [ 244338]  1000 244338   619015     6861   684032        0           100 Isolated Web Co
+[255114.507286] [ 244349]  1000 244349   613995     4871   602112        0           100 Isolated Web Co
+[255114.507289] [ 244420]  1000 244420   787876   119489  3436544      119           100 Isolated Web Co
+[255114.507292] [ 244622]  1000 244622   722218    57183  2019328        0           167 Isolated Web Co
+[255114.507295] [ 244835]  1000 244835   609060     3986   516096        0           100 Isolated Servic
+[255114.507299] [ 245088]  1000 245088   606806     3366   458752        0           233 Web Content
+[255114.507303] [ 245258]  1000 245258   606807     3388   458752        0           233 Web Content
+[255114.507306] [ 245348]  1000 245348   606807     3390   458752        0           233 Web Content
+[255114.507310] [ 245694]  1000 245694     7172     5113    94208        0           200 sh
+[255114.507313] [ 245695]  1000 245695     7133     5083    86016        0           200 reaper
+[255114.507316] [ 245696]  1000 245696     1187       29    57344        0           200 pv-bwrap
+[255114.507319] [ 245781]  1000 245781     7358      131   131072        0           200 pressure-vessel
+[255114.507321] [ 245805]  1000 245805    10929     2316    98304        0           200 python3
+[255114.507324] [ 245809]  1000 245809   491846     3089   385024        0           200 steam.exe
+[255114.507327] [ 245811]  1000 245811    10390     3223    90112        0           200 wineserver
+[255114.507330] [ 245815]  1000 245815   629195     7945   393216        0           200 services.exe
+[255114.507332] [ 245818]  1000 245818   515357     6754   368640        0           200 winedevice.exe
+[255114.507335] [ 245826]  1000 245826   575992     8366   512000        0           200 winedevice.exe
+[255114.507338] [ 245838]  1000 245838   533908     7277   368640        0           200 plugplay.exe
+[255114.507340] [ 245844]  1000 245844   481563     5953   266240        0           200 svchost.exe
+[255114.507342] [ 245851]  1000 245851   525693     4481   602112        0           200 explorer.exe
+[255114.507344] [ 245859]  1000 245859   563494     7000   323584        0           200 rpcss.exe
+[255114.507347] [ 245873]  1000 245873   468564     1832   372736        0           200 tabtip.exe
+[255114.507349] [ 245878]  1000 245878   644611    53050  2105344        0           200 Spelunky.exe
+[255114.507352] [ 245904]  1000 245904    56626     5678   331776        0           200 gameoverlayui
+[255114.507354] [ 246089]  1000 246089  1137589     2020   679936     1644           300 steamwebhelper
+[255114.507357] [ 246102]  1000 246102  1137621     2009   671744     1644           300 steamwebhelper
+[255114.507359] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-XXXX.slice/user@1000.service/app.slice/app-gnome-steam-227760.scope,task=steamwebhelper,pid=228162,uid=1000
+[255114.507411] Out of memory: Killed process 228162 (steamwebhelper) total-vm:4701752kB, anon-rss:88084kB, file-rss:0kB, shmem-rss:15540kB, UID:1000 pgtables:1128kB oom_score_adj:300
+[255121.701641] alsa-sink-HDA A invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=200
+[255121.701652] CPU: 5 PID: 5398 Comm: alsa-sink-HDA A Tainted: G        W         5.19.0-31-generic #32-Ubuntu
+[255121.701655] Hardware name: LENOVO 20QD001TUS/20QD001TUS, BIOS N2HET73W (1.56 ) 12/06/2022
+[255121.701657] Call Trace:
+[255121.701659]  <TASK>
+[255121.701663]  show_stack+0x4e/0x61
+[255121.701668]  dump_stack_lvl+0x4a/0x6f
+[255121.701672]  dump_stack+0x10/0x18
+[255121.701674]  dump_header+0x53/0x246
+[255121.701678]  oom_kill_process.cold+0xb/0x10
+[255121.701681]  out_of_memory+0x101/0x2f0
+[255121.701684]  __alloc_pages_may_oom+0x112/0x1e0
+[255121.701690]  __alloc_pages_slowpath.constprop.0+0x4cf/0xa30
+[255121.701694]  __alloc_pages+0x31d/0x350
+[255121.701697]  alloc_pages+0x90/0x1c0
+[255121.701700]  folio_alloc+0x1d/0x60
+[255121.701703]  filemap_alloc_folio+0x8e/0xb0
+[255121.701706]  __filemap_get_folio+0x1c7/0x3c0
+[255121.701710]  filemap_fault+0x144/0x910
+[255121.701713]  __do_fault+0x39/0x120
+[255121.701717]  do_read_fault+0xf5/0x170
+[255121.701720]  do_fault+0xa6/0x300
+[255121.701723]  handle_pte_fault+0x117/0x240
+[255121.701726]  __handle_mm_fault+0x693/0x740
+[255121.701730]  handle_mm_fault+0xba/0x2a0
+[255121.701733]  do_user_addr_fault+0x1c1/0x680
+[255121.701737]  exc_page_fault+0x80/0x1b0
+[255121.701742]  asm_exc_page_fault+0x27/0x30
+[255121.701744] RIP: 0033:0x7f09d635cde0
+[255121.701750] Code: Unable to access opcode bytes at RIP 0x7f09d635cdb6.
+[255121.701752] RSP: 002b:00007f09cec5dcd8 EFLAGS: 00010246
+[255121.701755] RAX: 0000000000008ca0 RBX: 0000000000000000 RCX: 00005573d19129f0
+[255121.701757] RDX: 000000000000b3b0 RSI: 0000000000002280 RDI: 00005573d19129f0
+[255121.701759] RBP: 0000000000002280 R08: 00007f09d53f4000 R09: 00000000000004e0
+[255121.701760] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[255121.701762] R13: 00005573d19129f0 R14: 00007f09d05f28a0 R15: 00005573d19093a0
+[255121.701765]  </TASK>
+[255121.701767] Mem-Info:
+[255121.701769] active_anon:552646 inactive_anon:1180766 isolated_anon:0
+                 active_file:419 inactive_file:467 isolated_file:1
+                 unevictable:22860 dirty:23 writeback:0
+                 slab_reclaimable:27675 slab_unreclaimable:56111
+                 mapped:112161 shmem:726929 pagetables:17769 bounce:0
+                 kernel_misc_reclaimable:0
+                 free:57881 free_pcp:732 free_cma:0
+[255121.701775] Node 0 active_anon:2210584kB inactive_anon:4723064kB active_file:1676kB inactive_file:1868kB unevictable:91440kB isolated(anon):0kB isolated(file):4kB mapped:448644kB dirty:92kB writeback:0kB shmem:2907716kB shmem_thp: 724992kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:27632kB pagetables:71076kB all_unreclaimable? no
+[255121.701781] Node 0 DMA free:14336kB boost:0kB min:132kB low:164kB high:196kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[255121.701788] lowmem_reserve[]: 0 1573 7540 7540 7540
+[255121.701793] Node 0 DMA32 free:61012kB boost:24576kB min:38644kB low:42160kB high:45676kB reserved_highatomic:0KB active_anon:645000kB inactive_anon:903400kB active_file:1932kB inactive_file:1552kB unevictable:18372kB writepending:20kB present:1744044kB managed:1677872kB mlocked:4kB bounce:0kB free_pcp:184kB local_pcp:12kB free_cma:0kB
+[255121.701800] lowmem_reserve[]: 0 0 5967 5967 5967
+[255121.701806] Node 0 Normal free:156176kB boost:106496kB min:159872kB low:173216kB high:186560kB reserved_highatomic:2048KB active_anon:1565584kB inactive_anon:3819844kB active_file:3480kB inactive_file:3492kB unevictable:72932kB writepending:72kB present:6299648kB managed:6118568kB mlocked:104kB bounce:0kB free_pcp:2752kB local_pcp:332kB free_cma:0kB
+[255121.701813] lowmem_reserve[]: 0 0 0 0 0
+[255121.701818] Node 0 DMA: 0*4kB 0*8kB 0*16kB 0*32kB 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 1*2048kB (M) 3*4096kB (M) = 14336kB
+[255121.701833] Node 0 DMA32: 11281*4kB (UME) 1827*8kB (UME) 146*16kB (ME) 0*32kB 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 62076kB
+[255121.701847] Node 0 Normal: 35323*4kB (UMEH) 2080*8kB (MEH) 14*16kB (EH) 3*32kB (H) 0*64kB 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 158252kB
+[255121.701863] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[255121.701866] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[255121.701868] 742375 total pagecache pages
+[255121.701869] 14177 pages in swap cache
+[255121.701870] Swap cache stats: add 1740069, delete 1726112, find 1266274/1437223
+[255121.701872] Free swap  = 0kB
+[255121.701873] Total swap = 2097148kB
+[255121.701875] 2014921 pages RAM
+[255121.701876] 0 pages HighMem/MovableOnly
+[255121.701877] 61971 pages reserved
+[255121.701878] 0 pages hwpoisoned
+[255121.701879] Tasks state (memory values in pages):
+[255121.701880] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[255121.701889] [    307]     0   307    64584      294   536576      206          -250 systemd-journal
+[255121.701894] [    335]     0   335     7046      131    77824      727         -1000 systemd-udevd
+[255121.701900] [    587]   108   587     4037       61    65536      188          -900 systemd-oomd
+[255121.701903] [    589]   104   589     4862      149    81920      311             0 systemd-resolve
+[255121.701907] [    590]   101   590    22375       48    77824      187             0 systemd-timesyn
+[255121.701910] [    632]     0   632    62005      154   102400      102             0 accounts-daemon
+[255121.701913] [    635]   114   635     2205      205    53248       59             0 avahi-daemon
+[255121.701916] [    636]     0   636     2677       91    57344       60             0 bluetoothd
+[255121.701919] [    638]     0   638     4505       35    61440       28             0 cron
+[255121.701922] [    640]   102   640     3009      597    65536      129          -900 dbus-daemon
+[255121.701925] [    646]     0   646    20692       58    61440       59             0 irqbalance
+[255121.701928] [    650]     0   650    62777      696   110592      338             0 polkitd
+[255121.701932] [    652]     0   652    62059      141   106496       90             0 power-profiles-
+[255121.701935] [    655]   103   655    55559      384    77824      143             0 rsyslogd
+[255121.701938] [    661]     0   661    61135       76    94208       75             0 switcheroo-cont
+[255121.701941] [    666]     0   666    12342      167    86016      171             0 systemd-logind
+[255121.701944] [    670]     0   670    98155      485   118784      266             0 udisksd
+[255121.701947] [    674]   114   674     2044       12    53248       80             0 avahi-daemon
+[255121.701950] [    715]     0   715    67407      670   151552      365             0 NetworkManager
+[255121.701953] [    716]     0   716     4374      331    77824      154             0 wpa_supplicant
+[255121.701956] [    719]     0   719    79303      318   122880      257             0 ModemManager
+[255121.701959] [    721]     0   721    62075      107   106496      116             0 boltd
+[255121.701962] [    758]     0   758    30101      212   135168     1828             0 unattended-upgr
+[255121.701965] [    786]     0   786    62319      183   102400      125             0 gdm3
+[255121.701968] [   1012]   116  1012    22069       49    57344       39             0 rtkit-daemon
+[255121.701972] [   1124]     0  1124    61745      629    98304       76             0 upowerd
+[255121.701975] [   1207]     0  1207   114016      868   225280     4017             0 packagekitd
+[255121.701978] [   1216]   124  1216    63367      334   110592      589             0 colord
+[255121.701981] [   1493]   113  1493     3117       50    65536       75             0 kerneloops
+[255121.701984] [   1495]   113  1495     3117       39    65536       85             0 kerneloops
+[255121.701987] [   1514]     0  1514    99601      387   126976      206             0 gdm-session-wor
+[255121.701991] [   1534]  1000  1534     4880      542    77824      209           100 systemd
+[255121.701994] [   1535]  1000  1535    42484      134    98304      989           100 (sd-pam)
+[255121.701996] [   1541]  1000  1541    32971      359   126976     2205           200 pipewire
+[255121.702000] [   1544]  1000  1544   102875     1510   278528      591           200 wireplumber
+[255121.702002] [   1553]  1000  1553    62733      201   118784      134           200 gnome-keyring-d
+[255121.702005] [   1555]  1000  1555     2893      637    65536       87           200 dbus-daemon
+[255121.702008] [   1569]  1000  1569    62219      176   114688       96           200 gvfsd
+[255121.702011] [   1570]  1000  1570   154668      139   147456       85           200 xdg-document-po
+[255121.702014] [   1576]  1000  1576    95077       26    98304      128           200 gvfsd-fuse
+[255121.702018] [   1579]  1000  1579    61057       90    98304       50           200 xdg-permission-
+[255121.702021] [   1590]  1000  1590      660        2    45056       20           200 fusermount3
+[255121.702024] [   1623]  1000  1623    81026      356   114688      143           200 gvfs-udisks2-vo
+[255121.702027] [   1628]  1000  1628    61167      153    98304       51           200 gvfs-mtp-volume
+[255121.702030] [   1632]  1000  1632    61407      173    94208       76           200 gvfs-gphoto2-vo
+[255121.702034] [   1638]  1000  1638    80867      167   118784      128           200 gvfs-afc-volume
+[255121.702037] [   1645]  1000  1645    61209      154    90112       61           200 gvfs-goa-volume
+[255121.702040] [   1649]  1000  1649   140628      164   262144     1510           200 goa-daemon
+[255121.702043] [   1664]  1000  1664    80930       75   114688      202           200 goa-identity-se
+[255121.702046] [   1689]  1000  1689    42616       66    86016       70             0 gdm-wayland-ses
+[255121.702049] [   1695]  1000  1695    58038       45   155648      385             0 gnome-session-b
+[255121.702052] [   1739]  1000  1739    22069       67    69632       87           200 gcr-ssh-agent
+[255121.702055] [   1740]  1000  1740    24986       62    86016       50           200 gnome-session-c
+[255121.702057] [   1742]  1000  1742     1894       51    53248      103           200 ssh-agent
+[255121.702060] [   1750]  1000  1750   150570      394   196608      418           200 gnome-session-b
+[255121.702063] [   1764]  1000  1764    77250       67    94208      119           200 at-spi-bus-laun
+[255121.702066] [   1769]  1000  1769  1580953   110926  3018752    50998           200 gnome-shell
+[255121.702070] [   1775]  1000  1775     2328      108    57344       68           200 dbus-daemon
+[255121.702073] [   1819]  1000  1819   145062      272   192512      441           200 gnome-shell-cal
+[255121.702075] [   1825]  1000  1825   261452      442   327680     1562           200 evolution-sourc
+[255121.702078] [   1834]  1000  1834    39130      169    65536       46           200 dconf-service
+[255121.702081] [   1839]  1000  1839   341309      430   282624      562           200 evolution-calen
+[255121.702085] [   1850]  1000  1850   272338      410   282624      608           200 evolution-addre
+[255121.702088] [   1864]  1000  1864   714646     4205   315392     4853           200 gjs
+[255121.702091] [   1866]  1000  1866    40514      155    77824       66           200 at-spi2-registr
+[255121.702094] [   1881]  1000  1881      684        0    49152       24           200 sh
+[255121.702097] [   1882]  1000  1882    79625      124    98304       53           200 gsd-a11y-settin
+[255121.702100] [   1884]  1000  1884    80789      694   118784      601           200 ibus-daemon
+[255121.702103] [   1885]  1000  1885    87441      590   167936      685           200 gsd-color
+[255121.702106] [   1887]  1000  1887    91364      156   147456      205           200 gsd-datetime
+[255121.702109] [   1888]  1000  1888    98468      198   110592       75           200 gsd-housekeepin
+[255121.702112] [   1890]  1000  1890    87172      540   167936      708           200 gsd-keyboard
+[255121.702115] [   1892]  1000  1892   283841      947   233472      625           200 gsd-media-keys
+[255121.702119] [   1893]  1000  1893   181183     1136   204800      766           200 gsd-power
+[255121.702122] [   1896]  1000  1896    64486      171   126976      230           200 gsd-print-notif
+[255121.702125] [   1897]  1000  1897    98051      154   118784       56           200 gsd-rfkill
+[255121.702128] [   1898]  1000  1898    61122      249    94208       61           200 gsd-screensaver
+[255121.702131] [   1900]  1000  1900   118565      368   143360      169           200 gsd-sharing
+[255121.702134] [   1902]  1000  1902    80101      177   110592       91           200 gsd-smartcard
+[255121.702137] [   1904]  1000  1904    81838      144   118784      154           200 gsd-sound
+[255121.702140] [   1905]  1000  1905    87323      656   172032      686           200 gsd-wacom
+[255121.702143] [   1963]  1000  1963     4627        8    57344       60           200 huiontablet.sh
+[255121.702146] [   1964]  1000  1964   201044      758   360448     2864           200 evolution-alarm
+[255121.702149] [   1973]  1000  1973    42886       78    86016       97           200 ibus-memconf
+[255121.702152] [   1978]  1000  1978    88967      862   184320     1910           200 ibus-extension-
+[255121.702155] [   1987]  1000  1987    57921      166    81920      216           200 gsd-disk-utilit
+[255121.702158] [   1988]  1000  1988    79796      258    98304       83           200 ibus-portal
+[255121.702161] [   2015]  1000  2015    87629      207   151552      308           200 gsd-printer
+[255121.702164] [   2021]  1000  2021   620293     5567   860160    43349           200 snap-store
+[255121.702167] [   2160]  1000  2160    42920      179    90112       75           200 ibus-engine-sim
+[255121.702170] [   2166]  1000  2166    19030      146   122880      271           200 snapd-desktop-i
+[255121.702173] [   2226]  1000  2226   190800      684   184320      280           200 xdg-desktop-por
+[255121.702177] [   2237]  1000  2237   714516      610   266240      727           200 gjs
+[255121.702180] [   2260]  1000  2260   169238      780   229376     1460           200 xdg-desktop-por
+[255121.702183] [   2274]  1000  2274    77203      640   184320     1238           200 snapd-desktop-i
+[255121.702186] [   2292]  1000  2292    89161      593   192512     1257           200 xdg-desktop-por
+[255121.702189] [   2340]  1000  2340    80779      283   106496       97           200 gvfsd-trash
+[255121.702193] [   2371]     0  2371   115197     1804   335872    12232             0 fwupd
+[255121.702196] [   2373]  1000  2373    42773      118    81920       42           200 gvfsd-metadata
+[255121.702199] [   2400]  1000  2400   184000     7419   536576     3314           200 huiontablet
+[255121.702202] [   2402]  1000  2402   243677     9668   815104     5523           200 Xwayland
+[255121.702216] [   2421]  1000  2421   263618      739   512000     4010           200 gsd-xsettings
+[255121.702220] [   2450]  1000  2450    50577     1177   147456      655           200 ibus-x11
+[255121.702223] [   2487]  1000  2487   177885     2104   327680     1124           200 tracker-miner-f
+[255121.702226] [   3114]  1000  3114   348546     1124   225280      441           200 snap
+[255121.702229] [   4238]  1000  4238   126524      813   204800     1189           200 update-notifier
+[255121.702233] [   5180]     0  5180   385120     2586   344064     2045          -900 snapd
+[255121.702236] [   5392]  1000  5392  1211920     2697   454656      535           200 pulseaudio
+[255121.702239] [   6759]     0  6759    11505      213   106496      307             0 cupsd
+[255121.702242] [   6760]     0  6760    44124      612   114688      669             0 cups-browsed
+[255121.702245] [ 127099]  1000 127099   181239      435   331776     3080           200 gnome-calendar
+[255121.702248] [ 127206]  1000 127206    23134       66    73728        8           200 gpg-agent
+[255121.702251] [ 160635]  1000 160635   267182      301   180224      149           200 gvfsd-network
+[255121.702254] [ 160651]  1000 160651    81214       96   126976      174           200 gvfsd-dnssd
+[255121.702257] [ 166639]  1000 166639 294660163     7690  1138688    20257           200 signal-desktop
+[255121.702261] [ 166643]  1000 166643  8448447      193   364544     1929           200 signal-desktop
+[255121.702264] [ 166644]  1000 166644  8448445       74   368640     2025           200 signal-desktop
+[255121.702268] [ 166681]  1000 166681  8548928     7927   872448     4929           200 signal-desktop
+[255121.702271] [ 166694]  1000 166694  8464868      250   442368     1963           200 signal-desktop
+[255121.702274] [ 166725]  1000 166725 296287716    42664  1810432    11056           200 signal-desktop
+[255121.702277] [ 166755]  1000 166755  8531169      437   454656     1844           200 signal-desktop
+[255121.702280] [ 166929]  1000 166929    63634      283   110592       28           200 gvfsd-http
+[255121.702284] [ 227760]  1000 227760     4693       60    61440       84           200 bash
+[255121.702287] [ 227908]  1000 227908   366169    21058  1282048     3601           200 steam
+[255121.702290] [ 227934]  1000 227934   176341    40112  1093632     2397           200 steamwebhelper
+[255121.702294] [ 227986]  1000 227986    59463      257   368640     2263           200 steamwebhelper
+[255121.702297] [ 227987]  1000 227987    59463      724   372736     1804           200 steamwebhelper
+[255121.702300] [ 227989]  1000 227989    59463      756   217088     1774           200 steamwebhelper
+[255121.702303] [ 228004]  1000 228004   207596    10942  1409024     8311           200 steamwebhelper
+[255121.702306] [ 228025]  1000 228025    80549     1890   462848     2346           200 steamwebhelper
+[255121.702309] [ 228109]  1000 228109  1168296     7299   942080     3318           300 steamwebhelper
+[255121.702312] [ 228150]  1000 228150  1161681    16385  1118208     2269           300 steamwebhelper
+[255121.702316] [ 228209]  1000 228209  1165082    12297  1003520     3531           300 steamwebhelper
+[255121.702319] [ 234196]  1000 234196  9578533    10926   819200     2590           200 Discord
+[255121.702322] [ 234288]  1000 234288    53533      761   331776     1315           200 Discord
+[255121.702325] [ 234289]  1000 234289    53533     1197   335872      878           200 Discord
+[255121.702328] [ 234324]  1000 234324   159456     7642   991232     4801           200 Discord
+[255121.702331] [ 234335]  1000 234335    74385     3068   454656      700           200 Discord
+[255121.702335] [ 234379]  1000 234379 12812083    40786  1941504     8421           200 Discord
+[255121.702338] [ 234420]  1000 234420   132410      690   405504     1595           200 Discord
+[255121.702341] [ 238179]  1000 238179  1245907    94290  4231168    15006           200 firefox
+[255121.702344] [ 238342]  1000 238342    55845      115   294912     2164           200 Socket Process
+[255121.702347] [ 238375]  1000 238375   625301     9641   847872     2467           167 Privileged Cont
+[255121.702350] [ 238483]  1000 238483  4869348    12178   970752     7158           100 WebExtensions
+[255121.702354] [ 238668]  1000 238668   612501      924   598016     3994           100 Isolated Web Co
+[255121.702357] [ 238673]  1000 238673   752968    51897  1933312    23868           167 Isolated Web Co
+[255121.702360] [ 238779]  1000 238779   119100     9272   663552     2305           200 RDD Process
+[255121.702364] [ 238783]  1000 238783    56845      315   303104     1862           200 Utility Process
+[255121.702367] [ 238816]  1000 238816   775732    33556  2158592    12150           167 Isolated Web Co
+[255121.702370] [ 240305]  1000 240305   773259     6397   401408        0           200 gjs
+[255121.702374] [ 241133]  1000 241133   617706     3948   692224     3361           167 Isolated Web Co
+[255121.702378] [ 243136]  1000 243136   736168    60626  1912832     8076           100 Isolated Web Co
+[255121.702381] [ 244160]  1000 244160   833377   106173  3719168      974           133 Isolated Web Co
+[255121.702385] [ 244294]  1000 244294   660108     9218   929792        0           167 Isolated Web Co
+[255121.702388] [ 244338]  1000 244338   619015     6861   684032        0           100 Isolated Web Co
+[255121.702391] [ 244349]  1000 244349   613995     4871   602112        0           100 Isolated Web Co
+[255121.702394] [ 244420]  1000 244420   787876   119563  3436544      123           100 Isolated Web Co
+[255121.702397] [ 244622]  1000 244622   722218    57232  2019328        0           167 Isolated Web Co
+[255121.702400] [ 244835]  1000 244835   609060     3986   516096        0           100 Isolated Servic
+[255121.702405] [ 245088]  1000 245088   606682     3394   458752        0           233 Web Content
+[255121.702409] [ 245258]  1000 245258   606683     3388   458752        0           233 Web Content
+[255121.702413] [ 245348]  1000 245348   606683     3390   458752        0           233 Web Content
+[255121.702417] [ 245694]  1000 245694     7172     5113    94208        0           200 sh
+[255121.702420] [ 245695]  1000 245695     7133     5083    86016        0           200 reaper
+[255121.702422] [ 245696]  1000 245696     1187       29    57344        0           200 pv-bwrap
+[255121.702425] [ 245781]  1000 245781     7358      131   131072        0           200 pressure-vessel
+[255121.702428] [ 245805]  1000 245805    10929     2316    98304        0           200 python3
+[255121.702432] [ 245809]  1000 245809   491846     3089   385024        0           200 steam.exe
+[255121.702434] [ 245811]  1000 245811    10386     3219    90112        0           200 wineserver
+[255121.702438] [ 245815]  1000 245815   629195     7218   389120        0           200 services.exe
+[255121.702441] [ 245818]  1000 245818   515357     6781   368640        0           200 winedevice.exe
+[255121.702444] [ 245826]  1000 245826   575992     8366   512000        0           200 winedevice.exe
+[255121.702447] [ 245838]  1000 245838   533908     7277   368640        0           200 plugplay.exe
+[255121.702450] [ 245844]  1000 245844   481563     5953   266240        0           200 svchost.exe
+[255121.702453] [ 245851]  1000 245851   525693     4481   602112        0           200 explorer.exe
+[255121.702456] [ 245859]  1000 245859   563494     6805   323584        0           200 rpcss.exe
+[255121.702459] [ 245873]  1000 245873   468564     1832   372736        0           200 tabtip.exe
+[255121.702463] [ 245878]  1000 245878   648954    54552  2150400        0           200 Spelunky.exe
+[255121.702466] [ 245904]  1000 245904    56626     5703   331776        0           200 gameoverlayui
+[255121.702469] [ 246089]  1000 246089  1147834     2090   700416     1643           300 steamwebhelper
+[255121.702472] [ 246102]  1000 246102  1137621     2008   671744     1645           300 steamwebhelper
+[255121.702476] [ 246117]  1000 246117  1151941    11083   802816     1636           300 steamwebhelper
+[255121.702478] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0,global_oom,task_memcg=/user.slice/user-XXXX.slice/user@1000.service/app.slice/app-gnome-steam-227760.scope,task=steamwebhelper,pid=228150,uid=1000
+[255121.702522] Out of memory: Killed process 228150 (steamwebhelper) total-vm:4646724kB, anon-rss:53828kB, file-rss:0kB, shmem-rss:11712kB, UID:1000 pgtables:1092kB oom_score_adj:300
+[255126.731525] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
+[256492.017660] Lockdown: hwinfo: /dev/mem,kmem,port is restricted; see man kernel_lockdown.7
+[256492.017693] Lockdown: hwinfo: /dev/mem,kmem,port is restricted; see man kernel_lockdown.7
+[256492.019566] Lockdown: hwinfo: /dev/mem,kmem,port is restricted; see man kernel_lockdown.7
+[256495.125084] st: Version 20160209, fixed bufsize 32768, s/g segs 256
