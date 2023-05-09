@@ -9,7 +9,7 @@ by the [hw-probe](https://github.com/linuxhw/hw-probe) tool:
 
     sudo -E hw-probe -all -upload
 
-Total reports: 275386.
+Total reports: 290393.
 
 Contents
 --------
@@ -43,7 +43,7 @@ Notebooks
 | &#er &&                  | Aspire 5100                                      | [7A3A8991C1D4](<Notebook/&#er &&/Aspire/Aspire 5100/7A3A8991C1D4>) |
 | 3Logic Group             | APM Graviton                                     | [095E3F6C8BD8](<Notebook/3Logic Group/APM/APM Graviton/095E3F6C8BD8>) |
 | 3Logic Group             | APM Graviton A15i-K2                             | [ACD415826BE6](<Notebook/3Logic Group/APM/APM Graviton A15i-K2/ACD415826BE6>) |
-| 3Logic Group             | Graviton N15i                                    | [5D8A7B90D3BB](<Notebook/3Logic Group/Graviton/Graviton N15i/5D8A7B90D3BB>) |
+| 3Logic Group             | Graviton N15i                                    | [1B8605F6E527](<Notebook/3Logic Group/Graviton/Graviton N15i/1B8605F6E527>) |
 | 3Logic Group             | Graviton N15i-K2                                 | [302BFD7FCE32](<Notebook/3Logic Group/Graviton/Graviton N15i-K2/302BFD7FCE32>) |
 | 3Q                       | 3QLAP-BN1302N-WBN6-MB                            | [1C693219206F](<Notebook/3Q/3/3QLAP-BN1302N-WBN6-MB/1C693219206F>) |
 | 3Q                       | 3QLAP-EU1001N-WBN3-MB                            | [B6F5B9592C42](<Notebook/3Q/3/3QLAP-EU1001N-WBN3-MB/B6F5B9592C42>) |
@@ -70,7 +70,9 @@ Notebooks
 | ADLINK Technology        | Express-SL                                       | [454F080BE2B3](<Notebook/ADLINK Technology/Express-SL/Express-SL/454F080BE2B3>) |
 | Adlinktech               | SB-MLC                                           | [F702A5BA8E17](<Notebook/Adlinktech/SB-MLC/SB-MLC/F702A5BA8E17>) |
 | ADMIRAL                  | ADC14                                            | [AEF34BD245AD](<Notebook/ADMIRAL/ADC/ADC14/AEF34BD245AD>) |
+| Adreamer                 | PN1308P                                          | [1123F3517B39](<Notebook/Adreamer/PN1308/PN1308P/1123F3517B39>) |
 | ADSC                     | A21R                                             | [6DAFAA10F739](<Notebook/ADSC/A21/A21R/6DAFAA10F739>) |
+| ADVAN                    | 1405                                             | [8592E13F6494](<Notebook/ADVAN/1405/1405/8592E13F6494>) |
 | Advantec                 | CX Infinito                                      | [493086DF4086](<Notebook/Advantec/CX/CX Infinito/493086DF4086>) |
 | Advantec                 | CX23200W                                         | [742CBB9200B3](<Notebook/Advantec/CX2320/CX23200W/742CBB9200B3>) |
 | Advantec                 | CX23500W                                         | [A61C49E9D820](<Notebook/Advantec/CX2350/CX23500W/A61C49E9D820>) |
@@ -82,12 +84,15 @@ Notebooks
 | Advent                   | Roma                                             | [39127322581A](<Notebook/Advent/Roma/Roma/39127322581A>) |
 | Aftershock               | N15_N17RF1                                       | [B66F69DD1925](<Notebook/Aftershock/N15/N15_N17RF1/B66F69DD1925>) |
 | Aftershock               | N8xxEP6                                          | [C459316FEC4D](<Notebook/Aftershock/N8/N8xxEP6/C459316FEC4D>) |
+| AIERXUAN                 | XIAOXUAN Pro                                     | [B4CE6359CF46](<Notebook/AIERXUAN/XIAOXUAN/XIAOXUAN Pro/B4CE6359CF46>) |
+| AIR                      | CX30500                                          | [1704F811623C](<Notebook/AIR/CX/CX30500/1704F811623C>) |
 | AIRIS                    | KIRA Series                                      | [2E6B61973080](<Notebook/AIRIS/KIRA/KIRA Series/2E6B61973080>) |
 | AIRIS                    | WinPAD 110W                                      | [C94490F9A800](<Notebook/AIRIS/WinPAD/WinPAD 110W/C94490F9A800>) |
 | AKL                      | C16A                                             | [79A409FE7B42](<Notebook/AKL/C16/C16A/79A409FE7B42>) |
 | Akstron                  | G1417                                            | [1EEAE3E065D0](<Notebook/Akstron/G/G1417/1EEAE3E065D0>) |
 | Albacomp                 | Intel powered classmate PC                       | [64BA94BBB39C](<Notebook/Albacomp/Intel/Intel powered classmate PC/64BA94BBB39C>) |
 | Alcor                    | Flashbook D1423I                                 | [4348492CC609](<Notebook/Alcor/Flashbook/Flashbook D1423I/4348492CC609>) |
+| Alcor                    | SnugBook Q series                                | [0BE63C98EC60](<Notebook/Alcor/SnugBook/SnugBook Q series/0BE63C98EC60>) |
 | Alcor Digital            | Snugbook N1431                                   | [6BA806AD85DC](<Notebook/Alcor Digital/Snugbook/Snugbook N1431/6BA806AD85DC>) |
 | Alienware                | 13                                               | [70023F142562](<Notebook/Alienware/13/13/70023F142562>) |
 | Alienware                | 13 R2                                            | [782E83D33C6A](<Notebook/Alienware/13/13 R2/782E83D33C6A>) |
@@ -98,7 +103,7 @@ Notebooks
 | ALLDOCUBE                | i1405C                                           | [09857B893FA3](<Notebook/ALLDOCUBE/i1405/i1405C/09857B893FA3>) |
 | ALLDOCUBE                | i1405S                                           | [F4E0DC46BEA7](<Notebook/ALLDOCUBE/i1405/i1405S/F4E0DC46BEA7>) |
 | Allview                  | Allbook H                                        | [7AD5918C7D98](<Notebook/Allview/Allbook/Allbook H/7AD5918C7D98>) |
-| Allview                  | Allbook J                                        | [636546C3B9E9](<Notebook/Allview/Allbook/Allbook J/636546C3B9E9>) |
+| Allview                  | Allbook J                                        | [551620969CC5](<Notebook/Allview/Allbook/Allbook J/551620969CC5>) |
 | Allview                  | Wi901N                                           | [36AE83048CEC](<Notebook/Allview/Wi901/Wi901N/36AE83048CEC>) |
 | ALURIN                   | PR1-M146                                         | [9BC638AA1CDC](<Notebook/ALURIN/PR1/PR1-M146/9BC638AA1CDC>) |
 | AMD                      | Brazos                                           | [E093BEF65E29](<Notebook/AMD/Brazos/Brazos/E093BEF65E29>) |
@@ -128,6 +133,7 @@ Notebooks
 | Archos                   | 133 FLIP                                         | [EB2000EAA746](<Notebook/Archos/133/133 FLIP/EB2000EAA746>) |
 | Archos                   | 140 CESIUM                                       | [BA0C3608E6A3](<Notebook/Archos/140/140 CESIUM/BA0C3608E6A3>) |
 | Archos                   | 80 Cesium                                        | [56B354F1F62C](<Notebook/Archos/80/80 Cesium/56B354F1F62C>) |
+| ARDOR GAMING             | PD5x_7xPNP_PNR_PNN_PNT                           | [906FF7B71434](<Notebook/ARDOR GAMING/PD5/PD5x_7xPNP_PNR_PNN_PNT/906FF7B71434>) |
 | ARIMA                    | W351UI                                           | [6976EE3D7ADE](<Notebook/ARIMA/W351/W351UI/6976EE3D7ADE>) |
 | ARIMA                    | W622-DCX                                         | [9886F899E925](<Notebook/ARIMA/W622/W622-DCX/9886F899E925>) |
 | ARIMA                    | W651UI                                           | [8EE5ACAB44ED](<Notebook/ARIMA/W651/W651UI/8EE5ACAB44ED>) |
@@ -135,12 +141,6 @@ Notebooks
 | ASRock                   | X570 Phantom Gaming-ITX-TB3                      | [BE2D25545017](<Notebook/ASRock/X570/X570 Phantom Gaming-ITX-TB3/BE2D25545017>) |
 | ASUSTek Computer         | 1000                                             | [1DAEAC568ABB](<Notebook/ASUSTek Computer/1000/1000/1DAEAC568ABB>) |
 | ASUSTek Computer         | 1000H                                            | [115C74245180](<Notebook/ASUSTek Computer/1000/1000H/115C74245180>) |
-| ASUSTek Computer         | 1000HE                                           | [0BB3BA2695B0](<Notebook/ASUSTek Computer/1000/1000HE/0BB3BA2695B0>) |
-| ASUSTek Computer         | 1001HA                                           | [904DB2B1C584](<Notebook/ASUSTek Computer/1001/1001HA/904DB2B1C584>) |
-| ASUSTek Computer         | 1001P                                            | [1574ED1431D4](<Notebook/ASUSTek Computer/1001/1001P/1574ED1431D4>) |
-| ATARI                    | VCS 800 Classic                                  | [3407C82B0DBD](<Notebook/ATARI/VCS/VCS 800 Classic/3407C82B0DBD>) |
-| ATI                      | BONEFISH                                         | [238CCBB34F41](<Notebook/ATI/BONEFISH/BONEFISH/238CCBB34F41>) |
-| Avell High Performance   | 1513                                             | [6B0424227764](<Notebook/Avell High Performance/1513/1513/6B0424227764>) |
 
 ...
 
@@ -157,8 +157,10 @@ Convertibles
 | Acer                     | Nitro NP515-51                                   | [3451354907A7](<Convertible/Acer/Nitro/Nitro NP515-51/3451354907A7>) |
 | Acer                     | Spin SP111-31                                    | [2778A493B8D8](<Convertible/Acer/Spin/Spin SP111-31/2778A493B8D8>) |
 | AMI                      | Intel                                            | [1953A013C509](<Convertible/AMI/Intel/Intel/1953A013C509>) |
+| AMI                      | INTEL                                            | [EA98E328FB47](<Convertible/AMI/INTEL/INTEL/EA98E328FB47>) |
+| Aquarius                 | Cmp NS483                                        | [92949333F64F](<Convertible/Aquarius/Cmp/Cmp NS483/92949333F64F>) |
 | Aquarius                 | NS483                                            | [3AEDCE9F7F96](<Convertible/Aquarius/NS/NS483/3AEDCE9F7F96>) |
-| ASUSTek Computer         | ASUS BR1100FKA BR1100FKA_BR1100FKA               | [2C984BB62835](<Convertible/ASUSTek Computer/ASUS/ASUS BR1100FKA BR1100FKA_BR1100FKA/2C984BB62835>) |
+| ASUSTek Computer         | ASUS BR1100FKA BR1100FKA_BR1100FKA               | [0740D6EAB239](<Convertible/ASUSTek Computer/ASUS/ASUS BR1100FKA BR1100FKA_BR1100FKA/0740D6EAB239>) |
 | ASUSTek Computer         | ASUS EXPERTBOOK B3302FEA_B5302FEA                | [95874E316752](<Convertible/ASUSTek Computer/ASUS/ASUS EXPERTBOOK B3302FEA_B5302FEA/95874E316752>) |
 | ASUSTek Computer         | ASUS EXPERTBOOK B3402FBA_B3402FBA                | [C286FFC8CF6D](<Convertible/ASUSTek Computer/ASUS/ASUS EXPERTBOOK B3402FBA_B3402FBA/C286FFC8CF6D>) |
 | ASUSTek Computer         | ASUS EXPERTBOOK B3402FEA_B3402FEA                | [DCF940F74C63](<Convertible/ASUSTek Computer/ASUS/ASUS EXPERTBOOK B3402FEA_B3402FEA/DCF940F74C63>) |
@@ -170,7 +172,7 @@ Convertibles
 | Chuwi                    | UBOOK                                            | [108449D5CF39](<Convertible/Chuwi/UBOOK/UBOOK/108449D5CF39>) |
 | Cube                     | SurfTab twin 11.6                                | [06F8A0B99FE0](<Convertible/Cube/SurfTab/SurfTab twin 11.6/06F8A0B99FE0>) |
 | Dell                     | Inspiron 14 5410 2-in-1                          | [00E3A7A186FD](<Convertible/Dell/Inspiron/Inspiron 14 5410 2-in-1/00E3A7A186FD>) |
-| Dell                     | Inspiron 14 7420 2-in-1                          | [4A2A0EBF3C38](<Convertible/Dell/Inspiron/Inspiron 14 7420 2-in-1/4A2A0EBF3C38>) |
+| Dell                     | Inspiron 14 7420 2-in-1                          | [37C62CBF6A6D](<Convertible/Dell/Inspiron/Inspiron 14 7420 2-in-1/37C62CBF6A6D>) |
 | Dell                     | Inspiron 14 7425 2-in-1                          | [0513D4D4D644](<Convertible/Dell/Inspiron/Inspiron 14 7425 2-in-1/0513D4D4D644>) |
 | Dell                     | Inspiron 16 7620 2-in-1                          | [151D7B1517F6](<Convertible/Dell/Inspiron/Inspiron 16 7620 2-in-1/151D7B1517F6>) |
 | Dell                     | Inspiron 5400 2n1                                | [33ABFD46B1F5](<Convertible/Dell/Inspiron/Inspiron 5400 2n1/33ABFD46B1F5>) |
@@ -183,9 +185,9 @@ Convertibles
 | Fujitsu                  | LIFEBOOK T939                                    | [94FBD70BA704](<Convertible/Fujitsu/LIFEBOOK/LIFEBOOK T939/94FBD70BA704>) |
 | GEO                      | GeoFlex                                          | [3C11134BBC52](<Convertible/GEO/GeoFlex/GeoFlex/3C11134BBC52>) |
 | GEO                      | GeoFlex 110                                      | [7C3D47ED0A08](<Convertible/GEO/GeoFlex/GeoFlex 110/7C3D47ED0A08>) |
-| GEO                      | GeoFlex 340                                      | [2B1756D7213C](<Convertible/GEO/GeoFlex/GeoFlex 340/2B1756D7213C>) |
+| GEO                      | GeoFlex 340                                      | [010ED1BC2F2C](<Convertible/GEO/GeoFlex/GeoFlex 340/010ED1BC2F2C>) |
 | Google                   | Eve                                              | [1F219F97A704](<Convertible/Google/Eve/Eve/1F219F97A704>) |
-| Google                   | Nautilus                                         | [9BCA4E575536](<Convertible/Google/Nautilus/Nautilus/9BCA4E575536>) |
+| Google                   | Nautilus                                         | [55E30CA345E6](<Convertible/Google/Nautilus/Nautilus/55E30CA345E6>) |
 | GPU Company              | GWTC116-2                                        | [2DF22BFE2434](<Convertible/GPU Company/GWTC116/GWTC116-2/2DF22BFE2434>) |
 | Hewlett-Packard          | Convertible x360 11-ab0XX                        | [4B8BD3E521C1](<Convertible/Hewlett-Packard/Convertible/Convertible x360 11-ab0XX/4B8BD3E521C1>) |
 | Hewlett-Packard          | Convertible x360 11-ab1XX                        | [E89E60DA09D9](<Convertible/Hewlett-Packard/Convertible/Convertible x360 11-ab1XX/E89E60DA09D9>) |
@@ -203,19 +205,19 @@ Convertibles
 | Lenovo                   | 13w Yoga 82S1                                    | [0DA0444E8DCE](<Convertible/Lenovo/13w/13w Yoga 82S1/0DA0444E8DCE>) |
 | Lenovo                   | 14ARE05 81X2                                     | [2D25682ED0AC](<Convertible/Lenovo/14ARE05/14ARE05 81X2/2D25682ED0AC>) |
 | Lenovo                   | 300e 2nd Gen 81M9                                | [C7FDC6E45ED6](<Convertible/Lenovo/300e/300e 2nd Gen 81M9/C7FDC6E45ED6>) |
+| Lenovo                   | 300e 2nd Gen 82GK                                | [070F257C5283](<Convertible/Lenovo/300e/300e 2nd Gen 82GK/070F257C5283>) |
 | Lenovo                   | 300w Gen 3 82J1                                  | [7BFCEE5C2C36](<Convertible/Lenovo/300w/300w Gen 3 82J1/7BFCEE5C2C36>) |
-| Lenovo                   | 500w Gen 3 82J3                                  | [89BEF6AFF01F](<Convertible/Lenovo/500w/500w Gen 3 82J3/89BEF6AFF01F>) |
 | LG Electronics           | 14T90N-VR56K                                     | [17AC07257653](<Convertible/LG Electronics/14T90/14T90N-VR56K/17AC07257653>) |
 | LG Electronics           | 14T990-U.AAS8U1                                  | [257425CC1F5B](<Convertible/LG Electronics/14T990/14T990-U.AAS8U1/257425CC1F5B>) |
 | LG Electronics           | 16T90P-G.AA78G                                   | [990BFCB4775F](<Convertible/LG Electronics/16T90/16T90P-G.AA78G/990BFCB4775F>) |
 | LG Electronics           | 16T90P-K.ADB9U1                                  | [B18C47450786](<Convertible/LG Electronics/16T90/16T90P-K.ADB9U1/B18C47450786>) |
 | LG Electronics           | 16T90Q-K.AAG6U1                                  | [DFDFE85A80B5](<Convertible/LG Electronics/16T90/16T90Q-K.AAG6U1/DFDFE85A80B5>) |
 | MECER                    | YA13Q10_Pro                                      | [5E03360E682E](<Convertible/MECER/YA13/YA13Q10_Pro/5E03360E682E>) |
+| Medion                   | E2291                                            | [C0B427C9B571](<Convertible/Medion/E/E2291/C0B427C9B571>) |
 | Medion                   | E2292                                            | [22F9D73E4993](<Convertible/Medion/E/E2292/22F9D73E4993>) |
 | Medion                   | E2293                                            | [BDA9EBA25912](<Convertible/Medion/E/E2293/BDA9EBA25912>) |
 | Medion                   | E3222                                            | [8705FDF84B80](<Convertible/Medion/E/E3222/8705FDF84B80>) |
 | Medion                   | E3223                                            | [469254836A4B](<Convertible/Medion/E/E3223/469254836A4B>) |
-| Medion                   | E2221T MD60684                                   | [FA4851546F63](<Convertible/Medion/E2221T/E2221T MD60684/FA4851546F63>) |
 | MouseComputer            | BC-MB1485UD11A-191                               | [E64BF1A3C47C](<Convertible/MouseComputer/BC-MB1485/BC-MB1485UD11A-191/E64BF1A3C47C>) |
 | mPTech                   | Techbite ARC 11.6                                | [0F16DCBF449C](<Convertible/mPTech/Techbite/Techbite ARC 11.6/0F16DCBF449C>) |
 | MSI                      | Summit E13FlipEvo A11MT                          | [57236D182F68](<Convertible/MSI/Summit/Summit E13FlipEvo A11MT/57236D182F68>) |
@@ -231,14 +233,14 @@ Convertibles
 | Prestigio                | PNT10131DEDB                                     | [07F90FD11338](<Convertible/Prestigio/PNT1013/PNT10131DEDB/07F90FD11338>) |
 | Samsung Electronics      | 730QAA                                           | [0C37731D4C8F](<Convertible/Samsung Electronics/730/730QAA/0C37731D4C8F>) |
 | Samsung Electronics      | 730QDA                                           | [00523342CDF2](<Convertible/Samsung Electronics/730/730QDA/00523342CDF2>) |
-| Samsung Electronics      | 730QED                                           | [3ACDEBCDD175](<Convertible/Samsung Electronics/730/730QED/3ACDEBCDD175>) |
+| Samsung Electronics      | 730QED                                           | [057F74D40815](<Convertible/Samsung Electronics/730/730QED/057F74D40815>) |
 | Samsung Electronics      | 740U3L                                           | [5E5A123BF934](<Convertible/Samsung Electronics/740U3/740U3L/5E5A123BF934>) |
 | Samsung Electronics      | 740U5M                                           | [9BB5AFA5F866](<Convertible/Samsung Electronics/740U5/740U5M/9BB5AFA5F866>) |
 | Tactus                   | GeoFlex 110                                      | [5667706840B1](<Convertible/Tactus/GeoFlex/GeoFlex 110/5667706840B1>) |
 | Teclast                  | F5                                               | [0296842EF576](<Convertible/Teclast/F/F5/0296842EF576>) |
 | Teclast                  | F5 R                                             | [BBC6D6FA4702](<Convertible/Teclast/F5/F5 R/BBC6D6FA4702>) |
-| Timi                     | Xiaomi Book Air 13 2022                          | [C292A6CB3F44](<Convertible/Timi/Xiaomi/Xiaomi Book Air 13 2022/C292A6CB3F44>) |
-| Toshiba                  | PORTEGE X20W-E                                   | [7873A4D65F33](<Convertible/Toshiba/PORTEGE/PORTEGE X20W-E/7873A4D65F33>) |
+| Timi                     | Xiaomi Book Air 13 2022                          | [6FF9709F6F2F](<Convertible/Timi/Xiaomi/Xiaomi Book Air 13 2022/6FF9709F6F2F>) |
+| Toshiba                  | PORTEGE X20W-E                                   | [52F939F34CDA](<Convertible/Toshiba/PORTEGE/PORTEGE X20W-E/52F939F34CDA>) |
 | TrekStor                 | Primebook C11                                    | [0D0E083938F1](<Convertible/TrekStor/Primebook/Primebook C11/0D0E083938F1>) |
 | TrekStor                 | Primebook C11B                                   | [0F5125075CB4](<Convertible/TrekStor/Primebook/Primebook C11B/0F5125075CB4>) |
 | TrekStor                 | Primebook C13                                    | [1AF77845F998](<Convertible/TrekStor/Primebook/Primebook C13/1AF77845F998>) |
@@ -276,6 +278,7 @@ Desktops
 | ABIT                     | AI7                                              | [BD451B74476E](<Desktop/ABIT/AI/AI7/BD451B74476E>) |
 | ABIT                     | AN52                                             | [536BE1905E75](<Desktop/ABIT/AN/AN52/536BE1905E75>) |
 | ABIT                     | AN8 32X                                          | [FFE3E5886B9E](<Desktop/ABIT/AN8/AN8 32X/FFE3E5886B9E>) |
+| ABS Computer Technolo... | Gaming PC                                        | [37C180041757](<Desktop/ABS Computer Technologies/Gaming/Gaming PC/37C180041757>) |
 | Accton                   | SAU5041                                          | [CA1C134986AD](<Desktop/Accton/SAU/SAU5041/CA1C134986AD>) |
 | Acer                     | AC100                                            | [1C45DADA0458](<Desktop/Acer/AC/AC100/1C45DADA0458>) |
 | Acer                     | AcerPower F5                                     | [4A87BCB2F7BE](<Desktop/Acer/AcerPower/AcerPower F5/4A87BCB2F7BE>) |
@@ -330,8 +333,8 @@ Desktops
 | AMI                      | Aptio CRB                                        | [85BB230409E5](<Desktop/AMI/Aptio/Aptio CRB/85BB230409E5>) |
 | AMI                      | Cherry Trail CR                                  | [0A1AB05AFDA8](<Desktop/AMI/Cherry/Cherry Trail CR/0A1AB05AFDA8>) |
 | AMI                      | Cherry Trail FFD                                 | [17CDCFFC9EF9](<Desktop/AMI/Cherry/Cherry Trail FFD/17CDCFFC9EF9>) |
+| AMI                      | Intel                                            | [66D488914210](<Desktop/AMI/Intel/Intel/66D488914210>) |
 | AMI                      | MS-7267                                          | [2692A3C73DE1](<Desktop/AMI/MS/MS-7267/2692A3C73DE1>) |
-| AMI                      | PB_1900A                                         | [5D09093B1A90](<Desktop/AMI/PB_1900/PB_1900A/5D09093B1A90>) |
 | AnabelleB                | Barcoo VA35                                      | [FC71044F62E3](<Desktop/AnabelleB/Barcoo/Barcoo VA35/FC71044F62E3>) |
 | Anhoch                   | GoliathXD 785A                                   | [1BCD9A986EC5](<Desktop/Anhoch/GoliathXD/GoliathXD 785A/1BCD9A986EC5>) |
 | ANVANC                   | nT-330i                                          | [D92527E4BF85](<Desktop/ANVANC/nT-330/nT-330i/D92527E4BF85>) |
@@ -349,12 +352,11 @@ Desktops
 | Apple                    | MacPro2,1                                        | [054C546338B0](<Desktop/Apple/MacPro2/MacPro2,1/054C546338B0>) |
 | Apple                    | MacPro3,1                                        | [0797D0633FE0](<Desktop/Apple/MacPro3/MacPro3,1/0797D0633FE0>) |
 | Apple                    | MacPro4,1                                        | [0DEC4693911B](<Desktop/Apple/MacPro4/MacPro4,1/0DEC4693911B>) |
-| Aquarius                 | AQB560M                                          | [D814CA14B21A](<Desktop/Aquarius/AQB560/AQB560M/D814CA14B21A>) |
+| Aquarius                 | AQB560M                                          | [7E6D878EE3DF](<Desktop/Aquarius/AQB560/AQB560M/7E6D878EE3DF>) |
 | Aquarius                 | AQH410T                                          | [A0F32BB2E95C](<Desktop/Aquarius/AQH/AQH410T/A0F32BB2E95C>) |
+| Aquarius                 | AQH310CM                                         | [4FD40BDA5D00](<Desktop/Aquarius/AQH310/AQH310CM/4FD40BDA5D00>) |
 | Aquarius                 | Cmp TCC U30 S29                                  | [2C7066C3E6FD](<Desktop/Aquarius/Cmp/Cmp TCC U30 S29/2C7066C3E6FD>) |
 | Aquarius                 | P30 K40 R42                                      | [2DF9C00E6A62](<Desktop/Aquarius/P30/P30 K40 R42/2DF9C00E6A62>) |
-| Aquarius                 | P30 K44 R53                                      | [664F231BE0F4](<Desktop/Aquarius/P30/P30 K44 R53/664F231BE0F4>) |
-| Arbyte Computers         | ARBYTE QUINT MD4-H110                            | [37F1A0536D71](<Desktop/Arbyte Computers/ARBYTE/ARBYTE QUINT MD4-H110/37F1A0536D71>) |
 | Arbyte Computers         | Arbyte CADStation WS 262                         | [2EF52C2B0388](<Desktop/Arbyte Computers/Arbyte/Arbyte CADStation WS 262/2EF52C2B0388>) |
 | Arbyte Computers         | Arbyte Forte                                     | [285BE750FC53](<Desktop/Arbyte Computers/Arbyte/Arbyte Forte/285BE750FC53>) |
 | Arbyte Computers         | Arbyte Forte S4D3A-G31                           | [544AA4241E17](<Desktop/Arbyte Computers/Arbyte/Arbyte Forte S4D3A-G31/544AA4241E17>) |
@@ -396,16 +398,16 @@ All In Ones
 | ASUSTek Computer         | A4110                                            | [8158E97198AD](<All In One/ASUSTek Computer/A/A4110/8158E97198AD>) |
 | ASUSTek Computer         | ASUS AIO M3400WUA_M3400WUA                       | [C57F5A924964](<All In One/ASUSTek Computer/ASUS/ASUS AIO M3400WUA_M3400WUA/C57F5A924964>) |
 | ASUSTek Computer         | ASUS Vivo AIO V222GAR_V222GA                     | [E58B4490896A](<All In One/ASUSTek Computer/ASUS/ASUS Vivo AIO V222GAR_V222GA/E58B4490896A>) |
-| ASUSTek Computer         | ASUS Vivo AIO V241DA_M241DA                      | [3FEBF400F4CB](<All In One/ASUSTek Computer/ASUS/ASUS Vivo AIO V241DA_M241DA/3FEBF400F4CB>) |
+| ASUSTek Computer         | ASUS Vivo AIO V241DA_M241DA                      | [07A2E7DD32A9](<All In One/ASUSTek Computer/ASUS/ASUS Vivo AIO V241DA_M241DA/07A2E7DD32A9>) |
 | ASUSTek Computer         | ASUS Vivo AIO V241EA_V241EA                      | [3ACB6E2B3079](<All In One/ASUSTek Computer/ASUS/ASUS Vivo AIO V241EA_V241EA/3ACB6E2B3079>) |
 | BANGHO                   | B801                                             | [B03401858427](<All In One/BANGHO/B/B801/B03401858427>) |
 | BESSTAR Tech             | GN41                                             | [22C8CFD62BB6](<All In One/BESSTAR Tech/GN/GN41/22C8CFD62BB6>) |
 | BESSTAR Tech             | U700                                             | [00612A70A258](<All In One/BESSTAR Tech/U/U700/00612A70A258>) |
 | Compaq                   | CQ-A1                                            | [65DABC6ADAB3](<All In One/Compaq/CQ-A/CQ-A1/65DABC6ADAB3>) |
-| CSL-Computer             | UNITY F24B                                       | [D60F8F6679D1](<All In One/CSL-Computer/UNITY/UNITY F24B/D60F8F6679D1>) |
-| CSL-Computer             | UNITY F27B                                       | [9F839E737A91](<All In One/CSL-Computer/UNITY/UNITY F27B/9F839E737A91>) |
 | CSL-Computer             | Unity F24B                                       | [E49C0C412A54](<All In One/CSL-Computer/Unity/Unity F24B/E49C0C412A54>) |
 | CSL-Computer             | Unity F24W                                       | [DCF637E8FC6A](<All In One/CSL-Computer/Unity/Unity F24W/DCF637E8FC6A>) |
+| CSL-Computer             | UNITY F24B                                       | [D60F8F6679D1](<All In One/CSL-Computer/UNITY/UNITY F24B/D60F8F6679D1>) |
+| CSL-Computer             | UNITY F27B                                       | [9F839E737A91](<All In One/CSL-Computer/UNITY/UNITY F27B/9F839E737A91>) |
 | Dell                     | Inspiron 20 Model 3043                           | [0014F3569D11](<All In One/Dell/Inspiron/Inspiron 20 Model 3043/0014F3569D11>) |
 | Dell                     | Inspiron 20 Model 3045                           | [6BEE257F2E18](<All In One/Dell/Inspiron/Inspiron 20 Model 3045/6BEE257F2E18>) |
 | Dell                     | Inspiron 20 Model 3048                           | [4A397B580265](<All In One/Dell/Inspiron/Inspiron 20 Model 3048/4A397B580265>) |
@@ -425,17 +427,19 @@ All In Ones
 | Gateway                  | ZX6971                                           | [049A78646437](<All In One/Gateway/ZX/ZX6971/049A78646437>) |
 | Gigabyte Technology      | GB-A5DNK-RH                                      | [2D59EF3CA1FB](<All In One/Gigabyte Technology/GB-A5/GB-A5DNK-RH/2D59EF3CA1FB>) |
 | Gigabyte Technology      | H61M-DS2                                         | [763FAF752932](<All In One/Gigabyte Technology/H61/H61M-DS2/763FAF752932>) |
+| GPD                      | G1618-04                                         | [62DB29AA1271](<All In One/GPD/G1618/G1618-04/62DB29AA1271>) |
+| Graviton                 | D12i                                             | [E65E993A1E87](<All In One/Graviton/D12/D12i/E65E993A1E87>) |
 | Graviton                 | DMB-H610-TMI01                                   | [94DE78FC47D8](<All In One/Graviton/DMB-H610/DMB-H610-TMI01/94DE78FC47D8>) |
 | Graviton                 | M52i                                             | [0485470150C4](<All In One/Graviton/M52/M52i/0485470150C4>) |
 | Hewlett-Packard          | 18-4121la                                        | [DAE88CA37FAB](<All In One/Hewlett-Packard/18/18-4121la/DAE88CA37FAB>) |
 | Hewlett-Packard          | 18-5200br                                        | [3652E5CBCCE1](<All In One/Hewlett-Packard/18/18-5200br/3652E5CBCCE1>) |
 | Hewlett-Packard          | 19-2207la                                        | [14E84D292202](<All In One/Hewlett-Packard/19/19-2207la/14E84D292202>) |
 | Hewlett-Packard          | 20-2010el                                        | [9602F13BC818](<All In One/Hewlett-Packard/20/20-2010el/9602F13BC818>) |
-| Hewlett-Packard          | 20-2101no                                        | [16F9480F2345](<All In One/Hewlett-Packard/20/20-2101no/16F9480F2345>) |
+| Hewlett-Packard          | 20-2010es                                        | [BA8E3BA7C39D](<All In One/Hewlett-Packard/20/20-2010es/BA8E3BA7C39D>) |
 | HomeNet                  | HN-X730                                          | [D45C7E7768C5](<All In One/HomeNet/HN-X/HN-X730/D45C7E7768C5>) |
 | ICL                      | RAY S122.Mi                                      | [06CDD38C1F60](<All In One/ICL/RAY/RAY S122.Mi/06CDD38C1F60>) |
 | ICL                      | RAY S291.Mi                                      | [7D88F60E1D91](<All In One/ICL/RAY/RAY S291.Mi/7D88F60E1D91>) |
-| ICL                      | RAY Si105.Mi                                     | [458522E003A7](<All In One/ICL/RAY/RAY Si105.Mi/458522E003A7>) |
+| ICL                      | RAY Si105.Mi                                     | [1C610EC5D719](<All In One/ICL/RAY/RAY Si105.Mi/1C610EC5D719>) |
 | ICP-iEi                  | AFL-19C-9652                                     | [F15A3C3654CF](<All In One/ICP-iEi/AFL-19/AFL-19C-9652/F15A3C3654CF>) |
 | ICP-iEi                  | AFL-W410A                                        | [CA2218EB431E](<All In One/ICP-iEi/AFL-W410/AFL-W410A/CA2218EB431E>) |
 | InFocus                  | INF5520                                          | [89A8A2E44A06](<All In One/InFocus/INF/INF5520/89A8A2E44A06>) |
@@ -449,27 +453,25 @@ All In Ones
 | iRU                      | P2320P                                           | [D07B2936C57B](<All In One/iRU/P2320/P2320P/D07B2936C57B>) |
 | Itautec                  | Infoway AL2010                                   | [1F0E9336EC9E](<All In One/Itautec/Infoway/Infoway AL2010/1F0E9336EC9E>) |
 | Itautec                  | Infoway AT2022                                   | [E66C97C327F8](<All In One/Itautec/Infoway/Infoway AT2022/E66C97C327F8>) |
+| Lenovo                   | 0x36BF SDK0J40709 WIN 3259621203424              | [25FE7C8473E7](<All In One/Lenovo/0x36BF/0x36BF SDK0J40709 WIN 3259621203424/25FE7C8473E7>) |
 | Lenovo                   | 10051                                            | [11244BE45969](<All In One/Lenovo/10051/10051/11244BE45969>) |
 | Lenovo                   | A720                                             | [3ABD3077E5C2](<All In One/Lenovo/A/A720/3ABD3077E5C2>) |
 | Lenovo                   | A740 F0AM                                        | [FD905B8098E4](<All In One/Lenovo/A740/A740 F0AM/FD905B8098E4>) |
-| Lenovo                   | B40-30 F0AW0002US                                | [86631BB4CD11](<All In One/Lenovo/B40-30/B40-30 F0AW0002US/86631BB4CD11>) |
-| Lenovo                   | B50-30 F0AU001YUS                                | [6D591A8B8CEF](<All In One/Lenovo/B50-30/B50-30 F0AU001YUS/6D591A8B8CEF>) |
+| Lenovo                   | AIO 3-22ADA05 F0EX003JRK                         | [BA9C03EB4E8E](<All In One/Lenovo/AIO/AIO 3-22ADA05 F0EX003JRK/BA9C03EB4E8E>) |
 | LG Electronics           | 22V240                                           | [400AF6CC77A2](<All In One/LG Electronics/22V240/22V240/400AF6CC77A2>) |
+| LG Electronics           | 22V240-L.AK35B2                                  | [3689BD3EEE5E](<All In One/LG Electronics/22V240/22V240-L.AK35B2/3689BD3EEE5E>) |
 | LG Electronics           | 22V240-L.BJ34P1                                  | [45DA00CACC96](<All In One/LG Electronics/22V240/22V240-L.BJ34P1/45DA00CACC96>) |
 | LG Electronics           | 22V240-L.BK55P1                                  | [673803797B34](<All In One/LG Electronics/22V240/22V240-L.BK55P1/673803797B34>) |
 | LG Electronics           | 22V270-L.AR3WB                                   | [4D50171CC310](<All In One/LG Electronics/22V270/22V270-L.AR3WB/4D50171CC310>) |
-| LG Electronics           | 22V270-L.BJ31P1                                  | [8E73444ADF98](<All In One/LG Electronics/22V270/22V270-L.BJ31P1/8E73444ADF98>) |
 | LTD Delovoy Office       | S1902                                            | [8577B095C4FA](<All In One/LTD Delovoy Office/S/S1902/8577B095C4FA>) |
+| Medion                   | Akoya P5028 D AIO-C096                           | [D5A1AD823250](<All In One/Medion/Akoya/Akoya P5028 D AIO-C096/D5A1AD823250>) |
 | Medion                   | AXA                                              | [879ACE11F233](<All In One/Medion/AXA/AXA/879ACE11F233>) |
 | Medion                   | E23301                                           | [FBC85FDC1B6A](<All In One/Medion/E/E23301/FBC85FDC1B6A>) |
 | Medion                   | E23403                                           | [AE54AAD7F16E](<All In One/Medion/E/E23403/AE54AAD7F16E>) |
-| Medion                   | E23401 MD61259                                   | [1A7EDC396C6E](<All In One/Medion/E23401/E23401 MD61259/1A7EDC396C6E>) |
-| Medion                   | G2                                               | [D661E7BCA1C6](<All In One/Medion/G/G2/D661E7BCA1C6>) |
+| Medion                   | E23201 MD61575                                   | [ADEBFF0ED21D](<All In One/Medion/E23201/E23201 MD61575/ADEBFF0ED21D>) |
 | MiTAC                    | AIO M1000                                        | [9EB1402700CF](<All In One/MiTAC/AIO/AIO M1000/9EB1402700CF>) |
 | MiTAC                    | AIO M650                                         | [664C2FABF15B](<All In One/MiTAC/AIO/AIO M650/664C2FABF15B>) |
 | MiTAC                    | AIO M770                                         | [A0E0CE4801F9](<All In One/MiTAC/AIO/AIO M770/A0E0CE4801F9>) |
-| MSI                      | CML-U PRO 24X 10M                                | [6A9F598F2D57](<All In One/MSI/CML-U/CML-U PRO 24X 10M/6A9F598F2D57>) |
-| MSI                      | Gemini Lake Pro PRO20EX 8GL                      | [16898ECB4C49](<All In One/MSI/Gemini/Gemini Lake Pro PRO20EX 8GL/16898ECB4C49>) |
 
 ...
 
@@ -487,12 +489,14 @@ Servers
 | AIC                      | SB302-LB                                         | [77AF6612F1D7](<Server/AIC/SB302/SB302-LB/77AF6612F1D7>) |
 | AMD                      | AOPW-PLUS                                        | [B61223D18897](<Server/AMD/AOPW-PLUS/AOPW-PLUS/B61223D18897>) |
 | AMD                      | ETHANOL_DEBUG_X                                  | [475A2B0CCAB4](<Server/AMD/ETHANOL_DEBUG_X/ETHANOL_DEBUG_X/475A2B0CCAB4>) |
+| AMD                      | Volcano                                          | [59C634EF9C63](<Server/AMD/Volcano/Volcano/59C634EF9C63>) |
 | AppliedMicro             | X-Gene Mustang                                   | [9417D45F0FED](<Server/AppliedMicro/X-Gene/X-Gene Mustang/9417D45F0FED>) |
 | Aquarius                 | Catfish AQC624CF                                 | [F60E6B0A63F8](<Server/Aquarius/Catfish/Catfish AQC624CF/F60E6B0A63F8>) |
 | Aquarius                 | S5000PSL                                         | [02C917C9A536](<Server/Aquarius/S5000/S5000PSL/02C917C9A536>) |
 | ASRockRack               | EP2C622D16-2T                                    | [68EDD12B1568](<Server/ASRockRack/EP2/EP2C622D16-2T/68EDD12B1568>) |
 | ASRockRack               | EPC621D8A                                        | [5678CB93815F](<Server/ASRockRack/EPC621/EPC621D8A/5678CB93815F>) |
 | ASRockRack               | ROMED8-2T                                        | [6773052154E7](<Server/ASRockRack/ROMED8/ROMED8-2T/6773052154E7>) |
+| ASRockRack               | W680D4U-1L                                       | [20C7D1E4BD07](<Server/ASRockRack/W680/W680D4U-1L/20C7D1E4BD07>) |
 | ASUSTek Computer         | ESC4000 G2 Series                                | [75FA7A6A974C](<Server/ASUSTek Computer/ESC4000/ESC4000 G2 Series/75FA7A6A974C>) |
 | ASUSTek Computer         | ESC4000 G4                                       | [E6BBA8966F48](<Server/ASUSTek Computer/ESC4000/ESC4000 G4/E6BBA8966F48>) |
 | ASUSTek Computer         | ESC4000A-E10                                     | [B9F3E47266C9](<Server/ASUSTek Computer/ESC4000/ESC4000A-E10/B9F3E47266C9>) |
@@ -503,8 +507,10 @@ Servers
 | BESSTAR Tech             | X500                                             | [81B31475FFFF](<Server/BESSTAR Tech/X/X500/81B31475FFFF>) |
 | Cirrascale               | GX4                                              | [EB3488A77EE0](<Server/Cirrascale/GX/GX4/EB3488A77EE0>) |
 | Cisco Systems            | PowerEdge R710                                   | [BDF4FC4EB1AE](<Server/Cisco Systems/PowerEdge/PowerEdge R710/BDF4FC4EB1AE>) |
+| Cisco Systems            | UCSC-C220-M4S                                    | [9D3781D2096F](<Server/Cisco Systems/UCSC-C220/UCSC-C220-M4S/9D3781D2096F>) |
 | Compaq                   | ProLiant DL380                                   | [8D95DB95EAF9](<Server/Compaq/ProLiant/ProLiant DL380/8D95DB95EAF9>) |
 | DALCO                    | S2600WFT                                         | [1A8F025340D8](<Server/DALCO/S2600/S2600WFT/1A8F025340D8>) |
+| DALCO                    | S2600WTTR                                        | [F200B7AE62EB](<Server/DALCO/S2600/S2600WTTR/F200B7AE62EB>) |
 | Daten Tecnologia         | Super Server                                     | [9444F2B3D86E](<Server/Daten Tecnologia/Super/Super Server/9444F2B3D86E>) |
 | Dedicated Computing      | OEM-F7342-00                                     | [A56806D283ED](<Server/Dedicated Computing/OEM-F7342/OEM-F7342-00/A56806D283ED>) |
 | Dell                     | C6100                                            | [FE20BCAD9039](<Server/Dell/C/C6100/FE20BCAD9039>) |
@@ -512,6 +518,7 @@ Servers
 | Dell                     | CS24-TY                                          | [77C94ADE7569](<Server/Dell/CS24/CS24-TY/77C94ADE7569>) |
 | Dell                     | OEM-R 720xd                                      | [DFE3E8DF0E60](<Server/Dell/OEM-R/OEM-R 720xd/DFE3E8DF0E60>) |
 | Dell                     | PowerEdge 1850                                   | [858D0EB6BB9A](<Server/Dell/PowerEdge/PowerEdge 1850/858D0EB6BB9A>) |
+| Delta Computers          | DSS-C621LTG                                      | [7C4F3361DCCF](<Server/Delta Computers/DSS-C621/DSS-C621LTG/7C4F3361DCCF>) |
 | Delta Solutions          | DSS-C621LTG                                      | [CF2239ACA923](<Server/Delta Solutions/DSS-C621/DSS-C621LTG/CF2239ACA923>) |
 | DEPO Computers           | Storm 3450Z1                                     | [A95D26A63919](<Server/DEPO Computers/Storm/Storm 3450Z1/A95D26A63919>) |
 | DEPO Computers           | Super Server                                     | [45CFAE6C8D53](<Server/DEPO Computers/Super/Super Server/45CFAE6C8D53>) |
@@ -530,11 +537,12 @@ Servers
 | Fujitsu Siemens          | PRIMERGY RX330 S1                                | [BBBDB6433647](<Server/Fujitsu Siemens/PRIMERGY/PRIMERGY RX330 S1/BBBDB6433647>) |
 | FUJITSU-SV               | PRIMERGY                                         | [97813DAE8674](<Server/FUJITSU-SV/PRIMERGY/PRIMERGY/97813DAE8674>) |
 | GEEKOM                   | MiniAir 11                                       | [696C922FC5EB](<Server/GEEKOM/MiniAir/MiniAir 11/696C922FC5EB>) |
+| Giga Computing           | MC13-LE0-000                                     | [1D7046547004](<Server/Giga Computing/MC13/MC13-LE0-000/1D7046547004>) |
+| Gigabyte Technology      | C621-WD12-IPMI                                   | [5E4783EDD64C](<Server/Gigabyte Technology/C621/C621-WD12-IPMI/5E4783EDD64C>) |
 | Gigabyte Technology      | C621-SD8 M18802                                  | [AAAFBC4D907C](<Server/Gigabyte Technology/C621-SD8/C621-SD8 M18802/AAAFBC4D907C>) |
 | Gigabyte Technology      | C621-SU8 M18818                                  | [E50340EDE30D](<Server/Gigabyte Technology/C621-SU8/C621-SU8 M18818/E50340EDE30D>) |
-| Gigabyte Technology      | G250-G52-Sample-Dalco-002-XX                     | [7DC253266755](<Server/Gigabyte Technology/G250/G250-G52-Sample-Dalco-002-XX/7DC253266755>) |
-| Gigabyte Technology      | G482-Z54-00                                      | [7CA16E0B16D7](<Server/Gigabyte Technology/G482/G482-Z54-00/7CA16E0B16D7>) |
-| Gigabyte Technology      | GA-6PXSV1                                        | [54F5641A961B](<Server/Gigabyte Technology/GA-6/GA-6PXSV1/54F5641A961B>) |
+| Gigabyte Technology      | E252-P30-00                                      | [513B50B63035](<Server/Gigabyte Technology/E252/E252-P30-00/513B50B63035>) |
+| Gigabyte Technology      | G242-Z11-00                                      | [B5251D581093](<Server/Gigabyte Technology/G242/G242-Z11-00/B5251D581093>) |
 | GMKtec                   | NucBox8                                          | [D2066B2FCB01](<Server/GMKtec/NucBox/NucBox8/D2066B2FCB01>) |
 | Hewlett-Packard          | ProLiant BL460c G6                               | [FA97A758D2C6](<Server/Hewlett-Packard/ProLiant/ProLiant BL460c G6/FA97A758D2C6>) |
 | Hewlett-Packard          | ProLiant BL460c Gen8                             | [1DB9D4472AA8](<Server/Hewlett-Packard/ProLiant/ProLiant BL460c Gen8/1DB9D4472AA8>) |
@@ -545,13 +553,13 @@ Servers
 | HPE                      | ProLiant BL460c Gen10                            | [0D501A0F9103](<Server/HPE/ProLiant/ProLiant BL460c Gen10/0D501A0F9103>) |
 | HPE                      | ProLiant DL160 Gen10                             | [8736F5E703F9](<Server/HPE/ProLiant/ProLiant DL160 Gen10/8736F5E703F9>) |
 | HPE                      | ProLiant DL360 Gen10                             | [0438CFCFB022](<Server/HPE/ProLiant/ProLiant DL360 Gen10/0438CFCFB022>) |
-| HPE                      | ProLiant DL380 Gen10                             | [8069DEDC68C5](<Server/HPE/ProLiant/ProLiant DL380 Gen10/8069DEDC68C5>) |
+| HPE                      | ProLiant DL360 Gen10 Plus                        | [6004A3CDB655](<Server/HPE/ProLiant/ProLiant DL360 Gen10 Plus/6004A3CDB655>) |
+| HUAWEI                   | Taishan 2180                                     | [98FD400CE456](<Server/HUAWEI/Taishan/Taishan 2180/98FD400CE456>) |
 | Huawei                   | 2288H V5                                         | [94600F3C6456](<Server/Huawei/2288H/2288H V5/94600F3C6456>) |
 | Huawei                   | RH1288 V3                                        | [DCCC7932E1B0](<Server/Huawei/RH1288/RH1288 V3/DCCC7932E1B0>) |
 | Huawei                   | RH2288 V3                                        | [EC438425FBC0](<Server/Huawei/RH2288/RH2288 V3/EC438425FBC0>) |
 | Huawei                   | TaiShan 200                                      | [50ED10C1AEE2](<Server/Huawei/TaiShan/TaiShan 200/50ED10C1AEE2>) |
 | Huawei                   | TaiShan 2280 V2                                  | [2603C7B2E57E](<Server/Huawei/TaiShan/TaiShan 2280 V2/2603C7B2E57E>) |
-| HUAWEI                   | Taishan 2180                                     | [98FD400CE456](<Server/HUAWEI/Taishan/Taishan 2180/98FD400CE456>) |
 | Hyve                     | C4I                                              | [09324DBA0E18](<Server/Hyve/C4/C4I/09324DBA0E18>) |
 | Hyve                     | Rigel-HS9216                                     | [7F5327D5ECB3](<Server/Hyve/Rigel-HS/Rigel-HS9216/7F5327D5ECB3>) |
 | IBM                      | BladeCenter HS23 -[7875MFM]-                     | [D5DD0E377016](<Server/IBM/BladeCenter/BladeCenter HS23 -[7875MFM]-/D5DD0E377016>) |
@@ -567,20 +575,14 @@ Servers
 | Intel                    | LH Pass                                          | [F215FA028B7D](<Server/Intel/LH/LH Pass/F215FA028B7D>) |
 | Intel                    | MP Server                                        | [65A44D78DEFA](<Server/Intel/MP/MP Server/65A44D78DEFA>) |
 | iXsystems                | iX4224-846E16                                    | [A2E8DD42EE6F](<Server/iXsystems/iX4224/iX4224-846E16/A2E8DD42EE6F>) |
+| Kraftway                 | Trusted TS2000                                   | [583173D8B5F2](<Server/Kraftway/Trusted/Trusted TS2000/583173D8B5F2>) |
 | Langchao                 | NF5110                                           | [371B21C0E186](<Server/Langchao/NF/NF5110/371B21C0E186>) |
 | Lanix                    | SPINE SB                                         | [C4DC7FD2A736](<Server/Lanix/SPINE/SPINE SB/C4DC7FD2A736>) |
 | Lenovo                   | 4304E1U ThinkServer RD330                        | [6F8A9549CD08](<Server/Lenovo/4304E1U/4304E1U ThinkServer RD330/6F8A9549CD08>) |
 | Lenovo                   | 7X56CTO1WW HR630X                                | [560D5AFC1336](<Server/Lenovo/7X56CTO1WW/7X56CTO1WW HR630X/560D5AFC1336>) |
+| Lenovo                   | System x3250 M6 -[3943AC1]-                      | [280835A0FF56](<Server/Lenovo/System/System x3250 M6 -[3943AC1]-/280835A0FF56>) |
 | Lenovo                   | System x3650 M5: -[5462IC1]-                     | [A7F3B572C32D](<Server/Lenovo/System/System x3650 M5: -[5462IC1]-/A7F3B572C32D>) |
 | Lenovo                   | System x3650 M5: -[8871AC1]-                     | [A1A7BFF4B5C7](<Server/Lenovo/System/System x3650 M5: -[8871AC1]-/A1A7BFF4B5C7>) |
-| Lenovo                   | ThinkServer TD230 102919U                        | [A2C964854704](<Server/Lenovo/ThinkServer/ThinkServer TD230 102919U/A2C964854704>) |
-| MAXDATA                  | PLATINUM 500 I M6                                | [085FC2619EC4](<Server/MAXDATA/PLATINUM/PLATINUM 500 I M6/085FC2619EC4>) |
-| MiTAC                    | Xeon D 411C41900030                              | [08DC1FE770DE](<Server/MiTAC/Xeon/Xeon D 411C41900030/08DC1FE770DE>) |
-| MSI                      | MCP55                                            | [65D686122BCA](<Server/MSI/MCP/MCP55/65D686122BCA>) |
-| MSI                      | MS-9280                                          | [8906E0862DEE](<Server/MSI/MS/MS-9280/8906E0862DEE>) |
-| NEC Computers            | Express5800-R120b-1 [N8100-1660F]                | [11FB59FB2CC9](<Server/NEC Computers/Express5800-R120b-1/Express5800-R120b-1 [N8100-1660F]/11FB59FB2CC9>) |
-| Neousys Technology       | Nuvo-5100VTC                                     | [E9F17F7D3348](<Server/Neousys Technology/Nuvo-5100/Nuvo-5100VTC/E9F17F7D3348>) |
-| Neousys Technology       | Nuvo-7000 Series                                 | [55C9FBF8C557](<Server/Neousys Technology/Nuvo-7000/Nuvo-7000 Series/55C9FBF8C557>) |
 
 ...
 
@@ -603,14 +605,15 @@ Mini Pcs
 | Apple                    | Macmini5,1                                       | [12484C767EE1](<Mini Pc/Apple/Macmini5/Macmini5,1/12484C767EE1>) |
 | Aquarius                 | Tcc Uvl U30 S25                                  | [A0CCC50D7DCA](<Mini Pc/Aquarius/Tcc/Tcc Uvl U30 S25/A0CCC50D7DCA>) |
 | ARBOR                    | LYNC-712                                         | [F11739CA6754](<Mini Pc/ARBOR/LYNC/LYNC-712/F11739CA6754>) |
+| ASUSTek Computer         | MINIPC PN41-S1                                   | [ABEC4C3F2941](<Mini Pc/ASUSTek Computer/MINIPC/MINIPC PN41-S1/ABEC4C3F2941>) |
 | ASUSTek Computer         | MINIPC PN50                                      | [012EB83D6E6D](<Mini Pc/ASUSTek Computer/MINIPC/MINIPC PN50/012EB83D6E6D>) |
 | ASUSTek Computer         | MINIPC PN50-E1                                   | [16DDAFEC50A3](<Mini Pc/ASUSTek Computer/MINIPC/MINIPC PN50-E1/16DDAFEC50A3>) |
 | ASUSTek Computer         | MINIPC PN51                                      | [601482F8255B](<Mini Pc/ASUSTek Computer/MINIPC/MINIPC PN51/601482F8255B>) |
 | ASUSTek Computer         | MINIPC PN51-E1                                   | [189C4742651B](<Mini Pc/ASUSTek Computer/MINIPC/MINIPC PN51-E1/189C4742651B>) |
-| ASUSTek Computer         | MINIPC PN51-S1                                   | [ACB11B468BEC](<Mini Pc/ASUSTek Computer/MINIPC/MINIPC PN51-S1/ACB11B468BEC>) |
 | ATOPNUC                  | MA90                                             | [0EB3C356D690](<Mini Pc/ATOPNUC/MA/MA90/0EB3C356D690>) |
 | AWOW                     | AK34Pro                                          | [D52D334F2196](<Mini Pc/AWOW/AK34/AK34Pro/D52D334F2196>) |
 | AWOW                     | NY41                                             | [01FCF3BCE1F7](<Mini Pc/AWOW/NY/NY41/01FCF3BCE1F7>) |
+| AWOW                     | NYI3                                             | [1F0DE9559559](<Mini Pc/AWOW/NYI/NYI3/1F0DE9559559>) |
 | AWOW                     | PC BOX                                           | [0091E728FA88](<Mini Pc/AWOW/PC/PC BOX/0091E728FA88>) |
 | Azulle                   | Byte3                                            | [F28A5AA04952](<Mini Pc/Azulle/Byte/Byte3/F28A5AA04952>) |
 | AZW                      | GK mini                                          | [1AD551F01EB5](<Mini Pc/AZW/GK/GK mini/1AD551F01EB5>) |
@@ -622,7 +625,7 @@ Mini Pcs
 | Beelink                  | BT3 Pro                                          | [11346778206E](<Mini Pc/Beelink/BT3/BT3 Pro/11346778206E>) |
 | Beelink                  | SII                                              | [06014D7B5684](<Mini Pc/Beelink/SII/SII/06014D7B5684>) |
 | BESSTAR Tech             | GK41                                             | [1CE784ED58C3](<Mini Pc/BESSTAR Tech/GK/GK41/1CE784ED58C3>) |
-| BESSTAR Tech             | GK50                                             | [0DC18C82AAD2](<Mini Pc/BESSTAR Tech/GK/GK50/0DC18C82AAD2>) |
+| BESSTAR Tech             | GK50                                             | [0786D176E577](<Mini Pc/BESSTAR Tech/GK/GK50/0786D176E577>) |
 | BESSTAR Tech             | GN31                                             | [E1E8EE980AB6](<Mini Pc/BESSTAR Tech/GN/GN31/E1E8EE980AB6>) |
 | BESSTAR Tech             | GN41                                             | [918FEC623B32](<Mini Pc/BESSTAR Tech/GN/GN41/918FEC623B32>) |
 | BESSTAR Tech             | N33                                              | [2A74991B0C12](<Mini Pc/BESSTAR Tech/N/N33/2A74991B0C12>) |
@@ -643,9 +646,9 @@ Mini Pcs
 | congatec                 | conga-MA5 B.2                                    | [127575E26FEC](<Mini Pc/congatec/conga-MA5/conga-MA5 B.2/127575E26FEC>) |
 | congatec                 | conga-PA7 A.0                                    | [FC51E41C422F](<Mini Pc/congatec/conga-PA7/conga-PA7 A.0/FC51E41C422F>) |
 | congatec                 | conga-SA5 B.3                                    | [75C30D659F87](<Mini Pc/congatec/conga-SA5/conga-SA5 B.3/75C30D659F87>) |
-| CSL-Computer             | Celeron                                          | [EA4E00E9EC18](<Mini Pc/CSL-Computer/Celeron/Celeron/EA4E00E9EC18>) |
+| CSL-Computer             | Celeron                                          | [AA990300D125](<Mini Pc/CSL-Computer/Celeron/Celeron/AA990300D125>) |
 | CSL-Computer             | Mini PC AMD HX90                                 | [2A9E94391C9D](<Mini Pc/CSL-Computer/Mini/Mini PC AMD HX90/2A9E94391C9D>) |
-| CSL-Computer             | Mini PN41                                        | [571D7E017220](<Mini Pc/CSL-Computer/Mini/Mini PN41/571D7E017220>) |
+| CSL-Computer             | Mini PN41                                        | [19DD952D9531](<Mini Pc/CSL-Computer/Mini/Mini PN41/19DD952D9531>) |
 | CSL-Computer             | Mini-PC on a Stick                               | [AF5C68C9B096](<Mini Pc/CSL-Computer/Mini-PC/Mini-PC on a Stick/AF5C68C9B096>) |
 | CSL-Computer             | Narrow Box Ultra HD                              | [F6B4FC5863EA](<Mini Pc/CSL-Computer/Narrow/Narrow Box Ultra HD/F6B4FC5863EA>) |
 | Daten Tecnologia         | DC2B-U                                           | [5CEC86B8AF22](<Mini Pc/Daten Tecnologia/DC2/DC2B-U/5CEC86B8AF22>) |
@@ -663,8 +666,8 @@ Mini Pcs
 | EXTRA Computer           | Pokini F2                                        | [22D503355AD1](<Mini Pc/EXTRA Computer/Pokini/Pokini F2/22D503355AD1>) |
 | Fanless Mini PC          | PCG02 Pro                                        | [46119A39C865](<Mini Pc/Fanless Mini PC/PCG02/PCG02 Pro/46119A39C865>) |
 | Fanless Mini PC          | PCG35 GLK                                        | [5E7BD773CC7D](<Mini Pc/Fanless Mini PC/PCG35/PCG35 GLK/5E7BD773CC7D>) |
-| Fanless Mini PC          | Quieter 3                                        | [2386519DED36](<Mini Pc/Fanless Mini PC/Quieter/Quieter 3/2386519DED36>) |
-| Fanless Mini PC          | Quieter 3C                                       | [2DD5F2CB5820](<Mini Pc/Fanless Mini PC/Quieter/Quieter 3C/2DD5F2CB5820>) |
+| Fanless Mini PC          | Quieter 3                                        | [09653BE1DD03](<Mini Pc/Fanless Mini PC/Quieter/Quieter 3/09653BE1DD03>) |
+| Fanless Mini PC          | Quieter 3C                                       | [016B911AE609](<Mini Pc/Fanless Mini PC/Quieter/Quieter 3C/016B911AE609>) |
 | Fanless Mini PC          | Quieter HD3                                      | [CA164E189F50](<Mini Pc/Fanless Mini PC/Quieter/Quieter HD3/CA164E189F50>) |
 | Fujitsu                  | ESPRIMO Q510                                     | [694AE29C9C7C](<Mini Pc/Fujitsu/ESPRIMO/ESPRIMO Q510/694AE29C9C7C>) |
 | GeshemTech               | EC3-GS1900A                                      | [A9F3A7CA4DC6](<Mini Pc/GeshemTech/EC3/EC3-GS1900A/A9F3A7CA4DC6>) |
@@ -673,6 +676,7 @@ Mini Pcs
 | Gigabyte Technology      | GB-BSi3-6100                                     | [D5628C0A20B9](<Mini Pc/Gigabyte Technology/GB-BSi3/GB-BSi3-6100/D5628C0A20B9>) |
 | Gigabyte Technology      | MMLP5AP-SI                                       | [0A652766F53A](<Mini Pc/Gigabyte Technology/MMLP5/MMLP5AP-SI/0A652766F53A>) |
 | GMKTEC                   | NucBox4                                          | [6B9DDEDC523F](<Mini Pc/GMKTEC/NucBox/NucBox4/6B9DDEDC523F>) |
+| GMKtec                   | NucBox7                                          | [7678135C0E37](<Mini Pc/GMKtec/NucBox/NucBox7/7678135C0E37>) |
 | HCD                      | G2 Mini PC                                       | [52C563E60BE2](<Mini Pc/HCD/G2/G2 Mini PC/52C563E60BE2>) |
 | Hewlett-Packard          | 260 G3 DM                                        | [3F1E4FCD0F03](<Mini Pc/Hewlett-Packard/260/260 G3 DM/3F1E4FCD0F03>) |
 | Hewlett-Packard          | Elite Mini 600 G9 Desktop PC                     | [9FD935DA3E5B](<Mini Pc/Hewlett-Packard/Elite/Elite Mini 600 G9 Desktop PC/9FD935DA3E5B>) |
@@ -690,8 +694,6 @@ Mini Pcs
 | Intel                    | CedarTrail Platform                              | [009433D25421](<Mini Pc/Intel/CedarTrail/CedarTrail Platform/009433D25421>) |
 | Intel                    | D425KT AAE93083-301                              | [257EB416AC40](<Mini Pc/Intel/D425KT/D425KT AAE93083-301/257EB416AC40>) |
 | Intel                    | D425KT AAE93083-400                              | [7852FEDF49E3](<Mini Pc/Intel/D425KT/D425KT AAE93083-400/7852FEDF49E3>) |
-| Intel                    | D425KT AAE93083-401                              | [10EE8CFFD4E7](<Mini Pc/Intel/D425KT/D425KT AAE93083-401/10EE8CFFD4E7>) |
-| Intel Client Systems     | CM11EBC4W                                        | [E186533BF91D](<Mini Pc/Intel Client Systems/CM11/CM11EBC4W/E186533BF91D>) |
 
 ...
 
@@ -703,13 +705,16 @@ SOCs
 | MFG                      | Model                                            | HWID |
 |--------------------------|--------------------------------------------------|------|
 | Advantech                | VEGA-6301M                                       | [1201F18EF046](<System On Chip/Advantech/VEGA-6301/VEGA-6301M/1201F18EF046>) |
+| Amlogic                  | Meson8B                                          | [F0FC5B0515B8](<System On Chip/Amlogic/Meson8/Meson8B/F0FC5B0515B8>) |
 | Bananapi                 | BPI-M5                                           | [487C39187D98](<System On Chip/Bananapi/BPI-M/BPI-M5/487C39187D98>) |
 | Edelweiss                | TF307-MB-S-D                                     | [4EA8FA862BA7](<System On Chip/Edelweiss/TF307/TF307-MB-S-D/4EA8FA862BA7>) |
+| FriendlyElec             | NanoPC-T4                                        | [A458CAB83B53](<System On Chip/FriendlyElec/NanoPC-T/NanoPC-T4/A458CAB83B53>) |
 | FriendlyElec             | NanoPi R2S                                       | [3742C7F40CD6](<System On Chip/FriendlyElec/NanoPi/NanoPi R2S/3742C7F40CD6>) |
 | FriendlyElec             | NanoPi-NEO2                                      | [6309D52307E9](<System On Chip/FriendlyElec/NanoPi-NEO/NanoPi-NEO2/6309D52307E9>) |
 | FriendlyElec             | NanoPi-NEO-Air                                   | [8415F0AAAAAC](<System On Chip/FriendlyElec/NanoPi-NEO-Air/NanoPi-NEO-Air/8415F0AAAAAC>) |
-| Google                   | Homestar                                         | [966233D7704F](<System On Chip/Google/Homestar/Homestar/966233D7704F>) |
+| Google                   | Homestar                                         | [3747919F00E7](<System On Chip/Google/Homestar/Homestar/3747919F00E7>) |
 | Google                   | MSM sm7250 v2 Bramble PVT                        | [D435D7412AE7](<System On Chip/Google/MSM/MSM sm7250 v2 Bramble PVT/D435D7412AE7>) |
+| GreatWall                | DF                                               | [5813E68F06D1](<System On Chip/GreatWall/DF/DF/5813E68F06D1>) |
 | HANWEI                   | FT-208-COME-B                                    | [7D2A7DE07A62](<System On Chip/HANWEI/FT-208/FT-208-COME-B/7D2A7DE07A62>) |
 | Hardkernel               | Odroid XU4                                       | [061480C2933C](<System On Chip/Hardkernel/Odroid/Odroid XU4/061480C2933C>) |
 | Hardkernel               | ODROID-C2                                        | [4172A3F60C92](<System On Chip/Hardkernel/ODROID-C/ODROID-C2/4172A3F60C92>) |
@@ -719,19 +724,22 @@ SOCs
 | HUAWEI                   | HUAWEIPGU-WBY0                                   | [ABDCBB39B3E3](<System On Chip/HUAWEI/HUAWEIPGU-WBY/HUAWEIPGU-WBY0/ABDCBB39B3E3>) |
 | HUAWEI                   | PGU-WBY0                                         | [1C58824AF241](<System On Chip/HUAWEI/PGU-WBY/PGU-WBY0/1C58824AF241>) |
 | Inspur                   | CE520F                                           | [3A556DC2B09D](<System On Chip/Inspur/CE520/CE520F/3A556DC2B09D>) |
+| khadas                   | VIM3                                             | [B1FC44241EF3](<System On Chip/khadas/VIM/VIM3/B1FC44241EF3>) |
 | Khadas                   | VIM2                                             | [5790791A9DC3](<System On Chip/Khadas/VIM/VIM2/5790791A9DC3>) |
 | Khadas                   | VIM3                                             | [6CB0C4BD1229](<System On Chip/Khadas/VIM/VIM3/6CB0C4BD1229>) |
 | Kobol                    | Helios64                                         | [D26FB437FFE3](<System On Chip/Kobol/Helios/Helios64/D26FB437FFE3>) |
 | libre-computer           | aml-s905x-cc                                     | [082BFF22D82E](<System On Chip/libre-computer/aml-s905/aml-s905x-cc/082BFF22D82E>) |
+| Motorola                 | Moto G4 Play                                     | [E8060AD2D345](<System On Chip/Motorola/Moto/Moto G4 Play/E8060AD2D345>) |
 | NCI                      | PC BLICK101                                      | [3CFE875BAE08](<System On Chip/NCI/PC/PC BLICK101/3CFE875BAE08>) |
 | NextThing                | C.H.I.P.                                         | [53E72F99D8A1](<System On Chip/NextThing/C.H.I.P./C.H.I.P./53E72F99D8A1>) |
 | Nvidia                   | Jetson Nano Developer Kit                        | [58DEF6B21363](<System On Chip/Nvidia/Jetson/Jetson Nano Developer Kit/58DEF6B21363>) |
 | Nvidia                   | Jetson Xavier NX Developer Kit                   | [2CF7872C1C62](<System On Chip/Nvidia/Jetson/Jetson Xavier NX Developer Kit/2CF7872C1C62>) |
 | Nvidia                   | Tegra                                            | [00DD34ACACF5](<System On Chip/Nvidia/Tegra/Tegra/00DD34ACACF5>) |
+| Olimex                   | A20-OLinuXino-LIME                               | [C7CC56D1AC8A](<System On Chip/Olimex/A20/A20-OLinuXino-LIME/C7CC56D1AC8A>) |
 | Olimex                   | A20-OLinuXino-LIME2                              | [23DF638302CD](<System On Chip/Olimex/A20/A20-OLinuXino-LIME2/23DF638302CD>) |
 | Olimex                   | A20-Olinuxino Micro                              | [D03182358EEA](<System On Chip/Olimex/A20-Olinuxino/A20-Olinuxino Micro/D03182358EEA>) |
 | OrangePi                 | 3                                                | [56FD08DC9A5B](<System On Chip/OrangePi/3/3/56FD08DC9A5B>) |
-| OrangePi                 | 4                                                | [B8092D7FA597](<System On Chip/OrangePi/4/4/B8092D7FA597>) |
+| OrangePi                 | 4                                                | [6C91BA6EBD27](<System On Chip/OrangePi/4/4/6C91BA6EBD27>) |
 | Pine Microsystems        | Pine64 RK3566 Quartz64-A                         | [0B7E187F6FBF](<System On Chip/Pine Microsystems/Pine64/Pine64 RK3566 Quartz64-A/0B7E187F6FBF>) |
 | Pine Microsystems        | Pine64 Rock64                                    | [15D9FF44F966](<System On Chip/Pine Microsystems/Pine64/Pine64 Rock64/15D9FF44F966>) |
 | Pine Microsystems        | Pine64 RockPro64 v2.1                            | [8D65E4334124](<System On Chip/Pine Microsystems/Pine64/Pine64 RockPro64 v2.1/8D65E4334124>) |
@@ -743,23 +751,24 @@ SOCs
 | Qualcomm Technologies    | Open-Q 820 microsom                              | [F6FEB21E1005](<System On Chip/Qualcomm Technologies/Open-Q/Open-Q 820 microsom/F6FEB21E1005>) |
 | Qualcomm Technologies    | SDM 660 PM660 + PM660L MTP F7A                   | [18F4F122ADCE](<System On Chip/Qualcomm Technologies/SDM/SDM 660 PM660 + PM660L MTP F7A/18F4F122ADCE>) |
 | Qualcomm Technologies    | SDM845 v2.1 MTP PVT                              | [8B8A857D4C70](<System On Chip/Qualcomm Technologies/SDM845/SDM845 v2.1 MTP PVT/8B8A857D4C70>) |
-| Radxa                    | ROCK 5B                                          | [9FE9E6CD2459](<System On Chip/Radxa/ROCK/ROCK 5B/9FE9E6CD2459>) |
+| Radxa                    | ROCK 5B                                          | [139991BFFDC7](<System On Chip/Radxa/ROCK/ROCK 5B/139991BFFDC7>) |
 | Radxa                    | ROCK Pi 4                                        | [733E621E45CC](<System On Chip/Radxa/ROCK/ROCK Pi 4/733E621E45CC>) |
 | Radxa                    | ROCK Pi 4A                                       | [A7EFC6F9EC8C](<System On Chip/Radxa/ROCK/ROCK Pi 4A/A7EFC6F9EC8C>) |
 | Radxa                    | ROCK Pi 4B                                       | [2A4B6D9ED287](<System On Chip/Radxa/ROCK/ROCK Pi 4B/2A4B6D9ED287>) |
-| Radxa                    | Zero                                             | [0D63B88E9410](<System On Chip/Radxa/Zero/Zero/0D63B88E9410>) |
+| Radxa                    | ROCK Pi 4C+                                      | [423812C7428B](<System On Chip/Radxa/ROCK/ROCK Pi 4C+/423812C7428B>) |
 | Raspberry Pi Foundation  | BCM2835                                          | [F2A86FACB8B9](<System On Chip/Raspberry Pi Foundation/BCM/BCM2835/F2A86FACB8B9>) |
 | Raspberry Pi Foundation  | Raspberry Pi                                     | [00827297B847](<System On Chip/Raspberry Pi Foundation/Raspberry/Raspberry Pi/00827297B847>) |
 | Raspberry Pi Foundation  | Raspberry Pi 2 Model B Rev 1.1                   | [03C0497F5B0D](<System On Chip/Raspberry Pi Foundation/Raspberry/Raspberry Pi 2 Model B Rev 1.1/03C0497F5B0D>) |
 | Raspberry Pi Foundation  | Raspberry Pi 3 Model A Plus Rev 1.0              | [20A884191969](<System On Chip/Raspberry Pi Foundation/Raspberry/Raspberry Pi 3 Model A Plus Rev 1.0/20A884191969>) |
 | Raspberry Pi Foundation  | Raspberry Pi 3 Model B                           | [543EB43666AD](<System On Chip/Raspberry Pi Foundation/Raspberry/Raspberry Pi 3 Model B/543EB43666AD>) |
 | raspberrypi,4-model-b    | Raspberry Pi 4 Model B Rev 1.1                   | [5AED7581EBE0](<System On Chip/raspberrypi,4-model-b/Raspberry/Raspberry Pi 4 Model B Rev 1.1/5AED7581EBE0>) |
-| Rockchip                 | Orange Pi 5                                      | [7D541232CD6C](<System On Chip/Rockchip/Orange/Orange Pi 5/7D541232CD6C>) |
+| Rockchip                 | Orange Pi 5                                      | [5E1E10BA1F21](<System On Chip/Rockchip/Orange/Orange Pi 5/5E1E10BA1F21>) |
 | Rockchip                 | rk3368                                           | [BFEFC045E281](<System On Chip/Rockchip/rk/rk3368/BFEFC045E281>) |
 | Rockchip                 | RK3288 Asus Tinker                               | [0ABE66931753](<System On Chip/Rockchip/RK3288/RK3288 Asus Tinker/0ABE66931753>) |
 | Rockchip                 | RK3288 Asus Tinker Board S                       | [3CE8E05BA615](<System On Chip/Rockchip/RK3288/RK3288 Asus Tinker Board S/3CE8E05BA615>) |
 | Rockchip                 | RK3318 BOX                                       | [2EE95BE7A1A3](<System On Chip/Rockchip/RK3318/RK3318 BOX/2EE95BE7A1A3>) |
 | Rockchip Electronics     | RK3588                                           | [F010274F864C](<System On Chip/Rockchip Electronics/RK/RK3588/F010274F864C>) |
+| Samsung Electronics      | A3Y17 LTE EUR rev03 board based on Exynos7870    | [293F93ED64DB](<System On Chip/Samsung Electronics/A3Y17/A3Y17 LTE EUR rev03 board based on Exynos7870/293F93ED64DB>) |
 | Samsung Electronics      | GTA4XLWIFI EUR OPEN 04A board based on EXYNOS... | [4D8D0FFC6794](<System On Chip/Samsung Electronics/GTA4XLWIFI/GTA4XLWIFI EUR OPEN 04A board based on EXYNOS9611/4D8D0FFC6794>) |
 | Samsung Electronics      | UNIVERSAL8890 board based on EXYNOS8890          | [7892F79EB76E](<System On Chip/Samsung Electronics/UNIVERSAL8890/UNIVERSAL8890 board based on EXYNOS8890/7892F79EB76E>) |
 | Shenzhen Amediatech T... | X96 Max                                          | [42FDDAF80558](<System On Chip/Shenzhen Amediatech Technology/X96/X96 Max/42FDDAF80558>) |
@@ -770,7 +779,7 @@ SOCs
 | sunxi                    | Allwinner sun7i Family                           | [0AF4EB9982A2](<System On Chip/sunxi/Allwinner/Allwinner sun7i Family/0AF4EB9982A2>) |
 | sunxi                    | Banana Pi BPI-M1-Plus                            | [82EAD03E0985](<System On Chip/sunxi/Banana/Banana Pi BPI-M1-Plus/82EAD03E0985>) |
 | sunxi                    | Banana Pi BPI-M2-Plus H3                         | [7AEBD225F3B0](<System On Chip/sunxi/Banana/Banana Pi BPI-M2-Plus H3/7AEBD225F3B0>) |
-| sunxi                    | Banana Pi BPI-M2-Ultra                           | [ADAD3F8DDC8A](<System On Chip/sunxi/Banana/Banana Pi BPI-M2-Ultra/ADAD3F8DDC8A>) |
+| sunxi                    | Banana Pi BPI-M2-Ultra                           | [5AACE9E0F675](<System On Chip/sunxi/Banana/Banana Pi BPI-M2-Ultra/5AACE9E0F675>) |
 | sunxi                    | FriendlyARM NanoPi NEO                           | [A8231DEBFC1F](<System On Chip/sunxi/FriendlyARM/FriendlyARM NanoPi NEO/A8231DEBFC1F>) |
 | T-Platforms              | TF307-MB                                         | [91D084FEF1CC](<System On Chip/T-Platforms/TF307/TF307-MB/91D084FEF1CC>) |
 | T-Platforms              | TF307-MB-S-C                                     | [0E3F024E750E](<System On Chip/T-Platforms/TF307/TF307-MB-S-C/0E3F024E750E>) |
@@ -780,10 +789,10 @@ SOCs
 | TI                       | OMAP3 BeagleBoard xM                             | [1EDBF8C9261F](<System On Chip/TI/OMAP3/OMAP3 BeagleBoard xM/1EDBF8C9261F>) |
 | Xiaomi                   | Pocophone F1                                     | [7C1954F62B19](<System On Chip/Xiaomi/Pocophone/Pocophone F1/7C1954F62B19>) |
 | Xunlong                  | Orange Pi Lite                                   | [89B0620C4302](<System On Chip/Xunlong/Orange/Orange Pi Lite/89B0620C4302>) |
+| Xunlong                  | Orange Pi One                                    | [859CDF64A438](<System On Chip/Xunlong/Orange/Orange Pi One/859CDF64A438>) |
 | Xunlong                  | Orange Pi PC                                     | [00171C2615FD](<System On Chip/Xunlong/Orange/Orange Pi PC/00171C2615FD>) |
 | Xunlong                  | Orange Pi PC Plus                                | [0C5AC74F46F0](<System On Chip/Xunlong/Orange/Orange Pi PC Plus/0C5AC74F46F0>) |
 | Xunlong                  | Orange Pi Plus 2E                                | [687EE73FF56F](<System On Chip/Xunlong/Orange/Orange Pi Plus 2E/687EE73FF56F>) |
-| Xunlong                  | Orange Pi Zero                                   | [02164B58FD0B](<System On Chip/Xunlong/Orange/Orange Pi Zero/02164B58FD0B>) |
 
 ...
 
@@ -819,12 +828,13 @@ Tablets
 | Acer                     | Iconia W1-810                                    | [A5F3CE2357F6](<Tablet/Acer/Iconia/Iconia W1-810/A5F3CE2357F6>) |
 | Acer                     | One 10 SW110-1CT                                 | [8F6F1DC956A8](<Tablet/Acer/One/One 10 SW110-1CT/8F6F1DC956A8>) |
 | ALLDOCUBE                | i1022d                                           | [2568497DA66E](<Tablet/ALLDOCUBE/i1022/i1022d/2568497DA66E>) |
+| ALLDOCUBE                | i1025P                                           | [DE41324AFD53](<Tablet/ALLDOCUBE/i1025/i1025P/DE41324AFD53>) |
 | AOKZOE                   | A1 AR07                                          | [C8DEB898404E](<Tablet/AOKZOE/A1/A1 AR07/C8DEB898404E>) |
+| ASUSTek Computer         | ROG Flow Z13 GZ301VV_GZ301VV                     | [7B1518D4CC86](<Tablet/ASUSTek Computer/ROG/ROG Flow Z13 GZ301VV_GZ301VV/7B1518D4CC86>) |
 | ASUSTek Computer         | ROG Flow Z13 GZ301ZC_GZ301ZC                     | [4550248EB59F](<Tablet/ASUSTek Computer/ROG/ROG Flow Z13 GZ301ZC_GZ301ZC/4550248EB59F>) |
 | ASUSTek Computer         | ROG Flow Z13 GZ301ZE_GZ301ZE                     | [1BD77E12E71A](<Tablet/ASUSTek Computer/ROG/ROG Flow Z13 GZ301ZE_GZ301ZE/1BD77E12E71A>) |
 | ASUSTek Computer         | T101HA                                           | [04CD075B1980](<Tablet/ASUSTek Computer/T101/T101HA/04CD075B1980>) |
 | ASUSTek Computer         | T102HA                                           | [00A3928A5667](<Tablet/ASUSTek Computer/T102/T102HA/00A3928A5667>) |
-| ASUSTek Computer         | T103HAF                                          | [6F3135ED73E2](<Tablet/ASUSTek Computer/T103/T103HAF/6F3135ED73E2>) |
 | AVITA                    | NS12T5                                           | [1E88FAD8F7A9](<Tablet/AVITA/NS12/NS12T5/1E88FAD8F7A9>) |
 | AWOW                     | Book10-N34                                       | [9B4FB389420C](<Tablet/AWOW/Book10/Book10-N34/9B4FB389420C>) |
 | AXDIA International      | PRIME WIN 12                                     | [257B7AF90A21](<Tablet/AXDIA International/PRIME/PRIME WIN 12/257B7AF90A21>) |
@@ -858,6 +868,7 @@ Tablets
 | Fusion5                  | FWIN232                                          | [40F74BCEB4E1](<Tablet/Fusion5/FWIN/FWIN232/40F74BCEB4E1>) |
 | Fusion5                  | FWIN232 PLUS                                     | [6E083C5E9305](<Tablet/Fusion5/FWIN232/FWIN232 PLUS/6E083C5E9305>) |
 | Fusion5                  | FWIN232 PRO S2                                   | [A42088AEC97C](<Tablet/Fusion5/FWIN232/FWIN232 PRO S2/A42088AEC97C>) |
+| Getac                    | F110G6                                           | [36F31BBCD939](<Tablet/Getac/F110/F110G6/36F31BBCD939>) |
 | Getac                    | K120G2                                           | [9B90212BD0E9](<Tablet/Getac/K120/K120G2/9B90212BD0E9>) |
 | Getac                    | UX10G2                                           | [9B2D92B11BC9](<Tablet/Getac/UX10/UX10G2/9B2D92B11BC9>) |
 | GHIA                     | 2 en 1                                           | [261AF1B70E8A](<Tablet/GHIA/2/2 en 1/261AF1B70E8A>) |
@@ -868,16 +879,16 @@ Tablets
 | Hampoo                   | D4D6_Hi8Pro_hnh                                  | [93AC336A82D9](<Tablet/Hampoo/D4/D4D6_Hi8Pro_hnh/93AC336A82D9>) |
 | Hampoo                   | E4D6_C106                                        | [712CAA57A3D8](<Tablet/Hampoo/E4/E4D6_C106/712CAA57A3D8>) |
 | Hampoo                   | E4D6_HI-122LP                                    | [6AF0EE4CA74B](<Tablet/Hampoo/E4/E4D6_HI-122LP/6AF0EE4CA74B>) |
-| Hampoo                   | I1D6_C109S_Hi10Pro                               | [80F5C1B37311](<Tablet/Hampoo/I1/I1D6_C109S_Hi10Pro/80F5C1B37311>) |
+| Hampoo                   | I1D6_C109S_Hi10Pro                               | [2A9C543CBB65](<Tablet/Hampoo/I1/I1D6_C109S_Hi10Pro/2A9C543CBB65>) |
 | Hanis                    | Rugged86H                                        | [E91B390E94E1](<Tablet/Hanis/Rugged86/Rugged86H/E91B390E94E1>) |
 | Hanis                    | RuggedPadY16                                     | [1C41946CA0FC](<Tablet/Hanis/RuggedPadY/RuggedPadY16/1C41946CA0FC>) |
 | Hewlett-Packard          | Elite x2 1012 G2                                 | [04DF3D4F2975](<Tablet/Hewlett-Packard/Elite/Elite x2 1012 G2/04DF3D4F2975>) |
+| Hewlett-Packard          | Elite x2 1012 G2 Tablet                          | [080BFF6F3C7B](<Tablet/Hewlett-Packard/Elite/Elite x2 1012 G2 Tablet/080BFF6F3C7B>) |
 | Hewlett-Packard          | Elite x2 1013 G3                                 | [3DD573867AA0](<Tablet/Hewlett-Packard/Elite/Elite x2 1013 G3/3DD573867AA0>) |
+| Hewlett-Packard          | Elite x2 G4                                      | [D4F39DF208E2](<Tablet/Hewlett-Packard/Elite/Elite x2 G4/D4F39DF208E2>) |
 | Hewlett-Packard          | Pavilion x2 Detachable                           | [001184FC383E](<Tablet/Hewlett-Packard/Pavilion/Pavilion x2 Detachable/001184FC383E>) |
-| Hewlett-Packard          | Pro x2 612 G2                                    | [4AE7A753C34C](<Tablet/Hewlett-Packard/Pro/Pro x2 612 G2/4AE7A753C34C>) |
-| Hewlett-Packard          | Spectre x2 Detachable 12-c0XX                    | [09798ACE135C](<Tablet/Hewlett-Packard/Spectre/Spectre x2 Detachable 12-c0XX/09798ACE135C>) |
 | Hometech                 | Wi11T                                            | [9657FC297AAB](<Tablet/Hometech/Wi/Wi11T/9657FC297AAB>) |
-| HUAWEI                   | DRC-WXX                                          | [6BA248F9C164](<Tablet/HUAWEI/DRC-WXX/DRC-WXX/6BA248F9C164>) |
+| HUAWEI                   | DRC-WXX                                          | [4B50F0906809](<Tablet/HUAWEI/DRC-WXX/DRC-WXX/4B50F0906809>) |
 | HUAWEI                   | MateBook E                                       | [AE4CFFA107F9](<Tablet/HUAWEI/MateBook/MateBook E/AE4CFFA107F9>) |
 | HUAWEI                   | MateBook HZ-W09                                  | [8B29CCECA159](<Tablet/HUAWEI/MateBook/MateBook HZ-W09/8B29CCECA159>) |
 | HUAWEI                   | MateBook HZ-W19                                  | [F902238EFB24](<Tablet/HUAWEI/MateBook/MateBook HZ-W19/F902238EFB24>) |
@@ -893,6 +904,7 @@ Tablets
 | Irbis                    | TW90                                             | [FBA35938A59B](<Tablet/Irbis/TW/TW90/FBA35938A59B>) |
 | Jumper                   | Ezpad                                            | [228FC4D84EE8](<Tablet/Jumper/Ezpad/Ezpad/228FC4D84EE8>) |
 | Jumper                   | EZpad                                            | [15B6E087E7FA](<Tablet/Jumper/EZpad/EZpad/15B6E087E7FA>) |
+| KEIAN                    | KBM101K                                          | [53235C624C4C](<Tablet/KEIAN/KBM101/KBM101K/53235C624C4C>) |
 | Kiano                    | IntelectX3HD                                     | [07656EC371DC](<Tablet/Kiano/IntelectX3/IntelectX3HD/07656EC371DC>) |
 | Kiano                    | IntelectX3HD+                                    | [295C5BCA71A8](<Tablet/Kiano/IntelectX3/IntelectX3HD+/295C5BCA71A8>) |
 | KOGAN                    | KAL10D400SA                                      | [3C67595D4E1F](<Tablet/KOGAN/KAL10/KAL10D400SA/3C67595D4E1F>) |
@@ -900,18 +912,15 @@ Tablets
 | Lamina                   | LAMINALT1024                                     | [F6CD496474A2](<Tablet/Lamina/LAMINALT/LAMINALT1024/F6CD496474A2>) |
 | Lanix                    | Neuron A                                         | [9C81E684C8A4](<Tablet/Lanix/Neuron/Neuron A/9C81E684C8A4>) |
 | Lenovo                   | 1051L 60073                                      | [5008BAA8E8DC](<Tablet/Lenovo/1051L/1051L 60073/5008BAA8E8DC>) |
+| Lenovo                   | 851F 60072                                       | [AAA1D07C9BE6](<Tablet/Lenovo/851F/851F 60072/AAA1D07C9BE6>) |
 | Lenovo                   | IdeaPad D330-10IGL 82H0                          | [66D15DFB427C](<Tablet/Lenovo/IdeaPad/IdeaPad D330-10IGL 82H0/66D15DFB427C>) |
 | Lenovo                   | IdeaPad D330-10IGM 81H3                          | [0DD923026492](<Tablet/Lenovo/IdeaPad/IdeaPad D330-10IGM 81H3/0DD923026492>) |
 | Lenovo                   | IdeaPad D330-10IGM 81MD                          | [E53FC302CAC3](<Tablet/Lenovo/IdeaPad/IdeaPad D330-10IGM 81MD/E53FC302CAC3>) |
-| Lenovo                   | IdeaPad Duet 3 10IGL5 82AT                       | [605931C0A403](<Tablet/Lenovo/IdeaPad/IdeaPad Duet 3 10IGL5 82AT/605931C0A403>) |
 | LG Electronics           | 10T370-L860K                                     | [FC0AE2C9A307](<Tablet/LG Electronics/10T370/10T370-L860K/FC0AE2C9A307>) |
 | LG Electronics           | 15U340-L.BK55P1                                  | [96572D02BF5F](<Tablet/LG Electronics/15U340/15U340-L.BK55P1/96572D02BF5F>) |
 | LG Electronics           | 15U340-LT1FK                                     | [D2FBFE78AD3E](<Tablet/LG Electronics/15U340/15U340-LT1FK/D2FBFE78AD3E>) |
 | Linx                     | LAMINALT1032                                     | [AF6EFE91639D](<Tablet/Linx/LAMINALT/LAMINALT1032/AF6EFE91639D>) |
 | Linx                     | LAMINALTT8W4G-HBN                                | [3A8211B5B143](<Tablet/Linx/LAMINALTT8/LAMINALTT8W4G-HBN/3A8211B5B143>) |
-| Linx                     | LINX10V64                                        | [A98E05D0AEBE](<Tablet/Linx/LINX10/LINX10V64/A98E05D0AEBE>) |
-| Linx                     | LINX12X64                                        | [00524CF18683](<Tablet/Linx/LINX12/LINX12X64/00524CF18683>) |
-| MECER                    | MW10Q16+S                                        | [D37A9D99B412](<Tablet/MECER/MW10/MW10Q16+S/D37A9D99B412>) |
 
 ...
 
